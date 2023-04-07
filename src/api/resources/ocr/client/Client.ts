@@ -9,15 +9,15 @@ import urlJoin from "url-join";
 import * as serializers from "../../../../serialization";
 import * as errors from "../../../../errors";
 
-export declare namespace Client {
+export declare namespace Ocr {
     interface Options {
         environment?: environments.MercoaEnvironment | string;
-        token?: core.Supplier<core.BearerToken>;
+        token: core.Supplier<core.BearerToken>;
     }
 }
 
-export class Client {
-    constructor(private readonly options: Client.Options) {}
+export class Ocr {
+    constructor(private readonly options: Ocr.Options) {}
 
     /**
      * Run OCR on an Base64 encoded image or PDF
@@ -27,13 +27,16 @@ export class Client {
             url: urlJoin(this.options.environment ?? environments.MercoaEnvironment.Production, "/ocr"),
             method: "POST",
             headers: {
-                Authorization: core.BearerToken.toAuthorizationHeader(await core.Supplier.get(this.options.token)),
+                Authorization: await this._getAuthorizationHeader(),
             },
-            body: await serializers.RunOcr.jsonOrThrow(request),
+            contentType: "application/json",
+            body: await serializers.RunOcr.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
         });
         if (_response.ok) {
-            return await serializers.OcrResponse.parseOrThrow(_response.body as serializers.OcrResponse.Raw, {
-                allowUnknownKeys: true,
+            return await serializers.OcrResponse.parseOrThrow(_response.body, {
+                unrecognizedObjectKeys: "passthrough",
+                allowUnrecognizedUnionMembers: true,
+                allowUnrecognizedEnumValues: true,
             });
         }
 
@@ -60,13 +63,18 @@ export class Client {
     }
 
     public async emailInbox(request: Mercoa.EmailOcr): Promise<void> {
+        const { org, ..._body } = request;
+        const _queryParams = new URLSearchParams();
+        _queryParams.append("org", org);
         const _response = await core.fetcher({
             url: urlJoin(this.options.environment ?? environments.MercoaEnvironment.Production, "/emailOcr"),
             method: "POST",
             headers: {
-                Authorization: core.BearerToken.toAuthorizationHeader(await core.Supplier.get(this.options.token)),
+                Authorization: await this._getAuthorizationHeader(),
             },
-            body: await serializers.EmailOcr.jsonOrThrow(request),
+            contentType: "application/json",
+            queryParameters: _queryParams,
+            body: await serializers.EmailOcr.jsonOrThrow(_body, { unrecognizedObjectKeys: "strip" }),
         });
         if (_response.ok) {
             return;
@@ -92,5 +100,14 @@ export class Client {
                     message: _response.error.errorMessage,
                 });
         }
+    }
+
+    private async _getAuthorizationHeader() {
+        const bearer = await core.Supplier.get(this.options.token);
+        if (bearer != null) {
+            return `Bearer ${bearer}`;
+        }
+
+        return undefined;
     }
 }

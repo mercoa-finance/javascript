@@ -14,7 +14,7 @@ export interface CustomPaymentMethodResponse {
     schemaId: Mercoa.PaymentMethodSchemaId;
     schema: Mercoa.PaymentMethodSchemaResponse;
     /** Object of key/value pairs that matches the keys in the linked payment method schema. */
-    data: Record<string, string | undefined>;
+    data: Record<string, string>;
     createdAt: Date;
     updatedAt: Date;
 }

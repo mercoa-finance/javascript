@@ -9,15 +9,15 @@ import urlJoin from "url-join";
 import * as serializers from "../../../../serialization";
 import * as errors from "../../../../errors";
 
-export declare namespace Client {
+export declare namespace BankLookup {
     interface Options {
         environment?: environments.MercoaEnvironment | string;
-        token?: core.Supplier<core.BearerToken>;
+        token: core.Supplier<core.BearerToken>;
     }
 }
 
-export class Client {
-    constructor(private readonly options: Client.Options) {}
+export class BankLookup {
+    constructor(private readonly options: BankLookup.Options) {}
 
     /**
      * Find bank account details
@@ -30,15 +30,17 @@ export class Client {
             url: urlJoin(this.options.environment ?? environments.MercoaEnvironment.Production, "/bankLookup"),
             method: "GET",
             headers: {
-                Authorization: core.BearerToken.toAuthorizationHeader(await core.Supplier.get(this.options.token)),
+                Authorization: await this._getAuthorizationHeader(),
             },
+            contentType: "application/json",
             queryParameters: _queryParams,
         });
         if (_response.ok) {
-            return await serializers.BankLookupResponse.parseOrThrow(
-                _response.body as serializers.BankLookupResponse.Raw,
-                { allowUnknownKeys: true }
-            );
+            return await serializers.BankLookupResponse.parseOrThrow(_response.body, {
+                unrecognizedObjectKeys: "passthrough",
+                allowUnrecognizedUnionMembers: true,
+                allowUnrecognizedEnumValues: true,
+            });
         }
 
         if (_response.error.reason === "status-code") {
@@ -61,5 +63,14 @@ export class Client {
                     message: _response.error.errorMessage,
                 });
         }
+    }
+
+    private async _getAuthorizationHeader() {
+        const bearer = await core.Supplier.get(this.options.token);
+        if (bearer != null) {
+            return `Bearer ${bearer}`;
+        }
+
+        return undefined;
     }
 }

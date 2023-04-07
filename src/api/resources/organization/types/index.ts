@@ -12,3 +12,4 @@ export * from "./EmailProviderResponse";
 export * from "./EmailSenderProvider";
 export * from "./EmailSenderRequest";
 export * from "./EmailSenderResponse";
+export * from "./EmailLogResponse";

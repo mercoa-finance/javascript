@@ -6,13 +6,14 @@ import * as serializers from "../../../..";
 import { Mercoa } from "@mercoa/javascript";
 import * as core from "../../../../../core";
 
-export const EmailOcr: core.serialization.Schema<serializers.EmailOcr.Raw, Mercoa.EmailOcr> = core.serialization.object(
-    {
-        items: core.serialization.list(
-            core.serialization.lazyObject(async () => (await import("../../../..")).EmailOcrRequest)
-        ),
-    }
-);
+export const EmailOcr: core.serialization.Schema<
+    serializers.EmailOcr.Raw,
+    Omit<Mercoa.EmailOcr, "org">
+> = core.serialization.object({
+    items: core.serialization.list(
+        core.serialization.lazyObject(async () => (await import("../../../..")).EmailOcrRequest)
+    ),
+});
 
 export declare namespace EmailOcr {
     interface Raw {

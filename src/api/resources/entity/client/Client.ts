@@ -9,15 +9,15 @@ import urlJoin from "url-join";
 import * as serializers from "../../../../serialization";
 import * as errors from "../../../../errors";
 
-export declare namespace Client {
+export declare namespace Entity {
     interface Options {
         environment?: environments.MercoaEnvironment | string;
-        token?: core.Supplier<core.BearerToken>;
+        token: core.Supplier<core.BearerToken>;
     }
 }
 
-export class Client {
-    constructor(private readonly options: Client.Options) {}
+export class Entity {
+    constructor(private readonly options: Entity.Options) {}
 
     /**
      * Get all entities
@@ -27,14 +27,16 @@ export class Client {
             url: urlJoin(this.options.environment ?? environments.MercoaEnvironment.Production, "/entities"),
             method: "GET",
             headers: {
-                Authorization: core.BearerToken.toAuthorizationHeader(await core.Supplier.get(this.options.token)),
+                Authorization: await this._getAuthorizationHeader(),
             },
+            contentType: "application/json",
         });
         if (_response.ok) {
-            return await serializers.entity.getAll.Response.parseOrThrow(
-                _response.body as serializers.entity.getAll.Response.Raw,
-                { allowUnknownKeys: true }
-            );
+            return await serializers.entity.getAll.Response.parseOrThrow(_response.body, {
+                unrecognizedObjectKeys: "passthrough",
+                allowUnrecognizedUnionMembers: true,
+                allowUnrecognizedEnumValues: true,
+            });
         }
 
         if (_response.error.reason === "status-code") {
@@ -74,15 +76,17 @@ export class Client {
             url: urlJoin(this.options.environment ?? environments.MercoaEnvironment.Production, "/entity"),
             method: "GET",
             headers: {
-                Authorization: core.BearerToken.toAuthorizationHeader(await core.Supplier.get(this.options.token)),
+                Authorization: await this._getAuthorizationHeader(),
             },
+            contentType: "application/json",
             queryParameters: _queryParams,
         });
         if (_response.ok) {
-            return await serializers.entity.find.Response.parseOrThrow(
-                _response.body as serializers.entity.find.Response.Raw,
-                { allowUnknownKeys: true }
-            );
+            return await serializers.entity.find.Response.parseOrThrow(_response.body, {
+                unrecognizedObjectKeys: "passthrough",
+                allowUnrecognizedUnionMembers: true,
+                allowUnrecognizedEnumValues: true,
+            });
         }
 
         if (_response.error.reason === "status-code") {
@@ -112,13 +116,16 @@ export class Client {
             url: urlJoin(this.options.environment ?? environments.MercoaEnvironment.Production, "/entity"),
             method: "POST",
             headers: {
-                Authorization: core.BearerToken.toAuthorizationHeader(await core.Supplier.get(this.options.token)),
+                Authorization: await this._getAuthorizationHeader(),
             },
-            body: await serializers.EntityRequest.jsonOrThrow(request),
+            contentType: "application/json",
+            body: await serializers.EntityRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
         });
         if (_response.ok) {
-            return await serializers.EntityResponse.parseOrThrow(_response.body as serializers.EntityResponse.Raw, {
-                allowUnknownKeys: true,
+            return await serializers.EntityResponse.parseOrThrow(_response.body, {
+                unrecognizedObjectKeys: "passthrough",
+                allowUnrecognizedUnionMembers: true,
+                allowUnrecognizedEnumValues: true,
             });
         }
 
@@ -155,12 +162,15 @@ export class Client {
             ),
             method: "GET",
             headers: {
-                Authorization: core.BearerToken.toAuthorizationHeader(await core.Supplier.get(this.options.token)),
+                Authorization: await this._getAuthorizationHeader(),
             },
+            contentType: "application/json",
         });
         if (_response.ok) {
-            return await serializers.EntityResponse.parseOrThrow(_response.body as serializers.EntityResponse.Raw, {
-                allowUnknownKeys: true,
+            return await serializers.EntityResponse.parseOrThrow(_response.body, {
+                unrecognizedObjectKeys: "passthrough",
+                allowUnrecognizedUnionMembers: true,
+                allowUnrecognizedEnumValues: true,
             });
         }
 
@@ -200,13 +210,16 @@ export class Client {
             ),
             method: "POST",
             headers: {
-                Authorization: core.BearerToken.toAuthorizationHeader(await core.Supplier.get(this.options.token)),
+                Authorization: await this._getAuthorizationHeader(),
             },
-            body: await serializers.EntityUpdateRequest.jsonOrThrow(request),
+            contentType: "application/json",
+            body: await serializers.EntityUpdateRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
         });
         if (_response.ok) {
-            return await serializers.EntityResponse.parseOrThrow(_response.body as serializers.EntityResponse.Raw, {
-                allowUnknownKeys: true,
+            return await serializers.EntityResponse.parseOrThrow(_response.body, {
+                unrecognizedObjectKeys: "passthrough",
+                allowUnrecognizedUnionMembers: true,
+                allowUnrecognizedEnumValues: true,
             });
         }
 
@@ -243,8 +256,9 @@ export class Client {
             ),
             method: "DELETE",
             headers: {
-                Authorization: core.BearerToken.toAuthorizationHeader(await core.Supplier.get(this.options.token)),
+                Authorization: await this._getAuthorizationHeader(),
             },
+            contentType: "application/json",
         });
         if (_response.ok) {
             return;
@@ -298,15 +312,17 @@ export class Client {
             ),
             method: "GET",
             headers: {
-                Authorization: core.BearerToken.toAuthorizationHeader(await core.Supplier.get(this.options.token)),
+                Authorization: await this._getAuthorizationHeader(),
             },
+            contentType: "application/json",
             queryParameters: _queryParams,
         });
         if (_response.ok) {
-            return await serializers.entity.getInvoices.Response.parseOrThrow(
-                _response.body as serializers.entity.getInvoices.Response.Raw,
-                { allowUnknownKeys: true }
-            );
+            return await serializers.entity.getInvoices.Response.parseOrThrow(_response.body, {
+                unrecognizedObjectKeys: "passthrough",
+                allowUnrecognizedUnionMembers: true,
+                allowUnrecognizedEnumValues: true,
+            });
         }
 
         if (_response.error.reason === "status-code") {
@@ -342,14 +358,16 @@ export class Client {
             ),
             method: "POST",
             headers: {
-                Authorization: core.BearerToken.toAuthorizationHeader(await core.Supplier.get(this.options.token)),
+                Authorization: await this._getAuthorizationHeader(),
             },
+            contentType: "application/json",
         });
         if (_response.ok) {
-            return await serializers.entity.acceptTermsOfService.Response.parseOrThrow(
-                _response.body as serializers.entity.acceptTermsOfService.Response.Raw,
-                { allowUnknownKeys: true }
-            );
+            return await serializers.entity.acceptTermsOfService.Response.parseOrThrow(_response.body, {
+                unrecognizedObjectKeys: "passthrough",
+                allowUnrecognizedUnionMembers: true,
+                allowUnrecognizedEnumValues: true,
+            });
         }
 
         if (_response.error.reason === "status-code") {
@@ -385,14 +403,16 @@ export class Client {
             ),
             method: "GET",
             headers: {
-                Authorization: core.BearerToken.toAuthorizationHeader(await core.Supplier.get(this.options.token)),
+                Authorization: await this._getAuthorizationHeader(),
             },
+            contentType: "application/json",
         });
         if (_response.ok) {
-            return await serializers.entity.getToken.Response.parseOrThrow(
-                _response.body as serializers.entity.getToken.Response.Raw,
-                { allowUnknownKeys: true }
-            );
+            return await serializers.entity.getToken.Response.parseOrThrow(_response.body, {
+                unrecognizedObjectKeys: "passthrough",
+                allowUnrecognizedUnionMembers: true,
+                allowUnrecognizedEnumValues: true,
+            });
         }
 
         if (_response.error.reason === "status-code") {
@@ -415,5 +435,14 @@ export class Client {
                     message: _response.error.errorMessage,
                 });
         }
+    }
+
+    private async _getAuthorizationHeader() {
+        const bearer = await core.Supplier.get(this.options.token);
+        if (bearer != null) {
+            return `Bearer ${bearer}`;
+        }
+
+        return undefined;
     }
 }

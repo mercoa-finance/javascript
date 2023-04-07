@@ -9,15 +9,15 @@ import urlJoin from "url-join";
 import * as serializers from "../../../../serialization";
 import * as errors from "../../../../errors";
 
-export declare namespace Client {
+export declare namespace Organization {
     interface Options {
         environment?: environments.MercoaEnvironment | string;
-        token?: core.Supplier<core.BearerToken>;
+        token: core.Supplier<core.BearerToken>;
     }
 }
 
-export class Client {
-    constructor(private readonly options: Client.Options) {}
+export class Organization {
+    constructor(private readonly options: Organization.Options) {}
 
     /**
      * Get current organization information
@@ -37,15 +37,17 @@ export class Client {
             url: urlJoin(this.options.environment ?? environments.MercoaEnvironment.Production, "/organization"),
             method: "GET",
             headers: {
-                Authorization: core.BearerToken.toAuthorizationHeader(await core.Supplier.get(this.options.token)),
+                Authorization: await this._getAuthorizationHeader(),
             },
+            contentType: "application/json",
             queryParameters: _queryParams,
         });
         if (_response.ok) {
-            return await serializers.OrganizationResponse.parseOrThrow(
-                _response.body as serializers.OrganizationResponse.Raw,
-                { allowUnknownKeys: true }
-            );
+            return await serializers.OrganizationResponse.parseOrThrow(_response.body, {
+                unrecognizedObjectKeys: "passthrough",
+                allowUnrecognizedUnionMembers: true,
+                allowUnrecognizedEnumValues: true,
+            });
         }
 
         if (_response.error.reason === "status-code") {
@@ -78,15 +80,17 @@ export class Client {
             url: urlJoin(this.options.environment ?? environments.MercoaEnvironment.Production, "/organization"),
             method: "POST",
             headers: {
-                Authorization: core.BearerToken.toAuthorizationHeader(await core.Supplier.get(this.options.token)),
+                Authorization: await this._getAuthorizationHeader(),
             },
-            body: await serializers.OrganizationRequest.jsonOrThrow(request),
+            contentType: "application/json",
+            body: await serializers.OrganizationRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
         });
         if (_response.ok) {
-            return await serializers.OrganizationResponse.parseOrThrow(
-                _response.body as serializers.OrganizationResponse.Raw,
-                { allowUnknownKeys: true }
-            );
+            return await serializers.OrganizationResponse.parseOrThrow(_response.body, {
+                unrecognizedObjectKeys: "passthrough",
+                allowUnrecognizedUnionMembers: true,
+                allowUnrecognizedEnumValues: true,
+            });
         }
 
         if (_response.error.reason === "status-code") {
@@ -109,5 +113,70 @@ export class Client {
                     message: _response.error.errorMessage,
                 });
         }
+    }
+
+    /**
+     * Get log of all emails sent to this organization. Content format subject to change.
+     */
+    public async emailLog(request: Mercoa.GetEmailLogRequest = {}): Promise<Mercoa.EmailLogResponse[]> {
+        const { startDate, endDate } = request;
+        const _queryParams = new URLSearchParams();
+        if (startDate != null) {
+            _queryParams.append("startDate", startDate.toISOString());
+        }
+
+        if (endDate != null) {
+            _queryParams.append("endDate", endDate.toISOString());
+        }
+
+        const _response = await core.fetcher({
+            url: urlJoin(
+                this.options.environment ?? environments.MercoaEnvironment.Production,
+                "/organization/emailLog"
+            ),
+            method: "GET",
+            headers: {
+                Authorization: await this._getAuthorizationHeader(),
+            },
+            contentType: "application/json",
+            queryParameters: _queryParams,
+        });
+        if (_response.ok) {
+            return await serializers.organization.emailLog.Response.parseOrThrow(_response.body, {
+                unrecognizedObjectKeys: "passthrough",
+                allowUnrecognizedUnionMembers: true,
+                allowUnrecognizedEnumValues: true,
+            });
+        }
+
+        if (_response.error.reason === "status-code") {
+            throw new errors.MercoaError({
+                statusCode: _response.error.statusCode,
+                body: _response.error.body,
+            });
+        }
+
+        switch (_response.error.reason) {
+            case "non-json":
+                throw new errors.MercoaError({
+                    statusCode: _response.error.statusCode,
+                    body: _response.error.rawBody,
+                });
+            case "timeout":
+                throw new errors.MercoaTimeoutError();
+            case "unknown":
+                throw new errors.MercoaError({
+                    message: _response.error.errorMessage,
+                });
+        }
+    }
+
+    private async _getAuthorizationHeader() {
+        const bearer = await core.Supplier.get(this.options.token);
+        if (bearer != null) {
+            return `Bearer ${bearer}`;
+        }
+
+        return undefined;
     }
 }

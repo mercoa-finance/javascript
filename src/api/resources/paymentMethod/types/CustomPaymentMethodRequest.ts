@@ -12,5 +12,5 @@ export interface CustomPaymentMethodRequest {
     /** Payment method schema used for this payment method. Defines the fields that this payment method contains. */
     schemaId: Mercoa.PaymentMethodSchemaId;
     /** Object of key/value pairs that matches the keys in the linked payment method schema. */
-    data: Record<string, string | undefined>;
+    data: Record<string, string>;
 }

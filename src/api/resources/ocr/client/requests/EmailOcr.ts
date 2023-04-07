@@ -5,5 +5,6 @@
 import { Mercoa } from "@mercoa/javascript";
 
 export interface EmailOcr {
+    org: Mercoa.OrganizationId;
     items: Mercoa.EmailOcrRequest[];
 }

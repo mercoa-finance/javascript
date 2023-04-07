@@ -4,77 +4,77 @@
 
 import * as environments from "./environments";
 import * as core from "./core";
-import { Client as BankLookupClient } from "./api/resources/bankLookup/client/Client";
-import { Client as CounterpartyClient } from "./api/resources/counterparty/client/Client";
-import { Client as EntityClient } from "./api/resources/entity/client/Client";
-import { Client as InvoiceClient } from "./api/resources/invoice/client/Client";
-import { Client as OcrClient } from "./api/resources/ocr/client/Client";
-import { Client as OrganizationClient } from "./api/resources/organization/client/Client";
-import { Client as PaymentMethodSchemaClient } from "./api/resources/paymentMethodSchema/client/Client";
-import { Client as PaymentMethodClient } from "./api/resources/paymentMethod/client/Client";
-import { Client as RepresentativeClient } from "./api/resources/representative/client/Client";
+import { BankLookup } from "./api/resources/bankLookup/client/Client";
+import { Counterparty } from "./api/resources/counterparty/client/Client";
+import { Entity } from "./api/resources/entity/client/Client";
+import { Invoice } from "./api/resources/invoice/client/Client";
+import { Ocr } from "./api/resources/ocr/client/Client";
+import { Organization } from "./api/resources/organization/client/Client";
+import { PaymentMethodSchema } from "./api/resources/paymentMethodSchema/client/Client";
+import { PaymentMethod } from "./api/resources/paymentMethod/client/Client";
+import { Representative } from "./api/resources/representative/client/Client";
 
 export declare namespace MercoaClient {
     interface Options {
         environment?: environments.MercoaEnvironment | string;
-        token?: core.Supplier<core.BearerToken>;
+        token: core.Supplier<core.BearerToken>;
     }
 }
 
 export class MercoaClient {
     constructor(private readonly options: MercoaClient.Options) {}
 
-    private _bankLookup: BankLookupClient | undefined;
+    private _bankLookup: BankLookup | undefined;
 
-    public get bankLookup(): BankLookupClient {
-        return (this._bankLookup ??= new BankLookupClient(this.options));
+    public get bankLookup(): BankLookup {
+        return (this._bankLookup ??= new BankLookup(this.options));
     }
 
-    private _counterparty: CounterpartyClient | undefined;
+    private _counterparty: Counterparty | undefined;
 
-    public get counterparty(): CounterpartyClient {
-        return (this._counterparty ??= new CounterpartyClient(this.options));
+    public get counterparty(): Counterparty {
+        return (this._counterparty ??= new Counterparty(this.options));
     }
 
-    private _entity: EntityClient | undefined;
+    private _entity: Entity | undefined;
 
-    public get entity(): EntityClient {
-        return (this._entity ??= new EntityClient(this.options));
+    public get entity(): Entity {
+        return (this._entity ??= new Entity(this.options));
     }
 
-    private _invoice: InvoiceClient | undefined;
+    private _invoice: Invoice | undefined;
 
-    public get invoice(): InvoiceClient {
-        return (this._invoice ??= new InvoiceClient(this.options));
+    public get invoice(): Invoice {
+        return (this._invoice ??= new Invoice(this.options));
     }
 
-    private _ocr: OcrClient | undefined;
+    private _ocr: Ocr | undefined;
 
-    public get ocr(): OcrClient {
-        return (this._ocr ??= new OcrClient(this.options));
+    public get ocr(): Ocr {
+        return (this._ocr ??= new Ocr(this.options));
     }
 
-    private _organization: OrganizationClient | undefined;
+    private _organization: Organization | undefined;
 
-    public get organization(): OrganizationClient {
-        return (this._organization ??= new OrganizationClient(this.options));
+    public get organization(): Organization {
+        return (this._organization ??= new Organization(this.options));
     }
 
-    private _paymentMethodSchema: PaymentMethodSchemaClient | undefined;
+    private _paymentMethodSchema: PaymentMethodSchema | undefined;
 
-    public get paymentMethodSchema(): PaymentMethodSchemaClient {
-        return (this._paymentMethodSchema ??= new PaymentMethodSchemaClient(this.options));
+    public get paymentMethodSchema(): PaymentMethodSchema {
+        return (this._paymentMethodSchema ??= new PaymentMethodSchema(this.options));
     }
 
-    private _paymentMethod: PaymentMethodClient | undefined;
+    private _paymentMethod: PaymentMethod | undefined;
 
-    public get paymentMethod(): PaymentMethodClient {
-        return (this._paymentMethod ??= new PaymentMethodClient(this.options));
+    public get paymentMethod(): PaymentMethod {
+        return (this._paymentMethod ??= new PaymentMethod(this.options));
     }
 
-    private _representative: RepresentativeClient | undefined;
+    private _representative: Representative | undefined;
 
-    public get representative(): RepresentativeClient {
-        return (this._representative ??= new RepresentativeClient(this.options));
+    public get representative(): Representative {
+        return (this._representative ??= new Representative(this.options));
     }
 }
