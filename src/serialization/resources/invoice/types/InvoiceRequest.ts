@@ -16,6 +16,8 @@ export const InvoiceRequest: core.serialization.ObjectSchema<serializers.Invoice
         dueDate: core.serialization.date().optional(),
         invoiceNumber: core.serialization.string().optional(),
         noteToSelf: core.serialization.string().optional(),
+        serviceStartDate: core.serialization.date().optional(),
+        serviceEndDate: core.serialization.date().optional(),
         payerId: core.serialization.lazy(async () => (await import("../../..")).EntityId).optional(),
         paymentSourceId: core.serialization.lazy(async () => (await import("../../..")).PaymentMethodId).optional(),
         vendorId: core.serialization.lazy(async () => (await import("../../..")).EntityId).optional(),
@@ -27,6 +29,9 @@ export const InvoiceRequest: core.serialization.ObjectSchema<serializers.Invoice
             .optional(),
         updateVendor: core.serialization
             .lazyObject(async () => (await import("../../..")).CreateVendorRequest)
+            .optional(),
+        lineItems: core.serialization
+            .list(core.serialization.lazyObject(async () => (await import("../../..")).InvoiceLineItemRequest))
             .optional(),
         uploadedImage: core.serialization.string().optional(),
     });
@@ -41,12 +46,15 @@ export declare namespace InvoiceRequest {
         dueDate?: string | null;
         invoiceNumber?: string | null;
         noteToSelf?: string | null;
+        serviceStartDate?: string | null;
+        serviceEndDate?: string | null;
         payerId?: serializers.EntityId.Raw | null;
         paymentSourceId?: serializers.PaymentMethodId.Raw | null;
         vendorId?: serializers.EntityId.Raw | null;
         paymentDestinationId?: serializers.PaymentMethodId.Raw | null;
         createVendor?: serializers.CreateVendorRequest.Raw | null;
         updateVendor?: serializers.CreateVendorRequest.Raw | null;
+        lineItems?: serializers.InvoiceLineItemRequest.Raw[] | null;
         uploadedImage?: string | null;
     }
 }

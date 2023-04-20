@@ -13,6 +13,8 @@ export interface InvoiceRequest {
     dueDate?: Date;
     invoiceNumber?: string;
     noteToSelf?: string;
+    serviceStartDate?: Date;
+    serviceEndDate?: Date;
     payerId?: Mercoa.EntityId;
     paymentSourceId?: Mercoa.PaymentMethodId;
     vendorId?: Mercoa.EntityId;
@@ -21,5 +23,6 @@ export interface InvoiceRequest {
     createVendor?: Mercoa.CreateVendorRequest;
     /** When paying to an existing vendor with an incomplete profile, use the updateVendor object. Mercoa will update the vendor entity tied to this invoice. This object is ignored if the vendor already has already been created with complete information and when creating a new invoice. */
     updateVendor?: Mercoa.CreateVendorRequest;
+    lineItems?: Mercoa.InvoiceLineItemRequest[];
     uploadedImage?: string;
 }

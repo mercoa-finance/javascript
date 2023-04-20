@@ -17,6 +17,8 @@ export const InvoiceResponse: core.serialization.ObjectSchema<serializers.Invoic
         dueDate: core.serialization.date().optional(),
         invoiceNumber: core.serialization.string().optional(),
         noteToSelf: core.serialization.string().optional(),
+        serviceStartDate: core.serialization.date().optional(),
+        serviceEndDate: core.serialization.date().optional(),
         payerId: core.serialization.lazy(async () => (await import("../../..")).EntityId).optional(),
         payer: core.serialization.lazyObject(async () => (await import("../../..")).EntityResponse).optional(),
         paymentSource: core.serialization
@@ -35,6 +37,9 @@ export const InvoiceResponse: core.serialization.ObjectSchema<serializers.Invoic
         transactions: core.serialization
             .list(core.serialization.lazyObject(async () => (await import("../../..")).TransactionResponse))
             .optional(),
+        lineItems: core.serialization
+            .list(core.serialization.lazyObject(async () => (await import("../../..")).InvoiceLineItemResponse))
+            .optional(),
         processedAt: core.serialization.date().optional(),
         createdAt: core.serialization.date(),
         updatedAt: core.serialization.date(),
@@ -51,6 +56,8 @@ export declare namespace InvoiceResponse {
         dueDate?: string | null;
         invoiceNumber?: string | null;
         noteToSelf?: string | null;
+        serviceStartDate?: string | null;
+        serviceEndDate?: string | null;
         payerId?: serializers.EntityId.Raw | null;
         payer?: serializers.EntityResponse.Raw | null;
         paymentSource?: serializers.PaymentMethodResponse.Raw | null;
@@ -61,6 +68,7 @@ export declare namespace InvoiceResponse {
         paymentDestinationId?: serializers.PaymentMethodId.Raw | null;
         paymentDestinationConfirmed: boolean;
         transactions?: serializers.TransactionResponse.Raw[] | null;
+        lineItems?: serializers.InvoiceLineItemResponse.Raw[] | null;
         processedAt?: string | null;
         createdAt: string;
         updatedAt: string;

@@ -14,6 +14,8 @@ export interface InvoiceResponse {
     dueDate?: Date;
     invoiceNumber?: string;
     noteToSelf?: string;
+    serviceStartDate?: Date;
+    serviceEndDate?: Date;
     payerId?: Mercoa.EntityId;
     payer?: Mercoa.EntityResponse;
     paymentSource?: Mercoa.PaymentMethodResponse;
@@ -24,6 +26,7 @@ export interface InvoiceResponse {
     paymentDestinationId?: Mercoa.PaymentMethodId;
     paymentDestinationConfirmed: boolean;
     transactions?: Mercoa.TransactionResponse[];
+    lineItems?: Mercoa.InvoiceLineItemResponse[];
     processedAt?: Date;
     createdAt: Date;
     updatedAt: Date;
