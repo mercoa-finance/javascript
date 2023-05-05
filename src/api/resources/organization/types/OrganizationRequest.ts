@@ -11,4 +11,5 @@ export interface OrganizationRequest {
     supportEmail?: string;
     paymentMethods?: Mercoa.PaymentMethodsRequest;
     emailProvider?: Mercoa.EmailProviderRequest;
+    colorScheme?: Mercoa.ColorSchemeRequest;
 }

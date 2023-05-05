@@ -4,6 +4,8 @@ export * as commons from "./commons";
 export * from "./commons/types";
 export * as counterparty from "./counterparty";
 export * from "./counterparty/types";
+export * as entityUsers from "./entityUsers";
+export * from "./entityUsers/types";
 export * as entity from "./entity";
 export * from "./entity/types";
 export * as invoice from "./invoice";

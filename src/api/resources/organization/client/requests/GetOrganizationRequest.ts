@@ -11,4 +11,8 @@ export interface GetOrganizationRequest {
      * include email provider info in response
      */
     emailProvider?: boolean;
+    /**
+     * include color scheme info in response
+     */
+    colorScheme?: boolean;
 }

@@ -23,7 +23,7 @@ export class Organization {
      * Get current organization information
      */
     public async get(request: Mercoa.GetOrganizationRequest = {}): Promise<Mercoa.OrganizationResponse> {
-        const { paymentMethods, emailProvider } = request;
+        const { paymentMethods, emailProvider, colorScheme } = request;
         const _queryParams = new URLSearchParams();
         if (paymentMethods != null) {
             _queryParams.append("paymentMethods", paymentMethods.toString());
@@ -31,6 +31,10 @@ export class Organization {
 
         if (emailProvider != null) {
             _queryParams.append("emailProvider", emailProvider.toString());
+        }
+
+        if (colorScheme != null) {
+            _queryParams.append("colorScheme", colorScheme.toString());
         }
 
         const _response = await core.fetcher({

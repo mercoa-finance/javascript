@@ -3,6 +3,8 @@
  */
 
 export interface RunOcr {
+    /** MIME type of the image. Supported types are image/png, image/jpeg, and application/pdf. */
     mimeType: string;
+    /** Base64 encoded image or PDF. PNG, JPG, and PDF are supported. 10MB max. */
     image: string;
 }

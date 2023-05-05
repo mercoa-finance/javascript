@@ -20,6 +20,7 @@ export const OrganizationRequest: core.serialization.ObjectSchema<
     emailProvider: core.serialization
         .lazyObject(async () => (await import("../../..")).EmailProviderRequest)
         .optional(),
+    colorScheme: core.serialization.lazyObject(async () => (await import("../../..")).ColorSchemeRequest).optional(),
 });
 
 export declare namespace OrganizationRequest {
@@ -30,5 +31,6 @@ export declare namespace OrganizationRequest {
         supportEmail?: string | null;
         paymentMethods?: serializers.PaymentMethodsRequest.Raw | null;
         emailProvider?: serializers.EmailProviderRequest.Raw | null;
+        colorScheme?: serializers.ColorSchemeRequest.Raw | null;
     }
 }

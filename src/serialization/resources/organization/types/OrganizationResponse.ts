@@ -22,6 +22,7 @@ export const OrganizationResponse: core.serialization.ObjectSchema<
     emailProvider: core.serialization
         .lazyObject(async () => (await import("../../..")).EmailProviderResponse)
         .optional(),
+    colorScheme: core.serialization.lazyObject(async () => (await import("../../..")).ColorSchemeResponse).optional(),
 });
 
 export declare namespace OrganizationResponse {
@@ -34,5 +35,6 @@ export declare namespace OrganizationResponse {
         supportEmail?: string | null;
         paymentMethods?: serializers.PaymentMethodsResponse.Raw | null;
         emailProvider?: serializers.EmailProviderResponse.Raw | null;
+        colorScheme?: serializers.ColorSchemeResponse.Raw | null;
     }
 }

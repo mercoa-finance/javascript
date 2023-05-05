@@ -8,8 +8,11 @@ export interface InvoiceRequest {
     status?: Mercoa.InvoiceStatus;
     amount?: number;
     currency?: string;
+    /** Date when funds will be deducted from payer's account. */
     deductionDate?: Date;
+    /** Date of funds settlement. */
     fundedDate?: Date;
+    /** Due date of invoice. */
     dueDate?: Date;
     invoiceNumber?: string;
     noteToSelf?: string;
@@ -24,5 +27,6 @@ export interface InvoiceRequest {
     /** When paying to an existing vendor with an incomplete profile, use the updateVendor object. Mercoa will update the vendor entity tied to this invoice. This object is ignored if the vendor already has already been created with complete information and when creating a new invoice. */
     updateVendor?: Mercoa.CreateVendorRequest;
     lineItems?: Mercoa.InvoiceLineItemRequest[];
+    /** Base64 encoded image or PDF of invoice. PNG, JPG, and PDF are supported. 10MB max. */
     uploadedImage?: string;
 }

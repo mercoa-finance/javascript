@@ -6,6 +6,7 @@ import * as environments from "./environments";
 import * as core from "./core";
 import { BankLookup } from "./api/resources/bankLookup/client/Client";
 import { Counterparty } from "./api/resources/counterparty/client/Client";
+import { EntityUsers } from "./api/resources/entityUsers/client/Client";
 import { Entity } from "./api/resources/entity/client/Client";
 import { Invoice } from "./api/resources/invoice/client/Client";
 import { Ocr } from "./api/resources/ocr/client/Client";
@@ -34,6 +35,12 @@ export class MercoaClient {
 
     public get counterparty(): Counterparty {
         return (this._counterparty ??= new Counterparty(this.options));
+    }
+
+    private _entityUsers: EntityUsers | undefined;
+
+    public get entityUsers(): EntityUsers {
+        return (this._entityUsers ??= new EntityUsers(this.options));
     }
 
     private _entity: Entity | undefined;

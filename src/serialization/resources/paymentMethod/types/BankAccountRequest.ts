@@ -14,6 +14,7 @@ export const BankAccountRequest: core.serialization.ObjectSchema<
     bankName: core.serialization.string(),
     routingNumber: core.serialization.string(),
     accountNumber: core.serialization.string(),
+    plaidPublicToken: core.serialization.string().optional(),
     accountType: core.serialization.lazy(async () => (await import("../../..")).BankType),
 });
 
@@ -23,6 +24,7 @@ export declare namespace BankAccountRequest {
         bankName: string;
         routingNumber: string;
         accountNumber: string;
+        plaidPublicToken?: string | null;
         accountType: serializers.BankType.Raw;
     }
 }
