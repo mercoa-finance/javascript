@@ -14,6 +14,7 @@ import { Organization } from "./api/resources/organization/client/Client";
 import { PaymentMethodSchema } from "./api/resources/paymentMethodSchema/client/Client";
 import { PaymentMethod } from "./api/resources/paymentMethod/client/Client";
 import { Representative } from "./api/resources/representative/client/Client";
+import { Transaction } from "./api/resources/transaction/client/Client";
 
 export declare namespace MercoaClient {
     interface Options {
@@ -83,5 +84,11 @@ export class MercoaClient {
 
     public get representative(): Representative {
         return (this._representative ??= new Representative(this.options));
+    }
+
+    private _transaction: Transaction | undefined;
+
+    public get transaction(): Transaction {
+        return (this._transaction ??= new Transaction(this.options));
     }
 }

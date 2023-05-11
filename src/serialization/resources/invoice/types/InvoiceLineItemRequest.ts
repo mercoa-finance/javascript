@@ -12,7 +12,7 @@ export const InvoiceLineItemRequest: core.serialization.ObjectSchema<
 > = core.serialization.object({
     id: core.serialization.string().optional(),
     amount: core.serialization.number().optional(),
-    currency: core.serialization.string().optional(),
+    currency: core.serialization.lazy(async () => (await import("../../..")).CurrencyCode).optional(),
     description: core.serialization.string().optional(),
     name: core.serialization.string().optional(),
     quantity: core.serialization.number().optional(),
@@ -23,7 +23,7 @@ export declare namespace InvoiceLineItemRequest {
     interface Raw {
         id?: string | null;
         amount?: number | null;
-        currency?: string | null;
+        currency?: serializers.CurrencyCode.Raw | null;
         description?: string | null;
         name?: string | null;
         quantity?: number | null;

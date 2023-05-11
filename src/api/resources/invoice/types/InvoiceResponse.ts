@@ -8,7 +8,7 @@ export interface InvoiceResponse {
     id: Mercoa.InvoiceId;
     status: Mercoa.InvoiceStatus;
     amount?: number;
-    currency?: string;
+    currency?: Mercoa.CurrencyCode;
     deductionDate?: Date;
     fundedDate?: Date;
     dueDate?: Date;

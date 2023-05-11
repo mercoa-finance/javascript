@@ -8,7 +8,7 @@ export interface TransactionResponse {
     id: string;
     status: Mercoa.TransactionStatus;
     amount: number;
-    currency?: string;
+    currency?: Mercoa.CurrencyCode;
     createdAt: Date;
     updatedAt: Date;
 }

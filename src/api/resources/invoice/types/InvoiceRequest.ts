@@ -7,7 +7,7 @@ import { Mercoa } from "@mercoa/javascript";
 export interface InvoiceRequest {
     status?: Mercoa.InvoiceStatus;
     amount?: number;
-    currency?: string;
+    currency?: Mercoa.CurrencyCode;
     /** Date when funds will be deducted from payer's account. */
     deductionDate?: Date;
     /** Date of funds settlement. */

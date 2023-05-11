@@ -10,6 +10,7 @@ export const EntityRequest: core.serialization.ObjectSchema<serializers.EntityRe
     core.serialization.object({
         foreignId: core.serialization.string().optional(),
         emailTo: core.serialization.string().optional(),
+        emailToAlias: core.serialization.list(core.serialization.string()).optional(),
         ownedByOrg: core.serialization.boolean().optional(),
         accountType: core.serialization.lazy(async () => (await import("../../..")).AccountType),
         profile: core.serialization.lazyObject(async () => (await import("../../..")).ProfileRequest),
@@ -19,6 +20,7 @@ export declare namespace EntityRequest {
     interface Raw {
         foreignId?: string | null;
         emailTo?: string | null;
+        emailToAlias?: string[] | null;
         ownedByOrg?: boolean | null;
         accountType: serializers.AccountType.Raw;
         profile: serializers.ProfileRequest.Raw;

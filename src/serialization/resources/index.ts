@@ -20,5 +20,7 @@ export * as paymentMethod from "./paymentMethod";
 export * from "./paymentMethod/types";
 export * as representative from "./representative";
 export * from "./representative/types";
+export * as transaction from "./transaction";
+export * from "./transaction/types";
 export * from "./ocr/client/requests";
 export * from "./paymentMethod/client/requests";

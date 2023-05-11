@@ -11,7 +11,7 @@ export const InvoiceResponse: core.serialization.ObjectSchema<serializers.Invoic
         id: core.serialization.lazy(async () => (await import("../../..")).InvoiceId),
         status: core.serialization.lazy(async () => (await import("../../..")).InvoiceStatus),
         amount: core.serialization.number().optional(),
-        currency: core.serialization.string().optional(),
+        currency: core.serialization.lazy(async () => (await import("../../..")).CurrencyCode).optional(),
         deductionDate: core.serialization.date().optional(),
         fundedDate: core.serialization.date().optional(),
         dueDate: core.serialization.date().optional(),
@@ -50,7 +50,7 @@ export declare namespace InvoiceResponse {
         id: serializers.InvoiceId.Raw;
         status: serializers.InvoiceStatus.Raw;
         amount?: number | null;
-        currency?: string | null;
+        currency?: serializers.CurrencyCode.Raw | null;
         deductionDate?: string | null;
         fundedDate?: string | null;
         dueDate?: string | null;

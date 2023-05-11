@@ -13,7 +13,7 @@ export const TransactionResponse: core.serialization.ObjectSchema<
     id: core.serialization.string(),
     status: core.serialization.lazy(async () => (await import("../../..")).TransactionStatus),
     amount: core.serialization.number(),
-    currency: core.serialization.string().optional(),
+    currency: core.serialization.lazy(async () => (await import("../../..")).CurrencyCode).optional(),
     createdAt: core.serialization.date(),
     updatedAt: core.serialization.date(),
 });
@@ -23,7 +23,7 @@ export declare namespace TransactionResponse {
         id: string;
         status: serializers.TransactionStatus.Raw;
         amount: number;
-        currency?: string | null;
+        currency?: serializers.CurrencyCode.Raw | null;
         createdAt: string;
         updatedAt: string;
     }

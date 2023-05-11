@@ -6,6 +6,7 @@ import { Mercoa } from "@mercoa/javascript";
 
 export interface PaymentRailRequest {
     type: Mercoa.PaymentMethodType;
+    /** Name of the payment method. For custom payment methods, this is the ID of the schema. */
     name: string;
     markup?: Mercoa.PaymentRailMarkup;
     description?: string;

@@ -8,6 +8,7 @@ export interface EntityResponse {
     id: Mercoa.EntityId;
     foreignId?: string;
     emailTo?: string;
+    emailToAlias?: string[];
     ownedByOrg: boolean;
     accountType: Mercoa.AccountType;
     name: string;

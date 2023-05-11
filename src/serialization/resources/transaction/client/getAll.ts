@@ -7,10 +7,10 @@ import { Mercoa } from "@mercoa/javascript";
 import * as core from "../../../../core";
 
 export const Response: core.serialization.Schema<
-    serializers.counterparty.find.Response.Raw,
-    Mercoa.CounterpartyResponse[]
-> = core.serialization.list(core.serialization.lazyObject(async () => (await import("../../..")).CounterpartyResponse));
+    serializers.transaction.getAll.Response.Raw,
+    Mercoa.TransactionResponse[]
+> = core.serialization.list(core.serialization.lazyObject(async () => (await import("../../..")).TransactionResponse));
 
 export declare namespace Response {
-    type Raw = serializers.CounterpartyResponse.Raw[];
+    type Raw = serializers.TransactionResponse.Raw[];
 }

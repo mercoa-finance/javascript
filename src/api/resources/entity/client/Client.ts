@@ -348,6 +348,84 @@ export class Entity {
     }
 
     /**
+     * Get invoice metrics for an entity
+     */
+    public async getInvoiceMetrics(
+        entityId: Mercoa.EntityId,
+        request: Mercoa.InvoiceMetricsRequest
+    ): Promise<Mercoa.InvoiceMetricsResponse> {
+        const { status, dueDateStart, dueDateEnd, createdDateStart, createdDateEnd, currency } = request;
+        const _queryParams = new URLSearchParams();
+        if (status != null) {
+            if (Array.isArray(status)) {
+                for (const _item of status) {
+                    _queryParams.append("status", _item);
+                }
+            } else {
+                _queryParams.append("status", status);
+            }
+        }
+
+        if (dueDateStart != null) {
+            _queryParams.append("dueDateStart", dueDateStart.toISOString());
+        }
+
+        if (dueDateEnd != null) {
+            _queryParams.append("dueDateEnd", dueDateEnd.toISOString());
+        }
+
+        if (createdDateStart != null) {
+            _queryParams.append("createdDateStart", createdDateStart.toISOString());
+        }
+
+        if (createdDateEnd != null) {
+            _queryParams.append("createdDateEnd", createdDateEnd.toISOString());
+        }
+
+        _queryParams.append("currency", currency);
+        const _response = await core.fetcher({
+            url: urlJoin(
+                this.options.environment ?? environments.MercoaEnvironment.Production,
+                `/entity/${await serializers.EntityId.jsonOrThrow(entityId)}/invoice-metrics`
+            ),
+            method: "GET",
+            headers: {
+                Authorization: await this._getAuthorizationHeader(),
+            },
+            contentType: "application/json",
+            queryParameters: _queryParams,
+        });
+        if (_response.ok) {
+            return await serializers.InvoiceMetricsResponse.parseOrThrow(_response.body, {
+                unrecognizedObjectKeys: "passthrough",
+                allowUnrecognizedUnionMembers: true,
+                allowUnrecognizedEnumValues: true,
+            });
+        }
+
+        if (_response.error.reason === "status-code") {
+            throw new errors.MercoaError({
+                statusCode: _response.error.statusCode,
+                body: _response.error.body,
+            });
+        }
+
+        switch (_response.error.reason) {
+            case "non-json":
+                throw new errors.MercoaError({
+                    statusCode: _response.error.statusCode,
+                    body: _response.error.rawBody,
+                });
+            case "timeout":
+                throw new errors.MercoaTimeoutError();
+            case "unknown":
+                throw new errors.MercoaError({
+                    message: _response.error.errorMessage,
+                });
+        }
+    }
+
+    /**
      * End user accepts Terms of Service
      */
     public async acceptTermsOfService(entityId: Mercoa.EntityId): Promise<string> {

@@ -5,26 +5,29 @@
 import * as environments from "../../../../environments";
 import * as core from "../../../../core";
 import { Mercoa } from "@mercoa/javascript";
-import urlJoin from "url-join";
 import * as serializers from "../../../../serialization";
+import urlJoin from "url-join";
 import * as errors from "../../../../errors";
 
-export declare namespace Counterparty {
+export declare namespace Transaction {
     interface Options {
         environment?: environments.MercoaEnvironment | string;
         token: core.Supplier<core.BearerToken>;
     }
 }
 
-export class Counterparty {
-    constructor(private readonly options: Counterparty.Options) {}
+export class Transaction {
+    constructor(private readonly options: Transaction.Options) {}
 
     /**
-     * Get all counterparties
+     * Get Transaction
      */
-    public async getAll(): Promise<Mercoa.EntityResponse[]> {
+    public async get(transactionId: Mercoa.TransactionId): Promise<Mercoa.TransactionResponse> {
         const _response = await core.fetcher({
-            url: urlJoin(this.options.environment ?? environments.MercoaEnvironment.Production, "/counterparties"),
+            url: urlJoin(
+                this.options.environment ?? environments.MercoaEnvironment.Production,
+                `/transaction/${await serializers.TransactionId.jsonOrThrow(transactionId)}`
+            ),
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
@@ -32,7 +35,7 @@ export class Counterparty {
             contentType: "application/json",
         });
         if (_response.ok) {
-            return await serializers.counterparty.getAll.Response.parseOrThrow(_response.body, {
+            return await serializers.TransactionResponse.parseOrThrow(_response.body, {
                 unrecognizedObjectKeys: "passthrough",
                 allowUnrecognizedUnionMembers: true,
                 allowUnrecognizedEnumValues: true,
@@ -62,32 +65,19 @@ export class Counterparty {
     }
 
     /**
-     * Find counterparties
+     * Get all entities
      */
-    public async find(
-        entityId: Mercoa.EntityId,
-        request: Mercoa.FindCounterpartiesRequest = {}
-    ): Promise<Mercoa.FindCounterpartiesResponse> {
-        const { paymentMethods } = request;
-        const _queryParams = new URLSearchParams();
-        if (paymentMethods != null) {
-            _queryParams.append("paymentMethods", paymentMethods.toString());
-        }
-
+    public async getAll(): Promise<Mercoa.TransactionResponse[]> {
         const _response = await core.fetcher({
-            url: urlJoin(
-                this.options.environment ?? environments.MercoaEnvironment.Production,
-                `/entity/${await serializers.EntityId.jsonOrThrow(entityId)}/counterparties`
-            ),
+            url: urlJoin(this.options.environment ?? environments.MercoaEnvironment.Production, "/transactions"),
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
             },
             contentType: "application/json",
-            queryParameters: _queryParams,
         });
         if (_response.ok) {
-            return await serializers.FindCounterpartiesResponse.parseOrThrow(_response.body, {
+            return await serializers.transaction.getAll.Response.parseOrThrow(_response.body, {
                 unrecognizedObjectKeys: "passthrough",
                 allowUnrecognizedUnionMembers: true,
                 allowUnrecognizedEnumValues: true,

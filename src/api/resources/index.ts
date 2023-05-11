@@ -20,6 +20,8 @@ export * as paymentMethod from "./paymentMethod";
 export * from "./paymentMethod/types";
 export * as representative from "./representative";
 export * from "./representative/types";
+export * as transaction from "./transaction";
+export * from "./transaction/types";
 export * from "./commons/errors";
 export * from "./bankLookup/client/requests";
 export * from "./counterparty/client/requests";

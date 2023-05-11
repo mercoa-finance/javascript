@@ -10,7 +10,7 @@ export const InvoiceRequest: core.serialization.ObjectSchema<serializers.Invoice
     core.serialization.object({
         status: core.serialization.lazy(async () => (await import("../../..")).InvoiceStatus).optional(),
         amount: core.serialization.number().optional(),
-        currency: core.serialization.string().optional(),
+        currency: core.serialization.lazy(async () => (await import("../../..")).CurrencyCode).optional(),
         deductionDate: core.serialization.date().optional(),
         fundedDate: core.serialization.date().optional(),
         dueDate: core.serialization.date().optional(),
@@ -40,7 +40,7 @@ export declare namespace InvoiceRequest {
     interface Raw {
         status?: serializers.InvoiceStatus.Raw | null;
         amount?: number | null;
-        currency?: string | null;
+        currency?: serializers.CurrencyCode.Raw | null;
         deductionDate?: string | null;
         fundedDate?: string | null;
         dueDate?: string | null;

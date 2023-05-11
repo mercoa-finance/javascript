@@ -20,6 +20,51 @@ export class PaymentMethodSchema {
     constructor(private readonly options: PaymentMethodSchema.Options) {}
 
     /**
+     * Get all custom payment method schemas
+     */
+    public async getAll(): Promise<Mercoa.PaymentMethodSchemaResponse[]> {
+        const _response = await core.fetcher({
+            url: urlJoin(
+                this.options.environment ?? environments.MercoaEnvironment.Production,
+                "/paymentMethod/schema"
+            ),
+            method: "GET",
+            headers: {
+                Authorization: await this._getAuthorizationHeader(),
+            },
+            contentType: "application/json",
+        });
+        if (_response.ok) {
+            return await serializers.paymentMethodSchema.getAll.Response.parseOrThrow(_response.body, {
+                unrecognizedObjectKeys: "passthrough",
+                allowUnrecognizedUnionMembers: true,
+                allowUnrecognizedEnumValues: true,
+            });
+        }
+
+        if (_response.error.reason === "status-code") {
+            throw new errors.MercoaError({
+                statusCode: _response.error.statusCode,
+                body: _response.error.body,
+            });
+        }
+
+        switch (_response.error.reason) {
+            case "non-json":
+                throw new errors.MercoaError({
+                    statusCode: _response.error.statusCode,
+                    body: _response.error.rawBody,
+                });
+            case "timeout":
+                throw new errors.MercoaTimeoutError();
+            case "unknown":
+                throw new errors.MercoaError({
+                    message: _response.error.errorMessage,
+                });
+        }
+    }
+
+    /**
      * Create custom payment method schema
      */
     public async create(request: Mercoa.PaymentMethodSchemaRequest): Promise<Mercoa.PaymentMethodSchemaResponse> {
@@ -113,7 +158,7 @@ export class PaymentMethodSchema {
     }
 
     /**
-     * Delete custom payment method schema
+     * Delete custom payment method schema. Schema that have been used in an invoice cannot be deleted.
      */
     public async delete(schemaId: Mercoa.PaymentMethodSchemaId): Promise<void> {
         const _response = await core.fetcher({

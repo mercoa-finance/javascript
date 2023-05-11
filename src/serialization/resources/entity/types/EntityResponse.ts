@@ -11,6 +11,7 @@ export const EntityResponse: core.serialization.ObjectSchema<serializers.EntityR
         id: core.serialization.lazy(async () => (await import("../../..")).EntityId),
         foreignId: core.serialization.string().optional(),
         emailTo: core.serialization.string().optional(),
+        emailToAlias: core.serialization.list(core.serialization.string()).optional(),
         ownedByOrg: core.serialization.boolean(),
         accountType: core.serialization.lazy(async () => (await import("../../..")).AccountType),
         name: core.serialization.string(),
@@ -27,6 +28,7 @@ export declare namespace EntityResponse {
         id: serializers.EntityId.Raw;
         foreignId?: string | null;
         emailTo?: string | null;
+        emailToAlias?: string[] | null;
         ownedByOrg: boolean;
         accountType: serializers.AccountType.Raw;
         name: string;

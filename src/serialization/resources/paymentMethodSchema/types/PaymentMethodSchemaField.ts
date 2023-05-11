@@ -14,7 +14,9 @@ export const PaymentMethodSchemaField: core.serialization.ObjectSchema<
     displayName: core.serialization.string().optional(),
     type: core.serialization.lazy(async () => (await import("../../..")).PaymentMethodSchemaFieldType),
     optional: core.serialization.boolean(),
-    options: core.serialization.string().optional(),
+    useAsAccountName: core.serialization.boolean().optional(),
+    useAsAccountNumber: core.serialization.boolean().optional(),
+    options: core.serialization.list(core.serialization.string()).optional(),
 });
 
 export declare namespace PaymentMethodSchemaField {
@@ -23,6 +25,8 @@ export declare namespace PaymentMethodSchemaField {
         displayName?: string | null;
         type: serializers.PaymentMethodSchemaFieldType.Raw;
         optional: boolean;
-        options?: string | null;
+        useAsAccountName?: boolean | null;
+        useAsAccountNumber?: boolean | null;
+        options?: string[] | null;
     }
 }

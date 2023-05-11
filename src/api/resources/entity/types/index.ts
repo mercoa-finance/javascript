@@ -8,6 +8,7 @@ export * from "./BusinessProfileRequest";
 export * from "./BusinessProfileResponse";
 export * from "./IndividualProfileRequest";
 export * from "./IndividualProfileResponse";
+export * from "./InvoiceMetricsResponse";
 export * from "./TaxId";
 export * from "./Ein";
 export * from "./BusinessType";
