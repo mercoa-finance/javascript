@@ -19,6 +19,8 @@ export const EntityResponse: core.serialization.ObjectSchema<serializers.EntityR
         profile: core.serialization.lazyObject(async () => (await import("../../..")).ProfileResponse),
         status: core.serialization.lazy(async () => (await import("../../..")).EntityStatus),
         acceptedTos: core.serialization.boolean(),
+        isPayor: core.serialization.boolean(),
+        isPayee: core.serialization.boolean(),
         createdAt: core.serialization.date(),
         updatedAt: core.serialization.date(),
     });
@@ -36,6 +38,8 @@ export declare namespace EntityResponse {
         profile: serializers.ProfileResponse.Raw;
         status: serializers.EntityStatus.Raw;
         acceptedTos: boolean;
+        isPayor: boolean;
+        isPayee: boolean;
         createdAt: string;
         updatedAt: string;
     }

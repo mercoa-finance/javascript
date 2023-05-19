@@ -18,6 +18,9 @@ export const PaymentMethodResponse: core.serialization.ObjectSchema<
     custom: core.serialization
         .lazyObject(async () => (await import("../../..")).CustomPaymentMethodResponse)
         .optional(),
+    supportedCurrencies: core.serialization.list(
+        core.serialization.lazy(async () => (await import("../../..")).CurrencyCode)
+    ),
     createdAt: core.serialization.date(),
     updatedAt: core.serialization.date(),
 });
@@ -30,6 +33,7 @@ export declare namespace PaymentMethodResponse {
         check?: serializers.CheckResponse.Raw | null;
         card?: serializers.CardResponse.Raw | null;
         custom?: serializers.CustomPaymentMethodResponse.Raw | null;
+        supportedCurrencies: serializers.CurrencyCode.Raw[];
         createdAt: string;
         updatedAt: string;
     }

@@ -14,6 +14,9 @@ export const PaymentMethodSchemaResponse: core.serialization.ObjectSchema<
     name: core.serialization.string(),
     isSource: core.serialization.boolean(),
     isDestination: core.serialization.boolean(),
+    supportedCurrencies: core.serialization.list(
+        core.serialization.lazy(async () => (await import("../../..")).CurrencyCode)
+    ),
     fields: core.serialization.list(
         core.serialization.lazyObject(async () => (await import("../../..")).PaymentMethodSchemaField)
     ),
@@ -27,6 +30,7 @@ export declare namespace PaymentMethodSchemaResponse {
         name: string;
         isSource: boolean;
         isDestination: boolean;
+        supportedCurrencies: serializers.CurrencyCode.Raw[];
         fields: serializers.PaymentMethodSchemaField.Raw[];
         createdAt: string;
         updatedAt: string;

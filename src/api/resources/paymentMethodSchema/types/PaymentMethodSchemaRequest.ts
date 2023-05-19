@@ -10,5 +10,7 @@ export interface PaymentMethodSchemaRequest {
     isSource: boolean;
     /** This payment method can be used as a payment destination for an invoice */
     isDestination: boolean;
+    /** List of currencies that this payment method supports. If not provided, the payment method will support only USD. */
+    supportedCurrencies?: Mercoa.CurrencyCode[];
     fields: Mercoa.PaymentMethodSchemaField[];
 }

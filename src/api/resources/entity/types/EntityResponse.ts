@@ -16,6 +16,10 @@ export interface EntityResponse {
     profile: Mercoa.ProfileResponse;
     status: Mercoa.EntityStatus;
     acceptedTos: boolean;
+    /** True if this entity can pay invoices. */
+    isPayor: boolean;
+    /** True if this entity can receive payments. */
+    isPayee: boolean;
     createdAt: Date;
     updatedAt: Date;
 }

@@ -14,6 +14,8 @@ export const EntityRequest: core.serialization.ObjectSchema<serializers.EntityRe
         ownedByOrg: core.serialization.boolean().optional(),
         accountType: core.serialization.lazy(async () => (await import("../../..")).AccountType),
         profile: core.serialization.lazyObject(async () => (await import("../../..")).ProfileRequest),
+        isPayor: core.serialization.boolean().optional(),
+        isPayee: core.serialization.boolean().optional(),
     });
 
 export declare namespace EntityRequest {
@@ -24,5 +26,7 @@ export declare namespace EntityRequest {
         ownedByOrg?: boolean | null;
         accountType: serializers.AccountType.Raw;
         profile: serializers.ProfileRequest.Raw;
+        isPayor?: boolean | null;
+        isPayee?: boolean | null;
     }
 }

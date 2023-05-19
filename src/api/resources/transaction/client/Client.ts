@@ -67,7 +67,7 @@ export class Transaction {
     /**
      * Get all entities
      */
-    public async getAll(): Promise<Mercoa.TransactionResponse[]> {
+    public async getAll(): Promise<Mercoa.TransactionResponseExpanded[]> {
         const _response = await core.fetcher({
             url: urlJoin(this.options.environment ?? environments.MercoaEnvironment.Production, "/transactions"),
             method: "GET",

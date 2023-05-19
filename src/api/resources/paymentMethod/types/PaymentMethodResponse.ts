@@ -11,6 +11,7 @@ export interface PaymentMethodResponse {
     check?: Mercoa.CheckResponse;
     card?: Mercoa.CardResponse;
     custom?: Mercoa.CustomPaymentMethodResponse;
+    supportedCurrencies: Mercoa.CurrencyCode[];
     createdAt: Date;
     updatedAt: Date;
 }

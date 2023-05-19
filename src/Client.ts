@@ -13,6 +13,7 @@ import { Ocr } from "./api/resources/ocr/client/Client";
 import { Organization } from "./api/resources/organization/client/Client";
 import { PaymentMethodSchema } from "./api/resources/paymentMethodSchema/client/Client";
 import { PaymentMethod } from "./api/resources/paymentMethod/client/Client";
+import { ProcessInvoice } from "./api/resources/processInvoice/client/Client";
 import { Representative } from "./api/resources/representative/client/Client";
 import { Transaction } from "./api/resources/transaction/client/Client";
 
@@ -78,6 +79,12 @@ export class MercoaClient {
 
     public get paymentMethod(): PaymentMethod {
         return (this._paymentMethod ??= new PaymentMethod(this.options));
+    }
+
+    private _processInvoice: ProcessInvoice | undefined;
+
+    public get processInvoice(): ProcessInvoice {
+        return (this._processInvoice ??= new ProcessInvoice(this.options));
     }
 
     private _representative: Representative | undefined;

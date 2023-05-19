@@ -18,6 +18,8 @@ export * as paymentMethodSchema from "./paymentMethodSchema";
 export * from "./paymentMethodSchema/types";
 export * as paymentMethod from "./paymentMethod";
 export * from "./paymentMethod/types";
+export * as processInvoice from "./processInvoice";
+export * from "./processInvoice/types";
 export * as representative from "./representative";
 export * from "./representative/types";
 export * as transaction from "./transaction";
