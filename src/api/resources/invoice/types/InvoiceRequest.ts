@@ -8,6 +8,8 @@ export interface InvoiceRequest {
     status?: Mercoa.InvoiceStatus;
     amount?: number;
     currency?: Mercoa.CurrencyCode;
+    /** Date the invoice was created. */
+    invoiceDate?: Date;
     /** Date when funds will be deducted from payer's account. */
     deductionDate?: Date;
     /** Date of funds settlement. */
@@ -29,4 +31,6 @@ export interface InvoiceRequest {
     lineItems?: Mercoa.InvoiceLineItemRequest[];
     /** Base64 encoded image or PDF of invoice. PNG, JPG, and PDF are supported. 10MB max. */
     uploadedImage?: string;
+    /** ID of entity user who created this invoice. */
+    createdById?: Mercoa.EntityUserId;
 }

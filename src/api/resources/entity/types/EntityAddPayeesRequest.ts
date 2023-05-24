@@ -4,7 +4,6 @@
 
 import { Mercoa } from "@mercoa/javascript";
 
-export interface CommentRequest {
-    text: string;
-    userId?: Mercoa.EntityUserId;
+export interface EntityAddPayeesRequest {
+    payees: Mercoa.EntityId[];
 }

@@ -2,6 +2,7 @@ export * from "./EntityId";
 export * from "./EntityRequest";
 export * from "./EntityUpdateRequest";
 export * from "./EntityResponse";
+export * from "./EntityAddPayeesRequest";
 export * from "./ProfileRequest";
 export * from "./ProfileResponse";
 export * from "./BusinessProfileRequest";

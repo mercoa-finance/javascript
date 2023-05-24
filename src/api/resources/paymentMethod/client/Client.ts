@@ -177,6 +177,58 @@ export class PaymentMethod {
     }
 
     /**
+     * Update payment method. Only custom payment methods can be updated.
+     */
+    public async update(
+        entityId: Mercoa.EntityId,
+        paymentMethodId: Mercoa.PaymentMethodId,
+        request: Mercoa.PaymentMethodRequest
+    ): Promise<Mercoa.PaymentMethodResponse> {
+        const _response = await core.fetcher({
+            url: urlJoin(
+                this.options.environment ?? environments.MercoaEnvironment.Production,
+                `/entity/${await serializers.EntityId.jsonOrThrow(
+                    entityId
+                )}/paymentMethod/${await serializers.PaymentMethodId.jsonOrThrow(paymentMethodId)}`
+            ),
+            method: "PUT",
+            headers: {
+                Authorization: await this._getAuthorizationHeader(),
+            },
+            contentType: "application/json",
+            body: await serializers.PaymentMethodRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
+        });
+        if (_response.ok) {
+            return await serializers.PaymentMethodResponse.parseOrThrow(_response.body, {
+                unrecognizedObjectKeys: "passthrough",
+                allowUnrecognizedUnionMembers: true,
+                allowUnrecognizedEnumValues: true,
+            });
+        }
+
+        if (_response.error.reason === "status-code") {
+            throw new errors.MercoaError({
+                statusCode: _response.error.statusCode,
+                body: _response.error.body,
+            });
+        }
+
+        switch (_response.error.reason) {
+            case "non-json":
+                throw new errors.MercoaError({
+                    statusCode: _response.error.statusCode,
+                    body: _response.error.rawBody,
+                });
+            case "timeout":
+                throw new errors.MercoaTimeoutError();
+            case "unknown":
+                throw new errors.MercoaError({
+                    message: _response.error.errorMessage,
+                });
+        }
+    }
+
+    /**
      * Delete payment method
      */
     public async delete(entityId: Mercoa.EntityId, paymentMethodId: Mercoa.PaymentMethodId): Promise<void> {

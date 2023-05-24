@@ -11,6 +11,7 @@ export const InvoiceRequest: core.serialization.ObjectSchema<serializers.Invoice
         status: core.serialization.lazy(async () => (await import("../../..")).InvoiceStatus).optional(),
         amount: core.serialization.number().optional(),
         currency: core.serialization.lazy(async () => (await import("../../..")).CurrencyCode).optional(),
+        invoiceDate: core.serialization.date().optional(),
         deductionDate: core.serialization.date().optional(),
         fundedDate: core.serialization.date().optional(),
         dueDate: core.serialization.date().optional(),
@@ -34,6 +35,7 @@ export const InvoiceRequest: core.serialization.ObjectSchema<serializers.Invoice
             .list(core.serialization.lazyObject(async () => (await import("../../..")).InvoiceLineItemRequest))
             .optional(),
         uploadedImage: core.serialization.string().optional(),
+        createdById: core.serialization.lazy(async () => (await import("../../..")).EntityUserId).optional(),
     });
 
 export declare namespace InvoiceRequest {
@@ -41,6 +43,7 @@ export declare namespace InvoiceRequest {
         status?: serializers.InvoiceStatus.Raw | null;
         amount?: number | null;
         currency?: serializers.CurrencyCode.Raw | null;
+        invoiceDate?: string | null;
         deductionDate?: string | null;
         fundedDate?: string | null;
         dueDate?: string | null;
@@ -56,5 +59,6 @@ export declare namespace InvoiceRequest {
         updateVendor?: serializers.CreateVendorRequest.Raw | null;
         lineItems?: serializers.InvoiceLineItemRequest.Raw[] | null;
         uploadedImage?: string | null;
+        createdById?: serializers.EntityUserId.Raw | null;
     }
 }

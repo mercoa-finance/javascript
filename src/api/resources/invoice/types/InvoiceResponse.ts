@@ -9,8 +9,13 @@ export interface InvoiceResponse {
     status: Mercoa.InvoiceStatus;
     amount?: number;
     currency?: Mercoa.CurrencyCode;
+    /** Date the invoice was created. */
+    invoiceDate?: Date;
+    /** Date when funds will be deducted from payer's account. */
     deductionDate?: Date;
+    /** Date of funds settlement. */
     fundedDate?: Date;
+    /** Due date of invoice. */
     dueDate?: Date;
     invoiceNumber?: string;
     noteToSelf?: string;
@@ -25,8 +30,12 @@ export interface InvoiceResponse {
     paymentDestination?: Mercoa.PaymentMethodResponse;
     paymentDestinationId?: Mercoa.PaymentMethodId;
     paymentDestinationConfirmed: boolean;
+    hasDocuments: boolean;
+    comments?: Mercoa.CommentResponse[];
     transactions?: Mercoa.TransactionResponse[];
     lineItems?: Mercoa.InvoiceLineItemResponse[];
+    /** Entity user who created this invoice. */
+    createdBy?: Mercoa.EntityUserResponse;
     processedAt?: Date;
     createdAt: Date;
     updatedAt: Date;

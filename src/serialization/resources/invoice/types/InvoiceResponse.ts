@@ -12,6 +12,7 @@ export const InvoiceResponse: core.serialization.ObjectSchema<serializers.Invoic
         status: core.serialization.lazy(async () => (await import("../../..")).InvoiceStatus),
         amount: core.serialization.number().optional(),
         currency: core.serialization.lazy(async () => (await import("../../..")).CurrencyCode).optional(),
+        invoiceDate: core.serialization.date().optional(),
         deductionDate: core.serialization.date().optional(),
         fundedDate: core.serialization.date().optional(),
         dueDate: core.serialization.date().optional(),
@@ -34,12 +35,17 @@ export const InvoiceResponse: core.serialization.ObjectSchema<serializers.Invoic
             .lazy(async () => (await import("../../..")).PaymentMethodId)
             .optional(),
         paymentDestinationConfirmed: core.serialization.boolean(),
+        hasDocuments: core.serialization.boolean(),
+        comments: core.serialization
+            .list(core.serialization.lazyObject(async () => (await import("../../..")).CommentResponse))
+            .optional(),
         transactions: core.serialization
             .list(core.serialization.lazyObject(async () => (await import("../../..")).TransactionResponse))
             .optional(),
         lineItems: core.serialization
             .list(core.serialization.lazyObject(async () => (await import("../../..")).InvoiceLineItemResponse))
             .optional(),
+        createdBy: core.serialization.lazyObject(async () => (await import("../../..")).EntityUserResponse).optional(),
         processedAt: core.serialization.date().optional(),
         createdAt: core.serialization.date(),
         updatedAt: core.serialization.date(),
@@ -51,6 +57,7 @@ export declare namespace InvoiceResponse {
         status: serializers.InvoiceStatus.Raw;
         amount?: number | null;
         currency?: serializers.CurrencyCode.Raw | null;
+        invoiceDate?: string | null;
         deductionDate?: string | null;
         fundedDate?: string | null;
         dueDate?: string | null;
@@ -67,8 +74,11 @@ export declare namespace InvoiceResponse {
         paymentDestination?: serializers.PaymentMethodResponse.Raw | null;
         paymentDestinationId?: serializers.PaymentMethodId.Raw | null;
         paymentDestinationConfirmed: boolean;
+        hasDocuments: boolean;
+        comments?: serializers.CommentResponse.Raw[] | null;
         transactions?: serializers.TransactionResponse.Raw[] | null;
         lineItems?: serializers.InvoiceLineItemResponse.Raw[] | null;
+        createdBy?: serializers.EntityUserResponse.Raw | null;
         processedAt?: string | null;
         createdAt: string;
         updatedAt: string;
