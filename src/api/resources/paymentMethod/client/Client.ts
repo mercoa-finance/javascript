@@ -182,7 +182,7 @@ export class PaymentMethod {
     public async update(
         entityId: Mercoa.EntityId,
         paymentMethodId: Mercoa.PaymentMethodId,
-        request: Mercoa.PaymentMethodRequest
+        request: Mercoa.PaymentMethodUpdateRequest
     ): Promise<Mercoa.PaymentMethodResponse> {
         const _response = await core.fetcher({
             url: urlJoin(
@@ -196,7 +196,9 @@ export class PaymentMethod {
                 Authorization: await this._getAuthorizationHeader(),
             },
             contentType: "application/json",
-            body: await serializers.PaymentMethodRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
+            body: await serializers.PaymentMethodUpdateRequest.jsonOrThrow(request, {
+                unrecognizedObjectKeys: "strip",
+            }),
         });
         if (_response.ok) {
             return await serializers.PaymentMethodResponse.parseOrThrow(_response.body, {
