@@ -6,6 +6,10 @@ import { Mercoa } from "@mercoa/javascript";
 
 export interface InvoiceMetricsRequest {
     /**
+     * Filter vendors by name. Partial matches are supported.
+     */
+    search?: string;
+    /**
      * Invoice status to filter on
      */
     status?: Mercoa.InvoiceStatus | Mercoa.InvoiceStatus[];

@@ -34,6 +34,9 @@ export interface InvoiceResponse {
     comments?: Mercoa.CommentResponse[];
     transactions?: Mercoa.TransactionResponse[];
     lineItems?: Mercoa.InvoiceLineItemResponse[];
+    approvers: Mercoa.Approver[];
+    /** Metadata associated with this invoice. */
+    metadata: Record<string, string>;
     /** Entity user who created this invoice. */
     createdBy?: Mercoa.EntityUserResponse;
     processedAt?: Date;

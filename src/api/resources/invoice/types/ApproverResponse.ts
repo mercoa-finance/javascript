@@ -4,11 +4,6 @@
 
 import { Mercoa } from "@mercoa/javascript";
 
-export interface CommentResponse {
-    id: string;
-    text: string;
+export interface ApproverResponse extends Mercoa.Approver {
     user?: Mercoa.EntityUserResponse;
-    approval?: Mercoa.Approver;
-    createdAt: Date;
-    updatedAt: Date;
 }

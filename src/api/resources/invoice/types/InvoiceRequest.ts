@@ -29,6 +29,8 @@ export interface InvoiceRequest {
     /** When paying to an existing vendor with an incomplete profile, use the updateVendor object. Mercoa will update the vendor entity tied to this invoice. This object is ignored if the vendor already has already been created with complete information and when creating a new invoice. */
     updateVendor?: Mercoa.CreateVendorRequest;
     lineItems?: Mercoa.InvoiceLineItemRequest[];
+    /** Metadata associated with this invoice. You can specify up to 10 keys, with key names up to 40 characters long and values up to 200 characters long. */
+    metadata?: Record<string, string>;
     /** Base64 encoded image or PDF of invoice. PNG, JPG, and PDF are supported. 10MB max. */
     uploadedImage?: string;
     /** ID of entity user who created this invoice. */

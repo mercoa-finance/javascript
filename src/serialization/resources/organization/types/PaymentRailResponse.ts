@@ -11,12 +11,12 @@ export const PaymentRailResponse: core.serialization.ObjectSchema<
     Mercoa.PaymentRailResponse
 > = core.serialization
     .object({
-        avaliable: core.serialization.boolean(),
+        available: core.serialization.boolean(),
     })
     .extend(core.serialization.lazyObject(async () => (await import("../../..")).PaymentRailRequest));
 
 export declare namespace PaymentRailResponse {
     interface Raw extends serializers.PaymentRailRequest.Raw {
-        avaliable: boolean;
+        available: boolean;
     }
 }

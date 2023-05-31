@@ -4,6 +4,7 @@
 
 import { Mercoa } from "@mercoa/javascript";
 
-export interface PaymentRailResponse extends Mercoa.PaymentRailRequest {
-    available: boolean;
+export interface ApproverRule {
+    numApprovers: number;
+    identifierList: Mercoa.IdentifierList;
 }

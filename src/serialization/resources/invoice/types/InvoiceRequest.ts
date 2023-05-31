@@ -34,6 +34,7 @@ export const InvoiceRequest: core.serialization.ObjectSchema<serializers.Invoice
         lineItems: core.serialization
             .list(core.serialization.lazyObject(async () => (await import("../../..")).InvoiceLineItemRequest))
             .optional(),
+        metadata: core.serialization.record(core.serialization.string(), core.serialization.string()).optional(),
         uploadedImage: core.serialization.string().optional(),
         createdById: core.serialization.lazy(async () => (await import("../../..")).EntityUserId).optional(),
     });
@@ -58,6 +59,7 @@ export declare namespace InvoiceRequest {
         createVendor?: serializers.CreateVendorRequest.Raw | null;
         updateVendor?: serializers.CreateVendorRequest.Raw | null;
         lineItems?: serializers.InvoiceLineItemRequest.Raw[] | null;
+        metadata?: Record<string, string> | null;
         uploadedImage?: string | null;
         createdById?: serializers.EntityUserId.Raw | null;
     }

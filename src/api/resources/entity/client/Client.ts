@@ -293,8 +293,36 @@ export class Entity {
         entityId: Mercoa.EntityId,
         request: Mercoa.GetInvoicesRequest = {}
     ): Promise<Mercoa.InvoiceResponse[]> {
-        const { status } = request;
+        const { startDate, endDate, orderBy, orderDirection, limit, startingAfter, search, status } = request;
         const _queryParams = new URLSearchParams();
+        if (startDate != null) {
+            _queryParams.append("startDate", startDate.toISOString());
+        }
+
+        if (endDate != null) {
+            _queryParams.append("endDate", endDate.toISOString());
+        }
+
+        if (orderBy != null) {
+            _queryParams.append("orderBy", orderBy);
+        }
+
+        if (orderDirection != null) {
+            _queryParams.append("orderDirection", orderDirection);
+        }
+
+        if (limit != null) {
+            _queryParams.append("limit", limit.toString());
+        }
+
+        if (startingAfter != null) {
+            _queryParams.append("startingAfter", startingAfter);
+        }
+
+        if (search != null) {
+            _queryParams.append("search", search);
+        }
+
         if (status != null) {
             if (Array.isArray(status)) {
                 for (const _item of status) {
@@ -354,8 +382,12 @@ export class Entity {
         entityId: Mercoa.EntityId,
         request: Mercoa.InvoiceMetricsRequest
     ): Promise<Mercoa.InvoiceMetricsResponse> {
-        const { status, dueDateStart, dueDateEnd, createdDateStart, createdDateEnd, currency } = request;
+        const { search, status, dueDateStart, dueDateEnd, createdDateStart, createdDateEnd, currency } = request;
         const _queryParams = new URLSearchParams();
+        if (search != null) {
+            _queryParams.append("search", search);
+        }
+
         if (status != null) {
             if (Array.isArray(status)) {
                 for (const _item of status) {
@@ -578,6 +610,247 @@ export class Entity {
         });
         if (_response.ok) {
             return;
+        }
+
+        if (_response.error.reason === "status-code") {
+            throw new errors.MercoaError({
+                statusCode: _response.error.statusCode,
+                body: _response.error.body,
+            });
+        }
+
+        switch (_response.error.reason) {
+            case "non-json":
+                throw new errors.MercoaError({
+                    statusCode: _response.error.statusCode,
+                    body: _response.error.rawBody,
+                });
+            case "timeout":
+                throw new errors.MercoaTimeoutError();
+            case "unknown":
+                throw new errors.MercoaError({
+                    message: _response.error.errorMessage,
+                });
+        }
+    }
+
+    /**
+     * Create an invoice approval policy associated with Entity
+     */
+    public async createApprovalPolicy(
+        entityId: Mercoa.EntityId,
+        request: Mercoa.ApprovalPolicyRequest
+    ): Promise<Mercoa.ApprovalPolicyResponse> {
+        const _response = await core.fetcher({
+            url: urlJoin(
+                this.options.environment ?? environments.MercoaEnvironment.Production,
+                `/entity/${await serializers.EntityId.jsonOrThrow(entityId)}/approval-policy`
+            ),
+            method: "POST",
+            headers: {
+                Authorization: await this._getAuthorizationHeader(),
+            },
+            contentType: "application/json",
+            body: await serializers.ApprovalPolicyRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
+        });
+        if (_response.ok) {
+            return await serializers.ApprovalPolicyResponse.parseOrThrow(_response.body, {
+                unrecognizedObjectKeys: "passthrough",
+                allowUnrecognizedUnionMembers: true,
+                allowUnrecognizedEnumValues: true,
+            });
+        }
+
+        if (_response.error.reason === "status-code") {
+            throw new errors.MercoaError({
+                statusCode: _response.error.statusCode,
+                body: _response.error.body,
+            });
+        }
+
+        switch (_response.error.reason) {
+            case "non-json":
+                throw new errors.MercoaError({
+                    statusCode: _response.error.statusCode,
+                    body: _response.error.rawBody,
+                });
+            case "timeout":
+                throw new errors.MercoaTimeoutError();
+            case "unknown":
+                throw new errors.MercoaError({
+                    message: _response.error.errorMessage,
+                });
+        }
+    }
+
+    /**
+     * Retrieve an invoice approval policy associated with Entity
+     */
+    public async getApprovalPolicy(
+        entityId: Mercoa.EntityId,
+        policyId: Mercoa.PolicyId
+    ): Promise<Mercoa.ApprovalPolicyResponse> {
+        const _response = await core.fetcher({
+            url: urlJoin(
+                this.options.environment ?? environments.MercoaEnvironment.Production,
+                `/entity/${await serializers.EntityId.jsonOrThrow(
+                    entityId
+                )}/approval-policy/${await serializers.PolicyId.jsonOrThrow(policyId)}`
+            ),
+            method: "GET",
+            headers: {
+                Authorization: await this._getAuthorizationHeader(),
+            },
+            contentType: "application/json",
+        });
+        if (_response.ok) {
+            return await serializers.ApprovalPolicyResponse.parseOrThrow(_response.body, {
+                unrecognizedObjectKeys: "passthrough",
+                allowUnrecognizedUnionMembers: true,
+                allowUnrecognizedEnumValues: true,
+            });
+        }
+
+        if (_response.error.reason === "status-code") {
+            throw new errors.MercoaError({
+                statusCode: _response.error.statusCode,
+                body: _response.error.body,
+            });
+        }
+
+        switch (_response.error.reason) {
+            case "non-json":
+                throw new errors.MercoaError({
+                    statusCode: _response.error.statusCode,
+                    body: _response.error.rawBody,
+                });
+            case "timeout":
+                throw new errors.MercoaTimeoutError();
+            case "unknown":
+                throw new errors.MercoaError({
+                    message: _response.error.errorMessage,
+                });
+        }
+    }
+
+    /**
+     * Update an invoice approval policy associated with Entity
+     */
+    public async updateApprovalPolicy(
+        entityId: Mercoa.EntityId,
+        policyId: Mercoa.PolicyId,
+        request: Mercoa.ApprovalPolicyUpdateRequest
+    ): Promise<Mercoa.ApprovalPolicyResponse> {
+        const _response = await core.fetcher({
+            url: urlJoin(
+                this.options.environment ?? environments.MercoaEnvironment.Production,
+                `/entity/${await serializers.EntityId.jsonOrThrow(
+                    entityId
+                )}/approval-policy/${await serializers.PolicyId.jsonOrThrow(policyId)}`
+            ),
+            method: "POST",
+            headers: {
+                Authorization: await this._getAuthorizationHeader(),
+            },
+            contentType: "application/json",
+            body: await serializers.ApprovalPolicyUpdateRequest.jsonOrThrow(request, {
+                unrecognizedObjectKeys: "strip",
+            }),
+        });
+        if (_response.ok) {
+            return await serializers.ApprovalPolicyResponse.parseOrThrow(_response.body, {
+                unrecognizedObjectKeys: "passthrough",
+                allowUnrecognizedUnionMembers: true,
+                allowUnrecognizedEnumValues: true,
+            });
+        }
+
+        if (_response.error.reason === "status-code") {
+            throw new errors.MercoaError({
+                statusCode: _response.error.statusCode,
+                body: _response.error.body,
+            });
+        }
+
+        switch (_response.error.reason) {
+            case "non-json":
+                throw new errors.MercoaError({
+                    statusCode: _response.error.statusCode,
+                    body: _response.error.rawBody,
+                });
+            case "timeout":
+                throw new errors.MercoaTimeoutError();
+            case "unknown":
+                throw new errors.MercoaError({
+                    message: _response.error.errorMessage,
+                });
+        }
+    }
+
+    /**
+     * Delete an invoice approval policy associated with Entity. BEWARE: Any approval policy deletion will result in all associated downstream policies also being deleted.
+     */
+    public async deleteApprovalPolicy(entityId: Mercoa.EntityId, policyId: Mercoa.PolicyId): Promise<void> {
+        const _response = await core.fetcher({
+            url: urlJoin(
+                this.options.environment ?? environments.MercoaEnvironment.Production,
+                `/entity/${await serializers.EntityId.jsonOrThrow(
+                    entityId
+                )}/approval-policy/${await serializers.PolicyId.jsonOrThrow(policyId)}`
+            ),
+            method: "DELETE",
+            headers: {
+                Authorization: await this._getAuthorizationHeader(),
+            },
+            contentType: "application/json",
+        });
+        if (_response.ok) {
+            return;
+        }
+
+        if (_response.error.reason === "status-code") {
+            throw new errors.MercoaError({
+                statusCode: _response.error.statusCode,
+                body: _response.error.body,
+            });
+        }
+
+        switch (_response.error.reason) {
+            case "non-json":
+                throw new errors.MercoaError({
+                    statusCode: _response.error.statusCode,
+                    body: _response.error.rawBody,
+                });
+            case "timeout":
+                throw new errors.MercoaTimeoutError();
+            case "unknown":
+                throw new errors.MercoaError({
+                    message: _response.error.errorMessage,
+                });
+        }
+    }
+
+    /**
+     * Retrieve all invoice approval policies associated with Entity
+     */
+    public async getAllApprovalPolicies(entityId: Mercoa.EntityId): Promise<Mercoa.ApprovalPolicyResponse[]> {
+        const _response = await core.fetcher({
+            url: urlJoin(
+                this.options.environment ?? environments.MercoaEnvironment.Production,
+                `/entity/${await serializers.EntityId.jsonOrThrow(entityId)}/approval-policies`
+            ),
+            method: "GET",
+            headers: {
+                Authorization: await this._getAuthorizationHeader(),
+            },
+            contentType: "application/json",
+        });
+        if (_response.ok) {
+            return await serializers.entity.getAllApprovalPolicies.Response.parseOrThrow(_response.body, {
+                unrecognizedObjectKeys: "passthrough",
+                allowUnrecognizedUnionMembers: true,
+                allowUnrecognizedEnumValues: true,
+            });
         }
 
         if (_response.error.reason === "status-code") {

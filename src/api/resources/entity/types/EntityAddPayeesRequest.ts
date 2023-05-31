@@ -5,5 +5,6 @@
 import { Mercoa } from "@mercoa/javascript";
 
 export interface EntityAddPayeesRequest {
+    /** List of payee entity IDs to associate with the entity */
     payees: Mercoa.EntityId[];
 }
