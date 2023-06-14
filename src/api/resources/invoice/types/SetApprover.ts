@@ -4,7 +4,7 @@
 
 import { Mercoa } from "@mercoa/javascript";
 
-export interface CreateVendorRequest {
-    vendor: Mercoa.EntityRequest;
-    paymentMethod?: Mercoa.PaymentMethodRequest;
+export interface SetApprover {
+    userId: Mercoa.EntityUserId;
+    date: Date;
 }

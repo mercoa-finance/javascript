@@ -245,7 +245,7 @@ export class Invoice {
     public async approve(
         invoiceId: Mercoa.InvoiceId,
         request: Mercoa.ApprovalRequest
-    ): Promise<Mercoa.InvoiceResponse> {
+    ): Promise<Mercoa.CommentResponse> {
         const _response = await core.fetcher({
             url: urlJoin(
                 this.options.environment ?? environments.MercoaEnvironment.Production,
@@ -259,7 +259,7 @@ export class Invoice {
             body: await serializers.ApprovalRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
         });
         if (_response.ok) {
-            return await serializers.InvoiceResponse.parseOrThrow(_response.body, {
+            return await serializers.CommentResponse.parseOrThrow(_response.body, {
                 unrecognizedObjectKeys: "passthrough",
                 allowUnrecognizedUnionMembers: true,
                 allowUnrecognizedEnumValues: true,
@@ -291,7 +291,7 @@ export class Invoice {
     /**
      * Reject invoice
      */
-    public async reject(invoiceId: Mercoa.InvoiceId, request: Mercoa.ApprovalRequest): Promise<Mercoa.InvoiceResponse> {
+    public async reject(invoiceId: Mercoa.InvoiceId, request: Mercoa.ApprovalRequest): Promise<Mercoa.CommentResponse> {
         const _response = await core.fetcher({
             url: urlJoin(
                 this.options.environment ?? environments.MercoaEnvironment.Production,
@@ -305,7 +305,7 @@ export class Invoice {
             body: await serializers.ApprovalRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
         });
         if (_response.ok) {
-            return await serializers.InvoiceResponse.parseOrThrow(_response.body, {
+            return await serializers.CommentResponse.parseOrThrow(_response.body, {
                 unrecognizedObjectKeys: "passthrough",
                 allowUnrecognizedUnionMembers: true,
                 allowUnrecognizedEnumValues: true,

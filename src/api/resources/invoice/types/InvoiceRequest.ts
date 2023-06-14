@@ -22,12 +22,10 @@ export interface InvoiceRequest {
     serviceEndDate?: Date;
     payerId?: Mercoa.EntityId;
     paymentSourceId?: Mercoa.PaymentMethodId;
+    /** Set approvers for this invoice. */
+    approvers?: Mercoa.SetApprover[];
     vendorId?: Mercoa.EntityId;
     paymentDestinationId?: Mercoa.PaymentMethodId;
-    /** When paying to a new vendor, use the createVendor object. Mercoa will create the vendor entity and tie it to this invoice. This object is ignored when updating an invoice. */
-    createVendor?: Mercoa.CreateVendorRequest;
-    /** When paying to an existing vendor with an incomplete profile, use the updateVendor object. Mercoa will update the vendor entity tied to this invoice. This object is ignored if the vendor already has already been created with complete information and when creating a new invoice. */
-    updateVendor?: Mercoa.CreateVendorRequest;
     lineItems?: Mercoa.InvoiceLineItemRequest[];
     /** Metadata associated with this invoice. You can specify up to 10 keys, with key names up to 40 characters long and values up to 200 characters long. */
     metadata?: Record<string, string>;

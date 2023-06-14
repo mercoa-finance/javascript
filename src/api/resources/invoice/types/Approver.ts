@@ -4,8 +4,7 @@
 
 import { Mercoa } from "@mercoa/javascript";
 
-export interface Approver {
-    userId: Mercoa.EntityUserId;
-    date: Date;
+export interface Approver extends Mercoa.SetApprover {
+    roles: string[];
     action: Mercoa.ApproverAction;
 }

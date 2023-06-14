@@ -6,17 +6,16 @@ import * as serializers from "../../..";
 import { Mercoa } from "@mercoa/javascript";
 import * as core from "../../../../core";
 
-export const Approver: core.serialization.ObjectSchema<serializers.Approver.Raw, Mercoa.Approver> =
-    core.serialization.object({
-        userId: core.serialization.lazy(async () => (await import("../../..")).EntityUserId),
-        date: core.serialization.date(),
+export const Approver: core.serialization.ObjectSchema<serializers.Approver.Raw, Mercoa.Approver> = core.serialization
+    .object({
+        roles: core.serialization.list(core.serialization.string()),
         action: core.serialization.lazy(async () => (await import("../../..")).ApproverAction),
-    });
+    })
+    .extend(core.serialization.lazyObject(async () => (await import("../../..")).SetApprover));
 
 export declare namespace Approver {
-    interface Raw {
-        userId: serializers.EntityUserId.Raw;
-        date: string;
+    interface Raw extends serializers.SetApprover.Raw {
+        roles: string[];
         action: serializers.ApproverAction.Raw;
     }
 }

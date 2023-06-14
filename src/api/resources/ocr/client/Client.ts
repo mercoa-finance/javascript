@@ -63,7 +63,7 @@ export class Ocr {
     }
 
     public async emailInbox(request: Mercoa.EmailOcr): Promise<void> {
-        const { org, ..._body } = request;
+        const { org, body: _body } = request;
         const _queryParams = new URLSearchParams();
         _queryParams.append("org", org);
         const _response = await core.fetcher({
@@ -74,7 +74,7 @@ export class Ocr {
             },
             contentType: "application/json",
             queryParameters: _queryParams,
-            body: await serializers.EmailOcr.jsonOrThrow(_body, { unrecognizedObjectKeys: "strip" }),
+            body: _body,
         });
         if (_response.ok) {
             return;
