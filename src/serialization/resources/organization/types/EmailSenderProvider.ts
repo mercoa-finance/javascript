@@ -3,14 +3,14 @@
  */
 
 import * as serializers from "../../..";
-import { Mercoa } from "@mercoa/javascript";
+import * as Mercoa from "../../../../api";
 import * as core from "../../../../core";
 
 export const EmailSenderProvider: core.serialization.Schema<
     serializers.EmailSenderProvider.Raw,
     Mercoa.EmailSenderProvider
-> = core.serialization.enum_(["none", "sendgrid", "resend"]);
+> = core.serialization.enum_(["none", "sendgrid", "ses", "resend"]);
 
 export declare namespace EmailSenderProvider {
-    type Raw = "none" | "sendgrid" | "resend";
+    type Raw = "none" | "sendgrid" | "ses" | "resend";
 }

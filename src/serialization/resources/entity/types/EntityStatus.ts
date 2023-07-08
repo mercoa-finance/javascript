@@ -3,10 +3,10 @@
  */
 
 import * as serializers from "../../..";
-import { Mercoa } from "@mercoa/javascript";
+import * as Mercoa from "../../../../api";
 import * as core from "../../../../core";
 
-export const EntityStatus: core.serialization.Schema<serializers.EntityStatus.Raw, Mercoa.EntityStatus> =
+export const EntityStatus: core.serialization.Schema<serializers.entity.EntityStatus.Raw, Mercoa.entity.EntityStatus> =
     core.serialization.enum_(["unverified", "pending", "resubmit", "review", "verified", "failed"]);
 
 export declare namespace EntityStatus {

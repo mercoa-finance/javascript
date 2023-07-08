@@ -4,49 +4,80 @@
 
 import * as environments from "../../../../environments";
 import * as core from "../../../../core";
-import { Mercoa } from "@mercoa/javascript";
+import * as Mercoa from "../../..";
 import urlJoin from "url-join";
 import * as serializers from "../../../../serialization";
 import * as errors from "../../../../errors";
 
 export declare namespace PaymentMethodSchema {
     interface Options {
-        environment?: environments.MercoaEnvironment | string;
+        environment?: core.Supplier<environments.MercoaEnvironment | string>;
         token: core.Supplier<core.BearerToken>;
     }
 }
 
 export class PaymentMethodSchema {
-    constructor(private readonly options: PaymentMethodSchema.Options) {}
+    constructor(protected readonly _options: PaymentMethodSchema.Options) {}
 
     /**
      * Get all custom payment method schemas
+     * @throws {@link Mercoa.AuthHeaderMissingError}
+     * @throws {@link Mercoa.AuthHeaderMalformedError}
+     * @throws {@link Mercoa.Unauthorized}
      */
     public async getAll(): Promise<Mercoa.PaymentMethodSchemaResponse[]> {
         const _response = await core.fetcher({
             url: urlJoin(
-                this.options.environment ?? environments.MercoaEnvironment.Production,
+                (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
                 "/paymentMethod/schema"
             ),
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "@mercoa/javascript",
+                "X-Fern-SDK-Version": "v0.2.0",
             },
             contentType: "application/json",
+            timeoutMs: 60000,
         });
         if (_response.ok) {
             return await serializers.paymentMethodSchema.getAll.Response.parseOrThrow(_response.body, {
                 unrecognizedObjectKeys: "passthrough",
                 allowUnrecognizedUnionMembers: true,
                 allowUnrecognizedEnumValues: true,
+                breadcrumbsPrefix: ["response"],
             });
         }
 
         if (_response.error.reason === "status-code") {
-            throw new errors.MercoaError({
-                statusCode: _response.error.statusCode,
-                body: _response.error.body,
-            });
+            switch ((_response.error.body as any)?.["errorName"]) {
+                case "AuthHeaderMissingError":
+                    throw new Mercoa.AuthHeaderMissingError();
+                case "AuthHeaderMalformedError":
+                    throw new Mercoa.AuthHeaderMalformedError(
+                        await serializers.AuthHeaderMalformedError.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        })
+                    );
+                case "Unauthorized":
+                    throw new Mercoa.Unauthorized(
+                        await serializers.Unauthorized.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        })
+                    );
+                default:
+                    throw new errors.MercoaError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                    });
+            }
         }
 
         switch (_response.error.reason) {
@@ -66,35 +97,66 @@ export class PaymentMethodSchema {
 
     /**
      * Create custom payment method schema
+     * @throws {@link Mercoa.AuthHeaderMissingError}
+     * @throws {@link Mercoa.AuthHeaderMalformedError}
+     * @throws {@link Mercoa.Unauthorized}
      */
     public async create(request: Mercoa.PaymentMethodSchemaRequest): Promise<Mercoa.PaymentMethodSchemaResponse> {
         const _response = await core.fetcher({
             url: urlJoin(
-                this.options.environment ?? environments.MercoaEnvironment.Production,
+                (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
                 "/paymentMethod/schema"
             ),
             method: "POST",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "@mercoa/javascript",
+                "X-Fern-SDK-Version": "v0.2.0",
             },
             contentType: "application/json",
             body: await serializers.PaymentMethodSchemaRequest.jsonOrThrow(request, {
                 unrecognizedObjectKeys: "strip",
             }),
+            timeoutMs: 60000,
         });
         if (_response.ok) {
             return await serializers.PaymentMethodSchemaResponse.parseOrThrow(_response.body, {
                 unrecognizedObjectKeys: "passthrough",
                 allowUnrecognizedUnionMembers: true,
                 allowUnrecognizedEnumValues: true,
+                breadcrumbsPrefix: ["response"],
             });
         }
 
         if (_response.error.reason === "status-code") {
-            throw new errors.MercoaError({
-                statusCode: _response.error.statusCode,
-                body: _response.error.body,
-            });
+            switch ((_response.error.body as any)?.["errorName"]) {
+                case "AuthHeaderMissingError":
+                    throw new Mercoa.AuthHeaderMissingError();
+                case "AuthHeaderMalformedError":
+                    throw new Mercoa.AuthHeaderMalformedError(
+                        await serializers.AuthHeaderMalformedError.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        })
+                    );
+                case "Unauthorized":
+                    throw new Mercoa.Unauthorized(
+                        await serializers.Unauthorized.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        })
+                    );
+                default:
+                    throw new errors.MercoaError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                    });
+            }
         }
 
         switch (_response.error.reason) {
@@ -114,32 +176,63 @@ export class PaymentMethodSchema {
 
     /**
      * Get custom payment method schema
+     * @throws {@link Mercoa.AuthHeaderMissingError}
+     * @throws {@link Mercoa.AuthHeaderMalformedError}
+     * @throws {@link Mercoa.Unauthorized}
      */
     public async get(schemaId: Mercoa.PaymentMethodSchemaId): Promise<Mercoa.PaymentMethodSchemaResponse> {
         const _response = await core.fetcher({
             url: urlJoin(
-                this.options.environment ?? environments.MercoaEnvironment.Production,
+                (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
                 `/paymentMethod/schema/${await serializers.PaymentMethodSchemaId.jsonOrThrow(schemaId)}`
             ),
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "@mercoa/javascript",
+                "X-Fern-SDK-Version": "v0.2.0",
             },
             contentType: "application/json",
+            timeoutMs: 60000,
         });
         if (_response.ok) {
             return await serializers.PaymentMethodSchemaResponse.parseOrThrow(_response.body, {
                 unrecognizedObjectKeys: "passthrough",
                 allowUnrecognizedUnionMembers: true,
                 allowUnrecognizedEnumValues: true,
+                breadcrumbsPrefix: ["response"],
             });
         }
 
         if (_response.error.reason === "status-code") {
-            throw new errors.MercoaError({
-                statusCode: _response.error.statusCode,
-                body: _response.error.body,
-            });
+            switch ((_response.error.body as any)?.["errorName"]) {
+                case "AuthHeaderMissingError":
+                    throw new Mercoa.AuthHeaderMissingError();
+                case "AuthHeaderMalformedError":
+                    throw new Mercoa.AuthHeaderMalformedError(
+                        await serializers.AuthHeaderMalformedError.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        })
+                    );
+                case "Unauthorized":
+                    throw new Mercoa.Unauthorized(
+                        await serializers.Unauthorized.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        })
+                    );
+                default:
+                    throw new errors.MercoaError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                    });
+            }
         }
 
         switch (_response.error.reason) {
@@ -159,28 +252,58 @@ export class PaymentMethodSchema {
 
     /**
      * Delete custom payment method schema. Schema that have been used in an invoice cannot be deleted.
+     * @throws {@link Mercoa.AuthHeaderMissingError}
+     * @throws {@link Mercoa.AuthHeaderMalformedError}
+     * @throws {@link Mercoa.Unauthorized}
      */
     public async delete(schemaId: Mercoa.PaymentMethodSchemaId): Promise<void> {
         const _response = await core.fetcher({
             url: urlJoin(
-                this.options.environment ?? environments.MercoaEnvironment.Production,
+                (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
                 `/paymentMethod/schema/${await serializers.PaymentMethodSchemaId.jsonOrThrow(schemaId)}`
             ),
             method: "DELETE",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "@mercoa/javascript",
+                "X-Fern-SDK-Version": "v0.2.0",
             },
             contentType: "application/json",
+            timeoutMs: 60000,
         });
         if (_response.ok) {
             return;
         }
 
         if (_response.error.reason === "status-code") {
-            throw new errors.MercoaError({
-                statusCode: _response.error.statusCode,
-                body: _response.error.body,
-            });
+            switch ((_response.error.body as any)?.["errorName"]) {
+                case "AuthHeaderMissingError":
+                    throw new Mercoa.AuthHeaderMissingError();
+                case "AuthHeaderMalformedError":
+                    throw new Mercoa.AuthHeaderMalformedError(
+                        await serializers.AuthHeaderMalformedError.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        })
+                    );
+                case "Unauthorized":
+                    throw new Mercoa.Unauthorized(
+                        await serializers.Unauthorized.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        })
+                    );
+                default:
+                    throw new errors.MercoaError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                    });
+            }
         }
 
         switch (_response.error.reason) {
@@ -198,12 +321,7 @@ export class PaymentMethodSchema {
         }
     }
 
-    private async _getAuthorizationHeader() {
-        const bearer = await core.Supplier.get(this.options.token);
-        if (bearer != null) {
-            return `Bearer ${bearer}`;
-        }
-
-        return undefined;
+    protected async _getAuthorizationHeader() {
+        return `Bearer ${await core.Supplier.get(this._options.token)}`;
     }
 }

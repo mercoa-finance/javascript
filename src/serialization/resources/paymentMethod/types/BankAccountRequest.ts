@@ -3,14 +3,13 @@
  */
 
 import * as serializers from "../../..";
-import { Mercoa } from "@mercoa/javascript";
+import * as Mercoa from "../../../../api";
 import * as core from "../../../../core";
 
 export const BankAccountRequest: core.serialization.ObjectSchema<
     serializers.BankAccountRequest.Raw,
     Mercoa.BankAccountRequest
 > = core.serialization.object({
-    id: core.serialization.lazy(async () => (await import("../../..")).BankAccountId).optional(),
     bankName: core.serialization.string(),
     routingNumber: core.serialization.string(),
     accountNumber: core.serialization.string(),
@@ -20,7 +19,6 @@ export const BankAccountRequest: core.serialization.ObjectSchema<
 
 export declare namespace BankAccountRequest {
     interface Raw {
-        id?: serializers.BankAccountId.Raw | null;
         bankName: string;
         routingNumber: string;
         accountNumber: string;

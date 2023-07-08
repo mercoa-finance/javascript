@@ -4,98 +4,63 @@
 
 import * as environments from "./environments";
 import * as core from "./core";
-import { BankLookup } from "./api/resources/bankLookup/client/Client";
-import { Counterparty } from "./api/resources/counterparty/client/Client";
-import { EntityUsers } from "./api/resources/entityUsers/client/Client";
 import { Entity } from "./api/resources/entity/client/Client";
 import { Invoice } from "./api/resources/invoice/client/Client";
+import { BankLookup } from "./api/resources/bankLookup/client/Client";
 import { Ocr } from "./api/resources/ocr/client/Client";
 import { Organization } from "./api/resources/organization/client/Client";
 import { PaymentMethodSchema } from "./api/resources/paymentMethodSchema/client/Client";
-import { PaymentMethod } from "./api/resources/paymentMethod/client/Client";
-import { ProcessInvoice } from "./api/resources/processInvoice/client/Client";
-import { Representative } from "./api/resources/representative/client/Client";
 import { Transaction } from "./api/resources/transaction/client/Client";
 
 export declare namespace MercoaClient {
     interface Options {
-        environment?: environments.MercoaEnvironment | string;
+        environment?: core.Supplier<environments.MercoaEnvironment | string>;
         token: core.Supplier<core.BearerToken>;
     }
 }
 
 export class MercoaClient {
-    constructor(private readonly options: MercoaClient.Options) {}
+    constructor(protected readonly _options: MercoaClient.Options) {}
 
-    private _bankLookup: BankLookup | undefined;
-
-    public get bankLookup(): BankLookup {
-        return (this._bankLookup ??= new BankLookup(this.options));
-    }
-
-    private _counterparty: Counterparty | undefined;
-
-    public get counterparty(): Counterparty {
-        return (this._counterparty ??= new Counterparty(this.options));
-    }
-
-    private _entityUsers: EntityUsers | undefined;
-
-    public get entityUsers(): EntityUsers {
-        return (this._entityUsers ??= new EntityUsers(this.options));
-    }
-
-    private _entity: Entity | undefined;
+    protected _entity: Entity | undefined;
 
     public get entity(): Entity {
-        return (this._entity ??= new Entity(this.options));
+        return (this._entity ??= new Entity(this._options));
     }
 
-    private _invoice: Invoice | undefined;
+    protected _invoice: Invoice | undefined;
 
     public get invoice(): Invoice {
-        return (this._invoice ??= new Invoice(this.options));
+        return (this._invoice ??= new Invoice(this._options));
     }
 
-    private _ocr: Ocr | undefined;
+    protected _bankLookup: BankLookup | undefined;
+
+    public get bankLookup(): BankLookup {
+        return (this._bankLookup ??= new BankLookup(this._options));
+    }
+
+    protected _ocr: Ocr | undefined;
 
     public get ocr(): Ocr {
-        return (this._ocr ??= new Ocr(this.options));
+        return (this._ocr ??= new Ocr(this._options));
     }
 
-    private _organization: Organization | undefined;
+    protected _organization: Organization | undefined;
 
     public get organization(): Organization {
-        return (this._organization ??= new Organization(this.options));
+        return (this._organization ??= new Organization(this._options));
     }
 
-    private _paymentMethodSchema: PaymentMethodSchema | undefined;
+    protected _paymentMethodSchema: PaymentMethodSchema | undefined;
 
     public get paymentMethodSchema(): PaymentMethodSchema {
-        return (this._paymentMethodSchema ??= new PaymentMethodSchema(this.options));
+        return (this._paymentMethodSchema ??= new PaymentMethodSchema(this._options));
     }
 
-    private _paymentMethod: PaymentMethod | undefined;
-
-    public get paymentMethod(): PaymentMethod {
-        return (this._paymentMethod ??= new PaymentMethod(this.options));
-    }
-
-    private _processInvoice: ProcessInvoice | undefined;
-
-    public get processInvoice(): ProcessInvoice {
-        return (this._processInvoice ??= new ProcessInvoice(this.options));
-    }
-
-    private _representative: Representative | undefined;
-
-    public get representative(): Representative {
-        return (this._representative ??= new Representative(this.options));
-    }
-
-    private _transaction: Transaction | undefined;
+    protected _transaction: Transaction | undefined;
 
     public get transaction(): Transaction {
-        return (this._transaction ??= new Transaction(this.options));
+        return (this._transaction ??= new Transaction(this._options));
     }
 }

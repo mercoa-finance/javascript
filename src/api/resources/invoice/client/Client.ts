@@ -4,47 +4,213 @@
 
 import * as environments from "../../../../environments";
 import * as core from "../../../../core";
-import { Mercoa } from "@mercoa/javascript";
+import * as Mercoa from "../../..";
+import { default as URLSearchParams } from "@ungap/url-search-params";
 import urlJoin from "url-join";
 import * as serializers from "../../../../serialization";
 import * as errors from "../../../../errors";
+import { Approval } from "../resources/approval/client/Client";
+import { Comment } from "../resources/comment/client/Client";
+import { Document } from "../resources/document/client/Client";
 
 export declare namespace Invoice {
     interface Options {
-        environment?: environments.MercoaEnvironment | string;
+        environment?: core.Supplier<environments.MercoaEnvironment | string>;
         token: core.Supplier<core.BearerToken>;
     }
 }
 
 export class Invoice {
-    constructor(private readonly options: Invoice.Options) {}
+    constructor(protected readonly _options: Invoice.Options) {}
 
     /**
-     * Create invoice
+     * Search invoices for all entities in the organization
+     * @throws {@link Mercoa.AuthHeaderMissingError}
+     * @throws {@link Mercoa.AuthHeaderMalformedError}
+     * @throws {@link Mercoa.Unauthorized}
      */
-    public async create(request: Mercoa.InvoiceRequest): Promise<Mercoa.InvoiceResponse> {
+    public async find(request: Mercoa.invoice.GetAllInvoicesRequest = {}): Promise<Mercoa.invoice.InvoiceResponse[]> {
+        const { entityIds, startDate, endDate, orderBy, orderDirection, limit, startingAfter, search, status } =
+            request;
+        const _queryParams = new URLSearchParams();
+        if (entityIds != null) {
+            if (Array.isArray(entityIds)) {
+                for (const _item of entityIds) {
+                    _queryParams.append("entityIds", _item);
+                }
+            } else {
+                _queryParams.append("entityIds", entityIds);
+            }
+        }
+
+        if (startDate != null) {
+            _queryParams.append("startDate", startDate.toISOString());
+        }
+
+        if (endDate != null) {
+            _queryParams.append("endDate", endDate.toISOString());
+        }
+
+        if (orderBy != null) {
+            _queryParams.append("orderBy", orderBy);
+        }
+
+        if (orderDirection != null) {
+            _queryParams.append("orderDirection", orderDirection);
+        }
+
+        if (limit != null) {
+            _queryParams.append("limit", limit.toString());
+        }
+
+        if (startingAfter != null) {
+            _queryParams.append("startingAfter", startingAfter);
+        }
+
+        if (search != null) {
+            _queryParams.append("search", search);
+        }
+
+        if (status != null) {
+            if (Array.isArray(status)) {
+                for (const _item of status) {
+                    _queryParams.append("status", _item);
+                }
+            } else {
+                _queryParams.append("status", status);
+            }
+        }
+
         const _response = await core.fetcher({
-            url: urlJoin(this.options.environment ?? environments.MercoaEnvironment.Production, "/invoice"),
-            method: "POST",
+            url: urlJoin(
+                (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
+                "/invoices"
+            ),
+            method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "@mercoa/javascript",
+                "X-Fern-SDK-Version": "v0.2.0",
             },
             contentType: "application/json",
-            body: await serializers.InvoiceRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
+            queryParameters: _queryParams,
+            timeoutMs: 60000,
         });
         if (_response.ok) {
-            return await serializers.InvoiceResponse.parseOrThrow(_response.body, {
+            return await serializers.invoice.find.Response.parseOrThrow(_response.body, {
                 unrecognizedObjectKeys: "passthrough",
                 allowUnrecognizedUnionMembers: true,
                 allowUnrecognizedEnumValues: true,
+                breadcrumbsPrefix: ["response"],
             });
         }
 
         if (_response.error.reason === "status-code") {
-            throw new errors.MercoaError({
-                statusCode: _response.error.statusCode,
-                body: _response.error.body,
+            switch ((_response.error.body as any)?.["errorName"]) {
+                case "AuthHeaderMissingError":
+                    throw new Mercoa.AuthHeaderMissingError();
+                case "AuthHeaderMalformedError":
+                    throw new Mercoa.AuthHeaderMalformedError(
+                        await serializers.AuthHeaderMalformedError.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        })
+                    );
+                case "Unauthorized":
+                    throw new Mercoa.Unauthorized(
+                        await serializers.Unauthorized.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        })
+                    );
+                default:
+                    throw new errors.MercoaError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                    });
+            }
+        }
+
+        switch (_response.error.reason) {
+            case "non-json":
+                throw new errors.MercoaError({
+                    statusCode: _response.error.statusCode,
+                    body: _response.error.rawBody,
+                });
+            case "timeout":
+                throw new errors.MercoaTimeoutError();
+            case "unknown":
+                throw new errors.MercoaError({
+                    message: _response.error.errorMessage,
+                });
+        }
+    }
+
+    /**
+     * Create invoice
+     * @throws {@link Mercoa.AuthHeaderMissingError}
+     * @throws {@link Mercoa.AuthHeaderMalformedError}
+     * @throws {@link Mercoa.Unauthorized}
+     */
+    public async create(request: Mercoa.invoice.InvoiceRequest): Promise<Mercoa.invoice.InvoiceResponse> {
+        const _response = await core.fetcher({
+            url: urlJoin(
+                (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
+                "/invoice"
+            ),
+            method: "POST",
+            headers: {
+                Authorization: await this._getAuthorizationHeader(),
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "@mercoa/javascript",
+                "X-Fern-SDK-Version": "v0.2.0",
+            },
+            contentType: "application/json",
+            body: await serializers.invoice.InvoiceRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
+            timeoutMs: 60000,
+        });
+        if (_response.ok) {
+            return await serializers.invoice.InvoiceResponse.parseOrThrow(_response.body, {
+                unrecognizedObjectKeys: "passthrough",
+                allowUnrecognizedUnionMembers: true,
+                allowUnrecognizedEnumValues: true,
+                breadcrumbsPrefix: ["response"],
             });
+        }
+
+        if (_response.error.reason === "status-code") {
+            switch ((_response.error.body as any)?.["errorName"]) {
+                case "AuthHeaderMissingError":
+                    throw new Mercoa.AuthHeaderMissingError();
+                case "AuthHeaderMalformedError":
+                    throw new Mercoa.AuthHeaderMalformedError(
+                        await serializers.AuthHeaderMalformedError.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        })
+                    );
+                case "Unauthorized":
+                    throw new Mercoa.Unauthorized(
+                        await serializers.Unauthorized.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        })
+                    );
+                default:
+                    throw new errors.MercoaError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                    });
+            }
         }
 
         switch (_response.error.reason) {
@@ -64,32 +230,63 @@ export class Invoice {
 
     /**
      * Get invoice
+     * @throws {@link Mercoa.AuthHeaderMissingError}
+     * @throws {@link Mercoa.AuthHeaderMalformedError}
+     * @throws {@link Mercoa.Unauthorized}
      */
-    public async get(invoiceId: Mercoa.InvoiceId): Promise<Mercoa.InvoiceResponse> {
+    public async get(invoiceId: Mercoa.InvoiceId): Promise<Mercoa.invoice.InvoiceResponse> {
         const _response = await core.fetcher({
             url: urlJoin(
-                this.options.environment ?? environments.MercoaEnvironment.Production,
+                (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
                 `/invoice/${await serializers.InvoiceId.jsonOrThrow(invoiceId)}`
             ),
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "@mercoa/javascript",
+                "X-Fern-SDK-Version": "v0.2.0",
             },
             contentType: "application/json",
+            timeoutMs: 60000,
         });
         if (_response.ok) {
-            return await serializers.InvoiceResponse.parseOrThrow(_response.body, {
+            return await serializers.invoice.InvoiceResponse.parseOrThrow(_response.body, {
                 unrecognizedObjectKeys: "passthrough",
                 allowUnrecognizedUnionMembers: true,
                 allowUnrecognizedEnumValues: true,
+                breadcrumbsPrefix: ["response"],
             });
         }
 
         if (_response.error.reason === "status-code") {
-            throw new errors.MercoaError({
-                statusCode: _response.error.statusCode,
-                body: _response.error.body,
-            });
+            switch ((_response.error.body as any)?.["errorName"]) {
+                case "AuthHeaderMissingError":
+                    throw new Mercoa.AuthHeaderMissingError();
+                case "AuthHeaderMalformedError":
+                    throw new Mercoa.AuthHeaderMalformedError(
+                        await serializers.AuthHeaderMalformedError.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        })
+                    );
+                case "Unauthorized":
+                    throw new Mercoa.Unauthorized(
+                        await serializers.Unauthorized.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        })
+                    );
+                default:
+                    throw new errors.MercoaError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                    });
+            }
         }
 
         switch (_response.error.reason) {
@@ -109,33 +306,67 @@ export class Invoice {
 
     /**
      * Update invoice
+     * @throws {@link Mercoa.AuthHeaderMissingError}
+     * @throws {@link Mercoa.AuthHeaderMalformedError}
+     * @throws {@link Mercoa.Unauthorized}
      */
-    public async update(invoiceId: Mercoa.InvoiceId, request: Mercoa.InvoiceRequest): Promise<Mercoa.InvoiceResponse> {
+    public async update(
+        invoiceId: Mercoa.InvoiceId,
+        request: Mercoa.invoice.InvoiceRequest
+    ): Promise<Mercoa.invoice.InvoiceResponse> {
         const _response = await core.fetcher({
             url: urlJoin(
-                this.options.environment ?? environments.MercoaEnvironment.Production,
+                (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
                 `/invoice/${await serializers.InvoiceId.jsonOrThrow(invoiceId)}`
             ),
             method: "POST",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "@mercoa/javascript",
+                "X-Fern-SDK-Version": "v0.2.0",
             },
             contentType: "application/json",
-            body: await serializers.InvoiceRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
+            body: await serializers.invoice.InvoiceRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
+            timeoutMs: 60000,
         });
         if (_response.ok) {
-            return await serializers.InvoiceResponse.parseOrThrow(_response.body, {
+            return await serializers.invoice.InvoiceResponse.parseOrThrow(_response.body, {
                 unrecognizedObjectKeys: "passthrough",
                 allowUnrecognizedUnionMembers: true,
                 allowUnrecognizedEnumValues: true,
+                breadcrumbsPrefix: ["response"],
             });
         }
 
         if (_response.error.reason === "status-code") {
-            throw new errors.MercoaError({
-                statusCode: _response.error.statusCode,
-                body: _response.error.body,
-            });
+            switch ((_response.error.body as any)?.["errorName"]) {
+                case "AuthHeaderMissingError":
+                    throw new Mercoa.AuthHeaderMissingError();
+                case "AuthHeaderMalformedError":
+                    throw new Mercoa.AuthHeaderMalformedError(
+                        await serializers.AuthHeaderMalformedError.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        })
+                    );
+                case "Unauthorized":
+                    throw new Mercoa.Unauthorized(
+                        await serializers.Unauthorized.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        })
+                    );
+                default:
+                    throw new errors.MercoaError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                    });
+            }
         }
 
         switch (_response.error.reason) {
@@ -155,357 +386,58 @@ export class Invoice {
 
     /**
      * Delete invoice. Only invoices in the DRAFT and NEW status can be deleted.
+     * @throws {@link Mercoa.AuthHeaderMissingError}
+     * @throws {@link Mercoa.AuthHeaderMalformedError}
+     * @throws {@link Mercoa.Unauthorized}
      */
     public async delete(invoiceId: Mercoa.InvoiceId): Promise<void> {
         const _response = await core.fetcher({
             url: urlJoin(
-                this.options.environment ?? environments.MercoaEnvironment.Production,
+                (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
                 `/invoice/${await serializers.InvoiceId.jsonOrThrow(invoiceId)}`
             ),
             method: "DELETE",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "@mercoa/javascript",
+                "X-Fern-SDK-Version": "v0.2.0",
             },
             contentType: "application/json",
+            timeoutMs: 60000,
         });
         if (_response.ok) {
             return;
         }
 
         if (_response.error.reason === "status-code") {
-            throw new errors.MercoaError({
-                statusCode: _response.error.statusCode,
-                body: _response.error.body,
-            });
-        }
-
-        switch (_response.error.reason) {
-            case "non-json":
-                throw new errors.MercoaError({
-                    statusCode: _response.error.statusCode,
-                    body: _response.error.rawBody,
-                });
-            case "timeout":
-                throw new errors.MercoaTimeoutError();
-            case "unknown":
-                throw new errors.MercoaError({
-                    message: _response.error.errorMessage,
-                });
-        }
-    }
-
-    /**
-     * Get documents (scanned/uploaded images) associated with this invoice
-     */
-    public async getDocuments(invoiceId: Mercoa.InvoiceId): Promise<Mercoa.DocumentResponse[]> {
-        const _response = await core.fetcher({
-            url: urlJoin(
-                this.options.environment ?? environments.MercoaEnvironment.Production,
-                `/invoice/${await serializers.InvoiceId.jsonOrThrow(invoiceId)}/documents`
-            ),
-            method: "GET",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-            },
-            contentType: "application/json",
-        });
-        if (_response.ok) {
-            return await serializers.invoice.getDocuments.Response.parseOrThrow(_response.body, {
-                unrecognizedObjectKeys: "passthrough",
-                allowUnrecognizedUnionMembers: true,
-                allowUnrecognizedEnumValues: true,
-            });
-        }
-
-        if (_response.error.reason === "status-code") {
-            throw new errors.MercoaError({
-                statusCode: _response.error.statusCode,
-                body: _response.error.body,
-            });
-        }
-
-        switch (_response.error.reason) {
-            case "non-json":
-                throw new errors.MercoaError({
-                    statusCode: _response.error.statusCode,
-                    body: _response.error.rawBody,
-                });
-            case "timeout":
-                throw new errors.MercoaTimeoutError();
-            case "unknown":
-                throw new errors.MercoaError({
-                    message: _response.error.errorMessage,
-                });
-        }
-    }
-
-    /**
-     * Approve invoice
-     */
-    public async approve(
-        invoiceId: Mercoa.InvoiceId,
-        request: Mercoa.ApprovalRequest
-    ): Promise<Mercoa.CommentResponse> {
-        const _response = await core.fetcher({
-            url: urlJoin(
-                this.options.environment ?? environments.MercoaEnvironment.Production,
-                `/invoice/${await serializers.InvoiceId.jsonOrThrow(invoiceId)}/approve`
-            ),
-            method: "POST",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-            },
-            contentType: "application/json",
-            body: await serializers.ApprovalRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
-        });
-        if (_response.ok) {
-            return await serializers.CommentResponse.parseOrThrow(_response.body, {
-                unrecognizedObjectKeys: "passthrough",
-                allowUnrecognizedUnionMembers: true,
-                allowUnrecognizedEnumValues: true,
-            });
-        }
-
-        if (_response.error.reason === "status-code") {
-            throw new errors.MercoaError({
-                statusCode: _response.error.statusCode,
-                body: _response.error.body,
-            });
-        }
-
-        switch (_response.error.reason) {
-            case "non-json":
-                throw new errors.MercoaError({
-                    statusCode: _response.error.statusCode,
-                    body: _response.error.rawBody,
-                });
-            case "timeout":
-                throw new errors.MercoaTimeoutError();
-            case "unknown":
-                throw new errors.MercoaError({
-                    message: _response.error.errorMessage,
-                });
-        }
-    }
-
-    /**
-     * Reject invoice
-     */
-    public async reject(invoiceId: Mercoa.InvoiceId, request: Mercoa.ApprovalRequest): Promise<Mercoa.CommentResponse> {
-        const _response = await core.fetcher({
-            url: urlJoin(
-                this.options.environment ?? environments.MercoaEnvironment.Production,
-                `/invoice/${await serializers.InvoiceId.jsonOrThrow(invoiceId)}/reject`
-            ),
-            method: "POST",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-            },
-            contentType: "application/json",
-            body: await serializers.ApprovalRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
-        });
-        if (_response.ok) {
-            return await serializers.CommentResponse.parseOrThrow(_response.body, {
-                unrecognizedObjectKeys: "passthrough",
-                allowUnrecognizedUnionMembers: true,
-                allowUnrecognizedEnumValues: true,
-            });
-        }
-
-        if (_response.error.reason === "status-code") {
-            throw new errors.MercoaError({
-                statusCode: _response.error.statusCode,
-                body: _response.error.body,
-            });
-        }
-
-        switch (_response.error.reason) {
-            case "non-json":
-                throw new errors.MercoaError({
-                    statusCode: _response.error.statusCode,
-                    body: _response.error.rawBody,
-                });
-            case "timeout":
-                throw new errors.MercoaTimeoutError();
-            case "unknown":
-                throw new errors.MercoaError({
-                    message: _response.error.errorMessage,
-                });
-        }
-    }
-
-    /**
-     * Get all comments associated with this invoice
-     */
-    public async getComments(invoiceId: Mercoa.InvoiceId): Promise<Mercoa.CommentResponse[]> {
-        const _response = await core.fetcher({
-            url: urlJoin(
-                this.options.environment ?? environments.MercoaEnvironment.Production,
-                `/invoice/${await serializers.InvoiceId.jsonOrThrow(invoiceId)}/comments`
-            ),
-            method: "GET",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-            },
-            contentType: "application/json",
-        });
-        if (_response.ok) {
-            return await serializers.invoice.getComments.Response.parseOrThrow(_response.body, {
-                unrecognizedObjectKeys: "passthrough",
-                allowUnrecognizedUnionMembers: true,
-                allowUnrecognizedEnumValues: true,
-            });
-        }
-
-        if (_response.error.reason === "status-code") {
-            throw new errors.MercoaError({
-                statusCode: _response.error.statusCode,
-                body: _response.error.body,
-            });
-        }
-
-        switch (_response.error.reason) {
-            case "non-json":
-                throw new errors.MercoaError({
-                    statusCode: _response.error.statusCode,
-                    body: _response.error.rawBody,
-                });
-            case "timeout":
-                throw new errors.MercoaTimeoutError();
-            case "unknown":
-                throw new errors.MercoaError({
-                    message: _response.error.errorMessage,
-                });
-        }
-    }
-
-    /**
-     * Add a comment to this invoice
-     */
-    public async addComment(
-        invoiceId: Mercoa.InvoiceId,
-        request: Mercoa.CommentRequest
-    ): Promise<Mercoa.CommentResponse> {
-        const _response = await core.fetcher({
-            url: urlJoin(
-                this.options.environment ?? environments.MercoaEnvironment.Production,
-                `/invoice/${await serializers.InvoiceId.jsonOrThrow(invoiceId)}/comment`
-            ),
-            method: "POST",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-            },
-            contentType: "application/json",
-            body: await serializers.CommentRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
-        });
-        if (_response.ok) {
-            return await serializers.CommentResponse.parseOrThrow(_response.body, {
-                unrecognizedObjectKeys: "passthrough",
-                allowUnrecognizedUnionMembers: true,
-                allowUnrecognizedEnumValues: true,
-            });
-        }
-
-        if (_response.error.reason === "status-code") {
-            throw new errors.MercoaError({
-                statusCode: _response.error.statusCode,
-                body: _response.error.body,
-            });
-        }
-
-        switch (_response.error.reason) {
-            case "non-json":
-                throw new errors.MercoaError({
-                    statusCode: _response.error.statusCode,
-                    body: _response.error.rawBody,
-                });
-            case "timeout":
-                throw new errors.MercoaTimeoutError();
-            case "unknown":
-                throw new errors.MercoaError({
-                    message: _response.error.errorMessage,
-                });
-        }
-    }
-
-    /**
-     * Edit a comment on this invoice
-     */
-    public async editComment(
-        invoiceId: Mercoa.InvoiceId,
-        commentId: Mercoa.CommentId,
-        request: Mercoa.CommentRequest
-    ): Promise<Mercoa.CommentResponse> {
-        const _response = await core.fetcher({
-            url: urlJoin(
-                this.options.environment ?? environments.MercoaEnvironment.Production,
-                `/invoice/${await serializers.InvoiceId.jsonOrThrow(
-                    invoiceId
-                )}/comment/${await serializers.CommentId.jsonOrThrow(commentId)}`
-            ),
-            method: "POST",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-            },
-            contentType: "application/json",
-            body: await serializers.CommentRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
-        });
-        if (_response.ok) {
-            return await serializers.CommentResponse.parseOrThrow(_response.body, {
-                unrecognizedObjectKeys: "passthrough",
-                allowUnrecognizedUnionMembers: true,
-                allowUnrecognizedEnumValues: true,
-            });
-        }
-
-        if (_response.error.reason === "status-code") {
-            throw new errors.MercoaError({
-                statusCode: _response.error.statusCode,
-                body: _response.error.body,
-            });
-        }
-
-        switch (_response.error.reason) {
-            case "non-json":
-                throw new errors.MercoaError({
-                    statusCode: _response.error.statusCode,
-                    body: _response.error.rawBody,
-                });
-            case "timeout":
-                throw new errors.MercoaTimeoutError();
-            case "unknown":
-                throw new errors.MercoaError({
-                    message: _response.error.errorMessage,
-                });
-        }
-    }
-
-    /**
-     * Delete a comment on this invoice
-     */
-    public async deleteComment(invoiceId: Mercoa.InvoiceId, commentId: Mercoa.CommentId): Promise<void> {
-        const _response = await core.fetcher({
-            url: urlJoin(
-                this.options.environment ?? environments.MercoaEnvironment.Production,
-                `/invoice/${await serializers.InvoiceId.jsonOrThrow(
-                    invoiceId
-                )}/comment/${await serializers.CommentId.jsonOrThrow(commentId)}`
-            ),
-            method: "DELETE",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-            },
-            contentType: "application/json",
-        });
-        if (_response.ok) {
-            return;
-        }
-
-        if (_response.error.reason === "status-code") {
-            throw new errors.MercoaError({
-                statusCode: _response.error.statusCode,
-                body: _response.error.body,
-            });
+            switch ((_response.error.body as any)?.["errorName"]) {
+                case "AuthHeaderMissingError":
+                    throw new Mercoa.AuthHeaderMissingError();
+                case "AuthHeaderMalformedError":
+                    throw new Mercoa.AuthHeaderMalformedError(
+                        await serializers.AuthHeaderMalformedError.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        })
+                    );
+                case "Unauthorized":
+                    throw new Mercoa.Unauthorized(
+                        await serializers.Unauthorized.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        })
+                    );
+                default:
+                    throw new errors.MercoaError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                    });
+            }
         }
 
         switch (_response.error.reason) {
@@ -525,32 +457,63 @@ export class Invoice {
 
     /**
      * Get temporary link for vendor to accept payment
+     * @throws {@link Mercoa.AuthHeaderMissingError}
+     * @throws {@link Mercoa.AuthHeaderMalformedError}
+     * @throws {@link Mercoa.Unauthorized}
      */
     public async getVendorLink(invoiceId: Mercoa.InvoiceId): Promise<string> {
         const _response = await core.fetcher({
             url: urlJoin(
-                this.options.environment ?? environments.MercoaEnvironment.Production,
+                (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
                 `/invoice/${await serializers.InvoiceId.jsonOrThrow(invoiceId)}/vendorlink`
             ),
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "@mercoa/javascript",
+                "X-Fern-SDK-Version": "v0.2.0",
             },
             contentType: "application/json",
+            timeoutMs: 60000,
         });
         if (_response.ok) {
             return await serializers.invoice.getVendorLink.Response.parseOrThrow(_response.body, {
                 unrecognizedObjectKeys: "passthrough",
                 allowUnrecognizedUnionMembers: true,
                 allowUnrecognizedEnumValues: true,
+                breadcrumbsPrefix: ["response"],
             });
         }
 
         if (_response.error.reason === "status-code") {
-            throw new errors.MercoaError({
-                statusCode: _response.error.statusCode,
-                body: _response.error.body,
-            });
+            switch ((_response.error.body as any)?.["errorName"]) {
+                case "AuthHeaderMissingError":
+                    throw new Mercoa.AuthHeaderMissingError();
+                case "AuthHeaderMalformedError":
+                    throw new Mercoa.AuthHeaderMalformedError(
+                        await serializers.AuthHeaderMalformedError.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        })
+                    );
+                case "Unauthorized":
+                    throw new Mercoa.Unauthorized(
+                        await serializers.Unauthorized.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        })
+                    );
+                default:
+                    throw new errors.MercoaError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                    });
+            }
         }
 
         switch (_response.error.reason) {
@@ -568,53 +531,25 @@ export class Invoice {
         }
     }
 
-    /**
-     * Trigger email to vendor inviting them into the vendor portal
-     */
-    public async sendVendorEmail(invoiceId: Mercoa.InvoiceId): Promise<void> {
-        const _response = await core.fetcher({
-            url: urlJoin(
-                this.options.environment ?? environments.MercoaEnvironment.Production,
-                `/invoice/${await serializers.InvoiceId.jsonOrThrow(invoiceId)}/sendVendorEmail`
-            ),
-            method: "POST",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-            },
-            contentType: "application/json",
-        });
-        if (_response.ok) {
-            return;
-        }
+    protected _approval: Approval | undefined;
 
-        if (_response.error.reason === "status-code") {
-            throw new errors.MercoaError({
-                statusCode: _response.error.statusCode,
-                body: _response.error.body,
-            });
-        }
-
-        switch (_response.error.reason) {
-            case "non-json":
-                throw new errors.MercoaError({
-                    statusCode: _response.error.statusCode,
-                    body: _response.error.rawBody,
-                });
-            case "timeout":
-                throw new errors.MercoaTimeoutError();
-            case "unknown":
-                throw new errors.MercoaError({
-                    message: _response.error.errorMessage,
-                });
-        }
+    public get approval(): Approval {
+        return (this._approval ??= new Approval(this._options));
     }
 
-    private async _getAuthorizationHeader() {
-        const bearer = await core.Supplier.get(this.options.token);
-        if (bearer != null) {
-            return `Bearer ${bearer}`;
-        }
+    protected _comment: Comment | undefined;
 
-        return undefined;
+    public get comment(): Comment {
+        return (this._comment ??= new Comment(this._options));
+    }
+
+    protected _document: Document | undefined;
+
+    public get document(): Document {
+        return (this._document ??= new Document(this._options));
+    }
+
+    protected async _getAuthorizationHeader() {
+        return `Bearer ${await core.Supplier.get(this._options.token)}`;
     }
 }

@@ -3,11 +3,13 @@
  */
 
 import * as serializers from "../../..";
-import { Mercoa } from "@mercoa/javascript";
+import * as Mercoa from "../../../../api";
 import * as core from "../../../../core";
 
-export const ApproverAction: core.serialization.Schema<serializers.ApproverAction.Raw, Mercoa.ApproverAction> =
-    core.serialization.enum_(["NONE", "APPROVE", "REJECT"]);
+export const ApproverAction: core.serialization.Schema<
+    serializers.invoice.ApproverAction.Raw,
+    Mercoa.invoice.ApproverAction
+> = core.serialization.enum_(["NONE", "APPROVE", "REJECT"]);
 
 export declare namespace ApproverAction {
     type Raw = "NONE" | "APPROVE" | "REJECT";

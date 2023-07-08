@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "../../..";
-import { Mercoa } from "@mercoa/javascript";
+import * as Mercoa from "../../../../api";
 import * as core from "../../../../core";
 
 export const InvoiceOrderByField: core.serialization.Schema<
-    serializers.InvoiceOrderByField.Raw,
-    Mercoa.InvoiceOrderByField
+    serializers.invoice.InvoiceOrderByField.Raw,
+    Mercoa.invoice.InvoiceOrderByField
 > = core.serialization.enum_(["AMOUNT", "DUE_DATE", "CREATED_AT", "INVOICE_NUMBER"]);
 
 export declare namespace InvoiceOrderByField {

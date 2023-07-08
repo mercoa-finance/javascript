@@ -3,12 +3,16 @@
  */
 
 import * as serializers from "../../..";
-import { Mercoa } from "@mercoa/javascript";
+import * as Mercoa from "../../../../api";
 import * as core from "../../../../core";
 
-export const Response: core.serialization.Schema<serializers.entity.getAll.Response.Raw, Mercoa.EntityResponse[]> =
-    core.serialization.list(core.serialization.lazyObject(async () => (await import("../../..")).EntityResponse));
+export const Response: core.serialization.Schema<
+    serializers.entity.getAll.Response.Raw,
+    Mercoa.entity.EntityResponse[]
+> = core.serialization.list(
+    core.serialization.lazyObject(async () => (await import("../../..")).entity.EntityResponse)
+);
 
 export declare namespace Response {
-    type Raw = serializers.EntityResponse.Raw[];
+    type Raw = serializers.entity.EntityResponse.Raw[];
 }

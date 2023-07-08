@@ -3,15 +3,16 @@
  */
 
 import * as serializers from "../../..";
-import { Mercoa } from "@mercoa/javascript";
+import * as Mercoa from "../../../../api";
 import * as core from "../../../../core";
 
-export const TaxId: core.serialization.ObjectSchema<serializers.TaxId.Raw, Mercoa.TaxId> = core.serialization.object({
-    ein: core.serialization.lazyObject(async () => (await import("../../..")).Ein),
-});
+export const TaxId: core.serialization.ObjectSchema<serializers.entity.TaxId.Raw, Mercoa.entity.TaxId> =
+    core.serialization.object({
+        ein: core.serialization.lazyObject(async () => (await import("../../..")).entity.Ein),
+    });
 
 export declare namespace TaxId {
     interface Raw {
-        ein: serializers.Ein.Raw;
+        ein: serializers.entity.Ein.Raw;
     }
 }

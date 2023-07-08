@@ -3,16 +3,16 @@
  */
 
 import * as serializers from "../../..";
-import { Mercoa } from "@mercoa/javascript";
+import * as Mercoa from "../../../../api";
 import * as core from "../../../../core";
 
 export const BusinessProfileResponse: core.serialization.ObjectSchema<
-    serializers.BusinessProfileResponse.Raw,
-    Mercoa.BusinessProfileResponse
+    serializers.entity.BusinessProfileResponse.Raw,
+    Mercoa.entity.BusinessProfileResponse
 > = core.serialization.object({
     email: core.serialization.string().optional(),
     legalBusinessName: core.serialization.string(),
-    businessType: core.serialization.lazy(async () => (await import("../../..")).BusinessType).optional(),
+    businessType: core.serialization.lazy(async () => (await import("../../..")).entity.BusinessType).optional(),
     phone: core.serialization.lazyObject(async () => (await import("../../..")).PhoneNumber).optional(),
     doingBusinessAs: core.serialization.string().optional(),
     website: core.serialization.string().optional(),
@@ -26,7 +26,7 @@ export declare namespace BusinessProfileResponse {
     interface Raw {
         email?: string | null;
         legalBusinessName: string;
-        businessType?: serializers.BusinessType.Raw | null;
+        businessType?: serializers.entity.BusinessType.Raw | null;
         phone?: serializers.PhoneNumber.Raw | null;
         doingBusinessAs?: string | null;
         website?: string | null;

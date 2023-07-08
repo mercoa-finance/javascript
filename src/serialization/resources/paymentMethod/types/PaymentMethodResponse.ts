@@ -3,38 +3,44 @@
  */
 
 import * as serializers from "../../..";
-import { Mercoa } from "@mercoa/javascript";
+import * as Mercoa from "../../../../api";
 import * as core from "../../../../core";
 
-export const PaymentMethodResponse: core.serialization.ObjectSchema<
+export const PaymentMethodResponse: core.serialization.Schema<
     serializers.PaymentMethodResponse.Raw,
     Mercoa.PaymentMethodResponse
-> = core.serialization.object({
-    id: core.serialization.lazy(async () => (await import("../../..")).PaymentMethodId),
-    type: core.serialization.lazy(async () => (await import("../../..")).PaymentMethodType),
-    bankAccount: core.serialization.lazyObject(async () => (await import("../../..")).BankAccountResponse).optional(),
-    check: core.serialization.lazyObject(async () => (await import("../../..")).CheckResponse).optional(),
-    card: core.serialization.lazyObject(async () => (await import("../../..")).CardResponse).optional(),
-    custom: core.serialization
-        .lazyObject(async () => (await import("../../..")).CustomPaymentMethodResponse)
-        .optional(),
-    supportedCurrencies: core.serialization.list(
-        core.serialization.lazy(async () => (await import("../../..")).CurrencyCode)
-    ),
-    createdAt: core.serialization.date(),
-    updatedAt: core.serialization.date(),
-});
+> = core.serialization
+    .union("type", {
+        bankAccount: core.serialization.lazyObject(async () => (await import("../../..")).BankAccountResponse),
+        card: core.serialization.lazyObject(async () => (await import("../../..")).CardResponse),
+        check: core.serialization.lazyObject(async () => (await import("../../..")).CheckResponse),
+        custom: core.serialization.lazyObject(async () => (await import("../../..")).CustomPaymentMethodResponse),
+    })
+    .transform<Mercoa.PaymentMethodResponse>({
+        transform: (value) => value,
+        untransform: (value) => value,
+    });
 
 export declare namespace PaymentMethodResponse {
-    interface Raw {
-        id: serializers.PaymentMethodId.Raw;
-        type: serializers.PaymentMethodType.Raw;
-        bankAccount?: serializers.BankAccountResponse.Raw | null;
-        check?: serializers.CheckResponse.Raw | null;
-        card?: serializers.CardResponse.Raw | null;
-        custom?: serializers.CustomPaymentMethodResponse.Raw | null;
-        supportedCurrencies: serializers.CurrencyCode.Raw[];
-        createdAt: string;
-        updatedAt: string;
+    type Raw =
+        | PaymentMethodResponse.BankAccount
+        | PaymentMethodResponse.Card
+        | PaymentMethodResponse.Check
+        | PaymentMethodResponse.Custom;
+
+    interface BankAccount extends serializers.BankAccountResponse.Raw {
+        type: "bankAccount";
+    }
+
+    interface Card extends serializers.CardResponse.Raw {
+        type: "card";
+    }
+
+    interface Check extends serializers.CheckResponse.Raw {
+        type: "check";
+    }
+
+    interface Custom extends serializers.CustomPaymentMethodResponse.Raw {
+        type: "custom";
     }
 }

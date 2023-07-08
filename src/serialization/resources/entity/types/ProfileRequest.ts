@@ -3,22 +3,24 @@
  */
 
 import * as serializers from "../../..";
-import { Mercoa } from "@mercoa/javascript";
+import * as Mercoa from "../../../../api";
 import * as core from "../../../../core";
 
-export const ProfileRequest: core.serialization.ObjectSchema<serializers.ProfileRequest.Raw, Mercoa.ProfileRequest> =
-    core.serialization.object({
-        business: core.serialization
-            .lazyObject(async () => (await import("../../..")).BusinessProfileRequest)
-            .optional(),
-        individual: core.serialization
-            .lazyObject(async () => (await import("../../..")).IndividualProfileRequest)
-            .optional(),
-    });
+export const ProfileRequest: core.serialization.ObjectSchema<
+    serializers.entity.ProfileRequest.Raw,
+    Mercoa.entity.ProfileRequest
+> = core.serialization.object({
+    business: core.serialization
+        .lazyObject(async () => (await import("../../..")).entity.BusinessProfileRequest)
+        .optional(),
+    individual: core.serialization
+        .lazyObject(async () => (await import("../../..")).entity.IndividualProfileRequest)
+        .optional(),
+});
 
 export declare namespace ProfileRequest {
     interface Raw {
-        business?: serializers.BusinessProfileRequest.Raw | null;
-        individual?: serializers.IndividualProfileRequest.Raw | null;
+        business?: serializers.entity.BusinessProfileRequest.Raw | null;
+        individual?: serializers.entity.IndividualProfileRequest.Raw | null;
     }
 }

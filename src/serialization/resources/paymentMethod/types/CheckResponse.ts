@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "../../..";
-import { Mercoa } from "@mercoa/javascript";
+import * as Mercoa from "../../../../api";
 import * as core from "../../../../core";
 
 export const CheckResponse: core.serialization.ObjectSchema<serializers.CheckResponse.Raw, Mercoa.CheckResponse> =
     core.serialization.object({
-        id: core.serialization.lazy(async () => (await import("../../..")).CheckId),
+        id: core.serialization.lazy(async () => (await import("../../..")).PaymentMethodId),
         payToTheOrderOf: core.serialization.string(),
         addressLine1: core.serialization.string(),
         addressLine2: core.serialization.string().optional(),
@@ -16,13 +16,16 @@ export const CheckResponse: core.serialization.ObjectSchema<serializers.CheckRes
         stateOrProvince: core.serialization.string(),
         postalCode: core.serialization.string(),
         country: core.serialization.string(),
+        supportedCurrencies: core.serialization.list(
+            core.serialization.lazy(async () => (await import("../../..")).CurrencyCode)
+        ),
         createdAt: core.serialization.date(),
         updatedAt: core.serialization.date(),
     });
 
 export declare namespace CheckResponse {
     interface Raw {
-        id: serializers.CheckId.Raw;
+        id: serializers.PaymentMethodId.Raw;
         payToTheOrderOf: string;
         addressLine1: string;
         addressLine2?: string | null;
@@ -30,6 +33,7 @@ export declare namespace CheckResponse {
         stateOrProvince: string;
         postalCode: string;
         country: string;
+        supportedCurrencies: serializers.CurrencyCode.Raw[];
         createdAt: string;
         updatedAt: string;
     }

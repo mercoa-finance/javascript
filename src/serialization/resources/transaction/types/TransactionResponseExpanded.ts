@@ -3,7 +3,7 @@
  */
 
 import * as serializers from "../../..";
-import { Mercoa } from "@mercoa/javascript";
+import * as Mercoa from "../../../../api";
 import * as core from "../../../../core";
 
 export const TransactionResponseExpanded: core.serialization.ObjectSchema<
@@ -14,13 +14,11 @@ export const TransactionResponseExpanded: core.serialization.ObjectSchema<
         invoiceId: core.serialization.lazy(async () => (await import("../../..")).InvoiceId),
         deductionDate: core.serialization.date().optional(),
         dueDate: core.serialization.date().optional(),
-        payer: core.serialization.lazyObject(async () => (await import("../../..")).EntityResponse).optional(),
-        vendor: core.serialization.lazyObject(async () => (await import("../../..")).EntityResponse).optional(),
-        paymentSource: core.serialization
-            .lazyObject(async () => (await import("../../..")).PaymentMethodResponse)
-            .optional(),
+        payer: core.serialization.lazyObject(async () => (await import("../../..")).entity.EntityResponse).optional(),
+        vendor: core.serialization.lazyObject(async () => (await import("../../..")).entity.EntityResponse).optional(),
+        paymentSource: core.serialization.lazy(async () => (await import("../../..")).PaymentMethodResponse).optional(),
         paymentDestination: core.serialization
-            .lazyObject(async () => (await import("../../..")).PaymentMethodResponse)
+            .lazy(async () => (await import("../../..")).PaymentMethodResponse)
             .optional(),
     })
     .extend(core.serialization.lazyObject(async () => (await import("../../..")).TransactionResponse));
@@ -30,8 +28,8 @@ export declare namespace TransactionResponseExpanded {
         invoiceId: serializers.InvoiceId.Raw;
         deductionDate?: string | null;
         dueDate?: string | null;
-        payer?: serializers.EntityResponse.Raw | null;
-        vendor?: serializers.EntityResponse.Raw | null;
+        payer?: serializers.entity.EntityResponse.Raw | null;
+        vendor?: serializers.entity.EntityResponse.Raw | null;
         paymentSource?: serializers.PaymentMethodResponse.Raw | null;
         paymentDestination?: serializers.PaymentMethodResponse.Raw | null;
     }

@@ -4,47 +4,93 @@
 
 import * as environments from "../../../../environments";
 import * as core from "../../../../core";
-import { Mercoa } from "@mercoa/javascript";
-import urlJoin from "url-join";
+import * as Mercoa from "../../..";
+import { default as URLSearchParams } from "@ungap/url-search-params";
 import * as serializers from "../../../../serialization";
+import urlJoin from "url-join";
 import * as errors from "../../../../errors";
 
 export declare namespace Ocr {
     interface Options {
-        environment?: environments.MercoaEnvironment | string;
+        environment?: core.Supplier<environments.MercoaEnvironment | string>;
         token: core.Supplier<core.BearerToken>;
     }
 }
 
 export class Ocr {
-    constructor(private readonly options: Ocr.Options) {}
+    constructor(protected readonly _options: Ocr.Options) {}
 
     /**
      * Run OCR on an Base64 encoded image or PDF
+     * @throws {@link Mercoa.AuthHeaderMissingError}
+     * @throws {@link Mercoa.AuthHeaderMalformedError}
+     * @throws {@link Mercoa.Unauthorized}
      */
     public async ocr(request: Mercoa.RunOcr): Promise<Mercoa.OcrResponse> {
+        const { vendorNetwork, entityId, ..._body } = request;
+        const _queryParams = new URLSearchParams();
+        if (vendorNetwork != null) {
+            _queryParams.append("vendorNetwork", vendorNetwork);
+        }
+
+        if (entityId != null) {
+            _queryParams.append("entityId", entityId);
+        }
+
         const _response = await core.fetcher({
-            url: urlJoin(this.options.environment ?? environments.MercoaEnvironment.Production, "/ocr"),
+            url: urlJoin(
+                (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
+                "/ocr"
+            ),
             method: "POST",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "@mercoa/javascript",
+                "X-Fern-SDK-Version": "v0.2.0",
             },
             contentType: "application/json",
-            body: await serializers.RunOcr.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
+            queryParameters: _queryParams,
+            body: await serializers.RunOcr.jsonOrThrow(_body, { unrecognizedObjectKeys: "strip" }),
+            timeoutMs: 60000,
         });
         if (_response.ok) {
             return await serializers.OcrResponse.parseOrThrow(_response.body, {
                 unrecognizedObjectKeys: "passthrough",
                 allowUnrecognizedUnionMembers: true,
                 allowUnrecognizedEnumValues: true,
+                breadcrumbsPrefix: ["response"],
             });
         }
 
         if (_response.error.reason === "status-code") {
-            throw new errors.MercoaError({
-                statusCode: _response.error.statusCode,
-                body: _response.error.body,
-            });
+            switch ((_response.error.body as any)?.["errorName"]) {
+                case "AuthHeaderMissingError":
+                    throw new Mercoa.AuthHeaderMissingError();
+                case "AuthHeaderMalformedError":
+                    throw new Mercoa.AuthHeaderMalformedError(
+                        await serializers.AuthHeaderMalformedError.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        })
+                    );
+                case "Unauthorized":
+                    throw new Mercoa.Unauthorized(
+                        await serializers.Unauthorized.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        })
+                    );
+                default:
+                    throw new errors.MercoaError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                    });
+            }
         }
 
         switch (_response.error.reason) {
@@ -62,52 +108,7 @@ export class Ocr {
         }
     }
 
-    public async emailInbox(request: Mercoa.EmailOcr): Promise<void> {
-        const { org, body: _body } = request;
-        const _queryParams = new URLSearchParams();
-        _queryParams.append("org", org);
-        const _response = await core.fetcher({
-            url: urlJoin(this.options.environment ?? environments.MercoaEnvironment.Production, "/emailOcr"),
-            method: "POST",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-            },
-            contentType: "application/json",
-            queryParameters: _queryParams,
-            body: _body,
-        });
-        if (_response.ok) {
-            return;
-        }
-
-        if (_response.error.reason === "status-code") {
-            throw new errors.MercoaError({
-                statusCode: _response.error.statusCode,
-                body: _response.error.body,
-            });
-        }
-
-        switch (_response.error.reason) {
-            case "non-json":
-                throw new errors.MercoaError({
-                    statusCode: _response.error.statusCode,
-                    body: _response.error.rawBody,
-                });
-            case "timeout":
-                throw new errors.MercoaTimeoutError();
-            case "unknown":
-                throw new errors.MercoaError({
-                    message: _response.error.errorMessage,
-                });
-        }
-    }
-
-    private async _getAuthorizationHeader() {
-        const bearer = await core.Supplier.get(this.options.token);
-        if (bearer != null) {
-            return `Bearer ${bearer}`;
-        }
-
-        return undefined;
+    protected async _getAuthorizationHeader() {
+        return `Bearer ${await core.Supplier.get(this._options.token)}`;
     }
 }

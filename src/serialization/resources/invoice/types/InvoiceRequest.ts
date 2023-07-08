@@ -3,42 +3,42 @@
  */
 
 import * as serializers from "../../..";
-import { Mercoa } from "@mercoa/javascript";
+import * as Mercoa from "../../../../api";
 import * as core from "../../../../core";
 
-export const InvoiceRequest: core.serialization.ObjectSchema<serializers.InvoiceRequest.Raw, Mercoa.InvoiceRequest> =
-    core.serialization.object({
-        status: core.serialization.lazy(async () => (await import("../../..")).InvoiceStatus).optional(),
-        amount: core.serialization.number().optional(),
-        currency: core.serialization.lazy(async () => (await import("../../..")).CurrencyCode).optional(),
-        invoiceDate: core.serialization.date().optional(),
-        deductionDate: core.serialization.date().optional(),
-        fundedDate: core.serialization.date().optional(),
-        dueDate: core.serialization.date().optional(),
-        invoiceNumber: core.serialization.string().optional(),
-        noteToSelf: core.serialization.string().optional(),
-        serviceStartDate: core.serialization.date().optional(),
-        serviceEndDate: core.serialization.date().optional(),
-        payerId: core.serialization.lazy(async () => (await import("../../..")).EntityId).optional(),
-        paymentSourceId: core.serialization.lazy(async () => (await import("../../..")).PaymentMethodId).optional(),
-        approvers: core.serialization
-            .list(core.serialization.lazyObject(async () => (await import("../../..")).SetApprover))
-            .optional(),
-        vendorId: core.serialization.lazy(async () => (await import("../../..")).EntityId).optional(),
-        paymentDestinationId: core.serialization
-            .lazy(async () => (await import("../../..")).PaymentMethodId)
-            .optional(),
-        lineItems: core.serialization
-            .list(core.serialization.lazyObject(async () => (await import("../../..")).InvoiceLineItemRequest))
-            .optional(),
-        metadata: core.serialization.record(core.serialization.string(), core.serialization.string()).optional(),
-        uploadedImage: core.serialization.string().optional(),
-        createdById: core.serialization.lazy(async () => (await import("../../..")).EntityUserId).optional(),
-    });
+export const InvoiceRequest: core.serialization.ObjectSchema<
+    serializers.invoice.InvoiceRequest.Raw,
+    Mercoa.invoice.InvoiceRequest
+> = core.serialization.object({
+    status: core.serialization.lazy(async () => (await import("../../..")).invoice.InvoiceStatus).optional(),
+    amount: core.serialization.number().optional(),
+    currency: core.serialization.lazy(async () => (await import("../../..")).CurrencyCode).optional(),
+    invoiceDate: core.serialization.date().optional(),
+    deductionDate: core.serialization.date().optional(),
+    fundedDate: core.serialization.date().optional(),
+    dueDate: core.serialization.date().optional(),
+    invoiceNumber: core.serialization.string().optional(),
+    noteToSelf: core.serialization.string().optional(),
+    serviceStartDate: core.serialization.date().optional(),
+    serviceEndDate: core.serialization.date().optional(),
+    payerId: core.serialization.lazy(async () => (await import("../../..")).EntityId).optional(),
+    paymentSourceId: core.serialization.lazy(async () => (await import("../../..")).InvoiceId).optional(),
+    approvers: core.serialization
+        .list(core.serialization.lazyObject(async () => (await import("../../..")).invoice.AssignedApprover))
+        .optional(),
+    vendorId: core.serialization.lazy(async () => (await import("../../..")).EntityId).optional(),
+    paymentDestinationId: core.serialization.lazy(async () => (await import("../../..")).InvoiceId).optional(),
+    lineItems: core.serialization
+        .list(core.serialization.lazyObject(async () => (await import("../../..")).invoice.InvoiceLineItemRequest))
+        .optional(),
+    metadata: core.serialization.record(core.serialization.string(), core.serialization.string()).optional(),
+    uploadedImage: core.serialization.string().optional(),
+    createdById: core.serialization.lazy(async () => (await import("../../..")).EntityUserId).optional(),
+});
 
 export declare namespace InvoiceRequest {
     interface Raw {
-        status?: serializers.InvoiceStatus.Raw | null;
+        status?: serializers.invoice.InvoiceStatus.Raw | null;
         amount?: number | null;
         currency?: serializers.CurrencyCode.Raw | null;
         invoiceDate?: string | null;
@@ -50,11 +50,11 @@ export declare namespace InvoiceRequest {
         serviceStartDate?: string | null;
         serviceEndDate?: string | null;
         payerId?: serializers.EntityId.Raw | null;
-        paymentSourceId?: serializers.PaymentMethodId.Raw | null;
-        approvers?: serializers.SetApprover.Raw[] | null;
+        paymentSourceId?: serializers.InvoiceId.Raw | null;
+        approvers?: serializers.invoice.AssignedApprover.Raw[] | null;
         vendorId?: serializers.EntityId.Raw | null;
-        paymentDestinationId?: serializers.PaymentMethodId.Raw | null;
-        lineItems?: serializers.InvoiceLineItemRequest.Raw[] | null;
+        paymentDestinationId?: serializers.InvoiceId.Raw | null;
+        lineItems?: serializers.invoice.InvoiceLineItemRequest.Raw[] | null;
         metadata?: Record<string, string> | null;
         uploadedImage?: string | null;
         createdById?: serializers.EntityUserId.Raw | null;

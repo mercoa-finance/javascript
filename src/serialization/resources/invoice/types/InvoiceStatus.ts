@@ -3,22 +3,24 @@
  */
 
 import * as serializers from "../../..";
-import { Mercoa } from "@mercoa/javascript";
+import * as Mercoa from "../../../../api";
 import * as core from "../../../../core";
 
-export const InvoiceStatus: core.serialization.Schema<serializers.InvoiceStatus.Raw, Mercoa.InvoiceStatus> =
-    core.serialization.enum_([
-        "DRAFT",
-        "NEW",
-        "PENDING",
-        "PAID",
-        "CANCELED",
-        "REFUSED",
-        "APPROVED",
-        "ARCHIVED",
-        "SCHEDULED",
-    ]);
+export const InvoiceStatus: core.serialization.Schema<
+    serializers.invoice.InvoiceStatus.Raw,
+    Mercoa.invoice.InvoiceStatus
+> = core.serialization.enum_([
+    "DRAFT",
+    "NEW",
+    "APPROVED",
+    "SCHEDULED",
+    "PENDING",
+    "PAID",
+    "ARCHIVED",
+    "REFUSED",
+    "CANCELED",
+]);
 
 export declare namespace InvoiceStatus {
-    type Raw = "DRAFT" | "NEW" | "PENDING" | "PAID" | "CANCELED" | "REFUSED" | "APPROVED" | "ARCHIVED" | "SCHEDULED";
+    type Raw = "DRAFT" | "NEW" | "APPROVED" | "SCHEDULED" | "PENDING" | "PAID" | "ARCHIVED" | "REFUSED" | "CANCELED";
 }

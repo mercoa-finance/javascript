@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "../../..";
-import { Mercoa } from "@mercoa/javascript";
+import * as Mercoa from "../../../../api";
 import * as core from "../../../../core";
 
 export const InvoiceLineItemResponse: core.serialization.ObjectSchema<
-    serializers.InvoiceLineItemResponse.Raw,
-    Mercoa.InvoiceLineItemResponse
+    serializers.invoice.InvoiceLineItemResponse.Raw,
+    Mercoa.invoice.InvoiceLineItemResponse
 > = core.serialization.object({
     id: core.serialization.string(),
     amount: core.serialization.number().optional(),

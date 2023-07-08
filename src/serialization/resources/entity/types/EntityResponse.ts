@@ -3,27 +3,29 @@
  */
 
 import * as serializers from "../../..";
-import { Mercoa } from "@mercoa/javascript";
+import * as Mercoa from "../../../../api";
 import * as core from "../../../../core";
 
-export const EntityResponse: core.serialization.ObjectSchema<serializers.EntityResponse.Raw, Mercoa.EntityResponse> =
-    core.serialization.object({
-        id: core.serialization.lazy(async () => (await import("../../..")).EntityId),
-        foreignId: core.serialization.string().optional(),
-        emailTo: core.serialization.string().optional(),
-        emailToAlias: core.serialization.list(core.serialization.string()).optional(),
-        ownedByOrg: core.serialization.boolean(),
-        accountType: core.serialization.lazy(async () => (await import("../../..")).AccountType),
-        name: core.serialization.string(),
-        email: core.serialization.string(),
-        profile: core.serialization.lazyObject(async () => (await import("../../..")).ProfileResponse),
-        status: core.serialization.lazy(async () => (await import("../../..")).EntityStatus),
-        acceptedTos: core.serialization.boolean(),
-        isPayor: core.serialization.boolean(),
-        isPayee: core.serialization.boolean(),
-        createdAt: core.serialization.date(),
-        updatedAt: core.serialization.date(),
-    });
+export const EntityResponse: core.serialization.ObjectSchema<
+    serializers.entity.EntityResponse.Raw,
+    Mercoa.entity.EntityResponse
+> = core.serialization.object({
+    id: core.serialization.lazy(async () => (await import("../../..")).EntityId),
+    foreignId: core.serialization.string().optional(),
+    emailTo: core.serialization.string().optional(),
+    emailToAlias: core.serialization.list(core.serialization.string()).optional(),
+    ownedByOrg: core.serialization.boolean(),
+    accountType: core.serialization.lazy(async () => (await import("../../..")).entity.AccountType),
+    name: core.serialization.string(),
+    email: core.serialization.string(),
+    profile: core.serialization.lazyObject(async () => (await import("../../..")).entity.ProfileResponse),
+    status: core.serialization.lazy(async () => (await import("../../..")).entity.EntityStatus),
+    acceptedTos: core.serialization.boolean(),
+    isPayor: core.serialization.boolean(),
+    isPayee: core.serialization.boolean(),
+    createdAt: core.serialization.date(),
+    updatedAt: core.serialization.date(),
+});
 
 export declare namespace EntityResponse {
     interface Raw {
@@ -32,11 +34,11 @@ export declare namespace EntityResponse {
         emailTo?: string | null;
         emailToAlias?: string[] | null;
         ownedByOrg: boolean;
-        accountType: serializers.AccountType.Raw;
+        accountType: serializers.entity.AccountType.Raw;
         name: string;
         email: string;
-        profile: serializers.ProfileResponse.Raw;
-        status: serializers.EntityStatus.Raw;
+        profile: serializers.entity.ProfileResponse.Raw;
+        status: serializers.entity.EntityStatus.Raw;
         acceptedTos: boolean;
         isPayor: boolean;
         isPayee: boolean;

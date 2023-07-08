@@ -3,26 +3,44 @@
  */
 
 import * as serializers from "../../..";
-import { Mercoa } from "@mercoa/javascript";
+import * as Mercoa from "../../../../api";
 import * as core from "../../../../core";
 
-export const PaymentMethodRequest: core.serialization.ObjectSchema<
+export const PaymentMethodRequest: core.serialization.Schema<
     serializers.PaymentMethodRequest.Raw,
     Mercoa.PaymentMethodRequest
-> = core.serialization.object({
-    type: core.serialization.lazy(async () => (await import("../../..")).PaymentMethodType),
-    bankAccount: core.serialization.lazyObject(async () => (await import("../../..")).BankAccountRequest).optional(),
-    check: core.serialization.lazyObject(async () => (await import("../../..")).CheckRequest).optional(),
-    card: core.serialization.lazyObject(async () => (await import("../../..")).CardRequest).optional(),
-    custom: core.serialization.lazyObject(async () => (await import("../../..")).CustomPaymentMethodRequest).optional(),
-});
+> = core.serialization
+    .union("type", {
+        bankAccount: core.serialization.lazyObject(async () => (await import("../../..")).BankAccountRequest),
+        card: core.serialization.lazyObject(async () => (await import("../../..")).CardRequest),
+        check: core.serialization.lazyObject(async () => (await import("../../..")).CheckRequest),
+        custom: core.serialization.lazyObject(async () => (await import("../../..")).CustomPaymentMethodRequest),
+    })
+    .transform<Mercoa.PaymentMethodRequest>({
+        transform: (value) => value,
+        untransform: (value) => value,
+    });
 
 export declare namespace PaymentMethodRequest {
-    interface Raw {
-        type: serializers.PaymentMethodType.Raw;
-        bankAccount?: serializers.BankAccountRequest.Raw | null;
-        check?: serializers.CheckRequest.Raw | null;
-        card?: serializers.CardRequest.Raw | null;
-        custom?: serializers.CustomPaymentMethodRequest.Raw | null;
+    type Raw =
+        | PaymentMethodRequest.BankAccount
+        | PaymentMethodRequest.Card
+        | PaymentMethodRequest.Check
+        | PaymentMethodRequest.Custom;
+
+    interface BankAccount extends serializers.BankAccountRequest.Raw {
+        type: "bankAccount";
+    }
+
+    interface Card extends serializers.CardRequest.Raw {
+        type: "card";
+    }
+
+    interface Check extends serializers.CheckRequest.Raw {
+        type: "check";
+    }
+
+    interface Custom extends serializers.CustomPaymentMethodRequest.Raw {
+        type: "custom";
     }
 }

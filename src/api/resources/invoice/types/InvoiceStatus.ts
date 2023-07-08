@@ -5,22 +5,22 @@
 export type InvoiceStatus =
     | "DRAFT"
     | "NEW"
+    | "APPROVED"
+    | "SCHEDULED"
     | "PENDING"
     | "PAID"
-    | "CANCELED"
-    | "REFUSED"
-    | "APPROVED"
     | "ARCHIVED"
-    | "SCHEDULED";
+    | "REFUSED"
+    | "CANCELED";
 
 export const InvoiceStatus = {
     Draft: "DRAFT",
     New: "NEW",
+    Approved: "APPROVED",
+    Scheduled: "SCHEDULED",
     Pending: "PENDING",
     Paid: "PAID",
-    Canceled: "CANCELED",
-    Refused: "REFUSED",
-    Approved: "APPROVED",
     Archived: "ARCHIVED",
-    Scheduled: "SCHEDULED",
+    Refused: "REFUSED",
+    Canceled: "CANCELED",
 } as const;

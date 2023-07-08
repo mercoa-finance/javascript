@@ -3,10 +3,10 @@
  */
 
 import * as serializers from "../../..";
-import { Mercoa } from "@mercoa/javascript";
+import * as Mercoa from "../../../../api";
 import * as core from "../../../../core";
 
-export const AccountType: core.serialization.Schema<serializers.AccountType.Raw, Mercoa.AccountType> =
+export const AccountType: core.serialization.Schema<serializers.entity.AccountType.Raw, Mercoa.entity.AccountType> =
     core.serialization.enum_(["business", "individual"]);
 
 export declare namespace AccountType {

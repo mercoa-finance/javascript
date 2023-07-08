@@ -3,7 +3,7 @@
  */
 
 import * as serializers from "../../..";
-import { Mercoa } from "@mercoa/javascript";
+import * as Mercoa from "../../../../api";
 import * as core from "../../../../core";
 
 export const ColorSchemeResponse: core.serialization.ObjectSchema<

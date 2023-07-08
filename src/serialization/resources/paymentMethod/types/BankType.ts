@@ -3,7 +3,7 @@
  */
 
 import * as serializers from "../../..";
-import { Mercoa } from "@mercoa/javascript";
+import * as Mercoa from "../../../../api";
 import * as core from "../../../../core";
 
 export const BankType: core.serialization.Schema<serializers.BankType.Raw, Mercoa.BankType> = core.serialization.enum_([

@@ -3,19 +3,19 @@
  */
 
 import * as serializers from "../../..";
-import { Mercoa } from "@mercoa/javascript";
+import * as Mercoa from "../../../../api";
 import * as core from "../../../../core";
 
 export const EntityUpdateRequest: core.serialization.ObjectSchema<
-    serializers.EntityUpdateRequest.Raw,
-    Mercoa.EntityUpdateRequest
+    serializers.entity.EntityUpdateRequest.Raw,
+    Mercoa.entity.EntityUpdateRequest
 > = core.serialization.object({
     foreignId: core.serialization.string().optional(),
     emailTo: core.serialization.string().optional(),
     emailToAlias: core.serialization.list(core.serialization.string()).optional(),
     ownedByOrg: core.serialization.boolean().optional(),
-    accountType: core.serialization.lazy(async () => (await import("../../..")).AccountType).optional(),
-    profile: core.serialization.lazyObject(async () => (await import("../../..")).ProfileRequest).optional(),
+    accountType: core.serialization.lazy(async () => (await import("../../..")).entity.AccountType).optional(),
+    profile: core.serialization.lazyObject(async () => (await import("../../..")).entity.ProfileRequest).optional(),
     isPayor: core.serialization.boolean().optional(),
     isPayee: core.serialization.boolean().optional(),
 });
@@ -26,8 +26,8 @@ export declare namespace EntityUpdateRequest {
         emailTo?: string | null;
         emailToAlias?: string[] | null;
         ownedByOrg?: boolean | null;
-        accountType?: serializers.AccountType.Raw | null;
-        profile?: serializers.ProfileRequest.Raw | null;
+        accountType?: serializers.entity.AccountType.Raw | null;
+        profile?: serializers.entity.ProfileRequest.Raw | null;
         isPayor?: boolean | null;
         isPayee?: boolean | null;
     }

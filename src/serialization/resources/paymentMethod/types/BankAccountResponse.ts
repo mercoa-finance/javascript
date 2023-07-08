@@ -3,31 +3,35 @@
  */
 
 import * as serializers from "../../..";
-import { Mercoa } from "@mercoa/javascript";
+import * as Mercoa from "../../../../api";
 import * as core from "../../../../core";
 
 export const BankAccountResponse: core.serialization.ObjectSchema<
     serializers.BankAccountResponse.Raw,
     Mercoa.BankAccountResponse
 > = core.serialization.object({
-    id: core.serialization.lazy(async () => (await import("../../..")).BankAccountId),
+    id: core.serialization.lazy(async () => (await import("../../..")).PaymentMethodId),
     bankName: core.serialization.string(),
     routingNumber: core.serialization.string(),
     accountNumber: core.serialization.string(),
     accountType: core.serialization.lazy(async () => (await import("../../..")).BankType),
     status: core.serialization.lazy(async () => (await import("../../..")).BankStatus),
+    supportedCurrencies: core.serialization.list(
+        core.serialization.lazy(async () => (await import("../../..")).CurrencyCode)
+    ),
     createdAt: core.serialization.date(),
     updatedAt: core.serialization.date(),
 });
 
 export declare namespace BankAccountResponse {
     interface Raw {
-        id: serializers.BankAccountId.Raw;
+        id: serializers.PaymentMethodId.Raw;
         bankName: string;
         routingNumber: string;
         accountNumber: string;
         accountType: serializers.BankType.Raw;
         status: serializers.BankStatus.Raw;
+        supportedCurrencies: serializers.CurrencyCode.Raw[];
         createdAt: string;
         updatedAt: string;
     }

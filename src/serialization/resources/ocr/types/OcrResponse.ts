@@ -3,13 +3,13 @@
  */
 
 import * as serializers from "../../..";
-import { Mercoa } from "@mercoa/javascript";
+import * as Mercoa from "../../../../api";
 import * as core from "../../../../core";
 
 export const OcrResponse: core.serialization.ObjectSchema<serializers.OcrResponse.Raw, Mercoa.OcrResponse> =
     core.serialization.object({
-        invoice: core.serialization.lazyObject(async () => (await import("../../..")).InvoiceResponse),
-        vendor: core.serialization.lazyObject(async () => (await import("../../..")).EntityResponse),
+        invoice: core.serialization.lazyObject(async () => (await import("../../..")).invoice.InvoiceResponse),
+        vendor: core.serialization.lazyObject(async () => (await import("../../..")).entity.EntityResponse),
         check: core.serialization.lazyObject(async () => (await import("../../..")).CheckResponse).optional(),
         bankAccount: core.serialization
             .lazyObject(async () => (await import("../../..")).BankAccountResponse)
@@ -18,8 +18,8 @@ export const OcrResponse: core.serialization.ObjectSchema<serializers.OcrRespons
 
 export declare namespace OcrResponse {
     interface Raw {
-        invoice: serializers.InvoiceResponse.Raw;
-        vendor: serializers.EntityResponse.Raw;
+        invoice: serializers.invoice.InvoiceResponse.Raw;
+        vendor: serializers.entity.EntityResponse.Raw;
         check?: serializers.CheckResponse.Raw | null;
         bankAccount?: serializers.BankAccountResponse.Raw | null;
     }

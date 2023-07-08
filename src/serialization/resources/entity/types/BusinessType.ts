@@ -3,10 +3,10 @@
  */
 
 import * as serializers from "../../..";
-import { Mercoa } from "@mercoa/javascript";
+import * as Mercoa from "../../../../api";
 import * as core from "../../../../core";
 
-export const BusinessType: core.serialization.Schema<serializers.BusinessType.Raw, Mercoa.BusinessType> =
+export const BusinessType: core.serialization.Schema<serializers.entity.BusinessType.Raw, Mercoa.entity.BusinessType> =
     core.serialization.enum_([
         "soleProprietorship",
         "unincorporatedAssociation",

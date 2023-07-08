@@ -1,3 +1,2 @@
-export * as getDocuments from "./getDocuments";
-export * as getComments from "./getComments";
+export * as find from "./find";
 export * as getVendorLink from "./getVendorLink";

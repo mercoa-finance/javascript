@@ -3,10 +3,13 @@
  */
 
 import * as serializers from "../../../..";
-import { Mercoa } from "@mercoa/javascript";
+import * as Mercoa from "../../../../../api";
 import * as core from "../../../../../core";
 
-export const RunOcr: core.serialization.Schema<serializers.RunOcr.Raw, Mercoa.RunOcr> = core.serialization.object({
+export const RunOcr: core.serialization.Schema<
+    serializers.RunOcr.Raw,
+    Omit<Mercoa.RunOcr, "vendorNetwork" | "entityId">
+> = core.serialization.object({
     mimeType: core.serialization.string(),
     image: core.serialization.string(),
 });

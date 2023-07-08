@@ -3,20 +3,25 @@
  */
 
 import * as serializers from "../../..";
-import { Mercoa } from "@mercoa/javascript";
+import * as Mercoa from "../../../../api";
 import * as core from "../../../../core";
 
-export const PaymentMethodUpdateRequest: core.serialization.ObjectSchema<
+export const PaymentMethodUpdateRequest: core.serialization.Schema<
     serializers.PaymentMethodUpdateRequest.Raw,
     Mercoa.PaymentMethodUpdateRequest
-> = core.serialization.object({
-    custom: core.serialization
-        .lazyObject(async () => (await import("../../..")).CustomPaymentMethodUpdateRequest)
-        .optional(),
-});
+> = core.serialization
+    .union("type", {
+        custom: core.serialization.lazyObject(async () => (await import("../../..")).CustomPaymentMethodUpdateRequest),
+    })
+    .transform<Mercoa.PaymentMethodUpdateRequest>({
+        transform: (value) => value,
+        untransform: (value) => value,
+    });
 
 export declare namespace PaymentMethodUpdateRequest {
-    interface Raw {
-        custom?: serializers.CustomPaymentMethodUpdateRequest.Raw | null;
+    type Raw = PaymentMethodUpdateRequest.Custom;
+
+    interface Custom extends serializers.CustomPaymentMethodUpdateRequest.Raw {
+        type: "custom";
     }
 }

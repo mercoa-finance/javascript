@@ -3,12 +3,13 @@
  */
 
 import * as serializers from "../../..";
-import { Mercoa } from "@mercoa/javascript";
+import * as Mercoa from "../../../../api";
 import * as core from "../../../../core";
 
-export const Ein: core.serialization.ObjectSchema<serializers.Ein.Raw, Mercoa.Ein> = core.serialization.object({
-    number: core.serialization.string(),
-});
+export const Ein: core.serialization.ObjectSchema<serializers.entity.Ein.Raw, Mercoa.entity.Ein> =
+    core.serialization.object({
+        number: core.serialization.string(),
+    });
 
 export declare namespace Ein {
     interface Raw {

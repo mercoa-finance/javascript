@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "../../..";
-import { Mercoa } from "@mercoa/javascript";
+import * as Mercoa from "../../../../api";
 import * as core from "../../../../core";
 
 export const EntityAddPayeesRequest: core.serialization.ObjectSchema<
-    serializers.EntityAddPayeesRequest.Raw,
-    Mercoa.EntityAddPayeesRequest
+    serializers.entity.EntityAddPayeesRequest.Raw,
+    Mercoa.entity.EntityAddPayeesRequest
 > = core.serialization.object({
     payees: core.serialization.list(core.serialization.lazy(async () => (await import("../../..")).EntityId)),
 });

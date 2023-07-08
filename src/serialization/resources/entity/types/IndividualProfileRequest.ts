@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "../../..";
-import { Mercoa } from "@mercoa/javascript";
+import * as Mercoa from "../../../../api";
 import * as core from "../../../../core";
 
 export const IndividualProfileRequest: core.serialization.ObjectSchema<
-    serializers.IndividualProfileRequest.Raw,
-    Mercoa.IndividualProfileRequest
+    serializers.entity.IndividualProfileRequest.Raw,
+    Mercoa.entity.IndividualProfileRequest
 > = core.serialization.object({
     email: core.serialization.string().optional(),
     name: core.serialization.lazyObject(async () => (await import("../../..")).FullName),

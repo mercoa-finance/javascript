@@ -3,20 +3,22 @@
  */
 
 import * as serializers from "../../..";
-import { Mercoa } from "@mercoa/javascript";
+import * as Mercoa from "../../../../api";
 import * as core from "../../../../core";
 
-export const EntityRequest: core.serialization.ObjectSchema<serializers.EntityRequest.Raw, Mercoa.EntityRequest> =
-    core.serialization.object({
-        foreignId: core.serialization.string().optional(),
-        emailTo: core.serialization.string().optional(),
-        emailToAlias: core.serialization.list(core.serialization.string()).optional(),
-        ownedByOrg: core.serialization.boolean().optional(),
-        accountType: core.serialization.lazy(async () => (await import("../../..")).AccountType),
-        profile: core.serialization.lazyObject(async () => (await import("../../..")).ProfileRequest),
-        isPayor: core.serialization.boolean().optional(),
-        isPayee: core.serialization.boolean().optional(),
-    });
+export const EntityRequest: core.serialization.ObjectSchema<
+    serializers.entity.EntityRequest.Raw,
+    Mercoa.entity.EntityRequest
+> = core.serialization.object({
+    foreignId: core.serialization.string().optional(),
+    emailTo: core.serialization.string().optional(),
+    emailToAlias: core.serialization.list(core.serialization.string()).optional(),
+    ownedByOrg: core.serialization.boolean().optional(),
+    accountType: core.serialization.lazy(async () => (await import("../../..")).entity.AccountType),
+    profile: core.serialization.lazyObject(async () => (await import("../../..")).entity.ProfileRequest),
+    isPayor: core.serialization.boolean().optional(),
+    isPayee: core.serialization.boolean().optional(),
+});
 
 export declare namespace EntityRequest {
     interface Raw {
@@ -24,8 +26,8 @@ export declare namespace EntityRequest {
         emailTo?: string | null;
         emailToAlias?: string[] | null;
         ownedByOrg?: boolean | null;
-        accountType: serializers.AccountType.Raw;
-        profile: serializers.ProfileRequest.Raw;
+        accountType: serializers.entity.AccountType.Raw;
+        profile: serializers.entity.ProfileRequest.Raw;
         isPayor?: boolean | null;
         isPayee?: boolean | null;
     }
