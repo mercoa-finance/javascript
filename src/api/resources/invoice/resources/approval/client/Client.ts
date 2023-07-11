@@ -25,7 +25,7 @@ export class Approval {
      * @throws {@link Mercoa.AuthHeaderMalformedError}
      * @throws {@link Mercoa.Unauthorized}
      */
-    public async approve(invoiceId: Mercoa.InvoiceId, request: Mercoa.invoice.ApprovalRequest): Promise<void> {
+    public async approve(invoiceId: Mercoa.InvoiceId, request: Mercoa.ApprovalRequest): Promise<void> {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
@@ -36,10 +36,10 @@ export class Approval {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.2.0",
+                "X-Fern-SDK-Version": "v0.2.1",
             },
             contentType: "application/json",
-            body: await serializers.invoice.ApprovalRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
+            body: await serializers.ApprovalRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
             timeoutMs: 60000,
         });
         if (_response.ok) {
@@ -97,7 +97,7 @@ export class Approval {
      * @throws {@link Mercoa.AuthHeaderMalformedError}
      * @throws {@link Mercoa.Unauthorized}
      */
-    public async reject(invoiceId: Mercoa.InvoiceId, request: Mercoa.invoice.ApprovalRequest): Promise<void> {
+    public async reject(invoiceId: Mercoa.InvoiceId, request: Mercoa.ApprovalRequest): Promise<void> {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
@@ -108,10 +108,10 @@ export class Approval {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.2.0",
+                "X-Fern-SDK-Version": "v0.2.1",
             },
             contentType: "application/json",
-            body: await serializers.invoice.ApprovalRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
+            body: await serializers.ApprovalRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
             timeoutMs: 60000,
         });
         if (_response.ok) {

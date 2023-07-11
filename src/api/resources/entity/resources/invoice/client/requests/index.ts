@@ -1,2 +1,2 @@
-export { GetInvoicesRequest } from "./GetInvoicesRequest";
+export { EntityGetInvoicesRequest } from "./EntityGetInvoicesRequest";
 export { InvoiceMetricsRequest } from "./InvoiceMetricsRequest";

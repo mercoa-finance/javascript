@@ -25,7 +25,7 @@ export class Document {
      * @throws {@link Mercoa.AuthHeaderMalformedError}
      * @throws {@link Mercoa.Unauthorized}
      */
-    public async getAll(invoiceId: Mercoa.InvoiceId): Promise<Mercoa.invoice.DocumentResponse[]> {
+    public async getAll(invoiceId: Mercoa.InvoiceId): Promise<Mercoa.DocumentResponse[]> {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
@@ -36,7 +36,7 @@ export class Document {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.2.0",
+                "X-Fern-SDK-Version": "v0.2.1",
             },
             contentType: "application/json",
             timeoutMs: 60000,

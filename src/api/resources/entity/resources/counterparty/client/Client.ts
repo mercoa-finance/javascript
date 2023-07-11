@@ -29,7 +29,7 @@ export class Counterparty {
     public async find(
         entityId: Mercoa.EntityId,
         request: Mercoa.entity.FindCounterpartiesRequest = {}
-    ): Promise<Mercoa.entity.FindCounterpartiesResponse> {
+    ): Promise<Mercoa.FindCounterpartiesResponse> {
         const { paymentMethods } = request;
         const _queryParams = new URLSearchParams();
         if (paymentMethods != null) {
@@ -46,14 +46,14 @@ export class Counterparty {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.2.0",
+                "X-Fern-SDK-Version": "v0.2.1",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
             timeoutMs: 60000,
         });
         if (_response.ok) {
-            return await serializers.entity.FindCounterpartiesResponse.parseOrThrow(_response.body, {
+            return await serializers.FindCounterpartiesResponse.parseOrThrow(_response.body, {
                 unrecognizedObjectKeys: "passthrough",
                 allowUnrecognizedUnionMembers: true,
                 allowUnrecognizedEnumValues: true,

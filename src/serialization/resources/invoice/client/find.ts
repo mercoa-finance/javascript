@@ -6,13 +6,9 @@ import * as serializers from "../../..";
 import * as Mercoa from "../../../../api";
 import * as core from "../../../../core";
 
-export const Response: core.serialization.Schema<
-    serializers.invoice.find.Response.Raw,
-    Mercoa.invoice.InvoiceResponse[]
-> = core.serialization.list(
-    core.serialization.lazyObject(async () => (await import("../../..")).invoice.InvoiceResponse)
-);
+export const Response: core.serialization.Schema<serializers.invoice.find.Response.Raw, Mercoa.InvoiceResponse[]> =
+    core.serialization.list(core.serialization.lazyObject(async () => (await import("../../..")).InvoiceResponse));
 
 export declare namespace Response {
-    type Raw = serializers.invoice.InvoiceResponse.Raw[];
+    type Raw = serializers.InvoiceResponse.Raw[];
 }

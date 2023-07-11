@@ -20,7 +20,7 @@ export interface GetAllInvoicesRequest {
     /**
      * Field to order invoices by. Defaults to CREATED_AT.
      */
-    orderBy?: Mercoa.invoice.InvoiceOrderByField;
+    orderBy?: Mercoa.InvoiceOrderByField;
     /**
      * Direction to order invoices by. Defaults to asc.
      */
@@ -40,5 +40,5 @@ export interface GetAllInvoicesRequest {
     /**
      * Invoice status to filter on
      */
-    status?: Mercoa.invoice.InvoiceStatus | Mercoa.invoice.InvoiceStatus[];
+    status?: Mercoa.InvoiceStatus | Mercoa.InvoiceStatus[];
 }

@@ -8,11 +8,11 @@ import * as core from "../../../../../../core";
 
 export const Response: core.serialization.Schema<
     serializers.entity.representative.getAll.Response.Raw,
-    Mercoa.entity.RepresentativeResponse[]
+    Mercoa.RepresentativeResponse[]
 > = core.serialization.list(
-    core.serialization.lazyObject(async () => (await import("../../../../..")).entity.RepresentativeResponse)
+    core.serialization.lazyObject(async () => (await import("../../../../..")).RepresentativeResponse)
 );
 
 export declare namespace Response {
-    type Raw = serializers.entity.RepresentativeResponse.Raw[];
+    type Raw = serializers.RepresentativeResponse.Raw[];
 }

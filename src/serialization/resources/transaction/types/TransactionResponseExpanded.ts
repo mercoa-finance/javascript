@@ -14,8 +14,8 @@ export const TransactionResponseExpanded: core.serialization.ObjectSchema<
         invoiceId: core.serialization.lazy(async () => (await import("../../..")).InvoiceId),
         deductionDate: core.serialization.date().optional(),
         dueDate: core.serialization.date().optional(),
-        payer: core.serialization.lazyObject(async () => (await import("../../..")).entity.EntityResponse).optional(),
-        vendor: core.serialization.lazyObject(async () => (await import("../../..")).entity.EntityResponse).optional(),
+        payer: core.serialization.lazyObject(async () => (await import("../../..")).EntityResponse).optional(),
+        vendor: core.serialization.lazyObject(async () => (await import("../../..")).EntityResponse).optional(),
         paymentSource: core.serialization.lazy(async () => (await import("../../..")).PaymentMethodResponse).optional(),
         paymentDestination: core.serialization
             .lazy(async () => (await import("../../..")).PaymentMethodResponse)
@@ -28,8 +28,8 @@ export declare namespace TransactionResponseExpanded {
         invoiceId: serializers.InvoiceId.Raw;
         deductionDate?: string | null;
         dueDate?: string | null;
-        payer?: serializers.entity.EntityResponse.Raw | null;
-        vendor?: serializers.entity.EntityResponse.Raw | null;
+        payer?: serializers.EntityResponse.Raw | null;
+        vendor?: serializers.EntityResponse.Raw | null;
         paymentSource?: serializers.PaymentMethodResponse.Raw | null;
         paymentDestination?: serializers.PaymentMethodResponse.Raw | null;
     }

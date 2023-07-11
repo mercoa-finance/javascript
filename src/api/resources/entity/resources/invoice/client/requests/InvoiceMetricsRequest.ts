@@ -12,7 +12,7 @@ export interface InvoiceMetricsRequest {
     /**
      * Invoice status to filter on
      */
-    status?: Mercoa.invoice.InvoiceStatus | Mercoa.invoice.InvoiceStatus[];
+    status?: Mercoa.InvoiceStatus | Mercoa.InvoiceStatus[];
     /**
      * Start date for invoice dueDate filter.
      */

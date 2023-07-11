@@ -29,7 +29,7 @@ export class Invoice {
      * @throws {@link Mercoa.AuthHeaderMalformedError}
      * @throws {@link Mercoa.Unauthorized}
      */
-    public async find(request: Mercoa.invoice.GetAllInvoicesRequest = {}): Promise<Mercoa.invoice.InvoiceResponse[]> {
+    public async find(request: Mercoa.invoice.GetAllInvoicesRequest = {}): Promise<Mercoa.InvoiceResponse[]> {
         const { entityIds, startDate, endDate, orderBy, orderDirection, limit, startingAfter, search, status } =
             request;
         const _queryParams = new URLSearchParams();
@@ -91,7 +91,7 @@ export class Invoice {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.2.0",
+                "X-Fern-SDK-Version": "v0.2.1",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -157,7 +157,7 @@ export class Invoice {
      * @throws {@link Mercoa.AuthHeaderMalformedError}
      * @throws {@link Mercoa.Unauthorized}
      */
-    public async create(request: Mercoa.invoice.InvoiceRequest): Promise<Mercoa.invoice.InvoiceResponse> {
+    public async create(request: Mercoa.InvoiceRequest): Promise<Mercoa.InvoiceResponse> {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
@@ -168,14 +168,14 @@ export class Invoice {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.2.0",
+                "X-Fern-SDK-Version": "v0.2.1",
             },
             contentType: "application/json",
-            body: await serializers.invoice.InvoiceRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
+            body: await serializers.InvoiceRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
             timeoutMs: 60000,
         });
         if (_response.ok) {
-            return await serializers.invoice.InvoiceResponse.parseOrThrow(_response.body, {
+            return await serializers.InvoiceResponse.parseOrThrow(_response.body, {
                 unrecognizedObjectKeys: "passthrough",
                 allowUnrecognizedUnionMembers: true,
                 allowUnrecognizedEnumValues: true,
@@ -234,7 +234,7 @@ export class Invoice {
      * @throws {@link Mercoa.AuthHeaderMalformedError}
      * @throws {@link Mercoa.Unauthorized}
      */
-    public async get(invoiceId: Mercoa.InvoiceId): Promise<Mercoa.invoice.InvoiceResponse> {
+    public async get(invoiceId: Mercoa.InvoiceId): Promise<Mercoa.InvoiceResponse> {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
@@ -245,13 +245,13 @@ export class Invoice {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.2.0",
+                "X-Fern-SDK-Version": "v0.2.1",
             },
             contentType: "application/json",
             timeoutMs: 60000,
         });
         if (_response.ok) {
-            return await serializers.invoice.InvoiceResponse.parseOrThrow(_response.body, {
+            return await serializers.InvoiceResponse.parseOrThrow(_response.body, {
                 unrecognizedObjectKeys: "passthrough",
                 allowUnrecognizedUnionMembers: true,
                 allowUnrecognizedEnumValues: true,
@@ -310,10 +310,7 @@ export class Invoice {
      * @throws {@link Mercoa.AuthHeaderMalformedError}
      * @throws {@link Mercoa.Unauthorized}
      */
-    public async update(
-        invoiceId: Mercoa.InvoiceId,
-        request: Mercoa.invoice.InvoiceRequest
-    ): Promise<Mercoa.invoice.InvoiceResponse> {
+    public async update(invoiceId: Mercoa.InvoiceId, request: Mercoa.InvoiceRequest): Promise<Mercoa.InvoiceResponse> {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
@@ -324,14 +321,14 @@ export class Invoice {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.2.0",
+                "X-Fern-SDK-Version": "v0.2.1",
             },
             contentType: "application/json",
-            body: await serializers.invoice.InvoiceRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
+            body: await serializers.InvoiceRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
             timeoutMs: 60000,
         });
         if (_response.ok) {
-            return await serializers.invoice.InvoiceResponse.parseOrThrow(_response.body, {
+            return await serializers.InvoiceResponse.parseOrThrow(_response.body, {
                 unrecognizedObjectKeys: "passthrough",
                 allowUnrecognizedUnionMembers: true,
                 allowUnrecognizedEnumValues: true,
@@ -401,7 +398,7 @@ export class Invoice {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.2.0",
+                "X-Fern-SDK-Version": "v0.2.1",
             },
             contentType: "application/json",
             timeoutMs: 60000,
@@ -472,7 +469,7 @@ export class Invoice {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.2.0",
+                "X-Fern-SDK-Version": "v0.2.1",
             },
             contentType: "application/json",
             timeoutMs: 60000,

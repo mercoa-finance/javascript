@@ -25,7 +25,7 @@ export class Comment {
      * @throws {@link Mercoa.AuthHeaderMalformedError}
      * @throws {@link Mercoa.Unauthorized}
      */
-    public async getAll(invoiceId: Mercoa.InvoiceId): Promise<Mercoa.invoice.CommentResponse[]> {
+    public async getAll(invoiceId: Mercoa.InvoiceId): Promise<Mercoa.CommentResponse[]> {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
@@ -36,7 +36,7 @@ export class Comment {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.2.0",
+                "X-Fern-SDK-Version": "v0.2.1",
             },
             contentType: "application/json",
             timeoutMs: 60000,
@@ -101,10 +101,7 @@ export class Comment {
      * @throws {@link Mercoa.AuthHeaderMalformedError}
      * @throws {@link Mercoa.Unauthorized}
      */
-    public async create(
-        invoiceId: Mercoa.InvoiceId,
-        request: Mercoa.invoice.CommentRequest
-    ): Promise<Mercoa.invoice.CommentResponse> {
+    public async create(invoiceId: Mercoa.InvoiceId, request: Mercoa.CommentRequest): Promise<Mercoa.CommentResponse> {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
@@ -115,14 +112,14 @@ export class Comment {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.2.0",
+                "X-Fern-SDK-Version": "v0.2.1",
             },
             contentType: "application/json",
-            body: await serializers.invoice.CommentRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
+            body: await serializers.CommentRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
             timeoutMs: 60000,
         });
         if (_response.ok) {
-            return await serializers.invoice.CommentResponse.parseOrThrow(_response.body, {
+            return await serializers.CommentResponse.parseOrThrow(_response.body, {
                 unrecognizedObjectKeys: "passthrough",
                 allowUnrecognizedUnionMembers: true,
                 allowUnrecognizedEnumValues: true,
@@ -181,10 +178,7 @@ export class Comment {
      * @throws {@link Mercoa.AuthHeaderMalformedError}
      * @throws {@link Mercoa.Unauthorized}
      */
-    public async get(
-        invoiceId: Mercoa.InvoiceId,
-        commentId: Mercoa.CommentId
-    ): Promise<Mercoa.invoice.CommentResponse> {
+    public async get(invoiceId: Mercoa.InvoiceId, commentId: Mercoa.CommentId): Promise<Mercoa.CommentResponse> {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
@@ -197,13 +191,13 @@ export class Comment {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.2.0",
+                "X-Fern-SDK-Version": "v0.2.1",
             },
             contentType: "application/json",
             timeoutMs: 60000,
         });
         if (_response.ok) {
-            return await serializers.invoice.CommentResponse.parseOrThrow(_response.body, {
+            return await serializers.CommentResponse.parseOrThrow(_response.body, {
                 unrecognizedObjectKeys: "passthrough",
                 allowUnrecognizedUnionMembers: true,
                 allowUnrecognizedEnumValues: true,
@@ -265,8 +259,8 @@ export class Comment {
     public async update(
         invoiceId: Mercoa.InvoiceId,
         commentId: Mercoa.CommentId,
-        request: Mercoa.invoice.CommentRequest
-    ): Promise<Mercoa.invoice.CommentResponse> {
+        request: Mercoa.CommentRequest
+    ): Promise<Mercoa.CommentResponse> {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
@@ -279,14 +273,14 @@ export class Comment {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.2.0",
+                "X-Fern-SDK-Version": "v0.2.1",
             },
             contentType: "application/json",
-            body: await serializers.invoice.CommentRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
+            body: await serializers.CommentRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
             timeoutMs: 60000,
         });
         if (_response.ok) {
-            return await serializers.invoice.CommentResponse.parseOrThrow(_response.body, {
+            return await serializers.CommentResponse.parseOrThrow(_response.body, {
                 unrecognizedObjectKeys: "passthrough",
                 allowUnrecognizedUnionMembers: true,
                 allowUnrecognizedEnumValues: true,
@@ -358,7 +352,7 @@ export class Comment {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.2.0",
+                "X-Fern-SDK-Version": "v0.2.1",
             },
             contentType: "application/json",
             timeoutMs: 60000,

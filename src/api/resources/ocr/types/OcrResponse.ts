@@ -5,8 +5,8 @@
 import * as Mercoa from "../../..";
 
 export interface OcrResponse {
-    invoice: Mercoa.invoice.InvoiceResponse;
-    vendor: Mercoa.entity.EntityResponse;
+    invoice: Mercoa.InvoiceResponse;
+    vendor: Mercoa.EntityResponse;
     check?: Mercoa.CheckResponse;
     bankAccount?: Mercoa.BankAccountResponse;
 }

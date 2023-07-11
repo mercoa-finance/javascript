@@ -8,8 +8,8 @@ export interface TransactionResponseExpanded extends Mercoa.TransactionResponse 
     invoiceId: Mercoa.InvoiceId;
     deductionDate?: Date;
     dueDate?: Date;
-    payer?: Mercoa.entity.EntityResponse;
-    vendor?: Mercoa.entity.EntityResponse;
+    payer?: Mercoa.EntityResponse;
+    vendor?: Mercoa.EntityResponse;
     paymentSource?: Mercoa.PaymentMethodResponse;
     paymentDestination?: Mercoa.PaymentMethodResponse;
 }

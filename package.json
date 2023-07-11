@@ -1,6 +1,6 @@
 {
     "name": "@mercoa/javascript",
-    "version": "v0.2.0",
+    "version": "v0.2.1",
     "private": false,
     "repository": "https://github.com/mercoa-finance/javascript",
     "main": "./index.js",

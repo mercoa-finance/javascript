@@ -6,5 +6,5 @@ import * as Mercoa from "../../../..";
 
 export interface FindEntities {
     foreignId?: string;
-    status?: Mercoa.entity.EntityStatus;
+    status?: Mercoa.EntityStatus;
 }
