@@ -3,11 +3,12 @@
  */
 
 import * as serializers from "../../..";
+import * as Mercoa from "../../../../api";
 import * as core from "../../../../core";
 
-export const Response: core.serialization.Schema<serializers.entity.acceptTermsOfService.Response.Raw, string> =
+export const NotificationId: core.serialization.Schema<serializers.NotificationId.Raw, Mercoa.NotificationId> =
     core.serialization.string();
 
-export declare namespace Response {
+export declare namespace NotificationId {
     type Raw = string;
 }

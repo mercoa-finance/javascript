@@ -9,12 +9,13 @@ import { default as URLSearchParams } from "@ungap/url-search-params";
 import urlJoin from "url-join";
 import * as serializers from "../../../../serialization";
 import * as errors from "../../../../errors";
+import { User } from "../resources/user/client/Client";
 import { ApprovalPolicy } from "../resources/approvalPolicy/client/Client";
 import { Counterparty } from "../resources/counterparty/client/Client";
 import { Invoice } from "../resources/invoice/client/Client";
+import { NotificationPolicy } from "../resources/notificationPolicy/client/Client";
 import { PaymentMethod } from "../resources/paymentMethod/client/Client";
 import { Representative } from "../resources/representative/client/Client";
-import { User } from "../resources/user/client/Client";
 
 export declare namespace Entity {
     interface Options {
@@ -53,7 +54,7 @@ export class Entity {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.2.1",
+                "X-Fern-SDK-Version": "v0.2.2",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -118,15 +119,47 @@ export class Entity {
      * @throws {@link Mercoa.AuthHeaderMalformedError}
      * @throws {@link Mercoa.Unauthorized}
      */
-    public async find(request: Mercoa.entity.FindEntities = {}): Promise<Mercoa.EntityResponse[]> {
-        const { foreignId, status } = request;
+    public async find(request: Mercoa.entity.FindEntities = {}): Promise<Mercoa.FindEntityResponse> {
+        const { foreignId, status, isPayee, isPayor, name, limit, startingAfter } = request;
         const _queryParams = new URLSearchParams();
         if (foreignId != null) {
-            _queryParams.append("foreignId", foreignId);
+            if (Array.isArray(foreignId)) {
+                for (const _item of foreignId) {
+                    _queryParams.append("foreignId", _item);
+                }
+            } else {
+                _queryParams.append("foreignId", foreignId);
+            }
         }
 
         if (status != null) {
-            _queryParams.append("status", status);
+            if (Array.isArray(status)) {
+                for (const _item of status) {
+                    _queryParams.append("status", _item);
+                }
+            } else {
+                _queryParams.append("status", status);
+            }
+        }
+
+        if (isPayee != null) {
+            _queryParams.append("isPayee", isPayee.toString());
+        }
+
+        if (isPayor != null) {
+            _queryParams.append("isPayor", isPayor.toString());
+        }
+
+        if (name != null) {
+            _queryParams.append("name", name);
+        }
+
+        if (limit != null) {
+            _queryParams.append("limit", limit.toString());
+        }
+
+        if (startingAfter != null) {
+            _queryParams.append("startingAfter", startingAfter);
         }
 
         const _response = await core.fetcher({
@@ -139,14 +172,14 @@ export class Entity {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.2.1",
+                "X-Fern-SDK-Version": "v0.2.2",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
             timeoutMs: 60000,
         });
         if (_response.ok) {
-            return await serializers.entity.find.Response.parseOrThrow(_response.body, {
+            return await serializers.FindEntityResponse.parseOrThrow(_response.body, {
                 unrecognizedObjectKeys: "passthrough",
                 allowUnrecognizedUnionMembers: true,
                 allowUnrecognizedEnumValues: true,
@@ -215,7 +248,7 @@ export class Entity {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.2.1",
+                "X-Fern-SDK-Version": "v0.2.2",
             },
             contentType: "application/json",
             body: await serializers.EntityRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
@@ -292,7 +325,7 @@ export class Entity {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.2.1",
+                "X-Fern-SDK-Version": "v0.2.2",
             },
             contentType: "application/json",
             timeoutMs: 60000,
@@ -371,7 +404,7 @@ export class Entity {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.2.1",
+                "X-Fern-SDK-Version": "v0.2.2",
             },
             contentType: "application/json",
             body: await serializers.EntityUpdateRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
@@ -448,7 +481,7 @@ export class Entity {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.2.1",
+                "X-Fern-SDK-Version": "v0.2.2",
             },
             contentType: "application/json",
             timeoutMs: 60000,
@@ -508,7 +541,7 @@ export class Entity {
      * @throws {@link Mercoa.AuthHeaderMalformedError}
      * @throws {@link Mercoa.Unauthorized}
      */
-    public async acceptTermsOfService(entityId: Mercoa.EntityId): Promise<string> {
+    public async acceptTermsOfService(entityId: Mercoa.EntityId): Promise<void> {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
@@ -519,18 +552,83 @@ export class Entity {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.2.1",
+                "X-Fern-SDK-Version": "v0.2.2",
             },
             contentType: "application/json",
             timeoutMs: 60000,
         });
         if (_response.ok) {
-            return await serializers.entity.acceptTermsOfService.Response.parseOrThrow(_response.body, {
-                unrecognizedObjectKeys: "passthrough",
-                allowUnrecognizedUnionMembers: true,
-                allowUnrecognizedEnumValues: true,
-                breadcrumbsPrefix: ["response"],
-            });
+            return;
+        }
+
+        if (_response.error.reason === "status-code") {
+            switch ((_response.error.body as any)?.["errorName"]) {
+                case "AuthHeaderMissingError":
+                    throw new Mercoa.AuthHeaderMissingError();
+                case "AuthHeaderMalformedError":
+                    throw new Mercoa.AuthHeaderMalformedError(
+                        await serializers.AuthHeaderMalformedError.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        })
+                    );
+                case "Unauthorized":
+                    throw new Mercoa.Unauthorized(
+                        await serializers.Unauthorized.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        })
+                    );
+                default:
+                    throw new errors.MercoaError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                    });
+            }
+        }
+
+        switch (_response.error.reason) {
+            case "non-json":
+                throw new errors.MercoaError({
+                    statusCode: _response.error.statusCode,
+                    body: _response.error.rawBody,
+                });
+            case "timeout":
+                throw new errors.MercoaTimeoutError();
+            case "unknown":
+                throw new errors.MercoaError({
+                    message: _response.error.errorMessage,
+                });
+        }
+    }
+
+    /**
+     * @throws {@link Mercoa.AuthHeaderMissingError}
+     * @throws {@link Mercoa.AuthHeaderMalformedError}
+     * @throws {@link Mercoa.Unauthorized}
+     */
+    public async initiateKyb(entityId: Mercoa.EntityId): Promise<void> {
+        const _response = await core.fetcher({
+            url: urlJoin(
+                (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
+                `/entity/${await serializers.EntityId.jsonOrThrow(entityId)}/request-kyb`
+            ),
+            method: "POST",
+            headers: {
+                Authorization: await this._getAuthorizationHeader(),
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "@mercoa/javascript",
+                "X-Fern-SDK-Version": "v0.2.2",
+            },
+            contentType: "application/json",
+            timeoutMs: 60000,
+        });
+        if (_response.ok) {
+            return;
         }
 
         if (_response.error.reason === "status-code") {
@@ -595,7 +693,7 @@ export class Entity {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.2.1",
+                "X-Fern-SDK-Version": "v0.2.2",
             },
             contentType: "application/json",
             timeoutMs: 60000,
@@ -671,7 +769,7 @@ export class Entity {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.2.1",
+                "X-Fern-SDK-Version": "v0.2.2",
             },
             contentType: "application/json",
             timeoutMs: 60000,
@@ -746,7 +844,7 @@ export class Entity {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.2.1",
+                "X-Fern-SDK-Version": "v0.2.2",
             },
             contentType: "application/json",
             timeoutMs: 60000,
@@ -822,7 +920,7 @@ export class Entity {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.2.1",
+                "X-Fern-SDK-Version": "v0.2.2",
             },
             contentType: "application/json",
             body: await serializers.EntityAddPayeesRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
@@ -877,6 +975,12 @@ export class Entity {
         }
     }
 
+    protected _user: User | undefined;
+
+    public get user(): User {
+        return (this._user ??= new User(this._options));
+    }
+
     protected _approvalPolicy: ApprovalPolicy | undefined;
 
     public get approvalPolicy(): ApprovalPolicy {
@@ -895,6 +999,12 @@ export class Entity {
         return (this._invoice ??= new Invoice(this._options));
     }
 
+    protected _notificationPolicy: NotificationPolicy | undefined;
+
+    public get notificationPolicy(): NotificationPolicy {
+        return (this._notificationPolicy ??= new NotificationPolicy(this._options));
+    }
+
     protected _paymentMethod: PaymentMethod | undefined;
 
     public get paymentMethod(): PaymentMethod {
@@ -905,12 +1015,6 @@ export class Entity {
 
     public get representative(): Representative {
         return (this._representative ??= new Representative(this._options));
-    }
-
-    protected _user: User | undefined;
-
-    public get user(): User {
-        return (this._user ??= new User(this._options));
     }
 
     protected async _getAuthorizationHeader() {

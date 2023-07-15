@@ -29,7 +29,7 @@ export class Invoice {
     public async find(
         entityId: Mercoa.EntityId,
         request: Mercoa.entity.EntityGetInvoicesRequest = {}
-    ): Promise<Mercoa.InvoiceResponse[]> {
+    ): Promise<Mercoa.FindInvoiceResponse> {
         const { startDate, endDate, orderBy, orderDirection, limit, startingAfter, search, status } = request;
         const _queryParams = new URLSearchParams();
         if (startDate != null) {
@@ -80,14 +80,14 @@ export class Invoice {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.2.1",
+                "X-Fern-SDK-Version": "v0.2.2",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
             timeoutMs: 60000,
         });
         if (_response.ok) {
-            return await serializers.entity.invoice.find.Response.parseOrThrow(_response.body, {
+            return await serializers.FindInvoiceResponse.parseOrThrow(_response.body, {
                 unrecognizedObjectKeys: "passthrough",
                 allowUnrecognizedUnionMembers: true,
                 allowUnrecognizedEnumValues: true,
@@ -193,7 +193,7 @@ export class Invoice {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.2.1",
+                "X-Fern-SDK-Version": "v0.2.2",
             },
             contentType: "application/json",
             queryParameters: _queryParams,

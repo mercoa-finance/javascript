@@ -15,3 +15,4 @@ export * from "./ApprovalRequest";
 export * from "./CommentRequest";
 export * from "./CommentResponse";
 export * from "./DocumentResponse";
+export * from "./FindInvoiceResponse";

@@ -13,6 +13,6 @@ export interface BusinessProfileResponse {
     website?: string;
     description?: string;
     address?: Mercoa.Address;
-    ownersProvided: boolean;
+    ownersProvided?: boolean;
     taxIdProvided: boolean;
 }

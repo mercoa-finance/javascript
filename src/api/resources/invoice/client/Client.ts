@@ -29,7 +29,7 @@ export class Invoice {
      * @throws {@link Mercoa.AuthHeaderMalformedError}
      * @throws {@link Mercoa.Unauthorized}
      */
-    public async find(request: Mercoa.invoice.GetAllInvoicesRequest = {}): Promise<Mercoa.InvoiceResponse[]> {
+    public async find(request: Mercoa.invoice.GetAllInvoicesRequest = {}): Promise<Mercoa.FindInvoiceResponse> {
         const { entityIds, startDate, endDate, orderBy, orderDirection, limit, startingAfter, search, status } =
             request;
         const _queryParams = new URLSearchParams();
@@ -91,14 +91,14 @@ export class Invoice {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.2.1",
+                "X-Fern-SDK-Version": "v0.2.2",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
             timeoutMs: 60000,
         });
         if (_response.ok) {
-            return await serializers.invoice.find.Response.parseOrThrow(_response.body, {
+            return await serializers.FindInvoiceResponse.parseOrThrow(_response.body, {
                 unrecognizedObjectKeys: "passthrough",
                 allowUnrecognizedUnionMembers: true,
                 allowUnrecognizedEnumValues: true,
@@ -168,7 +168,7 @@ export class Invoice {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.2.1",
+                "X-Fern-SDK-Version": "v0.2.2",
             },
             contentType: "application/json",
             body: await serializers.InvoiceRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
@@ -245,7 +245,7 @@ export class Invoice {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.2.1",
+                "X-Fern-SDK-Version": "v0.2.2",
             },
             contentType: "application/json",
             timeoutMs: 60000,
@@ -321,7 +321,7 @@ export class Invoice {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.2.1",
+                "X-Fern-SDK-Version": "v0.2.2",
             },
             contentType: "application/json",
             body: await serializers.InvoiceRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
@@ -398,7 +398,7 @@ export class Invoice {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.2.1",
+                "X-Fern-SDK-Version": "v0.2.2",
             },
             contentType: "application/json",
             timeoutMs: 60000,
@@ -469,7 +469,7 @@ export class Invoice {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.2.1",
+                "X-Fern-SDK-Version": "v0.2.2",
             },
             contentType: "application/json",
             timeoutMs: 60000,

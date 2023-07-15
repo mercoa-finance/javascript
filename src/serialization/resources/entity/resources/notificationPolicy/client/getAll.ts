@@ -7,12 +7,12 @@ import * as Mercoa from "../../../../../../api";
 import * as core from "../../../../../../core";
 
 export const Response: core.serialization.Schema<
-    serializers.entity.invoice.find.Response.Raw,
-    Mercoa.InvoiceResponse[]
+    serializers.entity.notificationPolicy.getAll.Response.Raw,
+    Mercoa.NotificationPolicyResponse[]
 > = core.serialization.list(
-    core.serialization.lazyObject(async () => (await import("../../../../..")).InvoiceResponse)
+    core.serialization.lazyObject(async () => (await import("../../../../..")).NotificationPolicyResponse)
 );
 
 export declare namespace Response {
-    type Raw = serializers.InvoiceResponse.Raw[];
+    type Raw = serializers.NotificationPolicyResponse.Raw[];
 }

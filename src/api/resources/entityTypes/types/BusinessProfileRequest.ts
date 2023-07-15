@@ -13,6 +13,5 @@ export interface BusinessProfileRequest {
     website?: string;
     description?: string;
     address?: Mercoa.Address;
-    ownersProvided?: boolean;
     taxId?: Mercoa.TaxId;
 }
