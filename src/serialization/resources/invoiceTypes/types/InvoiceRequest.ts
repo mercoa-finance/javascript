@@ -20,12 +20,14 @@ export const InvoiceRequest: core.serialization.ObjectSchema<serializers.Invoice
         serviceStartDate: core.serialization.date().optional(),
         serviceEndDate: core.serialization.date().optional(),
         payerId: core.serialization.lazy(async () => (await import("../../..")).EntityId).optional(),
-        paymentSourceId: core.serialization.lazy(async () => (await import("../../..")).InvoiceId).optional(),
+        paymentSourceId: core.serialization.lazy(async () => (await import("../../..")).PaymentMethodId).optional(),
         approvers: core.serialization
             .list(core.serialization.lazyObject(async () => (await import("../../..")).AssignedApprover))
             .optional(),
         vendorId: core.serialization.lazy(async () => (await import("../../..")).EntityId).optional(),
-        paymentDestinationId: core.serialization.lazy(async () => (await import("../../..")).InvoiceId).optional(),
+        paymentDestinationId: core.serialization
+            .lazy(async () => (await import("../../..")).PaymentMethodId)
+            .optional(),
         lineItems: core.serialization
             .list(core.serialization.lazyObject(async () => (await import("../../..")).InvoiceLineItemRequest))
             .optional(),
@@ -48,10 +50,10 @@ export declare namespace InvoiceRequest {
         serviceStartDate?: string | null;
         serviceEndDate?: string | null;
         payerId?: serializers.EntityId.Raw | null;
-        paymentSourceId?: serializers.InvoiceId.Raw | null;
+        paymentSourceId?: serializers.PaymentMethodId.Raw | null;
         approvers?: serializers.AssignedApprover.Raw[] | null;
         vendorId?: serializers.EntityId.Raw | null;
-        paymentDestinationId?: serializers.InvoiceId.Raw | null;
+        paymentDestinationId?: serializers.PaymentMethodId.Raw | null;
         lineItems?: serializers.InvoiceLineItemRequest.Raw[] | null;
         metadata?: Record<string, string> | null;
         uploadedImage?: string | null;

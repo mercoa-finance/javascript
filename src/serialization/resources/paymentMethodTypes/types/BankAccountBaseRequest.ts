@@ -13,8 +13,8 @@ export const BankAccountBaseRequest: core.serialization.ObjectSchema<
     bankName: core.serialization.string().optional(),
     routingNumber: core.serialization.string().optional(),
     accountNumber: core.serialization.string().optional(),
-    plaidPublicToken: core.serialization.string().optional(),
     accountType: core.serialization.lazy(async () => (await import("../../..")).BankType).optional(),
+    plaid: core.serialization.lazyObject(async () => (await import("../../..")).PlaidLinkRequest).optional(),
 });
 
 export declare namespace BankAccountBaseRequest {
@@ -22,7 +22,7 @@ export declare namespace BankAccountBaseRequest {
         bankName?: string | null;
         routingNumber?: string | null;
         accountNumber?: string | null;
-        plaidPublicToken?: string | null;
         accountType?: serializers.BankType.Raw | null;
+        plaid?: serializers.PlaidLinkRequest.Raw | null;
     }
 }

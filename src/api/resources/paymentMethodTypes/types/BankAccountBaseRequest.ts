@@ -8,7 +8,7 @@ export interface BankAccountBaseRequest {
     bankName?: string;
     routingNumber?: string;
     accountNumber?: string;
-    /** Public token from Plaid Link */
-    plaidPublicToken?: string;
     accountType?: Mercoa.BankType;
+    /** If provided, will link a bank account using Plaid Link */
+    plaid?: Mercoa.PlaidLinkRequest;
 }

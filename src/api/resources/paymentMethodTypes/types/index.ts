@@ -3,6 +3,7 @@ export * from "./PaymentMethodSchemaId";
 export * from "./PaymentMethodRequest";
 export * from "./PaymentMethodUpdateRequest";
 export * from "./PaymentMethodResponse";
+export * from "./PlaidLinkRequest";
 export * from "./BankAccountBaseRequest";
 export * from "./BankAccountRequest";
 export * from "./BankAccountBaseResponse";
