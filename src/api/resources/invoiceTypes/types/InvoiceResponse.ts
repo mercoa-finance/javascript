@@ -24,11 +24,11 @@ export interface InvoiceResponse {
     payerId?: Mercoa.EntityId;
     payer?: Mercoa.EntityResponse;
     paymentSource?: Mercoa.PaymentMethodResponse;
-    paymentSourceId?: Mercoa.InvoiceId;
+    paymentSourceId?: Mercoa.PaymentMethodId;
     vendorId?: Mercoa.EntityId;
     vendor?: Mercoa.EntityResponse;
     paymentDestination?: Mercoa.PaymentMethodResponse;
-    paymentDestinationId?: Mercoa.InvoiceId;
+    paymentDestinationId?: Mercoa.PaymentMethodId;
     paymentDestinationConfirmed: boolean;
     hasDocuments: boolean;
     comments?: Mercoa.CommentResponse[];

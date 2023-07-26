@@ -23,13 +23,15 @@ export const InvoiceResponse: core.serialization.ObjectSchema<serializers.Invoic
         payerId: core.serialization.lazy(async () => (await import("../../..")).EntityId).optional(),
         payer: core.serialization.lazyObject(async () => (await import("../../..")).EntityResponse).optional(),
         paymentSource: core.serialization.lazy(async () => (await import("../../..")).PaymentMethodResponse).optional(),
-        paymentSourceId: core.serialization.lazy(async () => (await import("../../..")).InvoiceId).optional(),
+        paymentSourceId: core.serialization.lazy(async () => (await import("../../..")).PaymentMethodId).optional(),
         vendorId: core.serialization.lazy(async () => (await import("../../..")).EntityId).optional(),
         vendor: core.serialization.lazyObject(async () => (await import("../../..")).EntityResponse).optional(),
         paymentDestination: core.serialization
             .lazy(async () => (await import("../../..")).PaymentMethodResponse)
             .optional(),
-        paymentDestinationId: core.serialization.lazy(async () => (await import("../../..")).InvoiceId).optional(),
+        paymentDestinationId: core.serialization
+            .lazy(async () => (await import("../../..")).PaymentMethodId)
+            .optional(),
         paymentDestinationConfirmed: core.serialization.boolean(),
         hasDocuments: core.serialization.boolean(),
         comments: core.serialization
@@ -71,11 +73,11 @@ export declare namespace InvoiceResponse {
         payerId?: serializers.EntityId.Raw | null;
         payer?: serializers.EntityResponse.Raw | null;
         paymentSource?: serializers.PaymentMethodResponse.Raw | null;
-        paymentSourceId?: serializers.InvoiceId.Raw | null;
+        paymentSourceId?: serializers.PaymentMethodId.Raw | null;
         vendorId?: serializers.EntityId.Raw | null;
         vendor?: serializers.EntityResponse.Raw | null;
         paymentDestination?: serializers.PaymentMethodResponse.Raw | null;
-        paymentDestinationId?: serializers.InvoiceId.Raw | null;
+        paymentDestinationId?: serializers.PaymentMethodId.Raw | null;
         paymentDestinationConfirmed: boolean;
         hasDocuments: boolean;
         comments?: serializers.CommentResponse.Raw[] | null;

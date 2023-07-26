@@ -37,5 +37,6 @@ export * from "./NotificationType";
 export * from "./NotificationResponse";
 export * from "./NotificationPolicyRequest";
 export * from "./NotificationPolicyResponse";
+export * from "./UserNotificationPolicyResponse";
 export * from "./FindNotificationResponse";
 export * from "./FindEntityResponse";

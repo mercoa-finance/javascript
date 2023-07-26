@@ -36,7 +36,7 @@ export class Document {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.2.4",
+                "X-Fern-SDK-Version": "v0.2.5",
             },
             contentType: "application/json",
             timeoutMs: 60000,

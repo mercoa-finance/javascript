@@ -8,6 +8,7 @@ import * as Mercoa from "../../../../..";
 import * as serializers from "../../../../../../serialization";
 import urlJoin from "url-join";
 import * as errors from "../../../../../../errors";
+import { NotificationPolicy } from "../resources/notificationPolicy/client/Client";
 import { Notifications } from "../resources/notifications/client/Client";
 
 export declare namespace User {
@@ -37,7 +38,7 @@ export class User {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.2.4",
+                "X-Fern-SDK-Version": "v0.2.5",
             },
             contentType: "application/json",
             timeoutMs: 60000,
@@ -115,7 +116,7 @@ export class User {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.2.4",
+                "X-Fern-SDK-Version": "v0.2.5",
             },
             contentType: "application/json",
             body: await serializers.EntityUserRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
@@ -194,7 +195,7 @@ export class User {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.2.4",
+                "X-Fern-SDK-Version": "v0.2.5",
             },
             contentType: "application/json",
             timeoutMs: 60000,
@@ -276,7 +277,7 @@ export class User {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.2.4",
+                "X-Fern-SDK-Version": "v0.2.5",
             },
             contentType: "application/json",
             body: await serializers.EntityUserRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
@@ -355,7 +356,7 @@ export class User {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.2.4",
+                "X-Fern-SDK-Version": "v0.2.5",
             },
             contentType: "application/json",
             timeoutMs: 60000,
@@ -428,7 +429,7 @@ export class User {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.2.4",
+                "X-Fern-SDK-Version": "v0.2.5",
             },
             contentType: "application/json",
             timeoutMs: 60000,
@@ -485,6 +486,12 @@ export class User {
                     message: _response.error.errorMessage,
                 });
         }
+    }
+
+    protected _notificationPolicy: NotificationPolicy | undefined;
+
+    public get notificationPolicy(): NotificationPolicy {
+        return (this._notificationPolicy ??= new NotificationPolicy(this._options));
     }
 
     protected _notifications: Notifications | undefined;
