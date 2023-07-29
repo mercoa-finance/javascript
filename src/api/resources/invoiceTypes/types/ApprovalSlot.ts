@@ -4,7 +4,9 @@
 
 import * as Mercoa from "../../..";
 
-export interface InvoiceApproverResponse {
+export interface ApprovalSlot {
+    /** The identifier for this approval slot */
+    approvalSlotId: Mercoa.ApprovalSlotId;
     assignedUserId?: Mercoa.EntityUserId;
     action: Mercoa.ApproverAction;
     eligibleRoles: string[];

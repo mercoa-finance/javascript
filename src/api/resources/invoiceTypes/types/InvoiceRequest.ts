@@ -17,13 +17,14 @@ export interface InvoiceRequest {
     /** Due date of invoice. */
     dueDate?: Date;
     invoiceNumber?: string;
+    /** Note to self or memo on invoice. */
     noteToSelf?: string;
     serviceStartDate?: Date;
     serviceEndDate?: Date;
     payerId?: Mercoa.EntityId;
     paymentSourceId?: Mercoa.PaymentMethodId;
     /** Set approvers for this invoice. */
-    approvers?: Mercoa.AssignedApprover[];
+    approvers?: Mercoa.ApprovalSlotAssignment[];
     vendorId?: Mercoa.EntityId;
     paymentDestinationId?: Mercoa.PaymentMethodId;
     lineItems?: Mercoa.InvoiceLineItemRequest[];

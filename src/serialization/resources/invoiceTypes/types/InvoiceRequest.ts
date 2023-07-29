@@ -22,7 +22,7 @@ export const InvoiceRequest: core.serialization.ObjectSchema<serializers.Invoice
         payerId: core.serialization.lazy(async () => (await import("../../..")).EntityId).optional(),
         paymentSourceId: core.serialization.lazy(async () => (await import("../../..")).PaymentMethodId).optional(),
         approvers: core.serialization
-            .list(core.serialization.lazyObject(async () => (await import("../../..")).AssignedApprover))
+            .list(core.serialization.lazyObject(async () => (await import("../../..")).ApprovalSlotAssignment))
             .optional(),
         vendorId: core.serialization.lazy(async () => (await import("../../..")).EntityId).optional(),
         paymentDestinationId: core.serialization
@@ -51,7 +51,7 @@ export declare namespace InvoiceRequest {
         serviceEndDate?: string | null;
         payerId?: serializers.EntityId.Raw | null;
         paymentSourceId?: serializers.PaymentMethodId.Raw | null;
-        approvers?: serializers.AssignedApprover.Raw[] | null;
+        approvers?: serializers.ApprovalSlotAssignment.Raw[] | null;
         vendorId?: serializers.EntityId.Raw | null;
         paymentDestinationId?: serializers.PaymentMethodId.Raw | null;
         lineItems?: serializers.InvoiceLineItemRequest.Raw[] | null;

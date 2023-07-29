@@ -44,7 +44,7 @@ export const InvoiceResponse: core.serialization.ObjectSchema<serializers.Invoic
             .list(core.serialization.lazyObject(async () => (await import("../../..")).InvoiceLineItemResponse))
             .optional(),
         approvers: core.serialization.list(
-            core.serialization.lazyObject(async () => (await import("../../..")).InvoiceApproverResponse)
+            core.serialization.lazyObject(async () => (await import("../../..")).ApprovalSlot)
         ),
         approvalPolicy: core.serialization.list(
             core.serialization.lazyObject(async () => (await import("../../..")).ApprovalPolicyResponse)
@@ -83,7 +83,7 @@ export declare namespace InvoiceResponse {
         comments?: serializers.CommentResponse.Raw[] | null;
         transactions?: serializers.TransactionResponse.Raw[] | null;
         lineItems?: serializers.InvoiceLineItemResponse.Raw[] | null;
-        approvers: serializers.InvoiceApproverResponse.Raw[];
+        approvers: serializers.ApprovalSlot.Raw[];
         approvalPolicy: serializers.ApprovalPolicyResponse.Raw[];
         metadata: Record<string, string>;
         createdBy?: serializers.EntityUserResponse.Raw | null;

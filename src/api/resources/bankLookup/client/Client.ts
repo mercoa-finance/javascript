@@ -40,7 +40,7 @@ export class BankLookup {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.2.5",
+                "X-Fern-SDK-Version": "v0.2.6",
             },
             contentType: "application/json",
             queryParameters: _queryParams,

@@ -20,7 +20,7 @@ export class Transaction {
     constructor(protected readonly _options: Transaction.Options) {}
 
     /**
-     * Get all entities
+     * Get all transactions
      * @throws {@link Mercoa.AuthHeaderMissingError}
      * @throws {@link Mercoa.AuthHeaderMalformedError}
      * @throws {@link Mercoa.Unauthorized}
@@ -36,7 +36,7 @@ export class Transaction {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.2.5",
+                "X-Fern-SDK-Version": "v0.2.6",
             },
             contentType: "application/json",
             timeoutMs: 60000,
@@ -112,7 +112,7 @@ export class Transaction {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.2.5",
+                "X-Fern-SDK-Version": "v0.2.6",
             },
             contentType: "application/json",
             timeoutMs: 60000,

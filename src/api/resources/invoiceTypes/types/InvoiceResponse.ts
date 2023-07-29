@@ -34,7 +34,7 @@ export interface InvoiceResponse {
     comments?: Mercoa.CommentResponse[];
     transactions?: Mercoa.TransactionResponse[];
     lineItems?: Mercoa.InvoiceLineItemResponse[];
-    approvers: Mercoa.InvoiceApproverResponse[];
+    approvers: Mercoa.ApprovalSlot[];
     approvalPolicy: Mercoa.ApprovalPolicyResponse[];
     /** Metadata associated with this invoice. */
     metadata: Record<string, string>;
