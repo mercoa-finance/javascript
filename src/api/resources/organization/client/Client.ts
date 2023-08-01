@@ -9,6 +9,7 @@ import { default as URLSearchParams } from "@ungap/url-search-params";
 import urlJoin from "url-join";
 import * as serializers from "../../../../serialization";
 import * as errors from "../../../../errors";
+import { NotificationConfiguration } from "../resources/notificationConfiguration/client/Client";
 
 export declare namespace Organization {
     interface Options {
@@ -26,8 +27,8 @@ export class Organization {
      * @throws {@link Mercoa.AuthHeaderMalformedError}
      * @throws {@link Mercoa.Unauthorized}
      */
-    public async get(request: Mercoa.GetOrganizationRequest = {}): Promise<Mercoa.OrganizationResponse> {
-        const { paymentMethods, emailProvider, colorScheme } = request;
+    public async get(request: Mercoa.organization.GetOrganizationRequest = {}): Promise<Mercoa.OrganizationResponse> {
+        const { paymentMethods, emailProvider, colorScheme, notificationConfiguration } = request;
         const _queryParams = new URLSearchParams();
         if (paymentMethods != null) {
             _queryParams.append("paymentMethods", paymentMethods.toString());
@@ -41,6 +42,10 @@ export class Organization {
             _queryParams.append("colorScheme", colorScheme.toString());
         }
 
+        if (notificationConfiguration != null) {
+            _queryParams.append("notificationConfiguration", notificationConfiguration.toString());
+        }
+
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
@@ -51,7 +56,7 @@ export class Organization {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.2.6",
+                "X-Fern-SDK-Version": "v0.2.7",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -128,7 +133,7 @@ export class Organization {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.2.6",
+                "X-Fern-SDK-Version": "v0.2.7",
             },
             contentType: "application/json",
             body: await serializers.OrganizationRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
@@ -194,7 +199,7 @@ export class Organization {
      * @throws {@link Mercoa.AuthHeaderMalformedError}
      * @throws {@link Mercoa.Unauthorized}
      */
-    public async emailLog(request: Mercoa.GetEmailLogRequest = {}): Promise<Mercoa.EmailLogResponse[]> {
+    public async emailLog(request: Mercoa.organization.GetEmailLogRequest = {}): Promise<Mercoa.EmailLogResponse[]> {
         const { startDate, endDate } = request;
         const _queryParams = new URLSearchParams();
         if (startDate != null) {
@@ -215,7 +220,7 @@ export class Organization {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.2.6",
+                "X-Fern-SDK-Version": "v0.2.7",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -273,6 +278,12 @@ export class Organization {
                     message: _response.error.errorMessage,
                 });
         }
+    }
+
+    protected _notificationConfiguration: NotificationConfiguration | undefined;
+
+    public get notificationConfiguration(): NotificationConfiguration {
+        return (this._notificationConfiguration ??= new NotificationConfiguration(this._options));
     }
 
     protected async _getAuthorizationHeader() {

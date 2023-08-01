@@ -6,9 +6,9 @@ import * as environments from "./environments";
 import * as core from "./core";
 import { Entity } from "./api/resources/entity/client/Client";
 import { Invoice } from "./api/resources/invoice/client/Client";
+import { Organization } from "./api/resources/organization/client/Client";
 import { BankLookup } from "./api/resources/bankLookup/client/Client";
 import { Ocr } from "./api/resources/ocr/client/Client";
-import { Organization } from "./api/resources/organization/client/Client";
 import { PaymentMethodSchema } from "./api/resources/paymentMethodSchema/client/Client";
 import { Transaction } from "./api/resources/transaction/client/Client";
 
@@ -34,6 +34,12 @@ export class MercoaClient {
         return (this._invoice ??= new Invoice(this._options));
     }
 
+    protected _organization: Organization | undefined;
+
+    public get organization(): Organization {
+        return (this._organization ??= new Organization(this._options));
+    }
+
     protected _bankLookup: BankLookup | undefined;
 
     public get bankLookup(): BankLookup {
@@ -44,12 +50,6 @@ export class MercoaClient {
 
     public get ocr(): Ocr {
         return (this._ocr ??= new Ocr(this._options));
-    }
-
-    protected _organization: Organization | undefined;
-
-    public get organization(): Organization {
-        return (this._organization ??= new Organization(this._options));
     }
 
     protected _paymentMethodSchema: PaymentMethodSchema | undefined;

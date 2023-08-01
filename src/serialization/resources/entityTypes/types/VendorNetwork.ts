@@ -7,8 +7,8 @@ import * as Mercoa from "../../../../api";
 import * as core from "../../../../core";
 
 export const VendorNetwork: core.serialization.Schema<serializers.VendorNetwork.Raw, Mercoa.VendorNetwork> =
-    core.serialization.enum_(["ENTITY", "PLATFORM", "MERCOA"]);
+    core.serialization.enum_(["all", "platform", "entity"]);
 
 export declare namespace VendorNetwork {
-    type Raw = "ENTITY" | "PLATFORM" | "MERCOA";
+    type Raw = "all" | "platform" | "entity";
 }

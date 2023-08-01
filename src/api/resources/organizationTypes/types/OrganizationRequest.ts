@@ -12,4 +12,5 @@ export interface OrganizationRequest {
     paymentMethods?: Mercoa.PaymentMethodsRequest;
     emailProvider?: Mercoa.EmailProviderRequest;
     colorScheme?: Mercoa.ColorSchemeRequest;
+    notificationConfiguration?: Mercoa.GlobalNotificationConfigurationRequest;
 }

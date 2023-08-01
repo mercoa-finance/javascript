@@ -15,4 +15,8 @@ export interface GetOrganizationRequest {
      * include color scheme info in response
      */
     colorScheme?: boolean;
+    /**
+     * include notification configuration in response
+     */
+    notificationConfiguration?: boolean;
 }

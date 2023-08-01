@@ -47,7 +47,7 @@ export class Ocr {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.2.6",
+                "X-Fern-SDK-Version": "v0.2.7",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
