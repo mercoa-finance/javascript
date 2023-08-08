@@ -40,6 +40,8 @@ export interface InvoiceResponse {
     metadata: Record<string, string>;
     /** Entity user who created this invoice. */
     createdBy?: Mercoa.EntityUserResponse;
+    /** If the invoice failed to be paid, this field will be populated with the type of failure. */
+    failureType?: Mercoa.InvoiceFailureType;
     processedAt?: Date;
     createdAt: Date;
     updatedAt: Date;

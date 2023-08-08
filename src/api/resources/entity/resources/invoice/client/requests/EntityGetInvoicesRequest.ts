@@ -34,6 +34,14 @@ export interface EntityGetInvoicesRequest {
      */
     search?: string;
     /**
+     * Filter invoices by vendor ID.
+     */
+    vendorId?: Mercoa.EntityId | Mercoa.EntityId[];
+    /**
+     * Filter invoices by assigned approver user ID.
+     */
+    approverId?: Mercoa.EntityUserId | Mercoa.EntityUserId[];
+    /**
      * Invoice status to filter on
      */
     status?: Mercoa.InvoiceStatus | Mercoa.InvoiceStatus[];

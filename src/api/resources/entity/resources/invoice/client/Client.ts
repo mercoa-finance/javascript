@@ -30,7 +30,18 @@ export class Invoice {
         entityId: Mercoa.EntityId,
         request: Mercoa.entity.EntityGetInvoicesRequest = {}
     ): Promise<Mercoa.FindInvoiceResponse> {
-        const { startDate, endDate, orderBy, orderDirection, limit, startingAfter, search, status } = request;
+        const {
+            startDate,
+            endDate,
+            orderBy,
+            orderDirection,
+            limit,
+            startingAfter,
+            search,
+            vendorId,
+            approverId,
+            status,
+        } = request;
         const _queryParams = new URLSearchParams();
         if (startDate != null) {
             _queryParams.append("startDate", startDate.toISOString());
@@ -60,6 +71,26 @@ export class Invoice {
             _queryParams.append("search", search);
         }
 
+        if (vendorId != null) {
+            if (Array.isArray(vendorId)) {
+                for (const _item of vendorId) {
+                    _queryParams.append("vendorId", _item);
+                }
+            } else {
+                _queryParams.append("vendorId", vendorId);
+            }
+        }
+
+        if (approverId != null) {
+            if (Array.isArray(approverId)) {
+                for (const _item of approverId) {
+                    _queryParams.append("approverId", _item);
+                }
+            } else {
+                _queryParams.append("approverId", approverId);
+            }
+        }
+
         if (status != null) {
             if (Array.isArray(status)) {
                 for (const _item of status) {
@@ -80,7 +111,7 @@ export class Invoice {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.2.8",
+                "X-Fern-SDK-Version": "v0.2.9",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -150,10 +181,40 @@ export class Invoice {
         entityId: Mercoa.EntityId,
         request: Mercoa.entity.InvoiceMetricsRequest
     ): Promise<Mercoa.InvoiceMetricsResponse> {
-        const { search, status, dueDateStart, dueDateEnd, createdDateStart, createdDateEnd, currency } = request;
+        const {
+            search,
+            vendorId,
+            approverId,
+            status,
+            dueDateStart,
+            dueDateEnd,
+            createdDateStart,
+            createdDateEnd,
+            currency,
+        } = request;
         const _queryParams = new URLSearchParams();
         if (search != null) {
             _queryParams.append("search", search);
+        }
+
+        if (vendorId != null) {
+            if (Array.isArray(vendorId)) {
+                for (const _item of vendorId) {
+                    _queryParams.append("vendorId", _item);
+                }
+            } else {
+                _queryParams.append("vendorId", vendorId);
+            }
+        }
+
+        if (approverId != null) {
+            if (Array.isArray(approverId)) {
+                for (const _item of approverId) {
+                    _queryParams.append("approverId", _item);
+                }
+            } else {
+                _queryParams.append("approverId", approverId);
+            }
         }
 
         if (status != null) {
@@ -193,7 +254,7 @@ export class Invoice {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.2.8",
+                "X-Fern-SDK-Version": "v0.2.9",
             },
             contentType: "application/json",
             queryParameters: _queryParams,

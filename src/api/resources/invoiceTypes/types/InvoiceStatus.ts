@@ -11,7 +11,8 @@ export type InvoiceStatus =
     | "PAID"
     | "ARCHIVED"
     | "REFUSED"
-    | "CANCELED";
+    | "CANCELED"
+    | "FAILED";
 
 export const InvoiceStatus = {
     Draft: "DRAFT",
@@ -23,4 +24,5 @@ export const InvoiceStatus = {
     Archived: "ARCHIVED",
     Refused: "REFUSED",
     Canceled: "CANCELED",
+    Failed: "FAILED",
 } as const;

@@ -17,8 +17,19 @@ export const InvoiceStatus: core.serialization.Schema<serializers.InvoiceStatus.
         "ARCHIVED",
         "REFUSED",
         "CANCELED",
+        "FAILED",
     ]);
 
 export declare namespace InvoiceStatus {
-    type Raw = "DRAFT" | "NEW" | "APPROVED" | "SCHEDULED" | "PENDING" | "PAID" | "ARCHIVED" | "REFUSED" | "CANCELED";
+    type Raw =
+        | "DRAFT"
+        | "NEW"
+        | "APPROVED"
+        | "SCHEDULED"
+        | "PENDING"
+        | "PAID"
+        | "ARCHIVED"
+        | "REFUSED"
+        | "CANCELED"
+        | "FAILED";
 }

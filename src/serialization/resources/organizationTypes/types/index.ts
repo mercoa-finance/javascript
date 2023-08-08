@@ -15,7 +15,6 @@ export * from "./EmailSenderResponse";
 export * from "./EmailLogResponse";
 export * from "./ColorSchemeRequest";
 export * from "./ColorSchemeResponse";
-export * from "./GlobalNotificationConfigurationRequest";
 export * from "./NotificationConfigurationRequest";
 export * from "./NotificationConfigurationResponse";
 export * from "./InvoiceNotificationConfigurationRequest";

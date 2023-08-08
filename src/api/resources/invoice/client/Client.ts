@@ -30,16 +30,27 @@ export class Invoice {
      * @throws {@link Mercoa.Unauthorized}
      */
     public async find(request: Mercoa.invoice.GetAllInvoicesRequest = {}): Promise<Mercoa.FindInvoiceResponse> {
-        const { entityIds, startDate, endDate, orderBy, orderDirection, limit, startingAfter, search, status } =
-            request;
+        const {
+            entityId,
+            startDate,
+            endDate,
+            orderBy,
+            orderDirection,
+            limit,
+            startingAfter,
+            search,
+            vendorId,
+            approverId,
+            status,
+        } = request;
         const _queryParams = new URLSearchParams();
-        if (entityIds != null) {
-            if (Array.isArray(entityIds)) {
-                for (const _item of entityIds) {
-                    _queryParams.append("entityIds", _item);
+        if (entityId != null) {
+            if (Array.isArray(entityId)) {
+                for (const _item of entityId) {
+                    _queryParams.append("entityId", _item);
                 }
             } else {
-                _queryParams.append("entityIds", entityIds);
+                _queryParams.append("entityId", entityId);
             }
         }
 
@@ -71,6 +82,26 @@ export class Invoice {
             _queryParams.append("search", search);
         }
 
+        if (vendorId != null) {
+            if (Array.isArray(vendorId)) {
+                for (const _item of vendorId) {
+                    _queryParams.append("vendorId", _item);
+                }
+            } else {
+                _queryParams.append("vendorId", vendorId);
+            }
+        }
+
+        if (approverId != null) {
+            if (Array.isArray(approverId)) {
+                for (const _item of approverId) {
+                    _queryParams.append("approverId", _item);
+                }
+            } else {
+                _queryParams.append("approverId", approverId);
+            }
+        }
+
         if (status != null) {
             if (Array.isArray(status)) {
                 for (const _item of status) {
@@ -91,7 +122,7 @@ export class Invoice {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.2.8",
+                "X-Fern-SDK-Version": "v0.2.9",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -168,7 +199,7 @@ export class Invoice {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.2.8",
+                "X-Fern-SDK-Version": "v0.2.9",
             },
             contentType: "application/json",
             body: await serializers.InvoiceRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
@@ -245,7 +276,7 @@ export class Invoice {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.2.8",
+                "X-Fern-SDK-Version": "v0.2.9",
             },
             contentType: "application/json",
             timeoutMs: 60000,
@@ -321,7 +352,7 @@ export class Invoice {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.2.8",
+                "X-Fern-SDK-Version": "v0.2.9",
             },
             contentType: "application/json",
             body: await serializers.InvoiceRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
@@ -398,7 +429,7 @@ export class Invoice {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.2.8",
+                "X-Fern-SDK-Version": "v0.2.9",
             },
             contentType: "application/json",
             timeoutMs: 60000,
@@ -469,7 +500,7 @@ export class Invoice {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.2.8",
+                "X-Fern-SDK-Version": "v0.2.9",
             },
             contentType: "application/json",
             timeoutMs: 60000,
