@@ -13,7 +13,7 @@ export interface InvoiceRequest {
     /** Date when funds will be deducted from payer's account. */
     deductionDate?: Date;
     /** Date of funds settlement. */
-    fundedDate?: Date;
+    settlementDate?: Date;
     /** Due date of invoice. */
     dueDate?: Date;
     invoiceNumber?: string;

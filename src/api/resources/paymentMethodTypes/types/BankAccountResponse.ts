@@ -4,7 +4,10 @@
 
 import * as Mercoa from "../../..";
 
-export interface BankAccountResponse extends Mercoa.BankAccountBaseResponse {
-    /** DEPRECATED DO NOT USE. WILL BE REMOVED SOON. */
-    bankAccount: Mercoa.BankAccountBaseResponse;
+export interface BankAccountResponse extends Mercoa.PaymentMethodBaseResponse {
+    bankName: string;
+    routingNumber: string;
+    accountNumber: string;
+    accountType: Mercoa.BankType;
+    status: Mercoa.BankStatus;
 }

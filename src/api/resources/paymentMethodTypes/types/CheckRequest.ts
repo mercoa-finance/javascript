@@ -4,7 +4,12 @@
 
 import * as Mercoa from "../../..";
 
-export interface CheckRequest extends Mercoa.CheckBaseRequest {
-    /** DEPRECATED DO NOT USE. WILL BE REMOVED SOON. */
-    check?: Mercoa.CheckBaseRequest;
+export interface CheckRequest extends Mercoa.PaymentMethodBaseRequest {
+    payToTheOrderOf: string;
+    addressLine1: string;
+    addressLine2?: string;
+    city: string;
+    stateOrProvince: string;
+    postalCode: string;
+    country: string;
 }

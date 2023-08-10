@@ -26,6 +26,9 @@ export class Organization {
      * @throws {@link Mercoa.AuthHeaderMissingError}
      * @throws {@link Mercoa.AuthHeaderMalformedError}
      * @throws {@link Mercoa.Unauthorized}
+     * @throws {@link Mercoa.InvalidPostalCode}
+     * @throws {@link Mercoa.InvalidStateOrProvince}
+     * @throws {@link Mercoa.entity.InvalidTaxId}
      */
     public async get(request: Mercoa.organization.GetOrganizationRequest = {}): Promise<Mercoa.OrganizationResponse> {
         const { paymentMethods, emailProvider, colorScheme } = request;
@@ -52,7 +55,7 @@ export class Organization {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.2.9",
+                "X-Fern-SDK-Version": "v0.2.10",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -89,6 +92,33 @@ export class Organization {
                             breadcrumbsPrefix: ["response"],
                         })
                     );
+                case "InvalidPostalCode":
+                    throw new Mercoa.InvalidPostalCode(
+                        await serializers.InvalidPostalCode.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        })
+                    );
+                case "InvalidStateOrProvince":
+                    throw new Mercoa.InvalidStateOrProvince(
+                        await serializers.InvalidStateOrProvince.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        })
+                    );
+                case "InvalidTaxId":
+                    throw new Mercoa.entity.InvalidTaxId(
+                        await serializers.entity.InvalidTaxId.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        })
+                    );
                 default:
                     throw new errors.MercoaError({
                         statusCode: _response.error.statusCode,
@@ -117,6 +147,9 @@ export class Organization {
      * @throws {@link Mercoa.AuthHeaderMissingError}
      * @throws {@link Mercoa.AuthHeaderMalformedError}
      * @throws {@link Mercoa.Unauthorized}
+     * @throws {@link Mercoa.InvalidPostalCode}
+     * @throws {@link Mercoa.InvalidStateOrProvince}
+     * @throws {@link Mercoa.entity.InvalidTaxId}
      */
     public async update(request: Mercoa.OrganizationRequest): Promise<Mercoa.OrganizationResponse> {
         const _response = await core.fetcher({
@@ -129,7 +162,7 @@ export class Organization {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.2.9",
+                "X-Fern-SDK-Version": "v0.2.10",
             },
             contentType: "application/json",
             body: await serializers.OrganizationRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
@@ -166,6 +199,33 @@ export class Organization {
                             breadcrumbsPrefix: ["response"],
                         })
                     );
+                case "InvalidPostalCode":
+                    throw new Mercoa.InvalidPostalCode(
+                        await serializers.InvalidPostalCode.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        })
+                    );
+                case "InvalidStateOrProvince":
+                    throw new Mercoa.InvalidStateOrProvince(
+                        await serializers.InvalidStateOrProvince.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        })
+                    );
+                case "InvalidTaxId":
+                    throw new Mercoa.entity.InvalidTaxId(
+                        await serializers.entity.InvalidTaxId.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        })
+                    );
                 default:
                     throw new errors.MercoaError({
                         statusCode: _response.error.statusCode,
@@ -194,6 +254,9 @@ export class Organization {
      * @throws {@link Mercoa.AuthHeaderMissingError}
      * @throws {@link Mercoa.AuthHeaderMalformedError}
      * @throws {@link Mercoa.Unauthorized}
+     * @throws {@link Mercoa.InvalidPostalCode}
+     * @throws {@link Mercoa.InvalidStateOrProvince}
+     * @throws {@link Mercoa.entity.InvalidTaxId}
      */
     public async emailLog(request: Mercoa.organization.GetEmailLogRequest = {}): Promise<Mercoa.EmailLogResponse[]> {
         const { startDate, endDate } = request;
@@ -216,7 +279,7 @@ export class Organization {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.2.9",
+                "X-Fern-SDK-Version": "v0.2.10",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -247,6 +310,33 @@ export class Organization {
                 case "Unauthorized":
                     throw new Mercoa.Unauthorized(
                         await serializers.Unauthorized.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        })
+                    );
+                case "InvalidPostalCode":
+                    throw new Mercoa.InvalidPostalCode(
+                        await serializers.InvalidPostalCode.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        })
+                    );
+                case "InvalidStateOrProvince":
+                    throw new Mercoa.InvalidStateOrProvince(
+                        await serializers.InvalidStateOrProvince.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        })
+                    );
+                case "InvalidTaxId":
+                    throw new Mercoa.entity.InvalidTaxId(
+                        await serializers.entity.InvalidTaxId.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,

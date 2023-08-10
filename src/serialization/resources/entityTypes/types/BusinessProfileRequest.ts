@@ -19,6 +19,7 @@ export const BusinessProfileRequest: core.serialization.ObjectSchema<
     description: core.serialization.string().optional(),
     address: core.serialization.lazyObject(async () => (await import("../../..")).Address).optional(),
     taxId: core.serialization.lazyObject(async () => (await import("../../..")).TaxId).optional(),
+    formationDate: core.serialization.date().optional(),
 });
 
 export declare namespace BusinessProfileRequest {
@@ -32,5 +33,6 @@ export declare namespace BusinessProfileRequest {
         description?: string | null;
         address?: serializers.Address.Raw | null;
         taxId?: serializers.TaxId.Raw | null;
+        formationDate?: string | null;
     }
 }

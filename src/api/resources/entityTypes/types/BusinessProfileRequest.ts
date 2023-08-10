@@ -10,8 +10,13 @@ export interface BusinessProfileRequest {
     businessType?: Mercoa.BusinessType;
     phone?: Mercoa.PhoneNumber;
     doingBusinessAs?: string;
+    /** Website URL for the business. Must be in the format http://www.example.com */
     website?: string;
+    /** Description of the business. Required for KYB if website is not provided. */
     description?: string;
     address?: Mercoa.Address;
+    /** Tax ID for the business. Currently only EIN is supported. Must be in the format XX-XXXXXXX. */
     taxId?: Mercoa.TaxId;
+    /** Date of business formation */
+    formationDate?: Date;
 }

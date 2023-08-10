@@ -9,12 +9,22 @@ import * as core from "../../../../core";
 export const CardRequest: core.serialization.ObjectSchema<serializers.CardRequest.Raw, Mercoa.CardRequest> =
     core.serialization
         .object({
-            card: core.serialization.lazyObject(async () => (await import("../../..")).CardBaseRequest).optional(),
+            cardType: core.serialization.lazy(async () => (await import("../../..")).CardType),
+            cardBrand: core.serialization.lazy(async () => (await import("../../..")).CardBrand),
+            lastFour: core.serialization.string(),
+            expMonth: core.serialization.string(),
+            expYear: core.serialization.string(),
+            token: core.serialization.string(),
         })
-        .extend(core.serialization.lazyObject(async () => (await import("../../..")).CardBaseRequest));
+        .extend(core.serialization.lazyObject(async () => (await import("../../..")).PaymentMethodBaseRequest));
 
 export declare namespace CardRequest {
-    interface Raw extends serializers.CardBaseRequest.Raw {
-        card?: serializers.CardBaseRequest.Raw | null;
+    interface Raw extends serializers.PaymentMethodBaseRequest.Raw {
+        cardType: serializers.CardType.Raw;
+        cardBrand: serializers.CardBrand.Raw;
+        lastFour: string;
+        expMonth: string;
+        expYear: string;
+        token: string;
     }
 }

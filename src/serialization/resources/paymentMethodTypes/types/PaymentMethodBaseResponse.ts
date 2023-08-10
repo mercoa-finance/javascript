@@ -6,16 +6,13 @@ import * as serializers from "../../..";
 import * as Mercoa from "../../../../api";
 import * as core from "../../../../core";
 
-export const CardBaseResponse: core.serialization.ObjectSchema<
-    serializers.CardBaseResponse.Raw,
-    Mercoa.CardBaseResponse
+export const PaymentMethodBaseResponse: core.serialization.ObjectSchema<
+    serializers.PaymentMethodBaseResponse.Raw,
+    Mercoa.PaymentMethodBaseResponse
 > = core.serialization.object({
     id: core.serialization.lazy(async () => (await import("../../..")).PaymentMethodId),
-    cardType: core.serialization.lazy(async () => (await import("../../..")).CardType),
-    cardBrand: core.serialization.lazy(async () => (await import("../../..")).CardBrand),
-    lastFour: core.serialization.string(),
-    expMonth: core.serialization.string(),
-    expYear: core.serialization.string(),
+    isDefaultSource: core.serialization.boolean(),
+    isDefaultDestination: core.serialization.boolean(),
     supportedCurrencies: core.serialization.list(
         core.serialization.lazy(async () => (await import("../../..")).CurrencyCode)
     ),
@@ -23,14 +20,11 @@ export const CardBaseResponse: core.serialization.ObjectSchema<
     updatedAt: core.serialization.date(),
 });
 
-export declare namespace CardBaseResponse {
+export declare namespace PaymentMethodBaseResponse {
     interface Raw {
         id: serializers.PaymentMethodId.Raw;
-        cardType: serializers.CardType.Raw;
-        cardBrand: serializers.CardBrand.Raw;
-        lastFour: string;
-        expMonth: string;
-        expYear: string;
+        isDefaultSource: boolean;
+        isDefaultDestination: boolean;
         supportedCurrencies: serializers.CurrencyCode.Raw[];
         createdAt: string;
         updatedAt: string;

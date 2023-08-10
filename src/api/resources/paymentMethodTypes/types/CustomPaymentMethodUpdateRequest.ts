@@ -4,7 +4,13 @@
 
 import * as Mercoa from "../../..";
 
-export interface CustomPaymentMethodUpdateRequest extends Mercoa.CustomPaymentMethodUpdateBaseRequest {
-    /** DEPRECATED DO NOT USE. WILL BE REMOVED SOON. */
-    custom?: Mercoa.CustomPaymentMethodUpdateBaseRequest;
+export interface CustomPaymentMethodUpdateRequest extends Mercoa.PaymentMethodBaseRequest {
+    /** ID for this payment method in your system */
+    foreignId?: string;
+    accountName?: string;
+    accountNumber?: string;
+    /** Payment method schema used for this payment method. Defines the fields that this payment method contains. */
+    schemaId?: Mercoa.PaymentMethodSchemaId;
+    /** Object of key/value pairs that matches the keys in the linked payment method schema. */
+    data?: Record<string, string>;
 }

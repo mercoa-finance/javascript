@@ -4,7 +4,11 @@
 
 import * as Mercoa from "../../..";
 
-export interface CardRequest extends Mercoa.CardBaseRequest {
-    /** DEPRECATED DO NOT USE. WILL BE REMOVED SOON. */
-    card?: Mercoa.CardBaseRequest;
+export interface CardRequest extends Mercoa.PaymentMethodBaseRequest {
+    cardType: Mercoa.CardType;
+    cardBrand: Mercoa.CardBrand;
+    lastFour: string;
+    expMonth: string;
+    expYear: string;
+    token: string;
 }

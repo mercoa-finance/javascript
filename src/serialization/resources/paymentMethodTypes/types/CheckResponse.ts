@@ -9,12 +9,24 @@ import * as core from "../../../../core";
 export const CheckResponse: core.serialization.ObjectSchema<serializers.CheckResponse.Raw, Mercoa.CheckResponse> =
     core.serialization
         .object({
-            check: core.serialization.lazyObject(async () => (await import("../../..")).CheckBaseResponse),
+            payToTheOrderOf: core.serialization.string(),
+            addressLine1: core.serialization.string(),
+            addressLine2: core.serialization.string().optional(),
+            city: core.serialization.string(),
+            stateOrProvince: core.serialization.string(),
+            postalCode: core.serialization.string(),
+            country: core.serialization.string(),
         })
-        .extend(core.serialization.lazyObject(async () => (await import("../../..")).CheckBaseResponse));
+        .extend(core.serialization.lazyObject(async () => (await import("../../..")).PaymentMethodBaseResponse));
 
 export declare namespace CheckResponse {
-    interface Raw extends serializers.CheckBaseResponse.Raw {
-        check: serializers.CheckBaseResponse.Raw;
+    interface Raw extends serializers.PaymentMethodBaseResponse.Raw {
+        payToTheOrderOf: string;
+        addressLine1: string;
+        addressLine2?: string | null;
+        city: string;
+        stateOrProvince: string;
+        postalCode: string;
+        country: string;
     }
 }

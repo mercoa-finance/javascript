@@ -11,12 +11,20 @@ export const BankAccountResponse: core.serialization.ObjectSchema<
     Mercoa.BankAccountResponse
 > = core.serialization
     .object({
-        bankAccount: core.serialization.lazyObject(async () => (await import("../../..")).BankAccountBaseResponse),
+        bankName: core.serialization.string(),
+        routingNumber: core.serialization.string(),
+        accountNumber: core.serialization.string(),
+        accountType: core.serialization.lazy(async () => (await import("../../..")).BankType),
+        status: core.serialization.lazy(async () => (await import("../../..")).BankStatus),
     })
-    .extend(core.serialization.lazyObject(async () => (await import("../../..")).BankAccountBaseResponse));
+    .extend(core.serialization.lazyObject(async () => (await import("../../..")).PaymentMethodBaseResponse));
 
 export declare namespace BankAccountResponse {
-    interface Raw extends serializers.BankAccountBaseResponse.Raw {
-        bankAccount: serializers.BankAccountBaseResponse.Raw;
+    interface Raw extends serializers.PaymentMethodBaseResponse.Raw {
+        bankName: string;
+        routingNumber: string;
+        accountNumber: string;
+        accountType: serializers.BankType.Raw;
+        status: serializers.BankStatus.Raw;
     }
 }

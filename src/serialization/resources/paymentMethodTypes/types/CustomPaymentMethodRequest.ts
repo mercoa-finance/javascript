@@ -11,14 +11,20 @@ export const CustomPaymentMethodRequest: core.serialization.ObjectSchema<
     Mercoa.CustomPaymentMethodRequest
 > = core.serialization
     .object({
-        custom: core.serialization
-            .lazyObject(async () => (await import("../../..")).CustomPaymentMethodBaseRequest)
-            .optional(),
+        foreignId: core.serialization.string(),
+        accountName: core.serialization.string().optional(),
+        accountNumber: core.serialization.string().optional(),
+        schemaId: core.serialization.lazy(async () => (await import("../../..")).PaymentMethodSchemaId),
+        data: core.serialization.record(core.serialization.string(), core.serialization.string()),
     })
-    .extend(core.serialization.lazyObject(async () => (await import("../../..")).CustomPaymentMethodBaseRequest));
+    .extend(core.serialization.lazyObject(async () => (await import("../../..")).PaymentMethodBaseRequest));
 
 export declare namespace CustomPaymentMethodRequest {
-    interface Raw extends serializers.CustomPaymentMethodBaseRequest.Raw {
-        custom?: serializers.CustomPaymentMethodBaseRequest.Raw | null;
+    interface Raw extends serializers.PaymentMethodBaseRequest.Raw {
+        foreignId: string;
+        accountName?: string | null;
+        accountNumber?: string | null;
+        schemaId: serializers.PaymentMethodSchemaId.Raw;
+        data: Record<string, string>;
     }
 }

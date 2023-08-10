@@ -4,10 +4,29 @@
 
 import * as Mercoa from "../../..";
 
-export type PaymentMethodUpdateRequest = Mercoa.PaymentMethodUpdateRequest.Custom;
+/**
+ * Update a payment method. Only defaultSource and defaultDestination can be updated for non custom payment methods.
+ */
+export type PaymentMethodUpdateRequest =
+    | Mercoa.PaymentMethodUpdateRequest.Custom
+    | Mercoa.PaymentMethodUpdateRequest.BankAccount
+    | Mercoa.PaymentMethodUpdateRequest.Card
+    | Mercoa.PaymentMethodUpdateRequest.Check;
 
 export declare namespace PaymentMethodUpdateRequest {
     interface Custom extends Mercoa.CustomPaymentMethodUpdateRequest {
         type: "custom";
+    }
+
+    interface BankAccount extends Mercoa.PaymentMethodBaseRequest {
+        type: "bankAccount";
+    }
+
+    interface Card extends Mercoa.PaymentMethodBaseRequest {
+        type: "card";
+    }
+
+    interface Check extends Mercoa.PaymentMethodBaseRequest {
+        type: "check";
     }
 }

@@ -12,6 +12,9 @@ export const PaymentMethodUpdateRequest: core.serialization.Schema<
 > = core.serialization
     .union("type", {
         custom: core.serialization.lazyObject(async () => (await import("../../..")).CustomPaymentMethodUpdateRequest),
+        bankAccount: core.serialization.lazyObject(async () => (await import("../../..")).PaymentMethodBaseRequest),
+        card: core.serialization.lazyObject(async () => (await import("../../..")).PaymentMethodBaseRequest),
+        check: core.serialization.lazyObject(async () => (await import("../../..")).PaymentMethodBaseRequest),
     })
     .transform<Mercoa.PaymentMethodUpdateRequest>({
         transform: (value) => value,
@@ -19,9 +22,25 @@ export const PaymentMethodUpdateRequest: core.serialization.Schema<
     });
 
 export declare namespace PaymentMethodUpdateRequest {
-    type Raw = PaymentMethodUpdateRequest.Custom;
+    type Raw =
+        | PaymentMethodUpdateRequest.Custom
+        | PaymentMethodUpdateRequest.BankAccount
+        | PaymentMethodUpdateRequest.Card
+        | PaymentMethodUpdateRequest.Check;
 
     interface Custom extends serializers.CustomPaymentMethodUpdateRequest.Raw {
         type: "custom";
+    }
+
+    interface BankAccount extends serializers.PaymentMethodBaseRequest.Raw {
+        type: "bankAccount";
+    }
+
+    interface Card extends serializers.PaymentMethodBaseRequest.Raw {
+        type: "card";
+    }
+
+    interface Check extends serializers.PaymentMethodBaseRequest.Raw {
+        type: "check";
     }
 }

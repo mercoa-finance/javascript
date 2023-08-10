@@ -4,7 +4,11 @@
 
 import * as Mercoa from "../../..";
 
-export interface BankAccountRequest extends Mercoa.BankAccountBaseRequest {
-    /** DEPRECATED DO NOT USE. WILL BE REMOVED SOON. */
-    bankAccount?: Mercoa.BankAccountBaseRequest;
+export interface BankAccountRequest extends Mercoa.PaymentMethodBaseRequest {
+    bankName: string;
+    routingNumber: string;
+    accountNumber: string;
+    accountType: Mercoa.BankType;
+    /** If provided, will link a bank account using Plaid Link */
+    plaid?: Mercoa.PlaidLinkRequest;
 }
