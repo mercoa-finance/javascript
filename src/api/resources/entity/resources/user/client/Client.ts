@@ -28,7 +28,8 @@ export class User {
      * @throws {@link Mercoa.Unauthorized}
      * @throws {@link Mercoa.InvalidPostalCode}
      * @throws {@link Mercoa.InvalidStateOrProvince}
-     * @throws {@link Mercoa.entity.InvalidTaxId}
+     * @throws {@link Mercoa.InvalidTaxId}
+     * @throws {@link Mercoa.EntityForeignIdAlreadyExists}
      */
     public async getAll(entityId: Mercoa.EntityId): Promise<Mercoa.EntityUserResponse[]> {
         const _response = await core.fetcher({
@@ -41,7 +42,7 @@ export class User {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.2.10",
+                "X-Fern-SDK-Version": "v0.2.11",
             },
             contentType: "application/json",
             timeoutMs: 60000,
@@ -96,8 +97,17 @@ export class User {
                         })
                     );
                 case "InvalidTaxId":
-                    throw new Mercoa.entity.InvalidTaxId(
-                        await serializers.entity.InvalidTaxId.parseOrThrow(_response.error.body, {
+                    throw new Mercoa.InvalidTaxId(
+                        await serializers.InvalidTaxId.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        })
+                    );
+                case "EntityForeignIdAlreadyExists":
+                    throw new Mercoa.EntityForeignIdAlreadyExists(
+                        await serializers.EntityForeignIdAlreadyExists.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
@@ -133,7 +143,8 @@ export class User {
      * @throws {@link Mercoa.Unauthorized}
      * @throws {@link Mercoa.InvalidPostalCode}
      * @throws {@link Mercoa.InvalidStateOrProvince}
-     * @throws {@link Mercoa.entity.InvalidTaxId}
+     * @throws {@link Mercoa.InvalidTaxId}
+     * @throws {@link Mercoa.EntityForeignIdAlreadyExists}
      */
     public async create(
         entityId: Mercoa.EntityId,
@@ -149,7 +160,7 @@ export class User {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.2.10",
+                "X-Fern-SDK-Version": "v0.2.11",
             },
             contentType: "application/json",
             body: await serializers.EntityUserRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
@@ -205,8 +216,17 @@ export class User {
                         })
                     );
                 case "InvalidTaxId":
-                    throw new Mercoa.entity.InvalidTaxId(
-                        await serializers.entity.InvalidTaxId.parseOrThrow(_response.error.body, {
+                    throw new Mercoa.InvalidTaxId(
+                        await serializers.InvalidTaxId.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        })
+                    );
+                case "EntityForeignIdAlreadyExists":
+                    throw new Mercoa.EntityForeignIdAlreadyExists(
+                        await serializers.EntityForeignIdAlreadyExists.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
@@ -243,7 +263,8 @@ export class User {
      * @throws {@link Mercoa.Unauthorized}
      * @throws {@link Mercoa.InvalidPostalCode}
      * @throws {@link Mercoa.InvalidStateOrProvince}
-     * @throws {@link Mercoa.entity.InvalidTaxId}
+     * @throws {@link Mercoa.InvalidTaxId}
+     * @throws {@link Mercoa.EntityForeignIdAlreadyExists}
      */
     public async get(entityId: Mercoa.EntityId, userId: Mercoa.EntityUserId): Promise<Mercoa.EntityUserResponse> {
         const _response = await core.fetcher({
@@ -258,7 +279,7 @@ export class User {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.2.10",
+                "X-Fern-SDK-Version": "v0.2.11",
             },
             contentType: "application/json",
             timeoutMs: 60000,
@@ -313,8 +334,17 @@ export class User {
                         })
                     );
                 case "InvalidTaxId":
-                    throw new Mercoa.entity.InvalidTaxId(
-                        await serializers.entity.InvalidTaxId.parseOrThrow(_response.error.body, {
+                    throw new Mercoa.InvalidTaxId(
+                        await serializers.InvalidTaxId.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        })
+                    );
+                case "EntityForeignIdAlreadyExists":
+                    throw new Mercoa.EntityForeignIdAlreadyExists(
+                        await serializers.EntityForeignIdAlreadyExists.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
@@ -351,7 +381,8 @@ export class User {
      * @throws {@link Mercoa.Unauthorized}
      * @throws {@link Mercoa.InvalidPostalCode}
      * @throws {@link Mercoa.InvalidStateOrProvince}
-     * @throws {@link Mercoa.entity.InvalidTaxId}
+     * @throws {@link Mercoa.InvalidTaxId}
+     * @throws {@link Mercoa.EntityForeignIdAlreadyExists}
      */
     public async update(
         entityId: Mercoa.EntityId,
@@ -370,7 +401,7 @@ export class User {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.2.10",
+                "X-Fern-SDK-Version": "v0.2.11",
             },
             contentType: "application/json",
             body: await serializers.EntityUserRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
@@ -426,8 +457,17 @@ export class User {
                         })
                     );
                 case "InvalidTaxId":
-                    throw new Mercoa.entity.InvalidTaxId(
-                        await serializers.entity.InvalidTaxId.parseOrThrow(_response.error.body, {
+                    throw new Mercoa.InvalidTaxId(
+                        await serializers.InvalidTaxId.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        })
+                    );
+                case "EntityForeignIdAlreadyExists":
+                    throw new Mercoa.EntityForeignIdAlreadyExists(
+                        await serializers.EntityForeignIdAlreadyExists.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
@@ -464,7 +504,8 @@ export class User {
      * @throws {@link Mercoa.Unauthorized}
      * @throws {@link Mercoa.InvalidPostalCode}
      * @throws {@link Mercoa.InvalidStateOrProvince}
-     * @throws {@link Mercoa.entity.InvalidTaxId}
+     * @throws {@link Mercoa.InvalidTaxId}
+     * @throws {@link Mercoa.EntityForeignIdAlreadyExists}
      */
     public async delete(entityId: Mercoa.EntityId, userId: Mercoa.EntityUserId): Promise<void> {
         const _response = await core.fetcher({
@@ -479,7 +520,7 @@ export class User {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.2.10",
+                "X-Fern-SDK-Version": "v0.2.11",
             },
             contentType: "application/json",
             timeoutMs: 60000,
@@ -529,8 +570,17 @@ export class User {
                         })
                     );
                 case "InvalidTaxId":
-                    throw new Mercoa.entity.InvalidTaxId(
-                        await serializers.entity.InvalidTaxId.parseOrThrow(_response.error.body, {
+                    throw new Mercoa.InvalidTaxId(
+                        await serializers.InvalidTaxId.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        })
+                    );
+                case "EntityForeignIdAlreadyExists":
+                    throw new Mercoa.EntityForeignIdAlreadyExists(
+                        await serializers.EntityForeignIdAlreadyExists.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
@@ -567,7 +617,8 @@ export class User {
      * @throws {@link Mercoa.Unauthorized}
      * @throws {@link Mercoa.InvalidPostalCode}
      * @throws {@link Mercoa.InvalidStateOrProvince}
-     * @throws {@link Mercoa.entity.InvalidTaxId}
+     * @throws {@link Mercoa.InvalidTaxId}
+     * @throws {@link Mercoa.EntityForeignIdAlreadyExists}
      */
     public async getRawToken(entityId: Mercoa.EntityId, userId: Mercoa.EntityUserId): Promise<string> {
         const _response = await core.fetcher({
@@ -582,7 +633,7 @@ export class User {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.2.10",
+                "X-Fern-SDK-Version": "v0.2.11",
             },
             contentType: "application/json",
             timeoutMs: 60000,
@@ -637,8 +688,17 @@ export class User {
                         })
                     );
                 case "InvalidTaxId":
-                    throw new Mercoa.entity.InvalidTaxId(
-                        await serializers.entity.InvalidTaxId.parseOrThrow(_response.error.body, {
+                    throw new Mercoa.InvalidTaxId(
+                        await serializers.InvalidTaxId.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        })
+                    );
+                case "EntityForeignIdAlreadyExists":
+                    throw new Mercoa.EntityForeignIdAlreadyExists(
+                        await serializers.EntityForeignIdAlreadyExists.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
@@ -675,7 +735,8 @@ export class User {
      * @throws {@link Mercoa.Unauthorized}
      * @throws {@link Mercoa.InvalidPostalCode}
      * @throws {@link Mercoa.InvalidStateOrProvince}
-     * @throws {@link Mercoa.entity.InvalidTaxId}
+     * @throws {@link Mercoa.InvalidTaxId}
+     * @throws {@link Mercoa.EntityForeignIdAlreadyExists}
      */
     public async getToken(
         entityId: Mercoa.EntityId,
@@ -694,7 +755,7 @@ export class User {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.2.10",
+                "X-Fern-SDK-Version": "v0.2.11",
             },
             contentType: "application/json",
             body: await serializers.TokenGenerationOptions.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
@@ -750,8 +811,17 @@ export class User {
                         })
                     );
                 case "InvalidTaxId":
-                    throw new Mercoa.entity.InvalidTaxId(
-                        await serializers.entity.InvalidTaxId.parseOrThrow(_response.error.body, {
+                    throw new Mercoa.InvalidTaxId(
+                        await serializers.InvalidTaxId.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        })
+                    );
+                case "EntityForeignIdAlreadyExists":
+                    throw new Mercoa.EntityForeignIdAlreadyExists(
+                        await serializers.EntityForeignIdAlreadyExists.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,

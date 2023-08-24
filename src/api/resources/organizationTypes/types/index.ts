@@ -19,3 +19,8 @@ export * from "./NotificationConfigurationRequest";
 export * from "./NotificationConfigurationResponse";
 export * from "./InvoiceNotificationConfigurationRequest";
 export * from "./InvoiceNotificationConfigurationResponse";
+export * from "./OnboardingOption";
+export * from "./IndividualOnboardingOptions";
+export * from "./BusinessOnboardingOptions";
+export * from "./OnboardingOptionsRequest";
+export * from "./OnboardingOptionsResponse";

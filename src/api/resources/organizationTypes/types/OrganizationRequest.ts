@@ -12,4 +12,6 @@ export interface OrganizationRequest {
     paymentMethods?: Mercoa.PaymentMethodsRequest;
     emailProvider?: Mercoa.EmailProviderRequest;
     colorScheme?: Mercoa.ColorSchemeRequest;
+    payeeOnboardingOptions?: Mercoa.OnboardingOptionsRequest;
+    payorOnboardingOptions?: Mercoa.OnboardingOptionsRequest;
 }

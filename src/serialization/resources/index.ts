@@ -20,3 +20,4 @@ export * as organization from "./organization";
 export * as paymentMethodSchema from "./paymentMethodSchema";
 export * from "./ocr/client/requests";
 export * from "./commons/errors";
+export * from "./entityTypes/errors";

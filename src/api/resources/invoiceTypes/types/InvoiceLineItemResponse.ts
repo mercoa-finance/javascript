@@ -6,11 +6,13 @@ import * as Mercoa from "../../..";
 
 export interface InvoiceLineItemResponse {
     id: string;
+    /** Total amount of line item in major units. */
     amount?: number;
     currency?: Mercoa.CurrencyCode;
     description?: string;
     name?: string;
     quantity?: number;
+    /** Unit price of line item in major units. */
     unitPrice?: number;
     createdAt: Date;
     updatedAt: Date;

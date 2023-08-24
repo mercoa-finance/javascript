@@ -5,7 +5,7 @@
 import * as serializers from "../../..";
 import * as core from "../../../../core";
 
-export const InvalidTaxId: core.serialization.Schema<serializers.entity.InvalidTaxId.Raw, string> =
+export const InvalidTaxId: core.serialization.Schema<serializers.InvalidTaxId.Raw, string> =
     core.serialization.string();
 
 export declare namespace InvalidTaxId {

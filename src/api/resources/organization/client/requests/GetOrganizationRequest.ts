@@ -15,4 +15,12 @@ export interface GetOrganizationRequest {
      * include color scheme info in response
      */
     colorScheme?: boolean;
+    /**
+     * include payee onboarding options in response
+     */
+    payeeOnboardingOptions?: boolean;
+    /**
+     * include payor onboarding options in response
+     */
+    payorOnboardingOptions?: boolean;
 }

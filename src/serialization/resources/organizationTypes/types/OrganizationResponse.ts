@@ -23,6 +23,12 @@ export const OrganizationResponse: core.serialization.ObjectSchema<
         .lazyObject(async () => (await import("../../..")).EmailProviderResponse)
         .optional(),
     colorScheme: core.serialization.lazyObject(async () => (await import("../../..")).ColorSchemeResponse).optional(),
+    payeeOnboardingOptions: core.serialization
+        .lazyObject(async () => (await import("../../..")).OnboardingOptionsResponse)
+        .optional(),
+    payorOnboardingOptions: core.serialization
+        .lazyObject(async () => (await import("../../..")).OnboardingOptionsResponse)
+        .optional(),
 });
 
 export declare namespace OrganizationResponse {
@@ -36,5 +42,7 @@ export declare namespace OrganizationResponse {
         paymentMethods?: serializers.PaymentMethodsResponse.Raw | null;
         emailProvider?: serializers.EmailProviderResponse.Raw | null;
         colorScheme?: serializers.ColorSchemeResponse.Raw | null;
+        payeeOnboardingOptions?: serializers.OnboardingOptionsResponse.Raw | null;
+        payorOnboardingOptions?: serializers.OnboardingOptionsResponse.Raw | null;
     }
 }

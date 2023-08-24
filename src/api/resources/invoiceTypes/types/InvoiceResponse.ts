@@ -7,6 +7,7 @@ import * as Mercoa from "../../..";
 export interface InvoiceResponse {
     id: Mercoa.InvoiceId;
     status: Mercoa.InvoiceStatus;
+    /** Total amount of invoice in major units */
     amount?: number;
     currency?: Mercoa.CurrencyCode;
     /** Date the invoice was created. */

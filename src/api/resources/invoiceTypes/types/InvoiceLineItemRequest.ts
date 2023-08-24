@@ -7,10 +7,12 @@ import * as Mercoa from "../../..";
 export interface InvoiceLineItemRequest {
     /** If provided, will overwrite line item on the invoice with this ID. If not provided, will create a new line item. */
     id?: string;
+    /** Total amount of line item in major units. If the entered amount has more decimal places than the currency supports, trailing decimals will be truncated. */
     amount?: number;
     currency?: Mercoa.CurrencyCode;
     description?: string;
     name?: string;
     quantity?: number;
+    /** Unit price of the line item in major units. If the entered amount has more decimal places than the currency supports, trailing decimals will be truncated. */
     unitPrice?: number;
 }

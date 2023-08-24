@@ -5,9 +5,9 @@
 import * as serializers from "../../..";
 import * as core from "../../../../core";
 
-export const Response: core.serialization.Schema<serializers.entity.oatfiPreapproval.Response.Raw, boolean> =
-    core.serialization.boolean();
+export const Response: core.serialization.Schema<serializers.entity.getOnboardingLink.Response.Raw, string> =
+    core.serialization.string();
 
 export declare namespace Response {
-    type Raw = boolean;
+    type Raw = string;
 }

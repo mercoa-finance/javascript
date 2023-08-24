@@ -46,6 +46,10 @@ export interface GetAllInvoicesRequest {
      */
     approverId?: Mercoa.EntityUserId | Mercoa.EntityUserId[];
     /**
+     * Filter invoices by invoice ID.
+     */
+    invoiceId?: Mercoa.InvoiceId | Mercoa.InvoiceId[];
+    /**
      * Invoice status to filter on
      */
     status?: Mercoa.InvoiceStatus | Mercoa.InvoiceStatus[];

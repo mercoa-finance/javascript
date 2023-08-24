@@ -25,4 +25,8 @@ export interface EntityGetNotificationsRequest {
      * The ID of the notification to start after. If not provided, the first page of invoices will be returned.
      */
     startingAfter?: Mercoa.NotificationId;
+    /**
+     * The type of notification to filter by.
+     */
+    notificationType?: Mercoa.NotificationType | Mercoa.NotificationType[];
 }

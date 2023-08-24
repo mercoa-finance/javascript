@@ -6,6 +6,7 @@ import * as Mercoa from "../../..";
 
 export interface InvoiceRequest {
     status?: Mercoa.InvoiceStatus;
+    /** Total amount of invoice in major units. If the entered amount has more decimal places than the currency supports, trailing decimals will be truncated. */
     amount?: number;
     currency?: Mercoa.CurrencyCode;
     /** Date the invoice was created. */
