@@ -25,19 +25,25 @@ export class Counterparty {
      * @throws {@link Mercoa.AuthHeaderMissingError}
      * @throws {@link Mercoa.AuthHeaderMalformedError}
      * @throws {@link Mercoa.Unauthorized}
-     * @throws {@link Mercoa.InvalidPostalCode}
-     * @throws {@link Mercoa.InvalidStateOrProvince}
-     * @throws {@link Mercoa.InvalidTaxId}
-     * @throws {@link Mercoa.EntityForeignIdAlreadyExists}
      */
     public async find(
         entityId: Mercoa.EntityId,
         request: Mercoa.entity.FindCounterpartiesRequest = {}
     ): Promise<Mercoa.FindCounterpartiesResponse> {
-        const { paymentMethods } = request;
+        const { paymentMethods, counterpartyId } = request;
         const _queryParams = new URLSearchParams();
         if (paymentMethods != null) {
             _queryParams.append("paymentMethods", paymentMethods.toString());
+        }
+
+        if (counterpartyId != null) {
+            if (Array.isArray(counterpartyId)) {
+                for (const _item of counterpartyId) {
+                    _queryParams.append("counterpartyId", _item);
+                }
+            } else {
+                _queryParams.append("counterpartyId", counterpartyId);
+            }
         }
 
         const _response = await core.fetcher({
@@ -50,7 +56,7 @@ export class Counterparty {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.2.11",
+                "X-Fern-SDK-Version": "v0.2.12",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -81,42 +87,6 @@ export class Counterparty {
                 case "Unauthorized":
                     throw new Mercoa.Unauthorized(
                         await serializers.Unauthorized.parseOrThrow(_response.error.body, {
-                            unrecognizedObjectKeys: "passthrough",
-                            allowUnrecognizedUnionMembers: true,
-                            allowUnrecognizedEnumValues: true,
-                            breadcrumbsPrefix: ["response"],
-                        })
-                    );
-                case "InvalidPostalCode":
-                    throw new Mercoa.InvalidPostalCode(
-                        await serializers.InvalidPostalCode.parseOrThrow(_response.error.body, {
-                            unrecognizedObjectKeys: "passthrough",
-                            allowUnrecognizedUnionMembers: true,
-                            allowUnrecognizedEnumValues: true,
-                            breadcrumbsPrefix: ["response"],
-                        })
-                    );
-                case "InvalidStateOrProvince":
-                    throw new Mercoa.InvalidStateOrProvince(
-                        await serializers.InvalidStateOrProvince.parseOrThrow(_response.error.body, {
-                            unrecognizedObjectKeys: "passthrough",
-                            allowUnrecognizedUnionMembers: true,
-                            allowUnrecognizedEnumValues: true,
-                            breadcrumbsPrefix: ["response"],
-                        })
-                    );
-                case "InvalidTaxId":
-                    throw new Mercoa.InvalidTaxId(
-                        await serializers.InvalidTaxId.parseOrThrow(_response.error.body, {
-                            unrecognizedObjectKeys: "passthrough",
-                            allowUnrecognizedUnionMembers: true,
-                            allowUnrecognizedEnumValues: true,
-                            breadcrumbsPrefix: ["response"],
-                        })
-                    );
-                case "EntityForeignIdAlreadyExists":
-                    throw new Mercoa.EntityForeignIdAlreadyExists(
-                        await serializers.EntityForeignIdAlreadyExists.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
