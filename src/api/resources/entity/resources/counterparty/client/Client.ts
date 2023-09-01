@@ -15,6 +15,10 @@ export declare namespace Counterparty {
         environment?: core.Supplier<environments.MercoaEnvironment | string>;
         token: core.Supplier<core.BearerToken>;
     }
+
+    interface RequestOptions {
+        timeoutInSeconds?: number;
+    }
 }
 
 export class Counterparty {
@@ -28,7 +32,8 @@ export class Counterparty {
      */
     public async find(
         entityId: Mercoa.EntityId,
-        request: Mercoa.entity.FindCounterpartiesRequest = {}
+        request: Mercoa.entity.FindCounterpartiesRequest = {},
+        requestOptions?: Counterparty.RequestOptions
     ): Promise<Mercoa.FindCounterpartiesResponse> {
         const { paymentMethods, counterpartyId } = request;
         const _queryParams = new URLSearchParams();
@@ -56,11 +61,11 @@ export class Counterparty {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.2.12",
+                "X-Fern-SDK-Version": "v0.2.13",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
-            timeoutMs: 60000,
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
         });
         if (_response.ok) {
             return await serializers.FindCounterpartiesResponse.parseOrThrow(_response.body, {

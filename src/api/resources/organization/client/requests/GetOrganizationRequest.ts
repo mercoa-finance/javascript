@@ -23,4 +23,8 @@ export interface GetOrganizationRequest {
      * include payor onboarding options in response
      */
     payorOnboardingOptions?: boolean;
+    /**
+     * include metadata schema in response
+     */
+    metadataSchema?: boolean;
 }

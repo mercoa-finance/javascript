@@ -1,6 +1,6 @@
 {
     "name": "@mercoa/javascript",
-    "version": "v0.2.12",
+    "version": "v0.2.13",
     "private": false,
     "repository": "https://github.com/mercoa-finance/javascript",
     "main": "./index.js",
@@ -14,7 +14,7 @@
         "@ungap/url-search-params": "0.2.2",
         "url-join": "4.0.1",
         "@types/url-join": "4.0.1",
-        "axios": "1.4.0",
+        "axios": "0.27.2",
         "js-base64": "3.7.2"
     },
     "devDependencies": {

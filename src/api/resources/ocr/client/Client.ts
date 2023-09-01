@@ -15,6 +15,10 @@ export declare namespace Ocr {
         environment?: core.Supplier<environments.MercoaEnvironment | string>;
         token: core.Supplier<core.BearerToken>;
     }
+
+    interface RequestOptions {
+        timeoutInSeconds?: number;
+    }
 }
 
 export class Ocr {
@@ -26,7 +30,7 @@ export class Ocr {
      * @throws {@link Mercoa.AuthHeaderMalformedError}
      * @throws {@link Mercoa.Unauthorized}
      */
-    public async ocr(request: Mercoa.RunOcr): Promise<Mercoa.OcrResponse> {
+    public async ocr(request: Mercoa.RunOcr, requestOptions?: Ocr.RequestOptions): Promise<Mercoa.OcrResponse> {
         const { vendorNetwork, entityId, ..._body } = request;
         const _queryParams = new URLSearchParams();
         if (vendorNetwork != null) {
@@ -47,12 +51,12 @@ export class Ocr {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.2.12",
+                "X-Fern-SDK-Version": "v0.2.13",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
             body: await serializers.RunOcr.jsonOrThrow(_body, { unrecognizedObjectKeys: "strip" }),
-            timeoutMs: 60000,
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
         });
         if (_response.ok) {
             return await serializers.OcrResponse.parseOrThrow(_response.body, {

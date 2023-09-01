@@ -48,3 +48,4 @@ export * from "./VendorNetwork";
 export * from "./TokenGenerationVendorOptions";
 export * from "./TokenGenerationOptions";
 export * from "./EntityOnboardingLinkType";
+export * from "./EntityMetadataResponse";

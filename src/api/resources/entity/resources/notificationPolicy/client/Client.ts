@@ -14,6 +14,10 @@ export declare namespace NotificationPolicy {
         environment?: core.Supplier<environments.MercoaEnvironment | string>;
         token: core.Supplier<core.BearerToken>;
     }
+
+    interface RequestOptions {
+        timeoutInSeconds?: number;
+    }
 }
 
 export class NotificationPolicy {
@@ -25,7 +29,10 @@ export class NotificationPolicy {
      * @throws {@link Mercoa.AuthHeaderMalformedError}
      * @throws {@link Mercoa.Unauthorized}
      */
-    public async getAll(entityId: Mercoa.EntityId): Promise<Mercoa.NotificationPolicyResponse[]> {
+    public async getAll(
+        entityId: Mercoa.EntityId,
+        requestOptions?: NotificationPolicy.RequestOptions
+    ): Promise<Mercoa.NotificationPolicyResponse[]> {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
@@ -36,10 +43,10 @@ export class NotificationPolicy {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.2.12",
+                "X-Fern-SDK-Version": "v0.2.13",
             },
             contentType: "application/json",
-            timeoutMs: 60000,
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
         });
         if (_response.ok) {
             return await serializers.entity.notificationPolicy.getAll.Response.parseOrThrow(_response.body, {
@@ -103,7 +110,8 @@ export class NotificationPolicy {
      */
     public async get(
         entityId: Mercoa.EntityId,
-        notificationType: Mercoa.NotificationType
+        notificationType: Mercoa.NotificationType,
+        requestOptions?: NotificationPolicy.RequestOptions
     ): Promise<Mercoa.NotificationPolicyResponse> {
         const _response = await core.fetcher({
             url: urlJoin(
@@ -117,10 +125,10 @@ export class NotificationPolicy {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.2.12",
+                "X-Fern-SDK-Version": "v0.2.13",
             },
             contentType: "application/json",
-            timeoutMs: 60000,
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
         });
         if (_response.ok) {
             return await serializers.NotificationPolicyResponse.parseOrThrow(_response.body, {
@@ -185,7 +193,8 @@ export class NotificationPolicy {
     public async update(
         entityId: Mercoa.EntityId,
         notificationType: Mercoa.NotificationType,
-        request: Mercoa.NotificationPolicyRequest
+        request: Mercoa.NotificationPolicyRequest,
+        requestOptions?: NotificationPolicy.RequestOptions
     ): Promise<Mercoa.NotificationPolicyResponse> {
         const _response = await core.fetcher({
             url: urlJoin(
@@ -199,11 +208,11 @@ export class NotificationPolicy {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.2.12",
+                "X-Fern-SDK-Version": "v0.2.13",
             },
             contentType: "application/json",
             body: await serializers.NotificationPolicyRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
-            timeoutMs: 60000,
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
         });
         if (_response.ok) {
             return await serializers.NotificationPolicyResponse.parseOrThrow(_response.body, {

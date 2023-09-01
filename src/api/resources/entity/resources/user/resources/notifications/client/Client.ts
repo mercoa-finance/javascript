@@ -15,6 +15,10 @@ export declare namespace Notifications {
         environment?: core.Supplier<environments.MercoaEnvironment | string>;
         token: core.Supplier<core.BearerToken>;
     }
+
+    interface RequestOptions {
+        timeoutInSeconds?: number;
+    }
 }
 
 export class Notifications {
@@ -29,7 +33,8 @@ export class Notifications {
     public async find(
         entityId: Mercoa.EntityId,
         userId: Mercoa.EntityUserId,
-        request: Mercoa.entity.user.EntityGetNotificationsRequest = {}
+        request: Mercoa.entity.user.EntityGetNotificationsRequest = {},
+        requestOptions?: Notifications.RequestOptions
     ): Promise<Mercoa.FindNotificationResponse> {
         const { startDate, endDate, orderDirection, limit, startingAfter, notificationType } = request;
         const _queryParams = new URLSearchParams();
@@ -75,11 +80,11 @@ export class Notifications {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.2.12",
+                "X-Fern-SDK-Version": "v0.2.13",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
-            timeoutMs: 60000,
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
         });
         if (_response.ok) {
             return await serializers.FindNotificationResponse.parseOrThrow(_response.body, {
@@ -144,7 +149,8 @@ export class Notifications {
     public async get(
         entityId: Mercoa.EntityId,
         userId: Mercoa.EntityUserId,
-        notificationId: Mercoa.NotificationId
+        notificationId: Mercoa.NotificationId,
+        requestOptions?: Notifications.RequestOptions
     ): Promise<Mercoa.NotificationResponse> {
         const _response = await core.fetcher({
             url: urlJoin(
@@ -160,10 +166,10 @@ export class Notifications {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.2.12",
+                "X-Fern-SDK-Version": "v0.2.13",
             },
             contentType: "application/json",
-            timeoutMs: 60000,
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
         });
         if (_response.ok) {
             return await serializers.NotificationResponse.parseOrThrow(_response.body, {

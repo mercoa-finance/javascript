@@ -14,6 +14,10 @@ export declare namespace ApprovalPolicy {
         environment?: core.Supplier<environments.MercoaEnvironment | string>;
         token: core.Supplier<core.BearerToken>;
     }
+
+    interface RequestOptions {
+        timeoutInSeconds?: number;
+    }
 }
 
 export class ApprovalPolicy {
@@ -25,7 +29,10 @@ export class ApprovalPolicy {
      * @throws {@link Mercoa.AuthHeaderMalformedError}
      * @throws {@link Mercoa.Unauthorized}
      */
-    public async getAll(entityId: Mercoa.EntityId): Promise<Mercoa.ApprovalPolicyResponse[]> {
+    public async getAll(
+        entityId: Mercoa.EntityId,
+        requestOptions?: ApprovalPolicy.RequestOptions
+    ): Promise<Mercoa.ApprovalPolicyResponse[]> {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
@@ -36,10 +43,10 @@ export class ApprovalPolicy {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.2.12",
+                "X-Fern-SDK-Version": "v0.2.13",
             },
             contentType: "application/json",
-            timeoutMs: 60000,
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
         });
         if (_response.ok) {
             return await serializers.entity.approvalPolicy.getAll.Response.parseOrThrow(_response.body, {
@@ -105,7 +112,8 @@ export class ApprovalPolicy {
      */
     public async create(
         entityId: Mercoa.EntityId,
-        request: Mercoa.ApprovalPolicyRequest
+        request: Mercoa.ApprovalPolicyRequest,
+        requestOptions?: ApprovalPolicy.RequestOptions
     ): Promise<Mercoa.ApprovalPolicyResponse> {
         const _response = await core.fetcher({
             url: urlJoin(
@@ -117,11 +125,11 @@ export class ApprovalPolicy {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.2.12",
+                "X-Fern-SDK-Version": "v0.2.13",
             },
             contentType: "application/json",
             body: await serializers.ApprovalPolicyRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
-            timeoutMs: 60000,
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
         });
         if (_response.ok) {
             return await serializers.ApprovalPolicyResponse.parseOrThrow(_response.body, {
@@ -203,7 +211,8 @@ export class ApprovalPolicy {
      */
     public async get(
         entityId: Mercoa.EntityId,
-        policyId: Mercoa.ApprovalPolicyId
+        policyId: Mercoa.ApprovalPolicyId,
+        requestOptions?: ApprovalPolicy.RequestOptions
     ): Promise<Mercoa.ApprovalPolicyResponse> {
         const _response = await core.fetcher({
             url: urlJoin(
@@ -217,10 +226,10 @@ export class ApprovalPolicy {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.2.12",
+                "X-Fern-SDK-Version": "v0.2.13",
             },
             contentType: "application/json",
-            timeoutMs: 60000,
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
         });
         if (_response.ok) {
             return await serializers.ApprovalPolicyResponse.parseOrThrow(_response.body, {
@@ -287,7 +296,8 @@ export class ApprovalPolicy {
     public async update(
         entityId: Mercoa.EntityId,
         policyId: Mercoa.ApprovalPolicyId,
-        request: Mercoa.ApprovalPolicyUpdateRequest
+        request: Mercoa.ApprovalPolicyUpdateRequest,
+        requestOptions?: ApprovalPolicy.RequestOptions
     ): Promise<Mercoa.ApprovalPolicyResponse> {
         const _response = await core.fetcher({
             url: urlJoin(
@@ -301,13 +311,13 @@ export class ApprovalPolicy {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.2.12",
+                "X-Fern-SDK-Version": "v0.2.13",
             },
             contentType: "application/json",
             body: await serializers.ApprovalPolicyUpdateRequest.jsonOrThrow(request, {
                 unrecognizedObjectKeys: "strip",
             }),
-            timeoutMs: 60000,
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
         });
         if (_response.ok) {
             return await serializers.ApprovalPolicyResponse.parseOrThrow(_response.body, {
@@ -387,7 +397,11 @@ export class ApprovalPolicy {
      * @throws {@link Mercoa.AuthHeaderMalformedError}
      * @throws {@link Mercoa.Unauthorized}
      */
-    public async delete(entityId: Mercoa.EntityId, policyId: Mercoa.ApprovalPolicyId): Promise<void> {
+    public async delete(
+        entityId: Mercoa.EntityId,
+        policyId: Mercoa.ApprovalPolicyId,
+        requestOptions?: ApprovalPolicy.RequestOptions
+    ): Promise<void> {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
@@ -400,10 +414,10 @@ export class ApprovalPolicy {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.2.12",
+                "X-Fern-SDK-Version": "v0.2.13",
             },
             contentType: "application/json",
-            timeoutMs: 60000,
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
         });
         if (_response.ok) {
             return;

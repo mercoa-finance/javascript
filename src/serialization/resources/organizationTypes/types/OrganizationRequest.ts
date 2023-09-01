@@ -27,6 +27,9 @@ export const OrganizationRequest: core.serialization.ObjectSchema<
     payorOnboardingOptions: core.serialization
         .lazyObject(async () => (await import("../../..")).OnboardingOptionsRequest)
         .optional(),
+    metadataSchema: core.serialization
+        .list(core.serialization.lazyObject(async () => (await import("../../..")).MetadataSchema))
+        .optional(),
 });
 
 export declare namespace OrganizationRequest {
@@ -40,5 +43,6 @@ export declare namespace OrganizationRequest {
         colorScheme?: serializers.ColorSchemeRequest.Raw | null;
         payeeOnboardingOptions?: serializers.OnboardingOptionsRequest.Raw | null;
         payorOnboardingOptions?: serializers.OnboardingOptionsRequest.Raw | null;
+        metadataSchema?: serializers.MetadataSchema.Raw[] | null;
     }
 }

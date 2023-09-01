@@ -15,6 +15,10 @@ export declare namespace BankLookup {
         environment?: core.Supplier<environments.MercoaEnvironment | string>;
         token: core.Supplier<core.BearerToken>;
     }
+
+    interface RequestOptions {
+        timeoutInSeconds?: number;
+    }
 }
 
 export class BankLookup {
@@ -26,7 +30,10 @@ export class BankLookup {
      * @throws {@link Mercoa.AuthHeaderMalformedError}
      * @throws {@link Mercoa.Unauthorized}
      */
-    public async find(request: Mercoa.BankLookupRequest): Promise<Mercoa.BankLookupResponse> {
+    public async find(
+        request: Mercoa.BankLookupRequest,
+        requestOptions?: BankLookup.RequestOptions
+    ): Promise<Mercoa.BankLookupResponse> {
         const { routingNumber } = request;
         const _queryParams = new URLSearchParams();
         _queryParams.append("routingNumber", routingNumber);
@@ -40,11 +47,11 @@ export class BankLookup {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.2.12",
+                "X-Fern-SDK-Version": "v0.2.13",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
-            timeoutMs: 60000,
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
         });
         if (_response.ok) {
             return await serializers.BankLookupResponse.parseOrThrow(_response.body, {

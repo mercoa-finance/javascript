@@ -14,6 +14,10 @@ export declare namespace PaymentMethodSchema {
         environment?: core.Supplier<environments.MercoaEnvironment | string>;
         token: core.Supplier<core.BearerToken>;
     }
+
+    interface RequestOptions {
+        timeoutInSeconds?: number;
+    }
 }
 
 export class PaymentMethodSchema {
@@ -25,7 +29,9 @@ export class PaymentMethodSchema {
      * @throws {@link Mercoa.AuthHeaderMalformedError}
      * @throws {@link Mercoa.Unauthorized}
      */
-    public async getAll(): Promise<Mercoa.PaymentMethodSchemaResponse[]> {
+    public async getAll(
+        requestOptions?: PaymentMethodSchema.RequestOptions
+    ): Promise<Mercoa.PaymentMethodSchemaResponse[]> {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
@@ -36,10 +42,10 @@ export class PaymentMethodSchema {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.2.12",
+                "X-Fern-SDK-Version": "v0.2.13",
             },
             contentType: "application/json",
-            timeoutMs: 60000,
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
         });
         if (_response.ok) {
             return await serializers.paymentMethodSchema.getAll.Response.parseOrThrow(_response.body, {
@@ -101,7 +107,10 @@ export class PaymentMethodSchema {
      * @throws {@link Mercoa.AuthHeaderMalformedError}
      * @throws {@link Mercoa.Unauthorized}
      */
-    public async create(request: Mercoa.PaymentMethodSchemaRequest): Promise<Mercoa.PaymentMethodSchemaResponse> {
+    public async create(
+        request: Mercoa.PaymentMethodSchemaRequest,
+        requestOptions?: PaymentMethodSchema.RequestOptions
+    ): Promise<Mercoa.PaymentMethodSchemaResponse> {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
@@ -112,13 +121,13 @@ export class PaymentMethodSchema {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.2.12",
+                "X-Fern-SDK-Version": "v0.2.13",
             },
             contentType: "application/json",
             body: await serializers.PaymentMethodSchemaRequest.jsonOrThrow(request, {
                 unrecognizedObjectKeys: "strip",
             }),
-            timeoutMs: 60000,
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
         });
         if (_response.ok) {
             return await serializers.PaymentMethodSchemaResponse.parseOrThrow(_response.body, {
@@ -182,7 +191,8 @@ export class PaymentMethodSchema {
      */
     public async update(
         schemaId: Mercoa.PaymentMethodSchemaId,
-        request: Mercoa.PaymentMethodSchemaRequest
+        request: Mercoa.PaymentMethodSchemaRequest,
+        requestOptions?: PaymentMethodSchema.RequestOptions
     ): Promise<Mercoa.PaymentMethodSchemaResponse> {
         const _response = await core.fetcher({
             url: urlJoin(
@@ -194,13 +204,13 @@ export class PaymentMethodSchema {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.2.12",
+                "X-Fern-SDK-Version": "v0.2.13",
             },
             contentType: "application/json",
             body: await serializers.PaymentMethodSchemaRequest.jsonOrThrow(request, {
                 unrecognizedObjectKeys: "strip",
             }),
-            timeoutMs: 60000,
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
         });
         if (_response.ok) {
             return await serializers.PaymentMethodSchemaResponse.parseOrThrow(_response.body, {
@@ -262,7 +272,10 @@ export class PaymentMethodSchema {
      * @throws {@link Mercoa.AuthHeaderMalformedError}
      * @throws {@link Mercoa.Unauthorized}
      */
-    public async get(schemaId: Mercoa.PaymentMethodSchemaId): Promise<Mercoa.PaymentMethodSchemaResponse> {
+    public async get(
+        schemaId: Mercoa.PaymentMethodSchemaId,
+        requestOptions?: PaymentMethodSchema.RequestOptions
+    ): Promise<Mercoa.PaymentMethodSchemaResponse> {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
@@ -273,10 +286,10 @@ export class PaymentMethodSchema {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.2.12",
+                "X-Fern-SDK-Version": "v0.2.13",
             },
             contentType: "application/json",
-            timeoutMs: 60000,
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
         });
         if (_response.ok) {
             return await serializers.PaymentMethodSchemaResponse.parseOrThrow(_response.body, {
@@ -338,7 +351,10 @@ export class PaymentMethodSchema {
      * @throws {@link Mercoa.AuthHeaderMalformedError}
      * @throws {@link Mercoa.Unauthorized}
      */
-    public async delete(schemaId: Mercoa.PaymentMethodSchemaId): Promise<void> {
+    public async delete(
+        schemaId: Mercoa.PaymentMethodSchemaId,
+        requestOptions?: PaymentMethodSchema.RequestOptions
+    ): Promise<void> {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
@@ -349,10 +365,10 @@ export class PaymentMethodSchema {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.2.12",
+                "X-Fern-SDK-Version": "v0.2.13",
             },
             contentType: "application/json",
-            timeoutMs: 60000,
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
         });
         if (_response.ok) {
             return;

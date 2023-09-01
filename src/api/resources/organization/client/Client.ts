@@ -16,6 +16,10 @@ export declare namespace Organization {
         environment?: core.Supplier<environments.MercoaEnvironment | string>;
         token: core.Supplier<core.BearerToken>;
     }
+
+    interface RequestOptions {
+        timeoutInSeconds?: number;
+    }
 }
 
 export class Organization {
@@ -27,8 +31,18 @@ export class Organization {
      * @throws {@link Mercoa.AuthHeaderMalformedError}
      * @throws {@link Mercoa.Unauthorized}
      */
-    public async get(request: Mercoa.organization.GetOrganizationRequest = {}): Promise<Mercoa.OrganizationResponse> {
-        const { paymentMethods, emailProvider, colorScheme, payeeOnboardingOptions, payorOnboardingOptions } = request;
+    public async get(
+        request: Mercoa.organization.GetOrganizationRequest = {},
+        requestOptions?: Organization.RequestOptions
+    ): Promise<Mercoa.OrganizationResponse> {
+        const {
+            paymentMethods,
+            emailProvider,
+            colorScheme,
+            payeeOnboardingOptions,
+            payorOnboardingOptions,
+            metadataSchema,
+        } = request;
         const _queryParams = new URLSearchParams();
         if (paymentMethods != null) {
             _queryParams.append("paymentMethods", paymentMethods.toString());
@@ -50,6 +64,10 @@ export class Organization {
             _queryParams.append("payorOnboardingOptions", payorOnboardingOptions.toString());
         }
 
+        if (metadataSchema != null) {
+            _queryParams.append("metadataSchema", metadataSchema.toString());
+        }
+
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
@@ -60,11 +78,11 @@ export class Organization {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.2.12",
+                "X-Fern-SDK-Version": "v0.2.13",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
-            timeoutMs: 60000,
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
         });
         if (_response.ok) {
             return await serializers.OrganizationResponse.parseOrThrow(_response.body, {
@@ -126,7 +144,10 @@ export class Organization {
      * @throws {@link Mercoa.AuthHeaderMalformedError}
      * @throws {@link Mercoa.Unauthorized}
      */
-    public async update(request: Mercoa.OrganizationRequest): Promise<Mercoa.OrganizationResponse> {
+    public async update(
+        request: Mercoa.OrganizationRequest,
+        requestOptions?: Organization.RequestOptions
+    ): Promise<Mercoa.OrganizationResponse> {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
@@ -137,11 +158,11 @@ export class Organization {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.2.12",
+                "X-Fern-SDK-Version": "v0.2.13",
             },
             contentType: "application/json",
             body: await serializers.OrganizationRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
-            timeoutMs: 60000,
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
         });
         if (_response.ok) {
             return await serializers.OrganizationResponse.parseOrThrow(_response.body, {
@@ -203,7 +224,10 @@ export class Organization {
      * @throws {@link Mercoa.AuthHeaderMalformedError}
      * @throws {@link Mercoa.Unauthorized}
      */
-    public async emailLog(request: Mercoa.organization.GetEmailLogRequest = {}): Promise<Mercoa.EmailLogResponse[]> {
+    public async emailLog(
+        request: Mercoa.organization.GetEmailLogRequest = {},
+        requestOptions?: Organization.RequestOptions
+    ): Promise<Mercoa.EmailLogResponse[]> {
         const { startDate, endDate } = request;
         const _queryParams = new URLSearchParams();
         if (startDate != null) {
@@ -224,11 +248,11 @@ export class Organization {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.2.12",
+                "X-Fern-SDK-Version": "v0.2.13",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
-            timeoutMs: 60000,
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
         });
         if (_response.ok) {
             return await serializers.organization.emailLog.Response.parseOrThrow(_response.body, {

@@ -15,6 +15,10 @@ export declare namespace Invoice {
         environment?: core.Supplier<environments.MercoaEnvironment | string>;
         token: core.Supplier<core.BearerToken>;
     }
+
+    interface RequestOptions {
+        timeoutInSeconds?: number;
+    }
 }
 
 export class Invoice {
@@ -28,7 +32,8 @@ export class Invoice {
      */
     public async find(
         entityId: Mercoa.EntityId,
-        request: Mercoa.entity.EntityGetInvoicesRequest = {}
+        request: Mercoa.entity.EntityGetInvoicesRequest = {},
+        requestOptions?: Invoice.RequestOptions
     ): Promise<Mercoa.FindInvoiceResponse> {
         const {
             startDate,
@@ -122,11 +127,11 @@ export class Invoice {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.2.12",
+                "X-Fern-SDK-Version": "v0.2.13",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
-            timeoutMs: 60000,
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
         });
         if (_response.ok) {
             return await serializers.FindInvoiceResponse.parseOrThrow(_response.body, {
@@ -190,7 +195,8 @@ export class Invoice {
      */
     public async metrics(
         entityId: Mercoa.EntityId,
-        request: Mercoa.entity.InvoiceMetricsRequest
+        request: Mercoa.entity.InvoiceMetricsRequest,
+        requestOptions?: Invoice.RequestOptions
     ): Promise<Mercoa.InvoiceMetricsResponse> {
         const {
             search,
@@ -276,11 +282,11 @@ export class Invoice {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.2.12",
+                "X-Fern-SDK-Version": "v0.2.13",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
-            timeoutMs: 60000,
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
         });
         if (_response.ok) {
             return await serializers.InvoiceMetricsResponse.parseOrThrow(_response.body, {

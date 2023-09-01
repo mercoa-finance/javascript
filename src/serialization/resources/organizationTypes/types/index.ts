@@ -24,3 +24,6 @@ export * from "./IndividualOnboardingOptions";
 export * from "./BusinessOnboardingOptions";
 export * from "./OnboardingOptionsRequest";
 export * from "./OnboardingOptionsResponse";
+export * from "./MetadataType";
+export * from "./MetadataConditional";
+export * from "./MetadataSchema";

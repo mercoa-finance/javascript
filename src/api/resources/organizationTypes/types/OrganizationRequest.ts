@@ -14,4 +14,5 @@ export interface OrganizationRequest {
     colorScheme?: Mercoa.ColorSchemeRequest;
     payeeOnboardingOptions?: Mercoa.OnboardingOptionsRequest;
     payorOnboardingOptions?: Mercoa.OnboardingOptionsRequest;
+    metadataSchema?: Mercoa.MetadataSchema[];
 }
