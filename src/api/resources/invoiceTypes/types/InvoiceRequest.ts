@@ -23,10 +23,12 @@ export interface InvoiceRequest {
     serviceStartDate?: Date;
     serviceEndDate?: Date;
     payerId?: Mercoa.EntityId;
+    /** ID of payment source for this invoice. If not provided, will attempt to use the default payment source for the payer when creating an invoice if a default payment source exists for the payer. */
     paymentSourceId?: Mercoa.PaymentMethodId;
     /** Set approvers for this invoice. */
     approvers?: Mercoa.ApprovalSlotAssignment[];
     vendorId?: Mercoa.EntityId;
+    /** ID of payment destination for this invoice. If not provided, will attempt to use the default payment destination for the vendor when creating an invoice if a default payment destination exists for the vendor. */
     paymentDestinationId?: Mercoa.PaymentMethodId;
     lineItems?: Mercoa.InvoiceLineItemRequest[];
     /** Metadata associated with this invoice. You can specify up to 10 keys, with key names up to 40 characters long and values up to 200 characters long. */

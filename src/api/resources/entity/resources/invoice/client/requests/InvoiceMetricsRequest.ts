@@ -44,5 +44,5 @@ export interface InvoiceMetricsRequest {
     /**
      * Currency to filter on
      */
-    currency: Mercoa.CurrencyCode;
+    currency?: Mercoa.CurrencyCode | Mercoa.CurrencyCode[];
 }

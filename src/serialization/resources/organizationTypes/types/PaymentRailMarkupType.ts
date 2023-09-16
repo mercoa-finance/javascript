@@ -9,8 +9,8 @@ import * as core from "../../../../core";
 export const PaymentRailMarkupType: core.serialization.Schema<
     serializers.PaymentRailMarkupType.Raw,
     Mercoa.PaymentRailMarkupType
-> = core.serialization.enum_(["FLAT", "PERCENT"]);
+> = core.serialization.enum_(["flat", "percent"]);
 
 export declare namespace PaymentRailMarkupType {
-    type Raw = "FLAT" | "PERCENT";
+    type Raw = "flat" | "percent";
 }
