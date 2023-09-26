@@ -48,14 +48,14 @@ export class Ocr {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
-                "/ocr"
+                "ocr"
             ),
             method: "POST",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.2.14",
+                "X-Fern-SDK-Version": "v0.2.15",
             },
             contentType: "application/json",
             queryParameters: _queryParams,

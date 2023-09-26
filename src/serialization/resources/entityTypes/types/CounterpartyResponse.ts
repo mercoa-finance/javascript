@@ -14,11 +14,15 @@ export const CounterpartyResponse: core.serialization.ObjectSchema<
         paymentMethods: core.serialization.list(
             core.serialization.lazy(async () => (await import("../../..")).PaymentMethodResponse)
         ),
+        counterpartyType: core.serialization.list(
+            core.serialization.lazy(async () => (await import("../../..")).CounterpartyNetworkType)
+        ),
     })
     .extend(core.serialization.lazyObject(async () => (await import("../../..")).EntityResponse));
 
 export declare namespace CounterpartyResponse {
     interface Raw extends serializers.EntityResponse.Raw {
         paymentMethods: serializers.PaymentMethodResponse.Raw[];
+        counterpartyType: serializers.CounterpartyNetworkType.Raw[];
     }
 }

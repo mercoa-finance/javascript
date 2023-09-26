@@ -6,4 +6,6 @@ import * as Mercoa from "../../..";
 
 export interface TokenGenerationInvoiceOptions {
     status: Mercoa.InvoiceStatus[];
+    /** If true, the user will be able to mark invoices as paid. */
+    markPaid?: boolean;
 }

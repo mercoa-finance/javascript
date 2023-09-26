@@ -5,6 +5,7 @@
 import * as Mercoa from "../../..";
 
 export interface TokenGenerationVendorOptions {
+    /** If true, the user will not be able to create new vendors. */
     disableCreation?: boolean;
     network: Mercoa.VendorNetwork;
 }

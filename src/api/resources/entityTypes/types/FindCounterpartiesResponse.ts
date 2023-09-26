@@ -5,10 +5,9 @@
 import * as Mercoa from "../../..";
 
 export interface FindCounterpartiesResponse {
-    /** Counterparties that have been paid by this entity */
-    entityCounterparties: Mercoa.CounterpartyResponse[];
-    /** Counterparties that have paid by any entity on your platform */
-    platformCounterparties: Mercoa.CounterpartyResponse[];
-    /** External counterparties that have been verified by Mercoa */
-    mercoaCounterparties: Mercoa.CounterpartyResponse[];
+    /** Total number of counterparties for the given filters. This value is not limited by the limit parameter. It is provided so that you can determine how many pages of results are available. */
+    count: number;
+    /** True if there are more counterparties available for the given filters. */
+    hasMore: boolean;
+    data: Mercoa.CounterpartyResponse[];
 }

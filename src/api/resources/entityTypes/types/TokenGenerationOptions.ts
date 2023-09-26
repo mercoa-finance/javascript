@@ -5,6 +5,8 @@
 import * as Mercoa from "../../..";
 
 export interface TokenGenerationOptions {
+    /** Expressed in seconds or a string describing a time span. The default is 1h. */
+    expiresIn?: string;
     invoice?: Mercoa.TokenGenerationInvoiceOptions;
     pages?: Mercoa.TokenGenerationPagesOptions;
     style?: Mercoa.TokenGenerationStyleOptions;

@@ -7,8 +7,8 @@ import * as Mercoa from "../../../../api";
 import * as core from "../../../../core";
 
 export const MetadataType: core.serialization.Schema<serializers.MetadataType.Raw, Mercoa.MetadataType> =
-    core.serialization.enum_(["STRING", "NUMBER", "DATE", "BOOLEAN"]);
+    core.serialization.enum_(["STRING", "NUMBER", "DATE", "BOOLEAN", "KEY_VALUE"]);
 
 export declare namespace MetadataType {
-    type Raw = "STRING" | "NUMBER" | "DATE" | "BOOLEAN";
+    type Raw = "STRING" | "NUMBER" | "DATE" | "BOOLEAN" | "KEY_VALUE";
 }

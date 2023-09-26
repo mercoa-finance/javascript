@@ -10,6 +10,7 @@ export const TokenGenerationOptions: core.serialization.ObjectSchema<
     serializers.TokenGenerationOptions.Raw,
     Mercoa.TokenGenerationOptions
 > = core.serialization.object({
+    expiresIn: core.serialization.string().optional(),
     invoice: core.serialization
         .lazyObject(async () => (await import("../../..")).TokenGenerationInvoiceOptions)
         .optional(),
@@ -22,6 +23,7 @@ export const TokenGenerationOptions: core.serialization.ObjectSchema<
 
 export declare namespace TokenGenerationOptions {
     interface Raw {
+        expiresIn?: string | null;
         invoice?: serializers.TokenGenerationInvoiceOptions.Raw | null;
         pages?: serializers.TokenGenerationPagesOptions.Raw | null;
         style?: serializers.TokenGenerationStyleOptions.Raw | null;

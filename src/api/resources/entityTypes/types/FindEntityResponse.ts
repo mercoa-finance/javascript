@@ -5,9 +5,9 @@
 import * as Mercoa from "../../..";
 
 export interface FindEntityResponse {
-    /** Total number of notifications for the given start and end date filters. This value is not limited by the limit parameter. It is provided so that you can determine how many pages of results are available. */
+    /** Total number of entities for the given filters. This value is not limited by the limit parameter. It is provided so that you can determine how many pages of results are available. */
     count: number;
-    /** True if there are more notifications available for the given start and end date filters. */
+    /** True if there are more entities available for the given filters. */
     hasMore: boolean;
     data: Mercoa.EntityResponse[];
 }

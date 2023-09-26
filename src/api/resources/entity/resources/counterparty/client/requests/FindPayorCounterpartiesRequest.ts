@@ -4,7 +4,15 @@
 
 import * as Mercoa from "../../../../../..";
 
-export interface FindCounterpartiesRequest {
+export interface FindPayorCounterpartiesRequest {
+    /**
+     * Filter by counterparty name
+     */
+    name?: string;
+    /**
+     * Filter by network type. By default, only ENTITY counterparties are returned.
+     */
+    networkType?: Mercoa.CounterpartyNetworkType | Mercoa.CounterpartyNetworkType[];
     /**
      * If true, will include counterparty payment methods as part of the response
      */

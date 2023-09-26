@@ -10,21 +10,17 @@ export const FindCounterpartiesResponse: core.serialization.ObjectSchema<
     serializers.FindCounterpartiesResponse.Raw,
     Mercoa.FindCounterpartiesResponse
 > = core.serialization.object({
-    entityCounterparties: core.serialization.list(
-        core.serialization.lazyObject(async () => (await import("../../..")).CounterpartyResponse)
-    ),
-    platformCounterparties: core.serialization.list(
-        core.serialization.lazyObject(async () => (await import("../../..")).CounterpartyResponse)
-    ),
-    mercoaCounterparties: core.serialization.list(
+    count: core.serialization.number(),
+    hasMore: core.serialization.boolean(),
+    data: core.serialization.list(
         core.serialization.lazyObject(async () => (await import("../../..")).CounterpartyResponse)
     ),
 });
 
 export declare namespace FindCounterpartiesResponse {
     interface Raw {
-        entityCounterparties: serializers.CounterpartyResponse.Raw[];
-        platformCounterparties: serializers.CounterpartyResponse.Raw[];
-        mercoaCounterparties: serializers.CounterpartyResponse.Raw[];
+        count: number;
+        hasMore: boolean;
+        data: serializers.CounterpartyResponse.Raw[];
     }
 }
