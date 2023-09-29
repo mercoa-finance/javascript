@@ -4,7 +4,7 @@
 
 import * as Mercoa from "../../..";
 
-export interface EntityArchivePayorsRequest {
-    /** List of payor entity IDs to archive */
+export interface EntityHidePayorsRequest {
+    /** List of payor entity IDs to hide */
     payors: Mercoa.EntityId[];
 }

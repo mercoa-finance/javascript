@@ -12,5 +12,5 @@ export interface MetadataSchema {
     /** Whether or not multiple values are allowed for this field. Defaults to false. If true, the value will be a list of the specified type. */
     allowMultiple?: boolean;
     /** A list of conditional rules that determine whether or not this field should be shown. The field will only be shown if all of the conditions are met. If no conditions are specified, the field will always be shown. */
-    conditional?: Mercoa.MetadataConditional;
+    showConditions?: Mercoa.MetadataShowConditions;
 }

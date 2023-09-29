@@ -5,6 +5,13 @@
 import * as Mercoa from "../../../..";
 
 export interface FindEntities {
+    /**
+     * If true, only entities with a direct relationship to the requesting organization will be returned. If false or not provided, all entities will be returned.
+     */
+    ownedByOrg?: boolean;
+    /**
+     * ID used to identify this entity in your system
+     */
     foreignId?: string | string[];
     status?: Mercoa.EntityStatus | Mercoa.EntityStatus[];
     /**

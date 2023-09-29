@@ -46,7 +46,7 @@ export class Representative {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.2.15",
+                "X-Fern-SDK-Version": "v0.3.0",
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -133,7 +133,6 @@ export class Representative {
     }
 
     /**
-     * Create representative
      * @throws {@link Mercoa.InvalidTaxId}
      * @throws {@link Mercoa.EntityError}
      * @throws {@link Mercoa.InvalidPostalCode}
@@ -160,7 +159,7 @@ export class Representative {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.2.15",
+                "X-Fern-SDK-Version": "v0.3.0",
             },
             contentType: "application/json",
             body: await serializers.RepresentativeRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
@@ -284,7 +283,6 @@ export class Representative {
     }
 
     /**
-     * Get representative
      * @throws {@link Mercoa.AuthHeaderMissingError}
      * @throws {@link Mercoa.AuthHeaderMalformedError}
      * @throws {@link Mercoa.Unauthorized}
@@ -309,7 +307,7 @@ export class Representative {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.2.15",
+                "X-Fern-SDK-Version": "v0.3.0",
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -396,7 +394,6 @@ export class Representative {
     }
 
     /**
-     * Delete representative
      * @throws {@link Mercoa.AuthHeaderMissingError}
      * @throws {@link Mercoa.AuthHeaderMalformedError}
      * @throws {@link Mercoa.Unauthorized}
@@ -421,7 +418,7 @@ export class Representative {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.2.15",
+                "X-Fern-SDK-Version": "v0.3.0",
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,

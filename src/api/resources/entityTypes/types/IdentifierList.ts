@@ -4,7 +4,13 @@
 
 import * as Mercoa from "../../..";
 
-export type IdentifierList = Mercoa.IdentifierList.RolesList | Mercoa.IdentifierList.UserList;
+export type IdentifierList =
+    /**
+     * List of entity user roles that should be used to determine approvers */
+    | Mercoa.IdentifierList.RolesList
+    /**
+     * List of entity user IDs that should be used to determine approvers */
+    | Mercoa.IdentifierList.UserList;
 
 export declare namespace IdentifierList {
     interface RolesList {

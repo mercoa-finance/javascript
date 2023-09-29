@@ -4,7 +4,9 @@
 
 import * as Mercoa from "../../..";
 
-export interface MetadataConditional {
+export interface MetadataShowConditions {
+    /** Show this field only if the entity has values set for the metadata key. */
+    hasOptions?: boolean;
     /** Show this field only if a document has been attached. */
     hasDocument?: boolean;
     /** Show this field only if the payment source type is in this list. */

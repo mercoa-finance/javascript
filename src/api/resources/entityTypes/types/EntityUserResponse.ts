@@ -6,7 +6,7 @@ import * as Mercoa from "../../..";
 
 export interface EntityUserResponse {
     id: Mercoa.EntityUserId;
-    /** Id from external auth provider or your auth system */
+    /** The ID used to identify this user in your system. */
     foreignId?: string;
     email?: string;
     name?: string;

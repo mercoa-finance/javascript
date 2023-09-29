@@ -5,6 +5,8 @@
 import * as Mercoa from "../../..";
 
 export interface ProfileRequest {
+    /** If this entity is a business, set this field */
     business?: Mercoa.BusinessProfileRequest;
+    /** If this entity is a individual, set this field */
     individual?: Mercoa.IndividualProfileRequest;
 }

@@ -6,10 +6,11 @@ import * as serializers from "../../..";
 import * as Mercoa from "../../../../api";
 import * as core from "../../../../core";
 
-export const MetadataConditional: core.serialization.ObjectSchema<
-    serializers.MetadataConditional.Raw,
-    Mercoa.MetadataConditional
+export const MetadataShowConditions: core.serialization.ObjectSchema<
+    serializers.MetadataShowConditions.Raw,
+    Mercoa.MetadataShowConditions
 > = core.serialization.object({
+    hasOptions: core.serialization.boolean().optional(),
     hasDocument: core.serialization.boolean().optional(),
     paymentSourceTypes: core.serialization
         .list(core.serialization.lazy(async () => (await import("../../..")).PaymentMethodType))
@@ -21,8 +22,9 @@ export const MetadataConditional: core.serialization.ObjectSchema<
     paymentDestinationCustomSchemaIds: core.serialization.list(core.serialization.string()).optional(),
 });
 
-export declare namespace MetadataConditional {
+export declare namespace MetadataShowConditions {
     interface Raw {
+        hasOptions?: boolean | null;
         hasDocument?: boolean | null;
         paymentSourceTypes?: serializers.PaymentMethodType.Raw[] | null;
         paymentSourceCustomSchemaIds?: string[] | null;

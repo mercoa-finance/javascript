@@ -5,8 +5,9 @@
 import * as Mercoa from "../../..";
 
 export interface EntityRequest {
+    /** The ID used to identify this entity in your system. This ID must be unique across all entities in your system. */
     foreignId?: string;
-    /** Email inbox address. Do not include the @domain.com */
+    /** Sets the email address to which to send invoices to be added to the Invoice Inbox. Only provide the local-part/username of the email address, do not include the @domain.com */
     emailTo?: string;
     /** Email inbox alias addresses. Used when forwarding emails to the emailTo address from an alias. Include the full email address. */
     emailToAlias?: string[];
@@ -14,8 +15,8 @@ export interface EntityRequest {
     ownedByOrg?: boolean;
     accountType: Mercoa.AccountType;
     profile: Mercoa.ProfileRequest;
-    /** If this entity will be paying invoices, set this to true. In the near future, this will be a required parameter. Currently if this parameter is not set, it will default to true if ownedByOrg is true, and false otherwise. */
-    isPayor?: boolean;
-    /** If this entity will be receiving payments, set this to true. In the near future, this will be a required parameter. Currently if this parameter is not set, it will default to false if ownedByOrg is true, and true otherwise. */
-    isPayee?: boolean;
+    /** If this entity will be paying invoices, set this to true. */
+    isPayor: boolean;
+    /** If this entity will be receiving payments, set this to true. */
+    isPayee: boolean;
 }

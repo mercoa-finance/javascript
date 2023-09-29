@@ -13,6 +13,7 @@ export interface BusinessProfileResponse {
     website?: string;
     description?: string;
     address?: Mercoa.Address;
+    /** True if all representatives have been provided for this business. */
     ownersProvided?: boolean;
     taxIdProvided: boolean;
 }

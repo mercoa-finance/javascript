@@ -17,6 +17,9 @@ export const InvoiceLineItemResponse: core.serialization.ObjectSchema<
     name: core.serialization.string().optional(),
     quantity: core.serialization.number().optional(),
     unitPrice: core.serialization.number().optional(),
+    serviceStartDate: core.serialization.date().optional(),
+    serviceEndDate: core.serialization.date().optional(),
+    metadata: core.serialization.record(core.serialization.string(), core.serialization.string()).optional(),
     createdAt: core.serialization.date(),
     updatedAt: core.serialization.date(),
 });
@@ -30,6 +33,9 @@ export declare namespace InvoiceLineItemResponse {
         name?: string | null;
         quantity?: number | null;
         unitPrice?: number | null;
+        serviceStartDate?: string | null;
+        serviceEndDate?: string | null;
+        metadata?: Record<string, string> | null;
         createdAt: string;
         updatedAt: string;
     }

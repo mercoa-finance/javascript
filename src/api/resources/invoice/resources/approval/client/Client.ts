@@ -24,7 +24,6 @@ export class Approval {
     constructor(protected readonly _options: Approval.Options) {}
 
     /**
-     * Approve invoice
      * @throws {@link Mercoa.InvoiceError}
      * @throws {@link Mercoa.InvoiceStatusError}
      * @throws {@link Mercoa.AuthHeaderMissingError}
@@ -49,7 +48,7 @@ export class Approval {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.2.15",
+                "X-Fern-SDK-Version": "v0.3.0",
             },
             contentType: "application/json",
             body: await serializers.ApprovalRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
@@ -150,7 +149,6 @@ export class Approval {
     }
 
     /**
-     * Reject invoice
      * @throws {@link Mercoa.InvoiceError}
      * @throws {@link Mercoa.InvoiceStatusError}
      * @throws {@link Mercoa.AuthHeaderMissingError}
@@ -175,7 +173,7 @@ export class Approval {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.2.15",
+                "X-Fern-SDK-Version": "v0.3.0",
             },
             contentType: "application/json",
             body: await serializers.ApprovalRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),

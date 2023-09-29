@@ -3,12 +3,11 @@
  */
 
 import * as serializers from "../../..";
-import * as Mercoa from "../../../../api";
 import * as core from "../../../../core";
 
-export const TransactionId: core.serialization.Schema<serializers.TransactionId.Raw, Mercoa.TransactionId> =
+export const InvoiceQueryError: core.serialization.Schema<serializers.InvoiceQueryError.Raw, string> =
     core.serialization.string();
 
-export declare namespace TransactionId {
+export declare namespace InvoiceQueryError {
     type Raw = string;
 }

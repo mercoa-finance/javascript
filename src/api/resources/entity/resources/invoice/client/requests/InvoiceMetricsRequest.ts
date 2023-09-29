@@ -10,6 +10,18 @@ export interface InvoiceMetricsRequest {
      */
     search?: string;
     /**
+     * Only return invoices that are not payable by the entity. This will return only invoices that are receivable by the entity.
+     */
+    excludePayables?: boolean;
+    /**
+     * Only return invoices that are not receivable by the entity. This will return only invoices that are payable by the entity.
+     */
+    excludeReceivables?: boolean;
+    /**
+     * Filter invoices by payer ID.
+     */
+    payerId?: Mercoa.EntityId | Mercoa.EntityId[];
+    /**
      * Filter invoices by vendor ID.
      */
     vendorId?: Mercoa.EntityId | Mercoa.EntityId[];

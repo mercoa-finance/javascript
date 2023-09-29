@@ -30,10 +30,11 @@ export interface InvoiceResponse {
     vendor?: Mercoa.EntityResponse;
     paymentDestination?: Mercoa.PaymentMethodResponse;
     paymentDestinationId?: Mercoa.PaymentMethodId;
+    /** True if the payment destination has been confirmed by the vendor. False if the payment destination has been set (for example, a check to an address) but has not been confirmed by the vendor. */
     paymentDestinationConfirmed: boolean;
+    /** True if the invoice has documents attached. */
     hasDocuments: boolean;
     comments?: Mercoa.CommentResponse[];
-    transactions?: Mercoa.TransactionResponse[];
     lineItems?: Mercoa.InvoiceLineItemResponse[];
     approvers: Mercoa.ApprovalSlot[];
     approvalPolicy: Mercoa.ApprovalPolicyResponse[];

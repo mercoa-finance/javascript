@@ -15,7 +15,7 @@ export interface BusinessProfileRequest {
     /** Description of the business. Required for KYB if website is not provided. */
     description?: string;
     address?: Mercoa.Address;
-    /** Tax ID for the business. Currently only EIN is supported. Must be in the format XX-XXXXXXX. */
+    /** Tax ID for the business. Currently only EIN is supported. */
     taxId?: Mercoa.TaxId;
     /** Date of business formation */
     formationDate?: Date;

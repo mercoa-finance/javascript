@@ -5,7 +5,10 @@
 import * as Mercoa from "../../..";
 
 export interface PaymentMethodsResponse {
+    /** List of payment methods that can be used to pay invoices. */
     payerPayments: Mercoa.PaymentRailResponse[];
+    /** List of payment methods that can be created by a payor to send disbursements. */
     backupDisbursements: Mercoa.PaymentRailResponse[];
+    /** List of payment methods that can be created by a payee to receive disbursements. */
     vendorDisbursements: Mercoa.PaymentRailResponse[];
 }

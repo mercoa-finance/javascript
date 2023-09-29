@@ -3,5 +3,6 @@
  */
 
 export interface Ein {
+    /** Must be in the format XX-XXXXXXX. */
     number: string;
 }

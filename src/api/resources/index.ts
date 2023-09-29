@@ -12,8 +12,6 @@ export * as organizationTypes from "./organizationTypes";
 export * from "./organizationTypes/types";
 export * as paymentMethodTypes from "./paymentMethodTypes";
 export * from "./paymentMethodTypes/types";
-export * as transaction from "./transaction";
-export * from "./transaction/types";
 export * from "./commons/errors";
 export * from "./entityTypes/errors";
 export * as entity from "./entity";

@@ -60,7 +60,7 @@ export class PaymentMethod {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.2.15",
+                "X-Fern-SDK-Version": "v0.3.0",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -157,7 +157,6 @@ export class PaymentMethod {
     }
 
     /**
-     * Create payment method
      * @throws {@link Mercoa.PaymentMethodError}
      * @throws {@link Mercoa.AuthHeaderMissingError}
      * @throws {@link Mercoa.AuthHeaderMalformedError}
@@ -181,7 +180,7 @@ export class PaymentMethod {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.2.15",
+                "X-Fern-SDK-Version": "v0.3.0",
             },
             contentType: "application/json",
             body: await serializers.PaymentMethodRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
@@ -278,7 +277,6 @@ export class PaymentMethod {
     }
 
     /**
-     * Get payment method
      * @throws {@link Mercoa.PaymentMethodError}
      * @throws {@link Mercoa.AuthHeaderMissingError}
      * @throws {@link Mercoa.AuthHeaderMalformedError}
@@ -304,7 +302,7 @@ export class PaymentMethod {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.2.15",
+                "X-Fern-SDK-Version": "v0.3.0",
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -400,7 +398,7 @@ export class PaymentMethod {
     }
 
     /**
-     * Update payment method. Only custom payment methods can be updated.
+     * Only custom payment methods can be updated.
      * @throws {@link Mercoa.PaymentMethodError}
      * @throws {@link Mercoa.AuthHeaderMissingError}
      * @throws {@link Mercoa.AuthHeaderMalformedError}
@@ -427,7 +425,7 @@ export class PaymentMethod {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.2.15",
+                "X-Fern-SDK-Version": "v0.3.0",
             },
             contentType: "application/json",
             body: await serializers.PaymentMethodUpdateRequest.jsonOrThrow(request, {
@@ -526,7 +524,6 @@ export class PaymentMethod {
     }
 
     /**
-     * Delete payment method
      * @throws {@link Mercoa.PaymentMethodError}
      * @throws {@link Mercoa.AuthHeaderMissingError}
      * @throws {@link Mercoa.AuthHeaderMalformedError}
@@ -552,7 +549,7 @@ export class PaymentMethod {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.2.15",
+                "X-Fern-SDK-Version": "v0.3.0",
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -656,7 +653,7 @@ export class PaymentMethod {
         entityId: Mercoa.EntityId,
         paymentMethodId: Mercoa.PaymentMethodId,
         requestOptions?: PaymentMethod.RequestOptions
-    ): Promise<void> {
+    ): Promise<Mercoa.PaymentMethodResponse> {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
@@ -669,13 +666,18 @@ export class PaymentMethod {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.2.15",
+                "X-Fern-SDK-Version": "v0.3.0",
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
         });
         if (_response.ok) {
-            return;
+            return await serializers.PaymentMethodResponse.parseOrThrow(_response.body, {
+                unrecognizedObjectKeys: "passthrough",
+                allowUnrecognizedUnionMembers: true,
+                allowUnrecognizedEnumValues: true,
+                breadcrumbsPrefix: ["response"],
+            });
         }
 
         if (_response.error.reason === "status-code") {
@@ -774,7 +776,7 @@ export class PaymentMethod {
         paymentMethodId: Mercoa.PaymentMethodId,
         request: Mercoa.entity.CompleteMicroDepositsRequest,
         requestOptions?: PaymentMethod.RequestOptions
-    ): Promise<void> {
+    ): Promise<Mercoa.PaymentMethodResponse> {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
@@ -787,7 +789,7 @@ export class PaymentMethod {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.2.15",
+                "X-Fern-SDK-Version": "v0.3.0",
             },
             contentType: "application/json",
             body: await serializers.entity.CompleteMicroDepositsRequest.jsonOrThrow(request, {
@@ -796,7 +798,12 @@ export class PaymentMethod {
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
         });
         if (_response.ok) {
-            return;
+            return await serializers.PaymentMethodResponse.parseOrThrow(_response.body, {
+                unrecognizedObjectKeys: "passthrough",
+                allowUnrecognizedUnionMembers: true,
+                allowUnrecognizedEnumValues: true,
+                breadcrumbsPrefix: ["response"],
+            });
         }
 
         if (_response.error.reason === "status-code") {

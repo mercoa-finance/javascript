@@ -6,14 +6,14 @@ import * as serializers from "../../..";
 import * as Mercoa from "../../../../api";
 import * as core from "../../../../core";
 
-export const EntityArchivePayeesRequest: core.serialization.ObjectSchema<
-    serializers.EntityArchivePayeesRequest.Raw,
-    Mercoa.EntityArchivePayeesRequest
+export const EntityHidePayeesRequest: core.serialization.ObjectSchema<
+    serializers.EntityHidePayeesRequest.Raw,
+    Mercoa.EntityHidePayeesRequest
 > = core.serialization.object({
     payees: core.serialization.list(core.serialization.lazy(async () => (await import("../../..")).EntityId)),
 });
 
-export declare namespace EntityArchivePayeesRequest {
+export declare namespace EntityHidePayeesRequest {
     interface Raw {
         payees: serializers.EntityId.Raw[];
     }

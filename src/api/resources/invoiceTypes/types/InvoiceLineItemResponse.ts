@@ -14,6 +14,9 @@ export interface InvoiceLineItemResponse {
     quantity?: number;
     /** Unit price of line item in major units. */
     unitPrice?: number;
+    serviceStartDate?: Date;
+    serviceEndDate?: Date;
+    metadata?: Record<string, string>;
     createdAt: Date;
     updatedAt: Date;
 }

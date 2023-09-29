@@ -24,7 +24,7 @@ export class ApprovalPolicy {
     constructor(protected readonly _options: ApprovalPolicy.Options) {}
 
     /**
-     * Retrieve all invoice approval policies associated with Entity
+     * Retrieve all invoice approval policies associated with an entity
      * @throws {@link Mercoa.AuthHeaderMissingError}
      * @throws {@link Mercoa.AuthHeaderMalformedError}
      * @throws {@link Mercoa.Unauthorized}
@@ -46,7 +46,7 @@ export class ApprovalPolicy {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.2.15",
+                "X-Fern-SDK-Version": "v0.3.0",
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -133,7 +133,7 @@ export class ApprovalPolicy {
     }
 
     /**
-     * Create an invoice approval policy associated with Entity
+     * Create an invoice approval policy associated with an entity
      * @throws {@link Mercoa.entity.NumApproversUserListMismatchError}
      * @throws {@link Mercoa.entity.NumApproverLessThanOneError}
      * @throws {@link Mercoa.AuthHeaderMissingError}
@@ -158,7 +158,7 @@ export class ApprovalPolicy {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.2.15",
+                "X-Fern-SDK-Version": "v0.3.0",
             },
             contentType: "application/json",
             body: await serializers.ApprovalPolicyRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
@@ -264,7 +264,7 @@ export class ApprovalPolicy {
     }
 
     /**
-     * Retrieve an invoice approval policy associated with Entity
+     * Retrieve an invoice approval policy associated with an entity
      * @throws {@link Mercoa.AuthHeaderMissingError}
      * @throws {@link Mercoa.AuthHeaderMalformedError}
      * @throws {@link Mercoa.Unauthorized}
@@ -289,7 +289,7 @@ export class ApprovalPolicy {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.2.15",
+                "X-Fern-SDK-Version": "v0.3.0",
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -376,7 +376,7 @@ export class ApprovalPolicy {
     }
 
     /**
-     * Update an invoice approval policy associated with Entity
+     * Update an invoice approval policy associated with an entity
      * @throws {@link Mercoa.entity.NumApproversUserListMismatchError}
      * @throws {@link Mercoa.entity.NumApproverLessThanOneError}
      * @throws {@link Mercoa.AuthHeaderMissingError}
@@ -404,7 +404,7 @@ export class ApprovalPolicy {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.2.15",
+                "X-Fern-SDK-Version": "v0.3.0",
             },
             contentType: "application/json",
             body: await serializers.ApprovalPolicyUpdateRequest.jsonOrThrow(request, {
@@ -537,7 +537,7 @@ export class ApprovalPolicy {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.2.15",
+                "X-Fern-SDK-Version": "v0.3.0",
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,

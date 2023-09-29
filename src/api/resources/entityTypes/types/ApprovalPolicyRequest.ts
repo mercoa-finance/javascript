@@ -7,6 +7,6 @@ import * as Mercoa from "../../..";
 export interface ApprovalPolicyRequest {
     trigger: Mercoa.Trigger;
     rule: Mercoa.Rule;
-    /** Use 'root' if no upstreamPolicyId is intended to be set. */
+    /** The policy ID of the previous approval policy in the chain of policies. Use 'root' if no upstreamPolicyId is intended to be set. */
     upstreamPolicyId: Mercoa.ApprovalPolicyId;
 }

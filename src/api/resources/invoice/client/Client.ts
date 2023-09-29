@@ -29,6 +29,7 @@ export class Invoice {
 
     /**
      * Search invoices for all entities in the organization
+     * @throws {@link Mercoa.InvoiceQueryError}
      * @throws {@link Mercoa.AuthHeaderMissingError}
      * @throws {@link Mercoa.AuthHeaderMalformedError}
      * @throws {@link Mercoa.Unauthorized}
@@ -49,6 +50,7 @@ export class Invoice {
             limit,
             startingAfter,
             search,
+            payerId,
             vendorId,
             approverId,
             invoiceId,
@@ -91,6 +93,16 @@ export class Invoice {
 
         if (search != null) {
             _queryParams.append("search", search);
+        }
+
+        if (payerId != null) {
+            if (Array.isArray(payerId)) {
+                for (const _item of payerId) {
+                    _queryParams.append("payerId", _item);
+                }
+            } else {
+                _queryParams.append("payerId", payerId);
+            }
         }
 
         if (vendorId != null) {
@@ -143,7 +155,7 @@ export class Invoice {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.2.15",
+                "X-Fern-SDK-Version": "v0.3.0",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -160,6 +172,15 @@ export class Invoice {
 
         if (_response.error.reason === "status-code") {
             switch ((_response.error.body as any)?.["errorName"]) {
+                case "InvoiceQueryError":
+                    throw new Mercoa.InvoiceQueryError(
+                        await serializers.InvoiceQueryError.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        })
+                    );
                 case "AuthHeaderMissingError":
                     throw new Mercoa.AuthHeaderMissingError();
                 case "AuthHeaderMalformedError":
@@ -231,7 +252,6 @@ export class Invoice {
     }
 
     /**
-     * Create invoice
      * @throws {@link Mercoa.DuplicateInvoiceNumber}
      * @throws {@link Mercoa.InvoiceError}
      * @throws {@link Mercoa.AuthHeaderMissingError}
@@ -255,7 +275,7 @@ export class Invoice {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.2.15",
+                "X-Fern-SDK-Version": "v0.3.0",
             },
             contentType: "application/json",
             body: await serializers.InvoiceRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
@@ -361,7 +381,6 @@ export class Invoice {
     }
 
     /**
-     * Get invoice
      * @throws {@link Mercoa.AuthHeaderMissingError}
      * @throws {@link Mercoa.AuthHeaderMalformedError}
      * @throws {@link Mercoa.Unauthorized}
@@ -383,7 +402,7 @@ export class Invoice {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.2.15",
+                "X-Fern-SDK-Version": "v0.3.0",
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -470,7 +489,6 @@ export class Invoice {
     }
 
     /**
-     * Update invoice
      * @throws {@link Mercoa.DuplicateInvoiceNumber}
      * @throws {@link Mercoa.InvoiceError}
      * @throws {@link Mercoa.AuthHeaderMissingError}
@@ -495,7 +513,7 @@ export class Invoice {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.2.15",
+                "X-Fern-SDK-Version": "v0.3.0",
             },
             contentType: "application/json",
             body: await serializers.InvoiceRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
@@ -601,7 +619,7 @@ export class Invoice {
     }
 
     /**
-     * Delete invoice. Only invoices in the DRAFT and NEW status can be deleted.
+     * Only invoices in the DRAFT and NEW status can be deleted.
      * @throws {@link Mercoa.InvoiceStatusError}
      * @throws {@link Mercoa.AuthHeaderMissingError}
      * @throws {@link Mercoa.AuthHeaderMalformedError}
@@ -621,7 +639,7 @@ export class Invoice {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.2.15",
+                "X-Fern-SDK-Version": "v0.3.0",
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -732,7 +750,7 @@ export class Invoice {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.2.15",
+                "X-Fern-SDK-Version": "v0.3.0",
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -848,7 +866,7 @@ export class Invoice {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.2.15",
+                "X-Fern-SDK-Version": "v0.3.0",
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -959,7 +977,7 @@ export class Invoice {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.2.15",
+                "X-Fern-SDK-Version": "v0.3.0",
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -1075,7 +1093,7 @@ export class Invoice {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.2.15",
+                "X-Fern-SDK-Version": "v0.3.0",
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,

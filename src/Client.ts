@@ -10,7 +10,6 @@ import { Organization } from "./api/resources/organization/client/Client";
 import { BankLookup } from "./api/resources/bankLookup/client/Client";
 import { Ocr } from "./api/resources/ocr/client/Client";
 import { PaymentMethodSchema } from "./api/resources/paymentMethodSchema/client/Client";
-import { Transaction } from "./api/resources/transaction/client/Client";
 
 export declare namespace MercoaClient {
     interface Options {
@@ -60,11 +59,5 @@ export class MercoaClient {
 
     public get paymentMethodSchema(): PaymentMethodSchema {
         return (this._paymentMethodSchema ??= new PaymentMethodSchema(this._options));
-    }
-
-    protected _transaction: Transaction | undefined;
-
-    public get transaction(): Transaction {
-        return (this._transaction ??= new Transaction(this._options));
     }
 }

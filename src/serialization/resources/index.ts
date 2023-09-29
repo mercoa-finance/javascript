@@ -18,8 +18,6 @@ export * from "./ocr/types";
 export * as organizationTypes from "./organizationTypes";
 export * from "./organizationTypes/types";
 export * from "./paymentMethodTypes/types";
-export * as transaction from "./transaction";
-export * from "./transaction/types";
 export * as invoice from "./invoice";
 export * as organization from "./organization";
 export * as paymentMethodSchema from "./paymentMethodSchema";

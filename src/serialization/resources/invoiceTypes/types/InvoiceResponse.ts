@@ -37,9 +37,6 @@ export const InvoiceResponse: core.serialization.ObjectSchema<serializers.Invoic
         comments: core.serialization
             .list(core.serialization.lazyObject(async () => (await import("../../..")).CommentResponse))
             .optional(),
-        transactions: core.serialization
-            .list(core.serialization.lazyObject(async () => (await import("../../..")).TransactionResponse))
-            .optional(),
         lineItems: core.serialization
             .list(core.serialization.lazyObject(async () => (await import("../../..")).InvoiceLineItemResponse))
             .optional(),
@@ -82,7 +79,6 @@ export declare namespace InvoiceResponse {
         paymentDestinationConfirmed: boolean;
         hasDocuments: boolean;
         comments?: serializers.CommentResponse.Raw[] | null;
-        transactions?: serializers.TransactionResponse.Raw[] | null;
         lineItems?: serializers.InvoiceLineItemResponse.Raw[] | null;
         approvers: serializers.ApprovalSlot.Raw[];
         approvalPolicy: serializers.ApprovalPolicyResponse.Raw[];

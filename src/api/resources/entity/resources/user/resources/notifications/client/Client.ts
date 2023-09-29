@@ -25,7 +25,6 @@ export class Notifications {
     constructor(protected readonly _options: Notifications.Options) {}
 
     /**
-     * Get all notifications
      * @throws {@link Mercoa.AuthHeaderMissingError}
      * @throws {@link Mercoa.AuthHeaderMalformedError}
      * @throws {@link Mercoa.Unauthorized}
@@ -83,7 +82,7 @@ export class Notifications {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.2.15",
+                "X-Fern-SDK-Version": "v0.3.0",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -171,7 +170,6 @@ export class Notifications {
     }
 
     /**
-     * Get notification
      * @throws {@link Mercoa.AuthHeaderMissingError}
      * @throws {@link Mercoa.AuthHeaderMalformedError}
      * @throws {@link Mercoa.Unauthorized}
@@ -199,7 +197,7 @@ export class Notifications {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.2.15",
+                "X-Fern-SDK-Version": "v0.3.0",
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,

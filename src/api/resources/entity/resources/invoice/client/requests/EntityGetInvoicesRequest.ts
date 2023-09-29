@@ -6,6 +6,14 @@ import * as Mercoa from "../../../../../..";
 
 export interface EntityGetInvoicesRequest {
     /**
+     * Return only invoices that are receivable by the entity.
+     */
+    excludePayables?: boolean;
+    /**
+     * Return only invoices that are payable by the entity.
+     */
+    excludeReceivables?: boolean;
+    /**
      * Start date for invoice created on date filter.
      */
     startDate?: Date;
@@ -37,6 +45,10 @@ export interface EntityGetInvoicesRequest {
      * Filter invoices by vendor ID.
      */
     vendorId?: Mercoa.EntityId | Mercoa.EntityId[];
+    /**
+     * Filter invoices by payer ID.
+     */
+    payerId?: Mercoa.EntityId | Mercoa.EntityId[];
     /**
      * Filter invoices by assigned approver user ID.
      */

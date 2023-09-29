@@ -64,7 +64,7 @@ export class Counterparty {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.2.15",
+                "X-Fern-SDK-Version": "v0.3.0",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -205,7 +205,7 @@ export class Counterparty {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.2.15",
+                "X-Fern-SDK-Version": "v0.3.0",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -346,7 +346,7 @@ export class Counterparty {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.2.15",
+                "X-Fern-SDK-Version": "v0.3.0",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -359,6 +359,430 @@ export class Counterparty {
                 allowUnrecognizedEnumValues: true,
                 breadcrumbsPrefix: ["response"],
             });
+        }
+
+        if (_response.error.reason === "status-code") {
+            switch ((_response.error.body as any)?.["errorName"]) {
+                case "AuthHeaderMissingError":
+                    throw new Mercoa.AuthHeaderMissingError();
+                case "AuthHeaderMalformedError":
+                    throw new Mercoa.AuthHeaderMalformedError(
+                        await serializers.AuthHeaderMalformedError.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        })
+                    );
+                case "Unauthorized":
+                    throw new Mercoa.Unauthorized(
+                        await serializers.Unauthorized.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        })
+                    );
+                case "Forbidden":
+                    throw new Mercoa.Forbidden(
+                        await serializers.Forbidden.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        })
+                    );
+                case "NotFound":
+                    throw new Mercoa.NotFound(
+                        await serializers.NotFound.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        })
+                    );
+                case "Unimplemented":
+                    throw new Mercoa.Unimplemented(
+                        await serializers.Unimplemented.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        })
+                    );
+                default:
+                    throw new errors.MercoaError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                    });
+            }
+        }
+
+        switch (_response.error.reason) {
+            case "non-json":
+                throw new errors.MercoaError({
+                    statusCode: _response.error.statusCode,
+                    body: _response.error.rawBody,
+                });
+            case "timeout":
+                throw new errors.MercoaTimeoutError();
+            case "unknown":
+                throw new errors.MercoaError({
+                    message: _response.error.errorMessage,
+                });
+        }
+    }
+
+    /**
+     * Create association between Entity and a given list of Payees. If a Payee has previously been archived, unarchive the Payee.
+     * @throws {@link Mercoa.AuthHeaderMissingError}
+     * @throws {@link Mercoa.AuthHeaderMalformedError}
+     * @throws {@link Mercoa.Unauthorized}
+     * @throws {@link Mercoa.Forbidden}
+     * @throws {@link Mercoa.NotFound}
+     * @throws {@link Mercoa.Unimplemented}
+     */
+    public async addPayees(
+        entityId: Mercoa.EntityId,
+        request: Mercoa.EntityAddPayeesRequest,
+        requestOptions?: Counterparty.RequestOptions
+    ): Promise<void> {
+        const _response = await core.fetcher({
+            url: urlJoin(
+                (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
+                `/entity/${await serializers.EntityId.jsonOrThrow(entityId)}/addPayees`
+            ),
+            method: "POST",
+            headers: {
+                Authorization: await this._getAuthorizationHeader(),
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "@mercoa/javascript",
+                "X-Fern-SDK-Version": "v0.3.0",
+            },
+            contentType: "application/json",
+            body: await serializers.EntityAddPayeesRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+        });
+        if (_response.ok) {
+            return;
+        }
+
+        if (_response.error.reason === "status-code") {
+            switch ((_response.error.body as any)?.["errorName"]) {
+                case "AuthHeaderMissingError":
+                    throw new Mercoa.AuthHeaderMissingError();
+                case "AuthHeaderMalformedError":
+                    throw new Mercoa.AuthHeaderMalformedError(
+                        await serializers.AuthHeaderMalformedError.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        })
+                    );
+                case "Unauthorized":
+                    throw new Mercoa.Unauthorized(
+                        await serializers.Unauthorized.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        })
+                    );
+                case "Forbidden":
+                    throw new Mercoa.Forbidden(
+                        await serializers.Forbidden.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        })
+                    );
+                case "NotFound":
+                    throw new Mercoa.NotFound(
+                        await serializers.NotFound.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        })
+                    );
+                case "Unimplemented":
+                    throw new Mercoa.Unimplemented(
+                        await serializers.Unimplemented.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        })
+                    );
+                default:
+                    throw new errors.MercoaError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                    });
+            }
+        }
+
+        switch (_response.error.reason) {
+            case "non-json":
+                throw new errors.MercoaError({
+                    statusCode: _response.error.statusCode,
+                    body: _response.error.rawBody,
+                });
+            case "timeout":
+                throw new errors.MercoaTimeoutError();
+            case "unknown":
+                throw new errors.MercoaError({
+                    message: _response.error.errorMessage,
+                });
+        }
+    }
+
+    /**
+     * Marks Payees as unsearchable by Entity via Counterparty search. Invoices associated with these Payees will still be searchable via Invoice search.
+     * @throws {@link Mercoa.AuthHeaderMissingError}
+     * @throws {@link Mercoa.AuthHeaderMalformedError}
+     * @throws {@link Mercoa.Unauthorized}
+     * @throws {@link Mercoa.Forbidden}
+     * @throws {@link Mercoa.NotFound}
+     * @throws {@link Mercoa.Unimplemented}
+     */
+    public async hidePayees(
+        entityId: Mercoa.EntityId,
+        request: Mercoa.EntityHidePayeesRequest,
+        requestOptions?: Counterparty.RequestOptions
+    ): Promise<void> {
+        const _response = await core.fetcher({
+            url: urlJoin(
+                (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
+                `/entity/${await serializers.EntityId.jsonOrThrow(entityId)}/hidePayees`
+            ),
+            method: "POST",
+            headers: {
+                Authorization: await this._getAuthorizationHeader(),
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "@mercoa/javascript",
+                "X-Fern-SDK-Version": "v0.3.0",
+            },
+            contentType: "application/json",
+            body: await serializers.EntityHidePayeesRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+        });
+        if (_response.ok) {
+            return;
+        }
+
+        if (_response.error.reason === "status-code") {
+            switch ((_response.error.body as any)?.["errorName"]) {
+                case "AuthHeaderMissingError":
+                    throw new Mercoa.AuthHeaderMissingError();
+                case "AuthHeaderMalformedError":
+                    throw new Mercoa.AuthHeaderMalformedError(
+                        await serializers.AuthHeaderMalformedError.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        })
+                    );
+                case "Unauthorized":
+                    throw new Mercoa.Unauthorized(
+                        await serializers.Unauthorized.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        })
+                    );
+                case "Forbidden":
+                    throw new Mercoa.Forbidden(
+                        await serializers.Forbidden.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        })
+                    );
+                case "NotFound":
+                    throw new Mercoa.NotFound(
+                        await serializers.NotFound.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        })
+                    );
+                case "Unimplemented":
+                    throw new Mercoa.Unimplemented(
+                        await serializers.Unimplemented.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        })
+                    );
+                default:
+                    throw new errors.MercoaError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                    });
+            }
+        }
+
+        switch (_response.error.reason) {
+            case "non-json":
+                throw new errors.MercoaError({
+                    statusCode: _response.error.statusCode,
+                    body: _response.error.rawBody,
+                });
+            case "timeout":
+                throw new errors.MercoaTimeoutError();
+            case "unknown":
+                throw new errors.MercoaError({
+                    message: _response.error.errorMessage,
+                });
+        }
+    }
+
+    /**
+     * Create association between Entity and a given list of Payors. If a Payor has previously been archived, unarchive the Payor.
+     * @throws {@link Mercoa.AuthHeaderMissingError}
+     * @throws {@link Mercoa.AuthHeaderMalformedError}
+     * @throws {@link Mercoa.Unauthorized}
+     * @throws {@link Mercoa.Forbidden}
+     * @throws {@link Mercoa.NotFound}
+     * @throws {@link Mercoa.Unimplemented}
+     */
+    public async addPayors(
+        entityId: Mercoa.EntityId,
+        request: Mercoa.EntityAddPayorsRequest,
+        requestOptions?: Counterparty.RequestOptions
+    ): Promise<void> {
+        const _response = await core.fetcher({
+            url: urlJoin(
+                (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
+                `/entity/${await serializers.EntityId.jsonOrThrow(entityId)}/addPayors`
+            ),
+            method: "POST",
+            headers: {
+                Authorization: await this._getAuthorizationHeader(),
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "@mercoa/javascript",
+                "X-Fern-SDK-Version": "v0.3.0",
+            },
+            contentType: "application/json",
+            body: await serializers.EntityAddPayorsRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+        });
+        if (_response.ok) {
+            return;
+        }
+
+        if (_response.error.reason === "status-code") {
+            switch ((_response.error.body as any)?.["errorName"]) {
+                case "AuthHeaderMissingError":
+                    throw new Mercoa.AuthHeaderMissingError();
+                case "AuthHeaderMalformedError":
+                    throw new Mercoa.AuthHeaderMalformedError(
+                        await serializers.AuthHeaderMalformedError.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        })
+                    );
+                case "Unauthorized":
+                    throw new Mercoa.Unauthorized(
+                        await serializers.Unauthorized.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        })
+                    );
+                case "Forbidden":
+                    throw new Mercoa.Forbidden(
+                        await serializers.Forbidden.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        })
+                    );
+                case "NotFound":
+                    throw new Mercoa.NotFound(
+                        await serializers.NotFound.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        })
+                    );
+                case "Unimplemented":
+                    throw new Mercoa.Unimplemented(
+                        await serializers.Unimplemented.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        })
+                    );
+                default:
+                    throw new errors.MercoaError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                    });
+            }
+        }
+
+        switch (_response.error.reason) {
+            case "non-json":
+                throw new errors.MercoaError({
+                    statusCode: _response.error.statusCode,
+                    body: _response.error.rawBody,
+                });
+            case "timeout":
+                throw new errors.MercoaTimeoutError();
+            case "unknown":
+                throw new errors.MercoaError({
+                    message: _response.error.errorMessage,
+                });
+        }
+    }
+
+    /**
+     * Marks Payors as unsearchable by Entity via Counterparty search. Invoices associated with these Payors will still be searchable via Invoice search.
+     * @throws {@link Mercoa.AuthHeaderMissingError}
+     * @throws {@link Mercoa.AuthHeaderMalformedError}
+     * @throws {@link Mercoa.Unauthorized}
+     * @throws {@link Mercoa.Forbidden}
+     * @throws {@link Mercoa.NotFound}
+     * @throws {@link Mercoa.Unimplemented}
+     */
+    public async hidePayors(
+        entityId: Mercoa.EntityId,
+        request: Mercoa.EntityHidePayorsRequest,
+        requestOptions?: Counterparty.RequestOptions
+    ): Promise<void> {
+        const _response = await core.fetcher({
+            url: urlJoin(
+                (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
+                `/entity/${await serializers.EntityId.jsonOrThrow(entityId)}/hidePayors`
+            ),
+            method: "POST",
+            headers: {
+                Authorization: await this._getAuthorizationHeader(),
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "@mercoa/javascript",
+                "X-Fern-SDK-Version": "v0.3.0",
+            },
+            contentType: "application/json",
+            body: await serializers.EntityHidePayorsRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+        });
+        if (_response.ok) {
+            return;
         }
 
         if (_response.error.reason === "status-code") {

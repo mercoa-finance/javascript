@@ -15,4 +15,7 @@ export interface InvoiceLineItemRequest {
     quantity?: number;
     /** Unit price of the line item in major units. If the entered amount has more decimal places than the currency supports, trailing decimals will be truncated. */
     unitPrice?: number;
+    serviceStartDate?: Date;
+    serviceEndDate?: Date;
+    metadata?: Record<string, string>;
 }

@@ -6,15 +6,20 @@ import * as Mercoa from "../../..";
 
 export interface EntityResponse {
     id: Mercoa.EntityId;
-    foreignId?: string;
-    emailTo?: string;
-    emailToAlias?: string[];
-    ownedByOrg: boolean;
-    accountType: Mercoa.AccountType;
     name: string;
     email: string;
+    /** The ID used to identify this entity in your system */
+    foreignId?: string;
+    /** Local-part/username of the email address to which to send invoices to be added to the Invoice Inbox. */
+    emailTo?: string;
+    /** Email inbox alias addresses. Used when forwarding emails to the emailTo address from an alias. */
+    emailToAlias?: string[];
+    /** True if this entity has a direct relationship with your organization. */
+    ownedByOrg: boolean;
+    accountType: Mercoa.AccountType;
     profile: Mercoa.ProfileResponse;
     status: Mercoa.EntityStatus;
+    /** True if this entity has accepted the terms of service. */
     acceptedTos: boolean;
     /** True if this entity can pay invoices. */
     isPayor: boolean;

@@ -17,6 +17,9 @@ export const InvoiceLineItemRequest: core.serialization.ObjectSchema<
     name: core.serialization.string().optional(),
     quantity: core.serialization.number().optional(),
     unitPrice: core.serialization.number().optional(),
+    serviceStartDate: core.serialization.date().optional(),
+    serviceEndDate: core.serialization.date().optional(),
+    metadata: core.serialization.record(core.serialization.string(), core.serialization.string()).optional(),
 });
 
 export declare namespace InvoiceLineItemRequest {
@@ -28,5 +31,8 @@ export declare namespace InvoiceLineItemRequest {
         name?: string | null;
         quantity?: number | null;
         unitPrice?: number | null;
+        serviceStartDate?: string | null;
+        serviceEndDate?: string | null;
+        metadata?: Record<string, string> | null;
     }
 }

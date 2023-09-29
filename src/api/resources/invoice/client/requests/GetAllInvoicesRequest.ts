@@ -6,7 +6,7 @@ import * as Mercoa from "../../../..";
 
 export interface GetAllInvoicesRequest {
     /**
-     * Filter invoices by entity ID.
+     * Filter invoices by the ID of the entity that created the invoice.
      */
     entityId?: Mercoa.EntityId | Mercoa.EntityId[];
     /**
@@ -37,6 +37,10 @@ export interface GetAllInvoicesRequest {
      * Filter vendors by name. Partial matches are supported.
      */
     search?: string;
+    /**
+     * Filter invoices by payer ID.
+     */
+    payerId?: Mercoa.EntityId | Mercoa.EntityId[];
     /**
      * Filter invoices by vendor ID.
      */

@@ -9,13 +9,13 @@ import * as core from "../../../../core";
 export const EntityResponse: core.serialization.ObjectSchema<serializers.EntityResponse.Raw, Mercoa.EntityResponse> =
     core.serialization.object({
         id: core.serialization.lazy(async () => (await import("../../..")).EntityId),
+        name: core.serialization.string(),
+        email: core.serialization.string(),
         foreignId: core.serialization.string().optional(),
         emailTo: core.serialization.string().optional(),
         emailToAlias: core.serialization.list(core.serialization.string()).optional(),
         ownedByOrg: core.serialization.boolean(),
         accountType: core.serialization.lazy(async () => (await import("../../..")).AccountType),
-        name: core.serialization.string(),
-        email: core.serialization.string(),
         profile: core.serialization.lazyObject(async () => (await import("../../..")).ProfileResponse),
         status: core.serialization.lazy(async () => (await import("../../..")).EntityStatus),
         acceptedTos: core.serialization.boolean(),
@@ -28,13 +28,13 @@ export const EntityResponse: core.serialization.ObjectSchema<serializers.EntityR
 export declare namespace EntityResponse {
     interface Raw {
         id: serializers.EntityId.Raw;
+        name: string;
+        email: string;
         foreignId?: string | null;
         emailTo?: string | null;
         emailToAlias?: string[] | null;
         ownedByOrg: boolean;
         accountType: serializers.AccountType.Raw;
-        name: string;
-        email: string;
         profile: serializers.ProfileResponse.Raw;
         status: serializers.EntityStatus.Raw;
         acceptedTos: boolean;
