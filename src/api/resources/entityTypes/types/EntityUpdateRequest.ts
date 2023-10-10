@@ -19,4 +19,6 @@ export interface EntityUpdateRequest {
     isPayor?: boolean;
     /** If this entity will be receiving payments, set this to true. */
     isPayee?: boolean;
+    /** Base64 encoded PNG image data for the entity logo. */
+    logo?: string;
 }

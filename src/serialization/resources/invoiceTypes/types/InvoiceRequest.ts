@@ -34,6 +34,7 @@ export const InvoiceRequest: core.serialization.ObjectSchema<serializers.Invoice
         metadata: core.serialization.record(core.serialization.string(), core.serialization.string()).optional(),
         uploadedImage: core.serialization.string().optional(),
         createdById: core.serialization.lazy(async () => (await import("../../..")).EntityUserId).optional(),
+        creatorId: core.serialization.lazy(async () => (await import("../../..")).EntityId).optional(),
     });
 
 export declare namespace InvoiceRequest {
@@ -58,5 +59,6 @@ export declare namespace InvoiceRequest {
         metadata?: Record<string, string> | null;
         uploadedImage?: string | null;
         createdById?: serializers.EntityUserId.Raw | null;
+        creatorId?: serializers.EntityId.Raw | null;
     }
 }

@@ -16,6 +16,7 @@ export const EntityRequest: core.serialization.ObjectSchema<serializers.EntityRe
         profile: core.serialization.lazyObject(async () => (await import("../../..")).ProfileRequest),
         isPayor: core.serialization.boolean(),
         isPayee: core.serialization.boolean(),
+        logo: core.serialization.string().optional(),
     });
 
 export declare namespace EntityRequest {
@@ -28,5 +29,6 @@ export declare namespace EntityRequest {
         profile: serializers.ProfileRequest.Raw;
         isPayor: boolean;
         isPayee: boolean;
+        logo?: string | null;
     }
 }

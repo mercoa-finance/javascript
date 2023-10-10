@@ -21,4 +21,12 @@ export interface FindPayorCounterpartiesRequest {
      * Filter by counterparty ids
      */
     counterpartyId?: Mercoa.EntityId | Mercoa.EntityId[];
+    /**
+     * Number of counterparties to return. Limit can range between 1 and 100, and the default is 10.
+     */
+    limit?: number;
+    /**
+     * The ID of the counterparties to start after. If not provided, the first page of counterparties will be returned.
+     */
+    startingAfter?: Mercoa.EntityId;
 }

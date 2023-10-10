@@ -29,7 +29,6 @@ export * from "./AmountTrigger";
 export * from "./Rule";
 export * from "./IdentifierList";
 export * from "./ApproverRule";
-export * from "./CounterpartiesResponse";
 export * from "./FindCounterpartiesResponse";
 export * from "./CounterpartyResponse";
 export * from "./RepresentativeRequest";

@@ -9,8 +9,8 @@ import * as core from "../../../../core";
 export const PaymentMethodSchemaFieldType: core.serialization.Schema<
     serializers.PaymentMethodSchemaFieldType.Raw,
     Mercoa.PaymentMethodSchemaFieldType
-> = core.serialization.enum_(["text", "number", "select"]);
+> = core.serialization.enum_(["text", "number", "select", "date", "phone", "email", "url", "address"]);
 
 export declare namespace PaymentMethodSchemaFieldType {
-    type Raw = "text" | "number" | "select";
+    type Raw = "text" | "number" | "select" | "date" | "phone" | "email" | "url" | "address";
 }

@@ -37,4 +37,6 @@ export interface InvoiceRequest {
     uploadedImage?: string;
     /** ID of entity user who created this invoice. */
     createdById?: Mercoa.EntityUserId;
+    /** ID of entity who created this invoice. If not provided, will default to the payerId. If payerId is not provided, will default to the vendorId. */
+    creatorId?: Mercoa.EntityId;
 }
