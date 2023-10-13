@@ -11,4 +11,5 @@ export interface TokenGenerationOptions {
     pages?: Mercoa.TokenGenerationPagesOptions;
     style?: Mercoa.TokenGenerationStyleOptions;
     vendors?: Mercoa.TokenGenerationVendorOptions;
+    entity?: Mercoa.TokenGenerationEntityOptions;
 }

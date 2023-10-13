@@ -19,6 +19,9 @@ export const TokenGenerationOptions: core.serialization.ObjectSchema<
     vendors: core.serialization
         .lazyObject(async () => (await import("../../..")).TokenGenerationVendorOptions)
         .optional(),
+    entity: core.serialization
+        .lazyObject(async () => (await import("../../..")).TokenGenerationEntityOptions)
+        .optional(),
 });
 
 export declare namespace TokenGenerationOptions {
@@ -28,5 +31,6 @@ export declare namespace TokenGenerationOptions {
         pages?: serializers.TokenGenerationPagesOptions.Raw | null;
         style?: serializers.TokenGenerationStyleOptions.Raw | null;
         vendors?: serializers.TokenGenerationVendorOptions.Raw | null;
+        entity?: serializers.TokenGenerationEntityOptions.Raw | null;
     }
 }

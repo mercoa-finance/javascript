@@ -48,6 +48,7 @@ export * from "./TokenGenerationPagesOptions";
 export * from "./TokenGenerationStyleOptions";
 export * from "./VendorNetwork";
 export * from "./TokenGenerationVendorOptions";
+export * from "./TokenGenerationEntityOptions";
 export * from "./TokenGenerationOptions";
 export * from "./EntityOnboardingLinkType";
 export * from "./CounterpartyNetworkType";
