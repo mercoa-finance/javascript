@@ -49,11 +49,12 @@ export class Invoice {
             limit,
             startingAfter,
             search,
-            vendorId,
             payerId,
+            vendorId,
             approverId,
             invoiceId,
             status,
+            includeFees,
         } = request;
         const _queryParams = new URLSearchParams();
         if (excludePayables != null) {
@@ -92,16 +93,6 @@ export class Invoice {
             _queryParams.append("search", search);
         }
 
-        if (vendorId != null) {
-            if (Array.isArray(vendorId)) {
-                for (const _item of vendorId) {
-                    _queryParams.append("vendorId", _item);
-                }
-            } else {
-                _queryParams.append("vendorId", vendorId);
-            }
-        }
-
         if (payerId != null) {
             if (Array.isArray(payerId)) {
                 for (const _item of payerId) {
@@ -109,6 +100,16 @@ export class Invoice {
                 }
             } else {
                 _queryParams.append("payerId", payerId);
+            }
+        }
+
+        if (vendorId != null) {
+            if (Array.isArray(vendorId)) {
+                for (const _item of vendorId) {
+                    _queryParams.append("vendorId", _item);
+                }
+            } else {
+                _queryParams.append("vendorId", vendorId);
             }
         }
 
@@ -142,6 +143,10 @@ export class Invoice {
             }
         }
 
+        if (includeFees != null) {
+            _queryParams.append("includeFees", includeFees.toString());
+        }
+
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
@@ -152,7 +157,7 @@ export class Invoice {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.2",
+                "X-Fern-SDK-Version": "v0.3.3",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -259,8 +264,15 @@ export class Invoice {
     public async get(
         entityId: Mercoa.EntityId,
         invoiceId: Mercoa.InvoiceId,
+        request: Mercoa.entity.GetInvoice = {},
         requestOptions?: Invoice.RequestOptions
     ): Promise<Mercoa.InvoiceResponse> {
+        const { includeFees } = request;
+        const _queryParams = new URLSearchParams();
+        if (includeFees != null) {
+            _queryParams.append("includeFees", includeFees.toString());
+        }
+
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
@@ -273,9 +285,10 @@ export class Invoice {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.2",
+                "X-Fern-SDK-Version": "v0.3.3",
             },
             contentType: "application/json",
+            queryParameters: _queryParams,
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
         });
         if (_response.ok) {
@@ -488,7 +501,7 @@ export class Invoice {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.2",
+                "X-Fern-SDK-Version": "v0.3.3",
             },
             contentType: "application/json",
             queryParameters: _queryParams,

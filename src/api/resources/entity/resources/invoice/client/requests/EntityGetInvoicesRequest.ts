@@ -42,13 +42,13 @@ export interface EntityGetInvoicesRequest {
      */
     search?: string;
     /**
-     * Filter invoices by vendor ID.
-     */
-    vendorId?: Mercoa.EntityId | Mercoa.EntityId[];
-    /**
      * Filter invoices by payer ID.
      */
     payerId?: Mercoa.EntityId | Mercoa.EntityId[];
+    /**
+     * Filter invoices by vendor ID.
+     */
+    vendorId?: Mercoa.EntityId | Mercoa.EntityId[];
     /**
      * Filter invoices by assigned approver user ID.
      */
@@ -58,7 +58,11 @@ export interface EntityGetInvoicesRequest {
      */
     invoiceId?: Mercoa.InvoiceId | Mercoa.InvoiceId[];
     /**
-     * Invoice status to filter on
+     * Invoice status to filter on.
      */
     status?: Mercoa.InvoiceStatus | Mercoa.InvoiceStatus[];
+    /**
+     * If true, will include fees as part of the response.
+     */
+    includeFees?: boolean;
 }

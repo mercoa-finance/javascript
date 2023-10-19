@@ -57,4 +57,8 @@ export interface GetAllInvoicesRequest {
      * Invoice status to filter on
      */
     status?: Mercoa.InvoiceStatus | Mercoa.InvoiceStatus[];
+    /**
+     * If true, will include fees as part of the response.
+     */
+    includeFees?: boolean;
 }

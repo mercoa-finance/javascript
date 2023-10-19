@@ -52,6 +52,7 @@ export const InvoiceResponse: core.serialization.ObjectSchema<serializers.Invoic
         processedAt: core.serialization.date().optional(),
         createdAt: core.serialization.date(),
         updatedAt: core.serialization.date(),
+        fees: core.serialization.lazyObject(async () => (await import("../../..")).InvoiceFeesResponse).optional(),
     });
 
 export declare namespace InvoiceResponse {
@@ -88,5 +89,6 @@ export declare namespace InvoiceResponse {
         processedAt?: string | null;
         createdAt: string;
         updatedAt: string;
+        fees?: serializers.InvoiceFeesResponse.Raw | null;
     }
 }

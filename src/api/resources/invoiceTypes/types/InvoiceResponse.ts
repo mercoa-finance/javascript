@@ -47,4 +47,6 @@ export interface InvoiceResponse {
     processedAt?: Date;
     createdAt: Date;
     updatedAt: Date;
+    /** Fees associated with this invoice. */
+    fees?: Mercoa.InvoiceFeesResponse;
 }

@@ -9,6 +9,7 @@ export * from "./ApproverAction";
 export * from "./InvoiceLineItemResponse";
 export * from "./InvoiceLineItemRequest";
 export * from "./AssociatedApprovalAction";
+export * from "./InvoiceFeesResponse";
 export * from "./InvoiceStatus";
 export * from "./InvoiceFailureType";
 export * from "./InvoiceOrderByField";
