@@ -20,6 +20,7 @@ export const BusinessOnboardingOptions: core.serialization.ObjectSchema<
     formationDate: core.serialization.lazyObject(async () => (await import("../../..")).OnboardingOption),
     website: core.serialization.lazyObject(async () => (await import("../../..")).OnboardingOption),
     description: core.serialization.lazyObject(async () => (await import("../../..")).OnboardingOption),
+    representatives: core.serialization.lazyObject(async () => (await import("../../..")).OnboardingOption),
 });
 
 export declare namespace BusinessOnboardingOptions {
@@ -34,5 +35,6 @@ export declare namespace BusinessOnboardingOptions {
         formationDate: serializers.OnboardingOption.Raw;
         website: serializers.OnboardingOption.Raw;
         description: serializers.OnboardingOption.Raw;
+        representatives: serializers.OnboardingOption.Raw;
     }
 }

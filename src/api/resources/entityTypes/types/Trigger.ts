@@ -4,15 +4,18 @@
 
 import * as Mercoa from "../../..";
 
-export type Trigger = Mercoa.Trigger.Amount | Mercoa.Trigger.All;
+export type Trigger = Mercoa.Trigger.Amount | Mercoa.Trigger.Vendor | Mercoa.Trigger.Metadata;
 
 export declare namespace Trigger {
     interface Amount extends Mercoa.AmountTrigger {
         type: "amount";
     }
 
-    interface All {
-        type: "all";
-        value?: unknown;
+    interface Vendor extends Mercoa.VendorTrigger {
+        type: "vendor";
+    }
+
+    interface Metadata extends Mercoa.MetadataTrigger {
+        type: "metadata";
     }
 }

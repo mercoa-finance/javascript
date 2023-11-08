@@ -10,14 +10,16 @@ export const ApprovalPolicyUpdateRequest: core.serialization.ObjectSchema<
     serializers.ApprovalPolicyUpdateRequest.Raw,
     Mercoa.ApprovalPolicyUpdateRequest
 > = core.serialization.object({
-    trigger: core.serialization.lazy(async () => (await import("../../..")).Trigger).optional(),
+    trigger: core.serialization
+        .list(core.serialization.lazy(async () => (await import("../../..")).Trigger))
+        .optional(),
     rule: core.serialization.lazy(async () => (await import("../../..")).Rule).optional(),
     upstreamPolicyId: core.serialization.lazy(async () => (await import("../../..")).ApprovalPolicyId).optional(),
 });
 
 export declare namespace ApprovalPolicyUpdateRequest {
     interface Raw {
-        trigger?: serializers.Trigger.Raw | null;
+        trigger?: serializers.Trigger.Raw[] | null;
         rule?: serializers.Rule.Raw | null;
         upstreamPolicyId?: serializers.ApprovalPolicyId.Raw | null;
     }

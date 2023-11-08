@@ -17,6 +17,7 @@ export const NotificationType: core.serialization.Schema<serializers.Notificatio
         "INVOICE_CANCELED",
         "INVOICE_CREATED",
         "INVOICE_EMAILED",
+        "INVOICE_FAILED",
     ]);
 
 export declare namespace NotificationType {
@@ -29,5 +30,6 @@ export declare namespace NotificationType {
         | "INVOICE_PAID"
         | "INVOICE_CANCELED"
         | "INVOICE_CREATED"
-        | "INVOICE_EMAILED";
+        | "INVOICE_EMAILED"
+        | "INVOICE_FAILED";
 }

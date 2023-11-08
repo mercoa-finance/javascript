@@ -5,6 +5,7 @@
 import * as Mercoa from "../../..";
 
 export interface BankAccountRequest extends Mercoa.PaymentMethodBaseRequest {
+    accountName?: string;
     bankName: string;
     routingNumber: string;
     accountNumber: string;

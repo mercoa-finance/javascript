@@ -9,9 +9,8 @@ import * as core from "../../../../core";
 export const Trigger: core.serialization.Schema<serializers.Trigger.Raw, Mercoa.Trigger> = core.serialization
     .union("type", {
         amount: core.serialization.lazyObject(async () => (await import("../../..")).AmountTrigger),
-        all: core.serialization.object({
-            value: core.serialization.unknown(),
-        }),
+        vendor: core.serialization.lazyObject(async () => (await import("../../..")).VendorTrigger),
+        metadata: core.serialization.lazyObject(async () => (await import("../../..")).MetadataTrigger),
     })
     .transform<Mercoa.Trigger>({
         transform: (value) => value,
@@ -19,14 +18,17 @@ export const Trigger: core.serialization.Schema<serializers.Trigger.Raw, Mercoa.
     });
 
 export declare namespace Trigger {
-    type Raw = Trigger.Amount | Trigger.All;
+    type Raw = Trigger.Amount | Trigger.Vendor | Trigger.Metadata;
 
     interface Amount extends serializers.AmountTrigger.Raw {
         type: "amount";
     }
 
-    interface All {
-        type: "all";
-        value?: unknown;
+    interface Vendor extends serializers.VendorTrigger.Raw {
+        type: "vendor";
+    }
+
+    interface Metadata extends serializers.MetadataTrigger.Raw {
+        type: "metadata";
     }
 }

@@ -7,7 +7,7 @@ import * as errors from "../../../../errors";
 export class InvoiceStatusError extends errors.MercoaError {
     constructor(body: string) {
         super({
-            statusCode: 409,
+            statusCode: 422,
             body: body,
         });
         Object.setPrototypeOf(this, InvoiceStatusError.prototype);

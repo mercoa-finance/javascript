@@ -26,6 +26,8 @@ export * from "./ApprovalPolicyUpdateRequest";
 export * from "./ApprovalPolicyResponse";
 export * from "./Trigger";
 export * from "./AmountTrigger";
+export * from "./VendorTrigger";
+export * from "./MetadataTrigger";
 export * from "./Rule";
 export * from "./IdentifierList";
 export * from "./ApproverRule";

@@ -5,6 +5,7 @@
 import * as Mercoa from "../../..";
 
 export interface BankAccountResponse extends Mercoa.PaymentMethodBaseResponse {
+    accountName: string;
     bankName: string;
     routingNumber: string;
     accountNumber: string;

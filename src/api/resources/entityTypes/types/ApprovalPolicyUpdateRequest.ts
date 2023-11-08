@@ -5,7 +5,7 @@
 import * as Mercoa from "../../..";
 
 export interface ApprovalPolicyUpdateRequest {
-    trigger?: Mercoa.Trigger;
+    trigger?: Mercoa.Trigger[];
     rule?: Mercoa.Rule;
     upstreamPolicyId?: Mercoa.ApprovalPolicyId;
 }

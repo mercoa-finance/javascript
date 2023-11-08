@@ -11,6 +11,7 @@ export const BankAccountRequest: core.serialization.ObjectSchema<
     Mercoa.BankAccountRequest
 > = core.serialization
     .object({
+        accountName: core.serialization.string().optional(),
         bankName: core.serialization.string(),
         routingNumber: core.serialization.string(),
         accountNumber: core.serialization.string(),
@@ -21,6 +22,7 @@ export const BankAccountRequest: core.serialization.ObjectSchema<
 
 export declare namespace BankAccountRequest {
     interface Raw extends serializers.PaymentMethodBaseRequest.Raw {
+        accountName?: string | null;
         bankName: string;
         routingNumber: string;
         accountNumber: string;

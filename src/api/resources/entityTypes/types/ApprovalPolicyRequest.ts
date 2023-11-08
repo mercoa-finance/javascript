@@ -5,7 +5,8 @@
 import * as Mercoa from "../../..";
 
 export interface ApprovalPolicyRequest {
-    trigger: Mercoa.Trigger;
+    /** List of triggers that will cause this policy to be evaluated. If no triggers are provided, the policy will be evaluated for all invoices. */
+    trigger: Mercoa.Trigger[];
     rule: Mercoa.Rule;
     /** The policy ID of the previous approval policy in the chain of policies. Use 'root' if no upstreamPolicyId is intended to be set. */
     upstreamPolicyId: Mercoa.ApprovalPolicyId;

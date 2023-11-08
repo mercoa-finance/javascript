@@ -10,11 +10,13 @@ export const NotificationPolicyRequest: core.serialization.ObjectSchema<
     serializers.NotificationPolicyRequest.Raw,
     Mercoa.NotificationPolicyRequest
 > = core.serialization.object({
+    disabled: core.serialization.boolean().optional(),
     additionalRoles: core.serialization.list(core.serialization.string()),
 });
 
 export declare namespace NotificationPolicyRequest {
     interface Raw {
+        disabled?: boolean | null;
         additionalRoles: string[];
     }
 }

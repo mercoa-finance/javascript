@@ -10,12 +10,14 @@ export const NotificationPolicyResponse: core.serialization.ObjectSchema<
     serializers.NotificationPolicyResponse.Raw,
     Mercoa.NotificationPolicyResponse
 > = core.serialization.object({
+    disabled: core.serialization.boolean(),
     additionalRoles: core.serialization.list(core.serialization.string()),
     type: core.serialization.lazy(async () => (await import("../../..")).NotificationType),
 });
 
 export declare namespace NotificationPolicyResponse {
     interface Raw {
+        disabled: boolean;
         additionalRoles: string[];
         type: serializers.NotificationType.Raw;
     }

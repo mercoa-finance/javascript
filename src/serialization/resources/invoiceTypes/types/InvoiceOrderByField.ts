@@ -9,8 +9,16 @@ import * as core from "../../../../core";
 export const InvoiceOrderByField: core.serialization.Schema<
     serializers.InvoiceOrderByField.Raw,
     Mercoa.InvoiceOrderByField
-> = core.serialization.enum_(["AMOUNT", "DUE_DATE", "CREATED_AT", "INVOICE_NUMBER", "VENDOR_NAME", "PAYER_NAME"]);
+> = core.serialization.enum_([
+    "AMOUNT",
+    "DUE_DATE",
+    "CREATED_AT",
+    "UPDATED_AT",
+    "INVOICE_NUMBER",
+    "VENDOR_NAME",
+    "PAYER_NAME",
+]);
 
 export declare namespace InvoiceOrderByField {
-    type Raw = "AMOUNT" | "DUE_DATE" | "CREATED_AT" | "INVOICE_NUMBER" | "VENDOR_NAME" | "PAYER_NAME";
+    type Raw = "AMOUNT" | "DUE_DATE" | "CREATED_AT" | "UPDATED_AT" | "INVOICE_NUMBER" | "VENDOR_NAME" | "PAYER_NAME";
 }

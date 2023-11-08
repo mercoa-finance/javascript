@@ -5,6 +5,8 @@
 import * as Mercoa from "../../..";
 
 export interface NotificationPolicyResponse {
+    /** True if the selected notification type is disabled for this entity */
+    disabled: boolean;
     /** List of user roles that should receive notifications in addition to the default users for this notification type */
     additionalRoles: string[];
     type: Mercoa.NotificationType;

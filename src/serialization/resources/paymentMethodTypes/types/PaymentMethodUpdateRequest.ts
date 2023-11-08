@@ -12,7 +12,7 @@ export const PaymentMethodUpdateRequest: core.serialization.Schema<
 > = core.serialization
     .union("type", {
         custom: core.serialization.lazyObject(async () => (await import("../../..")).CustomPaymentMethodUpdateRequest),
-        bankAccount: core.serialization.lazyObject(async () => (await import("../../..")).PaymentMethodBaseRequest),
+        bankAccount: core.serialization.lazyObject(async () => (await import("../../..")).BankAccountUpdateRequest),
         card: core.serialization.lazyObject(async () => (await import("../../..")).PaymentMethodBaseRequest),
         check: core.serialization.lazyObject(async () => (await import("../../..")).PaymentMethodBaseRequest),
     })
@@ -32,7 +32,7 @@ export declare namespace PaymentMethodUpdateRequest {
         type: "custom";
     }
 
-    interface BankAccount extends serializers.PaymentMethodBaseRequest.Raw {
+    interface BankAccount extends serializers.BankAccountUpdateRequest.Raw {
         type: "bankAccount";
     }
 

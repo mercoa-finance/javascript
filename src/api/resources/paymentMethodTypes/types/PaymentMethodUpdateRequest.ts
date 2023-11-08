@@ -5,12 +5,18 @@
 import * as Mercoa from "../../..";
 
 /**
- * Update a payment method. Only defaultSource and defaultDestination can be updated for non custom payment methods.
+ * Update a payment method. for non custom payment methods.
  */
 export type PaymentMethodUpdateRequest =
     | Mercoa.PaymentMethodUpdateRequest.Custom
+    /**
+     * Only defaultSource, defaultDestination, and accountName can be updated. */
     | Mercoa.PaymentMethodUpdateRequest.BankAccount
+    /**
+     * Only defaultSource and defaultDestination can be updated. */
     | Mercoa.PaymentMethodUpdateRequest.Card
+    /**
+     * Only defaultSource and defaultDestination can be updated. */
     | Mercoa.PaymentMethodUpdateRequest.Check;
 
 export declare namespace PaymentMethodUpdateRequest {
@@ -18,7 +24,7 @@ export declare namespace PaymentMethodUpdateRequest {
         type: "custom";
     }
 
-    interface BankAccount extends Mercoa.PaymentMethodBaseRequest {
+    interface BankAccount extends Mercoa.BankAccountUpdateRequest {
         type: "bankAccount";
     }
 

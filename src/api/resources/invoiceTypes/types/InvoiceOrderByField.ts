@@ -6,6 +6,7 @@ export type InvoiceOrderByField =
     | "AMOUNT"
     | "DUE_DATE"
     | "CREATED_AT"
+    | "UPDATED_AT"
     | "INVOICE_NUMBER"
     | "VENDOR_NAME"
     | "PAYER_NAME";
@@ -14,6 +15,7 @@ export const InvoiceOrderByField = {
     Amount: "AMOUNT",
     DueDate: "DUE_DATE",
     CreatedAt: "CREATED_AT",
+    UpdatedAt: "UPDATED_AT",
     InvoiceNumber: "INVOICE_NUMBER",
     VendorName: "VENDOR_NAME",
     PayerName: "PAYER_NAME",

@@ -11,7 +11,8 @@ export type NotificationType =
     | "INVOICE_PAID"
     | "INVOICE_CANCELED"
     | "INVOICE_CREATED"
-    | "INVOICE_EMAILED";
+    | "INVOICE_EMAILED"
+    | "INVOICE_FAILED";
 
 export const NotificationType = {
     InvoiceApprovalNeeded: "INVOICE_APPROVAL_NEEDED",
@@ -23,4 +24,5 @@ export const NotificationType = {
     InvoiceCanceled: "INVOICE_CANCELED",
     InvoiceCreated: "INVOICE_CREATED",
     InvoiceEmailed: "INVOICE_EMAILED",
+    InvoiceFailed: "INVOICE_FAILED",
 } as const;

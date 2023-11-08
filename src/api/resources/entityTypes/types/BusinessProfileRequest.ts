@@ -5,17 +5,20 @@
 import * as Mercoa from "../../..";
 
 export interface BusinessProfileRequest {
+    /** Email address for the business. Required for KYB. */
     email?: string;
     legalBusinessName: string;
     businessType?: Mercoa.BusinessType;
+    /** Phone number for the business. Required for KYB. */
     phone?: Mercoa.PhoneNumber;
     doingBusinessAs?: string;
-    /** Website URL for the business. Must be in the format http://www.example.com */
+    /** Website URL for the business. Must be in the format http://www.example.com. Required for KYB if description is not provided. */
     website?: string;
     /** Description of the business. Required for KYB if website is not provided. */
     description?: string;
+    /** Address for the business. Required for KYB. */
     address?: Mercoa.Address;
-    /** Tax ID for the business. Currently only EIN is supported. */
+    /** Tax ID for the business. Currently only EIN is supported. Required for KYB. */
     taxId?: Mercoa.TaxId;
     /** Date of business formation */
     formationDate?: Date;
