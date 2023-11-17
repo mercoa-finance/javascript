@@ -45,10 +45,25 @@ export class Entity {
         request: Mercoa.entity.FindEntities = {},
         requestOptions?: Entity.RequestOptions
     ): Promise<Mercoa.FindEntityResponse> {
-        const { ownedByOrg, foreignId, status, isPayee, isPayor, name, limit, startingAfter } = request;
+        const {
+            paymentMethods,
+            isCustomer,
+            foreignId,
+            status,
+            isPayee,
+            isPayor,
+            name,
+            limit,
+            startingAfter,
+            ownedByOrg,
+        } = request;
         const _queryParams = new URLSearchParams();
-        if (ownedByOrg != null) {
-            _queryParams.append("ownedByOrg", ownedByOrg.toString());
+        if (paymentMethods != null) {
+            _queryParams.append("paymentMethods", paymentMethods.toString());
+        }
+
+        if (isCustomer != null) {
+            _queryParams.append("isCustomer", isCustomer.toString());
         }
 
         if (foreignId != null) {
@@ -91,6 +106,10 @@ export class Entity {
             _queryParams.append("startingAfter", startingAfter);
         }
 
+        if (ownedByOrg != null) {
+            _queryParams.append("ownedByOrg", ownedByOrg.toString());
+        }
+
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
@@ -101,7 +120,7 @@ export class Entity {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.4",
+                "X-Fern-SDK-Version": "v0.3.5",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -215,7 +234,7 @@ export class Entity {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.4",
+                "X-Fern-SDK-Version": "v0.3.5",
             },
             contentType: "application/json",
             body: await serializers.EntityRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
@@ -369,7 +388,7 @@ export class Entity {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.4",
+                "X-Fern-SDK-Version": "v0.3.5",
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -483,7 +502,7 @@ export class Entity {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.4",
+                "X-Fern-SDK-Version": "v0.3.5",
             },
             contentType: "application/json",
             body: await serializers.EntityUpdateRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
@@ -634,7 +653,7 @@ export class Entity {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.4",
+                "X-Fern-SDK-Version": "v0.3.5",
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -739,7 +758,7 @@ export class Entity {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.4",
+                "X-Fern-SDK-Version": "v0.3.5",
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -853,7 +872,7 @@ export class Entity {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.4",
+                "X-Fern-SDK-Version": "v0.3.5",
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -968,7 +987,7 @@ export class Entity {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.4",
+                "X-Fern-SDK-Version": "v0.3.5",
             },
             contentType: "application/json",
             body: await serializers.TokenGenerationOptions.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
@@ -1065,7 +1084,7 @@ export class Entity {
     }
 
     /**
-     * Generate an onboarding link for the entity. The onboarding link will be valid for 24 hours.
+     * Generate an onboarding link for the entity.
      * @throws {@link Mercoa.AuthHeaderMissingError}
      * @throws {@link Mercoa.AuthHeaderMalformedError}
      * @throws {@link Mercoa.Unauthorized}
@@ -1078,9 +1097,13 @@ export class Entity {
         request: Mercoa.entity.GenerateOnboardingLink,
         requestOptions?: Entity.RequestOptions
     ): Promise<string> {
-        const { type: type_, connectedEntityId } = request;
+        const { type: type_, expiresIn, connectedEntityId } = request;
         const _queryParams = new URLSearchParams();
         _queryParams.append("type", type_);
+        if (expiresIn != null) {
+            _queryParams.append("expiresIn", expiresIn);
+        }
+
         if (connectedEntityId != null) {
             _queryParams.append("connectedEntityId", connectedEntityId);
         }
@@ -1095,7 +1118,7 @@ export class Entity {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.4",
+                "X-Fern-SDK-Version": "v0.3.5",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -1183,7 +1206,7 @@ export class Entity {
     }
 
     /**
-     * Send an email with a onboarding link to the entity. The email will be sent to the email address associated with the entity. The onboarding link will be valid for 7 days.
+     * Send an email with a onboarding link to the entity. The email will be sent to the email address associated with the entity.
      * @throws {@link Mercoa.AuthHeaderMissingError}
      * @throws {@link Mercoa.AuthHeaderMalformedError}
      * @throws {@link Mercoa.Unauthorized}
@@ -1196,9 +1219,13 @@ export class Entity {
         request: Mercoa.entity.SendOnboardingLink,
         requestOptions?: Entity.RequestOptions
     ): Promise<void> {
-        const { type: type_, connectedEntityId } = request;
+        const { type: type_, expiresIn, connectedEntityId } = request;
         const _queryParams = new URLSearchParams();
         _queryParams.append("type", type_);
+        if (expiresIn != null) {
+            _queryParams.append("expiresIn", expiresIn);
+        }
+
         if (connectedEntityId != null) {
             _queryParams.append("connectedEntityId", connectedEntityId);
         }
@@ -1213,7 +1240,7 @@ export class Entity {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.4",
+                "X-Fern-SDK-Version": "v0.3.5",
             },
             contentType: "application/json",
             queryParameters: _queryParams,

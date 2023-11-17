@@ -6,9 +6,13 @@ import * as Mercoa from "../../../..";
 
 export interface FindEntities {
     /**
+     * If true, will include entity payment methods as part of the response
+     */
+    paymentMethods?: boolean;
+    /**
      * If true, only entities with a direct relationship to the requesting organization will be returned. If false or not provided, all entities will be returned.
      */
-    ownedByOrg?: boolean;
+    isCustomer?: boolean;
     /**
      * ID used to identify this entity in your system
      */
@@ -38,4 +42,8 @@ export interface FindEntities {
      * The ID of the entity to start after. If not provided, the first page of entities will be returned.
      */
     startingAfter?: Mercoa.EntityId;
+    /**
+     * [DEPRECATED - use isCustomer] If true, only entities with a direct relationship to the requesting organization will be returned. If false or not provided, all entities will be returned.
+     */
+    ownedByOrg?: boolean;
 }

@@ -14,13 +14,14 @@ export const EntityResponse: core.serialization.ObjectSchema<serializers.EntityR
         foreignId: core.serialization.string().optional(),
         emailTo: core.serialization.string().optional(),
         emailToAlias: core.serialization.list(core.serialization.string()).optional(),
-        ownedByOrg: core.serialization.boolean(),
+        isCustomer: core.serialization.boolean(),
         accountType: core.serialization.lazy(async () => (await import("../../..")).AccountType),
         profile: core.serialization.lazyObject(async () => (await import("../../..")).ProfileResponse),
         status: core.serialization.lazy(async () => (await import("../../..")).EntityStatus),
         acceptedTos: core.serialization.boolean(),
         isPayor: core.serialization.boolean(),
         isPayee: core.serialization.boolean(),
+        ownedByOrg: core.serialization.boolean(),
         createdAt: core.serialization.date(),
         updatedAt: core.serialization.date(),
     });
@@ -33,13 +34,14 @@ export declare namespace EntityResponse {
         foreignId?: string | null;
         emailTo?: string | null;
         emailToAlias?: string[] | null;
-        ownedByOrg: boolean;
+        isCustomer: boolean;
         accountType: serializers.AccountType.Raw;
         profile: serializers.ProfileResponse.Raw;
         status: serializers.EntityStatus.Raw;
         acceptedTos: boolean;
         isPayor: boolean;
         isPayee: boolean;
+        ownedByOrg: boolean;
         createdAt: string;
         updatedAt: string;
     }

@@ -32,9 +32,12 @@ export const InvoiceRequest: core.serialization.ObjectSchema<serializers.Invoice
             .list(core.serialization.lazyObject(async () => (await import("../../..")).InvoiceLineItemRequest))
             .optional(),
         metadata: core.serialization.record(core.serialization.string(), core.serialization.string()).optional(),
+        foreignId: core.serialization.string().optional(),
         uploadedImage: core.serialization.string().optional(),
-        createdById: core.serialization.lazy(async () => (await import("../../..")).EntityUserId).optional(),
+        creatorEntityId: core.serialization.lazy(async () => (await import("../../..")).EntityId).optional(),
+        creatorUserId: core.serialization.lazy(async () => (await import("../../..")).EntityUserId).optional(),
         creatorId: core.serialization.lazy(async () => (await import("../../..")).EntityId).optional(),
+        createdById: core.serialization.lazy(async () => (await import("../../..")).EntityUserId).optional(),
     });
 
 export declare namespace InvoiceRequest {
@@ -57,8 +60,11 @@ export declare namespace InvoiceRequest {
         paymentDestinationId?: serializers.PaymentMethodId.Raw | null;
         lineItems?: serializers.InvoiceLineItemRequest.Raw[] | null;
         metadata?: Record<string, string> | null;
+        foreignId?: string | null;
         uploadedImage?: string | null;
-        createdById?: serializers.EntityUserId.Raw | null;
+        creatorEntityId?: serializers.EntityId.Raw | null;
+        creatorUserId?: serializers.EntityUserId.Raw | null;
         creatorId?: serializers.EntityId.Raw | null;
+        createdById?: serializers.EntityUserId.Raw | null;
     }
 }

@@ -9,7 +9,7 @@ export interface InvoiceRequest {
     /** Total amount of invoice in major units. If the entered amount has more decimal places than the currency supports, trailing decimals will be truncated. */
     amount?: number;
     currency?: Mercoa.CurrencyCode;
-    /** Date the invoice was created. */
+    /** Date the invoice was issued. */
     invoiceDate?: Date;
     /** Date when funds will be deducted from payer's account. */
     deductionDate?: Date;
@@ -33,10 +33,16 @@ export interface InvoiceRequest {
     lineItems?: Mercoa.InvoiceLineItemRequest[];
     /** Metadata associated with this invoice. You can specify up to 10 keys, with key names up to 40 characters long and values up to 200 characters long. */
     metadata?: Record<string, string>;
+    /** The ID used to identify this invoice in your system. This ID must be unique within each creatorEntity in your system, e.g. two invoices with the same creatorEntity may not have the same foreign ID. */
+    foreignId?: string;
     /** Base64 encoded image or PDF of invoice. PNG, JPG, and PDF are supported. 10MB max. */
     uploadedImage?: string;
+    /** ID of entity who created this invoice. */
+    creatorEntityId?: Mercoa.EntityId;
     /** ID of entity user who created this invoice. */
-    createdById?: Mercoa.EntityUserId;
-    /** ID of entity who created this invoice. If not provided, will default to the payerId. If payerId is not provided, will default to the vendorId. */
+    creatorUserId?: Mercoa.EntityUserId;
+    /** [DEPRECATED - use creatorEntityId] ID of entity who created this invoice. */
     creatorId?: Mercoa.EntityId;
+    /** [DEPRECATED - use creatorUserId] ID of entity user who created this invoice. */
+    createdById?: Mercoa.EntityUserId;
 }

@@ -10,7 +10,7 @@ export interface InvoiceResponse {
     /** Total amount of invoice in major units */
     amount?: number;
     currency?: Mercoa.CurrencyCode;
-    /** Date the invoice was created. */
+    /** Date the invoice was issued. */
     invoiceDate?: Date;
     /** Date when funds will be deducted from payer's account. */
     deductionDate?: Date;
@@ -40,8 +40,10 @@ export interface InvoiceResponse {
     approvalPolicy: Mercoa.ApprovalPolicyResponse[];
     /** Metadata associated with this invoice. */
     metadata: Record<string, string>;
+    /** The ID used to identify this invoice in your system. This ID must be unique within each creatorEntity in your system, e.g. two invoices with the same creatorEntity may not have the same foreign ID. */
+    foreignId?: string;
     /** Entity user who created this invoice. */
-    createdBy?: Mercoa.EntityUserResponse;
+    creatorUser?: Mercoa.EntityUserResponse;
     /** If the invoice failed to be paid, this field will be populated with the type of failure. */
     failureType?: Mercoa.InvoiceFailureType;
     processedAt?: Date;

@@ -12,13 +12,15 @@ export const FindEntityResponse: core.serialization.ObjectSchema<
 > = core.serialization.object({
     count: core.serialization.number(),
     hasMore: core.serialization.boolean(),
-    data: core.serialization.list(core.serialization.lazyObject(async () => (await import("../../..")).EntityResponse)),
+    data: core.serialization.list(
+        core.serialization.lazyObject(async () => (await import("../../..")).EntityWithPaymentMethodResponse)
+    ),
 });
 
 export declare namespace FindEntityResponse {
     interface Raw {
         count: number;
         hasMore: boolean;
-        data: serializers.EntityResponse.Raw[];
+        data: serializers.EntityWithPaymentMethodResponse.Raw[];
     }
 }

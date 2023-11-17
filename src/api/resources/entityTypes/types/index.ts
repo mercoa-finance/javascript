@@ -45,6 +45,7 @@ export * from "./NotificationPolicyResponse";
 export * from "./UserNotificationPolicyResponse";
 export * from "./FindNotificationResponse";
 export * from "./FindEntityResponse";
+export * from "./EntityWithPaymentMethodResponse";
 export * from "./TokenGenerationInvoiceOptions";
 export * from "./TokenGenerationPagesOptions";
 export * from "./TokenGenerationStyleOptions";

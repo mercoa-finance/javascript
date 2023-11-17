@@ -15,7 +15,7 @@ export interface EntityResponse {
     /** Email inbox alias addresses. Used when forwarding emails to the emailTo address from an alias. */
     emailToAlias?: string[];
     /** True if this entity has a direct relationship with your organization. */
-    ownedByOrg: boolean;
+    isCustomer: boolean;
     accountType: Mercoa.AccountType;
     profile: Mercoa.ProfileResponse;
     status: Mercoa.EntityStatus;
@@ -25,6 +25,8 @@ export interface EntityResponse {
     isPayor: boolean;
     /** True if this entity can receive payments. */
     isPayee: boolean;
+    /** [DEPRECATED - use isCustomer] - True if this entity has a direct relationship with your organization. */
+    ownedByOrg: boolean;
     createdAt: Date;
     updatedAt: Date;
 }

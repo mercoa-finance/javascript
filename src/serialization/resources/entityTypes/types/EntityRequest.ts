@@ -11,12 +11,13 @@ export const EntityRequest: core.serialization.ObjectSchema<serializers.EntityRe
         foreignId: core.serialization.string().optional(),
         emailTo: core.serialization.string().optional(),
         emailToAlias: core.serialization.list(core.serialization.string()).optional(),
-        ownedByOrg: core.serialization.boolean().optional(),
+        isCustomer: core.serialization.boolean().optional(),
         accountType: core.serialization.lazy(async () => (await import("../../..")).AccountType),
         profile: core.serialization.lazyObject(async () => (await import("../../..")).ProfileRequest),
         isPayor: core.serialization.boolean(),
         isPayee: core.serialization.boolean(),
         logo: core.serialization.string().optional(),
+        ownedByOrg: core.serialization.boolean().optional(),
     });
 
 export declare namespace EntityRequest {
@@ -24,11 +25,12 @@ export declare namespace EntityRequest {
         foreignId?: string | null;
         emailTo?: string | null;
         emailToAlias?: string[] | null;
-        ownedByOrg?: boolean | null;
+        isCustomer?: boolean | null;
         accountType: serializers.AccountType.Raw;
         profile: serializers.ProfileRequest.Raw;
         isPayor: boolean;
         isPayee: boolean;
         logo?: string | null;
+        ownedByOrg?: boolean | null;
     }
 }

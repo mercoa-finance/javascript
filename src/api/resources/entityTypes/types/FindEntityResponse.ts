@@ -9,5 +9,5 @@ export interface FindEntityResponse {
     count: number;
     /** True if there are more entities available for the given filters. */
     hasMore: boolean;
-    data: Mercoa.EntityResponse[];
+    data: Mercoa.EntityWithPaymentMethodResponse[];
 }
