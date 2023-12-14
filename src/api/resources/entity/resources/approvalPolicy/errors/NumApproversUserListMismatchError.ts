@@ -7,6 +7,7 @@ import * as errors from "../../../../../../errors";
 export class NumApproversUserListMismatchError extends errors.MercoaError {
     constructor(body: string) {
         super({
+            message: "NumApproversUserListMismatchError",
             statusCode: 400,
             body: body,
         });

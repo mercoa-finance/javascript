@@ -19,7 +19,6 @@ export const EntityUpdateRequest: core.serialization.ObjectSchema<
     isPayor: core.serialization.boolean().optional(),
     isPayee: core.serialization.boolean().optional(),
     logo: core.serialization.string().optional(),
-    ownedByOrg: core.serialization.boolean().optional(),
 });
 
 export declare namespace EntityUpdateRequest {
@@ -33,6 +32,5 @@ export declare namespace EntityUpdateRequest {
         isPayor?: boolean | null;
         isPayee?: boolean | null;
         logo?: string | null;
-        ownedByOrg?: boolean | null;
     }
 }

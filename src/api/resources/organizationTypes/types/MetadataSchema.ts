@@ -8,6 +8,8 @@ export interface MetadataSchema {
     key: string;
     displayName: string;
     description?: string;
+    /** Whether or not this field should be shown on line items. If true, this field will be shown on each line item. If false, the field will be shown on the invoice level. Defaults to false. */
+    lineItem?: boolean;
     type: Mercoa.MetadataType;
     /** Whether or not multiple values are allowed for this field. Defaults to false. If true, the value will be a list of the specified type. */
     allowMultiple?: boolean;

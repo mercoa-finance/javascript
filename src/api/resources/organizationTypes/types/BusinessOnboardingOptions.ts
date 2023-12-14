@@ -5,6 +5,7 @@
 import * as Mercoa from "../../..";
 
 export interface BusinessOnboardingOptions {
+    termsOfService: Mercoa.OnboardingOption;
     email: Mercoa.OnboardingOption;
     name: Mercoa.OnboardingOption;
     type: Mercoa.OnboardingOption;

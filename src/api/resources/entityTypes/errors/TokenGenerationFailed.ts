@@ -7,6 +7,7 @@ import * as errors from "../../../../errors";
 export class TokenGenerationFailed extends errors.MercoaError {
     constructor(body: string) {
         super({
+            message: "TokenGenerationFailed",
             statusCode: 400,
             body: body,
         });

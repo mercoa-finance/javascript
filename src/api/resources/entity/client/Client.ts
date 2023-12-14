@@ -5,13 +5,13 @@
 import * as environments from "../../../../environments";
 import * as core from "../../../../core";
 import * as Mercoa from "../../..";
-import { default as URLSearchParams } from "@ungap/url-search-params";
 import urlJoin from "url-join";
 import * as serializers from "../../../../serialization";
 import * as errors from "../../../../errors";
 import { User } from "../resources/user/client/Client";
 import { ApprovalPolicy } from "../resources/approvalPolicy/client/Client";
 import { Counterparty } from "../resources/counterparty/client/Client";
+import { ExternalAccountingSystem } from "../resources/externalAccountingSystem/client/Client";
 import { Invoice } from "../resources/invoice/client/Client";
 import { Metadata } from "../resources/metadata/client/Client";
 import { NotificationPolicy } from "../resources/notificationPolicy/client/Client";
@@ -26,6 +26,7 @@ export declare namespace Entity {
 
     interface RequestOptions {
         timeoutInSeconds?: number;
+        maxRetries?: number;
     }
 }
 
@@ -45,69 +46,50 @@ export class Entity {
         request: Mercoa.entity.FindEntities = {},
         requestOptions?: Entity.RequestOptions
     ): Promise<Mercoa.FindEntityResponse> {
-        const {
-            paymentMethods,
-            isCustomer,
-            foreignId,
-            status,
-            isPayee,
-            isPayor,
-            name,
-            limit,
-            startingAfter,
-            ownedByOrg,
-        } = request;
-        const _queryParams = new URLSearchParams();
+        const { paymentMethods, isCustomer, foreignId, status, isPayee, isPayor, name, limit, startingAfter } = request;
+        const _queryParams: Record<string, string | string[]> = {};
         if (paymentMethods != null) {
-            _queryParams.append("paymentMethods", paymentMethods.toString());
+            _queryParams["paymentMethods"] = paymentMethods.toString();
         }
 
         if (isCustomer != null) {
-            _queryParams.append("isCustomer", isCustomer.toString());
+            _queryParams["isCustomer"] = isCustomer.toString();
         }
 
         if (foreignId != null) {
             if (Array.isArray(foreignId)) {
-                for (const _item of foreignId) {
-                    _queryParams.append("foreignId", _item);
-                }
+                _queryParams["foreignId"] = foreignId.map((item) => item);
             } else {
-                _queryParams.append("foreignId", foreignId);
+                _queryParams["foreignId"] = foreignId;
             }
         }
 
         if (status != null) {
             if (Array.isArray(status)) {
-                for (const _item of status) {
-                    _queryParams.append("status", _item);
-                }
+                _queryParams["status"] = status.map((item) => item);
             } else {
-                _queryParams.append("status", status);
+                _queryParams["status"] = status;
             }
         }
 
         if (isPayee != null) {
-            _queryParams.append("isPayee", isPayee.toString());
+            _queryParams["isPayee"] = isPayee.toString();
         }
 
         if (isPayor != null) {
-            _queryParams.append("isPayor", isPayor.toString());
+            _queryParams["isPayor"] = isPayor.toString();
         }
 
         if (name != null) {
-            _queryParams.append("name", name);
+            _queryParams["name"] = name;
         }
 
         if (limit != null) {
-            _queryParams.append("limit", limit.toString());
+            _queryParams["limit"] = limit.toString();
         }
 
         if (startingAfter != null) {
-            _queryParams.append("startingAfter", startingAfter);
-        }
-
-        if (ownedByOrg != null) {
-            _queryParams.append("ownedByOrg", ownedByOrg.toString());
+            _queryParams["startingAfter"] = startingAfter;
         }
 
         const _response = await core.fetcher({
@@ -120,11 +102,12 @@ export class Entity {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.5",
+                "X-Fern-SDK-Version": "0.3.6",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
         });
         if (_response.ok) {
             return await serializers.FindEntityResponse.parseOrThrow(_response.body, {
@@ -234,11 +217,12 @@ export class Entity {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.5",
+                "X-Fern-SDK-Version": "0.3.6",
             },
             contentType: "application/json",
             body: await serializers.EntityRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
         });
         if (_response.ok) {
             return await serializers.EntityResponse.parseOrThrow(_response.body, {
@@ -388,10 +372,11 @@ export class Entity {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.5",
+                "X-Fern-SDK-Version": "0.3.6",
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
         });
         if (_response.ok) {
             return await serializers.EntityResponse.parseOrThrow(_response.body, {
@@ -502,11 +487,12 @@ export class Entity {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.5",
+                "X-Fern-SDK-Version": "0.3.6",
             },
             contentType: "application/json",
             body: await serializers.EntityUpdateRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
         });
         if (_response.ok) {
             return await serializers.EntityResponse.parseOrThrow(_response.body, {
@@ -653,10 +639,11 @@ export class Entity {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.5",
+                "X-Fern-SDK-Version": "0.3.6",
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
         });
         if (_response.ok) {
             return;
@@ -758,10 +745,11 @@ export class Entity {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.5",
+                "X-Fern-SDK-Version": "0.3.6",
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
         });
         if (_response.ok) {
             return;
@@ -872,10 +860,11 @@ export class Entity {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.5",
+                "X-Fern-SDK-Version": "0.3.6",
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
         });
         if (_response.ok) {
             return;
@@ -971,6 +960,11 @@ export class Entity {
      * @throws {@link Mercoa.Forbidden}
      * @throws {@link Mercoa.NotFound}
      * @throws {@link Mercoa.Unimplemented}
+     *
+     * @example
+     *     await mercoa.entity.getToken("ent_a0f6ea94-0761-4a5e-a416-3c453cb7eced", {
+     *         expiresIn: "1h"
+     *     })
      */
     public async getToken(
         entityId: Mercoa.EntityId,
@@ -987,11 +981,12 @@ export class Entity {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.5",
+                "X-Fern-SDK-Version": "0.3.6",
             },
             contentType: "application/json",
             body: await serializers.TokenGenerationOptions.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
         });
         if (_response.ok) {
             return await serializers.entity.getToken.Response.parseOrThrow(_response.body, {
@@ -1098,14 +1093,14 @@ export class Entity {
         requestOptions?: Entity.RequestOptions
     ): Promise<string> {
         const { type: type_, expiresIn, connectedEntityId } = request;
-        const _queryParams = new URLSearchParams();
-        _queryParams.append("type", type_);
+        const _queryParams: Record<string, string | string[]> = {};
+        _queryParams["type"] = type_;
         if (expiresIn != null) {
-            _queryParams.append("expiresIn", expiresIn);
+            _queryParams["expiresIn"] = expiresIn;
         }
 
         if (connectedEntityId != null) {
-            _queryParams.append("connectedEntityId", connectedEntityId);
+            _queryParams["connectedEntityId"] = connectedEntityId;
         }
 
         const _response = await core.fetcher({
@@ -1118,11 +1113,12 @@ export class Entity {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.5",
+                "X-Fern-SDK-Version": "0.3.6",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
         });
         if (_response.ok) {
             return await serializers.entity.getOnboardingLink.Response.parseOrThrow(_response.body, {
@@ -1220,14 +1216,14 @@ export class Entity {
         requestOptions?: Entity.RequestOptions
     ): Promise<void> {
         const { type: type_, expiresIn, connectedEntityId } = request;
-        const _queryParams = new URLSearchParams();
-        _queryParams.append("type", type_);
+        const _queryParams: Record<string, string | string[]> = {};
+        _queryParams["type"] = type_;
         if (expiresIn != null) {
-            _queryParams.append("expiresIn", expiresIn);
+            _queryParams["expiresIn"] = expiresIn;
         }
 
         if (connectedEntityId != null) {
-            _queryParams.append("connectedEntityId", connectedEntityId);
+            _queryParams["connectedEntityId"] = connectedEntityId;
         }
 
         const _response = await core.fetcher({
@@ -1240,11 +1236,12 @@ export class Entity {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.5",
+                "X-Fern-SDK-Version": "0.3.6",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
         });
         if (_response.ok) {
             return;
@@ -1338,6 +1335,12 @@ export class Entity {
 
     public get counterparty(): Counterparty {
         return (this._counterparty ??= new Counterparty(this._options));
+    }
+
+    protected _externalAccountingSystem: ExternalAccountingSystem | undefined;
+
+    public get externalAccountingSystem(): ExternalAccountingSystem {
+        return (this._externalAccountingSystem ??= new ExternalAccountingSystem(this._options));
     }
 
     protected _invoice: Invoice | undefined;

@@ -7,6 +7,7 @@ import * as errors from "../../../../errors";
 export class AuthHeaderMalformedError extends errors.MercoaError {
     constructor(body: string) {
         super({
+            message: "AuthHeaderMalformedError",
             statusCode: 400,
             body: body,
         });

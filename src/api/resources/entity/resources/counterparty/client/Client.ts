@@ -5,7 +5,6 @@
 import * as environments from "../../../../../../environments";
 import * as core from "../../../../../../core";
 import * as Mercoa from "../../../../..";
-import { default as URLSearchParams } from "@ungap/url-search-params";
 import * as serializers from "../../../../../../serialization";
 import urlJoin from "url-join";
 import * as errors from "../../../../../../errors";
@@ -18,6 +17,7 @@ export declare namespace Counterparty {
 
     interface RequestOptions {
         timeoutInSeconds?: number;
+        maxRetries?: number;
     }
 }
 
@@ -39,41 +39,37 @@ export class Counterparty {
         requestOptions?: Counterparty.RequestOptions
     ): Promise<Mercoa.FindCounterpartiesResponse> {
         const { name, networkType, paymentMethods, counterpartyId, limit, startingAfter } = request;
-        const _queryParams = new URLSearchParams();
+        const _queryParams: Record<string, string | string[]> = {};
         if (name != null) {
-            _queryParams.append("name", name);
+            _queryParams["name"] = name;
         }
 
         if (networkType != null) {
             if (Array.isArray(networkType)) {
-                for (const _item of networkType) {
-                    _queryParams.append("networkType", _item);
-                }
+                _queryParams["networkType"] = networkType.map((item) => item);
             } else {
-                _queryParams.append("networkType", networkType);
+                _queryParams["networkType"] = networkType;
             }
         }
 
         if (paymentMethods != null) {
-            _queryParams.append("paymentMethods", paymentMethods.toString());
+            _queryParams["paymentMethods"] = paymentMethods.toString();
         }
 
         if (counterpartyId != null) {
             if (Array.isArray(counterpartyId)) {
-                for (const _item of counterpartyId) {
-                    _queryParams.append("counterpartyId", _item);
-                }
+                _queryParams["counterpartyId"] = counterpartyId.map((item) => item);
             } else {
-                _queryParams.append("counterpartyId", counterpartyId);
+                _queryParams["counterpartyId"] = counterpartyId;
             }
         }
 
         if (limit != null) {
-            _queryParams.append("limit", limit.toString());
+            _queryParams["limit"] = limit.toString();
         }
 
         if (startingAfter != null) {
-            _queryParams.append("startingAfter", startingAfter);
+            _queryParams["startingAfter"] = startingAfter;
         }
 
         const _response = await core.fetcher({
@@ -86,11 +82,12 @@ export class Counterparty {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.5",
+                "X-Fern-SDK-Version": "0.3.6",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
         });
         if (_response.ok) {
             return await serializers.FindCounterpartiesResponse.parseOrThrow(_response.body, {
@@ -188,41 +185,37 @@ export class Counterparty {
         requestOptions?: Counterparty.RequestOptions
     ): Promise<Mercoa.FindCounterpartiesResponse> {
         const { name, networkType, paymentMethods, counterpartyId, limit, startingAfter } = request;
-        const _queryParams = new URLSearchParams();
+        const _queryParams: Record<string, string | string[]> = {};
         if (name != null) {
-            _queryParams.append("name", name);
+            _queryParams["name"] = name;
         }
 
         if (networkType != null) {
             if (Array.isArray(networkType)) {
-                for (const _item of networkType) {
-                    _queryParams.append("networkType", _item);
-                }
+                _queryParams["networkType"] = networkType.map((item) => item);
             } else {
-                _queryParams.append("networkType", networkType);
+                _queryParams["networkType"] = networkType;
             }
         }
 
         if (paymentMethods != null) {
-            _queryParams.append("paymentMethods", paymentMethods.toString());
+            _queryParams["paymentMethods"] = paymentMethods.toString();
         }
 
         if (counterpartyId != null) {
             if (Array.isArray(counterpartyId)) {
-                for (const _item of counterpartyId) {
-                    _queryParams.append("counterpartyId", _item);
-                }
+                _queryParams["counterpartyId"] = counterpartyId.map((item) => item);
             } else {
-                _queryParams.append("counterpartyId", counterpartyId);
+                _queryParams["counterpartyId"] = counterpartyId;
             }
         }
 
         if (limit != null) {
-            _queryParams.append("limit", limit.toString());
+            _queryParams["limit"] = limit.toString();
         }
 
         if (startingAfter != null) {
-            _queryParams.append("startingAfter", startingAfter);
+            _queryParams["startingAfter"] = startingAfter;
         }
 
         const _response = await core.fetcher({
@@ -235,11 +228,12 @@ export class Counterparty {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.5",
+                "X-Fern-SDK-Version": "0.3.6",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
         });
         if (_response.ok) {
             return await serializers.FindCounterpartiesResponse.parseOrThrow(_response.body, {
@@ -346,11 +340,12 @@ export class Counterparty {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.5",
+                "X-Fern-SDK-Version": "0.3.6",
             },
             contentType: "application/json",
             body: await serializers.EntityAddPayeesRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
         });
         if (_response.ok) {
             return;
@@ -452,11 +447,12 @@ export class Counterparty {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.5",
+                "X-Fern-SDK-Version": "0.3.6",
             },
             contentType: "application/json",
             body: await serializers.EntityHidePayeesRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
         });
         if (_response.ok) {
             return;
@@ -558,11 +554,12 @@ export class Counterparty {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.5",
+                "X-Fern-SDK-Version": "0.3.6",
             },
             contentType: "application/json",
             body: await serializers.EntityAddPayorsRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
         });
         if (_response.ok) {
             return;
@@ -664,11 +661,12 @@ export class Counterparty {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.5",
+                "X-Fern-SDK-Version": "0.3.6",
             },
             contentType: "application/json",
             body: await serializers.EntityHidePayorsRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
         });
         if (_response.ok) {
             return;

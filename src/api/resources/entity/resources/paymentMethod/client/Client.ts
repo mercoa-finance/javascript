@@ -5,7 +5,6 @@
 import * as environments from "../../../../../../environments";
 import * as core from "../../../../../../core";
 import * as Mercoa from "../../../../..";
-import { default as URLSearchParams } from "@ungap/url-search-params";
 import * as serializers from "../../../../../../serialization";
 import urlJoin from "url-join";
 import * as errors from "../../../../../../errors";
@@ -18,6 +17,7 @@ export declare namespace PaymentMethod {
 
     interface RequestOptions {
         timeoutInSeconds?: number;
+        maxRetries?: number;
     }
 }
 
@@ -39,14 +39,12 @@ export class PaymentMethod {
         requestOptions?: PaymentMethod.RequestOptions
     ): Promise<Mercoa.PaymentMethodResponse[]> {
         const { type: type_ } = request;
-        const _queryParams = new URLSearchParams();
+        const _queryParams: Record<string, string | string[]> = {};
         if (type_ != null) {
             if (Array.isArray(type_)) {
-                for (const _item of type_) {
-                    _queryParams.append("type", _item);
-                }
+                _queryParams["type"] = type_.map((item) => item);
             } else {
-                _queryParams.append("type", type_);
+                _queryParams["type"] = type_;
             }
         }
 
@@ -60,11 +58,12 @@ export class PaymentMethod {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.5",
+                "X-Fern-SDK-Version": "0.3.6",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
         });
         if (_response.ok) {
             return await serializers.entity.paymentMethod.getAll.Response.parseOrThrow(_response.body, {
@@ -180,11 +179,12 @@ export class PaymentMethod {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.5",
+                "X-Fern-SDK-Version": "0.3.6",
             },
             contentType: "application/json",
             body: await serializers.PaymentMethodRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
         });
         if (_response.ok) {
             return await serializers.PaymentMethodResponse.parseOrThrow(_response.body, {
@@ -302,10 +302,11 @@ export class PaymentMethod {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.5",
+                "X-Fern-SDK-Version": "0.3.6",
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
         });
         if (_response.ok) {
             return await serializers.PaymentMethodResponse.parseOrThrow(_response.body, {
@@ -425,13 +426,14 @@ export class PaymentMethod {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.5",
+                "X-Fern-SDK-Version": "0.3.6",
             },
             contentType: "application/json",
             body: await serializers.PaymentMethodUpdateRequest.jsonOrThrow(request, {
                 unrecognizedObjectKeys: "strip",
             }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
         });
         if (_response.ok) {
             return await serializers.PaymentMethodResponse.parseOrThrow(_response.body, {
@@ -549,10 +551,11 @@ export class PaymentMethod {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.5",
+                "X-Fern-SDK-Version": "0.3.6",
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
         });
         if (_response.ok) {
             return;
@@ -666,10 +669,11 @@ export class PaymentMethod {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.5",
+                "X-Fern-SDK-Version": "0.3.6",
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
         });
         if (_response.ok) {
             return await serializers.PaymentMethodResponse.parseOrThrow(_response.body, {
@@ -789,13 +793,14 @@ export class PaymentMethod {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.5",
+                "X-Fern-SDK-Version": "0.3.6",
             },
             contentType: "application/json",
             body: await serializers.entity.CompleteMicroDepositsRequest.jsonOrThrow(request, {
                 unrecognizedObjectKeys: "strip",
             }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
         });
         if (_response.ok) {
             return await serializers.PaymentMethodResponse.parseOrThrow(_response.body, {

@@ -5,7 +5,6 @@
 import * as environments from "../../../../environments";
 import * as core from "../../../../core";
 import * as Mercoa from "../../..";
-import { default as URLSearchParams } from "@ungap/url-search-params";
 import urlJoin from "url-join";
 import * as serializers from "../../../../serialization";
 import * as errors from "../../../../errors";
@@ -19,6 +18,7 @@ export declare namespace Organization {
 
     interface RequestOptions {
         timeoutInSeconds?: number;
+        maxRetries?: number;
     }
 }
 
@@ -46,29 +46,29 @@ export class Organization {
             payorOnboardingOptions,
             metadataSchema,
         } = request;
-        const _queryParams = new URLSearchParams();
+        const _queryParams: Record<string, string | string[]> = {};
         if (paymentMethods != null) {
-            _queryParams.append("paymentMethods", paymentMethods.toString());
+            _queryParams["paymentMethods"] = paymentMethods.toString();
         }
 
         if (emailProvider != null) {
-            _queryParams.append("emailProvider", emailProvider.toString());
+            _queryParams["emailProvider"] = emailProvider.toString();
         }
 
         if (colorScheme != null) {
-            _queryParams.append("colorScheme", colorScheme.toString());
+            _queryParams["colorScheme"] = colorScheme.toString();
         }
 
         if (payeeOnboardingOptions != null) {
-            _queryParams.append("payeeOnboardingOptions", payeeOnboardingOptions.toString());
+            _queryParams["payeeOnboardingOptions"] = payeeOnboardingOptions.toString();
         }
 
         if (payorOnboardingOptions != null) {
-            _queryParams.append("payorOnboardingOptions", payorOnboardingOptions.toString());
+            _queryParams["payorOnboardingOptions"] = payorOnboardingOptions.toString();
         }
 
         if (metadataSchema != null) {
-            _queryParams.append("metadataSchema", metadataSchema.toString());
+            _queryParams["metadataSchema"] = metadataSchema.toString();
         }
 
         const _response = await core.fetcher({
@@ -81,11 +81,12 @@ export class Organization {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.5",
+                "X-Fern-SDK-Version": "0.3.6",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
         });
         if (_response.ok) {
             return await serializers.OrganizationResponse.parseOrThrow(_response.body, {
@@ -191,11 +192,12 @@ export class Organization {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.5",
+                "X-Fern-SDK-Version": "0.3.6",
             },
             contentType: "application/json",
             body: await serializers.OrganizationRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
         });
         if (_response.ok) {
             return await serializers.OrganizationResponse.parseOrThrow(_response.body, {
@@ -292,13 +294,13 @@ export class Organization {
         requestOptions?: Organization.RequestOptions
     ): Promise<Mercoa.EmailLogResponse[]> {
         const { startDate, endDate } = request;
-        const _queryParams = new URLSearchParams();
+        const _queryParams: Record<string, string | string[]> = {};
         if (startDate != null) {
-            _queryParams.append("startDate", startDate.toISOString());
+            _queryParams["startDate"] = startDate.toISOString();
         }
 
         if (endDate != null) {
-            _queryParams.append("endDate", endDate.toISOString());
+            _queryParams["endDate"] = endDate.toISOString();
         }
 
         const _response = await core.fetcher({
@@ -311,11 +313,12 @@ export class Organization {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.5",
+                "X-Fern-SDK-Version": "0.3.6",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
         });
         if (_response.ok) {
             return await serializers.organization.emailLog.Response.parseOrThrow(_response.body, {

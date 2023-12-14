@@ -7,6 +7,7 @@ import * as errors from "../../../../errors";
 export class VendorNotFound extends errors.MercoaError {
     constructor(body: string) {
         super({
+            message: "VendorNotFound",
             statusCode: 404,
             body: body,
         });

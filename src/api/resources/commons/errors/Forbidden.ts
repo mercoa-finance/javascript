@@ -7,6 +7,7 @@ import * as errors from "../../../../errors";
 export class Forbidden extends errors.MercoaError {
     constructor(body: string) {
         super({
+            message: "Forbidden",
             statusCode: 403,
             body: body,
         });

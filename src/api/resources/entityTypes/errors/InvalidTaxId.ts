@@ -7,6 +7,7 @@ import * as errors from "../../../../errors";
 export class InvalidTaxId extends errors.MercoaError {
     constructor(body: string) {
         super({
+            message: "InvalidTaxId",
             statusCode: 400,
             body: body,
         });

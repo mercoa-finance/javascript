@@ -20,6 +20,7 @@ export const InvoiceLineItemRequest: core.serialization.ObjectSchema<
     serviceStartDate: core.serialization.date().optional(),
     serviceEndDate: core.serialization.date().optional(),
     metadata: core.serialization.record(core.serialization.string(), core.serialization.string()).optional(),
+    glAccountId: core.serialization.string().optional(),
 });
 
 export declare namespace InvoiceLineItemRequest {
@@ -34,5 +35,6 @@ export declare namespace InvoiceLineItemRequest {
         serviceStartDate?: string | null;
         serviceEndDate?: string | null;
         metadata?: Record<string, string> | null;
+        glAccountId?: string | null;
     }
 }

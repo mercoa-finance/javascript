@@ -7,6 +7,7 @@ import * as errors from "../../../../errors";
 export class AuthHeaderMissingError extends errors.MercoaError {
     constructor() {
         super({
+            message: "AuthHeaderMissingError",
             statusCode: 400,
         });
         Object.setPrototypeOf(this, AuthHeaderMissingError.prototype);

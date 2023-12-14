@@ -7,6 +7,7 @@ import * as errors from "../../../../errors";
 export class InvalidStateOrProvince extends errors.MercoaError {
     constructor(body: string) {
         super({
+            message: "InvalidStateOrProvince",
             statusCode: 400,
             body: body,
         });

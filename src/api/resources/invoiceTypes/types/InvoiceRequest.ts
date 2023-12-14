@@ -41,8 +41,4 @@ export interface InvoiceRequest {
     creatorEntityId?: Mercoa.EntityId;
     /** ID of entity user who created this invoice. */
     creatorUserId?: Mercoa.EntityUserId;
-    /** [DEPRECATED - use creatorEntityId] ID of entity who created this invoice. */
-    creatorId?: Mercoa.EntityId;
-    /** [DEPRECATED - use creatorUserId] ID of entity user who created this invoice. */
-    createdById?: Mercoa.EntityUserId;
 }

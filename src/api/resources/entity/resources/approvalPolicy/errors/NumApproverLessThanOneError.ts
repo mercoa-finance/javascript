@@ -7,6 +7,7 @@ import * as errors from "../../../../../../errors";
 export class NumApproverLessThanOneError extends errors.MercoaError {
     constructor(body: string) {
         super({
+            message: "NumApproverLessThanOneError",
             statusCode: 400,
             body: body,
         });

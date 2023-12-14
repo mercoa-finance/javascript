@@ -21,6 +21,4 @@ export interface EntityUpdateRequest {
     isPayee?: boolean;
     /** Base64 encoded PNG image data for the entity logo. */
     logo?: string;
-    /** [DEPRECATED - use isCustomer] - If this entity has a direct relationship with your organization, set this to true. Otherwise, set to false. */
-    ownedByOrg?: boolean;
 }

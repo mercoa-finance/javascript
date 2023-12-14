@@ -5,7 +5,6 @@
 import * as environments from "../../../../environments";
 import * as core from "../../../../core";
 import * as Mercoa from "../../..";
-import { default as URLSearchParams } from "@ungap/url-search-params";
 import urlJoin from "url-join";
 import * as serializers from "../../../../serialization";
 import * as errors from "../../../../errors";
@@ -18,6 +17,7 @@ export declare namespace BankLookup {
 
     interface RequestOptions {
         timeoutInSeconds?: number;
+        maxRetries?: number;
     }
 }
 
@@ -38,8 +38,8 @@ export class BankLookup {
         requestOptions?: BankLookup.RequestOptions
     ): Promise<Mercoa.BankLookupResponse> {
         const { routingNumber } = request;
-        const _queryParams = new URLSearchParams();
-        _queryParams.append("routingNumber", routingNumber);
+        const _queryParams: Record<string, string | string[]> = {};
+        _queryParams["routingNumber"] = routingNumber;
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
@@ -50,11 +50,12 @@ export class BankLookup {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.5",
+                "X-Fern-SDK-Version": "0.3.6",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
         });
         if (_response.ok) {
             return await serializers.BankLookupResponse.parseOrThrow(_response.body, {

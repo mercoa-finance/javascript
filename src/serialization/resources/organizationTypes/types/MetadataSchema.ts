@@ -11,6 +11,7 @@ export const MetadataSchema: core.serialization.ObjectSchema<serializers.Metadat
         key: core.serialization.string(),
         displayName: core.serialization.string(),
         description: core.serialization.string().optional(),
+        lineItem: core.serialization.boolean().optional(),
         type: core.serialization.lazy(async () => (await import("../../..")).MetadataType),
         allowMultiple: core.serialization.boolean().optional(),
         showConditions: core.serialization
@@ -23,6 +24,7 @@ export declare namespace MetadataSchema {
         key: string;
         displayName: string;
         description?: string | null;
+        lineItem?: boolean | null;
         type: serializers.MetadataType.Raw;
         allowMultiple?: boolean | null;
         showConditions?: serializers.MetadataShowConditions.Raw | null;

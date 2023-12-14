@@ -7,6 +7,7 @@ import * as errors from "../../../../errors";
 export class PaymentMethodError extends errors.MercoaError {
     constructor(body: string) {
         super({
+            message: "PaymentMethodError",
             statusCode: 400,
             body: body,
         });

@@ -1,3 +1,5 @@
+export * as externalAccountingSystem from "./externalAccountingSystem";
+export * from "./externalAccountingSystem/types";
 export * as approvalPolicy from "./approvalPolicy";
 export * from "./approvalPolicy/errors";
 export * as user from "./user";

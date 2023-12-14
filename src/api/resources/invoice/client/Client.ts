@@ -5,7 +5,6 @@
 import * as environments from "../../../../environments";
 import * as core from "../../../../core";
 import * as Mercoa from "../../..";
-import { default as URLSearchParams } from "@ungap/url-search-params";
 import urlJoin from "url-join";
 import * as serializers from "../../../../serialization";
 import * as errors from "../../../../errors";
@@ -21,6 +20,7 @@ export declare namespace Invoice {
 
     interface RequestOptions {
         timeoutInSeconds?: number;
+        maxRetries?: number;
     }
 }
 
@@ -57,97 +57,85 @@ export class Invoice {
             status,
             includeFees,
         } = request;
-        const _queryParams = new URLSearchParams();
+        const _queryParams: Record<string, string | string[]> = {};
         if (entityId != null) {
             if (Array.isArray(entityId)) {
-                for (const _item of entityId) {
-                    _queryParams.append("entityId", _item);
-                }
+                _queryParams["entityId"] = entityId.map((item) => item);
             } else {
-                _queryParams.append("entityId", entityId);
+                _queryParams["entityId"] = entityId;
             }
         }
 
         if (startDate != null) {
-            _queryParams.append("startDate", startDate.toISOString());
+            _queryParams["startDate"] = startDate.toISOString();
         }
 
         if (endDate != null) {
-            _queryParams.append("endDate", endDate.toISOString());
+            _queryParams["endDate"] = endDate.toISOString();
         }
 
         if (orderBy != null) {
-            _queryParams.append("orderBy", orderBy);
+            _queryParams["orderBy"] = orderBy;
         }
 
         if (orderDirection != null) {
-            _queryParams.append("orderDirection", orderDirection);
+            _queryParams["orderDirection"] = orderDirection;
         }
 
         if (limit != null) {
-            _queryParams.append("limit", limit.toString());
+            _queryParams["limit"] = limit.toString();
         }
 
         if (startingAfter != null) {
-            _queryParams.append("startingAfter", startingAfter);
+            _queryParams["startingAfter"] = startingAfter;
         }
 
         if (search != null) {
-            _queryParams.append("search", search);
+            _queryParams["search"] = search;
         }
 
         if (payerId != null) {
             if (Array.isArray(payerId)) {
-                for (const _item of payerId) {
-                    _queryParams.append("payerId", _item);
-                }
+                _queryParams["payerId"] = payerId.map((item) => item);
             } else {
-                _queryParams.append("payerId", payerId);
+                _queryParams["payerId"] = payerId;
             }
         }
 
         if (vendorId != null) {
             if (Array.isArray(vendorId)) {
-                for (const _item of vendorId) {
-                    _queryParams.append("vendorId", _item);
-                }
+                _queryParams["vendorId"] = vendorId.map((item) => item);
             } else {
-                _queryParams.append("vendorId", vendorId);
+                _queryParams["vendorId"] = vendorId;
             }
         }
 
         if (approverId != null) {
             if (Array.isArray(approverId)) {
-                for (const _item of approverId) {
-                    _queryParams.append("approverId", _item);
-                }
+                _queryParams["approverId"] = approverId.map((item) => item);
             } else {
-                _queryParams.append("approverId", approverId);
+                _queryParams["approverId"] = approverId;
             }
         }
 
         if (invoiceId != null) {
             if (Array.isArray(invoiceId)) {
-                for (const _item of invoiceId) {
-                    _queryParams.append("invoiceId", _item);
-                }
+                _queryParams["invoiceId"] = invoiceId.map((item) => item);
             } else {
-                _queryParams.append("invoiceId", invoiceId);
+                _queryParams["invoiceId"] = invoiceId;
             }
         }
 
         if (status != null) {
             if (Array.isArray(status)) {
-                for (const _item of status) {
-                    _queryParams.append("status", _item);
-                }
+                _queryParams["status"] = status.map((item) => item);
             } else {
-                _queryParams.append("status", status);
+                _queryParams["status"] = status;
             }
         }
 
         if (includeFees != null) {
-            _queryParams.append("includeFees", includeFees.toString());
+            _queryParams["includeFees"] = includeFees.toString();
         }
 
         const _response = await core.fetcher({
@@ -160,11 +148,12 @@ export class Invoice {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.5",
+                "X-Fern-SDK-Version": "0.3.6",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
         });
         if (_response.ok) {
             return await serializers.FindInvoiceResponse.parseOrThrow(_response.body, {
@@ -280,11 +269,12 @@ export class Invoice {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.5",
+                "X-Fern-SDK-Version": "0.3.6",
             },
             contentType: "application/json",
             body: await serializers.InvoiceRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
         });
         if (_response.ok) {
             return await serializers.InvoiceResponse.parseOrThrow(_response.body, {
@@ -399,9 +389,9 @@ export class Invoice {
         requestOptions?: Invoice.RequestOptions
     ): Promise<Mercoa.InvoiceResponse> {
         const { includeFees } = request;
-        const _queryParams = new URLSearchParams();
+        const _queryParams: Record<string, string | string[]> = {};
         if (includeFees != null) {
-            _queryParams.append("includeFees", includeFees.toString());
+            _queryParams["includeFees"] = includeFees.toString();
         }
 
         const _response = await core.fetcher({
@@ -414,11 +404,12 @@ export class Invoice {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.5",
+                "X-Fern-SDK-Version": "0.3.6",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
         });
         if (_response.ok) {
             return await serializers.InvoiceResponse.parseOrThrow(_response.body, {
@@ -526,11 +517,12 @@ export class Invoice {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.5",
+                "X-Fern-SDK-Version": "0.3.6",
             },
             contentType: "application/json",
             body: await serializers.InvoiceRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
         });
         if (_response.ok) {
             return await serializers.InvoiceResponse.parseOrThrow(_response.body, {
@@ -652,10 +644,11 @@ export class Invoice {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.5",
+                "X-Fern-SDK-Version": "0.3.6",
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
         });
         if (_response.ok) {
             return;
@@ -751,6 +744,9 @@ export class Invoice {
      * @throws {@link Mercoa.Forbidden}
      * @throws {@link Mercoa.NotFound}
      * @throws {@link Mercoa.Unimplemented}
+     *
+     * @example
+     *     await mercoa.invoice.getPayerLink("inv_a0f6ea94-0761-4a5e-a416-3c453cb7eced")
      */
     public async getPayerLink(invoiceId: Mercoa.InvoiceId, requestOptions?: Invoice.RequestOptions): Promise<string> {
         const _response = await core.fetcher({
@@ -763,10 +759,11 @@ export class Invoice {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.5",
+                "X-Fern-SDK-Version": "0.3.6",
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
         });
         if (_response.ok) {
             return await serializers.invoice.getPayerLink.Response.parseOrThrow(_response.body, {
@@ -874,9 +871,9 @@ export class Invoice {
         requestOptions?: Invoice.RequestOptions
     ): Promise<void> {
         const { attachInvoice } = request;
-        const _queryParams = new URLSearchParams();
+        const _queryParams: Record<string, string | string[]> = {};
         if (attachInvoice != null) {
-            _queryParams.append("attachInvoice", attachInvoice.toString());
+            _queryParams["attachInvoice"] = attachInvoice.toString();
         }
 
         const _response = await core.fetcher({
@@ -889,11 +886,12 @@ export class Invoice {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.5",
+                "X-Fern-SDK-Version": "0.3.6",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
         });
         if (_response.ok) {
             return;
@@ -989,6 +987,9 @@ export class Invoice {
      * @throws {@link Mercoa.Forbidden}
      * @throws {@link Mercoa.NotFound}
      * @throws {@link Mercoa.Unimplemented}
+     *
+     * @example
+     *     await mercoa.invoice.getVendorLink("inv_a0f6ea94-0761-4a5e-a416-3c453cb7eced")
      */
     public async getVendorLink(invoiceId: Mercoa.InvoiceId, requestOptions?: Invoice.RequestOptions): Promise<string> {
         const _response = await core.fetcher({
@@ -1001,10 +1002,11 @@ export class Invoice {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.5",
+                "X-Fern-SDK-Version": "0.3.6",
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
         });
         if (_response.ok) {
             return await serializers.invoice.getVendorLink.Response.parseOrThrow(_response.body, {
@@ -1117,10 +1119,11 @@ export class Invoice {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.5",
+                "X-Fern-SDK-Version": "0.3.6",
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
         });
         if (_response.ok) {
             return;
@@ -1231,10 +1234,11 @@ export class Invoice {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.5",
+                "X-Fern-SDK-Version": "0.3.6",
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
         });
         if (_response.ok) {
             return await serializers.invoice.generateInvoicePdf.Response.parseOrThrow(_response.body, {

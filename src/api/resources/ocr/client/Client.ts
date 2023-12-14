@@ -5,7 +5,6 @@
 import * as environments from "../../../../environments";
 import * as core from "../../../../core";
 import * as Mercoa from "../../..";
-import { default as URLSearchParams } from "@ungap/url-search-params";
 import * as serializers from "../../../../serialization";
 import urlJoin from "url-join";
 import * as errors from "../../../../errors";
@@ -18,6 +17,7 @@ export declare namespace Ocr {
 
     interface RequestOptions {
         timeoutInSeconds?: number;
+        maxRetries?: number;
     }
 }
 
@@ -36,13 +36,13 @@ export class Ocr {
      */
     public async ocr(request: Mercoa.RunOcr, requestOptions?: Ocr.RequestOptions): Promise<Mercoa.OcrResponse> {
         const { vendorNetwork, entityId, ..._body } = request;
-        const _queryParams = new URLSearchParams();
+        const _queryParams: Record<string, string | string[]> = {};
         if (vendorNetwork != null) {
-            _queryParams.append("vendorNetwork", vendorNetwork);
+            _queryParams["vendorNetwork"] = vendorNetwork;
         }
 
         if (entityId != null) {
-            _queryParams.append("entityId", entityId);
+            _queryParams["entityId"] = entityId;
         }
 
         const _response = await core.fetcher({
@@ -55,12 +55,13 @@ export class Ocr {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.5",
+                "X-Fern-SDK-Version": "0.3.6",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
             body: await serializers.RunOcr.jsonOrThrow(_body, { unrecognizedObjectKeys: "strip" }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
         });
         if (_response.ok) {
             return await serializers.OcrResponse.parseOrThrow(_response.body, {
@@ -174,11 +175,12 @@ export class Ocr {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.5",
+                "X-Fern-SDK-Version": "0.3.6",
             },
             contentType: "application/json",
             body: await serializers.CloudMailinRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
         });
         if (_response.ok) {
             return;

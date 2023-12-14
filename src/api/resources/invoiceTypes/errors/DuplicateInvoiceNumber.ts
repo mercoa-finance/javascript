@@ -7,6 +7,7 @@ import * as errors from "../../../../errors";
 export class DuplicateInvoiceNumber extends errors.MercoaError {
     constructor(body: string) {
         super({
+            message: "DuplicateInvoiceNumber",
             statusCode: 409,
             body: body,
         });

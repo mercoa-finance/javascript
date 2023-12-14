@@ -7,6 +7,7 @@ import * as errors from "../../../../errors";
 export class InvoiceError extends errors.MercoaError {
     constructor(body: string) {
         super({
+            message: "InvoiceError",
             statusCode: 400,
             body: body,
         });

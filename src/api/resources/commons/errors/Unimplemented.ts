@@ -7,6 +7,7 @@ import * as errors from "../../../../errors";
 export class Unimplemented extends errors.MercoaError {
     constructor(body: string) {
         super({
+            message: "Unimplemented",
             statusCode: 501,
             body: body,
         });

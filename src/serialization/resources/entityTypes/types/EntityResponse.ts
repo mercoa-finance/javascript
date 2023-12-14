@@ -21,7 +21,6 @@ export const EntityResponse: core.serialization.ObjectSchema<serializers.EntityR
         acceptedTos: core.serialization.boolean(),
         isPayor: core.serialization.boolean(),
         isPayee: core.serialization.boolean(),
-        ownedByOrg: core.serialization.boolean(),
         createdAt: core.serialization.date(),
         updatedAt: core.serialization.date(),
     });
@@ -41,7 +40,6 @@ export declare namespace EntityResponse {
         acceptedTos: boolean;
         isPayor: boolean;
         isPayee: boolean;
-        ownedByOrg: boolean;
         createdAt: string;
         updatedAt: string;
     }

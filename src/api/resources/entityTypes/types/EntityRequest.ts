@@ -12,7 +12,7 @@ export interface EntityRequest {
     /** Email inbox alias addresses. Used when forwarding emails to the emailTo address from an alias. Include the full email address. */
     emailToAlias?: string[];
     /** If this entity has a direct relationship with your organization (e.g your direct customer or client), set this to true. Otherwise, set to false (e.g your customer's vendors). */
-    isCustomer?: boolean;
+    isCustomer: boolean;
     accountType: Mercoa.AccountType;
     profile: Mercoa.ProfileRequest;
     /** If this entity will be paying invoices, set this to true. */
@@ -21,6 +21,4 @@ export interface EntityRequest {
     isPayee: boolean;
     /** Base64 encoded PNG image data for the entity logo. */
     logo?: string;
-    /** [DEPRECATED - use isCustomer] - If this entity has a direct relationship with your organization, set this to true. Otherwise, set to false. */
-    ownedByOrg?: boolean;
 }

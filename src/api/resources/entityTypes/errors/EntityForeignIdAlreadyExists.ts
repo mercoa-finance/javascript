@@ -7,7 +7,8 @@ import * as errors from "../../../../errors";
 export class EntityForeignIdAlreadyExists extends errors.MercoaError {
     constructor(body: string) {
         super({
-            statusCode: 400,
+            message: "EntityForeignIdAlreadyExists",
+            statusCode: 409,
             body: body,
         });
         Object.setPrototypeOf(this, EntityForeignIdAlreadyExists.prototype);

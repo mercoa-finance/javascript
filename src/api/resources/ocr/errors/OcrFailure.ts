@@ -7,6 +7,7 @@ import * as errors from "../../../../errors";
 export class OcrFailure extends errors.MercoaError {
     constructor(body: string) {
         super({
+            message: "OcrFailure",
             statusCode: 500,
             body: body,
         });

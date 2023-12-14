@@ -18,4 +18,6 @@ export interface InvoiceLineItemRequest {
     serviceStartDate?: Date;
     serviceEndDate?: Date;
     metadata?: Record<string, string>;
+    /** ID of general ledger account associated with this line item. */
+    glAccountId?: string;
 }

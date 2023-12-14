@@ -25,8 +25,6 @@ export interface EntityResponse {
     isPayor: boolean;
     /** True if this entity can receive payments. */
     isPayee: boolean;
-    /** [DEPRECATED - use isCustomer] - True if this entity has a direct relationship with your organization. */
-    ownedByOrg: boolean;
     createdAt: Date;
     updatedAt: Date;
 }

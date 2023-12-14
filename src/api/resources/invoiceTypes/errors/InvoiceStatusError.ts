@@ -7,6 +7,7 @@ import * as errors from "../../../../errors";
 export class InvoiceStatusError extends errors.MercoaError {
     constructor(body: string) {
         super({
+            message: "InvoiceStatusError",
             statusCode: 422,
             body: body,
         });

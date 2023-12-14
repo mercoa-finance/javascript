@@ -7,6 +7,7 @@ import * as errors from "../../../../errors";
 export class EntityError extends errors.MercoaError {
     constructor(body: string) {
         super({
+            message: "EntityError",
             statusCode: 400,
             body: body,
         });

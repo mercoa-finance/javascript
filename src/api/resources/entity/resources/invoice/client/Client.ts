@@ -5,7 +5,6 @@
 import * as environments from "../../../../../../environments";
 import * as core from "../../../../../../core";
 import * as Mercoa from "../../../../..";
-import { default as URLSearchParams } from "@ungap/url-search-params";
 import * as serializers from "../../../../../../serialization";
 import urlJoin from "url-join";
 import * as errors from "../../../../../../errors";
@@ -18,6 +17,7 @@ export declare namespace Invoice {
 
     interface RequestOptions {
         timeoutInSeconds?: number;
+        maxRetries?: number;
     }
 }
 
@@ -56,95 +56,85 @@ export class Invoice {
             status,
             includeFees,
         } = request;
-        const _queryParams = new URLSearchParams();
+        const _queryParams: Record<string, string | string[]> = {};
         if (excludePayables != null) {
-            _queryParams.append("excludePayables", excludePayables.toString());
+            _queryParams["excludePayables"] = excludePayables.toString();
         }
 
         if (excludeReceivables != null) {
-            _queryParams.append("excludeReceivables", excludeReceivables.toString());
+            _queryParams["excludeReceivables"] = excludeReceivables.toString();
         }
 
         if (startDate != null) {
-            _queryParams.append("startDate", startDate.toISOString());
+            _queryParams["startDate"] = startDate.toISOString();
         }
 
         if (endDate != null) {
-            _queryParams.append("endDate", endDate.toISOString());
+            _queryParams["endDate"] = endDate.toISOString();
         }
 
         if (orderBy != null) {
-            _queryParams.append("orderBy", orderBy);
+            _queryParams["orderBy"] = orderBy;
         }
 
         if (orderDirection != null) {
-            _queryParams.append("orderDirection", orderDirection);
+            _queryParams["orderDirection"] = orderDirection;
         }
 
         if (limit != null) {
-            _queryParams.append("limit", limit.toString());
+            _queryParams["limit"] = limit.toString();
         }
 
         if (startingAfter != null) {
-            _queryParams.append("startingAfter", startingAfter);
+            _queryParams["startingAfter"] = startingAfter;
         }
 
         if (search != null) {
-            _queryParams.append("search", search);
+            _queryParams["search"] = search;
         }
 
         if (payerId != null) {
             if (Array.isArray(payerId)) {
-                for (const _item of payerId) {
-                    _queryParams.append("payerId", _item);
-                }
+                _queryParams["payerId"] = payerId.map((item) => item);
             } else {
-                _queryParams.append("payerId", payerId);
+                _queryParams["payerId"] = payerId;
             }
         }
 
         if (vendorId != null) {
             if (Array.isArray(vendorId)) {
-                for (const _item of vendorId) {
-                    _queryParams.append("vendorId", _item);
-                }
+                _queryParams["vendorId"] = vendorId.map((item) => item);
             } else {
-                _queryParams.append("vendorId", vendorId);
+                _queryParams["vendorId"] = vendorId;
             }
         }
 
         if (approverId != null) {
             if (Array.isArray(approverId)) {
-                for (const _item of approverId) {
-                    _queryParams.append("approverId", _item);
-                }
+                _queryParams["approverId"] = approverId.map((item) => item);
             } else {
-                _queryParams.append("approverId", approverId);
+                _queryParams["approverId"] = approverId;
             }
         }
 
         if (invoiceId != null) {
             if (Array.isArray(invoiceId)) {
-                for (const _item of invoiceId) {
-                    _queryParams.append("invoiceId", _item);
-                }
+                _queryParams["invoiceId"] = invoiceId.map((item) => item);
             } else {
-                _queryParams.append("invoiceId", invoiceId);
+                _queryParams["invoiceId"] = invoiceId;
             }
         }
 
         if (status != null) {
             if (Array.isArray(status)) {
-                for (const _item of status) {
-                    _queryParams.append("status", _item);
-                }
+                _queryParams["status"] = status.map((item) => item);
             } else {
-                _queryParams.append("status", status);
+                _queryParams["status"] = status;
             }
         }
 
         if (includeFees != null) {
-            _queryParams.append("includeFees", includeFees.toString());
+            _queryParams["includeFees"] = includeFees.toString();
         }
 
         const _response = await core.fetcher({
@@ -157,11 +147,12 @@ export class Invoice {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.5",
+                "X-Fern-SDK-Version": "0.3.6",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
         });
         if (_response.ok) {
             return await serializers.FindInvoiceResponse.parseOrThrow(_response.body, {
@@ -268,9 +259,9 @@ export class Invoice {
         requestOptions?: Invoice.RequestOptions
     ): Promise<Mercoa.InvoiceResponse> {
         const { includeFees } = request;
-        const _queryParams = new URLSearchParams();
+        const _queryParams: Record<string, string | string[]> = {};
         if (includeFees != null) {
-            _queryParams.append("includeFees", includeFees.toString());
+            _queryParams["includeFees"] = includeFees.toString();
         }
 
         const _response = await core.fetcher({
@@ -285,11 +276,12 @@ export class Invoice {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.5",
+                "X-Fern-SDK-Version": "0.3.6",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
         });
         if (_response.ok) {
             return await serializers.InvoiceResponse.parseOrThrow(_response.body, {
@@ -402,92 +394,80 @@ export class Invoice {
             createdDateEnd,
             currency,
         } = request;
-        const _queryParams = new URLSearchParams();
+        const _queryParams: Record<string, string | string[]> = {};
         if (search != null) {
-            _queryParams.append("search", search);
+            _queryParams["search"] = search;
         }
 
         if (excludePayables != null) {
-            _queryParams.append("excludePayables", excludePayables.toString());
+            _queryParams["excludePayables"] = excludePayables.toString();
         }
 
         if (excludeReceivables != null) {
-            _queryParams.append("excludeReceivables", excludeReceivables.toString());
+            _queryParams["excludeReceivables"] = excludeReceivables.toString();
         }
 
         if (payerId != null) {
             if (Array.isArray(payerId)) {
-                for (const _item of payerId) {
-                    _queryParams.append("payerId", _item);
-                }
+                _queryParams["payerId"] = payerId.map((item) => item);
             } else {
-                _queryParams.append("payerId", payerId);
+                _queryParams["payerId"] = payerId;
             }
         }
 
         if (vendorId != null) {
             if (Array.isArray(vendorId)) {
-                for (const _item of vendorId) {
-                    _queryParams.append("vendorId", _item);
-                }
+                _queryParams["vendorId"] = vendorId.map((item) => item);
             } else {
-                _queryParams.append("vendorId", vendorId);
+                _queryParams["vendorId"] = vendorId;
             }
         }
 
         if (approverId != null) {
             if (Array.isArray(approverId)) {
-                for (const _item of approverId) {
-                    _queryParams.append("approverId", _item);
-                }
+                _queryParams["approverId"] = approverId.map((item) => item);
             } else {
-                _queryParams.append("approverId", approverId);
+                _queryParams["approverId"] = approverId;
             }
         }
 
         if (invoiceId != null) {
             if (Array.isArray(invoiceId)) {
-                for (const _item of invoiceId) {
-                    _queryParams.append("invoiceId", _item);
-                }
+                _queryParams["invoiceId"] = invoiceId.map((item) => item);
             } else {
-                _queryParams.append("invoiceId", invoiceId);
+                _queryParams["invoiceId"] = invoiceId;
             }
         }
 
         if (status != null) {
             if (Array.isArray(status)) {
-                for (const _item of status) {
-                    _queryParams.append("status", _item);
-                }
+                _queryParams["status"] = status.map((item) => item);
             } else {
-                _queryParams.append("status", status);
+                _queryParams["status"] = status;
             }
         }
 
         if (dueDateStart != null) {
-            _queryParams.append("dueDateStart", dueDateStart.toISOString());
+            _queryParams["dueDateStart"] = dueDateStart.toISOString();
         }
 
         if (dueDateEnd != null) {
-            _queryParams.append("dueDateEnd", dueDateEnd.toISOString());
+            _queryParams["dueDateEnd"] = dueDateEnd.toISOString();
         }
 
         if (createdDateStart != null) {
-            _queryParams.append("createdDateStart", createdDateStart.toISOString());
+            _queryParams["createdDateStart"] = createdDateStart.toISOString();
         }
 
         if (createdDateEnd != null) {
-            _queryParams.append("createdDateEnd", createdDateEnd.toISOString());
+            _queryParams["createdDateEnd"] = createdDateEnd.toISOString();
         }
 
         if (currency != null) {
             if (Array.isArray(currency)) {
-                for (const _item of currency) {
-                    _queryParams.append("currency", _item);
-                }
+                _queryParams["currency"] = currency.map((item) => item);
             } else {
-                _queryParams.append("currency", currency);
+                _queryParams["currency"] = currency;
             }
         }
 
@@ -501,11 +481,12 @@ export class Invoice {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.5",
+                "X-Fern-SDK-Version": "0.3.6",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
         });
         if (_response.ok) {
             return await serializers.entity.invoice.metrics.Response.parseOrThrow(_response.body, {

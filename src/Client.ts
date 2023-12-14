@@ -19,6 +19,7 @@ export declare namespace MercoaClient {
 
     interface RequestOptions {
         timeoutInSeconds?: number;
+        maxRetries?: number;
     }
 }
 

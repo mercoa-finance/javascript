@@ -5,7 +5,6 @@
 import * as environments from "../../../../../../../../environments";
 import * as core from "../../../../../../../../core";
 import * as Mercoa from "../../../../../../..";
-import { default as URLSearchParams } from "@ungap/url-search-params";
 import * as serializers from "../../../../../../../../serialization";
 import urlJoin from "url-join";
 import * as errors from "../../../../../../../../errors";
@@ -18,6 +17,7 @@ export declare namespace Notifications {
 
     interface RequestOptions {
         timeoutInSeconds?: number;
+        maxRetries?: number;
     }
 }
 
@@ -39,34 +39,32 @@ export class Notifications {
         requestOptions?: Notifications.RequestOptions
     ): Promise<Mercoa.FindNotificationResponse> {
         const { startDate, endDate, orderDirection, limit, startingAfter, notificationType } = request;
-        const _queryParams = new URLSearchParams();
+        const _queryParams: Record<string, string | string[]> = {};
         if (startDate != null) {
-            _queryParams.append("startDate", startDate.toISOString());
+            _queryParams["startDate"] = startDate.toISOString();
         }
 
         if (endDate != null) {
-            _queryParams.append("endDate", endDate.toISOString());
+            _queryParams["endDate"] = endDate.toISOString();
         }
 
         if (orderDirection != null) {
-            _queryParams.append("orderDirection", orderDirection);
+            _queryParams["orderDirection"] = orderDirection;
         }
 
         if (limit != null) {
-            _queryParams.append("limit", limit.toString());
+            _queryParams["limit"] = limit.toString();
         }
 
         if (startingAfter != null) {
-            _queryParams.append("startingAfter", startingAfter);
+            _queryParams["startingAfter"] = startingAfter;
         }
 
         if (notificationType != null) {
             if (Array.isArray(notificationType)) {
-                for (const _item of notificationType) {
-                    _queryParams.append("notificationType", _item);
-                }
+                _queryParams["notificationType"] = notificationType.map((item) => item);
             } else {
-                _queryParams.append("notificationType", notificationType);
+                _queryParams["notificationType"] = notificationType;
             }
         }
 
@@ -82,11 +80,12 @@ export class Notifications {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.5",
+                "X-Fern-SDK-Version": "0.3.6",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
         });
         if (_response.ok) {
             return await serializers.FindNotificationResponse.parseOrThrow(_response.body, {
@@ -197,10 +196,11 @@ export class Notifications {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.5",
+                "X-Fern-SDK-Version": "0.3.6",
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
         });
         if (_response.ok) {
             return await serializers.NotificationResponse.parseOrThrow(_response.body, {

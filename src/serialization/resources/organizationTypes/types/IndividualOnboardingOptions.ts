@@ -10,6 +10,7 @@ export const IndividualOnboardingOptions: core.serialization.ObjectSchema<
     serializers.IndividualOnboardingOptions.Raw,
     Mercoa.IndividualOnboardingOptions
 > = core.serialization.object({
+    termsOfService: core.serialization.lazyObject(async () => (await import("../../..")).OnboardingOption),
     email: core.serialization.lazyObject(async () => (await import("../../..")).OnboardingOption),
     name: core.serialization.lazyObject(async () => (await import("../../..")).OnboardingOption),
     dateOfBirth: core.serialization.lazyObject(async () => (await import("../../..")).OnboardingOption),
@@ -20,6 +21,7 @@ export const IndividualOnboardingOptions: core.serialization.ObjectSchema<
 
 export declare namespace IndividualOnboardingOptions {
     interface Raw {
+        termsOfService: serializers.OnboardingOption.Raw;
         email: serializers.OnboardingOption.Raw;
         name: serializers.OnboardingOption.Raw;
         dateOfBirth: serializers.OnboardingOption.Raw;
