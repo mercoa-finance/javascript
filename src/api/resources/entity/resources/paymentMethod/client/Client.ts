@@ -58,7 +58,7 @@ export class PaymentMethod {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.3.6",
+                "X-Fern-SDK-Version": "v0.3.7",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -179,7 +179,7 @@ export class PaymentMethod {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.3.6",
+                "X-Fern-SDK-Version": "v0.3.7",
             },
             contentType: "application/json",
             body: await serializers.PaymentMethodRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
@@ -302,7 +302,7 @@ export class PaymentMethod {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.3.6",
+                "X-Fern-SDK-Version": "v0.3.7",
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -426,7 +426,7 @@ export class PaymentMethod {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.3.6",
+                "X-Fern-SDK-Version": "v0.3.7",
             },
             contentType: "application/json",
             body: await serializers.PaymentMethodUpdateRequest.jsonOrThrow(request, {
@@ -526,6 +526,7 @@ export class PaymentMethod {
     }
 
     /**
+     * Mark a payment method as inactive. This will not remove the payment method from the system, but will prevent it from being used in the future.
      * @throws {@link Mercoa.PaymentMethodError}
      * @throws {@link Mercoa.AuthHeaderMissingError}
      * @throws {@link Mercoa.AuthHeaderMalformedError}
@@ -551,7 +552,7 @@ export class PaymentMethod {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.3.6",
+                "X-Fern-SDK-Version": "v0.3.7",
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -669,7 +670,7 @@ export class PaymentMethod {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.3.6",
+                "X-Fern-SDK-Version": "v0.3.7",
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -793,7 +794,7 @@ export class PaymentMethod {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.3.6",
+                "X-Fern-SDK-Version": "v0.3.7",
             },
             contentType: "application/json",
             body: await serializers.entity.CompleteMicroDepositsRequest.jsonOrThrow(request, {

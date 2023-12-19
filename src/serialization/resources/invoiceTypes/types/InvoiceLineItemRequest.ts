@@ -11,9 +11,9 @@ export const InvoiceLineItemRequest: core.serialization.ObjectSchema<
     Mercoa.InvoiceLineItemRequest
 > = core.serialization.object({
     id: core.serialization.string().optional(),
-    amount: core.serialization.number().optional(),
+    amount: core.serialization.number(),
     currency: core.serialization.lazy(async () => (await import("../../..")).CurrencyCode).optional(),
-    description: core.serialization.string().optional(),
+    description: core.serialization.string(),
     name: core.serialization.string().optional(),
     quantity: core.serialization.number().optional(),
     unitPrice: core.serialization.number().optional(),
@@ -26,9 +26,9 @@ export const InvoiceLineItemRequest: core.serialization.ObjectSchema<
 export declare namespace InvoiceLineItemRequest {
     interface Raw {
         id?: string | null;
-        amount?: number | null;
+        amount: number;
         currency?: serializers.CurrencyCode.Raw | null;
-        description?: string | null;
+        description: string;
         name?: string | null;
         quantity?: number | null;
         unitPrice?: number | null;
