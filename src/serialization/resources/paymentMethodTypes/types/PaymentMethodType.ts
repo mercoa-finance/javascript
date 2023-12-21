@@ -7,8 +7,8 @@ import * as Mercoa from "../../../../api";
 import * as core from "../../../../core";
 
 export const PaymentMethodType: core.serialization.Schema<serializers.PaymentMethodType.Raw, Mercoa.PaymentMethodType> =
-    core.serialization.enum_(["custom", "check", "bankAccount", "na", "card", "bnpl", "virtualCard"]);
+    core.serialization.enum_(["custom", "check", "bankAccount", "na", "card", "bnpl", "virtualCard", "offPlatform"]);
 
 export declare namespace PaymentMethodType {
-    type Raw = "custom" | "check" | "bankAccount" | "na" | "card" | "bnpl" | "virtualCard";
+    type Raw = "custom" | "check" | "bankAccount" | "na" | "card" | "bnpl" | "virtualCard" | "offPlatform";
 }

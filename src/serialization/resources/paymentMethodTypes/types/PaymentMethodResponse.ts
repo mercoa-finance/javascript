@@ -15,6 +15,7 @@ export const PaymentMethodResponse: core.serialization.Schema<
         card: core.serialization.lazyObject(async () => (await import("../../..")).CardResponse),
         check: core.serialization.lazyObject(async () => (await import("../../..")).CheckResponse),
         custom: core.serialization.lazyObject(async () => (await import("../../..")).CustomPaymentMethodResponse),
+        offPlatform: core.serialization.lazyObject(async () => (await import("../../..")).PaymentMethodBaseResponse),
     })
     .transform<Mercoa.PaymentMethodResponse>({
         transform: (value) => value,
@@ -26,7 +27,8 @@ export declare namespace PaymentMethodResponse {
         | PaymentMethodResponse.BankAccount
         | PaymentMethodResponse.Card
         | PaymentMethodResponse.Check
-        | PaymentMethodResponse.Custom;
+        | PaymentMethodResponse.Custom
+        | PaymentMethodResponse.OffPlatform;
 
     interface BankAccount extends serializers.BankAccountResponse.Raw {
         type: "bankAccount";
@@ -42,5 +44,9 @@ export declare namespace PaymentMethodResponse {
 
     interface Custom extends serializers.CustomPaymentMethodResponse.Raw {
         type: "custom";
+    }
+
+    interface OffPlatform extends serializers.PaymentMethodBaseResponse.Raw {
+        type: "offPlatform";
     }
 }

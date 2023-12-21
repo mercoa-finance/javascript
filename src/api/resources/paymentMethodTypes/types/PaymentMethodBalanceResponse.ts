@@ -4,6 +4,7 @@
 
 import * as Mercoa from "../../..";
 
-export interface TokenGenerationInvoiceOptions {
-    status: Mercoa.InvoiceStatus[];
+export interface PaymentMethodBalanceResponse {
+    availableBalance: number;
+    currency: Mercoa.CurrencyCode;
 }
