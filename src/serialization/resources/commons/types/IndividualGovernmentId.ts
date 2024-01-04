@@ -10,13 +10,11 @@ export const IndividualGovernmentId: core.serialization.ObjectSchema<
     serializers.IndividualGovernmentId.Raw,
     Mercoa.IndividualGovernmentId
 > = core.serialization.object({
-    ssn: core.serialization.lazyObject(async () => (await import("../../..")).Ssn).optional(),
-    itin: core.serialization.lazyObject(async () => (await import("../../..")).Itin).optional(),
+    ssn: core.serialization.string(),
 });
 
 export declare namespace IndividualGovernmentId {
     interface Raw {
-        ssn?: serializers.Ssn.Raw | null;
-        itin?: serializers.Itin.Raw | null;
+        ssn: string;
     }
 }

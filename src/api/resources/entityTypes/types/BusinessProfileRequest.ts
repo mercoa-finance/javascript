@@ -4,6 +4,31 @@
 
 import * as Mercoa from "../../..";
 
+/**
+ * @example
+ *     {
+ *         email: "customer@acme.com",
+ *         legalBusinessName: "Acme Inc.",
+ *         website: "http://www.acme.com",
+ *         businessType: Mercoa.BusinessType.Llc,
+ *         phone: {
+ *             countryCode: "1",
+ *             number: "4155551234"
+ *         },
+ *         address: {
+ *             addressLine1: "123 Main St",
+ *             city: "San Francisco",
+ *             stateOrProvince: "CA",
+ *             postalCode: "94105",
+ *             country: "US"
+ *         },
+ *         taxId: {
+ *             ein: {
+ *                 number: "12-3456789"
+ *             }
+ *         }
+ *     }
+ */
 export interface BusinessProfileRequest {
     /** Email address for the business. Required for KYB. */
     email?: string;

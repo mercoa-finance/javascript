@@ -9,7 +9,7 @@ export interface IndividualOnboardingOptions {
     email: Mercoa.OnboardingOption;
     name: Mercoa.OnboardingOption;
     dateOfBirth: Mercoa.OnboardingOption;
-    ssnLast4: Mercoa.OnboardingOption;
+    ssn: Mercoa.OnboardingOption;
     address: Mercoa.OnboardingOption;
     phone: Mercoa.OnboardingOption;
 }

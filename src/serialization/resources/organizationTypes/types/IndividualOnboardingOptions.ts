@@ -14,7 +14,7 @@ export const IndividualOnboardingOptions: core.serialization.ObjectSchema<
     email: core.serialization.lazyObject(async () => (await import("../../..")).OnboardingOption),
     name: core.serialization.lazyObject(async () => (await import("../../..")).OnboardingOption),
     dateOfBirth: core.serialization.lazyObject(async () => (await import("../../..")).OnboardingOption),
-    ssnLast4: core.serialization.lazyObject(async () => (await import("../../..")).OnboardingOption),
+    ssn: core.serialization.lazyObject(async () => (await import("../../..")).OnboardingOption),
     address: core.serialization.lazyObject(async () => (await import("../../..")).OnboardingOption),
     phone: core.serialization.lazyObject(async () => (await import("../../..")).OnboardingOption),
 });
@@ -25,7 +25,7 @@ export declare namespace IndividualOnboardingOptions {
         email: serializers.OnboardingOption.Raw;
         name: serializers.OnboardingOption.Raw;
         dateOfBirth: serializers.OnboardingOption.Raw;
-        ssnLast4: serializers.OnboardingOption.Raw;
+        ssn: serializers.OnboardingOption.Raw;
         address: serializers.OnboardingOption.Raw;
         phone: serializers.OnboardingOption.Raw;
     }

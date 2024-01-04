@@ -21,13 +21,11 @@ export interface FindEntities {
     /**
      * If true, entities that are marked as payees will be returned.
      * If false or not provided, entities that are marked as payees will not be returned.
-     *
      */
     isPayee?: boolean;
     /**
      * If true or not provided, entities that are marked as payors will be returned.
      * If false, entities that are marked as payors will not be returned.
-     *
      */
     isPayor?: boolean;
     /**
