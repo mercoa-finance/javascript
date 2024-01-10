@@ -4,7 +4,7 @@
 
 import * as Mercoa from "../../../..";
 
-export interface RunOcr {
+export interface RunOcrSync {
     /**
      * Limit OCR vendor search to a specific network
      */

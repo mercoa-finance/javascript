@@ -6,11 +6,11 @@ import * as serializers from "../../..";
 import * as Mercoa from "../../../../api";
 import * as core from "../../../../core";
 
-export const PaymentMethodSchemaId: core.serialization.Schema<
-    serializers.PaymentMethodSchemaId.Raw,
-    Mercoa.PaymentMethodSchemaId
+export const CustomPaymentMethodSchemaId: core.serialization.Schema<
+    serializers.CustomPaymentMethodSchemaId.Raw,
+    Mercoa.CustomPaymentMethodSchemaId
 > = core.serialization.string();
 
-export declare namespace PaymentMethodSchemaId {
+export declare namespace CustomPaymentMethodSchemaId {
     type Raw = string;
 }

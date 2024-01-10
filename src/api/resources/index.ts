@@ -20,6 +20,6 @@ export * from "./ocr/errors";
 export * from "./paymentMethodTypes/errors";
 export * as invoice from "./invoice";
 export * as organization from "./organization";
-export * as paymentMethodSchema from "./paymentMethodSchema";
+export * as customPaymentMethodSchema from "./customPaymentMethodSchema";
 export * from "./bankLookup/client/requests";
 export * from "./ocr/client/requests";

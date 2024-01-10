@@ -6,4 +6,5 @@ export interface TokenGenerationPagesOptions {
     paymentMethods?: boolean;
     representatives?: boolean;
     notifications?: boolean;
+    counterparties?: boolean;
 }

@@ -6,11 +6,11 @@ import * as serializers from "../../..";
 import * as Mercoa from "../../../../api";
 import * as core from "../../../../core";
 
-export const PaymentMethodSchemaFieldType: core.serialization.Schema<
-    serializers.PaymentMethodSchemaFieldType.Raw,
-    Mercoa.PaymentMethodSchemaFieldType
+export const CustomPaymentMethodSchemaFieldType: core.serialization.Schema<
+    serializers.CustomPaymentMethodSchemaFieldType.Raw,
+    Mercoa.CustomPaymentMethodSchemaFieldType
 > = core.serialization.enum_(["text", "number", "select", "date", "phone", "email", "url", "address"]);
 
-export declare namespace PaymentMethodSchemaFieldType {
+export declare namespace CustomPaymentMethodSchemaFieldType {
     type Raw = "text" | "number" | "select" | "date" | "phone" | "email" | "url" | "address";
 }

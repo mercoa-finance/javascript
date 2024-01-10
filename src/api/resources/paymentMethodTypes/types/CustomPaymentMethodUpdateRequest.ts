@@ -10,7 +10,7 @@ export interface CustomPaymentMethodUpdateRequest extends Mercoa.PaymentMethodBa
     accountName?: string;
     accountNumber?: string;
     /** Payment method schema used for this payment method. Defines the fields that this payment method contains. */
-    schemaId?: Mercoa.PaymentMethodSchemaId;
+    schemaId?: Mercoa.CustomPaymentMethodSchemaId;
     /** Object of key/value pairs that matches the keys in the linked payment method schema. */
     data?: Record<string, string>;
 }

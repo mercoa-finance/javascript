@@ -6,15 +6,15 @@ import * as serializers from "../../../..";
 import * as Mercoa from "../../../../../api";
 import * as core from "../../../../../core";
 
-export const RunOcr: core.serialization.Schema<
-    serializers.RunOcr.Raw,
-    Omit<Mercoa.RunOcr, "vendorNetwork" | "entityId">
+export const RunOcrAsync: core.serialization.Schema<
+    serializers.RunOcrAsync.Raw,
+    Omit<Mercoa.RunOcrAsync, "vendorNetwork" | "entityId">
 > = core.serialization.object({
     mimeType: core.serialization.string(),
     image: core.serialization.string(),
 });
 
-export declare namespace RunOcr {
+export declare namespace RunOcrAsync {
     interface Raw {
         mimeType: string;
         image: string;

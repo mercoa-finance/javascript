@@ -7,12 +7,12 @@ import * as Mercoa from "../../../../api";
 import * as core from "../../../../core";
 
 export const Response: core.serialization.Schema<
-    serializers.paymentMethodSchema.getAll.Response.Raw,
-    Mercoa.PaymentMethodSchemaResponse[]
+    serializers.customPaymentMethodSchema.getAll.Response.Raw,
+    Mercoa.CustomPaymentMethodSchemaResponse[]
 > = core.serialization.list(
-    core.serialization.lazyObject(async () => (await import("../../..")).PaymentMethodSchemaResponse)
+    core.serialization.lazyObject(async () => (await import("../../..")).CustomPaymentMethodSchemaResponse)
 );
 
 export declare namespace Response {
-    type Raw = serializers.PaymentMethodSchemaResponse.Raw[];
+    type Raw = serializers.CustomPaymentMethodSchemaResponse.Raw[];
 }

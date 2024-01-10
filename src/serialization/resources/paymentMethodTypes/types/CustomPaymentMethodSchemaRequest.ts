@@ -6,9 +6,9 @@ import * as serializers from "../../..";
 import * as Mercoa from "../../../../api";
 import * as core from "../../../../core";
 
-export const PaymentMethodSchemaRequest: core.serialization.ObjectSchema<
-    serializers.PaymentMethodSchemaRequest.Raw,
-    Mercoa.PaymentMethodSchemaRequest
+export const CustomPaymentMethodSchemaRequest: core.serialization.ObjectSchema<
+    serializers.CustomPaymentMethodSchemaRequest.Raw,
+    Mercoa.CustomPaymentMethodSchemaRequest
 > = core.serialization.object({
     name: core.serialization.string(),
     isSource: core.serialization.boolean(),
@@ -17,16 +17,16 @@ export const PaymentMethodSchemaRequest: core.serialization.ObjectSchema<
         .list(core.serialization.lazy(async () => (await import("../../..")).CurrencyCode))
         .optional(),
     fields: core.serialization.list(
-        core.serialization.lazyObject(async () => (await import("../../..")).PaymentMethodSchemaField)
+        core.serialization.lazyObject(async () => (await import("../../..")).CustomPaymentMethodSchemaField)
     ),
 });
 
-export declare namespace PaymentMethodSchemaRequest {
+export declare namespace CustomPaymentMethodSchemaRequest {
     interface Raw {
         name: string;
         isSource: boolean;
         isDestination: boolean;
         supportedCurrencies?: serializers.CurrencyCode.Raw[] | null;
-        fields: serializers.PaymentMethodSchemaField.Raw[];
+        fields: serializers.CustomPaymentMethodSchemaField.Raw[];
     }
 }

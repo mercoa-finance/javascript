@@ -6,24 +6,24 @@ import * as serializers from "../../..";
 import * as Mercoa from "../../../../api";
 import * as core from "../../../../core";
 
-export const PaymentMethodSchemaField: core.serialization.ObjectSchema<
-    serializers.PaymentMethodSchemaField.Raw,
-    Mercoa.PaymentMethodSchemaField
+export const CustomPaymentMethodSchemaField: core.serialization.ObjectSchema<
+    serializers.CustomPaymentMethodSchemaField.Raw,
+    Mercoa.CustomPaymentMethodSchemaField
 > = core.serialization.object({
     name: core.serialization.string(),
     displayName: core.serialization.string().optional(),
-    type: core.serialization.lazy(async () => (await import("../../..")).PaymentMethodSchemaFieldType),
+    type: core.serialization.lazy(async () => (await import("../../..")).CustomPaymentMethodSchemaFieldType),
     optional: core.serialization.boolean(),
     useAsAccountName: core.serialization.boolean().optional(),
     useAsAccountNumber: core.serialization.boolean().optional(),
     options: core.serialization.list(core.serialization.string()).optional(),
 });
 
-export declare namespace PaymentMethodSchemaField {
+export declare namespace CustomPaymentMethodSchemaField {
     interface Raw {
         name: string;
         displayName?: string | null;
-        type: serializers.PaymentMethodSchemaFieldType.Raw;
+        type: serializers.CustomPaymentMethodSchemaFieldType.Raw;
         optional: boolean;
         useAsAccountName?: boolean | null;
         useAsAccountNumber?: boolean | null;

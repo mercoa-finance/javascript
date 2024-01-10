@@ -8,8 +8,8 @@ import { Entity } from "./api/resources/entity/client/Client";
 import { Invoice } from "./api/resources/invoice/client/Client";
 import { Organization } from "./api/resources/organization/client/Client";
 import { BankLookup } from "./api/resources/bankLookup/client/Client";
+import { CustomPaymentMethodSchema } from "./api/resources/customPaymentMethodSchema/client/Client";
 import { Ocr } from "./api/resources/ocr/client/Client";
-import { PaymentMethodSchema } from "./api/resources/paymentMethodSchema/client/Client";
 
 export declare namespace MercoaClient {
     interface Options {
@@ -50,15 +50,15 @@ export class MercoaClient {
         return (this._bankLookup ??= new BankLookup(this._options));
     }
 
+    protected _customPaymentMethodSchema: CustomPaymentMethodSchema | undefined;
+
+    public get customPaymentMethodSchema(): CustomPaymentMethodSchema {
+        return (this._customPaymentMethodSchema ??= new CustomPaymentMethodSchema(this._options));
+    }
+
     protected _ocr: Ocr | undefined;
 
     public get ocr(): Ocr {
         return (this._ocr ??= new Ocr(this._options));
-    }
-
-    protected _paymentMethodSchema: PaymentMethodSchema | undefined;
-
-    public get paymentMethodSchema(): PaymentMethodSchema {
-        return (this._paymentMethodSchema ??= new PaymentMethodSchema(this._options));
     }
 }

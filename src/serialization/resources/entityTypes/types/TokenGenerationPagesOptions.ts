@@ -13,6 +13,7 @@ export const TokenGenerationPagesOptions: core.serialization.ObjectSchema<
     paymentMethods: core.serialization.boolean().optional(),
     representatives: core.serialization.boolean().optional(),
     notifications: core.serialization.boolean().optional(),
+    counterparties: core.serialization.boolean().optional(),
 });
 
 export declare namespace TokenGenerationPagesOptions {
@@ -20,5 +21,6 @@ export declare namespace TokenGenerationPagesOptions {
         paymentMethods?: boolean | null;
         representatives?: boolean | null;
         notifications?: boolean | null;
+        counterparties?: boolean | null;
     }
 }

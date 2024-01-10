@@ -4,10 +4,10 @@
 
 import * as Mercoa from "../../..";
 
-export interface PaymentMethodSchemaField {
+export interface CustomPaymentMethodSchemaField {
     name: string;
     displayName?: string;
-    type: Mercoa.PaymentMethodSchemaFieldType;
+    type: Mercoa.CustomPaymentMethodSchemaFieldType;
     /** Indicates whether this field is optional */
     optional: boolean;
     /** Indicates whether this field should be used as the name of the payment method. Only one field can be used as the name. Will set the accountName field of the payment method to the value of this field. */

@@ -14,7 +14,7 @@ export const CustomPaymentMethodRequest: core.serialization.ObjectSchema<
         foreignId: core.serialization.string(),
         accountName: core.serialization.string().optional(),
         accountNumber: core.serialization.string().optional(),
-        schemaId: core.serialization.lazy(async () => (await import("../../..")).PaymentMethodSchemaId),
+        schemaId: core.serialization.lazy(async () => (await import("../../..")).CustomPaymentMethodSchemaId),
         data: core.serialization.record(core.serialization.string(), core.serialization.string()),
     })
     .extend(core.serialization.lazyObject(async () => (await import("../../..")).PaymentMethodBaseRequest));
@@ -24,7 +24,7 @@ export declare namespace CustomPaymentMethodRequest {
         foreignId: string;
         accountName?: string | null;
         accountNumber?: string | null;
-        schemaId: serializers.PaymentMethodSchemaId.Raw;
+        schemaId: serializers.CustomPaymentMethodSchemaId.Raw;
         data: Record<string, string>;
     }
 }

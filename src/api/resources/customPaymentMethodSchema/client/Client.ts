@@ -9,7 +9,7 @@ import urlJoin from "url-join";
 import * as serializers from "../../../../serialization";
 import * as errors from "../../../../errors";
 
-export declare namespace PaymentMethodSchema {
+export declare namespace CustomPaymentMethodSchema {
     interface Options {
         environment?: core.Supplier<environments.MercoaEnvironment | string>;
         token: core.Supplier<core.BearerToken>;
@@ -21,8 +21,8 @@ export declare namespace PaymentMethodSchema {
     }
 }
 
-export class PaymentMethodSchema {
-    constructor(protected readonly _options: PaymentMethodSchema.Options) {}
+export class CustomPaymentMethodSchema {
+    constructor(protected readonly _options: CustomPaymentMethodSchema.Options) {}
 
     /**
      * Get all custom payment method schemas
@@ -34,8 +34,8 @@ export class PaymentMethodSchema {
      * @throws {@link Mercoa.Unimplemented}
      */
     public async getAll(
-        requestOptions?: PaymentMethodSchema.RequestOptions
-    ): Promise<Mercoa.PaymentMethodSchemaResponse[]> {
+        requestOptions?: CustomPaymentMethodSchema.RequestOptions
+    ): Promise<Mercoa.CustomPaymentMethodSchemaResponse[]> {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
@@ -46,14 +46,14 @@ export class PaymentMethodSchema {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.10",
+                "X-Fern-SDK-Version": "v0.3.11",
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
         });
         if (_response.ok) {
-            return await serializers.paymentMethodSchema.getAll.Response.parseOrThrow(_response.body, {
+            return await serializers.customPaymentMethodSchema.getAll.Response.parseOrThrow(_response.body, {
                 unrecognizedObjectKeys: "passthrough",
                 allowUnrecognizedUnionMembers: true,
                 allowUnrecognizedEnumValues: true,
@@ -143,9 +143,9 @@ export class PaymentMethodSchema {
      * @throws {@link Mercoa.Unimplemented}
      */
     public async create(
-        request: Mercoa.PaymentMethodSchemaRequest,
-        requestOptions?: PaymentMethodSchema.RequestOptions
-    ): Promise<Mercoa.PaymentMethodSchemaResponse> {
+        request: Mercoa.CustomPaymentMethodSchemaRequest,
+        requestOptions?: CustomPaymentMethodSchema.RequestOptions
+    ): Promise<Mercoa.CustomPaymentMethodSchemaResponse> {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
@@ -156,17 +156,17 @@ export class PaymentMethodSchema {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.10",
+                "X-Fern-SDK-Version": "v0.3.11",
             },
             contentType: "application/json",
-            body: await serializers.PaymentMethodSchemaRequest.jsonOrThrow(request, {
+            body: await serializers.CustomPaymentMethodSchemaRequest.jsonOrThrow(request, {
                 unrecognizedObjectKeys: "strip",
             }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
         });
         if (_response.ok) {
-            return await serializers.PaymentMethodSchemaResponse.parseOrThrow(_response.body, {
+            return await serializers.CustomPaymentMethodSchemaResponse.parseOrThrow(_response.body, {
                 unrecognizedObjectKeys: "passthrough",
                 allowUnrecognizedUnionMembers: true,
                 allowUnrecognizedEnumValues: true,
@@ -256,31 +256,31 @@ export class PaymentMethodSchema {
      * @throws {@link Mercoa.Unimplemented}
      */
     public async update(
-        schemaId: Mercoa.PaymentMethodSchemaId,
-        request: Mercoa.PaymentMethodSchemaRequest,
-        requestOptions?: PaymentMethodSchema.RequestOptions
-    ): Promise<Mercoa.PaymentMethodSchemaResponse> {
+        schemaId: Mercoa.CustomPaymentMethodSchemaId,
+        request: Mercoa.CustomPaymentMethodSchemaRequest,
+        requestOptions?: CustomPaymentMethodSchema.RequestOptions
+    ): Promise<Mercoa.CustomPaymentMethodSchemaResponse> {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
-                `/paymentMethod/schema/${await serializers.PaymentMethodSchemaId.jsonOrThrow(schemaId)}`
+                `/paymentMethod/schema/${await serializers.CustomPaymentMethodSchemaId.jsonOrThrow(schemaId)}`
             ),
             method: "POST",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.10",
+                "X-Fern-SDK-Version": "v0.3.11",
             },
             contentType: "application/json",
-            body: await serializers.PaymentMethodSchemaRequest.jsonOrThrow(request, {
+            body: await serializers.CustomPaymentMethodSchemaRequest.jsonOrThrow(request, {
                 unrecognizedObjectKeys: "strip",
             }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
         });
         if (_response.ok) {
-            return await serializers.PaymentMethodSchemaResponse.parseOrThrow(_response.body, {
+            return await serializers.CustomPaymentMethodSchemaResponse.parseOrThrow(_response.body, {
                 unrecognizedObjectKeys: "passthrough",
                 allowUnrecognizedUnionMembers: true,
                 allowUnrecognizedEnumValues: true,
@@ -370,27 +370,27 @@ export class PaymentMethodSchema {
      * @throws {@link Mercoa.Unimplemented}
      */
     public async get(
-        schemaId: Mercoa.PaymentMethodSchemaId,
-        requestOptions?: PaymentMethodSchema.RequestOptions
-    ): Promise<Mercoa.PaymentMethodSchemaResponse> {
+        schemaId: Mercoa.CustomPaymentMethodSchemaId,
+        requestOptions?: CustomPaymentMethodSchema.RequestOptions
+    ): Promise<Mercoa.CustomPaymentMethodSchemaResponse> {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
-                `/paymentMethod/schema/${await serializers.PaymentMethodSchemaId.jsonOrThrow(schemaId)}`
+                `/paymentMethod/schema/${await serializers.CustomPaymentMethodSchemaId.jsonOrThrow(schemaId)}`
             ),
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.10",
+                "X-Fern-SDK-Version": "v0.3.11",
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
         });
         if (_response.ok) {
-            return await serializers.PaymentMethodSchemaResponse.parseOrThrow(_response.body, {
+            return await serializers.CustomPaymentMethodSchemaResponse.parseOrThrow(_response.body, {
                 unrecognizedObjectKeys: "passthrough",
                 allowUnrecognizedUnionMembers: true,
                 allowUnrecognizedEnumValues: true,
@@ -480,20 +480,20 @@ export class PaymentMethodSchema {
      * @throws {@link Mercoa.Unimplemented}
      */
     public async delete(
-        schemaId: Mercoa.PaymentMethodSchemaId,
-        requestOptions?: PaymentMethodSchema.RequestOptions
+        schemaId: Mercoa.CustomPaymentMethodSchemaId,
+        requestOptions?: CustomPaymentMethodSchema.RequestOptions
     ): Promise<void> {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
-                `/paymentMethod/schema/${await serializers.PaymentMethodSchemaId.jsonOrThrow(schemaId)}`
+                `/paymentMethod/schema/${await serializers.CustomPaymentMethodSchemaId.jsonOrThrow(schemaId)}`
             ),
             method: "DELETE",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.10",
+                "X-Fern-SDK-Version": "v0.3.11",
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
