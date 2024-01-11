@@ -7,4 +7,5 @@ export interface TokenGenerationPagesOptions {
     representatives?: boolean;
     notifications?: boolean;
     counterparties?: boolean;
+    approvals?: boolean;
 }

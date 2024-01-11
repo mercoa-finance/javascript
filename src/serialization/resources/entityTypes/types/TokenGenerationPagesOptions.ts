@@ -14,6 +14,7 @@ export const TokenGenerationPagesOptions: core.serialization.ObjectSchema<
     representatives: core.serialization.boolean().optional(),
     notifications: core.serialization.boolean().optional(),
     counterparties: core.serialization.boolean().optional(),
+    approvals: core.serialization.boolean().optional(),
 });
 
 export declare namespace TokenGenerationPagesOptions {
@@ -22,5 +23,6 @@ export declare namespace TokenGenerationPagesOptions {
         representatives?: boolean | null;
         notifications?: boolean | null;
         counterparties?: boolean | null;
+        approvals?: boolean | null;
     }
 }

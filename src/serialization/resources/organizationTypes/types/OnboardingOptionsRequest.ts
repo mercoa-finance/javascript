@@ -12,6 +12,7 @@ export const OnboardingOptionsRequest: core.serialization.ObjectSchema<
 > = core.serialization.object({
     enableBusiness: core.serialization.boolean().optional(),
     enableIndividual: core.serialization.boolean().optional(),
+    paymentMethod: core.serialization.boolean().optional(),
     business: core.serialization
         .lazyObject(async () => (await import("../../..")).BusinessOnboardingOptions)
         .optional(),
@@ -24,6 +25,7 @@ export declare namespace OnboardingOptionsRequest {
     interface Raw {
         enableBusiness?: boolean | null;
         enableIndividual?: boolean | null;
+        paymentMethod?: boolean | null;
         business?: serializers.BusinessOnboardingOptions.Raw | null;
         individual?: serializers.IndividualOnboardingOptions.Raw | null;
     }

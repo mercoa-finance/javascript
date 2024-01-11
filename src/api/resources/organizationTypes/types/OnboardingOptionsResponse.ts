@@ -7,6 +7,7 @@ import * as Mercoa from "../../..";
 export interface OnboardingOptionsResponse {
     enableBusiness: boolean;
     enableIndividual: boolean;
+    paymentMethod: boolean;
     business: Mercoa.BusinessOnboardingOptions;
     individual: Mercoa.IndividualOnboardingOptions;
 }
