@@ -1,7 +1,7 @@
 # Mercoa JavaScript Library
 
 [![npm shield](https://img.shields.io/npm/v/@mercoa/javascript)](https://www.npmjs.com/package/@mercoa/javascript)
-[![fern shield](https://img.shields.io/badge/%F0%9F%8C%BF-SDK%20generated%20by%20Fern-brightgreen)](https://github.com/fern-api/fern)
+[![fern shield](https://img.shields.io/badge/%F0%9F%8C%BF-SDK%20generated%20by%20Fern-brightgreen)](https://buildwithfern.com/?utm_source=mercoa-finance/javacsript/readme)
 
 The Mercoa Node.js library provides convenient access to the Mercoa API from JavaScript/TypeScript.
 
