@@ -17,6 +17,9 @@ export const BankAccountRequest: core.serialization.ObjectSchema<
         accountNumber: core.serialization.string(),
         accountType: core.serialization.lazy(async () => (await import("../../..")).BankType),
         plaid: core.serialization.lazyObject(async () => (await import("../../..")).PlaidLinkRequest).optional(),
+        checkOptions: core.serialization
+            .lazyObject(async () => (await import("../../..")).BankAccountCheckOptions)
+            .optional(),
     })
     .extend(core.serialization.lazyObject(async () => (await import("../../..")).PaymentMethodBaseRequest));
 
@@ -28,5 +31,6 @@ export declare namespace BankAccountRequest {
         accountNumber: string;
         accountType: serializers.BankType.Raw;
         plaid?: serializers.PlaidLinkRequest.Raw | null;
+        checkOptions?: serializers.BankAccountCheckOptions.Raw | null;
     }
 }

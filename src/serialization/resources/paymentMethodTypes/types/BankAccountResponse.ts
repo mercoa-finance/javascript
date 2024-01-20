@@ -17,6 +17,9 @@ export const BankAccountResponse: core.serialization.ObjectSchema<
         accountNumber: core.serialization.string(),
         accountType: core.serialization.lazy(async () => (await import("../../..")).BankType),
         status: core.serialization.lazy(async () => (await import("../../..")).BankStatus),
+        checkOptions: core.serialization
+            .lazyObject(async () => (await import("../../..")).BankAccountCheckOptions)
+            .optional(),
     })
     .extend(core.serialization.lazyObject(async () => (await import("../../..")).PaymentMethodBaseResponse));
 
@@ -28,5 +31,6 @@ export declare namespace BankAccountResponse {
         accountNumber: string;
         accountType: serializers.BankType.Raw;
         status: serializers.BankStatus.Raw;
+        checkOptions?: serializers.BankAccountCheckOptions.Raw | null;
     }
 }

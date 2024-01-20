@@ -11,4 +11,6 @@ export interface BankAccountResponse extends Mercoa.PaymentMethodBaseResponse {
     accountNumber: string;
     accountType: Mercoa.BankType;
     status: Mercoa.BankStatus;
+    /** If check printing is enabled for the account, will return the check options for this bank account */
+    checkOptions?: Mercoa.BankAccountCheckOptions;
 }

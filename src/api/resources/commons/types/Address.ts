@@ -6,6 +6,7 @@ export interface Address {
     addressLine1: string;
     addressLine2?: string;
     city: string;
+    /** State or province code. Must be in the format XX. */
     stateOrProvince: string;
     postalCode: string;
     country?: string;

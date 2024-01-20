@@ -12,11 +12,15 @@ export const BankAccountUpdateRequest: core.serialization.ObjectSchema<
 > = core.serialization
     .object({
         accountName: core.serialization.string().optional(),
+        checkOptions: core.serialization
+            .lazyObject(async () => (await import("../../..")).BankAccountCheckOptions)
+            .optional(),
     })
     .extend(core.serialization.lazyObject(async () => (await import("../../..")).PaymentMethodBaseRequest));
 
 export declare namespace BankAccountUpdateRequest {
     interface Raw extends serializers.PaymentMethodBaseRequest.Raw {
         accountName?: string | null;
+        checkOptions?: serializers.BankAccountCheckOptions.Raw | null;
     }
 }

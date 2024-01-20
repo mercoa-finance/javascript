@@ -12,4 +12,6 @@ export interface BankAccountRequest extends Mercoa.PaymentMethodBaseRequest {
     accountType: Mercoa.BankType;
     /** If provided, will link a bank account using Plaid Link */
     plaid?: Mercoa.PlaidLinkRequest;
+    /** If this bank account supports check printing, use this to enable check printing and set the check options. Checks will be printed directly from the bank account. */
+    checkOptions?: Mercoa.BankAccountCheckOptions;
 }

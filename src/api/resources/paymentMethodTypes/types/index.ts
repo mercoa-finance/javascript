@@ -7,6 +7,7 @@ export * from "./PaymentMethodUpdateRequest";
 export * from "./PaymentMethodResponse";
 export * from "./PaymentMethodBalanceResponse";
 export * from "./PlaidLinkRequest";
+export * from "./BankAccountCheckOptions";
 export * from "./BankAccountRequest";
 export * from "./BankAccountUpdateRequest";
 export * from "./BankAccountResponse";
