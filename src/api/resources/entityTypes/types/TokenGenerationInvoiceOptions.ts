@@ -5,5 +5,6 @@
 import * as Mercoa from "../../..";
 
 export interface TokenGenerationInvoiceOptions {
+    disableLineItems?: boolean;
     status: Mercoa.InvoiceStatus[];
 }

@@ -15,6 +15,7 @@ export const BankAccountCheckOptions: core.serialization.ObjectSchema<
     routingNumberOverride: core.serialization.string().optional(),
     accountNumberOverride: core.serialization.string().optional(),
     signatoryName: core.serialization.string().optional(),
+    signatureImage: core.serialization.string().optional(),
 });
 
 export declare namespace BankAccountCheckOptions {
@@ -24,5 +25,6 @@ export declare namespace BankAccountCheckOptions {
         routingNumberOverride?: string | null;
         accountNumberOverride?: string | null;
         signatoryName?: string | null;
+        signatureImage?: string | null;
     }
 }

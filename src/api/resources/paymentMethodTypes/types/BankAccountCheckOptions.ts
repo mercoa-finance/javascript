@@ -13,4 +13,6 @@ export interface BankAccountCheckOptions {
     accountNumberOverride?: string;
     /** If provided, will print a check with a generated signature from the provided name */
     signatoryName?: string;
+    /** Base64 encoded PNG of the signature. If provided, will print a check with the provided image as the signature. Will override signatoryName. */
+    signatureImage?: string;
 }

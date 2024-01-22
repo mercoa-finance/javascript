@@ -10,11 +10,13 @@ export const TokenGenerationInvoiceOptions: core.serialization.ObjectSchema<
     serializers.TokenGenerationInvoiceOptions.Raw,
     Mercoa.TokenGenerationInvoiceOptions
 > = core.serialization.object({
+    disableLineItems: core.serialization.boolean().optional(),
     status: core.serialization.list(core.serialization.lazy(async () => (await import("../../..")).InvoiceStatus)),
 });
 
 export declare namespace TokenGenerationInvoiceOptions {
     interface Raw {
+        disableLineItems?: boolean | null;
         status: serializers.InvoiceStatus.Raw[];
     }
 }
