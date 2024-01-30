@@ -8,6 +8,7 @@ import * as core from "../../../../core";
 
 export const ApprovalSlot: core.serialization.ObjectSchema<serializers.ApprovalSlot.Raw, Mercoa.ApprovalSlot> =
     core.serialization.object({
+        approvalPolicyId: core.serialization.lazy(async () => (await import("../../..")).ApprovalPolicyId),
         approvalSlotId: core.serialization.lazy(async () => (await import("../../..")).ApprovalSlotId),
         assignedUserId: core.serialization.lazy(async () => (await import("../../..")).EntityUserId).optional(),
         action: core.serialization.lazy(async () => (await import("../../..")).ApproverAction),
@@ -20,6 +21,7 @@ export const ApprovalSlot: core.serialization.ObjectSchema<serializers.ApprovalS
 
 export declare namespace ApprovalSlot {
     interface Raw {
+        approvalPolicyId: serializers.ApprovalPolicyId.Raw;
         approvalSlotId: serializers.ApprovalSlotId.Raw;
         assignedUserId?: serializers.EntityUserId.Raw | null;
         action: serializers.ApproverAction.Raw;
