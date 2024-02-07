@@ -5,4 +5,5 @@
 export interface ColorSchemeRequest {
     primaryColor?: string;
     secondaryColor?: string;
+    logoBackgroundColor?: string;
 }

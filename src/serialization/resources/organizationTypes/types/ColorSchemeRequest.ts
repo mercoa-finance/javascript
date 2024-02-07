@@ -12,11 +12,13 @@ export const ColorSchemeRequest: core.serialization.ObjectSchema<
 > = core.serialization.object({
     primaryColor: core.serialization.string().optional(),
     secondaryColor: core.serialization.string().optional(),
+    logoBackgroundColor: core.serialization.string().optional(),
 });
 
 export declare namespace ColorSchemeRequest {
     interface Raw {
         primaryColor?: string | null;
         secondaryColor?: string | null;
+        logoBackgroundColor?: string | null;
     }
 }

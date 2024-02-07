@@ -50,7 +50,7 @@ export class NotificationPolicy {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.15",
+                "X-Fern-SDK-Version": "v0.3.16",
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -166,7 +166,7 @@ export class NotificationPolicy {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.15",
+                "X-Fern-SDK-Version": "v0.3.16",
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -266,7 +266,7 @@ export class NotificationPolicy {
         entityId: Mercoa.EntityId,
         userId: Mercoa.EntityUserId,
         notificationType: Mercoa.NotificationType,
-        request: Mercoa.entity.user.EntityUpdateUserNotificationPolicyRequest,
+        request: Mercoa.UserNotificationPolicyRequest,
         requestOptions?: NotificationPolicy.RequestOptions
     ): Promise<Mercoa.UserNotificationPolicyResponse> {
         const _response = await core.fetcher({
@@ -283,10 +283,10 @@ export class NotificationPolicy {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.15",
+                "X-Fern-SDK-Version": "v0.3.16",
             },
             contentType: "application/json",
-            body: await serializers.entity.user.EntityUpdateUserNotificationPolicyRequest.jsonOrThrow(request, {
+            body: await serializers.UserNotificationPolicyRequest.jsonOrThrow(request, {
                 unrecognizedObjectKeys: "strip",
             }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
