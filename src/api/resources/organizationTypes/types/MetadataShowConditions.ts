@@ -9,6 +9,8 @@ export interface MetadataShowConditions {
     hasOptions?: boolean;
     /** Show this field only if a document has been attached. */
     hasDocument?: boolean;
+    /** Show this field only if the invoice has no line items. Useful for showing a field that applies to the entire invoice but overridden by line items if present. */
+    hasNoLineItems?: boolean;
     /** Show this field only if the payment source type is in this list. */
     paymentSourceTypes?: Mercoa.PaymentMethodType[];
     /** Show this field only if the payment source schema ID is in this list of payment source schema IDs. This is only applicable if paymentSourceTypes contains CUSTOM. */

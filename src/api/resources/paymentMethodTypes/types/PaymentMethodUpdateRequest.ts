@@ -10,7 +10,7 @@ import * as Mercoa from "../../..";
 export type PaymentMethodUpdateRequest =
     | Mercoa.PaymentMethodUpdateRequest.Custom
     /**
-     * Only defaultSource, defaultDestination, and accountName can be updated. */
+     * Only defaultSource, defaultDestination, accountName, and checkOptions can be updated. */
     | Mercoa.PaymentMethodUpdateRequest.BankAccount
     /**
      * Only defaultSource and defaultDestination can be updated. */

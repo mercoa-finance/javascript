@@ -12,6 +12,7 @@ export const MetadataShowConditions: core.serialization.ObjectSchema<
 > = core.serialization.object({
     hasOptions: core.serialization.boolean().optional(),
     hasDocument: core.serialization.boolean().optional(),
+    hasNoLineItems: core.serialization.boolean().optional(),
     paymentSourceTypes: core.serialization
         .list(core.serialization.lazy(async () => (await import("../../..")).PaymentMethodType))
         .optional(),
@@ -26,6 +27,7 @@ export declare namespace MetadataShowConditions {
     interface Raw {
         hasOptions?: boolean | null;
         hasDocument?: boolean | null;
+        hasNoLineItems?: boolean | null;
         paymentSourceTypes?: serializers.PaymentMethodType.Raw[] | null;
         paymentSourceCustomSchemaIds?: string[] | null;
         paymentDestinationTypes?: serializers.PaymentMethodType.Raw[] | null;

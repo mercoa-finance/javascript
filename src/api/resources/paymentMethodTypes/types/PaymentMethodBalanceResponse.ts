@@ -7,4 +7,6 @@ import * as Mercoa from "../../..";
 export interface PaymentMethodBalanceResponse {
     availableBalance: number;
     currency: Mercoa.CurrencyCode;
+    /** The time the balance was last updated. Will be null if the balance has never been updated. */
+    updatedAt?: Date;
 }
