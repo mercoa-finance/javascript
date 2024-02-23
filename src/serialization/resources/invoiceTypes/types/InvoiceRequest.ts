@@ -21,18 +21,15 @@ export const InvoiceRequest: core.serialization.ObjectSchema<serializers.Invoice
         serviceEndDate: core.serialization.date().optional(),
         payerId: core.serialization.lazy(async () => (await import("../../..")).EntityId).optional(),
         paymentSourceId: core.serialization.lazy(async () => (await import("../../..")).PaymentMethodId).optional(),
-        paymentSourceOptions: core.serialization
-            .lazy(async () => (await import("../../..")).PaymentSourceOptions)
-            .optional(),
-        approvers: core.serialization
-            .list(core.serialization.lazyObject(async () => (await import("../../..")).ApprovalSlotAssignment))
-            .optional(),
         vendorId: core.serialization.lazy(async () => (await import("../../..")).EntityId).optional(),
         paymentDestinationId: core.serialization
             .lazy(async () => (await import("../../..")).PaymentMethodId)
             .optional(),
         paymentDestinationOptions: core.serialization
             .lazy(async () => (await import("../../..")).PaymentDestinationOptions)
+            .optional(),
+        approvers: core.serialization
+            .list(core.serialization.lazyObject(async () => (await import("../../..")).ApprovalSlotAssignment))
             .optional(),
         lineItems: core.serialization
             .list(core.serialization.lazyObject(async () => (await import("../../..")).InvoiceLineItemRequest))
@@ -59,11 +56,10 @@ export declare namespace InvoiceRequest {
         serviceEndDate?: string | null;
         payerId?: serializers.EntityId.Raw | null;
         paymentSourceId?: serializers.PaymentMethodId.Raw | null;
-        paymentSourceOptions?: serializers.PaymentSourceOptions.Raw | null;
-        approvers?: serializers.ApprovalSlotAssignment.Raw[] | null;
         vendorId?: serializers.EntityId.Raw | null;
         paymentDestinationId?: serializers.PaymentMethodId.Raw | null;
         paymentDestinationOptions?: serializers.PaymentDestinationOptions.Raw | null;
+        approvers?: serializers.ApprovalSlotAssignment.Raw[] | null;
         lineItems?: serializers.InvoiceLineItemRequest.Raw[] | null;
         metadata?: Record<string, string> | null;
         foreignId?: string | null;

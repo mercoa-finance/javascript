@@ -12,6 +12,7 @@ export const UserNotificationPolicyResponse: core.serialization.ObjectSchema<
 > = core.serialization.object({
     disabled: core.serialization.boolean(),
     digest: core.serialization.boolean(),
+    immediate: core.serialization.boolean(),
     type: core.serialization.lazy(async () => (await import("../../..")).NotificationType),
 });
 
@@ -19,6 +20,7 @@ export declare namespace UserNotificationPolicyResponse {
     interface Raw {
         disabled: boolean;
         digest: boolean;
+        immediate: boolean;
         type: serializers.NotificationType.Raw;
     }
 }

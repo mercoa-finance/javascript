@@ -9,6 +9,7 @@ export interface InvoiceLineItemRequest {
     id?: string;
     /** Total amount of line item in major units. If the entered amount has more decimal places than the currency supports, trailing decimals will be truncated. */
     amount: number;
+    /** Currency code for the amount. Defaults to USD. */
     currency?: Mercoa.CurrencyCode;
     description: string;
     name?: string;

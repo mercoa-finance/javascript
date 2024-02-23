@@ -81,7 +81,9 @@ export class Organization {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.17",
+                "X-Fern-SDK-Version": "v0.3.19",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -192,7 +194,9 @@ export class Organization {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.17",
+                "X-Fern-SDK-Version": "v0.3.19",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
             body: await serializers.OrganizationRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
@@ -292,8 +296,8 @@ export class Organization {
     public async emailLog(
         request: Mercoa.organization.GetEmailLogRequest = {},
         requestOptions?: Organization.RequestOptions
-    ): Promise<Mercoa.EmailLogResponse[]> {
-        const { startDate, endDate } = request;
+    ): Promise<Mercoa.EmailLogResponse> {
+        const { startDate, endDate, limit, startingAfter } = request;
         const _queryParams: Record<string, string | string[]> = {};
         if (startDate != null) {
             _queryParams["startDate"] = startDate.toISOString();
@@ -301,6 +305,14 @@ export class Organization {
 
         if (endDate != null) {
             _queryParams["endDate"] = endDate.toISOString();
+        }
+
+        if (limit != null) {
+            _queryParams["limit"] = limit.toString();
+        }
+
+        if (startingAfter != null) {
+            _queryParams["startingAfter"] = startingAfter;
         }
 
         const _response = await core.fetcher({
@@ -313,7 +325,9 @@ export class Organization {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.17",
+                "X-Fern-SDK-Version": "v0.3.19",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -321,7 +335,7 @@ export class Organization {
             maxRetries: requestOptions?.maxRetries,
         });
         if (_response.ok) {
-            return await serializers.organization.emailLog.Response.parseOrThrow(_response.body, {
+            return await serializers.EmailLogResponse.parseOrThrow(_response.body, {
                 unrecognizedObjectKeys: "passthrough",
                 allowUnrecognizedUnionMembers: true,
                 allowUnrecognizedEnumValues: true,

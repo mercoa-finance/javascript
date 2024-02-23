@@ -4,7 +4,7 @@
 
 import * as Mercoa from "../../..";
 
-export interface BankAccountPaymentSourceOptions {
-    /** Delivery method for ACH payments. Defaults to ACH_STANDARD. */
+export interface BankAccountPaymentDestinationOptions {
+    /** Delivery method for ACH payments. Defaults to ACH_SAME_DAY. */
     delivery?: Mercoa.BankDeliveryMethod;
 }

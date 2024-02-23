@@ -9,6 +9,7 @@ export interface InvoiceResponse {
     status: Mercoa.InvoiceStatus;
     /** Total amount of invoice in major units */
     amount?: number;
+    /** Currency code for the amount. Defaults to USD. */
     currency?: Mercoa.CurrencyCode;
     /** Date the invoice was issued. */
     invoiceDate?: Date;
@@ -26,7 +27,6 @@ export interface InvoiceResponse {
     payer?: Mercoa.EntityResponse;
     paymentSource?: Mercoa.PaymentMethodResponse;
     paymentSourceId?: Mercoa.PaymentMethodId;
-    paymentSourceOptions?: Mercoa.PaymentSourceOptions;
     vendorId?: Mercoa.EntityId;
     vendor?: Mercoa.EntityResponse;
     paymentDestination?: Mercoa.PaymentMethodResponse;

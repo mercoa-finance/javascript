@@ -10,19 +10,15 @@ export const EmailLogResponse: core.serialization.ObjectSchema<
     serializers.EmailLogResponse.Raw,
     Mercoa.EmailLogResponse
 > = core.serialization.object({
-    from: core.serialization.string(),
-    to: core.serialization.string(),
-    subject: core.serialization.string(),
-    rawContent: core.serialization.string(),
-    createdAt: core.serialization.date(),
+    count: core.serialization.number(),
+    hasMore: core.serialization.boolean(),
+    data: core.serialization.list(core.serialization.lazyObject(async () => (await import("../../..")).EmailLog)),
 });
 
 export declare namespace EmailLogResponse {
     interface Raw {
-        from: string;
-        to: string;
-        subject: string;
-        rawContent: string;
-        createdAt: string;
+        count: number;
+        hasMore: boolean;
+        data: serializers.EmailLog.Raw[];
     }
 }

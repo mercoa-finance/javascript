@@ -5,6 +5,8 @@
 export interface UserNotificationPolicyRequest {
     /** Set to true if the selected notification type should be disabled for this user */
     disabled?: boolean;
-    /** Set to true if the selected notification type should be sent as a digest. If false, the notification will be sent immediately. */
+    /** Set to true if the selected notification type should be sent as a digest. Default is false. */
     digest?: boolean;
+    /** Set to true if the selected notification type should be sent immediately. Default is true. */
+    immediate?: boolean;
 }

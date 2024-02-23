@@ -8,6 +8,7 @@ export interface InvoiceRequest {
     status?: Mercoa.InvoiceStatus;
     /** Total amount of invoice in major units. If the entered amount has more decimal places than the currency supports, trailing decimals will be truncated. */
     amount?: number;
+    /** Currency code for the amount. Defaults to USD. */
     currency?: Mercoa.CurrencyCode;
     /** Date the invoice was issued. */
     invoiceDate?: Date;
@@ -25,15 +26,13 @@ export interface InvoiceRequest {
     payerId?: Mercoa.EntityId;
     /** ID of payment source for this invoice. If not provided, will attempt to use the default payment source for the payer when creating an invoice if a default payment source exists for the payer. */
     paymentSourceId?: Mercoa.PaymentMethodId;
-    /** Options for the payment source. Depending on the payment source, this may include things such as ACH speed. */
-    paymentSourceOptions?: Mercoa.PaymentSourceOptions;
-    /** Set approvers for this invoice. */
-    approvers?: Mercoa.ApprovalSlotAssignment[];
     vendorId?: Mercoa.EntityId;
     /** ID of payment destination for this invoice. If not provided, will attempt to use the default payment destination for the vendor when creating an invoice if a default payment destination exists for the vendor. */
     paymentDestinationId?: Mercoa.PaymentMethodId;
     /** Options for the payment destination. Depending on the payment destination, this may include things such as check delivery method. */
     paymentDestinationOptions?: Mercoa.PaymentDestinationOptions;
+    /** Set approvers for this invoice. */
+    approvers?: Mercoa.ApprovalSlotAssignment[];
     lineItems?: Mercoa.InvoiceLineItemRequest[];
     /** Metadata associated with this invoice. You can specify up to 10 keys, with key names up to 40 characters long and values up to 200 characters long. */
     metadata?: Record<string, string>;

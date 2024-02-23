@@ -24,9 +24,6 @@ export const InvoiceResponse: core.serialization.ObjectSchema<serializers.Invoic
         payer: core.serialization.lazyObject(async () => (await import("../../..")).EntityResponse).optional(),
         paymentSource: core.serialization.lazy(async () => (await import("../../..")).PaymentMethodResponse).optional(),
         paymentSourceId: core.serialization.lazy(async () => (await import("../../..")).PaymentMethodId).optional(),
-        paymentSourceOptions: core.serialization
-            .lazy(async () => (await import("../../..")).PaymentSourceOptions)
-            .optional(),
         vendorId: core.serialization.lazy(async () => (await import("../../..")).EntityId).optional(),
         vendor: core.serialization.lazyObject(async () => (await import("../../..")).EntityResponse).optional(),
         paymentDestination: core.serialization
@@ -82,7 +79,6 @@ export declare namespace InvoiceResponse {
         payer?: serializers.EntityResponse.Raw | null;
         paymentSource?: serializers.PaymentMethodResponse.Raw | null;
         paymentSourceId?: serializers.PaymentMethodId.Raw | null;
-        paymentSourceOptions?: serializers.PaymentSourceOptions.Raw | null;
         vendorId?: serializers.EntityId.Raw | null;
         vendor?: serializers.EntityResponse.Raw | null;
         paymentDestination?: serializers.PaymentMethodResponse.Raw | null;

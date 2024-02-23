@@ -5,6 +5,6 @@
 import * as Mercoa from "../../..";
 
 export interface CheckPaymentDestinationOptions {
-    /** Delivery method for check disbursements. Defaults to PRINT. */
+    /** Delivery method for check disbursements. Defaults to MAIL. */
     delivery?: Mercoa.CheckDeliveryMethod;
 }

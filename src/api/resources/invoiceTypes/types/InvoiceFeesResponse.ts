@@ -3,12 +3,12 @@
  */
 
 export interface InvoiceFeesResponse {
-    /** Fee charged for processing the source payment method. For example, credit card interchange and acquiring fees. */
+    /** Fee charged to the platform (C1) for processing the source payment method. For example, credit card interchange and acquiring fees. */
     sourcePaymentMethodFee: number;
-    /** Additional fee charged to the payer. */
+    /** Fee charged to the payer (C2). */
     sourcePlatformMarkupFee: number;
-    /** Fee charged for processing the destination payment method. For example, postage for a check payment. */
+    /** Fee charged to the platform (C1) for processing the destination payment method. For example, postage for a check payment. */
     destinationPaymentMethodFee: number;
-    /** Additional fee charged to the payee. */
+    /** Fee charged to the payee (C3). */
     destinationPlatformMarkupFee: number;
 }

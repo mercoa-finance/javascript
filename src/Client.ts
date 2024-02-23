@@ -9,6 +9,7 @@ import { Invoice } from "./api/resources/invoice/client/Client";
 import { Organization } from "./api/resources/organization/client/Client";
 import { BankLookup } from "./api/resources/bankLookup/client/Client";
 import { CustomPaymentMethodSchema } from "./api/resources/customPaymentMethodSchema/client/Client";
+import { Fees } from "./api/resources/fees/client/Client";
 import { Ocr } from "./api/resources/ocr/client/Client";
 
 export declare namespace MercoaClient {
@@ -54,6 +55,12 @@ export class MercoaClient {
 
     public get customPaymentMethodSchema(): CustomPaymentMethodSchema {
         return (this._customPaymentMethodSchema ??= new CustomPaymentMethodSchema(this._options));
+    }
+
+    protected _fees: Fees | undefined;
+
+    public get fees(): Fees {
+        return (this._fees ??= new Fees(this._options));
     }
 
     protected _ocr: Ocr | undefined;

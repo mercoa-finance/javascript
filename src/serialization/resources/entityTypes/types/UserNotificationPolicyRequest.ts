@@ -12,11 +12,13 @@ export const UserNotificationPolicyRequest: core.serialization.ObjectSchema<
 > = core.serialization.object({
     disabled: core.serialization.boolean().optional(),
     digest: core.serialization.boolean().optional(),
+    immediate: core.serialization.boolean().optional(),
 });
 
 export declare namespace UserNotificationPolicyRequest {
     interface Raw {
         disabled?: boolean | null;
         digest?: boolean | null;
+        immediate?: boolean | null;
     }
 }

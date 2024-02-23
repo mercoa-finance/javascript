@@ -8,7 +8,7 @@ export interface InvoiceLineItemResponse {
     id: string;
     /** Total amount of line item in major units. */
     amount?: number;
-    currency?: Mercoa.CurrencyCode;
+    currency: Mercoa.CurrencyCode;
     description?: string;
     name?: string;
     quantity?: number;

@@ -6,14 +6,14 @@ import * as serializers from "../../..";
 import * as Mercoa from "../../../../api";
 import * as core from "../../../../core";
 
-export const BankAccountPaymentSourceOptions: core.serialization.ObjectSchema<
-    serializers.BankAccountPaymentSourceOptions.Raw,
-    Mercoa.BankAccountPaymentSourceOptions
+export const BankAccountPaymentDestinationOptions: core.serialization.ObjectSchema<
+    serializers.BankAccountPaymentDestinationOptions.Raw,
+    Mercoa.BankAccountPaymentDestinationOptions
 > = core.serialization.object({
     delivery: core.serialization.lazy(async () => (await import("../../..")).BankDeliveryMethod).optional(),
 });
 
-export declare namespace BankAccountPaymentSourceOptions {
+export declare namespace BankAccountPaymentDestinationOptions {
     interface Raw {
         delivery?: serializers.BankDeliveryMethod.Raw | null;
     }

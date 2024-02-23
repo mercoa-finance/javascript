@@ -15,6 +15,7 @@ export * from "./EmailSenderProvider";
 export * from "./EmailSenderRequest";
 export * from "./EmailSenderResponse";
 export * from "./EmailLogResponse";
+export * from "./EmailLog";
 export * from "./ColorSchemeRequest";
 export * from "./ColorSchemeResponse";
 export * from "./NotificationConfigurationRequest";

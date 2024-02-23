@@ -5,4 +5,12 @@
 export interface GetEmailLogRequest {
     startDate?: Date;
     endDate?: Date;
+    /**
+     * Number of logs to return. Limit can range between 1 and 100, and the default is 10.
+     */
+    limit?: number;
+    /**
+     * The ID of the log to start after. If not provided, the first page of logs will be returned.
+     */
+    startingAfter?: string;
 }

@@ -4,10 +4,16 @@
 
 import * as Mercoa from "../../..";
 
-export type PaymentDestinationOptions = Mercoa.PaymentDestinationOptions.Check;
+export type PaymentDestinationOptions =
+    | Mercoa.PaymentDestinationOptions.Check
+    | Mercoa.PaymentDestinationOptions.BankAccount;
 
 export declare namespace PaymentDestinationOptions {
     interface Check extends Mercoa.CheckPaymentDestinationOptions {
         type: "check";
+    }
+
+    interface BankAccount extends Mercoa.BankAccountPaymentDestinationOptions {
+        type: "bankAccount";
     }
 }
