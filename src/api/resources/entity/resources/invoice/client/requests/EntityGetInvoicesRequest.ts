@@ -62,7 +62,7 @@ export interface EntityGetInvoicesRequest {
      */
     status?: Mercoa.InvoiceStatus | Mercoa.InvoiceStatus[];
     /**
-     * If true, will include fees as part of the response.
+     * DEPRECATED. Fees are now included by default in the response.
      */
     includeFees?: boolean;
 }
