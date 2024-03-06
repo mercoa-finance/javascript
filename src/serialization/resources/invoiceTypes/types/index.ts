@@ -2,6 +2,7 @@ export * from "./CommentId";
 export * from "./InvoiceId";
 export * from "./ApprovalSlotId";
 export * from "./InvoiceRequest";
+export * from "./InvoiceCreationRequest";
 export * from "./InvoiceResponse";
 export * from "./PaymentDestinationOptions";
 export * from "./BankDeliveryMethod";

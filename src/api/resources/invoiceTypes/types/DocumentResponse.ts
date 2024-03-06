@@ -3,6 +3,8 @@
  */
 
 export interface DocumentResponse {
+    /** ID of the document. If not provided, this is a dynamic document that is generated on the fly. */
+    id?: string;
     mimeType: string;
     uri: string;
 }

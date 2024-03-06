@@ -5,7 +5,7 @@
 import * as Mercoa from "../../..";
 
 export interface IndividualProfileResponse {
-    email: string;
+    email?: string;
     name: Mercoa.FullName;
     phone?: Mercoa.PhoneNumber;
     address?: Mercoa.Address;

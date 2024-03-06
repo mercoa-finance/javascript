@@ -20,7 +20,7 @@ export * from "./ocr/types";
 export * as organizationTypes from "./organizationTypes";
 export * from "./organizationTypes/types";
 export * from "./paymentMethodTypes/types";
-export * as invoice from "./invoice";
 export * as customPaymentMethodSchema from "./customPaymentMethodSchema";
+export * as invoice from "./invoice";
 export * as organization from "./organization";
 export * from "./ocr/client/requests";

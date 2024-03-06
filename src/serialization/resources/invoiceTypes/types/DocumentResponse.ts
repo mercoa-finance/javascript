@@ -10,12 +10,14 @@ export const DocumentResponse: core.serialization.ObjectSchema<
     serializers.DocumentResponse.Raw,
     Mercoa.DocumentResponse
 > = core.serialization.object({
+    id: core.serialization.string().optional(),
     mimeType: core.serialization.string(),
     uri: core.serialization.string(),
 });
 
 export declare namespace DocumentResponse {
     interface Raw {
+        id?: string | null;
         mimeType: string;
         uri: string;
     }

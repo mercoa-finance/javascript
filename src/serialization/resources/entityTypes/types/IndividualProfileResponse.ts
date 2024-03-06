@@ -10,7 +10,7 @@ export const IndividualProfileResponse: core.serialization.ObjectSchema<
     serializers.IndividualProfileResponse.Raw,
     Mercoa.IndividualProfileResponse
 > = core.serialization.object({
-    email: core.serialization.string(),
+    email: core.serialization.string().optional(),
     name: core.serialization.lazyObject(async () => (await import("../../..")).FullName),
     phone: core.serialization.lazyObject(async () => (await import("../../..")).PhoneNumber).optional(),
     address: core.serialization.lazyObject(async () => (await import("../../..")).Address).optional(),
@@ -20,7 +20,7 @@ export const IndividualProfileResponse: core.serialization.ObjectSchema<
 
 export declare namespace IndividualProfileResponse {
     interface Raw {
-        email: string;
+        email?: string | null;
         name: serializers.FullName.Raw;
         phone?: serializers.PhoneNumber.Raw | null;
         address?: serializers.Address.Raw | null;
