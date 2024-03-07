@@ -4,9 +4,4 @@
 
 import * as Mercoa from "../../..";
 
-export interface InvoiceCreationRequest extends Mercoa.InvoiceRequest {
-    /** ID of entity who created this invoice. */
-    creatorEntityId?: Mercoa.EntityId;
-    /** ID of entity user who created this invoice. */
-    creatorUserId?: Mercoa.EntityUserId;
-}
+export interface InvoiceCreationRequest extends Mercoa.InvoiceRequest {}

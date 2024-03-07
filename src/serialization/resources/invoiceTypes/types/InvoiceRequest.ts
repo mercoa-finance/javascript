@@ -38,6 +38,8 @@ export const InvoiceRequest: core.serialization.ObjectSchema<serializers.Invoice
         foreignId: core.serialization.string().optional(),
         document: core.serialization.string().optional(),
         uploadedImage: core.serialization.string().optional(),
+        creatorEntityId: core.serialization.lazy(async () => (await import("../../..")).EntityId).optional(),
+        creatorUserId: core.serialization.lazy(async () => (await import("../../..")).EntityUserId).optional(),
     });
 
 export declare namespace InvoiceRequest {
@@ -64,5 +66,7 @@ export declare namespace InvoiceRequest {
         foreignId?: string | null;
         document?: string | null;
         uploadedImage?: string | null;
+        creatorEntityId?: serializers.EntityId.Raw | null;
+        creatorUserId?: serializers.EntityUserId.Raw | null;
     }
 }

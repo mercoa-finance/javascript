@@ -10,15 +10,9 @@ export const InvoiceCreationRequest: core.serialization.ObjectSchema<
     serializers.InvoiceCreationRequest.Raw,
     Mercoa.InvoiceCreationRequest
 > = core.serialization
-    .object({
-        creatorEntityId: core.serialization.lazy(async () => (await import("../../..")).EntityId).optional(),
-        creatorUserId: core.serialization.lazy(async () => (await import("../../..")).EntityUserId).optional(),
-    })
+    .object({})
     .extend(core.serialization.lazyObject(async () => (await import("../../..")).InvoiceRequest));
 
 export declare namespace InvoiceCreationRequest {
-    interface Raw extends serializers.InvoiceRequest.Raw {
-        creatorEntityId?: serializers.EntityId.Raw | null;
-        creatorUserId?: serializers.EntityUserId.Raw | null;
-    }
+    interface Raw extends serializers.InvoiceRequest.Raw {}
 }

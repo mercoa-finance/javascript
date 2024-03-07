@@ -42,4 +42,8 @@ export interface InvoiceRequest {
     document?: string;
     /** DEPRECATED. Use document field instead. */
     uploadedImage?: string;
+    /** ID of entity who created this invoice. */
+    creatorEntityId?: Mercoa.EntityId;
+    /** ID of entity user who created this invoice. */
+    creatorUserId?: Mercoa.EntityUserId;
 }
