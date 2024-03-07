@@ -38,7 +38,7 @@ export class BankLookup {
         requestOptions?: BankLookup.RequestOptions
     ): Promise<Mercoa.BankLookupResponse> {
         const { routingNumber } = request;
-        const _queryParams: Record<string, string | string[] | object | object[]> = {};
+        const _queryParams: Record<string, string | string[]> = {};
         _queryParams["routingNumber"] = routingNumber;
         const _response = await core.fetcher({
             url: urlJoin(
@@ -50,9 +50,7 @@ export class BankLookup {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.23",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                "X-Fern-SDK-Version": "v0.3.24",
             },
             contentType: "application/json",
             queryParameters: _queryParams,

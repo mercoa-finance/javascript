@@ -36,7 +36,7 @@ export class Ocr {
      */
     public async ocr(request: Mercoa.RunOcrSync, requestOptions?: Ocr.RequestOptions): Promise<Mercoa.OcrResponse> {
         const { vendorNetwork, entityId, ..._body } = request;
-        const _queryParams: Record<string, string | string[] | object | object[]> = {};
+        const _queryParams: Record<string, string | string[]> = {};
         if (vendorNetwork != null) {
             _queryParams["vendorNetwork"] = vendorNetwork;
         }
@@ -55,9 +55,7 @@ export class Ocr {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.23",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                "X-Fern-SDK-Version": "v0.3.24",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -170,7 +168,7 @@ export class Ocr {
         requestOptions?: Ocr.RequestOptions
     ): Promise<Mercoa.OcrAsyncResponse> {
         const { vendorNetwork, entityId, ..._body } = request;
-        const _queryParams: Record<string, string | string[] | object | object[]> = {};
+        const _queryParams: Record<string, string | string[]> = {};
         if (vendorNetwork != null) {
             _queryParams["vendorNetwork"] = vendorNetwork;
         }
@@ -189,9 +187,7 @@ export class Ocr {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.23",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                "X-Fern-SDK-Version": "v0.3.24",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -310,9 +306,7 @@ export class Ocr {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.23",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                "X-Fern-SDK-Version": "v0.3.24",
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
