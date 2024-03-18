@@ -7,6 +7,8 @@ import * as Mercoa from "../../..";
 export interface PaymentMethodBalanceResponse {
     availableBalance: number;
     currency: Mercoa.CurrencyCode;
+    /** If the status is UNAVAILABLE, the account does not support this operation. If the status is ERROR, the account may need to be re-linked with Plaid. */
+    status: Mercoa.PaymentMethodBalanceStatus;
     /** The time the balance was last updated. Will be null if the balance has never been updated. */
     updatedAt?: Date;
 }

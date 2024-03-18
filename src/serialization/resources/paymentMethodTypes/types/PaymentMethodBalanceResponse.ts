@@ -12,6 +12,7 @@ export const PaymentMethodBalanceResponse: core.serialization.ObjectSchema<
 > = core.serialization.object({
     availableBalance: core.serialization.number(),
     currency: core.serialization.lazy(async () => (await import("../../..")).CurrencyCode),
+    status: core.serialization.lazy(async () => (await import("../../..")).PaymentMethodBalanceStatus),
     updatedAt: core.serialization.date().optional(),
 });
 
@@ -19,6 +20,7 @@ export declare namespace PaymentMethodBalanceResponse {
     interface Raw {
         availableBalance: number;
         currency: serializers.CurrencyCode.Raw;
+        status: serializers.PaymentMethodBalanceStatus.Raw;
         updatedAt?: string | null;
     }
 }

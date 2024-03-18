@@ -102,7 +102,7 @@ export class Entity {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.24",
+                "X-Fern-SDK-Version": "v0.3.25",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -249,7 +249,7 @@ export class Entity {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.24",
+                "X-Fern-SDK-Version": "v0.3.25",
             },
             contentType: "application/json",
             body: await serializers.EntityRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
@@ -404,7 +404,7 @@ export class Entity {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.24",
+                "X-Fern-SDK-Version": "v0.3.25",
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -519,7 +519,7 @@ export class Entity {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.24",
+                "X-Fern-SDK-Version": "v0.3.25",
             },
             contentType: "application/json",
             body: await serializers.EntityUpdateRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
@@ -671,7 +671,7 @@ export class Entity {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.24",
+                "X-Fern-SDK-Version": "v0.3.25",
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -777,7 +777,7 @@ export class Entity {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.24",
+                "X-Fern-SDK-Version": "v0.3.25",
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -891,7 +891,7 @@ export class Entity {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.24",
+                "X-Fern-SDK-Version": "v0.3.25",
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -1012,7 +1012,7 @@ export class Entity {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.24",
+                "X-Fern-SDK-Version": "v0.3.25",
             },
             contentType: "application/json",
             body: await serializers.TokenGenerationOptions.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
@@ -1110,7 +1110,7 @@ export class Entity {
     }
 
     /**
-     * Get a Plaid link token for an entity. This token can be used to add a bank account to the entity using Plaid Link.
+     * Get a Plaid link token for an entity. This token can be used to add or update a bank account to the entity using Plaid Link.
      * @throws {@link Mercoa.TokenGenerationFailed}
      * @throws {@link Mercoa.AuthHeaderMissingError}
      * @throws {@link Mercoa.AuthHeaderMalformedError}
@@ -1119,7 +1119,17 @@ export class Entity {
      * @throws {@link Mercoa.NotFound}
      * @throws {@link Mercoa.Unimplemented}
      */
-    public async plaidLinkToken(entityId: Mercoa.EntityId, requestOptions?: Entity.RequestOptions): Promise<string> {
+    public async plaidLinkToken(
+        entityId: Mercoa.EntityId,
+        request: Mercoa.entity.PlaidLinkTokenRequest = {},
+        requestOptions?: Entity.RequestOptions
+    ): Promise<string> {
+        const { paymentMethodId } = request;
+        const _queryParams: Record<string, string | string[]> = {};
+        if (paymentMethodId != null) {
+            _queryParams["paymentMethodId"] = paymentMethodId;
+        }
+
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
@@ -1130,9 +1140,10 @@ export class Entity {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.24",
+                "X-Fern-SDK-Version": "v0.3.25",
             },
             contentType: "application/json",
+            queryParameters: _queryParams,
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
         });
@@ -1261,7 +1272,7 @@ export class Entity {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.24",
+                "X-Fern-SDK-Version": "v0.3.25",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -1384,7 +1395,7 @@ export class Entity {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.24",
+                "X-Fern-SDK-Version": "v0.3.25",
             },
             contentType: "application/json",
             queryParameters: _queryParams,

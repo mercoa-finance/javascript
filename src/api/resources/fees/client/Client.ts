@@ -47,7 +47,7 @@ export class Fees {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.24",
+                "X-Fern-SDK-Version": "v0.3.25",
             },
             contentType: "application/json",
             body: await serializers.CalculateFeesRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
