@@ -12,7 +12,7 @@ export const BankAccountRequest: core.serialization.ObjectSchema<
 > = core.serialization
     .object({
         accountName: core.serialization.string().optional(),
-        bankName: core.serialization.string(),
+        bankName: core.serialization.string().optional(),
         routingNumber: core.serialization.string(),
         accountNumber: core.serialization.string(),
         accountType: core.serialization.lazy(async () => (await import("../../..")).BankType),
@@ -26,7 +26,7 @@ export const BankAccountRequest: core.serialization.ObjectSchema<
 export declare namespace BankAccountRequest {
     interface Raw extends serializers.PaymentMethodBaseRequest.Raw {
         accountName?: string | null;
-        bankName: string;
+        bankName?: string | null;
         routingNumber: string;
         accountNumber: string;
         accountType: serializers.BankType.Raw;

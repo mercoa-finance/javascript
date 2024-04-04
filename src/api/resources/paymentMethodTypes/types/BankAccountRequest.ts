@@ -5,8 +5,10 @@
 import * as Mercoa from "../../..";
 
 export interface BankAccountRequest extends Mercoa.PaymentMethodBaseRequest {
+    /** The name of the account. For example "My Checking Account" or "Property XYZ Checking" */
     accountName?: string;
-    bankName: string;
+    /** The name of the bank. This is now automatically set when the bank account is linked. */
+    bankName?: string;
     routingNumber: string;
     accountNumber: string;
     accountType: Mercoa.BankType;

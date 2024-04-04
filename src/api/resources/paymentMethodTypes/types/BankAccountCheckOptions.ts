@@ -11,8 +11,10 @@ export interface BankAccountCheckOptions {
     routingNumberOverride?: string;
     /** If provided, will print a check with the provided account number instead of the one from the bank account */
     accountNumberOverride?: string;
-    /** If provided, will print a check with a generated signature from the provided name */
-    signatoryName?: string;
-    /** Base64 encoded PNG of the signature. If provided, will print a check with the provided image as the signature. Will override signatoryName. */
+    /** Name of the person who's signature will be printed on the check. */
+    signatoryName: string;
+    /** Base64 encoded PNG of the signature. If not provided, will use the signatoryName to generate a signature. */
     signatureImage?: string;
+    /** If true, will print checks with the provided signatureImage. If false, will print checks with a generated signature from the signatoryName. If this parameter is not set the default behavior is to use the signatureImage if provided. */
+    useSignatureImage?: boolean;
 }

@@ -4,6 +4,57 @@
 
 import * as Mercoa from "../../..";
 
+/**
+ * @example
+ *     {
+ *         id: "ent_123",
+ *         name: "Acme Inc.",
+ *         email: "customer@acme.com",
+ *         acceptedTos: true,
+ *         status: Mercoa.EntityStatus.Verified,
+ *         isCustomer: true,
+ *         isPayor: true,
+ *         isPayee: false,
+ *         accountType: Mercoa.AccountType.Business,
+ *         updatedAt: new Date("2024-01-02T00:00:00.000Z"),
+ *         createdAt: new Date("2024-01-01T00:00:00.000Z"),
+ *         profile: {
+ *             business: {
+ *                 email: "customer@acme.com",
+ *                 legalBusinessName: "Acme Inc.",
+ *                 businessType: Mercoa.BusinessType.Llc,
+ *                 phone: {
+ *                     countryCode: "1",
+ *                     number: "4155551234"
+ *                 },
+ *                 address: {
+ *                     addressLine1: "123 Main St",
+ *                     city: "San Francisco",
+ *                     stateOrProvince: "CA",
+ *                     postalCode: "94105",
+ *                     country: "US"
+ *                 },
+ *                 taxIdProvided: true,
+ *                 ownersProvided: true
+ *             }
+ *         },
+ *         paymentMethods: [{
+ *                 type: "bankAccount",
+ *                 id: "pm_12345",
+ *                 accountName: "My Checking Account",
+ *                 bankName: "Chase",
+ *                 routingNumber: "12345678",
+ *                 accountNumber: "99988767623",
+ *                 accountType: Mercoa.BankType.Checking,
+ *                 status: Mercoa.BankStatus.Verified,
+ *                 isDefaultSource: true,
+ *                 isDefaultDestination: true,
+ *                 supportedCurrencies: [Mercoa.CurrencyCode.Usd],
+ *                 createdAt: new Date("2021-01-01T00:00:00.000Z"),
+ *                 updatedAt: new Date("2021-01-01T00:00:00.000Z")
+ *             }]
+ *     }
+ */
 export interface EntityWithPaymentMethodResponse extends Mercoa.EntityResponse {
     paymentMethods?: Mercoa.PaymentMethodResponse[];
 }

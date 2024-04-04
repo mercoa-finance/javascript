@@ -4,6 +4,14 @@
 
 import * as Mercoa from "../../../..";
 
+/**
+ * @example
+ *     {
+ *         isCustomer: true,
+ *         foreignId: "MY-DB-ID-12345",
+ *         paymentMethods: true
+ *     }
+ */
 export interface FindEntities {
     /**
      * If true, will include entity payment methods as part of the response
