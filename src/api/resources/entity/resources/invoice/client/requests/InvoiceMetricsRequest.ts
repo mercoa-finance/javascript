@@ -18,6 +18,10 @@ export interface InvoiceMetricsRequest {
      */
     excludeReceivables?: boolean;
     /**
+     * Return invoice metrics grouped by date.
+     */
+    returnByDate?: Mercoa.InvoiceMetricsPerDateGroupBy;
+    /**
      * Filter invoices by payer ID.
      */
     payerId?: Mercoa.EntityId | Mercoa.EntityId[];

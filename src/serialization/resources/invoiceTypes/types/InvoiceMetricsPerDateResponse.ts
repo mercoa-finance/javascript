@@ -6,28 +6,23 @@ import * as serializers from "../../..";
 import * as Mercoa from "../../../../api";
 import * as core from "../../../../core";
 
-export const InvoiceMetricsResponse: core.serialization.ObjectSchema<
-    serializers.InvoiceMetricsResponse.Raw,
-    Mercoa.InvoiceMetricsResponse
+export const InvoiceMetricsPerDateResponse: core.serialization.ObjectSchema<
+    serializers.InvoiceMetricsPerDateResponse.Raw,
+    Mercoa.InvoiceMetricsPerDateResponse
 > = core.serialization.object({
+    date: core.serialization.date(),
     totalAmount: core.serialization.number(),
     totalCount: core.serialization.number(),
     averageAmount: core.serialization.number(),
     currency: core.serialization.lazy(async () => (await import("../../..")).CurrencyCode),
-    dates: core.serialization
-        .record(
-            core.serialization.string(),
-            core.serialization.lazyObject(async () => (await import("../../..")).InvoiceMetricsPerDateResponse)
-        )
-        .optional(),
 });
 
-export declare namespace InvoiceMetricsResponse {
+export declare namespace InvoiceMetricsPerDateResponse {
     interface Raw {
+        date: string;
         totalAmount: number;
         totalCount: number;
         averageAmount: number;
         currency: serializers.CurrencyCode.Raw;
-        dates?: Record<string, serializers.InvoiceMetricsPerDateResponse.Raw> | null;
     }
 }

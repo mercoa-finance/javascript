@@ -13,7 +13,7 @@ export interface BankAccountCheckOptions {
     accountNumberOverride?: string;
     /** Name of the person who's signature will be printed on the check. */
     signatoryName: string;
-    /** Base64 encoded PNG of the signature. If not provided, will use the signatoryName to generate a signature. */
+    /** Base64 encoded image of the signature. If not provided, will use the signatoryName to generate a signature. Mercoa will automatically grayscale, resize, and convert the image to a PNG the image to fit on the check. */
     signatureImage?: string;
     /** If true, will print checks with the provided signatureImage. If false, will print checks with a generated signature from the signatoryName. If this parameter is not set the default behavior is to use the signatureImage if provided. */
     useSignatureImage?: boolean;

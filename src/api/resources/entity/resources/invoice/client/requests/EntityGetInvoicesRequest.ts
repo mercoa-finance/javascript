@@ -54,6 +54,10 @@ export interface EntityGetInvoicesRequest {
      */
     approverId?: Mercoa.EntityUserId | Mercoa.EntityUserId[];
     /**
+     * Filter invoices by approver action. Needs to be used with approverId. For example, if you want to find all invoices that have been approved by a specific user, you would use approverId and approverAction=APPROVE.
+     */
+    approverAction?: Mercoa.ApproverAction | Mercoa.ApproverAction[];
+    /**
      * Filter invoices by invoice ID.
      */
     invoiceId?: Mercoa.InvoiceId | Mercoa.InvoiceId[];

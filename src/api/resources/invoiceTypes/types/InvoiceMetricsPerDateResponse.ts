@@ -4,10 +4,10 @@
 
 import * as Mercoa from "../../..";
 
-export interface InvoiceMetricsResponse {
+export interface InvoiceMetricsPerDateResponse {
+    date: Date;
     totalAmount: number;
     totalCount: number;
     averageAmount: number;
     currency: Mercoa.CurrencyCode;
-    dates?: Record<string, Mercoa.InvoiceMetricsPerDateResponse>;
 }

@@ -54,6 +54,7 @@ export class Invoice {
             payerId,
             vendorId,
             approverId,
+            approverAction,
             invoiceId,
             status,
             includeFees,
@@ -119,6 +120,14 @@ export class Invoice {
             }
         }
 
+        if (approverAction != null) {
+            if (Array.isArray(approverAction)) {
+                _queryParams["approverAction"] = approverAction.map((item) => item);
+            } else {
+                _queryParams["approverAction"] = approverAction;
+            }
+        }
+
         if (invoiceId != null) {
             if (Array.isArray(invoiceId)) {
                 _queryParams["invoiceId"] = invoiceId.map((item) => item);
@@ -149,7 +158,7 @@ export class Invoice {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.27",
+                "X-Fern-SDK-Version": "v0.3.28",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -270,7 +279,7 @@ export class Invoice {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.27",
+                "X-Fern-SDK-Version": "v0.3.28",
             },
             contentType: "application/json",
             body: await serializers.InvoiceCreationRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
@@ -405,7 +414,7 @@ export class Invoice {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.27",
+                "X-Fern-SDK-Version": "v0.3.28",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -518,7 +527,7 @@ export class Invoice {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.27",
+                "X-Fern-SDK-Version": "v0.3.28",
             },
             contentType: "application/json",
             body: await serializers.InvoiceRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
@@ -645,7 +654,7 @@ export class Invoice {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.27",
+                "X-Fern-SDK-Version": "v0.3.28",
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,

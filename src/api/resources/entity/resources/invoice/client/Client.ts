@@ -52,6 +52,7 @@ export class Invoice {
             payerId,
             vendorId,
             approverId,
+            approverAction,
             invoiceId,
             status,
             includeFees,
@@ -117,6 +118,14 @@ export class Invoice {
             }
         }
 
+        if (approverAction != null) {
+            if (Array.isArray(approverAction)) {
+                _queryParams["approverAction"] = approverAction.map((item) => item);
+            } else {
+                _queryParams["approverAction"] = approverAction;
+            }
+        }
+
         if (invoiceId != null) {
             if (Array.isArray(invoiceId)) {
                 _queryParams["invoiceId"] = invoiceId.map((item) => item);
@@ -147,7 +156,7 @@ export class Invoice {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.27",
+                "X-Fern-SDK-Version": "v0.3.28",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -276,7 +285,7 @@ export class Invoice {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.27",
+                "X-Fern-SDK-Version": "v0.3.28",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -365,7 +374,7 @@ export class Invoice {
     }
 
     /**
-     * Get invoice metrics for an entity with the given filters.
+     * Get invoice metrics for an entity with the given filters. Invoices will be grouped by currency.
      * @throws {@link Mercoa.InvoiceQueryError}
      * @throws {@link Mercoa.AuthHeaderMissingError}
      * @throws {@link Mercoa.AuthHeaderMalformedError}
@@ -383,6 +392,7 @@ export class Invoice {
             search,
             excludePayables,
             excludeReceivables,
+            returnByDate,
             payerId,
             vendorId,
             approverId,
@@ -405,6 +415,10 @@ export class Invoice {
 
         if (excludeReceivables != null) {
             _queryParams["excludeReceivables"] = excludeReceivables.toString();
+        }
+
+        if (returnByDate != null) {
+            _queryParams["returnByDate"] = returnByDate;
         }
 
         if (payerId != null) {
@@ -481,7 +495,7 @@ export class Invoice {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.27",
+                "X-Fern-SDK-Version": "v0.3.28",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
