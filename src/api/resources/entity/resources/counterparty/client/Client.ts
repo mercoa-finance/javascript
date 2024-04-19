@@ -4,10 +4,10 @@
 
 import * as environments from "../../../../../../environments";
 import * as core from "../../../../../../core";
-import * as Mercoa from "../../../../..";
-import * as serializers from "../../../../../../serialization";
+import * as Mercoa from "../../../../../index";
+import * as serializers from "../../../../../../serialization/index";
 import urlJoin from "url-join";
-import * as errors from "../../../../../../errors";
+import * as errors from "../../../../../../errors/index";
 
 export declare namespace Counterparty {
     interface Options {
@@ -32,6 +32,16 @@ export class Counterparty {
      * @throws {@link Mercoa.Forbidden}
      * @throws {@link Mercoa.NotFound}
      * @throws {@link Mercoa.Unimplemented}
+     *
+     * @example
+     *     await mercoa.entity.counterparty.findPayees("string", {
+     *         name: "string",
+     *         networkType: Mercoa.CounterpartyNetworkType.Entity,
+     *         paymentMethods: true,
+     *         counterpartyId: "string",
+     *         limit: 1,
+     *         startingAfter: "string"
+     *     })
      */
     public async findPayees(
         entityId: Mercoa.EntityId,
@@ -39,7 +49,7 @@ export class Counterparty {
         requestOptions?: Counterparty.RequestOptions
     ): Promise<Mercoa.FindCounterpartiesResponse> {
         const { name, networkType, paymentMethods, counterpartyId, limit, startingAfter } = request;
-        const _queryParams: Record<string, string | string[]> = {};
+        const _queryParams: Record<string, string | string[] | object | object[]> = {};
         if (name != null) {
             _queryParams["name"] = name;
         }
@@ -82,7 +92,9 @@ export class Counterparty {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.28",
+                "X-Fern-SDK-Version": "v0.3.29",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -178,6 +190,16 @@ export class Counterparty {
      * @throws {@link Mercoa.Forbidden}
      * @throws {@link Mercoa.NotFound}
      * @throws {@link Mercoa.Unimplemented}
+     *
+     * @example
+     *     await mercoa.entity.counterparty.findPayors("string", {
+     *         name: "string",
+     *         networkType: Mercoa.CounterpartyNetworkType.Entity,
+     *         paymentMethods: true,
+     *         counterpartyId: "string",
+     *         limit: 1,
+     *         startingAfter: "string"
+     *     })
      */
     public async findPayors(
         entityId: Mercoa.EntityId,
@@ -185,7 +207,7 @@ export class Counterparty {
         requestOptions?: Counterparty.RequestOptions
     ): Promise<Mercoa.FindCounterpartiesResponse> {
         const { name, networkType, paymentMethods, counterpartyId, limit, startingAfter } = request;
-        const _queryParams: Record<string, string | string[]> = {};
+        const _queryParams: Record<string, string | string[] | object | object[]> = {};
         if (name != null) {
             _queryParams["name"] = name;
         }
@@ -228,7 +250,9 @@ export class Counterparty {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.28",
+                "X-Fern-SDK-Version": "v0.3.29",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -324,6 +348,11 @@ export class Counterparty {
      * @throws {@link Mercoa.Forbidden}
      * @throws {@link Mercoa.NotFound}
      * @throws {@link Mercoa.Unimplemented}
+     *
+     * @example
+     *     await mercoa.entity.counterparty.addPayees("string", {
+     *         payees: ["string"]
+     *     })
      */
     public async addPayees(
         entityId: Mercoa.EntityId,
@@ -340,7 +369,9 @@ export class Counterparty {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.28",
+                "X-Fern-SDK-Version": "v0.3.29",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
             body: await serializers.EntityAddPayeesRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
@@ -431,6 +462,11 @@ export class Counterparty {
      * @throws {@link Mercoa.Forbidden}
      * @throws {@link Mercoa.NotFound}
      * @throws {@link Mercoa.Unimplemented}
+     *
+     * @example
+     *     await mercoa.entity.counterparty.hidePayees("string", {
+     *         payees: ["string"]
+     *     })
      */
     public async hidePayees(
         entityId: Mercoa.EntityId,
@@ -447,7 +483,9 @@ export class Counterparty {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.28",
+                "X-Fern-SDK-Version": "v0.3.29",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
             body: await serializers.EntityHidePayeesRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
@@ -538,6 +576,11 @@ export class Counterparty {
      * @throws {@link Mercoa.Forbidden}
      * @throws {@link Mercoa.NotFound}
      * @throws {@link Mercoa.Unimplemented}
+     *
+     * @example
+     *     await mercoa.entity.counterparty.addPayors("string", {
+     *         payors: ["string"]
+     *     })
      */
     public async addPayors(
         entityId: Mercoa.EntityId,
@@ -554,7 +597,9 @@ export class Counterparty {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.28",
+                "X-Fern-SDK-Version": "v0.3.29",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
             body: await serializers.EntityAddPayorsRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
@@ -645,6 +690,11 @@ export class Counterparty {
      * @throws {@link Mercoa.Forbidden}
      * @throws {@link Mercoa.NotFound}
      * @throws {@link Mercoa.Unimplemented}
+     *
+     * @example
+     *     await mercoa.entity.counterparty.hidePayors("string", {
+     *         payors: ["string"]
+     *     })
      */
     public async hidePayors(
         entityId: Mercoa.EntityId,
@@ -661,7 +711,9 @@ export class Counterparty {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.28",
+                "X-Fern-SDK-Version": "v0.3.29",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
             body: await serializers.EntityHidePayorsRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
@@ -744,7 +796,7 @@ export class Counterparty {
         }
     }
 
-    protected async _getAuthorizationHeader() {
+    protected async _getAuthorizationHeader(): Promise<string> {
         return `Bearer ${await core.Supplier.get(this._options.token)}`;
     }
 }

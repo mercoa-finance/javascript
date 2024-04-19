@@ -20,6 +20,7 @@ export * from "./InvoiceFeesResponse";
 export * from "./InvoiceStatus";
 export * from "./InvoiceFailureType";
 export * from "./InvoiceOrderByField";
+export * from "./InvoiceMetadataFilter";
 export * from "./InvoiceMetricsResponse";
 export * from "./InvoiceMetricsPerDateResponse";
 export * from "./InvoiceMetricsPerDateGroupBy";
