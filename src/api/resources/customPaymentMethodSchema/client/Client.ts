@@ -4,10 +4,10 @@
 
 import * as environments from "../../../../environments";
 import * as core from "../../../../core";
-import * as Mercoa from "../../../index";
+import * as Mercoa from "../../..";
 import urlJoin from "url-join";
-import * as serializers from "../../../../serialization/index";
-import * as errors from "../../../../errors/index";
+import * as serializers from "../../../../serialization";
+import * as errors from "../../../../errors";
 
 export declare namespace CustomPaymentMethodSchema {
     interface Options {
@@ -32,9 +32,6 @@ export class CustomPaymentMethodSchema {
      * @throws {@link Mercoa.Forbidden}
      * @throws {@link Mercoa.NotFound}
      * @throws {@link Mercoa.Unimplemented}
-     *
-     * @example
-     *     await mercoa.customPaymentMethodSchema.getAll()
      */
     public async getAll(
         requestOptions?: CustomPaymentMethodSchema.RequestOptions
@@ -49,9 +46,7 @@ export class CustomPaymentMethodSchema {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.29",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                "X-Fern-SDK-Version": "v0.3.30",
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -146,15 +141,6 @@ export class CustomPaymentMethodSchema {
      * @throws {@link Mercoa.Forbidden}
      * @throws {@link Mercoa.NotFound}
      * @throws {@link Mercoa.Unimplemented}
-     *
-     * @example
-     *     await mercoa.customPaymentMethodSchema.create({
-     *         name: "string",
-     *         isSource: true,
-     *         isDestination: true,
-     *         supportedCurrencies: [Mercoa.CurrencyCode.Aed],
-     *         fields: [{}]
-     *     })
      */
     public async create(
         request: Mercoa.CustomPaymentMethodSchemaRequest,
@@ -170,9 +156,7 @@ export class CustomPaymentMethodSchema {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.29",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                "X-Fern-SDK-Version": "v0.3.30",
             },
             contentType: "application/json",
             body: await serializers.CustomPaymentMethodSchemaRequest.jsonOrThrow(request, {
@@ -270,15 +254,6 @@ export class CustomPaymentMethodSchema {
      * @throws {@link Mercoa.Forbidden}
      * @throws {@link Mercoa.NotFound}
      * @throws {@link Mercoa.Unimplemented}
-     *
-     * @example
-     *     await mercoa.customPaymentMethodSchema.update("string", {
-     *         name: "string",
-     *         isSource: true,
-     *         isDestination: true,
-     *         supportedCurrencies: [Mercoa.CurrencyCode.Aed],
-     *         fields: [{}]
-     *     })
      */
     public async update(
         schemaId: Mercoa.CustomPaymentMethodSchemaId,
@@ -295,9 +270,7 @@ export class CustomPaymentMethodSchema {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.29",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                "X-Fern-SDK-Version": "v0.3.30",
             },
             contentType: "application/json",
             body: await serializers.CustomPaymentMethodSchemaRequest.jsonOrThrow(request, {
@@ -395,9 +368,6 @@ export class CustomPaymentMethodSchema {
      * @throws {@link Mercoa.Forbidden}
      * @throws {@link Mercoa.NotFound}
      * @throws {@link Mercoa.Unimplemented}
-     *
-     * @example
-     *     await mercoa.customPaymentMethodSchema.get("string")
      */
     public async get(
         schemaId: Mercoa.CustomPaymentMethodSchemaId,
@@ -413,9 +383,7 @@ export class CustomPaymentMethodSchema {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.29",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                "X-Fern-SDK-Version": "v0.3.30",
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -510,9 +478,6 @@ export class CustomPaymentMethodSchema {
      * @throws {@link Mercoa.Forbidden}
      * @throws {@link Mercoa.NotFound}
      * @throws {@link Mercoa.Unimplemented}
-     *
-     * @example
-     *     await mercoa.customPaymentMethodSchema.delete("string")
      */
     public async delete(
         schemaId: Mercoa.CustomPaymentMethodSchemaId,
@@ -528,9 +493,7 @@ export class CustomPaymentMethodSchema {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.29",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                "X-Fern-SDK-Version": "v0.3.30",
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -612,7 +575,7 @@ export class CustomPaymentMethodSchema {
         }
     }
 
-    protected async _getAuthorizationHeader(): Promise<string> {
+    protected async _getAuthorizationHeader() {
         return `Bearer ${await core.Supplier.get(this._options.token)}`;
     }
 }

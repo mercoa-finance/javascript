@@ -4,10 +4,10 @@
 
 import * as environments from "../../../../../../../../environments";
 import * as core from "../../../../../../../../core";
-import * as Mercoa from "../../../../../../../index";
-import * as serializers from "../../../../../../../../serialization/index";
+import * as Mercoa from "../../../../../../..";
+import * as serializers from "../../../../../../../../serialization";
 import urlJoin from "url-join";
-import * as errors from "../../../../../../../../errors/index";
+import * as errors from "../../../../../../../../errors";
 
 export declare namespace Notifications {
     interface Options {
@@ -31,16 +31,6 @@ export class Notifications {
      * @throws {@link Mercoa.Forbidden}
      * @throws {@link Mercoa.NotFound}
      * @throws {@link Mercoa.Unimplemented}
-     *
-     * @example
-     *     await mercoa.entity.user.notifications.find("string", "string", {
-     *         startDate: new Date("2024-01-15T09:30:00.000Z"),
-     *         endDate: new Date("2024-01-15T09:30:00.000Z"),
-     *         orderDirection: Mercoa.OrderDirection.Asc,
-     *         limit: 1,
-     *         startingAfter: "string",
-     *         notificationType: Mercoa.NotificationType.InvoiceApprovalNeeded
-     *     })
      */
     public async find(
         entityId: Mercoa.EntityId,
@@ -49,7 +39,7 @@ export class Notifications {
         requestOptions?: Notifications.RequestOptions
     ): Promise<Mercoa.FindNotificationResponse> {
         const { startDate, endDate, orderDirection, limit, startingAfter, notificationType } = request;
-        const _queryParams: Record<string, string | string[] | object | object[]> = {};
+        const _queryParams: Record<string, string | string[]> = {};
         if (startDate != null) {
             _queryParams["startDate"] = startDate.toISOString();
         }
@@ -90,9 +80,7 @@ export class Notifications {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.29",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                "X-Fern-SDK-Version": "v0.3.30",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -187,9 +175,6 @@ export class Notifications {
      * @throws {@link Mercoa.Forbidden}
      * @throws {@link Mercoa.NotFound}
      * @throws {@link Mercoa.Unimplemented}
-     *
-     * @example
-     *     await mercoa.entity.user.notifications.get("string", "string", "string")
      */
     public async get(
         entityId: Mercoa.EntityId,
@@ -211,9 +196,7 @@ export class Notifications {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.29",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                "X-Fern-SDK-Version": "v0.3.30",
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -300,7 +283,7 @@ export class Notifications {
         }
     }
 
-    protected async _getAuthorizationHeader(): Promise<string> {
+    protected async _getAuthorizationHeader() {
         return `Bearer ${await core.Supplier.get(this._options.token)}`;
     }
 }

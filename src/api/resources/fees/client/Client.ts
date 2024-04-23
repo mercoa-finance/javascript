@@ -4,10 +4,10 @@
 
 import * as environments from "../../../../environments";
 import * as core from "../../../../core";
-import * as Mercoa from "../../../index";
-import * as serializers from "../../../../serialization/index";
+import * as Mercoa from "../../..";
+import * as serializers from "../../../../serialization";
 import urlJoin from "url-join";
-import * as errors from "../../../../errors/index";
+import * as errors from "../../../../errors";
 
 export declare namespace Fees {
     interface Options {
@@ -32,17 +32,6 @@ export class Fees {
      * @throws {@link Mercoa.Forbidden}
      * @throws {@link Mercoa.NotFound}
      * @throws {@link Mercoa.Unimplemented}
-     *
-     * @example
-     *     await mercoa.fees.calculate({
-     *         amount: 1.1,
-     *         currency: Mercoa.CurrencyCode.Aed,
-     *         paymentSourceId: "string",
-     *         paymentDestinationId: "string",
-     *         paymentDestinationOptions: {
-     *             type: "check"
-     *         }
-     *     })
      */
     public async calculate(
         request: Mercoa.CalculateFeesRequest,
@@ -58,9 +47,7 @@ export class Fees {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.29",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                "X-Fern-SDK-Version": "v0.3.30",
             },
             contentType: "application/json",
             body: await serializers.CalculateFeesRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
@@ -148,7 +135,7 @@ export class Fees {
         }
     }
 
-    protected async _getAuthorizationHeader(): Promise<string> {
+    protected async _getAuthorizationHeader() {
         return `Bearer ${await core.Supplier.get(this._options.token)}`;
     }
 }

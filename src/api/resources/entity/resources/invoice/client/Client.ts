@@ -4,10 +4,10 @@
 
 import * as environments from "../../../../../../environments";
 import * as core from "../../../../../../core";
-import * as Mercoa from "../../../../../index";
-import * as serializers from "../../../../../../serialization/index";
+import * as Mercoa from "../../../../..";
+import * as serializers from "../../../../../../serialization";
 import urlJoin from "url-join";
-import * as errors from "../../../../../../errors/index";
+import * as errors from "../../../../../../errors";
 
 export declare namespace Invoice {
     interface Options {
@@ -33,30 +33,6 @@ export class Invoice {
      * @throws {@link Mercoa.Forbidden}
      * @throws {@link Mercoa.NotFound}
      * @throws {@link Mercoa.Unimplemented}
-     *
-     * @example
-     *     await mercoa.entity.invoice.find("string", {
-     *         excludePayables: true,
-     *         excludeReceivables: true,
-     *         startDate: new Date("2024-01-15T09:30:00.000Z"),
-     *         endDate: new Date("2024-01-15T09:30:00.000Z"),
-     *         orderBy: Mercoa.InvoiceOrderByField.Amount,
-     *         orderDirection: Mercoa.OrderDirection.Asc,
-     *         limit: 1,
-     *         startingAfter: "string",
-     *         metadata: {
-     *             key: "string",
-     *             value: "string"
-     *         },
-     *         search: "string",
-     *         payerId: "string",
-     *         vendorId: "string",
-     *         approverId: "string",
-     *         approverAction: Mercoa.ApproverAction.None,
-     *         invoiceId: "string",
-     *         status: Mercoa.InvoiceStatus.Draft,
-     *         includeFees: true
-     *     })
      */
     public async find(
         entityId: Mercoa.EntityId,
@@ -82,7 +58,7 @@ export class Invoice {
             status,
             includeFees,
         } = request;
-        const _queryParams: Record<string, string | string[] | object | object[]> = {};
+        const _queryParams: Record<string, string | string[]> = {};
         if (excludePayables != null) {
             _queryParams["excludePayables"] = excludePayables.toString();
         }
@@ -117,24 +93,9 @@ export class Invoice {
 
         if (metadata != null) {
             if (Array.isArray(metadata)) {
-                _queryParams["metadata"] = await Promise.all(
-                    metadata.map(
-                        async (item) =>
-                            await serializers.InvoiceMetadataFilter.jsonOrThrow(item, {
-                                unrecognizedObjectKeys: "passthrough",
-                                allowUnrecognizedUnionMembers: true,
-                                allowUnrecognizedEnumValues: true,
-                                breadcrumbsPrefix: ["request", "metadata"],
-                            })
-                    )
-                );
+                _queryParams["metadata"] = metadata.map((item) => item);
             } else {
-                _queryParams["metadata"] = await serializers.InvoiceMetadataFilter.jsonOrThrow(metadata, {
-                    unrecognizedObjectKeys: "passthrough",
-                    allowUnrecognizedUnionMembers: true,
-                    allowUnrecognizedEnumValues: true,
-                    breadcrumbsPrefix: ["request", "metadata"],
-                });
+                _queryParams["metadata"] = metadata;
             }
         }
 
@@ -204,9 +165,7 @@ export class Invoice {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.29",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                "X-Fern-SDK-Version": "v0.3.30",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -310,11 +269,6 @@ export class Invoice {
      * @throws {@link Mercoa.Forbidden}
      * @throws {@link Mercoa.NotFound}
      * @throws {@link Mercoa.Unimplemented}
-     *
-     * @example
-     *     await mercoa.entity.invoice.get("string", "string", {
-     *         includeFees: true
-     *     })
      */
     public async get(
         entityId: Mercoa.EntityId,
@@ -323,7 +277,7 @@ export class Invoice {
         requestOptions?: Invoice.RequestOptions
     ): Promise<Mercoa.InvoiceResponse> {
         const { includeFees } = request;
-        const _queryParams: Record<string, string | string[] | object | object[]> = {};
+        const _queryParams: Record<string, string | string[]> = {};
         if (includeFees != null) {
             _queryParams["includeFees"] = includeFees.toString();
         }
@@ -340,9 +294,7 @@ export class Invoice {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.29",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                "X-Fern-SDK-Version": "v0.3.30",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -439,24 +391,6 @@ export class Invoice {
      * @throws {@link Mercoa.Forbidden}
      * @throws {@link Mercoa.NotFound}
      * @throws {@link Mercoa.Unimplemented}
-     *
-     * @example
-     *     await mercoa.entity.invoice.metrics("string", {
-     *         search: "string",
-     *         excludePayables: true,
-     *         excludeReceivables: true,
-     *         returnByDate: Mercoa.InvoiceMetricsPerDateGroupBy.CreationDate,
-     *         payerId: "string",
-     *         vendorId: "string",
-     *         approverId: "string",
-     *         invoiceId: "string",
-     *         status: Mercoa.InvoiceStatus.Draft,
-     *         dueDateStart: new Date("2024-01-15T09:30:00.000Z"),
-     *         dueDateEnd: new Date("2024-01-15T09:30:00.000Z"),
-     *         createdDateStart: new Date("2024-01-15T09:30:00.000Z"),
-     *         createdDateEnd: new Date("2024-01-15T09:30:00.000Z"),
-     *         currency: Mercoa.CurrencyCode.Aed
-     *     })
      */
     public async metrics(
         entityId: Mercoa.EntityId,
@@ -479,7 +413,7 @@ export class Invoice {
             createdDateEnd,
             currency,
         } = request;
-        const _queryParams: Record<string, string | string[] | object | object[]> = {};
+        const _queryParams: Record<string, string | string[]> = {};
         if (search != null) {
             _queryParams["search"] = search;
         }
@@ -570,9 +504,7 @@ export class Invoice {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.29",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                "X-Fern-SDK-Version": "v0.3.30",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -669,7 +601,7 @@ export class Invoice {
         }
     }
 
-    protected async _getAuthorizationHeader(): Promise<string> {
+    protected async _getAuthorizationHeader() {
         return `Bearer ${await core.Supplier.get(this._options.token)}`;
     }
 }

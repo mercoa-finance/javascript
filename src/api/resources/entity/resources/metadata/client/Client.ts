@@ -4,10 +4,10 @@
 
 import * as environments from "../../../../../../environments";
 import * as core from "../../../../../../core";
-import * as Mercoa from "../../../../../index";
-import * as serializers from "../../../../../../serialization/index";
+import * as Mercoa from "../../../../..";
+import * as serializers from "../../../../../../serialization";
 import urlJoin from "url-join";
-import * as errors from "../../../../../../errors/index";
+import * as errors from "../../../../../../errors";
 
 export declare namespace Metadata {
     interface Options {
@@ -32,9 +32,6 @@ export class Metadata {
      * @throws {@link Mercoa.Forbidden}
      * @throws {@link Mercoa.NotFound}
      * @throws {@link Mercoa.Unimplemented}
-     *
-     * @example
-     *     await mercoa.entity.metadata.getAll("string")
      */
     public async getAll(
         entityId: Mercoa.EntityId,
@@ -50,9 +47,7 @@ export class Metadata {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.29",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                "X-Fern-SDK-Version": "v0.3.30",
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -147,9 +142,6 @@ export class Metadata {
      * @throws {@link Mercoa.Forbidden}
      * @throws {@link Mercoa.NotFound}
      * @throws {@link Mercoa.Unimplemented}
-     *
-     * @example
-     *     await mercoa.entity.metadata.get("string", "string")
      */
     public async get(
         entityId: Mercoa.EntityId,
@@ -166,9 +158,7 @@ export class Metadata {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.29",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                "X-Fern-SDK-Version": "v0.3.30",
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -269,9 +259,6 @@ export class Metadata {
      *
      * @example
      *     await mercoa.entity.metadata.update("ent_a0f6ea94-0761-4a5e-a416-3c453cb7eced", "propertyId", ["{key: 'prop_123', value: 'Beach Rental'}", "{key: 'prop_456', value: 'City Rental'}"])
-     *
-     * @example
-     *     await mercoa.entity.metadata.update("string", "string", ["prop_123", "prop_456"])
      */
     public async update(
         entityId: Mercoa.EntityId,
@@ -289,9 +276,7 @@ export class Metadata {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.29",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                "X-Fern-SDK-Version": "v0.3.30",
             },
             contentType: "application/json",
             body: await serializers.entity.metadata.update.Request.jsonOrThrow(request, {
@@ -389,9 +374,6 @@ export class Metadata {
      * @throws {@link Mercoa.Forbidden}
      * @throws {@link Mercoa.NotFound}
      * @throws {@link Mercoa.Unimplemented}
-     *
-     * @example
-     *     await mercoa.entity.metadata.delete("string", "string")
      */
     public async delete(
         entityId: Mercoa.EntityId,
@@ -408,9 +390,7 @@ export class Metadata {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.29",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                "X-Fern-SDK-Version": "v0.3.30",
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -492,7 +472,7 @@ export class Metadata {
         }
     }
 
-    protected async _getAuthorizationHeader(): Promise<string> {
+    protected async _getAuthorizationHeader() {
         return `Bearer ${await core.Supplier.get(this._options.token)}`;
     }
 }

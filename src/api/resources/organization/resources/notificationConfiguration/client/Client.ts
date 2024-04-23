@@ -4,10 +4,10 @@
 
 import * as environments from "../../../../../../environments";
 import * as core from "../../../../../../core";
-import * as Mercoa from "../../../../../index";
+import * as Mercoa from "../../../../..";
 import urlJoin from "url-join";
-import * as serializers from "../../../../../../serialization/index";
-import * as errors from "../../../../../../errors/index";
+import * as serializers from "../../../../../../serialization";
+import * as errors from "../../../../../../errors";
 
 export declare namespace NotificationConfiguration {
     interface Options {
@@ -32,9 +32,6 @@ export class NotificationConfiguration {
      * @throws {@link Mercoa.Forbidden}
      * @throws {@link Mercoa.NotFound}
      * @throws {@link Mercoa.Unimplemented}
-     *
-     * @example
-     *     await mercoa.organization.notificationConfiguration.getAll()
      */
     public async getAll(
         requestOptions?: NotificationConfiguration.RequestOptions
@@ -49,9 +46,7 @@ export class NotificationConfiguration {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.29",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                "X-Fern-SDK-Version": "v0.3.30",
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -149,9 +144,6 @@ export class NotificationConfiguration {
      * @throws {@link Mercoa.Forbidden}
      * @throws {@link Mercoa.NotFound}
      * @throws {@link Mercoa.Unimplemented}
-     *
-     * @example
-     *     await mercoa.organization.notificationConfiguration.get(Mercoa.NotificationType.InvoiceApprovalNeeded)
      */
     public async get(
         notificationType: Mercoa.NotificationType,
@@ -169,9 +161,7 @@ export class NotificationConfiguration {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.29",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                "X-Fern-SDK-Version": "v0.3.30",
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -266,12 +256,6 @@ export class NotificationConfiguration {
      * @throws {@link Mercoa.Forbidden}
      * @throws {@link Mercoa.NotFound}
      * @throws {@link Mercoa.Unimplemented}
-     *
-     * @example
-     *     await mercoa.organization.notificationConfiguration.update(Mercoa.NotificationType.InvoiceApprovalNeeded, {
-     *         notificationType: "invoice",
-     *         url: "string"
-     *     })
      */
     public async update(
         notificationType: Mercoa.NotificationType,
@@ -290,9 +274,7 @@ export class NotificationConfiguration {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.29",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                "X-Fern-SDK-Version": "v0.3.30",
             },
             contentType: "application/json",
             body: await serializers.NotificationConfigurationRequest.jsonOrThrow(request, {
@@ -390,9 +372,6 @@ export class NotificationConfiguration {
      * @throws {@link Mercoa.Forbidden}
      * @throws {@link Mercoa.NotFound}
      * @throws {@link Mercoa.Unimplemented}
-     *
-     * @example
-     *     await mercoa.organization.notificationConfiguration.reset(Mercoa.NotificationType.InvoiceApprovalNeeded)
      */
     public async reset(
         notificationType: Mercoa.NotificationType,
@@ -410,9 +389,7 @@ export class NotificationConfiguration {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.29",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                "X-Fern-SDK-Version": "v0.3.30",
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -494,7 +471,7 @@ export class NotificationConfiguration {
         }
     }
 
-    protected async _getAuthorizationHeader(): Promise<string> {
+    protected async _getAuthorizationHeader() {
         return `Bearer ${await core.Supplier.get(this._options.token)}`;
     }
 }

@@ -4,10 +4,10 @@
 
 import * as environments from "../../../../environments";
 import * as core from "../../../../core";
-import * as Mercoa from "../../../index";
-import * as serializers from "../../../../serialization/index";
+import * as Mercoa from "../../..";
+import * as serializers from "../../../../serialization";
 import urlJoin from "url-join";
-import * as errors from "../../../../errors/index";
+import * as errors from "../../../../errors";
 
 export declare namespace Ocr {
     interface Options {
@@ -33,18 +33,10 @@ export class Ocr {
      * @throws {@link Mercoa.Forbidden}
      * @throws {@link Mercoa.NotFound}
      * @throws {@link Mercoa.Unimplemented}
-     *
-     * @example
-     *     await mercoa.ocr.ocr({
-     *         vendorNetwork: Mercoa.VendorNetwork.All,
-     *         entityId: "string",
-     *         mimeType: "string",
-     *         image: "string"
-     *     })
      */
     public async ocr(request: Mercoa.RunOcrSync, requestOptions?: Ocr.RequestOptions): Promise<Mercoa.OcrResponse> {
         const { vendorNetwork, entityId, ..._body } = request;
-        const _queryParams: Record<string, string | string[] | object | object[]> = {};
+        const _queryParams: Record<string, string | string[]> = {};
         if (vendorNetwork != null) {
             _queryParams["vendorNetwork"] = vendorNetwork;
         }
@@ -63,9 +55,7 @@ export class Ocr {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.29",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                "X-Fern-SDK-Version": "v0.3.30",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -172,21 +162,13 @@ export class Ocr {
      * @throws {@link Mercoa.Forbidden}
      * @throws {@link Mercoa.NotFound}
      * @throws {@link Mercoa.Unimplemented}
-     *
-     * @example
-     *     await mercoa.ocr.runAsyncOcr({
-     *         vendorNetwork: Mercoa.VendorNetwork.All,
-     *         entityId: "string",
-     *         mimeType: "string",
-     *         image: "string"
-     *     })
      */
     public async runAsyncOcr(
         request: Mercoa.RunOcrAsync,
         requestOptions?: Ocr.RequestOptions
     ): Promise<Mercoa.OcrAsyncResponse> {
         const { vendorNetwork, entityId, ..._body } = request;
-        const _queryParams: Record<string, string | string[] | object | object[]> = {};
+        const _queryParams: Record<string, string | string[]> = {};
         if (vendorNetwork != null) {
             _queryParams["vendorNetwork"] = vendorNetwork;
         }
@@ -205,9 +187,7 @@ export class Ocr {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.29",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                "X-Fern-SDK-Version": "v0.3.30",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -314,9 +294,6 @@ export class Ocr {
      * @throws {@link Mercoa.Forbidden}
      * @throws {@link Mercoa.NotFound}
      * @throws {@link Mercoa.Unimplemented}
-     *
-     * @example
-     *     await mercoa.ocr.getAsyncOcr("string")
      */
     public async getAsyncOcr(jobId: string, requestOptions?: Ocr.RequestOptions): Promise<Mercoa.OcrJobResponse> {
         const _response = await core.fetcher({
@@ -329,9 +306,7 @@ export class Ocr {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.29",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                "X-Fern-SDK-Version": "v0.3.30",
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -427,7 +402,7 @@ export class Ocr {
         }
     }
 
-    protected async _getAuthorizationHeader(): Promise<string> {
+    protected async _getAuthorizationHeader() {
         return `Bearer ${await core.Supplier.get(this._options.token)}`;
     }
 }

@@ -4,10 +4,10 @@
 
 import * as environments from "../../../../../../environments";
 import * as core from "../../../../../../core";
-import * as Mercoa from "../../../../../index";
-import * as serializers from "../../../../../../serialization/index";
+import * as Mercoa from "../../../../..";
+import * as serializers from "../../../../../../serialization";
 import urlJoin from "url-join";
-import * as errors from "../../../../../../errors/index";
+import * as errors from "../../../../../../errors";
 
 export declare namespace Approval {
     interface Options {
@@ -34,12 +34,6 @@ export class Approval {
      * @throws {@link Mercoa.Forbidden}
      * @throws {@link Mercoa.NotFound}
      * @throws {@link Mercoa.Unimplemented}
-     *
-     * @example
-     *     await mercoa.invoice.approval.addApprover("string", {
-     *         approvalSlotId: "string",
-     *         userId: "string"
-     *     })
      */
     public async addApprover(
         invoiceId: Mercoa.InvoiceId,
@@ -56,9 +50,7 @@ export class Approval {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.29",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                "X-Fern-SDK-Version": "v0.3.30",
             },
             contentType: "application/json",
             body: await serializers.AddApproverRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
@@ -168,12 +160,6 @@ export class Approval {
      * @throws {@link Mercoa.Forbidden}
      * @throws {@link Mercoa.NotFound}
      * @throws {@link Mercoa.Unimplemented}
-     *
-     * @example
-     *     await mercoa.invoice.approval.approve("string", {
-     *         text: "string",
-     *         userId: "string"
-     *     })
      */
     public async approve(
         invoiceId: Mercoa.InvoiceId,
@@ -190,9 +176,7 @@ export class Approval {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.29",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                "X-Fern-SDK-Version": "v0.3.30",
             },
             contentType: "application/json",
             body: await serializers.ApprovalRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
@@ -302,12 +286,6 @@ export class Approval {
      * @throws {@link Mercoa.Forbidden}
      * @throws {@link Mercoa.NotFound}
      * @throws {@link Mercoa.Unimplemented}
-     *
-     * @example
-     *     await mercoa.invoice.approval.reject("string", {
-     *         text: "string",
-     *         userId: "string"
-     *     })
      */
     public async reject(
         invoiceId: Mercoa.InvoiceId,
@@ -324,9 +302,7 @@ export class Approval {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.29",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                "X-Fern-SDK-Version": "v0.3.30",
             },
             contentType: "application/json",
             body: await serializers.ApprovalRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
@@ -427,7 +403,7 @@ export class Approval {
         }
     }
 
-    protected async _getAuthorizationHeader(): Promise<string> {
+    protected async _getAuthorizationHeader() {
         return `Bearer ${await core.Supplier.get(this._options.token)}`;
     }
 }

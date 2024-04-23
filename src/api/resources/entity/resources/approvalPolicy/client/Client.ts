@@ -4,10 +4,10 @@
 
 import * as environments from "../../../../../../environments";
 import * as core from "../../../../../../core";
-import * as Mercoa from "../../../../../index";
-import * as serializers from "../../../../../../serialization/index";
+import * as Mercoa from "../../../../..";
+import * as serializers from "../../../../../../serialization";
 import urlJoin from "url-join";
-import * as errors from "../../../../../../errors/index";
+import * as errors from "../../../../../../errors";
 
 export declare namespace ApprovalPolicy {
     interface Options {
@@ -32,9 +32,6 @@ export class ApprovalPolicy {
      * @throws {@link Mercoa.Forbidden}
      * @throws {@link Mercoa.NotFound}
      * @throws {@link Mercoa.Unimplemented}
-     *
-     * @example
-     *     await mercoa.entity.approvalPolicy.getAll("string")
      */
     public async getAll(
         entityId: Mercoa.EntityId,
@@ -50,9 +47,7 @@ export class ApprovalPolicy {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.29",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                "X-Fern-SDK-Version": "v0.3.30",
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -149,17 +144,6 @@ export class ApprovalPolicy {
      * @throws {@link Mercoa.Forbidden}
      * @throws {@link Mercoa.NotFound}
      * @throws {@link Mercoa.Unimplemented}
-     *
-     * @example
-     *     await mercoa.entity.approvalPolicy.create("string", {
-     *         trigger: [{
-     *                 type: "amount"
-     *             }],
-     *         rule: {
-     *             type: "approver"
-     *         },
-     *         upstreamPolicyId: "string"
-     *     })
      */
     public async create(
         entityId: Mercoa.EntityId,
@@ -176,9 +160,7 @@ export class ApprovalPolicy {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.29",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                "X-Fern-SDK-Version": "v0.3.30",
             },
             contentType: "application/json",
             body: await serializers.ApprovalPolicyRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
@@ -292,9 +274,6 @@ export class ApprovalPolicy {
      * @throws {@link Mercoa.Forbidden}
      * @throws {@link Mercoa.NotFound}
      * @throws {@link Mercoa.Unimplemented}
-     *
-     * @example
-     *     await mercoa.entity.approvalPolicy.get("string", "string")
      */
     public async get(
         entityId: Mercoa.EntityId,
@@ -313,9 +292,7 @@ export class ApprovalPolicy {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.29",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                "X-Fern-SDK-Version": "v0.3.30",
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -412,17 +389,6 @@ export class ApprovalPolicy {
      * @throws {@link Mercoa.Forbidden}
      * @throws {@link Mercoa.NotFound}
      * @throws {@link Mercoa.Unimplemented}
-     *
-     * @example
-     *     await mercoa.entity.approvalPolicy.update("string", "string", {
-     *         trigger: [{
-     *                 type: "amount"
-     *             }],
-     *         rule: {
-     *             type: "approver"
-     *         },
-     *         upstreamPolicyId: "string"
-     *     })
      */
     public async update(
         entityId: Mercoa.EntityId,
@@ -442,9 +408,7 @@ export class ApprovalPolicy {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.29",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                "X-Fern-SDK-Version": "v0.3.30",
             },
             contentType: "application/json",
             body: await serializers.ApprovalPolicyUpdateRequest.jsonOrThrow(request, {
@@ -560,9 +524,6 @@ export class ApprovalPolicy {
      * @throws {@link Mercoa.Forbidden}
      * @throws {@link Mercoa.NotFound}
      * @throws {@link Mercoa.Unimplemented}
-     *
-     * @example
-     *     await mercoa.entity.approvalPolicy.delete("string", "string")
      */
     public async delete(
         entityId: Mercoa.EntityId,
@@ -581,9 +542,7 @@ export class ApprovalPolicy {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.29",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                "X-Fern-SDK-Version": "v0.3.30",
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -665,7 +624,7 @@ export class ApprovalPolicy {
         }
     }
 
-    protected async _getAuthorizationHeader(): Promise<string> {
+    protected async _getAuthorizationHeader() {
         return `Bearer ${await core.Supplier.get(this._options.token)}`;
     }
 }
