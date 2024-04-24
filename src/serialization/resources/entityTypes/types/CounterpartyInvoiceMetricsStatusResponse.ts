@@ -11,14 +11,14 @@ export const CounterpartyInvoiceMetricsStatusResponse: core.serialization.Object
     Mercoa.CounterpartyInvoiceMetricsStatusResponse
 > = core.serialization.object({
     status: core.serialization.lazy(async () => (await import("../../..")).InvoiceStatus),
-    totalInvoices: core.serialization.number(),
+    totalCount: core.serialization.number(),
     totalAmount: core.serialization.number(),
 });
 
 export declare namespace CounterpartyInvoiceMetricsStatusResponse {
     interface Raw {
         status: serializers.InvoiceStatus.Raw;
-        totalInvoices: number;
+        totalCount: number;
         totalAmount: number;
     }
 }

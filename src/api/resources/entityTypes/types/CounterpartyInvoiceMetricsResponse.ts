@@ -5,7 +5,7 @@
 import * as Mercoa from "../../..";
 
 export interface CounterpartyInvoiceMetricsResponse {
-    totalInvoices: number;
+    totalCount: number;
     totalAmount: number;
     statuses: Mercoa.CounterpartyInvoiceMetricsStatusResponse[];
 }
