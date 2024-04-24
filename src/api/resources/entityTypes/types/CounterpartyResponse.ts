@@ -7,4 +7,5 @@ import * as Mercoa from "../../..";
 export interface CounterpartyResponse extends Mercoa.EntityResponse {
     paymentMethods: Mercoa.PaymentMethodResponse[];
     counterpartyType: Mercoa.CounterpartyNetworkType[];
+    invoiceMetrics?: Mercoa.CounterpartyInvoiceMetricsResponse;
 }

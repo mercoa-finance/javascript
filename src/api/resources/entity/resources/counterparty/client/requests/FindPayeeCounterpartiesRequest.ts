@@ -18,6 +18,10 @@ export interface FindPayeeCounterpartiesRequest {
      */
     paymentMethods?: boolean;
     /**
+     * If true, will include counterparty invoice metrics as part of the response
+     */
+    invoiceMetrics?: boolean;
+    /**
      * Filter by counterparty ids
      */
     counterpartyId?: Mercoa.EntityId | Mercoa.EntityId[];

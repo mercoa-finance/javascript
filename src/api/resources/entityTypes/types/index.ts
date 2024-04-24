@@ -34,6 +34,8 @@ export * from "./IdentifierList";
 export * from "./ApproverRule";
 export * from "./FindCounterpartiesResponse";
 export * from "./CounterpartyResponse";
+export * from "./CounterpartyInvoiceMetricsResponse";
+export * from "./CounterpartyInvoiceMetricsStatusResponse";
 export * from "./RepresentativeRequest";
 export * from "./RepresentativeResponse";
 export * from "./Responsibilities";

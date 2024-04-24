@@ -38,7 +38,7 @@ export class Counterparty {
         request: Mercoa.entity.FindPayeeCounterpartiesRequest = {},
         requestOptions?: Counterparty.RequestOptions
     ): Promise<Mercoa.FindCounterpartiesResponse> {
-        const { name, networkType, paymentMethods, counterpartyId, limit, startingAfter } = request;
+        const { name, networkType, paymentMethods, invoiceMetrics, counterpartyId, limit, startingAfter } = request;
         const _queryParams: Record<string, string | string[]> = {};
         if (name != null) {
             _queryParams["name"] = name;
@@ -54,6 +54,10 @@ export class Counterparty {
 
         if (paymentMethods != null) {
             _queryParams["paymentMethods"] = paymentMethods.toString();
+        }
+
+        if (invoiceMetrics != null) {
+            _queryParams["invoiceMetrics"] = invoiceMetrics.toString();
         }
 
         if (counterpartyId != null) {
@@ -82,7 +86,7 @@ export class Counterparty {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.30",
+                "X-Fern-SDK-Version": "v0.3.31",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -184,7 +188,7 @@ export class Counterparty {
         request: Mercoa.entity.FindPayorCounterpartiesRequest = {},
         requestOptions?: Counterparty.RequestOptions
     ): Promise<Mercoa.FindCounterpartiesResponse> {
-        const { name, networkType, paymentMethods, counterpartyId, limit, startingAfter } = request;
+        const { name, networkType, paymentMethods, invoiceMetrics, counterpartyId, limit, startingAfter } = request;
         const _queryParams: Record<string, string | string[]> = {};
         if (name != null) {
             _queryParams["name"] = name;
@@ -200,6 +204,10 @@ export class Counterparty {
 
         if (paymentMethods != null) {
             _queryParams["paymentMethods"] = paymentMethods.toString();
+        }
+
+        if (invoiceMetrics != null) {
+            _queryParams["invoiceMetrics"] = invoiceMetrics.toString();
         }
 
         if (counterpartyId != null) {
@@ -228,7 +236,7 @@ export class Counterparty {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.30",
+                "X-Fern-SDK-Version": "v0.3.31",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -340,7 +348,7 @@ export class Counterparty {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.30",
+                "X-Fern-SDK-Version": "v0.3.31",
             },
             contentType: "application/json",
             body: await serializers.EntityAddPayeesRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
@@ -447,7 +455,7 @@ export class Counterparty {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.30",
+                "X-Fern-SDK-Version": "v0.3.31",
             },
             contentType: "application/json",
             body: await serializers.EntityHidePayeesRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
@@ -554,7 +562,7 @@ export class Counterparty {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.30",
+                "X-Fern-SDK-Version": "v0.3.31",
             },
             contentType: "application/json",
             body: await serializers.EntityAddPayorsRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
@@ -661,7 +669,7 @@ export class Counterparty {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.30",
+                "X-Fern-SDK-Version": "v0.3.31",
             },
             contentType: "application/json",
             body: await serializers.EntityHidePayorsRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
