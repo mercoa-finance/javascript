@@ -41,6 +41,7 @@ export class Organization {
         const {
             paymentMethods,
             emailProvider,
+            externalAccountingSystemProvider,
             colorScheme,
             payeeOnboardingOptions,
             payorOnboardingOptions,
@@ -53,6 +54,10 @@ export class Organization {
 
         if (emailProvider != null) {
             _queryParams["emailProvider"] = emailProvider.toString();
+        }
+
+        if (externalAccountingSystemProvider != null) {
+            _queryParams["externalAccountingSystemProvider"] = externalAccountingSystemProvider.toString();
         }
 
         if (colorScheme != null) {
@@ -81,7 +86,7 @@ export class Organization {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.32",
+                "X-Fern-SDK-Version": "v0.3.33",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -192,7 +197,7 @@ export class Organization {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.32",
+                "X-Fern-SDK-Version": "v0.3.33",
             },
             contentType: "application/json",
             body: await serializers.OrganizationRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
@@ -321,7 +326,7 @@ export class Organization {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.32",
+                "X-Fern-SDK-Version": "v0.3.33",
             },
             contentType: "application/json",
             queryParameters: _queryParams,

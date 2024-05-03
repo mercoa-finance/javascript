@@ -7,6 +7,8 @@ export * from "./PaymentRailRequest";
 export * from "./PaymentRailResponse";
 export * from "./PaymentMethodsRequest";
 export * from "./PaymentMethodsResponse";
+export * from "./ExternalAccountingSystemProviderResponse";
+export * from "./CodatProviderResponse";
 export * from "./ExternalAccountingSystemProviderRequest";
 export * from "./CodatProviderRequest";
 export * from "./EmailProviderRequest";

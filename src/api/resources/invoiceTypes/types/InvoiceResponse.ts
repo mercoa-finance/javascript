@@ -36,6 +36,8 @@ export interface InvoiceResponse {
     paymentDestinationConfirmed: boolean;
     /** True if the invoice has documents attached. */
     hasDocuments: boolean;
+    /** True if the invoice was created by an incoming email. */
+    hasSourceEmail: boolean;
     comments?: Mercoa.CommentResponse[];
     lineItems?: Mercoa.InvoiceLineItemResponse[];
     approvers: Mercoa.ApprovalSlot[];

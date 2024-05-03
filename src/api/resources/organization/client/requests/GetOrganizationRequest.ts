@@ -12,6 +12,10 @@ export interface GetOrganizationRequest {
      */
     emailProvider?: boolean;
     /**
+     * include external accounting system provider info in response
+     */
+    externalAccountingSystemProvider?: boolean;
+    /**
      * include color scheme info in response
      */
     colorScheme?: boolean;

@@ -13,6 +13,7 @@ export interface OrganizationResponse {
     supportEmail?: string;
     paymentMethods?: Mercoa.PaymentMethodsResponse;
     emailProvider?: Mercoa.EmailProviderResponse;
+    externalAccountingSystemProvider?: Mercoa.ExternalAccountingSystemProviderResponse;
     colorScheme?: Mercoa.ColorSchemeResponse;
     payeeOnboardingOptions?: Mercoa.OnboardingOptionsResponse;
     payorOnboardingOptions?: Mercoa.OnboardingOptionsResponse;

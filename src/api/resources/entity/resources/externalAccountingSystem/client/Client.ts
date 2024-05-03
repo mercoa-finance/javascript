@@ -25,7 +25,7 @@ export class ExternalAccountingSystem {
     constructor(protected readonly _options: ExternalAccountingSystem.Options) {}
 
     /**
-     * Create a company/entity in the external accounting system
+     * Create/Link an entity to an external accounting system like Codat or Rutter
      * @throws {@link Mercoa.AuthHeaderMissingError}
      * @throws {@link Mercoa.AuthHeaderMalformedError}
      * @throws {@link Mercoa.Unauthorized}
@@ -48,7 +48,7 @@ export class ExternalAccountingSystem {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.32",
+                "X-Fern-SDK-Version": "v0.3.33",
             },
             contentType: "application/json",
             body: await serializers.entity.ExternalAccountingSystemCompanyCreationRequest.jsonOrThrow(request, {
@@ -139,7 +139,7 @@ export class ExternalAccountingSystem {
     }
 
     /**
-     * Get a link to connect an entity to an external accounting system
+     * Get a link to connect an entity to an external accounting system like Quickbooks or Xero
      * @throws {@link Mercoa.AuthHeaderMissingError}
      * @throws {@link Mercoa.AuthHeaderMalformedError}
      * @throws {@link Mercoa.Unauthorized}
@@ -161,7 +161,7 @@ export class ExternalAccountingSystem {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.32",
+                "X-Fern-SDK-Version": "v0.3.33",
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -271,7 +271,7 @@ export class ExternalAccountingSystem {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.32",
+                "X-Fern-SDK-Version": "v0.3.33",
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
