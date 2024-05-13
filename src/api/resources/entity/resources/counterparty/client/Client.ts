@@ -4,10 +4,10 @@
 
 import * as environments from "../../../../../../environments";
 import * as core from "../../../../../../core";
-import * as Mercoa from "../../../../..";
-import * as serializers from "../../../../../../serialization";
+import * as Mercoa from "../../../../../index";
+import * as serializers from "../../../../../../serialization/index";
 import urlJoin from "url-join";
-import * as errors from "../../../../../../errors";
+import * as errors from "../../../../../../errors/index";
 
 export declare namespace Counterparty {
     interface Options {
@@ -26,12 +26,28 @@ export class Counterparty {
 
     /**
      * Find payee counterparties. This endpoint lets you find vendors linked to the entity.
+     *
+     * @param {Mercoa.EntityId} entityId
+     * @param {Mercoa.entity.FindPayeeCounterpartiesRequest} request
+     * @param {Counterparty.RequestOptions} requestOptions - Request-specific configuration.
+     *
      * @throws {@link Mercoa.AuthHeaderMissingError}
      * @throws {@link Mercoa.AuthHeaderMalformedError}
      * @throws {@link Mercoa.Unauthorized}
      * @throws {@link Mercoa.Forbidden}
      * @throws {@link Mercoa.NotFound}
      * @throws {@link Mercoa.Unimplemented}
+     *
+     * @example
+     *     await mercoa.entity.counterparty.findPayees("string", {
+     *         name: "string",
+     *         networkType: Mercoa.CounterpartyNetworkType.Entity,
+     *         paymentMethods: true,
+     *         invoiceMetrics: true,
+     *         counterpartyId: "string",
+     *         limit: 1,
+     *         startingAfter: "string"
+     *     })
      */
     public async findPayees(
         entityId: Mercoa.EntityId,
@@ -39,7 +55,7 @@ export class Counterparty {
         requestOptions?: Counterparty.RequestOptions
     ): Promise<Mercoa.FindCounterpartiesResponse> {
         const { name, networkType, paymentMethods, invoiceMetrics, counterpartyId, limit, startingAfter } = request;
-        const _queryParams: Record<string, string | string[]> = {};
+        const _queryParams: Record<string, string | string[] | object | object[]> = {};
         if (name != null) {
             _queryParams["name"] = name;
         }
@@ -79,14 +95,16 @@ export class Counterparty {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
-                `/entity/${await serializers.EntityId.jsonOrThrow(entityId)}/counterparties/payees`
+                `/entity/${encodeURIComponent(await serializers.EntityId.jsonOrThrow(entityId))}/counterparties/payees`
             ),
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.33",
+                "X-Fern-SDK-Version": "v0.3.34",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -176,12 +194,28 @@ export class Counterparty {
 
     /**
      * Find payor counterparties. This endpoint lets you find customers linked to the entity.
+     *
+     * @param {Mercoa.EntityId} entityId
+     * @param {Mercoa.entity.FindPayorCounterpartiesRequest} request
+     * @param {Counterparty.RequestOptions} requestOptions - Request-specific configuration.
+     *
      * @throws {@link Mercoa.AuthHeaderMissingError}
      * @throws {@link Mercoa.AuthHeaderMalformedError}
      * @throws {@link Mercoa.Unauthorized}
      * @throws {@link Mercoa.Forbidden}
      * @throws {@link Mercoa.NotFound}
      * @throws {@link Mercoa.Unimplemented}
+     *
+     * @example
+     *     await mercoa.entity.counterparty.findPayors("string", {
+     *         name: "string",
+     *         networkType: Mercoa.CounterpartyNetworkType.Entity,
+     *         paymentMethods: true,
+     *         invoiceMetrics: true,
+     *         counterpartyId: "string",
+     *         limit: 1,
+     *         startingAfter: "string"
+     *     })
      */
     public async findPayors(
         entityId: Mercoa.EntityId,
@@ -189,7 +223,7 @@ export class Counterparty {
         requestOptions?: Counterparty.RequestOptions
     ): Promise<Mercoa.FindCounterpartiesResponse> {
         const { name, networkType, paymentMethods, invoiceMetrics, counterpartyId, limit, startingAfter } = request;
-        const _queryParams: Record<string, string | string[]> = {};
+        const _queryParams: Record<string, string | string[] | object | object[]> = {};
         if (name != null) {
             _queryParams["name"] = name;
         }
@@ -229,14 +263,16 @@ export class Counterparty {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
-                `/entity/${await serializers.EntityId.jsonOrThrow(entityId)}/counterparties/payors`
+                `/entity/${encodeURIComponent(await serializers.EntityId.jsonOrThrow(entityId))}/counterparties/payors`
             ),
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.33",
+                "X-Fern-SDK-Version": "v0.3.34",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -326,12 +362,22 @@ export class Counterparty {
 
     /**
      * Create association between Entity and a given list of Payees. If a Payee has previously been archived, unarchive the Payee.
+     *
+     * @param {Mercoa.EntityId} entityId
+     * @param {Mercoa.EntityAddPayeesRequest} request
+     * @param {Counterparty.RequestOptions} requestOptions - Request-specific configuration.
+     *
      * @throws {@link Mercoa.AuthHeaderMissingError}
      * @throws {@link Mercoa.AuthHeaderMalformedError}
      * @throws {@link Mercoa.Unauthorized}
      * @throws {@link Mercoa.Forbidden}
      * @throws {@link Mercoa.NotFound}
      * @throws {@link Mercoa.Unimplemented}
+     *
+     * @example
+     *     await mercoa.entity.counterparty.addPayees("string", {
+     *         payees: ["string"]
+     *     })
      */
     public async addPayees(
         entityId: Mercoa.EntityId,
@@ -341,14 +387,16 @@ export class Counterparty {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
-                `/entity/${await serializers.EntityId.jsonOrThrow(entityId)}/addPayees`
+                `/entity/${encodeURIComponent(await serializers.EntityId.jsonOrThrow(entityId))}/addPayees`
             ),
             method: "POST",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.33",
+                "X-Fern-SDK-Version": "v0.3.34",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
             body: await serializers.EntityAddPayeesRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
@@ -433,12 +481,22 @@ export class Counterparty {
 
     /**
      * Marks Payees as unsearchable by Entity via Counterparty search. Invoices associated with these Payees will still be searchable via Invoice search.
+     *
+     * @param {Mercoa.EntityId} entityId
+     * @param {Mercoa.EntityHidePayeesRequest} request
+     * @param {Counterparty.RequestOptions} requestOptions - Request-specific configuration.
+     *
      * @throws {@link Mercoa.AuthHeaderMissingError}
      * @throws {@link Mercoa.AuthHeaderMalformedError}
      * @throws {@link Mercoa.Unauthorized}
      * @throws {@link Mercoa.Forbidden}
      * @throws {@link Mercoa.NotFound}
      * @throws {@link Mercoa.Unimplemented}
+     *
+     * @example
+     *     await mercoa.entity.counterparty.hidePayees("string", {
+     *         payees: ["string"]
+     *     })
      */
     public async hidePayees(
         entityId: Mercoa.EntityId,
@@ -448,14 +506,16 @@ export class Counterparty {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
-                `/entity/${await serializers.EntityId.jsonOrThrow(entityId)}/hidePayees`
+                `/entity/${encodeURIComponent(await serializers.EntityId.jsonOrThrow(entityId))}/hidePayees`
             ),
             method: "POST",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.33",
+                "X-Fern-SDK-Version": "v0.3.34",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
             body: await serializers.EntityHidePayeesRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
@@ -540,12 +600,22 @@ export class Counterparty {
 
     /**
      * Create association between Entity and a given list of Payors. If a Payor has previously been archived, unarchive the Payor.
+     *
+     * @param {Mercoa.EntityId} entityId
+     * @param {Mercoa.EntityAddPayorsRequest} request
+     * @param {Counterparty.RequestOptions} requestOptions - Request-specific configuration.
+     *
      * @throws {@link Mercoa.AuthHeaderMissingError}
      * @throws {@link Mercoa.AuthHeaderMalformedError}
      * @throws {@link Mercoa.Unauthorized}
      * @throws {@link Mercoa.Forbidden}
      * @throws {@link Mercoa.NotFound}
      * @throws {@link Mercoa.Unimplemented}
+     *
+     * @example
+     *     await mercoa.entity.counterparty.addPayors("string", {
+     *         payors: ["string"]
+     *     })
      */
     public async addPayors(
         entityId: Mercoa.EntityId,
@@ -555,14 +625,16 @@ export class Counterparty {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
-                `/entity/${await serializers.EntityId.jsonOrThrow(entityId)}/addPayors`
+                `/entity/${encodeURIComponent(await serializers.EntityId.jsonOrThrow(entityId))}/addPayors`
             ),
             method: "POST",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.33",
+                "X-Fern-SDK-Version": "v0.3.34",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
             body: await serializers.EntityAddPayorsRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
@@ -647,12 +719,22 @@ export class Counterparty {
 
     /**
      * Marks Payors as unsearchable by Entity via Counterparty search. Invoices associated with these Payors will still be searchable via Invoice search.
+     *
+     * @param {Mercoa.EntityId} entityId
+     * @param {Mercoa.EntityHidePayorsRequest} request
+     * @param {Counterparty.RequestOptions} requestOptions - Request-specific configuration.
+     *
      * @throws {@link Mercoa.AuthHeaderMissingError}
      * @throws {@link Mercoa.AuthHeaderMalformedError}
      * @throws {@link Mercoa.Unauthorized}
      * @throws {@link Mercoa.Forbidden}
      * @throws {@link Mercoa.NotFound}
      * @throws {@link Mercoa.Unimplemented}
+     *
+     * @example
+     *     await mercoa.entity.counterparty.hidePayors("string", {
+     *         payors: ["string"]
+     *     })
      */
     public async hidePayors(
         entityId: Mercoa.EntityId,
@@ -662,14 +744,16 @@ export class Counterparty {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
-                `/entity/${await serializers.EntityId.jsonOrThrow(entityId)}/hidePayors`
+                `/entity/${encodeURIComponent(await serializers.EntityId.jsonOrThrow(entityId))}/hidePayors`
             ),
             method: "POST",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.33",
+                "X-Fern-SDK-Version": "v0.3.34",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
             body: await serializers.EntityHidePayorsRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
@@ -752,7 +836,7 @@ export class Counterparty {
         }
     }
 
-    protected async _getAuthorizationHeader() {
+    protected async _getAuthorizationHeader(): Promise<string> {
         return `Bearer ${await core.Supplier.get(this._options.token)}`;
     }
 }

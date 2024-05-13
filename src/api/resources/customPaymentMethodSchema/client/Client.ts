@@ -4,10 +4,10 @@
 
 import * as environments from "../../../../environments";
 import * as core from "../../../../core";
-import * as Mercoa from "../../..";
+import * as Mercoa from "../../../index";
 import urlJoin from "url-join";
-import * as serializers from "../../../../serialization";
-import * as errors from "../../../../errors";
+import * as serializers from "../../../../serialization/index";
+import * as errors from "../../../../errors/index";
 
 export declare namespace CustomPaymentMethodSchema {
     interface Options {
@@ -26,12 +26,18 @@ export class CustomPaymentMethodSchema {
 
     /**
      * Get all custom payment method schemas
+     *
+     * @param {CustomPaymentMethodSchema.RequestOptions} requestOptions - Request-specific configuration.
+     *
      * @throws {@link Mercoa.AuthHeaderMissingError}
      * @throws {@link Mercoa.AuthHeaderMalformedError}
      * @throws {@link Mercoa.Unauthorized}
      * @throws {@link Mercoa.Forbidden}
      * @throws {@link Mercoa.NotFound}
      * @throws {@link Mercoa.Unimplemented}
+     *
+     * @example
+     *     await mercoa.customPaymentMethodSchema.getAll()
      */
     public async getAll(
         requestOptions?: CustomPaymentMethodSchema.RequestOptions
@@ -46,7 +52,9 @@ export class CustomPaymentMethodSchema {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.33",
+                "X-Fern-SDK-Version": "v0.3.34",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -135,12 +143,25 @@ export class CustomPaymentMethodSchema {
 
     /**
      * Create custom payment method schema
+     *
+     * @param {Mercoa.CustomPaymentMethodSchemaRequest} request
+     * @param {CustomPaymentMethodSchema.RequestOptions} requestOptions - Request-specific configuration.
+     *
      * @throws {@link Mercoa.AuthHeaderMissingError}
      * @throws {@link Mercoa.AuthHeaderMalformedError}
      * @throws {@link Mercoa.Unauthorized}
      * @throws {@link Mercoa.Forbidden}
      * @throws {@link Mercoa.NotFound}
      * @throws {@link Mercoa.Unimplemented}
+     *
+     * @example
+     *     await mercoa.customPaymentMethodSchema.create({
+     *         name: "string",
+     *         isSource: true,
+     *         isDestination: true,
+     *         supportedCurrencies: [Mercoa.CurrencyCode.Aed],
+     *         fields: [{}]
+     *     })
      */
     public async create(
         request: Mercoa.CustomPaymentMethodSchemaRequest,
@@ -156,7 +177,9 @@ export class CustomPaymentMethodSchema {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.33",
+                "X-Fern-SDK-Version": "v0.3.34",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
             body: await serializers.CustomPaymentMethodSchemaRequest.jsonOrThrow(request, {
@@ -248,12 +271,26 @@ export class CustomPaymentMethodSchema {
 
     /**
      * Update custom payment method schema
+     *
+     * @param {Mercoa.CustomPaymentMethodSchemaId} schemaId
+     * @param {Mercoa.CustomPaymentMethodSchemaRequest} request
+     * @param {CustomPaymentMethodSchema.RequestOptions} requestOptions - Request-specific configuration.
+     *
      * @throws {@link Mercoa.AuthHeaderMissingError}
      * @throws {@link Mercoa.AuthHeaderMalformedError}
      * @throws {@link Mercoa.Unauthorized}
      * @throws {@link Mercoa.Forbidden}
      * @throws {@link Mercoa.NotFound}
      * @throws {@link Mercoa.Unimplemented}
+     *
+     * @example
+     *     await mercoa.customPaymentMethodSchema.update("string", {
+     *         name: "string",
+     *         isSource: true,
+     *         isDestination: true,
+     *         supportedCurrencies: [Mercoa.CurrencyCode.Aed],
+     *         fields: [{}]
+     *     })
      */
     public async update(
         schemaId: Mercoa.CustomPaymentMethodSchemaId,
@@ -263,14 +300,18 @@ export class CustomPaymentMethodSchema {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
-                `/paymentMethod/schema/${await serializers.CustomPaymentMethodSchemaId.jsonOrThrow(schemaId)}`
+                `/paymentMethod/schema/${encodeURIComponent(
+                    await serializers.CustomPaymentMethodSchemaId.jsonOrThrow(schemaId)
+                )}`
             ),
             method: "POST",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.33",
+                "X-Fern-SDK-Version": "v0.3.34",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
             body: await serializers.CustomPaymentMethodSchemaRequest.jsonOrThrow(request, {
@@ -362,12 +403,19 @@ export class CustomPaymentMethodSchema {
 
     /**
      * Get custom payment method schema
+     *
+     * @param {Mercoa.CustomPaymentMethodSchemaId} schemaId
+     * @param {CustomPaymentMethodSchema.RequestOptions} requestOptions - Request-specific configuration.
+     *
      * @throws {@link Mercoa.AuthHeaderMissingError}
      * @throws {@link Mercoa.AuthHeaderMalformedError}
      * @throws {@link Mercoa.Unauthorized}
      * @throws {@link Mercoa.Forbidden}
      * @throws {@link Mercoa.NotFound}
      * @throws {@link Mercoa.Unimplemented}
+     *
+     * @example
+     *     await mercoa.customPaymentMethodSchema.get("string")
      */
     public async get(
         schemaId: Mercoa.CustomPaymentMethodSchemaId,
@@ -376,14 +424,18 @@ export class CustomPaymentMethodSchema {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
-                `/paymentMethod/schema/${await serializers.CustomPaymentMethodSchemaId.jsonOrThrow(schemaId)}`
+                `/paymentMethod/schema/${encodeURIComponent(
+                    await serializers.CustomPaymentMethodSchemaId.jsonOrThrow(schemaId)
+                )}`
             ),
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.33",
+                "X-Fern-SDK-Version": "v0.3.34",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -472,12 +524,19 @@ export class CustomPaymentMethodSchema {
 
     /**
      * Delete custom payment method schema. Schema that have been used in an invoice cannot be deleted.
+     *
+     * @param {Mercoa.CustomPaymentMethodSchemaId} schemaId
+     * @param {CustomPaymentMethodSchema.RequestOptions} requestOptions - Request-specific configuration.
+     *
      * @throws {@link Mercoa.AuthHeaderMissingError}
      * @throws {@link Mercoa.AuthHeaderMalformedError}
      * @throws {@link Mercoa.Unauthorized}
      * @throws {@link Mercoa.Forbidden}
      * @throws {@link Mercoa.NotFound}
      * @throws {@link Mercoa.Unimplemented}
+     *
+     * @example
+     *     await mercoa.customPaymentMethodSchema.delete("string")
      */
     public async delete(
         schemaId: Mercoa.CustomPaymentMethodSchemaId,
@@ -486,14 +545,18 @@ export class CustomPaymentMethodSchema {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
-                `/paymentMethod/schema/${await serializers.CustomPaymentMethodSchemaId.jsonOrThrow(schemaId)}`
+                `/paymentMethod/schema/${encodeURIComponent(
+                    await serializers.CustomPaymentMethodSchemaId.jsonOrThrow(schemaId)
+                )}`
             ),
             method: "DELETE",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.33",
+                "X-Fern-SDK-Version": "v0.3.34",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -575,7 +638,7 @@ export class CustomPaymentMethodSchema {
         }
     }
 
-    protected async _getAuthorizationHeader() {
+    protected async _getAuthorizationHeader(): Promise<string> {
         return `Bearer ${await core.Supplier.get(this._options.token)}`;
     }
 }

@@ -1,1 +1,1 @@
-export { EntityGetNotificationsRequest } from "./EntityGetNotificationsRequest";
+export { type EntityGetNotificationsRequest } from "./EntityGetNotificationsRequest";

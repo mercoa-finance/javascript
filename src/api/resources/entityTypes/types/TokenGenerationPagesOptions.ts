@@ -8,4 +8,5 @@ export interface TokenGenerationPagesOptions {
     notifications?: boolean;
     counterparties?: boolean;
     approvals?: boolean;
+    emailLog?: boolean;
 }

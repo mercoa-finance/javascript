@@ -1,2 +1,2 @@
-export { GetAllPaymentMethodsRequest } from "./GetAllPaymentMethodsRequest";
-export { CompleteMicroDepositsRequest } from "./CompleteMicroDepositsRequest";
+export { type GetAllPaymentMethodsRequest } from "./GetAllPaymentMethodsRequest";
+export { type CompleteMicroDepositsRequest } from "./CompleteMicroDepositsRequest";

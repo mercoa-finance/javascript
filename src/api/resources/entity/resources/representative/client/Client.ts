@@ -4,10 +4,10 @@
 
 import * as environments from "../../../../../../environments";
 import * as core from "../../../../../../core";
-import * as Mercoa from "../../../../..";
-import * as serializers from "../../../../../../serialization";
+import * as Mercoa from "../../../../../index";
+import * as serializers from "../../../../../../serialization/index";
 import urlJoin from "url-join";
-import * as errors from "../../../../../../errors";
+import * as errors from "../../../../../../errors/index";
 
 export declare namespace Representative {
     interface Options {
@@ -26,12 +26,19 @@ export class Representative {
 
     /**
      * Get representatives for an entity
+     *
+     * @param {Mercoa.EntityId} entityId
+     * @param {Representative.RequestOptions} requestOptions - Request-specific configuration.
+     *
      * @throws {@link Mercoa.AuthHeaderMissingError}
      * @throws {@link Mercoa.AuthHeaderMalformedError}
      * @throws {@link Mercoa.Unauthorized}
      * @throws {@link Mercoa.Forbidden}
      * @throws {@link Mercoa.NotFound}
      * @throws {@link Mercoa.Unimplemented}
+     *
+     * @example
+     *     await mercoa.entity.representative.getAll("ent_8545a84e-a45f-41bf-bdf1-33b42a55812c")
      */
     public async getAll(
         entityId: Mercoa.EntityId,
@@ -40,14 +47,16 @@ export class Representative {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
-                `/entity/${await serializers.EntityId.jsonOrThrow(entityId)}/representatives`
+                `/entity/${encodeURIComponent(await serializers.EntityId.jsonOrThrow(entityId))}/representatives`
             ),
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.33",
+                "X-Fern-SDK-Version": "v0.3.34",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -135,6 +144,10 @@ export class Representative {
     }
 
     /**
+     * @param {Mercoa.EntityId} entityId
+     * @param {Mercoa.RepresentativeRequest} request
+     * @param {Representative.RequestOptions} requestOptions - Request-specific configuration.
+     *
      * @throws {@link Mercoa.InvalidTaxId}
      * @throws {@link Mercoa.EntityError}
      * @throws {@link Mercoa.InvalidPostalCode}
@@ -145,6 +158,42 @@ export class Representative {
      * @throws {@link Mercoa.Forbidden}
      * @throws {@link Mercoa.NotFound}
      * @throws {@link Mercoa.Unimplemented}
+     *
+     * @example
+     *     await mercoa.entity.representative.create("ent_8545a84e-a45f-41bf-bdf1-33b42a55812c", {
+     *         name: {
+     *             firstName: "John",
+     *             middleName: "Quincy",
+     *             lastName: "Adams",
+     *             suffix: "Jr."
+     *         },
+     *         phone: {
+     *             countryCode: "1",
+     *             number: "4155551234"
+     *         },
+     *         email: "john.doe@acme.com",
+     *         address: {
+     *             addressLine1: "123 Main St",
+     *             addressLine2: "Unit 1",
+     *             city: "San Francisco",
+     *             stateOrProvince: "CA",
+     *             postalCode: "94105",
+     *             country: "US"
+     *         },
+     *         birthDate: {
+     *             day: "1",
+     *             month: "1",
+     *             year: "1980"
+     *         },
+     *         governmentId: {
+     *             ssn: "123-45-6789"
+     *         },
+     *         responsibilities: {
+     *             isOwner: true,
+     *             ownershipPercentage: 40,
+     *             isController: true
+     *         }
+     *     })
      */
     public async create(
         entityId: Mercoa.EntityId,
@@ -154,14 +203,16 @@ export class Representative {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
-                `/entity/${await serializers.EntityId.jsonOrThrow(entityId)}/representative`
+                `/entity/${encodeURIComponent(await serializers.EntityId.jsonOrThrow(entityId))}/representative`
             ),
             method: "POST",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.33",
+                "X-Fern-SDK-Version": "v0.3.34",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
             body: await serializers.RepresentativeRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
@@ -286,12 +337,19 @@ export class Representative {
     }
 
     /**
+     * @param {Mercoa.EntityId} entityId
+     * @param {Mercoa.RepresentativeId} representativeId
+     * @param {Representative.RequestOptions} requestOptions - Request-specific configuration.
+     *
      * @throws {@link Mercoa.AuthHeaderMissingError}
      * @throws {@link Mercoa.AuthHeaderMalformedError}
      * @throws {@link Mercoa.Unauthorized}
      * @throws {@link Mercoa.Forbidden}
      * @throws {@link Mercoa.NotFound}
      * @throws {@link Mercoa.Unimplemented}
+     *
+     * @example
+     *     await mercoa.entity.representative.get("ent_8545a84e-a45f-41bf-bdf1-33b42a55812c", "rep_7df2974a-4069-454c-912f-7e58ebe030fb")
      */
     public async get(
         entityId: Mercoa.EntityId,
@@ -301,16 +359,20 @@ export class Representative {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
-                `/entity/${await serializers.EntityId.jsonOrThrow(
-                    entityId
-                )}/representative/${await serializers.RepresentativeId.jsonOrThrow(representativeId)}`
+                `/entity/${encodeURIComponent(
+                    await serializers.EntityId.jsonOrThrow(entityId)
+                )}/representative/${encodeURIComponent(
+                    await serializers.RepresentativeId.jsonOrThrow(representativeId)
+                )}`
             ),
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.33",
+                "X-Fern-SDK-Version": "v0.3.34",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -398,12 +460,19 @@ export class Representative {
     }
 
     /**
+     * @param {Mercoa.EntityId} entityId
+     * @param {Mercoa.RepresentativeId} representativeId
+     * @param {Representative.RequestOptions} requestOptions - Request-specific configuration.
+     *
      * @throws {@link Mercoa.AuthHeaderMissingError}
      * @throws {@link Mercoa.AuthHeaderMalformedError}
      * @throws {@link Mercoa.Unauthorized}
      * @throws {@link Mercoa.Forbidden}
      * @throws {@link Mercoa.NotFound}
      * @throws {@link Mercoa.Unimplemented}
+     *
+     * @example
+     *     await mercoa.entity.representative.delete("string", "string")
      */
     public async delete(
         entityId: Mercoa.EntityId,
@@ -413,16 +482,20 @@ export class Representative {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
-                `/entity/${await serializers.EntityId.jsonOrThrow(
-                    entityId
-                )}/representative/${await serializers.RepresentativeId.jsonOrThrow(representativeId)}`
+                `/entity/${encodeURIComponent(
+                    await serializers.EntityId.jsonOrThrow(entityId)
+                )}/representative/${encodeURIComponent(
+                    await serializers.RepresentativeId.jsonOrThrow(representativeId)
+                )}`
             ),
             method: "DELETE",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.33",
+                "X-Fern-SDK-Version": "v0.3.34",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -504,7 +577,7 @@ export class Representative {
         }
     }
 
-    protected async _getAuthorizationHeader() {
+    protected async _getAuthorizationHeader(): Promise<string> {
         return `Bearer ${await core.Supplier.get(this._options.token)}`;
     }
 }

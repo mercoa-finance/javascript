@@ -1,1 +1,1 @@
-export { BankLookupRequest } from "./BankLookupRequest";
+export { type BankLookupRequest } from "./BankLookupRequest";

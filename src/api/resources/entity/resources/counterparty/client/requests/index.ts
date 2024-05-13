@@ -1,2 +1,2 @@
-export { FindPayeeCounterpartiesRequest } from "./FindPayeeCounterpartiesRequest";
-export { FindPayorCounterpartiesRequest } from "./FindPayorCounterpartiesRequest";
+export { type FindPayeeCounterpartiesRequest } from "./FindPayeeCounterpartiesRequest";
+export { type FindPayorCounterpartiesRequest } from "./FindPayorCounterpartiesRequest";

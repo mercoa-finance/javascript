@@ -1,3 +1,3 @@
-export { EntityGetInvoicesRequest } from "./EntityGetInvoicesRequest";
-export { GetInvoice } from "./GetInvoice";
-export { InvoiceMetricsRequest } from "./InvoiceMetricsRequest";
+export { type EntityGetInvoicesRequest } from "./EntityGetInvoicesRequest";
+export { type GetInvoice } from "./GetInvoice";
+export { type InvoiceMetricsRequest } from "./InvoiceMetricsRequest";

@@ -4,10 +4,10 @@
 
 import * as environments from "../../../../../../environments";
 import * as core from "../../../../../../core";
-import * as Mercoa from "../../../../..";
-import * as serializers from "../../../../../../serialization";
+import * as Mercoa from "../../../../../index";
+import * as serializers from "../../../../../../serialization/index";
 import urlJoin from "url-join";
-import * as errors from "../../../../../../errors";
+import * as errors from "../../../../../../errors/index";
 
 export declare namespace PaymentMethod {
     interface Options {
@@ -25,6 +25,10 @@ export class PaymentMethod {
     constructor(protected readonly _options: PaymentMethod.Options) {}
 
     /**
+     * @param {Mercoa.EntityId} entityId
+     * @param {Mercoa.entity.GetAllPaymentMethodsRequest} request
+     * @param {PaymentMethod.RequestOptions} requestOptions - Request-specific configuration.
+     *
      * @throws {@link Mercoa.PaymentMethodError}
      * @throws {@link Mercoa.AuthHeaderMissingError}
      * @throws {@link Mercoa.AuthHeaderMalformedError}
@@ -32,6 +36,14 @@ export class PaymentMethod {
      * @throws {@link Mercoa.Forbidden}
      * @throws {@link Mercoa.NotFound}
      * @throws {@link Mercoa.Unimplemented}
+     *
+     * @example
+     *     await mercoa.entity.paymentMethod.getAll("ent_8545a84e-a45f-41bf-bdf1-33b42a55812c")
+     *
+     * @example
+     *     await mercoa.entity.paymentMethod.getAll("ent_8545a84e-a45f-41bf-bdf1-33b42a55812c", {
+     *         type: Mercoa.PaymentMethodType.BankAccount
+     *     })
      */
     public async getAll(
         entityId: Mercoa.EntityId,
@@ -39,7 +51,7 @@ export class PaymentMethod {
         requestOptions?: PaymentMethod.RequestOptions
     ): Promise<Mercoa.PaymentMethodResponse[]> {
         const { type: type_ } = request;
-        const _queryParams: Record<string, string | string[]> = {};
+        const _queryParams: Record<string, string | string[] | object | object[]> = {};
         if (type_ != null) {
             if (Array.isArray(type_)) {
                 _queryParams["type"] = type_.map((item) => item);
@@ -51,14 +63,16 @@ export class PaymentMethod {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
-                `/entity/${await serializers.EntityId.jsonOrThrow(entityId)}/paymentMethods`
+                `/entity/${encodeURIComponent(await serializers.EntityId.jsonOrThrow(entityId))}/paymentMethods`
             ),
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.33",
+                "X-Fern-SDK-Version": "v0.3.34",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -156,6 +170,10 @@ export class PaymentMethod {
     }
 
     /**
+     * @param {Mercoa.EntityId} entityId
+     * @param {Mercoa.PaymentMethodRequest} request
+     * @param {PaymentMethod.RequestOptions} requestOptions - Request-specific configuration.
+     *
      * @throws {@link Mercoa.PaymentMethodError}
      * @throws {@link Mercoa.AuthHeaderMissingError}
      * @throws {@link Mercoa.AuthHeaderMalformedError}
@@ -163,6 +181,15 @@ export class PaymentMethod {
      * @throws {@link Mercoa.Forbidden}
      * @throws {@link Mercoa.NotFound}
      * @throws {@link Mercoa.Unimplemented}
+     *
+     * @example
+     *     await mercoa.entity.paymentMethod.create("ent_8545a84e-a45f-41bf-bdf1-33b42a55812c", {
+     *         type: "bankAccount",
+     *         bankName: "Chase",
+     *         routingNumber: "12345678",
+     *         accountNumber: "99988767623",
+     *         accountType: Mercoa.BankType.Checking
+     *     })
      */
     public async create(
         entityId: Mercoa.EntityId,
@@ -172,14 +199,16 @@ export class PaymentMethod {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
-                `/entity/${await serializers.EntityId.jsonOrThrow(entityId)}/paymentMethod`
+                `/entity/${encodeURIComponent(await serializers.EntityId.jsonOrThrow(entityId))}/paymentMethod`
             ),
             method: "POST",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.33",
+                "X-Fern-SDK-Version": "v0.3.34",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
             body: await serializers.PaymentMethodRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
@@ -277,6 +306,10 @@ export class PaymentMethod {
     }
 
     /**
+     * @param {Mercoa.EntityId} entityId
+     * @param {Mercoa.PaymentMethodId} paymentMethodId
+     * @param {PaymentMethod.RequestOptions} requestOptions - Request-specific configuration.
+     *
      * @throws {@link Mercoa.PaymentMethodError}
      * @throws {@link Mercoa.AuthHeaderMissingError}
      * @throws {@link Mercoa.AuthHeaderMalformedError}
@@ -284,6 +317,9 @@ export class PaymentMethod {
      * @throws {@link Mercoa.Forbidden}
      * @throws {@link Mercoa.NotFound}
      * @throws {@link Mercoa.Unimplemented}
+     *
+     * @example
+     *     await mercoa.entity.paymentMethod.get("ent_8545a84e-a45f-41bf-bdf1-33b42a55812c", "pm_4794d597-70dc-4fec-b6ec-c5988e759769")
      */
     public async get(
         entityId: Mercoa.EntityId,
@@ -293,16 +329,18 @@ export class PaymentMethod {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
-                `/entity/${await serializers.EntityId.jsonOrThrow(
-                    entityId
-                )}/paymentMethod/${await serializers.PaymentMethodId.jsonOrThrow(paymentMethodId)}`
+                `/entity/${encodeURIComponent(
+                    await serializers.EntityId.jsonOrThrow(entityId)
+                )}/paymentMethod/${encodeURIComponent(await serializers.PaymentMethodId.jsonOrThrow(paymentMethodId))}`
             ),
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.33",
+                "X-Fern-SDK-Version": "v0.3.34",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -400,6 +438,12 @@ export class PaymentMethod {
 
     /**
      * Only custom payment methods can be updated.
+     *
+     * @param {Mercoa.EntityId} entityId
+     * @param {Mercoa.PaymentMethodId} paymentMethodId
+     * @param {Mercoa.PaymentMethodUpdateRequest} request
+     * @param {PaymentMethod.RequestOptions} requestOptions - Request-specific configuration.
+     *
      * @throws {@link Mercoa.PaymentMethodError}
      * @throws {@link Mercoa.AuthHeaderMissingError}
      * @throws {@link Mercoa.AuthHeaderMalformedError}
@@ -407,6 +451,13 @@ export class PaymentMethod {
      * @throws {@link Mercoa.Forbidden}
      * @throws {@link Mercoa.NotFound}
      * @throws {@link Mercoa.Unimplemented}
+     *
+     * @example
+     *     await mercoa.entity.paymentMethod.update("ent_8545a84e-a45f-41bf-bdf1-33b42a55812c", "pm_4794d597-70dc-4fec-b6ec-c5988e759769", {
+     *         type: "bankAccount",
+     *         defaultSource: true,
+     *         defaultDestination: true
+     *     })
      */
     public async update(
         entityId: Mercoa.EntityId,
@@ -417,16 +468,18 @@ export class PaymentMethod {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
-                `/entity/${await serializers.EntityId.jsonOrThrow(
-                    entityId
-                )}/paymentMethod/${await serializers.PaymentMethodId.jsonOrThrow(paymentMethodId)}`
+                `/entity/${encodeURIComponent(
+                    await serializers.EntityId.jsonOrThrow(entityId)
+                )}/paymentMethod/${encodeURIComponent(await serializers.PaymentMethodId.jsonOrThrow(paymentMethodId))}`
             ),
             method: "PUT",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.33",
+                "X-Fern-SDK-Version": "v0.3.34",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
             body: await serializers.PaymentMethodUpdateRequest.jsonOrThrow(request, {
@@ -527,6 +580,11 @@ export class PaymentMethod {
 
     /**
      * Mark a payment method as inactive. This will not remove the payment method from the system, but will prevent it from being used in the future.
+     *
+     * @param {Mercoa.EntityId} entityId
+     * @param {Mercoa.PaymentMethodId} paymentMethodId
+     * @param {PaymentMethod.RequestOptions} requestOptions - Request-specific configuration.
+     *
      * @throws {@link Mercoa.PaymentMethodError}
      * @throws {@link Mercoa.AuthHeaderMissingError}
      * @throws {@link Mercoa.AuthHeaderMalformedError}
@@ -534,6 +592,9 @@ export class PaymentMethod {
      * @throws {@link Mercoa.Forbidden}
      * @throws {@link Mercoa.NotFound}
      * @throws {@link Mercoa.Unimplemented}
+     *
+     * @example
+     *     await mercoa.entity.paymentMethod.delete("ent_8545a84e-a45f-41bf-bdf1-33b42a55812c", "pm_4794d597-70dc-4fec-b6ec-c5988e759769")
      */
     public async delete(
         entityId: Mercoa.EntityId,
@@ -543,16 +604,18 @@ export class PaymentMethod {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
-                `/entity/${await serializers.EntityId.jsonOrThrow(
-                    entityId
-                )}/paymentMethod/${await serializers.PaymentMethodId.jsonOrThrow(paymentMethodId)}`
+                `/entity/${encodeURIComponent(
+                    await serializers.EntityId.jsonOrThrow(entityId)
+                )}/paymentMethod/${encodeURIComponent(await serializers.PaymentMethodId.jsonOrThrow(paymentMethodId))}`
             ),
             method: "DELETE",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.33",
+                "X-Fern-SDK-Version": "v0.3.34",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -645,6 +708,11 @@ export class PaymentMethod {
 
     /**
      * Initiate micro deposits for a bank account
+     *
+     * @param {Mercoa.EntityId} entityId
+     * @param {Mercoa.PaymentMethodId} paymentMethodId
+     * @param {PaymentMethod.RequestOptions} requestOptions - Request-specific configuration.
+     *
      * @throws {@link Mercoa.PaymentMethodError}
      * @throws {@link Mercoa.AuthHeaderMissingError}
      * @throws {@link Mercoa.AuthHeaderMalformedError}
@@ -652,6 +720,9 @@ export class PaymentMethod {
      * @throws {@link Mercoa.Forbidden}
      * @throws {@link Mercoa.NotFound}
      * @throws {@link Mercoa.Unimplemented}
+     *
+     * @example
+     *     await mercoa.entity.paymentMethod.initiateMicroDeposits("ent_8545a84e-a45f-41bf-bdf1-33b42a55812c", "pm_4794d597-70dc-4fec-b6ec-c5988e759769")
      */
     public async initiateMicroDeposits(
         entityId: Mercoa.EntityId,
@@ -661,16 +732,20 @@ export class PaymentMethod {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
-                `/entity/${await serializers.EntityId.jsonOrThrow(
-                    entityId
-                )}/paymentMethod/${await serializers.PaymentMethodId.jsonOrThrow(paymentMethodId)}/micro-deposits`
+                `/entity/${encodeURIComponent(
+                    await serializers.EntityId.jsonOrThrow(entityId)
+                )}/paymentMethod/${encodeURIComponent(
+                    await serializers.PaymentMethodId.jsonOrThrow(paymentMethodId)
+                )}/micro-deposits`
             ),
             method: "POST",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.33",
+                "X-Fern-SDK-Version": "v0.3.34",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -768,6 +843,12 @@ export class PaymentMethod {
 
     /**
      * Complete micro deposit verification
+     *
+     * @param {Mercoa.EntityId} entityId
+     * @param {Mercoa.PaymentMethodId} paymentMethodId
+     * @param {Mercoa.entity.CompleteMicroDepositsRequest} request
+     * @param {PaymentMethod.RequestOptions} requestOptions - Request-specific configuration.
+     *
      * @throws {@link Mercoa.PaymentMethodError}
      * @throws {@link Mercoa.AuthHeaderMissingError}
      * @throws {@link Mercoa.AuthHeaderMalformedError}
@@ -775,6 +856,11 @@ export class PaymentMethod {
      * @throws {@link Mercoa.Forbidden}
      * @throws {@link Mercoa.NotFound}
      * @throws {@link Mercoa.Unimplemented}
+     *
+     * @example
+     *     await mercoa.entity.paymentMethod.completeMicroDeposits("ent_8545a84e-a45f-41bf-bdf1-33b42a55812c", "pm_4794d597-70dc-4fec-b6ec-c5988e759769", {
+     *         amounts: [40, 2]
+     *     })
      */
     public async completeMicroDeposits(
         entityId: Mercoa.EntityId,
@@ -785,16 +871,20 @@ export class PaymentMethod {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
-                `/entity/${await serializers.EntityId.jsonOrThrow(
-                    entityId
-                )}/paymentMethod/${await serializers.PaymentMethodId.jsonOrThrow(paymentMethodId)}/micro-deposits`
+                `/entity/${encodeURIComponent(
+                    await serializers.EntityId.jsonOrThrow(entityId)
+                )}/paymentMethod/${encodeURIComponent(
+                    await serializers.PaymentMethodId.jsonOrThrow(paymentMethodId)
+                )}/micro-deposits`
             ),
             method: "PUT",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.33",
+                "X-Fern-SDK-Version": "v0.3.34",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
             body: await serializers.entity.CompleteMicroDepositsRequest.jsonOrThrow(request, {
@@ -895,6 +985,11 @@ export class PaymentMethod {
 
     /**
      * Get the available balance of a payment method. Only bank accounts added with Plaid are supported. This endpoint will return a cached value and will refresh the balance when called.
+     *
+     * @param {Mercoa.EntityId} entityId
+     * @param {Mercoa.PaymentMethodId} paymentMethodId
+     * @param {PaymentMethod.RequestOptions} requestOptions - Request-specific configuration.
+     *
      * @throws {@link Mercoa.PaymentMethodError}
      * @throws {@link Mercoa.AuthHeaderMissingError}
      * @throws {@link Mercoa.AuthHeaderMalformedError}
@@ -902,6 +997,9 @@ export class PaymentMethod {
      * @throws {@link Mercoa.Forbidden}
      * @throws {@link Mercoa.NotFound}
      * @throws {@link Mercoa.Unimplemented}
+     *
+     * @example
+     *     await mercoa.entity.paymentMethod.getBalance("string", "string")
      */
     public async getBalance(
         entityId: Mercoa.EntityId,
@@ -911,16 +1009,20 @@ export class PaymentMethod {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
-                `/entity/${await serializers.EntityId.jsonOrThrow(
-                    entityId
-                )}/paymentMethod/${await serializers.PaymentMethodId.jsonOrThrow(paymentMethodId)}/balance`
+                `/entity/${encodeURIComponent(
+                    await serializers.EntityId.jsonOrThrow(entityId)
+                )}/paymentMethod/${encodeURIComponent(
+                    await serializers.PaymentMethodId.jsonOrThrow(paymentMethodId)
+                )}/balance`
             ),
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.33",
+                "X-Fern-SDK-Version": "v0.3.34",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -1016,7 +1118,7 @@ export class PaymentMethod {
         }
     }
 
-    protected async _getAuthorizationHeader() {
+    protected async _getAuthorizationHeader(): Promise<string> {
         return `Bearer ${await core.Supplier.get(this._options.token)}`;
     }
 }

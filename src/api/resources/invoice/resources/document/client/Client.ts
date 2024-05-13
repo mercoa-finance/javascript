@@ -4,10 +4,10 @@
 
 import * as environments from "../../../../../../environments";
 import * as core from "../../../../../../core";
-import * as Mercoa from "../../../../..";
-import * as serializers from "../../../../../../serialization";
+import * as Mercoa from "../../../../../index";
+import * as serializers from "../../../../../../serialization/index";
 import urlJoin from "url-join";
-import * as errors from "../../../../../../errors";
+import * as errors from "../../../../../../errors/index";
 
 export declare namespace Document {
     interface Options {
@@ -26,12 +26,19 @@ export class Document {
 
     /**
      * Get attachments (scanned/uploaded PDFs and images) associated with this invoice
+     *
+     * @param {Mercoa.InvoiceId} invoiceId
+     * @param {Document.RequestOptions} requestOptions - Request-specific configuration.
+     *
      * @throws {@link Mercoa.AuthHeaderMissingError}
      * @throws {@link Mercoa.AuthHeaderMalformedError}
      * @throws {@link Mercoa.Unauthorized}
      * @throws {@link Mercoa.Forbidden}
      * @throws {@link Mercoa.NotFound}
      * @throws {@link Mercoa.Unimplemented}
+     *
+     * @example
+     *     await mercoa.invoice.document.getAll("string")
      */
     public async getAll(
         invoiceId: Mercoa.InvoiceId,
@@ -40,14 +47,16 @@ export class Document {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
-                `/invoice/${await serializers.InvoiceId.jsonOrThrow(invoiceId)}/documents`
+                `/invoice/${encodeURIComponent(await serializers.InvoiceId.jsonOrThrow(invoiceId))}/documents`
             ),
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.33",
+                "X-Fern-SDK-Version": "v0.3.34",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -136,12 +145,22 @@ export class Document {
 
     /**
      * Upload documents (scanned/uploaded PDFs and images) associated with this Invoice
+     *
+     * @param {Mercoa.InvoiceId} invoiceId
+     * @param {Mercoa.invoice.UploadDocumentRequest} request
+     * @param {Document.RequestOptions} requestOptions - Request-specific configuration.
+     *
      * @throws {@link Mercoa.AuthHeaderMissingError}
      * @throws {@link Mercoa.AuthHeaderMalformedError}
      * @throws {@link Mercoa.Unauthorized}
      * @throws {@link Mercoa.Forbidden}
      * @throws {@link Mercoa.NotFound}
      * @throws {@link Mercoa.Unimplemented}
+     *
+     * @example
+     *     await mercoa.invoice.document.upload("string", {
+     *         document: "string"
+     *     })
      */
     public async upload(
         invoiceId: Mercoa.InvoiceId,
@@ -151,14 +170,16 @@ export class Document {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
-                `/invoice/${await serializers.InvoiceId.jsonOrThrow(invoiceId)}/document`
+                `/invoice/${encodeURIComponent(await serializers.InvoiceId.jsonOrThrow(invoiceId))}/document`
             ),
             method: "POST",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.33",
+                "X-Fern-SDK-Version": "v0.3.34",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
             body: await serializers.invoice.UploadDocumentRequest.jsonOrThrow(request, {
@@ -245,12 +266,20 @@ export class Document {
 
     /**
      * Delete an attachment (scanned/uploaded PDFs and images) associated with this invoice
+     *
+     * @param {Mercoa.InvoiceId} invoiceId
+     * @param {string} documentId
+     * @param {Document.RequestOptions} requestOptions - Request-specific configuration.
+     *
      * @throws {@link Mercoa.AuthHeaderMissingError}
      * @throws {@link Mercoa.AuthHeaderMalformedError}
      * @throws {@link Mercoa.Unauthorized}
      * @throws {@link Mercoa.Forbidden}
      * @throws {@link Mercoa.NotFound}
      * @throws {@link Mercoa.Unimplemented}
+     *
+     * @example
+     *     await mercoa.invoice.document.delete("string", "string")
      */
     public async delete(
         invoiceId: Mercoa.InvoiceId,
@@ -260,14 +289,18 @@ export class Document {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
-                `/invoice/${await serializers.InvoiceId.jsonOrThrow(invoiceId)}/document/${documentId}`
+                `/invoice/${encodeURIComponent(
+                    await serializers.InvoiceId.jsonOrThrow(invoiceId)
+                )}/document/${encodeURIComponent(documentId)}`
             ),
             method: "DELETE",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.33",
+                "X-Fern-SDK-Version": "v0.3.34",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -351,6 +384,10 @@ export class Document {
 
     /**
      * Generate a PDF of the invoice. This PDF is generated from the data in the invoice, not from the uploaded documents.
+     *
+     * @param {Mercoa.InvoiceId} invoiceId
+     * @param {Document.RequestOptions} requestOptions - Request-specific configuration.
+     *
      * @throws {@link Mercoa.InvoiceError}
      * @throws {@link Mercoa.AuthHeaderMissingError}
      * @throws {@link Mercoa.AuthHeaderMalformedError}
@@ -358,6 +395,9 @@ export class Document {
      * @throws {@link Mercoa.Forbidden}
      * @throws {@link Mercoa.NotFound}
      * @throws {@link Mercoa.Unimplemented}
+     *
+     * @example
+     *     await mercoa.invoice.document.generateInvoicePdf("string")
      */
     public async generateInvoicePdf(
         invoiceId: Mercoa.InvoiceId,
@@ -366,14 +406,16 @@ export class Document {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
-                `/invoice/${await serializers.InvoiceId.jsonOrThrow(invoiceId)}/pdf/generate`
+                `/invoice/${encodeURIComponent(await serializers.InvoiceId.jsonOrThrow(invoiceId))}/pdf/generate`
             ),
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.33",
+                "X-Fern-SDK-Version": "v0.3.34",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -471,6 +513,10 @@ export class Document {
 
     /**
      * Get a PDF of the check for the invoice. If the invoice does not have check as the disbursement method, an error will be returned. If the disbursement option for the check is set to 'MAIL', a void copy of the check will be returned. If the disbursement option for the check is set to 'PRINT', a printable check will be returned. If the invoice is NOT marked as PAID, the check will be a void copy.
+     *
+     * @param {Mercoa.InvoiceId} invoiceId
+     * @param {Document.RequestOptions} requestOptions - Request-specific configuration.
+     *
      * @throws {@link Mercoa.InvoiceError}
      * @throws {@link Mercoa.AuthHeaderMissingError}
      * @throws {@link Mercoa.AuthHeaderMalformedError}
@@ -478,6 +524,9 @@ export class Document {
      * @throws {@link Mercoa.Forbidden}
      * @throws {@link Mercoa.NotFound}
      * @throws {@link Mercoa.Unimplemented}
+     *
+     * @example
+     *     await mercoa.invoice.document.generateCheckPdf("string")
      */
     public async generateCheckPdf(
         invoiceId: Mercoa.InvoiceId,
@@ -486,14 +535,16 @@ export class Document {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
-                `/invoice/${await serializers.InvoiceId.jsonOrThrow(invoiceId)}/check/generate`
+                `/invoice/${encodeURIComponent(await serializers.InvoiceId.jsonOrThrow(invoiceId))}/check/generate`
             ),
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.33",
+                "X-Fern-SDK-Version": "v0.3.34",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -591,6 +642,10 @@ export class Document {
 
     /**
      * Get the email subject and body that was used to create this invoice.
+     *
+     * @param {Mercoa.InvoiceId} invoiceId
+     * @param {Document.RequestOptions} requestOptions - Request-specific configuration.
+     *
      * @throws {@link Mercoa.InvoiceError}
      * @throws {@link Mercoa.AuthHeaderMissingError}
      * @throws {@link Mercoa.AuthHeaderMalformedError}
@@ -598,29 +653,34 @@ export class Document {
      * @throws {@link Mercoa.Forbidden}
      * @throws {@link Mercoa.NotFound}
      * @throws {@link Mercoa.Unimplemented}
+     *
+     * @example
+     *     await mercoa.invoice.document.getSourceEmail("string")
      */
     public async getSourceEmail(
         invoiceId: Mercoa.InvoiceId,
         requestOptions?: Document.RequestOptions
-    ): Promise<Mercoa.SourceEmailResponse> {
+    ): Promise<Mercoa.EmailLogResponse> {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
-                `/invoice/${await serializers.InvoiceId.jsonOrThrow(invoiceId)}/source-email`
+                `/invoice/${encodeURIComponent(await serializers.InvoiceId.jsonOrThrow(invoiceId))}/source-email`
             ),
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.33",
+                "X-Fern-SDK-Version": "v0.3.34",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
         });
         if (_response.ok) {
-            return await serializers.SourceEmailResponse.parseOrThrow(_response.body, {
+            return await serializers.EmailLogResponse.parseOrThrow(_response.body, {
                 unrecognizedObjectKeys: "passthrough",
                 allowUnrecognizedUnionMembers: true,
                 allowUnrecognizedEnumValues: true,
@@ -709,7 +769,7 @@ export class Document {
         }
     }
 
-    protected async _getAuthorizationHeader() {
+    protected async _getAuthorizationHeader(): Promise<string> {
         return `Bearer ${await core.Supplier.get(this._options.token)}`;
     }
 }

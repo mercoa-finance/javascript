@@ -4,10 +4,11 @@
 
 import * as environments from "../../../../environments";
 import * as core from "../../../../core";
-import * as Mercoa from "../../..";
+import * as Mercoa from "../../../index";
 import urlJoin from "url-join";
-import * as serializers from "../../../../serialization";
-import * as errors from "../../../../errors";
+import * as serializers from "../../../../serialization/index";
+import * as errors from "../../../../errors/index";
+import { EmailLog } from "../resources/emailLog/client/Client";
 import { User } from "../resources/user/client/Client";
 import { ApprovalPolicy } from "../resources/approvalPolicy/client/Client";
 import { Counterparty } from "../resources/counterparty/client/Client";
@@ -35,6 +36,10 @@ export class Entity {
 
     /**
      * Search all entities with the given filters. If no filters are provided, all entities will be returned.
+     *
+     * @param {Mercoa.entity.FindEntities} request
+     * @param {Entity.RequestOptions} requestOptions - Request-specific configuration.
+     *
      * @throws {@link Mercoa.AuthHeaderMissingError}
      * @throws {@link Mercoa.AuthHeaderMalformedError}
      * @throws {@link Mercoa.Unauthorized}
@@ -54,7 +59,7 @@ export class Entity {
         requestOptions?: Entity.RequestOptions
     ): Promise<Mercoa.FindEntityResponse> {
         const { paymentMethods, isCustomer, foreignId, status, isPayee, isPayor, name, limit, startingAfter } = request;
-        const _queryParams: Record<string, string | string[]> = {};
+        const _queryParams: Record<string, string | string[] | object | object[]> = {};
         if (paymentMethods != null) {
             _queryParams["paymentMethods"] = paymentMethods.toString();
         }
@@ -109,7 +114,9 @@ export class Entity {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.33",
+                "X-Fern-SDK-Version": "v0.3.34",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -198,6 +205,9 @@ export class Entity {
     }
 
     /**
+     * @param {Mercoa.EntityRequest} request
+     * @param {Entity.RequestOptions} requestOptions - Request-specific configuration.
+     *
      * @throws {@link Mercoa.EntityForeignIdAlreadyExists}
      * @throws {@link Mercoa.EntityError}
      * @throws {@link Mercoa.InvalidTaxId}
@@ -216,6 +226,7 @@ export class Entity {
      *         isPayor: true,
      *         isPayee: false,
      *         accountType: Mercoa.AccountType.Business,
+     *         foreignId: "MY-DB-ID-12345",
      *         profile: {
      *             business: {
      *                 email: "customer@acme.com",
@@ -228,6 +239,7 @@ export class Entity {
      *                 },
      *                 address: {
      *                     addressLine1: "123 Main St",
+     *                     addressLine2: "Unit 1",
      *                     city: "San Francisco",
      *                     stateOrProvince: "CA",
      *                     postalCode: "94105",
@@ -256,7 +268,9 @@ export class Entity {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.33",
+                "X-Fern-SDK-Version": "v0.3.34",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
             body: await serializers.EntityRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
@@ -390,12 +404,18 @@ export class Entity {
     }
 
     /**
+     * @param {Mercoa.EntityId} entityId
+     * @param {Entity.RequestOptions} requestOptions - Request-specific configuration.
+     *
      * @throws {@link Mercoa.AuthHeaderMissingError}
      * @throws {@link Mercoa.AuthHeaderMalformedError}
      * @throws {@link Mercoa.Unauthorized}
      * @throws {@link Mercoa.Forbidden}
      * @throws {@link Mercoa.NotFound}
      * @throws {@link Mercoa.Unimplemented}
+     *
+     * @example
+     *     await mercoa.entity.get("string")
      */
     public async get(
         entityId: Mercoa.EntityId,
@@ -404,14 +424,16 @@ export class Entity {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
-                `entity/${await serializers.EntityId.jsonOrThrow(entityId)}`
+                `entity/${encodeURIComponent(await serializers.EntityId.jsonOrThrow(entityId))}`
             ),
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.33",
+                "X-Fern-SDK-Version": "v0.3.34",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -499,6 +521,10 @@ export class Entity {
     }
 
     /**
+     * @param {Mercoa.EntityId} entityId
+     * @param {Mercoa.EntityUpdateRequest} request
+     * @param {Entity.RequestOptions} requestOptions - Request-specific configuration.
+     *
      * @throws {@link Mercoa.EntityForeignIdAlreadyExists}
      * @throws {@link Mercoa.EntityError}
      * @throws {@link Mercoa.InvalidTaxId}
@@ -510,6 +536,40 @@ export class Entity {
      * @throws {@link Mercoa.Forbidden}
      * @throws {@link Mercoa.NotFound}
      * @throws {@link Mercoa.Unimplemented}
+     *
+     * @example
+     *     await mercoa.entity.update("string", {
+     *         isCustomer: true,
+     *         isPayor: true,
+     *         isPayee: false,
+     *         accountType: Mercoa.AccountType.Business,
+     *         foreignId: "MY-DB-ID-12345",
+     *         profile: {
+     *             business: {
+     *                 email: "customer@acme.com",
+     *                 legalBusinessName: "Acme Inc.",
+     *                 website: "http://www.acme.com",
+     *                 businessType: Mercoa.BusinessType.Llc,
+     *                 phone: {
+     *                     countryCode: "1",
+     *                     number: "4155551234"
+     *                 },
+     *                 address: {
+     *                     addressLine1: "123 Main St",
+     *                     addressLine2: "Unit 1",
+     *                     city: "San Francisco",
+     *                     stateOrProvince: "CA",
+     *                     postalCode: "94105",
+     *                     country: "US"
+     *                 },
+     *                 taxId: {
+     *                     ein: {
+     *                         number: "12-3456789"
+     *                     }
+     *                 }
+     *             }
+     *         }
+     *     })
      */
     public async update(
         entityId: Mercoa.EntityId,
@@ -519,14 +579,16 @@ export class Entity {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
-                `entity/${await serializers.EntityId.jsonOrThrow(entityId)}`
+                `entity/${encodeURIComponent(await serializers.EntityId.jsonOrThrow(entityId))}`
             ),
             method: "POST",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.33",
+                "X-Fern-SDK-Version": "v0.3.34",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
             body: await serializers.EntityUpdateRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
@@ -660,25 +722,33 @@ export class Entity {
     }
 
     /**
+     * @param {Mercoa.EntityId} entityId
+     * @param {Entity.RequestOptions} requestOptions - Request-specific configuration.
+     *
      * @throws {@link Mercoa.AuthHeaderMissingError}
      * @throws {@link Mercoa.AuthHeaderMalformedError}
      * @throws {@link Mercoa.Unauthorized}
      * @throws {@link Mercoa.Forbidden}
      * @throws {@link Mercoa.NotFound}
      * @throws {@link Mercoa.Unimplemented}
+     *
+     * @example
+     *     await mercoa.entity.delete("string")
      */
     public async delete(entityId: Mercoa.EntityId, requestOptions?: Entity.RequestOptions): Promise<void> {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
-                `entity/${await serializers.EntityId.jsonOrThrow(entityId)}`
+                `entity/${encodeURIComponent(await serializers.EntityId.jsonOrThrow(entityId))}`
             ),
             method: "DELETE",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.33",
+                "X-Fern-SDK-Version": "v0.3.34",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -762,6 +832,10 @@ export class Entity {
 
     /**
      * This endpoint is used to indicate acceptance of Mercoa's terms of service for an entity. Send a request to this endpoint only after the entity has accepted the Mercoa ToS. Entities must accept Mercoa ToS before they can be send or pay invoices using Mercoa's payment rails.
+     *
+     * @param {Mercoa.EntityId} entityId
+     * @param {Entity.RequestOptions} requestOptions - Request-specific configuration.
+     *
      * @throws {@link Mercoa.EntityError}
      * @throws {@link Mercoa.AuthHeaderMissingError}
      * @throws {@link Mercoa.AuthHeaderMalformedError}
@@ -769,6 +843,9 @@ export class Entity {
      * @throws {@link Mercoa.Forbidden}
      * @throws {@link Mercoa.NotFound}
      * @throws {@link Mercoa.Unimplemented}
+     *
+     * @example
+     *     await mercoa.entity.acceptTermsOfService("ent_a0f6ea94-0761-4a5e-a416-3c453cb7eced")
      */
     public async acceptTermsOfService(
         entityId: Mercoa.EntityId,
@@ -777,14 +854,16 @@ export class Entity {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
-                `entity/${await serializers.EntityId.jsonOrThrow(entityId)}/accept-tos`
+                `entity/${encodeURIComponent(await serializers.EntityId.jsonOrThrow(entityId))}/accept-tos`
             ),
             method: "POST",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.33",
+                "X-Fern-SDK-Version": "v0.3.34",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -879,6 +958,10 @@ export class Entity {
      * This endpoint is used to initiate KYB for an entity.
      * Send a request to this endpoint only after the entity has accepted the Mercoa ToS,
      * all representatives have been added, and all required fields have been filled out.
+     *
+     * @param {Mercoa.EntityId} entityId
+     * @param {Entity.RequestOptions} requestOptions - Request-specific configuration.
+     *
      * @throws {@link Mercoa.EntityError}
      * @throws {@link Mercoa.AuthHeaderMissingError}
      * @throws {@link Mercoa.AuthHeaderMalformedError}
@@ -886,19 +969,24 @@ export class Entity {
      * @throws {@link Mercoa.Forbidden}
      * @throws {@link Mercoa.NotFound}
      * @throws {@link Mercoa.Unimplemented}
+     *
+     * @example
+     *     await mercoa.entity.initiateKyb("ent_a0f6ea94-0761-4a5e-a416-3c453cb7eced")
      */
     public async initiateKyb(entityId: Mercoa.EntityId, requestOptions?: Entity.RequestOptions): Promise<void> {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
-                `entity/${await serializers.EntityId.jsonOrThrow(entityId)}/request-kyb`
+                `entity/${encodeURIComponent(await serializers.EntityId.jsonOrThrow(entityId))}/request-kyb`
             ),
             method: "POST",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.33",
+                "X-Fern-SDK-Version": "v0.3.34",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -991,6 +1079,11 @@ export class Entity {
 
     /**
      * Generate a JWT token for an entity with the given options. This token can be used to authenticate the entity in the Mercoa API and iFrame.
+     *
+     * @param {Mercoa.EntityId} entityId
+     * @param {Mercoa.TokenGenerationOptions} request
+     * @param {Entity.RequestOptions} requestOptions - Request-specific configuration.
+     *
      * @throws {@link Mercoa.TokenGenerationFailed}
      * @throws {@link Mercoa.AuthHeaderMissingError}
      * @throws {@link Mercoa.AuthHeaderMalformedError}
@@ -1012,14 +1105,16 @@ export class Entity {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
-                `entity/${await serializers.EntityId.jsonOrThrow(entityId)}/token`
+                `entity/${encodeURIComponent(await serializers.EntityId.jsonOrThrow(entityId))}/token`
             ),
             method: "POST",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.33",
+                "X-Fern-SDK-Version": "v0.3.34",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
             body: await serializers.TokenGenerationOptions.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
@@ -1118,6 +1213,11 @@ export class Entity {
 
     /**
      * Get a Plaid link token for an entity. This token can be used to add or update a bank account to the entity using Plaid Link.
+     *
+     * @param {Mercoa.EntityId} entityId
+     * @param {Mercoa.entity.PlaidLinkTokenRequest} request
+     * @param {Entity.RequestOptions} requestOptions - Request-specific configuration.
+     *
      * @throws {@link Mercoa.TokenGenerationFailed}
      * @throws {@link Mercoa.AuthHeaderMissingError}
      * @throws {@link Mercoa.AuthHeaderMalformedError}
@@ -1125,6 +1225,11 @@ export class Entity {
      * @throws {@link Mercoa.Forbidden}
      * @throws {@link Mercoa.NotFound}
      * @throws {@link Mercoa.Unimplemented}
+     *
+     * @example
+     *     await mercoa.entity.plaidLinkToken("string", {
+     *         paymentMethodId: "string"
+     *     })
      */
     public async plaidLinkToken(
         entityId: Mercoa.EntityId,
@@ -1132,7 +1237,7 @@ export class Entity {
         requestOptions?: Entity.RequestOptions
     ): Promise<string> {
         const { paymentMethodId } = request;
-        const _queryParams: Record<string, string | string[]> = {};
+        const _queryParams: Record<string, string | string[] | object | object[]> = {};
         if (paymentMethodId != null) {
             _queryParams["paymentMethodId"] = paymentMethodId;
         }
@@ -1140,14 +1245,16 @@ export class Entity {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
-                `entity/${await serializers.EntityId.jsonOrThrow(entityId)}/plaidLinkToken`
+                `entity/${encodeURIComponent(await serializers.EntityId.jsonOrThrow(entityId))}/plaidLinkToken`
             ),
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.33",
+                "X-Fern-SDK-Version": "v0.3.34",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -1246,12 +1353,24 @@ export class Entity {
 
     /**
      * Generate an onboarding link for the entity.
+     *
+     * @param {Mercoa.EntityId} entityId
+     * @param {Mercoa.entity.GenerateOnboardingLink} request
+     * @param {Entity.RequestOptions} requestOptions - Request-specific configuration.
+     *
      * @throws {@link Mercoa.AuthHeaderMissingError}
      * @throws {@link Mercoa.AuthHeaderMalformedError}
      * @throws {@link Mercoa.Unauthorized}
      * @throws {@link Mercoa.Forbidden}
      * @throws {@link Mercoa.NotFound}
      * @throws {@link Mercoa.Unimplemented}
+     *
+     * @example
+     *     await mercoa.entity.getOnboardingLink("string", {
+     *         type: Mercoa.EntityOnboardingLinkType.Payee,
+     *         expiresIn: "string",
+     *         connectedEntityId: "string"
+     *     })
      */
     public async getOnboardingLink(
         entityId: Mercoa.EntityId,
@@ -1259,7 +1378,7 @@ export class Entity {
         requestOptions?: Entity.RequestOptions
     ): Promise<string> {
         const { type: type_, expiresIn, connectedEntityId } = request;
-        const _queryParams: Record<string, string | string[]> = {};
+        const _queryParams: Record<string, string | string[] | object | object[]> = {};
         _queryParams["type"] = type_;
         if (expiresIn != null) {
             _queryParams["expiresIn"] = expiresIn;
@@ -1272,14 +1391,16 @@ export class Entity {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
-                `entity/${await serializers.EntityId.jsonOrThrow(entityId)}/onboarding`
+                `entity/${encodeURIComponent(await serializers.EntityId.jsonOrThrow(entityId))}/onboarding`
             ),
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.33",
+                "X-Fern-SDK-Version": "v0.3.34",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -1369,12 +1490,24 @@ export class Entity {
 
     /**
      * Send an email with a onboarding link to the entity. The email will be sent to the email address associated with the entity.
+     *
+     * @param {Mercoa.EntityId} entityId
+     * @param {Mercoa.entity.SendOnboardingLink} request
+     * @param {Entity.RequestOptions} requestOptions - Request-specific configuration.
+     *
      * @throws {@link Mercoa.AuthHeaderMissingError}
      * @throws {@link Mercoa.AuthHeaderMalformedError}
      * @throws {@link Mercoa.Unauthorized}
      * @throws {@link Mercoa.Forbidden}
      * @throws {@link Mercoa.NotFound}
      * @throws {@link Mercoa.Unimplemented}
+     *
+     * @example
+     *     await mercoa.entity.sendOnboardingLink("string", {
+     *         type: Mercoa.EntityOnboardingLinkType.Payee,
+     *         expiresIn: "string",
+     *         connectedEntityId: "string"
+     *     })
      */
     public async sendOnboardingLink(
         entityId: Mercoa.EntityId,
@@ -1382,7 +1515,7 @@ export class Entity {
         requestOptions?: Entity.RequestOptions
     ): Promise<void> {
         const { type: type_, expiresIn, connectedEntityId } = request;
-        const _queryParams: Record<string, string | string[]> = {};
+        const _queryParams: Record<string, string | string[] | object | object[]> = {};
         _queryParams["type"] = type_;
         if (expiresIn != null) {
             _queryParams["expiresIn"] = expiresIn;
@@ -1395,14 +1528,16 @@ export class Entity {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
-                `entity/${await serializers.EntityId.jsonOrThrow(entityId)}/onboarding`
+                `entity/${encodeURIComponent(await serializers.EntityId.jsonOrThrow(entityId))}/onboarding`
             ),
             method: "POST",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.33",
+                "X-Fern-SDK-Version": "v0.3.34",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -1485,6 +1620,12 @@ export class Entity {
         }
     }
 
+    protected _emailLog: EmailLog | undefined;
+
+    public get emailLog(): EmailLog {
+        return (this._emailLog ??= new EmailLog(this._options));
+    }
+
     protected _user: User | undefined;
 
     public get user(): User {
@@ -1539,7 +1680,7 @@ export class Entity {
         return (this._representative ??= new Representative(this._options));
     }
 
-    protected async _getAuthorizationHeader() {
+    protected async _getAuthorizationHeader(): Promise<string> {
         return `Bearer ${await core.Supplier.get(this._options.token)}`;
     }
 }

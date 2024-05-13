@@ -1,1 +1,1 @@
-export { SendPayerEmail } from "./SendPayerEmail";
+export { type SendPayerEmail } from "./SendPayerEmail";

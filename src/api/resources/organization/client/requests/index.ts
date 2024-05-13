@@ -1,2 +1,2 @@
-export { GetOrganizationRequest } from "./GetOrganizationRequest";
-export { GetEmailLogRequest } from "./GetEmailLogRequest";
+export { type GetOrganizationRequest } from "./GetOrganizationRequest";
+export { type GetEmailLogRequest } from "./GetEmailLogRequest";

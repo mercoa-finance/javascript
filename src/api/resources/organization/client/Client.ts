@@ -4,10 +4,10 @@
 
 import * as environments from "../../../../environments";
 import * as core from "../../../../core";
-import * as Mercoa from "../../..";
+import * as Mercoa from "../../../index";
 import urlJoin from "url-join";
-import * as serializers from "../../../../serialization";
-import * as errors from "../../../../errors";
+import * as serializers from "../../../../serialization/index";
+import * as errors from "../../../../errors/index";
 import { NotificationConfiguration } from "../resources/notificationConfiguration/client/Client";
 
 export declare namespace Organization {
@@ -27,12 +27,27 @@ export class Organization {
 
     /**
      * Get current organization information
+     *
+     * @param {Mercoa.organization.GetOrganizationRequest} request
+     * @param {Organization.RequestOptions} requestOptions - Request-specific configuration.
+     *
      * @throws {@link Mercoa.AuthHeaderMissingError}
      * @throws {@link Mercoa.AuthHeaderMalformedError}
      * @throws {@link Mercoa.Unauthorized}
      * @throws {@link Mercoa.Forbidden}
      * @throws {@link Mercoa.NotFound}
      * @throws {@link Mercoa.Unimplemented}
+     *
+     * @example
+     *     await mercoa.organization.get({
+     *         paymentMethods: true,
+     *         emailProvider: true,
+     *         externalAccountingSystemProvider: true,
+     *         colorScheme: true,
+     *         payeeOnboardingOptions: true,
+     *         payorOnboardingOptions: true,
+     *         metadataSchema: true
+     *     })
      */
     public async get(
         request: Mercoa.organization.GetOrganizationRequest = {},
@@ -47,7 +62,7 @@ export class Organization {
             payorOnboardingOptions,
             metadataSchema,
         } = request;
-        const _queryParams: Record<string, string | string[]> = {};
+        const _queryParams: Record<string, string | string[] | object | object[]> = {};
         if (paymentMethods != null) {
             _queryParams["paymentMethods"] = paymentMethods.toString();
         }
@@ -86,7 +101,9 @@ export class Organization {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.33",
+                "X-Fern-SDK-Version": "v0.3.34",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -176,12 +193,33 @@ export class Organization {
 
     /**
      * Update current organization
+     *
+     * @param {Mercoa.OrganizationRequest} request
+     * @param {Organization.RequestOptions} requestOptions - Request-specific configuration.
+     *
      * @throws {@link Mercoa.AuthHeaderMissingError}
      * @throws {@link Mercoa.AuthHeaderMalformedError}
      * @throws {@link Mercoa.Unauthorized}
      * @throws {@link Mercoa.Forbidden}
      * @throws {@link Mercoa.NotFound}
      * @throws {@link Mercoa.Unimplemented}
+     *
+     * @example
+     *     await mercoa.organization.update({
+     *         name: "string",
+     *         logo: "string",
+     *         websiteUrl: "string",
+     *         supportEmail: "string",
+     *         paymentMethods: {},
+     *         emailProvider: {},
+     *         externalAccountingSystemProvider: {
+     *             type: "none"
+     *         },
+     *         colorScheme: {},
+     *         payeeOnboardingOptions: {},
+     *         payorOnboardingOptions: {},
+     *         metadataSchema: [{}]
+     *     })
      */
     public async update(
         request: Mercoa.OrganizationRequest,
@@ -197,7 +235,9 @@ export class Organization {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.33",
+                "X-Fern-SDK-Version": "v0.3.34",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
             body: await serializers.OrganizationRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
@@ -287,19 +327,31 @@ export class Organization {
 
     /**
      * Get log of all emails sent to this organization. Content format subject to change.
+     *
+     * @param {Mercoa.organization.GetEmailLogRequest} request
+     * @param {Organization.RequestOptions} requestOptions - Request-specific configuration.
+     *
      * @throws {@link Mercoa.AuthHeaderMissingError}
      * @throws {@link Mercoa.AuthHeaderMalformedError}
      * @throws {@link Mercoa.Unauthorized}
      * @throws {@link Mercoa.Forbidden}
      * @throws {@link Mercoa.NotFound}
      * @throws {@link Mercoa.Unimplemented}
+     *
+     * @example
+     *     await mercoa.organization.emailLog({
+     *         startDate: new Date("2024-01-15T09:30:00.000Z"),
+     *         endDate: new Date("2024-01-15T09:30:00.000Z"),
+     *         limit: 1,
+     *         startingAfter: "string"
+     *     })
      */
     public async emailLog(
         request: Mercoa.organization.GetEmailLogRequest = {},
         requestOptions?: Organization.RequestOptions
     ): Promise<Mercoa.EmailLogResponse> {
         const { startDate, endDate, limit, startingAfter } = request;
-        const _queryParams: Record<string, string | string[]> = {};
+        const _queryParams: Record<string, string | string[] | object | object[]> = {};
         if (startDate != null) {
             _queryParams["startDate"] = startDate.toISOString();
         }
@@ -326,7 +378,9 @@ export class Organization {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.33",
+                "X-Fern-SDK-Version": "v0.3.34",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -420,7 +474,7 @@ export class Organization {
         return (this._notificationConfiguration ??= new NotificationConfiguration(this._options));
     }
 
-    protected async _getAuthorizationHeader() {
+    protected async _getAuthorizationHeader(): Promise<string> {
         return `Bearer ${await core.Supplier.get(this._options.token)}`;
     }
 }

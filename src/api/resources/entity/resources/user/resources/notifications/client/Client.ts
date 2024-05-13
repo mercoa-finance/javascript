@@ -4,10 +4,10 @@
 
 import * as environments from "../../../../../../../../environments";
 import * as core from "../../../../../../../../core";
-import * as Mercoa from "../../../../../../..";
-import * as serializers from "../../../../../../../../serialization";
+import * as Mercoa from "../../../../../../../index";
+import * as serializers from "../../../../../../../../serialization/index";
 import urlJoin from "url-join";
-import * as errors from "../../../../../../../../errors";
+import * as errors from "../../../../../../../../errors/index";
 
 export declare namespace Notifications {
     interface Options {
@@ -25,12 +25,27 @@ export class Notifications {
     constructor(protected readonly _options: Notifications.Options) {}
 
     /**
+     * @param {Mercoa.EntityId} entityId
+     * @param {Mercoa.EntityUserId} userId
+     * @param {Mercoa.entity.user.EntityGetNotificationsRequest} request
+     * @param {Notifications.RequestOptions} requestOptions - Request-specific configuration.
+     *
      * @throws {@link Mercoa.AuthHeaderMissingError}
      * @throws {@link Mercoa.AuthHeaderMalformedError}
      * @throws {@link Mercoa.Unauthorized}
      * @throws {@link Mercoa.Forbidden}
      * @throws {@link Mercoa.NotFound}
      * @throws {@link Mercoa.Unimplemented}
+     *
+     * @example
+     *     await mercoa.entity.user.notifications.find("string", "string", {
+     *         startDate: new Date("2024-01-15T09:30:00.000Z"),
+     *         endDate: new Date("2024-01-15T09:30:00.000Z"),
+     *         orderDirection: Mercoa.OrderDirection.Asc,
+     *         limit: 1,
+     *         startingAfter: "string",
+     *         notificationType: Mercoa.NotificationType.InvoiceApprovalNeeded
+     *     })
      */
     public async find(
         entityId: Mercoa.EntityId,
@@ -39,7 +54,7 @@ export class Notifications {
         requestOptions?: Notifications.RequestOptions
     ): Promise<Mercoa.FindNotificationResponse> {
         const { startDate, endDate, orderDirection, limit, startingAfter, notificationType } = request;
-        const _queryParams: Record<string, string | string[]> = {};
+        const _queryParams: Record<string, string | string[] | object | object[]> = {};
         if (startDate != null) {
             _queryParams["startDate"] = startDate.toISOString();
         }
@@ -71,16 +86,18 @@ export class Notifications {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
-                `/entity/${await serializers.EntityId.jsonOrThrow(
-                    entityId
-                )}/user/${await serializers.EntityUserId.jsonOrThrow(userId)}/notifications`
+                `/entity/${encodeURIComponent(
+                    await serializers.EntityId.jsonOrThrow(entityId)
+                )}/user/${encodeURIComponent(await serializers.EntityUserId.jsonOrThrow(userId))}/notifications`
             ),
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.33",
+                "X-Fern-SDK-Version": "v0.3.34",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -169,12 +186,20 @@ export class Notifications {
     }
 
     /**
+     * @param {Mercoa.EntityId} entityId
+     * @param {Mercoa.EntityUserId} userId
+     * @param {Mercoa.NotificationId} notificationId
+     * @param {Notifications.RequestOptions} requestOptions - Request-specific configuration.
+     *
      * @throws {@link Mercoa.AuthHeaderMissingError}
      * @throws {@link Mercoa.AuthHeaderMalformedError}
      * @throws {@link Mercoa.Unauthorized}
      * @throws {@link Mercoa.Forbidden}
      * @throws {@link Mercoa.NotFound}
      * @throws {@link Mercoa.Unimplemented}
+     *
+     * @example
+     *     await mercoa.entity.user.notifications.get("string", "string", "string")
      */
     public async get(
         entityId: Mercoa.EntityId,
@@ -185,18 +210,20 @@ export class Notifications {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
-                `/entity/${await serializers.EntityId.jsonOrThrow(
-                    entityId
-                )}/user/${await serializers.EntityUserId.jsonOrThrow(
-                    userId
-                )}/notification/${await serializers.NotificationId.jsonOrThrow(notificationId)}`
+                `/entity/${encodeURIComponent(
+                    await serializers.EntityId.jsonOrThrow(entityId)
+                )}/user/${encodeURIComponent(
+                    await serializers.EntityUserId.jsonOrThrow(userId)
+                )}/notification/${encodeURIComponent(await serializers.NotificationId.jsonOrThrow(notificationId))}`
             ),
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.33",
+                "X-Fern-SDK-Version": "v0.3.34",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -283,7 +310,7 @@ export class Notifications {
         }
     }
 
-    protected async _getAuthorizationHeader() {
+    protected async _getAuthorizationHeader(): Promise<string> {
         return `Bearer ${await core.Supplier.get(this._options.token)}`;
     }
 }

@@ -4,10 +4,10 @@
 
 import * as environments from "../../../../../../environments";
 import * as core from "../../../../../../core";
-import * as Mercoa from "../../../../..";
-import * as serializers from "../../../../../../serialization";
+import * as Mercoa from "../../../../../index";
+import * as serializers from "../../../../../../serialization/index";
 import urlJoin from "url-join";
-import * as errors from "../../../../../../errors";
+import * as errors from "../../../../../../errors/index";
 
 export declare namespace Approval {
     interface Options {
@@ -26,6 +26,11 @@ export class Approval {
 
     /**
      * Adds an approver to the invoice. Will select the first available approver slot that is not already filled and assign the approver to it. If no approver slots are available, an error will be returned. An explicit approver slot can be specified by setting the `approverSlot` field.
+     *
+     * @param {Mercoa.InvoiceId} invoiceId
+     * @param {Mercoa.AddApproverRequest} request
+     * @param {Approval.RequestOptions} requestOptions - Request-specific configuration.
+     *
      * @throws {@link Mercoa.InvoiceError}
      * @throws {@link Mercoa.InvoiceStatusError}
      * @throws {@link Mercoa.AuthHeaderMissingError}
@@ -34,6 +39,12 @@ export class Approval {
      * @throws {@link Mercoa.Forbidden}
      * @throws {@link Mercoa.NotFound}
      * @throws {@link Mercoa.Unimplemented}
+     *
+     * @example
+     *     await mercoa.invoice.approval.addApprover("string", {
+     *         approvalSlotId: "inap_9bb311c9-7c15-4c9e-8148-63814e0abec6",
+     *         userId: "user_e24fc81c-c5ee-47e8-af42-4fe29d895506"
+     *     })
      */
     public async addApprover(
         invoiceId: Mercoa.InvoiceId,
@@ -43,14 +54,16 @@ export class Approval {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
-                `/invoice/${await serializers.InvoiceId.jsonOrThrow(invoiceId)}/add-approver`
+                `/invoice/${encodeURIComponent(await serializers.InvoiceId.jsonOrThrow(invoiceId))}/add-approver`
             ),
             method: "POST",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.33",
+                "X-Fern-SDK-Version": "v0.3.34",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
             body: await serializers.AddApproverRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
@@ -152,6 +165,10 @@ export class Approval {
     }
 
     /**
+     * @param {Mercoa.InvoiceId} invoiceId
+     * @param {Mercoa.ApprovalRequest} request
+     * @param {Approval.RequestOptions} requestOptions - Request-specific configuration.
+     *
      * @throws {@link Mercoa.InvoiceError}
      * @throws {@link Mercoa.InvoiceStatusError}
      * @throws {@link Mercoa.AuthHeaderMissingError}
@@ -160,6 +177,12 @@ export class Approval {
      * @throws {@link Mercoa.Forbidden}
      * @throws {@link Mercoa.NotFound}
      * @throws {@link Mercoa.Unimplemented}
+     *
+     * @example
+     *     await mercoa.invoice.approval.approve("string", {
+     *         text: "This is an approval",
+     *         userId: "user_e24fc81c-c5ee-47e8-af42-4fe29d895506"
+     *     })
      */
     public async approve(
         invoiceId: Mercoa.InvoiceId,
@@ -169,14 +192,16 @@ export class Approval {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
-                `/invoice/${await serializers.InvoiceId.jsonOrThrow(invoiceId)}/approve`
+                `/invoice/${encodeURIComponent(await serializers.InvoiceId.jsonOrThrow(invoiceId))}/approve`
             ),
             method: "POST",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.33",
+                "X-Fern-SDK-Version": "v0.3.34",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
             body: await serializers.ApprovalRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
@@ -278,6 +303,10 @@ export class Approval {
     }
 
     /**
+     * @param {Mercoa.InvoiceId} invoiceId
+     * @param {Mercoa.ApprovalRequest} request
+     * @param {Approval.RequestOptions} requestOptions - Request-specific configuration.
+     *
      * @throws {@link Mercoa.InvoiceError}
      * @throws {@link Mercoa.InvoiceStatusError}
      * @throws {@link Mercoa.AuthHeaderMissingError}
@@ -286,6 +315,12 @@ export class Approval {
      * @throws {@link Mercoa.Forbidden}
      * @throws {@link Mercoa.NotFound}
      * @throws {@link Mercoa.Unimplemented}
+     *
+     * @example
+     *     await mercoa.invoice.approval.reject("string", {
+     *         text: "This is an approval",
+     *         userId: "user_e24fc81c-c5ee-47e8-af42-4fe29d895506"
+     *     })
      */
     public async reject(
         invoiceId: Mercoa.InvoiceId,
@@ -295,14 +330,16 @@ export class Approval {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
-                `/invoice/${await serializers.InvoiceId.jsonOrThrow(invoiceId)}/reject`
+                `/invoice/${encodeURIComponent(await serializers.InvoiceId.jsonOrThrow(invoiceId))}/reject`
             ),
             method: "POST",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.33",
+                "X-Fern-SDK-Version": "v0.3.34",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
             body: await serializers.ApprovalRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
@@ -403,7 +440,7 @@ export class Approval {
         }
     }
 
-    protected async _getAuthorizationHeader() {
+    protected async _getAuthorizationHeader(): Promise<string> {
         return `Bearer ${await core.Supplier.get(this._options.token)}`;
     }
 }

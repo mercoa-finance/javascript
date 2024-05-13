@@ -4,10 +4,10 @@
 
 import * as environments from "../../../../../../environments";
 import * as core from "../../../../../../core";
-import * as Mercoa from "../../../../..";
-import * as serializers from "../../../../../../serialization";
+import * as Mercoa from "../../../../../index";
+import * as serializers from "../../../../../../serialization/index";
 import urlJoin from "url-join";
-import * as errors from "../../../../../../errors";
+import * as errors from "../../../../../../errors/index";
 
 export declare namespace ApprovalPolicy {
     interface Options {
@@ -26,12 +26,19 @@ export class ApprovalPolicy {
 
     /**
      * Retrieve all invoice approval policies associated with an entity
+     *
+     * @param {Mercoa.EntityId} entityId
+     * @param {ApprovalPolicy.RequestOptions} requestOptions - Request-specific configuration.
+     *
      * @throws {@link Mercoa.AuthHeaderMissingError}
      * @throws {@link Mercoa.AuthHeaderMalformedError}
      * @throws {@link Mercoa.Unauthorized}
      * @throws {@link Mercoa.Forbidden}
      * @throws {@link Mercoa.NotFound}
      * @throws {@link Mercoa.Unimplemented}
+     *
+     * @example
+     *     await mercoa.entity.approvalPolicy.getAll("string")
      */
     public async getAll(
         entityId: Mercoa.EntityId,
@@ -40,14 +47,16 @@ export class ApprovalPolicy {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
-                `/entity/${await serializers.EntityId.jsonOrThrow(entityId)}/approval-policies`
+                `/entity/${encodeURIComponent(await serializers.EntityId.jsonOrThrow(entityId))}/approval-policies`
             ),
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.33",
+                "X-Fern-SDK-Version": "v0.3.34",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -136,6 +145,11 @@ export class ApprovalPolicy {
 
     /**
      * Create an invoice approval policy associated with an entity
+     *
+     * @param {Mercoa.EntityId} entityId
+     * @param {Mercoa.ApprovalPolicyRequest} request
+     * @param {ApprovalPolicy.RequestOptions} requestOptions - Request-specific configuration.
+     *
      * @throws {@link Mercoa.entity.NumApproversUserListMismatchError}
      * @throws {@link Mercoa.entity.NumApproverLessThanOneError}
      * @throws {@link Mercoa.AuthHeaderMissingError}
@@ -144,6 +158,22 @@ export class ApprovalPolicy {
      * @throws {@link Mercoa.Forbidden}
      * @throws {@link Mercoa.NotFound}
      * @throws {@link Mercoa.Unimplemented}
+     *
+     * @example
+     *     await mercoa.entity.approvalPolicy.create("string", {
+     *         trigger: [{
+     *                 type: "amount"
+     *             }],
+     *         rule: {
+     *             type: "approver",
+     *             numApprovers: 1,
+     *             identifierList: {
+     *                 type: "rolesList",
+     *                 value: ["admin"]
+     *             }
+     *         },
+     *         upstreamPolicyId: "string"
+     *     })
      */
     public async create(
         entityId: Mercoa.EntityId,
@@ -153,14 +183,16 @@ export class ApprovalPolicy {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
-                `/entity/${await serializers.EntityId.jsonOrThrow(entityId)}/approval-policy`
+                `/entity/${encodeURIComponent(await serializers.EntityId.jsonOrThrow(entityId))}/approval-policy`
             ),
             method: "POST",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.33",
+                "X-Fern-SDK-Version": "v0.3.34",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
             body: await serializers.ApprovalPolicyRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
@@ -268,12 +300,20 @@ export class ApprovalPolicy {
 
     /**
      * Retrieve an invoice approval policy associated with an entity
+     *
+     * @param {Mercoa.EntityId} entityId
+     * @param {Mercoa.ApprovalPolicyId} policyId
+     * @param {ApprovalPolicy.RequestOptions} requestOptions - Request-specific configuration.
+     *
      * @throws {@link Mercoa.AuthHeaderMissingError}
      * @throws {@link Mercoa.AuthHeaderMalformedError}
      * @throws {@link Mercoa.Unauthorized}
      * @throws {@link Mercoa.Forbidden}
      * @throws {@link Mercoa.NotFound}
      * @throws {@link Mercoa.Unimplemented}
+     *
+     * @example
+     *     await mercoa.entity.approvalPolicy.get("string", "string")
      */
     public async get(
         entityId: Mercoa.EntityId,
@@ -283,16 +323,18 @@ export class ApprovalPolicy {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
-                `/entity/${await serializers.EntityId.jsonOrThrow(
-                    entityId
-                )}/approval-policy/${await serializers.ApprovalPolicyId.jsonOrThrow(policyId)}`
+                `/entity/${encodeURIComponent(
+                    await serializers.EntityId.jsonOrThrow(entityId)
+                )}/approval-policy/${encodeURIComponent(await serializers.ApprovalPolicyId.jsonOrThrow(policyId))}`
             ),
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.33",
+                "X-Fern-SDK-Version": "v0.3.34",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -381,6 +423,12 @@ export class ApprovalPolicy {
 
     /**
      * Update an invoice approval policy associated with an entity
+     *
+     * @param {Mercoa.EntityId} entityId
+     * @param {Mercoa.ApprovalPolicyId} policyId
+     * @param {Mercoa.ApprovalPolicyUpdateRequest} request
+     * @param {ApprovalPolicy.RequestOptions} requestOptions - Request-specific configuration.
+     *
      * @throws {@link Mercoa.entity.NumApproversUserListMismatchError}
      * @throws {@link Mercoa.entity.NumApproverLessThanOneError}
      * @throws {@link Mercoa.AuthHeaderMissingError}
@@ -389,6 +437,22 @@ export class ApprovalPolicy {
      * @throws {@link Mercoa.Forbidden}
      * @throws {@link Mercoa.NotFound}
      * @throws {@link Mercoa.Unimplemented}
+     *
+     * @example
+     *     await mercoa.entity.approvalPolicy.update("string", "string", {
+     *         trigger: [{
+     *                 type: "amount"
+     *             }],
+     *         rule: {
+     *             type: "approver",
+     *             numApprovers: 1,
+     *             identifierList: {
+     *                 type: "rolesList",
+     *                 value: ["admin"]
+     *             }
+     *         },
+     *         upstreamPolicyId: "string"
+     *     })
      */
     public async update(
         entityId: Mercoa.EntityId,
@@ -399,16 +463,18 @@ export class ApprovalPolicy {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
-                `/entity/${await serializers.EntityId.jsonOrThrow(
-                    entityId
-                )}/approval-policy/${await serializers.ApprovalPolicyId.jsonOrThrow(policyId)}`
+                `/entity/${encodeURIComponent(
+                    await serializers.EntityId.jsonOrThrow(entityId)
+                )}/approval-policy/${encodeURIComponent(await serializers.ApprovalPolicyId.jsonOrThrow(policyId))}`
             ),
             method: "POST",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.33",
+                "X-Fern-SDK-Version": "v0.3.34",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
             body: await serializers.ApprovalPolicyUpdateRequest.jsonOrThrow(request, {
@@ -518,12 +584,20 @@ export class ApprovalPolicy {
 
     /**
      * Delete an invoice approval policy associated with Entity. BEWARE: Any approval policy deletion will result in all associated downstream policies also being deleted.
+     *
+     * @param {Mercoa.EntityId} entityId
+     * @param {Mercoa.ApprovalPolicyId} policyId
+     * @param {ApprovalPolicy.RequestOptions} requestOptions - Request-specific configuration.
+     *
      * @throws {@link Mercoa.AuthHeaderMissingError}
      * @throws {@link Mercoa.AuthHeaderMalformedError}
      * @throws {@link Mercoa.Unauthorized}
      * @throws {@link Mercoa.Forbidden}
      * @throws {@link Mercoa.NotFound}
      * @throws {@link Mercoa.Unimplemented}
+     *
+     * @example
+     *     await mercoa.entity.approvalPolicy.delete("string", "string")
      */
     public async delete(
         entityId: Mercoa.EntityId,
@@ -533,16 +607,18 @@ export class ApprovalPolicy {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
-                `/entity/${await serializers.EntityId.jsonOrThrow(
-                    entityId
-                )}/approval-policy/${await serializers.ApprovalPolicyId.jsonOrThrow(policyId)}`
+                `/entity/${encodeURIComponent(
+                    await serializers.EntityId.jsonOrThrow(entityId)
+                )}/approval-policy/${encodeURIComponent(await serializers.ApprovalPolicyId.jsonOrThrow(policyId))}`
             ),
             method: "DELETE",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.33",
+                "X-Fern-SDK-Version": "v0.3.34",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -624,7 +700,7 @@ export class ApprovalPolicy {
         }
     }
 
-    protected async _getAuthorizationHeader() {
+    protected async _getAuthorizationHeader(): Promise<string> {
         return `Bearer ${await core.Supplier.get(this._options.token)}`;
     }
 }

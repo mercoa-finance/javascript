@@ -12,6 +12,8 @@ export * from "./paymentMethodTypes/errors";
 export * as bankLookup from "./bankLookup";
 export * from "./bankLookup/types";
 export * from "./commons/types";
+export * as emailLogTypes from "./emailLogTypes";
+export * from "./emailLogTypes/types";
 export * from "./entityTypes/types";
 export * as fees from "./fees";
 export * from "./fees/types";

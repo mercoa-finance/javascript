@@ -4,10 +4,10 @@
 
 import * as environments from "../../../../../../environments";
 import * as core from "../../../../../../core";
-import * as Mercoa from "../../../../..";
-import * as serializers from "../../../../../../serialization";
+import * as Mercoa from "../../../../../index";
+import * as serializers from "../../../../../../serialization/index";
 import urlJoin from "url-join";
-import * as errors from "../../../../../../errors";
+import * as errors from "../../../../../../errors/index";
 import { NotificationPolicy } from "../resources/notificationPolicy/client/Client";
 import { Notifications } from "../resources/notifications/client/Client";
 
@@ -28,12 +28,19 @@ export class User {
 
     /**
      * Get all entity users
+     *
+     * @param {Mercoa.EntityId} entityId
+     * @param {User.RequestOptions} requestOptions - Request-specific configuration.
+     *
      * @throws {@link Mercoa.AuthHeaderMissingError}
      * @throws {@link Mercoa.AuthHeaderMalformedError}
      * @throws {@link Mercoa.Unauthorized}
      * @throws {@link Mercoa.Forbidden}
      * @throws {@link Mercoa.NotFound}
      * @throws {@link Mercoa.Unimplemented}
+     *
+     * @example
+     *     await mercoa.entity.user.getAll("string")
      */
     public async getAll(
         entityId: Mercoa.EntityId,
@@ -42,14 +49,16 @@ export class User {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
-                `/entity/${await serializers.EntityId.jsonOrThrow(entityId)}/users`
+                `/entity/${encodeURIComponent(await serializers.EntityId.jsonOrThrow(entityId))}/users`
             ),
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.33",
+                "X-Fern-SDK-Version": "v0.3.34",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -137,12 +146,24 @@ export class User {
     }
 
     /**
+     * @param {Mercoa.EntityId} entityId
+     * @param {Mercoa.EntityUserRequest} request
+     * @param {User.RequestOptions} requestOptions - Request-specific configuration.
+     *
      * @throws {@link Mercoa.AuthHeaderMissingError}
      * @throws {@link Mercoa.AuthHeaderMalformedError}
      * @throws {@link Mercoa.Unauthorized}
      * @throws {@link Mercoa.Forbidden}
      * @throws {@link Mercoa.NotFound}
      * @throws {@link Mercoa.Unimplemented}
+     *
+     * @example
+     *     await mercoa.entity.user.create("string", {
+     *         foreignId: "MY-DB-ID-12345",
+     *         email: "john.doe@acme.com",
+     *         name: "John Doe",
+     *         roles: ["admin", "approver"]
+     *     })
      */
     public async create(
         entityId: Mercoa.EntityId,
@@ -152,14 +173,16 @@ export class User {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
-                `/entity/${await serializers.EntityId.jsonOrThrow(entityId)}/user`
+                `/entity/${encodeURIComponent(await serializers.EntityId.jsonOrThrow(entityId))}/user`
             ),
             method: "POST",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.33",
+                "X-Fern-SDK-Version": "v0.3.34",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
             body: await serializers.EntityUserRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
@@ -249,12 +272,20 @@ export class User {
 
     /**
      * Get entity user
+     *
+     * @param {Mercoa.EntityId} entityId
+     * @param {Mercoa.EntityUserId} userId
+     * @param {User.RequestOptions} requestOptions - Request-specific configuration.
+     *
      * @throws {@link Mercoa.AuthHeaderMissingError}
      * @throws {@link Mercoa.AuthHeaderMalformedError}
      * @throws {@link Mercoa.Unauthorized}
      * @throws {@link Mercoa.Forbidden}
      * @throws {@link Mercoa.NotFound}
      * @throws {@link Mercoa.Unimplemented}
+     *
+     * @example
+     *     await mercoa.entity.user.get("string", "string")
      */
     public async get(
         entityId: Mercoa.EntityId,
@@ -264,16 +295,18 @@ export class User {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
-                `/entity/${await serializers.EntityId.jsonOrThrow(
-                    entityId
-                )}/user/${await serializers.EntityUserId.jsonOrThrow(userId)}`
+                `/entity/${encodeURIComponent(
+                    await serializers.EntityId.jsonOrThrow(entityId)
+                )}/user/${encodeURIComponent(await serializers.EntityUserId.jsonOrThrow(userId))}`
             ),
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.33",
+                "X-Fern-SDK-Version": "v0.3.34",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -362,12 +395,26 @@ export class User {
 
     /**
      * Update entity user
+     *
+     * @param {Mercoa.EntityId} entityId
+     * @param {Mercoa.EntityUserId} userId
+     * @param {Mercoa.EntityUserRequest} request
+     * @param {User.RequestOptions} requestOptions - Request-specific configuration.
+     *
      * @throws {@link Mercoa.AuthHeaderMissingError}
      * @throws {@link Mercoa.AuthHeaderMalformedError}
      * @throws {@link Mercoa.Unauthorized}
      * @throws {@link Mercoa.Forbidden}
      * @throws {@link Mercoa.NotFound}
      * @throws {@link Mercoa.Unimplemented}
+     *
+     * @example
+     *     await mercoa.entity.user.update("string", "string", {
+     *         foreignId: "MY-DB-ID-12345",
+     *         email: "john.doe@acme.com",
+     *         name: "John Doe",
+     *         roles: ["admin", "approver"]
+     *     })
      */
     public async update(
         entityId: Mercoa.EntityId,
@@ -378,16 +425,18 @@ export class User {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
-                `/entity/${await serializers.EntityId.jsonOrThrow(
-                    entityId
-                )}/user/${await serializers.EntityUserId.jsonOrThrow(userId)}`
+                `/entity/${encodeURIComponent(
+                    await serializers.EntityId.jsonOrThrow(entityId)
+                )}/user/${encodeURIComponent(await serializers.EntityUserId.jsonOrThrow(userId))}`
             ),
             method: "POST",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.33",
+                "X-Fern-SDK-Version": "v0.3.34",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
             body: await serializers.EntityUserRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
@@ -477,12 +526,20 @@ export class User {
 
     /**
      * Delete entity user. This will also remove the user from all approval policies. If an approval policy will break as a result of this operation, this request will fail.
+     *
+     * @param {Mercoa.EntityId} entityId
+     * @param {Mercoa.EntityUserId} userId
+     * @param {User.RequestOptions} requestOptions - Request-specific configuration.
+     *
      * @throws {@link Mercoa.AuthHeaderMissingError}
      * @throws {@link Mercoa.AuthHeaderMalformedError}
      * @throws {@link Mercoa.Unauthorized}
      * @throws {@link Mercoa.Forbidden}
      * @throws {@link Mercoa.NotFound}
      * @throws {@link Mercoa.Unimplemented}
+     *
+     * @example
+     *     await mercoa.entity.user.delete("string", "string")
      */
     public async delete(
         entityId: Mercoa.EntityId,
@@ -492,16 +549,18 @@ export class User {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
-                `/entity/${await serializers.EntityId.jsonOrThrow(
-                    entityId
-                )}/user/${await serializers.EntityUserId.jsonOrThrow(userId)}`
+                `/entity/${encodeURIComponent(
+                    await serializers.EntityId.jsonOrThrow(entityId)
+                )}/user/${encodeURIComponent(await serializers.EntityUserId.jsonOrThrow(userId))}`
             ),
             method: "DELETE",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.33",
+                "X-Fern-SDK-Version": "v0.3.34",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -585,6 +644,12 @@ export class User {
 
     /**
      * Generate a JWT token for an entity user with the given options. This token can be used to authenticate the entity and entity user in the Mercoa API and iFrame.
+     *
+     * @param {Mercoa.EntityId} entityId
+     * @param {Mercoa.EntityUserId} userId
+     * @param {Mercoa.TokenGenerationOptions} request
+     * @param {User.RequestOptions} requestOptions - Request-specific configuration.
+     *
      * @throws {@link Mercoa.TokenGenerationFailed}
      * @throws {@link Mercoa.AuthHeaderMissingError}
      * @throws {@link Mercoa.AuthHeaderMalformedError}
@@ -607,16 +672,18 @@ export class User {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
-                `/entity/${await serializers.EntityId.jsonOrThrow(
-                    entityId
-                )}/user/${await serializers.EntityUserId.jsonOrThrow(userId)}/token`
+                `/entity/${encodeURIComponent(
+                    await serializers.EntityId.jsonOrThrow(entityId)
+                )}/user/${encodeURIComponent(await serializers.EntityUserId.jsonOrThrow(userId))}/token`
             ),
             method: "POST",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.33",
+                "X-Fern-SDK-Version": "v0.3.34",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
             body: await serializers.TokenGenerationOptions.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
@@ -725,7 +792,7 @@ export class User {
         return (this._notifications ??= new Notifications(this._options));
     }
 
-    protected async _getAuthorizationHeader() {
+    protected async _getAuthorizationHeader(): Promise<string> {
         return `Bearer ${await core.Supplier.get(this._options.token)}`;
     }
 }

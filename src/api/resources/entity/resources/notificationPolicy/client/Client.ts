@@ -4,10 +4,10 @@
 
 import * as environments from "../../../../../../environments";
 import * as core from "../../../../../../core";
-import * as Mercoa from "../../../../..";
-import * as serializers from "../../../../../../serialization";
+import * as Mercoa from "../../../../../index";
+import * as serializers from "../../../../../../serialization/index";
 import urlJoin from "url-join";
-import * as errors from "../../../../../../errors";
+import * as errors from "../../../../../../errors/index";
 
 export declare namespace NotificationPolicy {
     interface Options {
@@ -26,12 +26,19 @@ export class NotificationPolicy {
 
     /**
      * Retrieve all notification policies associated with this entity
+     *
+     * @param {Mercoa.EntityId} entityId
+     * @param {NotificationPolicy.RequestOptions} requestOptions - Request-specific configuration.
+     *
      * @throws {@link Mercoa.AuthHeaderMissingError}
      * @throws {@link Mercoa.AuthHeaderMalformedError}
      * @throws {@link Mercoa.Unauthorized}
      * @throws {@link Mercoa.Forbidden}
      * @throws {@link Mercoa.NotFound}
      * @throws {@link Mercoa.Unimplemented}
+     *
+     * @example
+     *     await mercoa.entity.notificationPolicy.getAll("string")
      */
     public async getAll(
         entityId: Mercoa.EntityId,
@@ -40,14 +47,16 @@ export class NotificationPolicy {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
-                `/entity/${await serializers.EntityId.jsonOrThrow(entityId)}/notification-policies`
+                `/entity/${encodeURIComponent(await serializers.EntityId.jsonOrThrow(entityId))}/notification-policies`
             ),
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.33",
+                "X-Fern-SDK-Version": "v0.3.34",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -136,12 +145,20 @@ export class NotificationPolicy {
 
     /**
      * Retrieve notification policy associated with this entity
+     *
+     * @param {Mercoa.EntityId} entityId
+     * @param {Mercoa.NotificationType} notificationType
+     * @param {NotificationPolicy.RequestOptions} requestOptions - Request-specific configuration.
+     *
      * @throws {@link Mercoa.AuthHeaderMissingError}
      * @throws {@link Mercoa.AuthHeaderMalformedError}
      * @throws {@link Mercoa.Unauthorized}
      * @throws {@link Mercoa.Forbidden}
      * @throws {@link Mercoa.NotFound}
      * @throws {@link Mercoa.Unimplemented}
+     *
+     * @example
+     *     await mercoa.entity.notificationPolicy.get("string", Mercoa.NotificationType.InvoiceApprovalNeeded)
      */
     public async get(
         entityId: Mercoa.EntityId,
@@ -151,16 +168,20 @@ export class NotificationPolicy {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
-                `/entity/${await serializers.EntityId.jsonOrThrow(
-                    entityId
-                )}/notification-policy/${await serializers.NotificationType.jsonOrThrow(notificationType)}`
+                `/entity/${encodeURIComponent(
+                    await serializers.EntityId.jsonOrThrow(entityId)
+                )}/notification-policy/${encodeURIComponent(
+                    await serializers.NotificationType.jsonOrThrow(notificationType)
+                )}`
             ),
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.33",
+                "X-Fern-SDK-Version": "v0.3.34",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -249,12 +270,24 @@ export class NotificationPolicy {
 
     /**
      * Update notification policy associated with this entity
+     *
+     * @param {Mercoa.EntityId} entityId
+     * @param {Mercoa.NotificationType} notificationType
+     * @param {Mercoa.NotificationPolicyRequest} request
+     * @param {NotificationPolicy.RequestOptions} requestOptions - Request-specific configuration.
+     *
      * @throws {@link Mercoa.AuthHeaderMissingError}
      * @throws {@link Mercoa.AuthHeaderMalformedError}
      * @throws {@link Mercoa.Unauthorized}
      * @throws {@link Mercoa.Forbidden}
      * @throws {@link Mercoa.NotFound}
      * @throws {@link Mercoa.Unimplemented}
+     *
+     * @example
+     *     await mercoa.entity.notificationPolicy.update("string", Mercoa.NotificationType.InvoiceApprovalNeeded, {
+     *         disabled: true,
+     *         additionalRoles: ["string"]
+     *     })
      */
     public async update(
         entityId: Mercoa.EntityId,
@@ -265,16 +298,20 @@ export class NotificationPolicy {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
-                `/entity/${await serializers.EntityId.jsonOrThrow(
-                    entityId
-                )}/notification-policy/${await serializers.NotificationType.jsonOrThrow(notificationType)}`
+                `/entity/${encodeURIComponent(
+                    await serializers.EntityId.jsonOrThrow(entityId)
+                )}/notification-policy/${encodeURIComponent(
+                    await serializers.NotificationType.jsonOrThrow(notificationType)
+                )}`
             ),
             method: "POST",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.33",
+                "X-Fern-SDK-Version": "v0.3.34",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
             body: await serializers.NotificationPolicyRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
@@ -362,7 +399,7 @@ export class NotificationPolicy {
         }
     }
 
-    protected async _getAuthorizationHeader() {
+    protected async _getAuthorizationHeader(): Promise<string> {
         return `Bearer ${await core.Supplier.get(this._options.token)}`;
     }
 }

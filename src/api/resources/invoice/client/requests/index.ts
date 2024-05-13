@@ -1,2 +1,2 @@
-export { GetAllInvoicesRequest } from "./GetAllInvoicesRequest";
-export { GetInvoice } from "./GetInvoice";
+export { type GetAllInvoicesRequest } from "./GetAllInvoicesRequest";
+export { type GetInvoice } from "./GetInvoice";

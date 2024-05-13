@@ -1,2 +1,2 @@
-export { RunOcrSync } from "./RunOcrSync";
-export { RunOcrAsync } from "./RunOcrAsync";
+export { type RunOcrSync } from "./RunOcrSync";
+export { type RunOcrAsync } from "./RunOcrAsync";

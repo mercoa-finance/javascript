@@ -2,6 +2,8 @@ export * as bankLookup from "./bankLookup";
 export * from "./bankLookup/types";
 export * as commons from "./commons";
 export * from "./commons/types";
+export * as emailLogTypes from "./emailLogTypes";
+export * from "./emailLogTypes/types";
 export * as entityTypes from "./entityTypes";
 export * from "./entityTypes/types";
 export * as entity from "./entity";
