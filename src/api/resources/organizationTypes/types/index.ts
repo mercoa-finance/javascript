@@ -30,5 +30,7 @@ export * from "./BusinessOnboardingOptions";
 export * from "./OnboardingOptionsRequest";
 export * from "./OnboardingOptionsResponse";
 export * from "./MetadataType";
+export * from "./MetadataRegexValidationRule";
+export * from "./MetadataValidationRule";
 export * from "./MetadataShowConditions";
 export * from "./MetadataSchema";

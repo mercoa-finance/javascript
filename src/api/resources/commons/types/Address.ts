@@ -28,6 +28,7 @@ export interface Address {
     city: string;
     /** State or province code. Must be in the format XX. */
     stateOrProvince: string;
+    /** Postal code. Must be in the format XXXXX or XXXXX-XXXX. */
     postalCode: string;
     country?: string;
 }

@@ -31,11 +31,12 @@ export class ExternalAccountingSystem {
      * @param {Mercoa.entity.ExternalAccountingSystemCompanyCreationRequest} request
      * @param {ExternalAccountingSystem.RequestOptions} requestOptions - Request-specific configuration.
      *
-     * @throws {@link Mercoa.AuthHeaderMissingError}
-     * @throws {@link Mercoa.AuthHeaderMalformedError}
+     * @throws {@link Mercoa.BadRequest}
      * @throws {@link Mercoa.Unauthorized}
      * @throws {@link Mercoa.Forbidden}
      * @throws {@link Mercoa.NotFound}
+     * @throws {@link Mercoa.Conflict}
+     * @throws {@link Mercoa.InternalServerError}
      * @throws {@link Mercoa.Unimplemented}
      *
      * @example
@@ -61,7 +62,7 @@ export class ExternalAccountingSystem {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.34",
+                "X-Fern-SDK-Version": "v0.3.35",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -83,11 +84,9 @@ export class ExternalAccountingSystem {
 
         if (_response.error.reason === "status-code") {
             switch ((_response.error.body as any)?.["errorName"]) {
-                case "AuthHeaderMissingError":
-                    throw new Mercoa.AuthHeaderMissingError();
-                case "AuthHeaderMalformedError":
-                    throw new Mercoa.AuthHeaderMalformedError(
-                        await serializers.AuthHeaderMalformedError.parseOrThrow(_response.error.body, {
+                case "BadRequest":
+                    throw new Mercoa.BadRequest(
+                        await serializers.BadRequest.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
@@ -115,6 +114,24 @@ export class ExternalAccountingSystem {
                 case "NotFound":
                     throw new Mercoa.NotFound(
                         await serializers.NotFound.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        })
+                    );
+                case "Conflict":
+                    throw new Mercoa.Conflict(
+                        await serializers.Conflict.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        })
+                    );
+                case "InternalServerError":
+                    throw new Mercoa.InternalServerError(
+                        await serializers.InternalServerError.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
@@ -159,11 +176,12 @@ export class ExternalAccountingSystem {
      * @param {Mercoa.EntityId} entityId
      * @param {ExternalAccountingSystem.RequestOptions} requestOptions - Request-specific configuration.
      *
-     * @throws {@link Mercoa.AuthHeaderMissingError}
-     * @throws {@link Mercoa.AuthHeaderMalformedError}
+     * @throws {@link Mercoa.BadRequest}
      * @throws {@link Mercoa.Unauthorized}
      * @throws {@link Mercoa.Forbidden}
      * @throws {@link Mercoa.NotFound}
+     * @throws {@link Mercoa.Conflict}
+     * @throws {@link Mercoa.InternalServerError}
      * @throws {@link Mercoa.Unimplemented}
      *
      * @example
@@ -185,7 +203,7 @@ export class ExternalAccountingSystem {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.34",
+                "X-Fern-SDK-Version": "v0.3.35",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -204,11 +222,9 @@ export class ExternalAccountingSystem {
 
         if (_response.error.reason === "status-code") {
             switch ((_response.error.body as any)?.["errorName"]) {
-                case "AuthHeaderMissingError":
-                    throw new Mercoa.AuthHeaderMissingError();
-                case "AuthHeaderMalformedError":
-                    throw new Mercoa.AuthHeaderMalformedError(
-                        await serializers.AuthHeaderMalformedError.parseOrThrow(_response.error.body, {
+                case "BadRequest":
+                    throw new Mercoa.BadRequest(
+                        await serializers.BadRequest.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
@@ -236,6 +252,24 @@ export class ExternalAccountingSystem {
                 case "NotFound":
                     throw new Mercoa.NotFound(
                         await serializers.NotFound.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        })
+                    );
+                case "Conflict":
+                    throw new Mercoa.Conflict(
+                        await serializers.Conflict.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        })
+                    );
+                case "InternalServerError":
+                    throw new Mercoa.InternalServerError(
+                        await serializers.InternalServerError.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
@@ -278,22 +312,43 @@ export class ExternalAccountingSystem {
      * Sync an entity with an external accounting system. Will sync customers/vendors and invoices.
      *
      * @param {Mercoa.EntityId} entityId
+     * @param {Mercoa.entity.SyncExternalSystemRequest} request
      * @param {ExternalAccountingSystem.RequestOptions} requestOptions - Request-specific configuration.
      *
-     * @throws {@link Mercoa.AuthHeaderMissingError}
-     * @throws {@link Mercoa.AuthHeaderMalformedError}
+     * @throws {@link Mercoa.BadRequest}
      * @throws {@link Mercoa.Unauthorized}
      * @throws {@link Mercoa.Forbidden}
      * @throws {@link Mercoa.NotFound}
+     * @throws {@link Mercoa.Conflict}
+     * @throws {@link Mercoa.InternalServerError}
      * @throws {@link Mercoa.Unimplemented}
      *
      * @example
-     *     await mercoa.entity.externalAccountingSystem.sync("string")
+     *     await mercoa.entity.externalAccountingSystem.sync("string", {
+     *         vendors: Mercoa.entity.SyncType.None,
+     *         bills: Mercoa.entity.SyncType.None,
+     *         glAccounts: Mercoa.entity.SyncType.None
+     *     })
      */
     public async sync(
         entityId: Mercoa.EntityId,
+        request: Mercoa.entity.SyncExternalSystemRequest = {},
         requestOptions?: ExternalAccountingSystem.RequestOptions
     ): Promise<void> {
+        const { vendors, bills, glAccounts } = request;
+        const _queryParams: Record<string, string | string[] | object | object[]> = {};
+        if (vendors != null) {
+            _queryParams["vendors"] = vendors;
+        }
+
+        if (bills != null) {
+            _queryParams["bills"] = bills;
+        }
+
+        if (glAccounts != null) {
+            _queryParams["glAccounts"] = glAccounts;
+        }
+
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
@@ -306,11 +361,12 @@ export class ExternalAccountingSystem {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.34",
+                "X-Fern-SDK-Version": "v0.3.35",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
+            queryParameters: _queryParams,
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
         });
@@ -320,11 +376,9 @@ export class ExternalAccountingSystem {
 
         if (_response.error.reason === "status-code") {
             switch ((_response.error.body as any)?.["errorName"]) {
-                case "AuthHeaderMissingError":
-                    throw new Mercoa.AuthHeaderMissingError();
-                case "AuthHeaderMalformedError":
-                    throw new Mercoa.AuthHeaderMalformedError(
-                        await serializers.AuthHeaderMalformedError.parseOrThrow(_response.error.body, {
+                case "BadRequest":
+                    throw new Mercoa.BadRequest(
+                        await serializers.BadRequest.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
@@ -352,6 +406,24 @@ export class ExternalAccountingSystem {
                 case "NotFound":
                     throw new Mercoa.NotFound(
                         await serializers.NotFound.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        })
+                    );
+                case "Conflict":
+                    throw new Mercoa.Conflict(
+                        await serializers.Conflict.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        })
+                    );
+                case "InternalServerError":
+                    throw new Mercoa.InternalServerError(
+                        await serializers.InternalServerError.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,

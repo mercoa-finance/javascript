@@ -1,3 +1,4 @@
+export * from "./SyncType";
 export * from "./ExternalAccountingSystemCompanyCreationRequest";
 export * from "./ExternalAccountingSystemCompanyResponse";
 export * from "./CodatCompanyCreationRequest";

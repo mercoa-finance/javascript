@@ -5,13 +5,20 @@
 import * as serializers from "../../../index";
 import * as Mercoa from "../../../../api/index";
 import * as core from "../../../../core";
-import { InvoiceRequest } from "./InvoiceRequest";
+import { EntityId } from "../../entityTypes/types/EntityId";
+import { InvoiceRequestBase } from "./InvoiceRequestBase";
 
 export const InvoiceCreationRequest: core.serialization.ObjectSchema<
     serializers.InvoiceCreationRequest.Raw,
     Mercoa.InvoiceCreationRequest
-> = core.serialization.object({}).extend(InvoiceRequest);
+> = core.serialization
+    .object({
+        creatorEntityId: EntityId,
+    })
+    .extend(InvoiceRequestBase);
 
 export declare namespace InvoiceCreationRequest {
-    interface Raw extends InvoiceRequest.Raw {}
+    interface Raw extends InvoiceRequestBase.Raw {
+        creatorEntityId: EntityId.Raw;
+    }
 }

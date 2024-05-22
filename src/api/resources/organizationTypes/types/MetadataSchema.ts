@@ -13,6 +13,8 @@ export interface MetadataSchema {
     type: Mercoa.MetadataType;
     /** Whether or not multiple values are allowed for this field. Defaults to false. If true, the value will be a list of the specified type. */
     allowMultiple?: boolean;
+    /** Validation rules are currently only supported for STRING types. */
+    validationRules?: Mercoa.MetadataValidationRule;
     /** A list of conditional rules that determine whether or not this field should be shown. The field will only be shown if all of the conditions are met. If no conditions are specified, the field will always be shown. */
     showConditions?: Mercoa.MetadataShowConditions;
 }
