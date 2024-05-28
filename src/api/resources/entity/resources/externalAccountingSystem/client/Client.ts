@@ -40,9 +40,9 @@ export class ExternalAccountingSystem {
      * @throws {@link Mercoa.Unimplemented}
      *
      * @example
-     *     await mercoa.entity.externalAccountingSystem.create("string", {
-     *         type: "codat",
-     *         companyId: "string"
+     *     await mercoa.entity.externalAccountingSystem.create("ent_8545a84e-a45f-41bf-bdf1-33b42a55812c", {
+     *         type: "rutter",
+     *         accessToken: "123"
      *     })
      */
     public async create(
@@ -62,7 +62,7 @@ export class ExternalAccountingSystem {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.35",
+                "X-Fern-SDK-Version": "v0.3.36",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -185,7 +185,7 @@ export class ExternalAccountingSystem {
      * @throws {@link Mercoa.Unimplemented}
      *
      * @example
-     *     await mercoa.entity.externalAccountingSystem.connect("string")
+     *     await mercoa.entity.externalAccountingSystem.connect("ent_8545a84e-a45f-41bf-bdf1-33b42a55812c")
      */
     public async connect(
         entityId: Mercoa.EntityId,
@@ -203,7 +203,7 @@ export class ExternalAccountingSystem {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.35",
+                "X-Fern-SDK-Version": "v0.3.36",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -324,10 +324,10 @@ export class ExternalAccountingSystem {
      * @throws {@link Mercoa.Unimplemented}
      *
      * @example
-     *     await mercoa.entity.externalAccountingSystem.sync("string", {
-     *         vendors: Mercoa.entity.SyncType.None,
-     *         bills: Mercoa.entity.SyncType.None,
-     *         glAccounts: Mercoa.entity.SyncType.None
+     *     await mercoa.entity.externalAccountingSystem.sync("ent_8545a84e-a45f-41bf-bdf1-33b42a55812c", {
+     *         vendors: Mercoa.entity.SyncType.Pull,
+     *         bills: Mercoa.entity.SyncType.Push,
+     *         glAccounts: Mercoa.entity.SyncType.Pull
      *     })
      */
     public async sync(
@@ -361,7 +361,7 @@ export class ExternalAccountingSystem {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.35",
+                "X-Fern-SDK-Version": "v0.3.36",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },

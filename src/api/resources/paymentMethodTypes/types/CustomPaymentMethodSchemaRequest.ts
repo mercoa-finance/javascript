@@ -4,6 +4,63 @@
 
 import * as Mercoa from "../../../index";
 
+/**
+ * @example
+ *     {
+ *         name: "Wire",
+ *         isSource: false,
+ *         isDestination: true,
+ *         supportedCurrencies: [Mercoa.CurrencyCode.Usd, Mercoa.CurrencyCode.Eur],
+ *         fields: [{
+ *                 name: "accountName",
+ *                 displayName: "Account Name",
+ *                 type: Mercoa.CustomPaymentMethodSchemaFieldType.Text,
+ *                 optional: false,
+ *                 useAsAccountName: true
+ *             }, {
+ *                 name: "accountNumber",
+ *                 displayName: "Account Number",
+ *                 type: Mercoa.CustomPaymentMethodSchemaFieldType.Number,
+ *                 optional: false,
+ *                 useAsAccountNumber: true
+ *             }, {
+ *                 name: "routingNumber",
+ *                 displayName: "Routing Number",
+ *                 type: Mercoa.CustomPaymentMethodSchemaFieldType.Number,
+ *                 optional: false
+ *             }]
+ *     }
+ *
+ * @example
+ *     {
+ *         name: "Check",
+ *         isSource: false,
+ *         isDestination: true,
+ *         supportedCurrencies: [Mercoa.CurrencyCode.Usd],
+ *         fields: [{
+ *                 name: "payToTheOrderOf",
+ *                 displayName: "Pay To The Order Of",
+ *                 type: Mercoa.CustomPaymentMethodSchemaFieldType.Text,
+ *                 optional: false
+ *             }, {
+ *                 name: "accountNumber",
+ *                 displayName: "Account Number",
+ *                 type: Mercoa.CustomPaymentMethodSchemaFieldType.Number,
+ *                 optional: false,
+ *                 useAsAccountNumber: true
+ *             }, {
+ *                 name: "routingNumber",
+ *                 displayName: "Routing Number",
+ *                 type: Mercoa.CustomPaymentMethodSchemaFieldType.Number,
+ *                 optional: false
+ *             }, {
+ *                 name: "address",
+ *                 displayName: "Address",
+ *                 type: Mercoa.CustomPaymentMethodSchemaFieldType.Address,
+ *                 optional: false
+ *             }]
+ *     }
+ */
 export interface CustomPaymentMethodSchemaRequest {
     name: string;
     /** This payment method can be used as a payment source for an invoice */

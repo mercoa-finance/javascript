@@ -7,20 +7,12 @@ import * as Mercoa from "../../../../../../index";
 /**
  * @example
  *     {
- *         search: "string",
- *         excludePayables: true,
- *         excludeReceivables: true,
  *         returnByDate: Mercoa.InvoiceMetricsPerDateGroupBy.CreationDate,
- *         payerId: "string",
- *         vendorId: "string",
- *         approverId: "string",
- *         invoiceId: "string",
- *         status: Mercoa.InvoiceStatus.Draft,
- *         dueDateStart: new Date("2024-01-15T09:30:00.000Z"),
- *         dueDateEnd: new Date("2024-01-15T09:30:00.000Z"),
- *         createdDateStart: new Date("2024-01-15T09:30:00.000Z"),
- *         createdDateEnd: new Date("2024-01-15T09:30:00.000Z"),
- *         currency: Mercoa.CurrencyCode.Aed
+ *         excludeReceivables: true,
+ *         createdDateStart: new Date("2021-01-01T00:00:00.000Z"),
+ *         createdDateEnd: new Date("2021-01-31T23:59:59.999Z"),
+ *         currency: Mercoa.CurrencyCode.Usd,
+ *         status: Mercoa.InvoiceStatus.New
  *     }
  */
 export interface InvoiceMetricsRequest {

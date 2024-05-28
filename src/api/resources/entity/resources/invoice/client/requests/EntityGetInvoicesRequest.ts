@@ -7,26 +7,10 @@ import * as Mercoa from "../../../../../../index";
 /**
  * @example
  *     {
- *         excludePayables: true,
  *         excludeReceivables: true,
- *         startDate: new Date("2024-01-15T09:30:00.000Z"),
- *         endDate: new Date("2024-01-15T09:30:00.000Z"),
- *         orderBy: Mercoa.InvoiceOrderByField.Amount,
+ *         orderBy: Mercoa.InvoiceOrderByField.CreatedAt,
  *         orderDirection: Mercoa.OrderDirection.Asc,
- *         limit: 1,
- *         startingAfter: "string",
- *         metadata: {
- *             key: "string",
- *             value: "string"
- *         },
- *         search: "string",
- *         payerId: "string",
- *         vendorId: "string",
- *         approverId: "string",
- *         approverAction: Mercoa.ApproverAction.None,
- *         invoiceId: "string",
- *         status: Mercoa.InvoiceStatus.Draft,
- *         includeFees: true
+ *         limit: 10
  *     }
  */
 export interface EntityGetInvoicesRequest {

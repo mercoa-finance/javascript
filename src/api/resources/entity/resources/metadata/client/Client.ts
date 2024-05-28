@@ -39,7 +39,7 @@ export class Metadata {
      * @throws {@link Mercoa.Unimplemented}
      *
      * @example
-     *     await mercoa.entity.metadata.getAll("string")
+     *     await mercoa.entity.metadata.getAll("ent_a0f6ea94-0761-4a5e-a416-3c453cb7eced")
      */
     public async getAll(
         entityId: Mercoa.EntityId,
@@ -55,7 +55,7 @@ export class Metadata {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.35",
+                "X-Fern-SDK-Version": "v0.3.36",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -176,7 +176,7 @@ export class Metadata {
      * @throws {@link Mercoa.Unimplemented}
      *
      * @example
-     *     await mercoa.entity.metadata.get("string", "string")
+     *     await mercoa.entity.metadata.get("ent_a0f6ea94-0761-4a5e-a416-3c453cb7eced", "projectId")
      */
     public async get(
         entityId: Mercoa.EntityId,
@@ -195,7 +195,7 @@ export class Metadata {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.35",
+                "X-Fern-SDK-Version": "v0.3.36",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -317,9 +317,6 @@ export class Metadata {
      * @throws {@link Mercoa.Unimplemented}
      *
      * @example
-     *     await mercoa.entity.metadata.update("ent_a0f6ea94-0761-4a5e-a416-3c453cb7eced", "propertyId", ["prop_123", "prop_456"])
-     *
-     * @example
      *     await mercoa.entity.metadata.update("ent_a0f6ea94-0761-4a5e-a416-3c453cb7eced", "propertyId", ["{key: 'prop_123', value: 'Beach Rental'}", "{key: 'prop_456', value: 'City Rental'}"])
      */
     public async update(
@@ -340,7 +337,7 @@ export class Metadata {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.35",
+                "X-Fern-SDK-Version": "v0.3.36",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -464,7 +461,7 @@ export class Metadata {
      * @throws {@link Mercoa.Unimplemented}
      *
      * @example
-     *     await mercoa.entity.metadata.delete("string", "string")
+     *     await mercoa.entity.metadata.delete("ent_a0f6ea94-0761-4a5e-a416-3c453cb7eced", "propertyId")
      */
     public async delete(
         entityId: Mercoa.EntityId,
@@ -483,7 +480,7 @@ export class Metadata {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.35",
+                "X-Fern-SDK-Version": "v0.3.36",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },

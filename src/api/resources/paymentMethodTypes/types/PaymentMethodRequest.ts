@@ -18,6 +18,15 @@ import * as Mercoa from "../../../index";
  *     {
  *         type: "bankAccount",
  *         bankName: "Chase",
+ *         routingNumber: "66554433",
+ *         accountNumber: "55934059697648",
+ *         accountType: Mercoa.BankType.Checking
+ *     }
+ *
+ * @example
+ *     {
+ *         type: "bankAccount",
+ *         bankName: "Chase",
  *         routingNumber: "12345678",
  *         accountNumber: "99988767623",
  *         accountType: Mercoa.BankType.Checking,

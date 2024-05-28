@@ -4,6 +4,21 @@
 
 import * as Mercoa from "../../../index";
 
+/**
+ * @example
+ *     {
+ *         trigger: [],
+ *         rule: {
+ *             type: "approver",
+ *             numApprovers: 1,
+ *             identifierList: {
+ *                 type: "rolesList",
+ *                 value: ["admin"]
+ *             }
+ *         },
+ *         upstreamPolicyId: "root"
+ *     }
+ */
 export interface ApprovalPolicyUpdateRequest {
     trigger?: Mercoa.Trigger[];
     rule?: Mercoa.Rule;

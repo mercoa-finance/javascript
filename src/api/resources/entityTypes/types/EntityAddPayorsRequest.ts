@@ -4,6 +4,12 @@
 
 import * as Mercoa from "../../../index";
 
+/**
+ * @example
+ *     {
+ *         payors: ["ent_21661ac1-a2a8-4465-a6c0-64474ba8181d"]
+ *     }
+ */
 export interface EntityAddPayorsRequest {
     /** List of payor entity IDs to associate with the entity */
     payors: Mercoa.EntityId[];

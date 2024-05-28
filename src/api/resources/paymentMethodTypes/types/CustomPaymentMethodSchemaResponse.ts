@@ -4,6 +4,69 @@
 
 import * as Mercoa from "../../../index";
 
+/**
+ * @example
+ *     {
+ *         id: "cpms_4794d597-70dc-4fec-b6ec-c5988e759769",
+ *         name: "Wire",
+ *         isSource: false,
+ *         isDestination: true,
+ *         supportedCurrencies: [Mercoa.CurrencyCode.Usd, Mercoa.CurrencyCode.Eur],
+ *         fields: [{
+ *                 name: "accountName",
+ *                 displayName: "Account Name",
+ *                 type: Mercoa.CustomPaymentMethodSchemaFieldType.Text,
+ *                 optional: false,
+ *                 useAsAccountName: true
+ *             }, {
+ *                 name: "accountNumber",
+ *                 displayName: "Account Number",
+ *                 type: Mercoa.CustomPaymentMethodSchemaFieldType.Number,
+ *                 optional: false,
+ *                 useAsAccountNumber: true
+ *             }, {
+ *                 name: "routingNumber",
+ *                 displayName: "Routing Number",
+ *                 type: Mercoa.CustomPaymentMethodSchemaFieldType.Number,
+ *                 optional: false
+ *             }],
+ *         createdAt: new Date("2021-01-01T00:00:00.000Z"),
+ *         updatedAt: new Date("2021-01-01T00:00:00.000Z")
+ *     }
+ *
+ * @example
+ *     {
+ *         id: "cpms_14f78dcd-4614-426e-a37a-7af262431d41",
+ *         name: "Check",
+ *         isSource: false,
+ *         isDestination: true,
+ *         supportedCurrencies: [Mercoa.CurrencyCode.Usd],
+ *         fields: [{
+ *                 name: "payToTheOrderOf",
+ *                 displayName: "Pay To The Order Of",
+ *                 type: Mercoa.CustomPaymentMethodSchemaFieldType.Text,
+ *                 optional: false
+ *             }, {
+ *                 name: "accountNumber",
+ *                 displayName: "Account Number",
+ *                 type: Mercoa.CustomPaymentMethodSchemaFieldType.Number,
+ *                 optional: false,
+ *                 useAsAccountNumber: true
+ *             }, {
+ *                 name: "routingNumber",
+ *                 displayName: "Routing Number",
+ *                 type: Mercoa.CustomPaymentMethodSchemaFieldType.Number,
+ *                 optional: false
+ *             }, {
+ *                 name: "address",
+ *                 displayName: "Address",
+ *                 type: Mercoa.CustomPaymentMethodSchemaFieldType.Address,
+ *                 optional: false
+ *             }],
+ *         createdAt: new Date("2021-01-01T00:00:00.000Z"),
+ *         updatedAt: new Date("2021-01-01T00:00:00.000Z")
+ *     }
+ */
 export interface CustomPaymentMethodSchemaResponse {
     id: Mercoa.CustomPaymentMethodSchemaId;
     name: string;

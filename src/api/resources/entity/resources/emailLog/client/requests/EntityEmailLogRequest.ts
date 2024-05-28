@@ -6,13 +6,7 @@ import * as Mercoa from "../../../../../../index";
 
 /**
  * @example
- *     {
- *         startDate: new Date("2024-01-15T09:30:00.000Z"),
- *         endDate: new Date("2024-01-15T09:30:00.000Z"),
- *         limit: 1,
- *         startingAfter: "string",
- *         search: "string"
- *     }
+ *     {}
  */
 export interface EntityEmailLogRequest {
     startDate?: Date;

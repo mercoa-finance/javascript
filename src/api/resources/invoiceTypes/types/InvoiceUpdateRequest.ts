@@ -7,15 +7,13 @@ import * as Mercoa from "../../../index";
 /**
  * @example
  *     {
- *         status: Mercoa.InvoiceStatus.Draft,
+ *         status: Mercoa.InvoiceStatus.New,
  *         amount: 100,
  *         currency: Mercoa.CurrencyCode.Usd,
  *         invoiceDate: new Date("2021-01-01T00:00:00.000Z"),
  *         dueDate: new Date("2021-01-31T00:00:00.000Z"),
  *         invoiceNumber: "INV-123",
  *         noteToSelf: "For the month of January",
- *         serviceStartDate: new Date("2021-01-01T00:00:00.000Z"),
- *         serviceEndDate: new Date("2021-01-31T00:00:00.000Z"),
  *         payerId: "ent_8545a84e-a45f-41bf-bdf1-33b42a55812c",
  *         paymentSourceId: "pm_4794d597-70dc-4fec-b6ec-c5988e759769",
  *         vendorId: "ent_21661ac1-a2a8-4465-a6c0-64474ba8181d",
@@ -41,6 +39,24 @@ import * as Mercoa from "../../../index";
  *             }],
  *         creatorEntityId: "ent_8545a84e-a45f-41bf-bdf1-33b42a55812c",
  *         creatorUserId: "user_e24fc81c-c5ee-47e8-af42-4fe29d895506"
+ *     }
+ *
+ * @example
+ *     {
+ *         status: Mercoa.InvoiceStatus.New,
+ *         vendorId: "ent_21661ac1-a2a8-4465-a6c0-64474ba8181d",
+ *         currency: Mercoa.CurrencyCode.Usd,
+ *         amount: 100,
+ *         invoiceDate: new Date("2021-01-01T00:00:00.000Z"),
+ *         dueDate: new Date("2021-01-31T00:00:00.000Z"),
+ *         paymentSourceId: "pm_4794d597-70dc-4fec-b6ec-c5988e759769"
+ *     }
+ *
+ * @example
+ *     {
+ *         status: Mercoa.InvoiceStatus.Scheduled,
+ *         paymentDestinationId: "pm_5fde2f4a-facc-48ef-8f0d-6b7d087c7b18",
+ *         deductionDate: new Date("2021-01-29T00:00:00.000Z")
  *     }
  */
 export interface InvoiceUpdateRequest extends Mercoa.InvoiceRequestBase {

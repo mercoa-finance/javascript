@@ -4,6 +4,19 @@
 
 import * as Mercoa from "../../../index";
 
+/**
+ * @example
+ *     {
+ *         bankName: "Bank of America",
+ *         bankAddress: {
+ *             address: "123 Main St",
+ *             city: "Anytown",
+ *             state: "CA",
+ *             postalCode: "12345",
+ *             postalCodeExtension: "6789"
+ *         }
+ *     }
+ */
 export interface BankLookupResponse {
     bankName: string;
     bankAddress: Mercoa.BankAddress;

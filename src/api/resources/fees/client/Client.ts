@@ -40,14 +40,9 @@ export class Fees {
      *
      * @example
      *     await mercoa.fees.calculate({
-     *         amount: 1.1,
-     *         currency: Mercoa.CurrencyCode.Aed,
-     *         paymentSourceId: "string",
-     *         paymentDestinationId: "string",
-     *         paymentDestinationOptions: {
-     *             type: "check",
-     *             delivery: Mercoa.CheckDeliveryMethod.Mail
-     *         }
+     *         amount: 100,
+     *         paymentSourceId: "pm_4794d597-70dc-4fec-b6ec-c5988e759769",
+     *         paymentDestinationId: "pm_4794d597-70dc-4fec-b6ec-c5988e759769"
      *     })
      */
     public async calculate(
@@ -64,7 +59,7 @@ export class Fees {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.35",
+                "X-Fern-SDK-Version": "v0.3.36",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },

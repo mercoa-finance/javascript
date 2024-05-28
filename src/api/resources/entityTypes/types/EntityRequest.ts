@@ -38,6 +38,23 @@ import * as Mercoa from "../../../index";
  *             }
  *         }
  *     }
+ *
+ * @example
+ *     {
+ *         isCustomer: false,
+ *         isPayor: false,
+ *         isPayee: true,
+ *         accountType: Mercoa.AccountType.Business,
+ *         foreignId: "MY-DB-ID-90909",
+ *         profile: {
+ *             business: {
+ *                 email: "vendor@bigboxstore.com",
+ *                 legalBusinessName: "Big Box Store",
+ *                 website: "http://www.bigboxstore.com",
+ *                 businessType: Mercoa.BusinessType.PublicCorporation
+ *             }
+ *         }
+ *     }
  */
 export interface EntityRequest {
     /** The ID used to identify this entity in your system. This ID must be unique across all entities in your system. */

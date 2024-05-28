@@ -4,6 +4,81 @@
 
 import * as Mercoa from "../../../index";
 
+/**
+ * @example
+ *     {
+ *         name: "payToTheOrderOf",
+ *         displayName: "Pay To The Order Of",
+ *         type: Mercoa.CustomPaymentMethodSchemaFieldType.Text,
+ *         optional: false
+ *     }
+ *
+ * @example
+ *     {
+ *         name: "accountName",
+ *         displayName: "Account Name",
+ *         type: Mercoa.CustomPaymentMethodSchemaFieldType.Text,
+ *         optional: false,
+ *         useAsAccountName: true
+ *     }
+ *
+ * @example
+ *     {
+ *         name: "accountNumber",
+ *         displayName: "Account Number",
+ *         type: Mercoa.CustomPaymentMethodSchemaFieldType.Number,
+ *         optional: false,
+ *         useAsAccountNumber: true
+ *     }
+ *
+ * @example
+ *     {
+ *         name: "routingNumber",
+ *         displayName: "Routing Number",
+ *         type: Mercoa.CustomPaymentMethodSchemaFieldType.Number,
+ *         optional: false
+ *     }
+ *
+ * @example
+ *     {
+ *         name: "address",
+ *         displayName: "Address",
+ *         type: Mercoa.CustomPaymentMethodSchemaFieldType.Address,
+ *         optional: false
+ *     }
+ *
+ * @example
+ *     {
+ *         name: "phone",
+ *         displayName: "Phone",
+ *         type: Mercoa.CustomPaymentMethodSchemaFieldType.Phone,
+ *         optional: true
+ *     }
+ *
+ * @example
+ *     {
+ *         name: "email",
+ *         displayName: "Email",
+ *         type: Mercoa.CustomPaymentMethodSchemaFieldType.Email,
+ *         optional: true
+ *     }
+ *
+ * @example
+ *     {
+ *         name: "website",
+ *         displayName: "Website",
+ *         type: Mercoa.CustomPaymentMethodSchemaFieldType.Url,
+ *         optional: false
+ *     }
+ *
+ * @example
+ *     {
+ *         name: "birthDate",
+ *         displayName: "Birth Date",
+ *         type: Mercoa.CustomPaymentMethodSchemaFieldType.Date,
+ *         optional: false
+ *     }
+ */
 export interface CustomPaymentMethodSchemaField {
     name: string;
     displayName?: string;

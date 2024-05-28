@@ -124,7 +124,7 @@ import * as Mercoa from "../../../index";
  *                 hasSourceEmail: true,
  *                 comments: [{
  *                         id: "ic_b3525b66-da94-4525-9f31-426bcf657128",
- *                         text: "This is a comment",
+ *                         text: "This is an approval comment",
  *                         user: {
  *                             id: "user_ec3aafc8-ea86-408a-a6c1-545497badbbb",
  *                             foreignId: "MY-DB-ID-12345",

@@ -4,6 +4,23 @@
 
 import * as Mercoa from "../../../index";
 
+/**
+ * @example
+ *     {
+ *         disabled: false,
+ *         digest: true,
+ *         immediate: false,
+ *         type: Mercoa.NotificationType.InvoiceApprovalNeeded
+ *     }
+ *
+ * @example
+ *     {
+ *         disabled: false,
+ *         digest: false,
+ *         immediate: true,
+ *         type: Mercoa.NotificationType.InvoiceApproved
+ *     }
+ */
 export interface UserNotificationPolicyResponse {
     /** True if the selected notification type is disabled for this user */
     disabled: boolean;

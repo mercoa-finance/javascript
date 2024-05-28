@@ -40,27 +40,11 @@ export class Invoice {
      * @throws {@link Mercoa.Unimplemented}
      *
      * @example
-     *     await mercoa.entity.invoice.find("string", {
-     *         excludePayables: true,
+     *     await mercoa.entity.invoice.find("ent_8545a84e-a45f-41bf-bdf1-33b42a55812c", {
      *         excludeReceivables: true,
-     *         startDate: new Date("2024-01-15T09:30:00.000Z"),
-     *         endDate: new Date("2024-01-15T09:30:00.000Z"),
-     *         orderBy: Mercoa.InvoiceOrderByField.Amount,
+     *         orderBy: Mercoa.InvoiceOrderByField.CreatedAt,
      *         orderDirection: Mercoa.OrderDirection.Asc,
-     *         limit: 1,
-     *         startingAfter: "string",
-     *         metadata: {
-     *             key: "string",
-     *             value: "string"
-     *         },
-     *         search: "string",
-     *         payerId: "string",
-     *         vendorId: "string",
-     *         approverId: "string",
-     *         approverAction: Mercoa.ApproverAction.None,
-     *         invoiceId: "string",
-     *         status: Mercoa.InvoiceStatus.Draft,
-     *         includeFees: true
+     *         limit: 10
      *     })
      */
     public async find(
@@ -209,7 +193,7 @@ export class Invoice {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.35",
+                "X-Fern-SDK-Version": "v0.3.36",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -220,155 +204,6 @@ export class Invoice {
         });
         if (_response.ok) {
             return await serializers.FindInvoiceResponse.parseOrThrow(_response.body, {
-                unrecognizedObjectKeys: "passthrough",
-                allowUnrecognizedUnionMembers: true,
-                allowUnrecognizedEnumValues: true,
-                breadcrumbsPrefix: ["response"],
-            });
-        }
-
-        if (_response.error.reason === "status-code") {
-            switch ((_response.error.body as any)?.["errorName"]) {
-                case "BadRequest":
-                    throw new Mercoa.BadRequest(
-                        await serializers.BadRequest.parseOrThrow(_response.error.body, {
-                            unrecognizedObjectKeys: "passthrough",
-                            allowUnrecognizedUnionMembers: true,
-                            allowUnrecognizedEnumValues: true,
-                            breadcrumbsPrefix: ["response"],
-                        })
-                    );
-                case "Unauthorized":
-                    throw new Mercoa.Unauthorized(
-                        await serializers.Unauthorized.parseOrThrow(_response.error.body, {
-                            unrecognizedObjectKeys: "passthrough",
-                            allowUnrecognizedUnionMembers: true,
-                            allowUnrecognizedEnumValues: true,
-                            breadcrumbsPrefix: ["response"],
-                        })
-                    );
-                case "Forbidden":
-                    throw new Mercoa.Forbidden(
-                        await serializers.Forbidden.parseOrThrow(_response.error.body, {
-                            unrecognizedObjectKeys: "passthrough",
-                            allowUnrecognizedUnionMembers: true,
-                            allowUnrecognizedEnumValues: true,
-                            breadcrumbsPrefix: ["response"],
-                        })
-                    );
-                case "NotFound":
-                    throw new Mercoa.NotFound(
-                        await serializers.NotFound.parseOrThrow(_response.error.body, {
-                            unrecognizedObjectKeys: "passthrough",
-                            allowUnrecognizedUnionMembers: true,
-                            allowUnrecognizedEnumValues: true,
-                            breadcrumbsPrefix: ["response"],
-                        })
-                    );
-                case "Conflict":
-                    throw new Mercoa.Conflict(
-                        await serializers.Conflict.parseOrThrow(_response.error.body, {
-                            unrecognizedObjectKeys: "passthrough",
-                            allowUnrecognizedUnionMembers: true,
-                            allowUnrecognizedEnumValues: true,
-                            breadcrumbsPrefix: ["response"],
-                        })
-                    );
-                case "InternalServerError":
-                    throw new Mercoa.InternalServerError(
-                        await serializers.InternalServerError.parseOrThrow(_response.error.body, {
-                            unrecognizedObjectKeys: "passthrough",
-                            allowUnrecognizedUnionMembers: true,
-                            allowUnrecognizedEnumValues: true,
-                            breadcrumbsPrefix: ["response"],
-                        })
-                    );
-                case "Unimplemented":
-                    throw new Mercoa.Unimplemented(
-                        await serializers.Unimplemented.parseOrThrow(_response.error.body, {
-                            unrecognizedObjectKeys: "passthrough",
-                            allowUnrecognizedUnionMembers: true,
-                            allowUnrecognizedEnumValues: true,
-                            breadcrumbsPrefix: ["response"],
-                        })
-                    );
-                default:
-                    throw new errors.MercoaError({
-                        statusCode: _response.error.statusCode,
-                        body: _response.error.body,
-                    });
-            }
-        }
-
-        switch (_response.error.reason) {
-            case "non-json":
-                throw new errors.MercoaError({
-                    statusCode: _response.error.statusCode,
-                    body: _response.error.rawBody,
-                });
-            case "timeout":
-                throw new errors.MercoaTimeoutError();
-            case "unknown":
-                throw new errors.MercoaError({
-                    message: _response.error.errorMessage,
-                });
-        }
-    }
-
-    /**
-     * @param {Mercoa.EntityId} entityId
-     * @param {Mercoa.InvoiceId} invoiceId - ID of the invoice to retrieve. This can be the full invoice ID (in_11aa2b77-6391-49e4-8c3f-b198009202c1) or the first 8 characters of the ID (11aa2b77).
-     * @param {Mercoa.entity.GetInvoice} request
-     * @param {Invoice.RequestOptions} requestOptions - Request-specific configuration.
-     *
-     * @throws {@link Mercoa.BadRequest}
-     * @throws {@link Mercoa.Unauthorized}
-     * @throws {@link Mercoa.Forbidden}
-     * @throws {@link Mercoa.NotFound}
-     * @throws {@link Mercoa.Conflict}
-     * @throws {@link Mercoa.InternalServerError}
-     * @throws {@link Mercoa.Unimplemented}
-     *
-     * @example
-     *     await mercoa.entity.invoice.get("string", "string", {
-     *         includeFees: true
-     *     })
-     */
-    public async get(
-        entityId: Mercoa.EntityId,
-        invoiceId: Mercoa.InvoiceId,
-        request: Mercoa.entity.GetInvoice = {},
-        requestOptions?: Invoice.RequestOptions
-    ): Promise<Mercoa.InvoiceResponse> {
-        const { includeFees } = request;
-        const _queryParams: Record<string, string | string[] | object | object[]> = {};
-        if (includeFees != null) {
-            _queryParams["includeFees"] = includeFees.toString();
-        }
-
-        const _response = await core.fetcher({
-            url: urlJoin(
-                (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
-                `/entity/${encodeURIComponent(
-                    await serializers.EntityId.jsonOrThrow(entityId)
-                )}/invoice/${encodeURIComponent(await serializers.InvoiceId.jsonOrThrow(invoiceId))}`
-            ),
-            method: "GET",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.35",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-            },
-            contentType: "application/json",
-            queryParameters: _queryParams,
-            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
-            maxRetries: requestOptions?.maxRetries,
-        });
-        if (_response.ok) {
-            return await serializers.InvoiceResponse.parseOrThrow(_response.body, {
                 unrecognizedObjectKeys: "passthrough",
                 allowUnrecognizedUnionMembers: true,
                 allowUnrecognizedEnumValues: true,
@@ -480,21 +315,13 @@ export class Invoice {
      * @throws {@link Mercoa.Unimplemented}
      *
      * @example
-     *     await mercoa.entity.invoice.metrics("string", {
-     *         search: "string",
-     *         excludePayables: true,
-     *         excludeReceivables: true,
+     *     await mercoa.entity.invoice.metrics("ent_8545a84e-a45f-41bf-bdf1-33b42a55812c", {
      *         returnByDate: Mercoa.InvoiceMetricsPerDateGroupBy.CreationDate,
-     *         payerId: "string",
-     *         vendorId: "string",
-     *         approverId: "string",
-     *         invoiceId: "string",
-     *         status: Mercoa.InvoiceStatus.Draft,
-     *         dueDateStart: new Date("2024-01-15T09:30:00.000Z"),
-     *         dueDateEnd: new Date("2024-01-15T09:30:00.000Z"),
-     *         createdDateStart: new Date("2024-01-15T09:30:00.000Z"),
-     *         createdDateEnd: new Date("2024-01-15T09:30:00.000Z"),
-     *         currency: Mercoa.CurrencyCode.Aed
+     *         excludeReceivables: true,
+     *         createdDateStart: new Date("2021-01-01T00:00:00.000Z"),
+     *         createdDateEnd: new Date("2021-01-31T23:59:59.999Z"),
+     *         currency: Mercoa.CurrencyCode.Usd,
+     *         status: Mercoa.InvoiceStatus.New
      *     })
      */
     public async metrics(
@@ -609,7 +436,7 @@ export class Invoice {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.35",
+                "X-Fern-SDK-Version": "v0.3.36",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },

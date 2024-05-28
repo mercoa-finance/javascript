@@ -21,4 +21,3 @@ export * from "./paymentMethodTypes/types";
 export * as customPaymentMethodSchema from "./customPaymentMethodSchema";
 export * as invoice from "./invoice";
 export * as organization from "./organization";
-export * from "./ocr/client/requests";

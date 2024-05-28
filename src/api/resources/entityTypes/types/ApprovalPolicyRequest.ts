@@ -4,6 +4,21 @@
 
 import * as Mercoa from "../../../index";
 
+/**
+ * @example
+ *     {
+ *         trigger: [],
+ *         rule: {
+ *             type: "approver",
+ *             numApprovers: 1,
+ *             identifierList: {
+ *                 type: "rolesList",
+ *                 value: ["admin"]
+ *             }
+ *         },
+ *         upstreamPolicyId: "root"
+ *     }
+ */
 export interface ApprovalPolicyRequest {
     /** List of triggers that will cause this policy to be evaluated. If no triggers are provided, the policy will be evaluated for all invoices. */
     trigger: Mercoa.Trigger[];

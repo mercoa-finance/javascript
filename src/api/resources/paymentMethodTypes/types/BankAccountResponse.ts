@@ -4,6 +4,39 @@
 
 import * as Mercoa from "../../../index";
 
+/**
+ * @example
+ *     {
+ *         id: "pm_4794d597-70dc-4fec-b6ec-c5988e759769",
+ *         accountName: "My Checking Account",
+ *         bankName: "Chase",
+ *         routingNumber: "12345678",
+ *         accountNumber: "99988767623",
+ *         accountType: Mercoa.BankType.Checking,
+ *         status: Mercoa.BankStatus.Verified,
+ *         isDefaultSource: true,
+ *         isDefaultDestination: true,
+ *         supportedCurrencies: [Mercoa.CurrencyCode.Usd],
+ *         createdAt: new Date("2021-01-01T00:00:00.000Z"),
+ *         updatedAt: new Date("2021-01-01T00:00:00.000Z")
+ *     }
+ *
+ * @example
+ *     {
+ *         id: "pm_7610541f-4619-4033-8620-cfccfb811293",
+ *         accountName: "Vendor Checking Account",
+ *         bankName: "Chase",
+ *         routingNumber: "66554433",
+ *         accountNumber: "55934059697648",
+ *         accountType: Mercoa.BankType.Checking,
+ *         status: Mercoa.BankStatus.New,
+ *         isDefaultSource: true,
+ *         isDefaultDestination: true,
+ *         supportedCurrencies: [Mercoa.CurrencyCode.Usd],
+ *         createdAt: new Date("2021-01-01T00:00:00.000Z"),
+ *         updatedAt: new Date("2021-01-01T00:00:00.000Z")
+ *     }
+ */
 export interface BankAccountResponse extends Mercoa.PaymentMethodBaseResponse {
     accountName: string;
     bankName: string;

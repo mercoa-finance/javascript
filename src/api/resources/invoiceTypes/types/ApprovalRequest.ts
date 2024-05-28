@@ -7,7 +7,7 @@ import * as Mercoa from "../../../index";
 /**
  * @example
  *     {
- *         text: "This is an approval",
+ *         text: "This is a reason for my action",
  *         userId: "user_e24fc81c-c5ee-47e8-af42-4fe29d895506"
  *     }
  */

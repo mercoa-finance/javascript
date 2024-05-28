@@ -27,7 +27,7 @@ export class Ocr {
     /**
      * Run OCR on an Base64 encoded image or PDF. This endpoint will block until the OCR is complete.
      *
-     * @param {Mercoa.RunOcrSync} request
+     * @param {Mercoa.OcrRequest} request
      * @param {Ocr.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Mercoa.BadRequest}
@@ -40,23 +40,13 @@ export class Ocr {
      *
      * @example
      *     await mercoa.ocr.ocr({
-     *         vendorNetwork: Mercoa.VendorNetwork.All,
-     *         entityId: "string",
-     *         mimeType: "string",
-     *         image: "string"
+     *         vendorNetwork: Mercoa.VendorNetwork.Entity,
+     *         entityId: "entity_8f86116b-3b4d-4ded-99ef-3bc929d8c33c",
+     *         mimeType: "image/png",
+     *         image: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAIAQMAAAD+wSzIAAAABlBMVEX///+/v7+jQ3Y5AAAADklEQVQI12P4AIX8EAgALgAD/aNpbtEAAAAASUVORK5CYII"
      *     })
      */
-    public async ocr(request: Mercoa.RunOcrSync, requestOptions?: Ocr.RequestOptions): Promise<Mercoa.OcrResponse> {
-        const { vendorNetwork, entityId, ..._body } = request;
-        const _queryParams: Record<string, string | string[] | object | object[]> = {};
-        if (vendorNetwork != null) {
-            _queryParams["vendorNetwork"] = vendorNetwork;
-        }
-
-        if (entityId != null) {
-            _queryParams["entityId"] = entityId;
-        }
-
+    public async ocr(request: Mercoa.OcrRequest, requestOptions?: Ocr.RequestOptions): Promise<Mercoa.OcrResponse> {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
@@ -67,13 +57,12 @@ export class Ocr {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.35",
+                "X-Fern-SDK-Version": "v0.3.36",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
-            queryParameters: _queryParams,
-            body: await serializers.RunOcrSync.jsonOrThrow(_body, { unrecognizedObjectKeys: "strip" }),
+            body: await serializers.OcrRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
         });
@@ -177,7 +166,7 @@ export class Ocr {
     /**
      * Run OCR on an Base64 encoded image or PDF. This endpoint will return immediately and the OCR will be processed asynchronously.
      *
-     * @param {Mercoa.RunOcrAsync} request
+     * @param {Mercoa.OcrRequest} request
      * @param {Ocr.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Mercoa.BadRequest}
@@ -190,26 +179,16 @@ export class Ocr {
      *
      * @example
      *     await mercoa.ocr.runAsyncOcr({
-     *         vendorNetwork: Mercoa.VendorNetwork.All,
-     *         entityId: "string",
-     *         mimeType: "string",
-     *         image: "string"
+     *         vendorNetwork: Mercoa.VendorNetwork.Entity,
+     *         entityId: "entity_8f86116b-3b4d-4ded-99ef-3bc929d8c33c",
+     *         mimeType: "image/png",
+     *         image: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAIAQMAAAD+wSzIAAAABlBMVEX///+/v7+jQ3Y5AAAADklEQVQI12P4AIX8EAgALgAD/aNpbtEAAAAASUVORK5CYII"
      *     })
      */
     public async runAsyncOcr(
-        request: Mercoa.RunOcrAsync,
+        request: Mercoa.OcrRequest,
         requestOptions?: Ocr.RequestOptions
     ): Promise<Mercoa.OcrAsyncResponse> {
-        const { vendorNetwork, entityId, ..._body } = request;
-        const _queryParams: Record<string, string | string[] | object | object[]> = {};
-        if (vendorNetwork != null) {
-            _queryParams["vendorNetwork"] = vendorNetwork;
-        }
-
-        if (entityId != null) {
-            _queryParams["entityId"] = entityId;
-        }
-
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
@@ -220,13 +199,12 @@ export class Ocr {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.35",
+                "X-Fern-SDK-Version": "v0.3.36",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
-            queryParameters: _queryParams,
-            body: await serializers.RunOcrAsync.jsonOrThrow(_body, { unrecognizedObjectKeys: "strip" }),
+            body: await serializers.OcrRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
         });
@@ -342,7 +320,7 @@ export class Ocr {
      * @throws {@link Mercoa.Unimplemented}
      *
      * @example
-     *     await mercoa.ocr.getAsyncOcr("string")
+     *     await mercoa.ocr.getAsyncOcr("ocr_8f86116b-3b4d-4ded-99ef-3bc929d8c33c")
      */
     public async getAsyncOcr(jobId: string, requestOptions?: Ocr.RequestOptions): Promise<Mercoa.OcrJobResponse> {
         const _response = await core.fetcher({
@@ -355,7 +333,7 @@ export class Ocr {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.35",
+                "X-Fern-SDK-Version": "v0.3.36",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },

@@ -40,7 +40,7 @@ export class BankLookup {
      *
      * @example
      *     await mercoa.bankLookup.find({
-     *         routingNumber: "string"
+     *         routingNumber: "026009593"
      *     })
      */
     public async find(
@@ -60,7 +60,7 @@ export class BankLookup {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.35",
+                "X-Fern-SDK-Version": "v0.3.36",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },

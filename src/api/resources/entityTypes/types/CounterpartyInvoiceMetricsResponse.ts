@@ -4,6 +4,26 @@
 
 import * as Mercoa from "../../../index";
 
+/**
+ * @example
+ *     {
+ *         totalCount: 17,
+ *         totalAmount: 1700,
+ *         statuses: [{
+ *                 status: Mercoa.InvoiceStatus.Paid,
+ *                 totalCount: 10,
+ *                 totalAmount: 1000
+ *             }, {
+ *                 status: Mercoa.InvoiceStatus.Pending,
+ *                 totalCount: 5,
+ *                 totalAmount: 500
+ *             }, {
+ *                 status: Mercoa.InvoiceStatus.Approved,
+ *                 totalCount: 2,
+ *                 totalAmount: 200
+ *             }]
+ *     }
+ */
 export interface CounterpartyInvoiceMetricsResponse {
     totalCount: number;
     totalAmount: number;

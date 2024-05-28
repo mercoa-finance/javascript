@@ -5,7 +5,7 @@
 /**
  * @example
  *     {
- *         routingNumber: "string"
+ *         routingNumber: "026009593"
  *     }
  */
 export interface BankLookupRequest {

@@ -4,6 +4,14 @@
 
 import * as Mercoa from "../../../index";
 
+/**
+ * @example
+ *     {
+ *         amount: 100,
+ *         paymentSourceId: "pm_4794d597-70dc-4fec-b6ec-c5988e759769",
+ *         paymentDestinationId: "pm_4794d597-70dc-4fec-b6ec-c5988e759769"
+ *     }
+ */
 export interface CalculateFeesRequest {
     /** Total amount in major units. If the entered amount has more decimal places than the currency supports, trailing decimals will be truncated. */
     amount: number;

@@ -39,7 +39,7 @@ export class Document {
      * @throws {@link Mercoa.Unimplemented}
      *
      * @example
-     *     await mercoa.invoice.document.getAll("string")
+     *     await mercoa.invoice.document.getAll("inv_26e7b5d3-a739-4b23-9ad9-6aaa085f47a9")
      */
     public async getAll(
         invoiceId: Mercoa.InvoiceId,
@@ -55,7 +55,7 @@ export class Document {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.35",
+                "X-Fern-SDK-Version": "v0.3.36",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -176,8 +176,8 @@ export class Document {
      * @throws {@link Mercoa.Unimplemented}
      *
      * @example
-     *     await mercoa.invoice.document.upload("string", {
-     *         document: "string"
+     *     await mercoa.invoice.document.upload("inv_26e7b5d3-a739-4b23-9ad9-6aaa085f47a9", {
+     *         document: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAIAQMAAAD+wSzIAAAABlBMVEX///+/v7+jQ3Y5AAAADklEQVQI12P4AIX8EAgALgAD/aNpbtEAAAAASUVORK5CYII"
      *     })
      */
     public async upload(
@@ -195,7 +195,7 @@ export class Document {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.35",
+                "X-Fern-SDK-Version": "v0.3.36",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -314,7 +314,7 @@ export class Document {
      * @throws {@link Mercoa.Unimplemented}
      *
      * @example
-     *     await mercoa.invoice.document.delete("string", "string")
+     *     await mercoa.invoice.document.delete("inv_26e7b5d3-a739-4b23-9ad9-6aaa085f47a9", "doc_37e6af0a-e637-48fd-b825-d6947b38c4e2")
      */
     public async delete(
         invoiceId: Mercoa.InvoiceId,
@@ -333,7 +333,7 @@ export class Document {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.35",
+                "X-Fern-SDK-Version": "v0.3.36",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -448,7 +448,7 @@ export class Document {
      * @throws {@link Mercoa.Unimplemented}
      *
      * @example
-     *     await mercoa.invoice.document.generateInvoicePdf("string")
+     *     await mercoa.invoice.document.generateInvoicePdf("inv_26e7b5d3-a739-4b23-9ad9-6aaa085f47a9")
      */
     public async generateInvoicePdf(
         invoiceId: Mercoa.InvoiceId,
@@ -464,7 +464,7 @@ export class Document {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.35",
+                "X-Fern-SDK-Version": "v0.3.36",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -584,7 +584,7 @@ export class Document {
      * @throws {@link Mercoa.Unimplemented}
      *
      * @example
-     *     await mercoa.invoice.document.generateCheckPdf("string")
+     *     await mercoa.invoice.document.generateCheckPdf("inv_26e7b5d3-a739-4b23-9ad9-6aaa085f47a9")
      */
     public async generateCheckPdf(
         invoiceId: Mercoa.InvoiceId,
@@ -600,7 +600,7 @@ export class Document {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.35",
+                "X-Fern-SDK-Version": "v0.3.36",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -720,7 +720,7 @@ export class Document {
      * @throws {@link Mercoa.Unimplemented}
      *
      * @example
-     *     await mercoa.invoice.document.getSourceEmail("string")
+     *     await mercoa.invoice.document.getSourceEmail("inv_26e7b5d3-a739-4b23-9ad9-6aaa085f47a9")
      */
     public async getSourceEmail(
         invoiceId: Mercoa.InvoiceId,
@@ -736,7 +736,7 @@ export class Document {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.35",
+                "X-Fern-SDK-Version": "v0.3.36",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },

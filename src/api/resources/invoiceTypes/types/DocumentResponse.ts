@@ -5,9 +5,9 @@
 /**
  * @example
  *     {
- *         id: "doc_1234",
+ *         id: "doc_37e6af0a-e637-48fd-b825-d6947b38c4e2",
  *         mimeType: "application/pdf",
- *         uri: "https://example.com/invoice.pdf"
+ *         uri: "https://mercoa.com/pdf/not-real.pdf"
  *     }
  */
 export interface DocumentResponse {

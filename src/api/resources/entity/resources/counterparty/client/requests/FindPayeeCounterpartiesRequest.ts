@@ -7,13 +7,9 @@ import * as Mercoa from "../../../../../../index";
 /**
  * @example
  *     {
- *         name: "string",
- *         networkType: Mercoa.CounterpartyNetworkType.Entity,
+ *         name: "Big Box",
  *         paymentMethods: true,
- *         invoiceMetrics: true,
- *         counterpartyId: "string",
- *         limit: 1,
- *         startingAfter: "string"
+ *         invoiceMetrics: true
  *     }
  */
 export interface FindPayeeCounterpartiesRequest {

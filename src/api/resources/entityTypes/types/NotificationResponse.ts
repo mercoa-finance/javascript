@@ -4,6 +4,23 @@
 
 import * as Mercoa from "../../../index";
 
+/**
+ * @example
+ *     {
+ *         id: "notif_7df2974a-4069-454c-912f-7e58ebe030fb",
+ *         invoiceId: "inv_26e7b5d3-a739-4b23-9ad9-6aaa085f47a9",
+ *         type: Mercoa.NotificationType.InvoiceApprovalNeeded,
+ *         createdAt: new Date("2024-01-01T00:00:00.000Z")
+ *     }
+ *
+ * @example
+ *     {
+ *         id: "notif_958c4ffb-dc06-494c-a0e0-1b4946c6bb0f",
+ *         invoiceId: "inv_26e7b5d3-a739-4b23-9ad9-6aaa085f47a9",
+ *         type: Mercoa.NotificationType.InvoiceApproved,
+ *         createdAt: new Date("2024-01-01T00:00:00.000Z")
+ *     }
+ */
 export interface NotificationResponse {
     id: Mercoa.NotificationId;
     /** The invoice ID that this notification is related to. This field is only present for notifications related to invoices. */

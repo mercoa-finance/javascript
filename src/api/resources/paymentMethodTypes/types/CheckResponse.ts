@@ -4,6 +4,24 @@
 
 import * as Mercoa from "../../../index";
 
+/**
+ * @example
+ *     {
+ *         id: "pm_5fde2f4a-facc-48ef-8f0d-6b7d087c7b18",
+ *         payToTheOrderOf: "John Doe",
+ *         addressLine1: "123 Main St",
+ *         addressLine2: "Apt 1",
+ *         city: "New York",
+ *         stateOrProvince: "NY",
+ *         postalCode: "10001",
+ *         country: "US",
+ *         isDefaultSource: false,
+ *         isDefaultDestination: true,
+ *         supportedCurrencies: [Mercoa.CurrencyCode.Usd],
+ *         createdAt: new Date("2021-01-01T00:00:00.000Z"),
+ *         updatedAt: new Date("2021-01-01T00:00:00.000Z")
+ *     }
+ */
 export interface CheckResponse extends Mercoa.PaymentMethodBaseResponse {
     payToTheOrderOf: string;
     addressLine1: string;

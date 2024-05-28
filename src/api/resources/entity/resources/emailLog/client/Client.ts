@@ -25,7 +25,7 @@ export class EmailLog {
     constructor(protected readonly _options: EmailLog.Options) {}
 
     /**
-     * Get entity users
+     * Get all incoming invoice emails for an entity.
      *
      * @param {Mercoa.EntityId} entityId
      * @param {Mercoa.entity.emailLog.EntityEmailLogRequest} request
@@ -40,13 +40,7 @@ export class EmailLog {
      * @throws {@link Mercoa.Unimplemented}
      *
      * @example
-     *     await mercoa.entity.emailLog.find("string", {
-     *         startDate: new Date("2024-01-15T09:30:00.000Z"),
-     *         endDate: new Date("2024-01-15T09:30:00.000Z"),
-     *         limit: 1,
-     *         startingAfter: "string",
-     *         search: "string"
-     *     })
+     *     await mercoa.entity.emailLog.find("ent_8545a84e-a45f-41bf-bdf1-33b42a55812c")
      */
     public async find(
         entityId: Mercoa.EntityId,
@@ -85,7 +79,7 @@ export class EmailLog {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.35",
+                "X-Fern-SDK-Version": "v0.3.36",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -192,7 +186,7 @@ export class EmailLog {
     }
 
     /**
-     * Get email log
+     * Get an email log by ID
      *
      * @param {Mercoa.EntityId} entityId
      * @param {Mercoa.EmailLogId} logId
@@ -207,7 +201,7 @@ export class EmailLog {
      * @throws {@link Mercoa.Unimplemented}
      *
      * @example
-     *     await mercoa.entity.emailLog.get("string", "string")
+     *     await mercoa.entity.emailLog.get("ent_8545a84e-a45f-41bf-bdf1-33b42a55812c", "log_8545a84e-a45f-41bf-bdf1-33b42a55812c")
      */
     public async get(
         entityId: Mercoa.EntityId,
@@ -226,7 +220,7 @@ export class EmailLog {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.35",
+                "X-Fern-SDK-Version": "v0.3.36",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
