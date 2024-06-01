@@ -5,8 +5,20 @@
 /**
  * @example
  *     {
+ *         disabled: true,
+ *         additionalRoles: []
+ *     }
+ *
+ * @example
+ *     {
  *         disabled: false,
  *         additionalRoles: ["admin", "approver"]
+ *     }
+ *
+ * @example
+ *     {
+ *         disabled: false,
+ *         additionalRoles: ["admin", "bookkeeper"]
  *     }
  */
 export interface NotificationPolicyRequest {

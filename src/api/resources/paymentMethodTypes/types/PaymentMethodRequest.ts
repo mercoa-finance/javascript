@@ -8,7 +8,6 @@ import * as Mercoa from "../../../index";
  * @example
  *     {
  *         type: "bankAccount",
- *         bankName: "Chase",
  *         routingNumber: "12345678",
  *         accountNumber: "99988767623",
  *         accountType: Mercoa.BankType.Checking
@@ -17,7 +16,6 @@ import * as Mercoa from "../../../index";
  * @example
  *     {
  *         type: "bankAccount",
- *         bankName: "Chase",
  *         routingNumber: "66554433",
  *         accountNumber: "55934059697648",
  *         accountType: Mercoa.BankType.Checking
@@ -26,7 +24,6 @@ import * as Mercoa from "../../../index";
  * @example
  *     {
  *         type: "bankAccount",
- *         bankName: "Chase",
  *         routingNumber: "12345678",
  *         accountNumber: "99988767623",
  *         accountType: Mercoa.BankType.Checking,
@@ -34,6 +31,33 @@ import * as Mercoa from "../../../index";
  *             enabled: true,
  *             initialCheckNumber: 5000,
  *             signatoryName: "John Doe"
+ *         }
+ *     }
+ *
+ * @example
+ *     {
+ *         type: "check",
+ *         payToTheOrderOf: "John Doe",
+ *         addressLine1: "123 Main St",
+ *         addressLine2: "Apt 1",
+ *         city: "New York",
+ *         stateOrProvince: "NY",
+ *         postalCode: "10001",
+ *         country: "US"
+ *     }
+ *
+ * @example
+ *     {
+ *         type: "custom",
+ *         foreignId: "DB_FOREIGN_ID",
+ *         accountName: "Vendor Wire Account",
+ *         accountNumber: "123456789",
+ *         schemaId: "cpms_4794d597-70dc-4fec-b6ec-c5988e759769",
+ *         data: {
+ *             "bankName": "Chase",
+ *             "recipientName": "John Doe",
+ *             "routingNumber": "123456789",
+ *             "accountNumber": "99988767623"
  *         }
  *     }
  */

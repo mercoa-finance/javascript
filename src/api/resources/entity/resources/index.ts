@@ -4,6 +4,7 @@ export * as emailLog from "./emailLog";
 export * as user from "./user";
 export * as approvalPolicy from "./approvalPolicy";
 export * as counterparty from "./counterparty";
+export * as customization from "./customization";
 export * as invoice from "./invoice";
 export * as metadata from "./metadata";
 export * as notificationPolicy from "./notificationPolicy";

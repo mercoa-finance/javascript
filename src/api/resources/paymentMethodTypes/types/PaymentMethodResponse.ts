@@ -56,6 +56,58 @@ import * as Mercoa from "../../../index";
  *         createdAt: new Date("2021-01-01T00:00:00.000Z"),
  *         updatedAt: new Date("2021-01-01T00:00:00.000Z")
  *     }
+ *
+ * @example
+ *     {
+ *         type: "custom",
+ *         id: "pm_5fde2f4a-facc-48ef-8f0d-6b7d087c7b18",
+ *         foreignId: "DB_FOREIGN_ID",
+ *         accountName: "Vendor Wire Account",
+ *         accountNumber: "123456789",
+ *         schemaId: "cpms_4794d597-70dc-4fec-b6ec-c5988e759769",
+ *         schema: {
+ *             id: "cpms_4794d597-70dc-4fec-b6ec-c5988e759769",
+ *             name: "Wire",
+ *             isSource: false,
+ *             isDestination: true,
+ *             supportedCurrencies: [Mercoa.CurrencyCode.Usd, Mercoa.CurrencyCode.Eur],
+ *             fields: [{
+ *                     name: "bankName",
+ *                     displayName: "Bank Name",
+ *                     type: Mercoa.CustomPaymentMethodSchemaFieldType.Text,
+ *                     optional: false
+ *                 }, {
+ *                     name: "recipientName",
+ *                     displayName: "Recipient Name",
+ *                     type: Mercoa.CustomPaymentMethodSchemaFieldType.Text,
+ *                     optional: false
+ *                 }, {
+ *                     name: "accountNumber",
+ *                     displayName: "Account Number",
+ *                     type: Mercoa.CustomPaymentMethodSchemaFieldType.Number,
+ *                     optional: false,
+ *                     useAsAccountNumber: true
+ *                 }, {
+ *                     name: "routingNumber",
+ *                     displayName: "Routing Number",
+ *                     type: Mercoa.CustomPaymentMethodSchemaFieldType.Number,
+ *                     optional: false
+ *                 }],
+ *             createdAt: new Date("2021-01-01T00:00:00.000Z"),
+ *             updatedAt: new Date("2021-01-01T00:00:00.000Z")
+ *         },
+ *         data: {
+ *             "bankName": "Chase",
+ *             "recipientName": "John Doe",
+ *             "routingNumber": "123456789",
+ *             "accountNumber": "99988767623"
+ *         },
+ *         isDefaultSource: false,
+ *         isDefaultDestination: false,
+ *         supportedCurrencies: [Mercoa.CurrencyCode.Usd],
+ *         createdAt: new Date("2021-01-01T00:00:00.000Z"),
+ *         updatedAt: new Date("2021-01-01T00:00:00.000Z")
+ *     }
  */
 export type PaymentMethodResponse =
     | Mercoa.PaymentMethodResponse.BankAccount

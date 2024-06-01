@@ -7,6 +7,14 @@ import * as Mercoa from "../../../index";
 /**
  * @example
  *     {
+ *         disabled: true,
+ *         digest: false,
+ *         immediate: true,
+ *         type: Mercoa.NotificationType.InvoiceApproved
+ *     }
+ *
+ * @example
+ *     {
  *         disabled: false,
  *         digest: true,
  *         immediate: false,
@@ -18,7 +26,7 @@ import * as Mercoa from "../../../index";
  *         disabled: false,
  *         digest: false,
  *         immediate: true,
- *         type: Mercoa.NotificationType.InvoiceApproved
+ *         type: Mercoa.NotificationType.InvoicePaid
  *     }
  */
 export interface UserNotificationPolicyResponse {

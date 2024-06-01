@@ -4,6 +4,21 @@
 
 import * as Mercoa from "../../../index";
 
+/**
+ * @example
+ *     {
+ *         foreignId: "DB_FOREIGN_ID",
+ *         accountName: "Vendor Wire Account",
+ *         accountNumber: "123456789",
+ *         schemaId: "cpms_4794d597-70dc-4fec-b6ec-c5988e759769",
+ *         data: {
+ *             "bankName": "Chase",
+ *             "recipientName": "John Doe",
+ *             "routingNumber": "123456789",
+ *             "accountNumber": "99988767623"
+ *         }
+ *     }
+ */
 export interface CustomPaymentMethodRequest extends Mercoa.PaymentMethodBaseRequest {
     /** ID for this payment method in your system */
     foreignId: string;

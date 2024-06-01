@@ -4,6 +4,9 @@
 
 import * as Mercoa from "../../../index";
 
-export interface PaymentRailResponse extends Mercoa.PaymentRailRequest {
-    available: boolean;
+export interface PaymentRailResponse {
+    type: Mercoa.PaymentMethodType;
+    /** For custom payment methods, this is the ID of the schema. */
+    name: string;
+    active: boolean;
 }

@@ -55,7 +55,7 @@ export class NotificationPolicy {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.36",
+                "X-Fern-SDK-Version": "v0.3.37",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -177,6 +177,9 @@ export class NotificationPolicy {
      *
      * @example
      *     await mercoa.entity.notificationPolicy.get("ent_8545a84e-a45f-41bf-bdf1-33b42a55812c", Mercoa.NotificationType.InvoiceApprovalNeeded)
+     *
+     * @example
+     *     await mercoa.entity.notificationPolicy.get("ent_8545a84e-a45f-41bf-bdf1-33b42a55812c", Mercoa.NotificationType.InvoiceApproved)
      */
     public async get(
         entityId: Mercoa.EntityId,
@@ -197,7 +200,7 @@ export class NotificationPolicy {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.36",
+                "X-Fern-SDK-Version": "v0.3.37",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -323,6 +326,18 @@ export class NotificationPolicy {
      *         disabled: false,
      *         additionalRoles: ["admin", "approver"]
      *     })
+     *
+     * @example
+     *     await mercoa.entity.notificationPolicy.update("ent_8545a84e-a45f-41bf-bdf1-33b42a55812c", Mercoa.NotificationType.InvoiceApproved, {
+     *         disabled: false,
+     *         additionalRoles: ["admin", "bookkeeper"]
+     *     })
+     *
+     * @example
+     *     await mercoa.entity.notificationPolicy.update("ent_8545a84e-a45f-41bf-bdf1-33b42a55812c", Mercoa.NotificationType.InvoiceApproved, {
+     *         disabled: true,
+     *         additionalRoles: []
+     *     })
      */
     public async update(
         entityId: Mercoa.EntityId,
@@ -344,7 +359,7 @@ export class NotificationPolicy {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.36",
+                "X-Fern-SDK-Version": "v0.3.37",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },

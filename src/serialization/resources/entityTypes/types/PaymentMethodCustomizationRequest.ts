@@ -7,19 +7,19 @@ import * as Mercoa from "../../../../api/index";
 import * as core from "../../../../core";
 import { PaymentMethodType } from "../../paymentMethodTypes/types/PaymentMethodType";
 
-export const PaymentRailRequest: core.serialization.ObjectSchema<
-    serializers.PaymentRailRequest.Raw,
-    Mercoa.PaymentRailRequest
+export const PaymentMethodCustomizationRequest: core.serialization.ObjectSchema<
+    serializers.PaymentMethodCustomizationRequest.Raw,
+    Mercoa.PaymentMethodCustomizationRequest
 > = core.serialization.object({
     type: PaymentMethodType,
-    name: core.serialization.string().optional(),
-    active: core.serialization.boolean(),
+    schemaId: core.serialization.string().optional(),
+    disabled: core.serialization.boolean(),
 });
 
-export declare namespace PaymentRailRequest {
+export declare namespace PaymentMethodCustomizationRequest {
     interface Raw {
         type: PaymentMethodType.Raw;
-        name?: string | null;
-        active: boolean;
+        schemaId?: string | null;
+        disabled: boolean;
     }
 }

@@ -5,19 +5,21 @@
 import * as serializers from "../../../index";
 import * as Mercoa from "../../../../api/index";
 import * as core from "../../../../core";
-import { PaymentRailRequest } from "./PaymentRailRequest";
+import { PaymentMethodType } from "../../paymentMethodTypes/types/PaymentMethodType";
 
 export const PaymentRailResponse: core.serialization.ObjectSchema<
     serializers.PaymentRailResponse.Raw,
     Mercoa.PaymentRailResponse
-> = core.serialization
-    .object({
-        available: core.serialization.boolean(),
-    })
-    .extend(PaymentRailRequest);
+> = core.serialization.object({
+    type: PaymentMethodType,
+    name: core.serialization.string(),
+    active: core.serialization.boolean(),
+});
 
 export declare namespace PaymentRailResponse {
-    interface Raw extends PaymentRailRequest.Raw {
-        available: boolean;
+    interface Raw {
+        type: PaymentMethodType.Raw;
+        name: string;
+        active: boolean;
     }
 }

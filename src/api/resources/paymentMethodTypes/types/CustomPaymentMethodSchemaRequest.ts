@@ -12,11 +12,15 @@ import * as Mercoa from "../../../index";
  *         isDestination: true,
  *         supportedCurrencies: [Mercoa.CurrencyCode.Usd, Mercoa.CurrencyCode.Eur],
  *         fields: [{
- *                 name: "accountName",
- *                 displayName: "Account Name",
+ *                 name: "bankName",
+ *                 displayName: "Bank Name",
  *                 type: Mercoa.CustomPaymentMethodSchemaFieldType.Text,
- *                 optional: false,
- *                 useAsAccountName: true
+ *                 optional: false
+ *             }, {
+ *                 name: "recipientName",
+ *                 displayName: "Recipient Name",
+ *                 type: Mercoa.CustomPaymentMethodSchemaFieldType.Text,
+ *                 optional: false
  *             }, {
  *                 name: "accountNumber",
  *                 displayName: "Account Number",

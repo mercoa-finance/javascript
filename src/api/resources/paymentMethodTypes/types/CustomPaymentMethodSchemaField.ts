@@ -78,6 +78,22 @@ import * as Mercoa from "../../../index";
  *         type: Mercoa.CustomPaymentMethodSchemaFieldType.Date,
  *         optional: false
  *     }
+ *
+ * @example
+ *     {
+ *         name: "bankName",
+ *         displayName: "Bank Name",
+ *         type: Mercoa.CustomPaymentMethodSchemaFieldType.Text,
+ *         optional: false
+ *     }
+ *
+ * @example
+ *     {
+ *         name: "recipientName",
+ *         displayName: "Recipient Name",
+ *         type: Mercoa.CustomPaymentMethodSchemaFieldType.Text,
+ *         optional: false
+ *     }
  */
 export interface CustomPaymentMethodSchemaField {
     name: string;

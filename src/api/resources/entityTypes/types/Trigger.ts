@@ -4,6 +4,14 @@
 
 import * as Mercoa from "../../../index";
 
+/**
+ * @example
+ *     {
+ *         type: "amount",
+ *         amount: 100,
+ *         currency: Mercoa.CurrencyCode.Usd
+ *     }
+ */
 export type Trigger = Mercoa.Trigger.Amount | Mercoa.Trigger.Vendor | Mercoa.Trigger.Metadata;
 
 export declare namespace Trigger {

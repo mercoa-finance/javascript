@@ -9,7 +9,7 @@ import * as serializers from "../../../../../../serialization/index";
 import urlJoin from "url-join";
 import * as errors from "../../../../../../errors/index";
 
-export declare namespace Approval {
+export declare namespace Customization {
     interface Options {
         environment?: core.Supplier<environments.MercoaEnvironment | string>;
         token: core.Supplier<core.BearerToken>;
@@ -21,15 +21,14 @@ export declare namespace Approval {
     }
 }
 
-export class Approval {
-    constructor(protected readonly _options: Approval.Options) {}
+export class Customization {
+    constructor(protected readonly _options: Customization.Options) {}
 
     /**
-     * Adds an approver to the invoice. Will select the first available approver slot that is not already filled and assign the approver to it. If no approver slots are available, an error will be returned. An explicit approver slot can be specified by setting the `approverSlot` field.
+     * Get entity customization.
      *
-     * @param {Mercoa.InvoiceId} invoiceId
-     * @param {Mercoa.AddApproverRequest} request
-     * @param {Approval.RequestOptions} requestOptions - Request-specific configuration.
+     * @param {Mercoa.EntityId} entityId
+     * @param {Customization.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Mercoa.BadRequest}
      * @throws {@link Mercoa.Unauthorized}
@@ -40,22 +39,18 @@ export class Approval {
      * @throws {@link Mercoa.Unimplemented}
      *
      * @example
-     *     await mercoa.invoice.approval.addApprover("inv_3d61faa9-1754-4b7b-9fcb-88ff97f368ff", {
-     *         approvalSlotId: "inap_9bb311c9-7c15-4c9e-8148-63814e0abec6",
-     *         userId: "user_e24fc81c-c5ee-47e8-af42-4fe29d895506"
-     *     })
+     *     await mercoa.entity.customization.get("ent_a0f6ea94-0761-4a5e-a416-3c453cb7eced")
      */
-    public async addApprover(
-        invoiceId: Mercoa.InvoiceId,
-        request: Mercoa.AddApproverRequest,
-        requestOptions?: Approval.RequestOptions
-    ): Promise<void> {
+    public async get(
+        entityId: Mercoa.EntityId,
+        requestOptions?: Customization.RequestOptions
+    ): Promise<Mercoa.EntityCustomizationResponse> {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
-                `/invoice/${encodeURIComponent(await serializers.InvoiceId.jsonOrThrow(invoiceId))}/add-approver`
+                `/entity/${encodeURIComponent(await serializers.EntityId.jsonOrThrow(entityId))}/customization`
             ),
-            method: "POST",
+            method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
@@ -65,12 +60,16 @@ export class Approval {
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
-            body: await serializers.AddApproverRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
         });
         if (_response.ok) {
-            return;
+            return await serializers.EntityCustomizationResponse.parseOrThrow(_response.body, {
+                unrecognizedObjectKeys: "passthrough",
+                allowUnrecognizedUnionMembers: true,
+                allowUnrecognizedEnumValues: true,
+                breadcrumbsPrefix: ["response"],
+            });
         }
 
         if (_response.error.reason === "status-code") {
@@ -162,9 +161,11 @@ export class Approval {
     }
 
     /**
-     * @param {Mercoa.InvoiceId} invoiceId
-     * @param {Mercoa.ApprovalRequest} request
-     * @param {Approval.RequestOptions} requestOptions - Request-specific configuration.
+     * Update entity customization. This lets you turn off metadata and payment methods for an entity.
+     *
+     * @param {Mercoa.EntityId} entityId
+     * @param {Mercoa.EntityCustomizationRequest} request
+     * @param {Customization.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Mercoa.BadRequest}
      * @throws {@link Mercoa.Unauthorized}
@@ -175,20 +176,44 @@ export class Approval {
      * @throws {@link Mercoa.Unimplemented}
      *
      * @example
-     *     await mercoa.invoice.approval.approve("inv_3d61faa9-1754-4b7b-9fcb-88ff97f368ff", {
-     *         text: "This is a reason for my action",
-     *         userId: "user_e24fc81c-c5ee-47e8-af42-4fe29d895506"
+     *     await mercoa.entity.customization.update("ent_a0f6ea94-0761-4a5e-a416-3c453cb7eced", {
+     *         metadata: [{
+     *                 key: "my_custom_field",
+     *                 disabled: true
+     *             }, {
+     *                 key: "my_other_field",
+     *                 disabled: false
+     *             }],
+     *         paymentSource: [{
+     *                 type: Mercoa.PaymentMethodType.BankAccount,
+     *                 disabled: true
+     *             }, {
+     *                 type: Mercoa.PaymentMethodType.Custom,
+     *                 schemaId: "cpms_7df2974a-4069-454c-912f-7e58ebe030fb",
+     *                 disabled: true
+     *             }],
+     *         backupDisbursement: [{
+     *                 type: Mercoa.PaymentMethodType.Check,
+     *                 disabled: true
+     *             }],
+     *         paymentDestination: [{
+     *                 type: Mercoa.PaymentMethodType.BankAccount,
+     *                 disabled: true
+     *             }, {
+     *                 type: Mercoa.PaymentMethodType.Check,
+     *                 disabled: true
+     *             }]
      *     })
      */
-    public async approve(
-        invoiceId: Mercoa.InvoiceId,
-        request: Mercoa.ApprovalRequest,
-        requestOptions?: Approval.RequestOptions
-    ): Promise<void> {
+    public async update(
+        entityId: Mercoa.EntityId,
+        request: Mercoa.EntityCustomizationRequest,
+        requestOptions?: Customization.RequestOptions
+    ): Promise<Mercoa.EntityCustomizationResponse> {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
-                `/invoice/${encodeURIComponent(await serializers.InvoiceId.jsonOrThrow(invoiceId))}/approve`
+                `/entity/${encodeURIComponent(await serializers.EntityId.jsonOrThrow(entityId))}/customization`
             ),
             method: "POST",
             headers: {
@@ -200,147 +225,19 @@ export class Approval {
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
-            body: await serializers.ApprovalRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
+            body: await serializers.EntityCustomizationRequest.jsonOrThrow(request, {
+                unrecognizedObjectKeys: "strip",
+            }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
         });
         if (_response.ok) {
-            return;
-        }
-
-        if (_response.error.reason === "status-code") {
-            switch ((_response.error.body as any)?.["errorName"]) {
-                case "BadRequest":
-                    throw new Mercoa.BadRequest(
-                        await serializers.BadRequest.parseOrThrow(_response.error.body, {
-                            unrecognizedObjectKeys: "passthrough",
-                            allowUnrecognizedUnionMembers: true,
-                            allowUnrecognizedEnumValues: true,
-                            breadcrumbsPrefix: ["response"],
-                        })
-                    );
-                case "Unauthorized":
-                    throw new Mercoa.Unauthorized(
-                        await serializers.Unauthorized.parseOrThrow(_response.error.body, {
-                            unrecognizedObjectKeys: "passthrough",
-                            allowUnrecognizedUnionMembers: true,
-                            allowUnrecognizedEnumValues: true,
-                            breadcrumbsPrefix: ["response"],
-                        })
-                    );
-                case "Forbidden":
-                    throw new Mercoa.Forbidden(
-                        await serializers.Forbidden.parseOrThrow(_response.error.body, {
-                            unrecognizedObjectKeys: "passthrough",
-                            allowUnrecognizedUnionMembers: true,
-                            allowUnrecognizedEnumValues: true,
-                            breadcrumbsPrefix: ["response"],
-                        })
-                    );
-                case "NotFound":
-                    throw new Mercoa.NotFound(
-                        await serializers.NotFound.parseOrThrow(_response.error.body, {
-                            unrecognizedObjectKeys: "passthrough",
-                            allowUnrecognizedUnionMembers: true,
-                            allowUnrecognizedEnumValues: true,
-                            breadcrumbsPrefix: ["response"],
-                        })
-                    );
-                case "Conflict":
-                    throw new Mercoa.Conflict(
-                        await serializers.Conflict.parseOrThrow(_response.error.body, {
-                            unrecognizedObjectKeys: "passthrough",
-                            allowUnrecognizedUnionMembers: true,
-                            allowUnrecognizedEnumValues: true,
-                            breadcrumbsPrefix: ["response"],
-                        })
-                    );
-                case "InternalServerError":
-                    throw new Mercoa.InternalServerError(
-                        await serializers.InternalServerError.parseOrThrow(_response.error.body, {
-                            unrecognizedObjectKeys: "passthrough",
-                            allowUnrecognizedUnionMembers: true,
-                            allowUnrecognizedEnumValues: true,
-                            breadcrumbsPrefix: ["response"],
-                        })
-                    );
-                case "Unimplemented":
-                    throw new Mercoa.Unimplemented(
-                        await serializers.Unimplemented.parseOrThrow(_response.error.body, {
-                            unrecognizedObjectKeys: "passthrough",
-                            allowUnrecognizedUnionMembers: true,
-                            allowUnrecognizedEnumValues: true,
-                            breadcrumbsPrefix: ["response"],
-                        })
-                    );
-                default:
-                    throw new errors.MercoaError({
-                        statusCode: _response.error.statusCode,
-                        body: _response.error.body,
-                    });
-            }
-        }
-
-        switch (_response.error.reason) {
-            case "non-json":
-                throw new errors.MercoaError({
-                    statusCode: _response.error.statusCode,
-                    body: _response.error.rawBody,
-                });
-            case "timeout":
-                throw new errors.MercoaTimeoutError();
-            case "unknown":
-                throw new errors.MercoaError({
-                    message: _response.error.errorMessage,
-                });
-        }
-    }
-
-    /**
-     * @param {Mercoa.InvoiceId} invoiceId
-     * @param {Mercoa.ApprovalRequest} request
-     * @param {Approval.RequestOptions} requestOptions - Request-specific configuration.
-     *
-     * @throws {@link Mercoa.BadRequest}
-     * @throws {@link Mercoa.Unauthorized}
-     * @throws {@link Mercoa.Forbidden}
-     * @throws {@link Mercoa.NotFound}
-     * @throws {@link Mercoa.Conflict}
-     * @throws {@link Mercoa.InternalServerError}
-     * @throws {@link Mercoa.Unimplemented}
-     *
-     * @example
-     *     await mercoa.invoice.approval.reject("inv_3d61faa9-1754-4b7b-9fcb-88ff97f368ff", {
-     *         text: "This is a reason for my action",
-     *         userId: "user_e24fc81c-c5ee-47e8-af42-4fe29d895506"
-     *     })
-     */
-    public async reject(
-        invoiceId: Mercoa.InvoiceId,
-        request: Mercoa.ApprovalRequest,
-        requestOptions?: Approval.RequestOptions
-    ): Promise<void> {
-        const _response = await core.fetcher({
-            url: urlJoin(
-                (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
-                `/invoice/${encodeURIComponent(await serializers.InvoiceId.jsonOrThrow(invoiceId))}/reject`
-            ),
-            method: "POST",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.37",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-            },
-            contentType: "application/json",
-            body: await serializers.ApprovalRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
-            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
-            maxRetries: requestOptions?.maxRetries,
-        });
-        if (_response.ok) {
-            return;
+            return await serializers.EntityCustomizationResponse.parseOrThrow(_response.body, {
+                unrecognizedObjectKeys: "passthrough",
+                allowUnrecognizedUnionMembers: true,
+                allowUnrecognizedEnumValues: true,
+                breadcrumbsPrefix: ["response"],
+            });
         }
 
         if (_response.error.reason === "status-code") {

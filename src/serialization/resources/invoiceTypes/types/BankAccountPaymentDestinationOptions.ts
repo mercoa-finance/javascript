@@ -12,10 +12,12 @@ export const BankAccountPaymentDestinationOptions: core.serialization.ObjectSche
     Mercoa.BankAccountPaymentDestinationOptions
 > = core.serialization.object({
     delivery: BankDeliveryMethod.optional(),
+    description: core.serialization.string().optional(),
 });
 
 export declare namespace BankAccountPaymentDestinationOptions {
     interface Raw {
         delivery?: BankDeliveryMethod.Raw | null;
+        description?: string | null;
     }
 }

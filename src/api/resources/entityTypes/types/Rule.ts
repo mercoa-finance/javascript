@@ -8,10 +8,20 @@ import * as Mercoa from "../../../index";
  * @example
  *     {
  *         type: "approver",
- *         numApprovers: 1,
+ *         numApprovers: 2,
  *         identifierList: {
  *             type: "rolesList",
- *             value: ["admin"]
+ *             value: ["Admin", "Controller"]
+ *         }
+ *     }
+ *
+ * @example
+ *     {
+ *         type: "approver",
+ *         numApprovers: 2,
+ *         identifierList: {
+ *             type: "userList",
+ *             value: ["usr_8545a84e-a45f-41bf-bdf1-33b42a55812c", "usr_21661ac1-a2a8-4465-a6c0-64474ba8181d"]
  *         }
  *     }
  */

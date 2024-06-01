@@ -7,13 +7,31 @@ import * as Mercoa from "../../../index";
 /**
  * @example
  *     {
+ *         trigger: [{
+ *                 type: "amount",
+ *                 amount: 100,
+ *                 currency: Mercoa.CurrencyCode.Usd
+ *             }],
+ *         rule: {
+ *             type: "approver",
+ *             numApprovers: 2,
+ *             identifierList: {
+ *                 type: "rolesList",
+ *                 value: ["Admin", "Controller"]
+ *             }
+ *         },
+ *         upstreamPolicyId: "root"
+ *     }
+ *
+ * @example
+ *     {
  *         trigger: [],
  *         rule: {
  *             type: "approver",
- *             numApprovers: 1,
+ *             numApprovers: 2,
  *             identifierList: {
- *                 type: "rolesList",
- *                 value: ["admin"]
+ *                 type: "userList",
+ *                 value: ["usr_8545a84e-a45f-41bf-bdf1-33b42a55812c", "usr_21661ac1-a2a8-4465-a6c0-64474ba8181d"]
  *             }
  *         },
  *         upstreamPolicyId: "root"

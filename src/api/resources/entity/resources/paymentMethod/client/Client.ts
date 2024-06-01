@@ -70,7 +70,7 @@ export class PaymentMethod {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.36",
+                "X-Fern-SDK-Version": "v0.3.37",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -192,7 +192,6 @@ export class PaymentMethod {
      * @example
      *     await mercoa.entity.paymentMethod.create("ent_8545a84e-a45f-41bf-bdf1-33b42a55812c", {
      *         type: "bankAccount",
-     *         bankName: "Chase",
      *         routingNumber: "12345678",
      *         accountNumber: "99988767623",
      *         accountType: Mercoa.BankType.Checking
@@ -201,10 +200,36 @@ export class PaymentMethod {
      * @example
      *     await mercoa.entity.paymentMethod.create("ent_21661ac1-a2a8-4465-a6c0-64474ba8181d", {
      *         type: "bankAccount",
-     *         bankName: "Chase",
      *         routingNumber: "66554433",
      *         accountNumber: "55934059697648",
      *         accountType: Mercoa.BankType.Checking
+     *     })
+     *
+     * @example
+     *     await mercoa.entity.paymentMethod.create("ent_21661ac1-a2a8-4465-a6c0-64474ba8181d", {
+     *         type: "check",
+     *         payToTheOrderOf: "John Doe",
+     *         addressLine1: "123 Main St",
+     *         addressLine2: "Apt 1",
+     *         city: "New York",
+     *         stateOrProvince: "NY",
+     *         postalCode: "10001",
+     *         country: "US"
+     *     })
+     *
+     * @example
+     *     await mercoa.entity.paymentMethod.create("ent_21661ac1-a2a8-4465-a6c0-64474ba8181d", {
+     *         type: "custom",
+     *         foreignId: "DB_FOREIGN_ID",
+     *         accountName: "Vendor Wire Account",
+     *         accountNumber: "123456789",
+     *         schemaId: "cpms_4794d597-70dc-4fec-b6ec-c5988e759769",
+     *         data: {
+     *             "bankName": "Chase",
+     *             "recipientName": "John Doe",
+     *             "routingNumber": "123456789",
+     *             "accountNumber": "99988767623"
+     *         }
      *     })
      */
     public async create(
@@ -222,7 +247,7 @@ export class PaymentMethod {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.36",
+                "X-Fern-SDK-Version": "v0.3.37",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -361,7 +386,7 @@ export class PaymentMethod {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.36",
+                "X-Fern-SDK-Version": "v0.3.37",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -507,7 +532,7 @@ export class PaymentMethod {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.36",
+                "X-Fern-SDK-Version": "v0.3.37",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -650,7 +675,7 @@ export class PaymentMethod {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.36",
+                "X-Fern-SDK-Version": "v0.3.37",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -787,7 +812,7 @@ export class PaymentMethod {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.36",
+                "X-Fern-SDK-Version": "v0.3.37",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -933,7 +958,7 @@ export class PaymentMethod {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.36",
+                "X-Fern-SDK-Version": "v0.3.37",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -1078,7 +1103,7 @@ export class PaymentMethod {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.36",
+                "X-Fern-SDK-Version": "v0.3.37",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },

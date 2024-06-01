@@ -18,6 +18,13 @@ import * as Mercoa from "../../../index";
  *         additionalRoles: ["admin", "bookkeeper"],
  *         type: Mercoa.NotificationType.InvoiceApproved
  *     }
+ *
+ * @example
+ *     {
+ *         disabled: true,
+ *         additionalRoles: [],
+ *         type: Mercoa.NotificationType.InvoiceApproved
+ *     }
  */
 export interface NotificationPolicyResponse {
     /** True if the selected notification type is disabled for this entity */

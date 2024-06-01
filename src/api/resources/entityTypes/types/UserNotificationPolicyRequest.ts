@@ -5,15 +5,16 @@
 /**
  * @example
  *     {
- *         disabled: false,
- *         digest: true,
- *         immediate: false
+ *         disabled: true
  *     }
  *
  * @example
  *     {
- *         disabled: false,
- *         digest: false,
+ *         digest: true
+ *     }
+ *
+ * @example
+ *     {
  *         immediate: true
  *     }
  */
