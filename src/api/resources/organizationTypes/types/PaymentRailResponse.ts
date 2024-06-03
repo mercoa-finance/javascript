@@ -9,4 +9,6 @@ export interface PaymentRailResponse {
     /** For custom payment methods, this is the ID of the schema. */
     name: string;
     active: boolean;
+    /** unused */
+    available?: boolean;
 }

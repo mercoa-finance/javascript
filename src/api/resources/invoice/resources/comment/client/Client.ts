@@ -18,6 +18,7 @@ export declare namespace Comment {
     interface RequestOptions {
         timeoutInSeconds?: number;
         maxRetries?: number;
+        abortSignal?: AbortSignal;
     }
 }
 
@@ -55,13 +56,14 @@ export class Comment {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.37",
+                "X-Fern-SDK-Version": "v0.3.38",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
             return await serializers.invoice.comment.getAll.Response.parseOrThrow(_response.body, {
@@ -196,7 +198,7 @@ export class Comment {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.37",
+                "X-Fern-SDK-Version": "v0.3.38",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -204,6 +206,7 @@ export class Comment {
             body: await serializers.CommentRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
             return await serializers.CommentResponse.parseOrThrow(_response.body, {
@@ -335,13 +338,14 @@ export class Comment {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.37",
+                "X-Fern-SDK-Version": "v0.3.38",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
             return await serializers.CommentResponse.parseOrThrow(_response.body, {
@@ -480,7 +484,7 @@ export class Comment {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.37",
+                "X-Fern-SDK-Version": "v0.3.38",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -488,6 +492,7 @@ export class Comment {
             body: await serializers.CommentRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
             return await serializers.CommentResponse.parseOrThrow(_response.body, {
@@ -621,13 +626,14 @@ export class Comment {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.37",
+                "X-Fern-SDK-Version": "v0.3.38",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
             return;

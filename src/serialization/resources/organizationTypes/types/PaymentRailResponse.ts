@@ -14,6 +14,7 @@ export const PaymentRailResponse: core.serialization.ObjectSchema<
     type: PaymentMethodType,
     name: core.serialization.string(),
     active: core.serialization.boolean(),
+    available: core.serialization.boolean().optional(),
 });
 
 export declare namespace PaymentRailResponse {
@@ -21,5 +22,6 @@ export declare namespace PaymentRailResponse {
         type: PaymentMethodType.Raw;
         name: string;
         active: boolean;
+        available?: boolean | null;
     }
 }

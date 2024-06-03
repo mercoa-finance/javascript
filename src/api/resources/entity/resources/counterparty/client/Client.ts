@@ -18,6 +18,7 @@ export declare namespace Counterparty {
     interface RequestOptions {
         timeoutInSeconds?: number;
         maxRetries?: number;
+        abortSignal?: AbortSignal;
     }
 }
 
@@ -99,7 +100,7 @@ export class Counterparty {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.37",
+                "X-Fern-SDK-Version": "v0.3.38",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -107,6 +108,7 @@ export class Counterparty {
             queryParameters: _queryParams,
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
             return await serializers.FindCounterpartiesResponse.parseOrThrow(_response.body, {
@@ -280,7 +282,7 @@ export class Counterparty {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.37",
+                "X-Fern-SDK-Version": "v0.3.38",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -288,6 +290,7 @@ export class Counterparty {
             queryParameters: _queryParams,
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
             return await serializers.FindCounterpartiesResponse.parseOrThrow(_response.body, {
@@ -421,7 +424,7 @@ export class Counterparty {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.37",
+                "X-Fern-SDK-Version": "v0.3.38",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -429,6 +432,7 @@ export class Counterparty {
             body: await serializers.EntityAddPayeesRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
             return;
@@ -557,7 +561,7 @@ export class Counterparty {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.37",
+                "X-Fern-SDK-Version": "v0.3.38",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -565,6 +569,7 @@ export class Counterparty {
             body: await serializers.EntityHidePayeesRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
             return;
@@ -693,7 +698,7 @@ export class Counterparty {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.37",
+                "X-Fern-SDK-Version": "v0.3.38",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -701,6 +706,7 @@ export class Counterparty {
             body: await serializers.EntityAddPayorsRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
             return;
@@ -829,7 +835,7 @@ export class Counterparty {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.37",
+                "X-Fern-SDK-Version": "v0.3.38",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -837,6 +843,7 @@ export class Counterparty {
             body: await serializers.EntityHidePayorsRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
             return;

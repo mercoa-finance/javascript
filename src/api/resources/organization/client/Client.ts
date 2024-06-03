@@ -19,6 +19,7 @@ export declare namespace Organization {
     interface RequestOptions {
         timeoutInSeconds?: number;
         maxRetries?: number;
+        abortSignal?: AbortSignal;
     }
 }
 
@@ -102,7 +103,7 @@ export class Organization {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.37",
+                "X-Fern-SDK-Version": "v0.3.38",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -110,6 +111,7 @@ export class Organization {
             queryParameters: _queryParams,
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
             return await serializers.OrganizationResponse.parseOrThrow(_response.body, {
@@ -253,7 +255,7 @@ export class Organization {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.37",
+                "X-Fern-SDK-Version": "v0.3.38",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -261,6 +263,7 @@ export class Organization {
             body: await serializers.OrganizationRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
             return await serializers.OrganizationResponse.parseOrThrow(_response.body, {
@@ -413,7 +416,7 @@ export class Organization {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.37",
+                "X-Fern-SDK-Version": "v0.3.38",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -421,6 +424,7 @@ export class Organization {
             queryParameters: _queryParams,
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
             return await serializers.EmailLogResponse.parseOrThrow(_response.body, {

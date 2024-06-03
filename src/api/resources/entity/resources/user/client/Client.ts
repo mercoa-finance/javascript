@@ -20,6 +20,7 @@ export declare namespace User {
     interface RequestOptions {
         timeoutInSeconds?: number;
         maxRetries?: number;
+        abortSignal?: AbortSignal;
     }
 }
 
@@ -27,7 +28,7 @@ export class User {
     constructor(protected readonly _options: User.Options) {}
 
     /**
-     * Get all entity users
+     * Get all entity users (DEPRECATED, use Search Entity Users)
      *
      * @param {Mercoa.EntityId} entityId
      * @param {User.RequestOptions} requestOptions - Request-specific configuration.
@@ -57,13 +58,14 @@ export class User {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.37",
+                "X-Fern-SDK-Version": "v0.3.38",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
             return await serializers.entity.user.getAll.Response.parseOrThrow(_response.body, {
@@ -163,7 +165,7 @@ export class User {
     }
 
     /**
-     * Get all entity users
+     * Search entity users
      *
      * @param {Mercoa.EntityId} entityId
      * @param {Mercoa.entity.user.EntityFindEntityRequest} request
@@ -231,7 +233,7 @@ export class User {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.37",
+                "X-Fern-SDK-Version": "v0.3.38",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -239,6 +241,7 @@ export class User {
             queryParameters: _queryParams,
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
             return await serializers.FindEntityUserResponse.parseOrThrow(_response.body, {
@@ -373,7 +376,7 @@ export class User {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.37",
+                "X-Fern-SDK-Version": "v0.3.38",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -381,6 +384,7 @@ export class User {
             body: await serializers.EntityUserRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
             return await serializers.EntityUserResponse.parseOrThrow(_response.body, {
@@ -514,13 +518,14 @@ export class User {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.37",
+                "X-Fern-SDK-Version": "v0.3.38",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
             return await serializers.EntityUserResponse.parseOrThrow(_response.body, {
@@ -661,7 +666,7 @@ export class User {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.37",
+                "X-Fern-SDK-Version": "v0.3.38",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -669,6 +674,7 @@ export class User {
             body: await serializers.EntityUserRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
             return await serializers.EntityUserResponse.parseOrThrow(_response.body, {
@@ -802,13 +808,14 @@ export class User {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.37",
+                "X-Fern-SDK-Version": "v0.3.38",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
             return;
@@ -941,7 +948,7 @@ export class User {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.37",
+                "X-Fern-SDK-Version": "v0.3.38",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -949,6 +956,7 @@ export class User {
             body: await serializers.TokenGenerationOptions.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
             return await serializers.entity.user.getToken.Response.parseOrThrow(_response.body, {
