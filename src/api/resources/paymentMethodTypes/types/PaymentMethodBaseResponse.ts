@@ -11,6 +11,8 @@ export interface PaymentMethodBaseResponse {
     /** Indicates whether this payment method is the default destination for the entity */
     isDefaultDestination: boolean;
     supportedCurrencies: Mercoa.CurrencyCode[];
+    /** ID for this payment method in the external accounting system (e.g Rutter or Codat) */
+    externalAccountingSystemId?: string;
     createdAt: Date;
     updatedAt: Date;
 }

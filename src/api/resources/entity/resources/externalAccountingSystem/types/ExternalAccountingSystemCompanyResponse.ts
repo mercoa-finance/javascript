@@ -6,7 +6,8 @@ import * as Mercoa from "../../../../../index";
 
 export type ExternalAccountingSystemCompanyResponse =
     | Mercoa.entity.ExternalAccountingSystemCompanyResponse.Codat
-    | Mercoa.entity.ExternalAccountingSystemCompanyResponse.Rutter;
+    | Mercoa.entity.ExternalAccountingSystemCompanyResponse.Rutter
+    | Mercoa.entity.ExternalAccountingSystemCompanyResponse.None;
 
 export declare namespace ExternalAccountingSystemCompanyResponse {
     interface Codat extends Mercoa.entity.CodatCompanyResponse {
@@ -15,5 +16,9 @@ export declare namespace ExternalAccountingSystemCompanyResponse {
 
     interface Rutter extends Mercoa.entity.RutterCompanyResponse {
         type: "rutter";
+    }
+
+    interface None extends Mercoa.entity.CodatCompanyResponse {
+        type: "none";
     }
 }

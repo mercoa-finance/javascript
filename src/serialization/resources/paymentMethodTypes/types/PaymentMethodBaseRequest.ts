@@ -12,11 +12,13 @@ export const PaymentMethodBaseRequest: core.serialization.ObjectSchema<
 > = core.serialization.object({
     defaultSource: core.serialization.boolean().optional(),
     defaultDestination: core.serialization.boolean().optional(),
+    externalAccountingSystemId: core.serialization.string().optional(),
 });
 
 export declare namespace PaymentMethodBaseRequest {
     interface Raw {
         defaultSource?: boolean | null;
         defaultDestination?: boolean | null;
+        externalAccountingSystemId?: string | null;
     }
 }

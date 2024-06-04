@@ -16,6 +16,7 @@ export const PaymentMethodBaseResponse: core.serialization.ObjectSchema<
     isDefaultSource: core.serialization.boolean(),
     isDefaultDestination: core.serialization.boolean(),
     supportedCurrencies: core.serialization.list(CurrencyCode),
+    externalAccountingSystemId: core.serialization.string().optional(),
     createdAt: core.serialization.date(),
     updatedAt: core.serialization.date(),
 });
@@ -26,6 +27,7 @@ export declare namespace PaymentMethodBaseResponse {
         isDefaultSource: boolean;
         isDefaultDestination: boolean;
         supportedCurrencies: CurrencyCode.Raw[];
+        externalAccountingSystemId?: string | null;
         createdAt: string;
         updatedAt: string;
     }

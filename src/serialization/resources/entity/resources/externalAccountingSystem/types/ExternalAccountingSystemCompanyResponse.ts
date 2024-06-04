@@ -15,6 +15,7 @@ export const ExternalAccountingSystemCompanyResponse: core.serialization.Schema<
     .union("type", {
         codat: CodatCompanyResponse,
         rutter: RutterCompanyResponse,
+        none: CodatCompanyResponse,
     })
     .transform<Mercoa.entity.ExternalAccountingSystemCompanyResponse>({
         transform: (value) => value,
@@ -22,7 +23,10 @@ export const ExternalAccountingSystemCompanyResponse: core.serialization.Schema<
     });
 
 export declare namespace ExternalAccountingSystemCompanyResponse {
-    type Raw = ExternalAccountingSystemCompanyResponse.Codat | ExternalAccountingSystemCompanyResponse.Rutter;
+    type Raw =
+        | ExternalAccountingSystemCompanyResponse.Codat
+        | ExternalAccountingSystemCompanyResponse.Rutter
+        | ExternalAccountingSystemCompanyResponse.None;
 
     interface Codat extends CodatCompanyResponse.Raw {
         type: "codat";
@@ -30,5 +34,9 @@ export declare namespace ExternalAccountingSystemCompanyResponse {
 
     interface Rutter extends RutterCompanyResponse.Raw {
         type: "rutter";
+    }
+
+    interface None extends CodatCompanyResponse.Raw {
+        type: "none";
     }
 }

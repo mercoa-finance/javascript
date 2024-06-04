@@ -7,4 +7,6 @@ export interface PaymentMethodBaseRequest {
     defaultSource?: boolean;
     /** If true, this payment method will be set as the default destination. Only one payment method can be set as the default destination. If another payment method is already set as the default destination, it will be unset. */
     defaultDestination?: boolean;
+    /** ID for this payment method in the external accounting system (e.g Rutter or Codat) */
+    externalAccountingSystemId?: string;
 }
