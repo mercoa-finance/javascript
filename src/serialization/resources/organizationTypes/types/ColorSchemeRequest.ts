@@ -13,6 +13,7 @@ export const ColorSchemeRequest: core.serialization.ObjectSchema<
     primaryColor: core.serialization.string().optional(),
     secondaryColor: core.serialization.string().optional(),
     logoBackgroundColor: core.serialization.string().optional(),
+    roundedCorners: core.serialization.number().optional(),
 });
 
 export declare namespace ColorSchemeRequest {
@@ -20,5 +21,6 @@ export declare namespace ColorSchemeRequest {
         primaryColor?: string | null;
         secondaryColor?: string | null;
         logoBackgroundColor?: string | null;
+        roundedCorners?: number | null;
     }
 }

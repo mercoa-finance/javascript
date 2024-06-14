@@ -6,16 +6,19 @@ import * as serializers from "../../../index";
 import * as Mercoa from "../../../../api/index";
 import * as core from "../../../../core";
 import { EntityId } from "./EntityId";
+import { CounterpartyCustomizationRequest } from "./CounterpartyCustomizationRequest";
 
 export const EntityAddPayeesRequest: core.serialization.ObjectSchema<
     serializers.EntityAddPayeesRequest.Raw,
     Mercoa.EntityAddPayeesRequest
 > = core.serialization.object({
     payees: core.serialization.list(EntityId),
+    customizations: core.serialization.list(CounterpartyCustomizationRequest).optional(),
 });
 
 export declare namespace EntityAddPayeesRequest {
     interface Raw {
         payees: EntityId.Raw[];
+        customizations?: CounterpartyCustomizationRequest.Raw[] | null;
     }
 }

@@ -18,6 +18,8 @@ export const EntityRequest: core.serialization.ObjectSchema<serializers.EntityRe
         profile: ProfileRequest,
         isPayor: core.serialization.boolean(),
         isPayee: core.serialization.boolean(),
+        isNetworkPayor: core.serialization.boolean().optional(),
+        isNetworkPayee: core.serialization.boolean().optional(),
         logo: core.serialization.string().optional(),
     });
 
@@ -31,6 +33,8 @@ export declare namespace EntityRequest {
         profile: ProfileRequest.Raw;
         isPayor: boolean;
         isPayee: boolean;
+        isNetworkPayor?: boolean | null;
+        isNetworkPayee?: boolean | null;
         logo?: string | null;
     }
 }

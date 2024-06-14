@@ -71,7 +71,7 @@ export class PaymentMethod {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.39",
+                "X-Fern-SDK-Version": "0.4.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -200,6 +200,19 @@ export class PaymentMethod {
      *     })
      *
      * @example
+     *     await mercoa.entity.paymentMethod.create("ent_8545a84e-a45f-41bf-bdf1-33b42a55812c", {
+     *         type: "bankAccount",
+     *         routingNumber: "12345678",
+     *         accountNumber: "99988767623",
+     *         accountType: Mercoa.BankType.Checking,
+     *         checkOptions: {
+     *             enabled: true,
+     *             initialCheckNumber: 5000,
+     *             signatoryName: "John Doe"
+     *         }
+     *     })
+     *
+     * @example
      *     await mercoa.entity.paymentMethod.create("ent_21661ac1-a2a8-4465-a6c0-64474ba8181d", {
      *         type: "bankAccount",
      *         routingNumber: "66554433",
@@ -249,7 +262,7 @@ export class PaymentMethod {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.39",
+                "X-Fern-SDK-Version": "0.4.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -389,7 +402,7 @@ export class PaymentMethod {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.39",
+                "X-Fern-SDK-Version": "0.4.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -536,7 +549,7 @@ export class PaymentMethod {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.39",
+                "X-Fern-SDK-Version": "0.4.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -680,7 +693,7 @@ export class PaymentMethod {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.39",
+                "X-Fern-SDK-Version": "0.4.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -818,7 +831,7 @@ export class PaymentMethod {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.39",
+                "X-Fern-SDK-Version": "0.4.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -965,7 +978,7 @@ export class PaymentMethod {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.39",
+                "X-Fern-SDK-Version": "0.4.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -1111,7 +1124,7 @@ export class PaymentMethod {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "v0.3.39",
+                "X-Fern-SDK-Version": "0.4.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },

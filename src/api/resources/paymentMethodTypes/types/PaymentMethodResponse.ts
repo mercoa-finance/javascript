@@ -25,6 +25,28 @@ import * as Mercoa from "../../../index";
  * @example
  *     {
  *         type: "bankAccount",
+ *         id: "pm_4794d597-70dc-4fec-b6ec-c5988e759769",
+ *         accountName: "My Checking Account",
+ *         bankName: "Chase",
+ *         routingNumber: "12345678",
+ *         accountNumber: "99988767623",
+ *         accountType: Mercoa.BankType.Checking,
+ *         status: Mercoa.BankStatus.Verified,
+ *         isDefaultSource: true,
+ *         isDefaultDestination: true,
+ *         supportedCurrencies: [Mercoa.CurrencyCode.Usd],
+ *         createdAt: new Date("2021-01-01T00:00:00.000Z"),
+ *         updatedAt: new Date("2021-01-01T00:00:00.000Z"),
+ *         checkOptions: {
+ *             enabled: true,
+ *             initialCheckNumber: 5000,
+ *             signatoryName: "John Doe"
+ *         }
+ *     }
+ *
+ * @example
+ *     {
+ *         type: "bankAccount",
  *         id: "pm_7610541f-4619-4033-8620-cfccfb811293",
  *         accountName: "Vendor Checking Account",
  *         bankName: "Chase",

@@ -20,6 +20,8 @@ export const EntityUpdateRequest: core.serialization.ObjectSchema<
     profile: ProfileRequest.optional(),
     isPayor: core.serialization.boolean().optional(),
     isPayee: core.serialization.boolean().optional(),
+    isNetworkPayor: core.serialization.boolean().optional(),
+    isNetworkPayee: core.serialization.boolean().optional(),
     logo: core.serialization.string().optional(),
 });
 
@@ -33,6 +35,8 @@ export declare namespace EntityUpdateRequest {
         profile?: ProfileRequest.Raw | null;
         isPayor?: boolean | null;
         isPayee?: boolean | null;
+        isNetworkPayor?: boolean | null;
+        isNetworkPayee?: boolean | null;
         logo?: string | null;
     }
 }

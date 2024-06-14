@@ -6,14 +6,14 @@ import * as serializers from "../../../index";
 import * as Mercoa from "../../../../api/index";
 import * as core from "../../../../core";
 import { InvoiceResponse } from "../../invoiceTypes/types/InvoiceResponse";
-import { EntityResponse } from "../../entityTypes/types/EntityResponse";
+import { CounterpartyResponse } from "../../entityTypes/types/CounterpartyResponse";
 import { CheckResponse } from "../../paymentMethodTypes/types/CheckResponse";
 import { BankAccountResponse } from "../../paymentMethodTypes/types/BankAccountResponse";
 
 export const OcrResponse: core.serialization.ObjectSchema<serializers.OcrResponse.Raw, Mercoa.OcrResponse> =
     core.serialization.object({
         invoice: InvoiceResponse,
-        vendor: EntityResponse,
+        vendor: CounterpartyResponse,
         check: CheckResponse.optional(),
         bankAccount: BankAccountResponse.optional(),
     });
@@ -21,7 +21,7 @@ export const OcrResponse: core.serialization.ObjectSchema<serializers.OcrRespons
 export declare namespace OcrResponse {
     interface Raw {
         invoice: InvoiceResponse.Raw;
-        vendor: EntityResponse.Raw;
+        vendor: CounterpartyResponse.Raw;
         check?: CheckResponse.Raw | null;
         bankAccount?: BankAccountResponse.Raw | null;
     }

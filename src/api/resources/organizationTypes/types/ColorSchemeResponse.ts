@@ -6,4 +6,5 @@ export interface ColorSchemeResponse {
     primaryColor?: string;
     secondaryColor?: string;
     logoBackgroundColor?: string;
+    roundedCorners?: number;
 }

@@ -7,6 +7,61 @@ import * as Mercoa from "../../../index";
 /**
  * @example
  *     {
+ *         id: "ent_8545a84e-a45f-41bf-bdf1-33b42a55812c",
+ *         foreignId: "MY-DB-ID-12345",
+ *         name: "Acme Inc.",
+ *         email: "customer@acme.com",
+ *         acceptedTos: true,
+ *         status: Mercoa.EntityStatus.Verified,
+ *         isCustomer: true,
+ *         isPayor: true,
+ *         isPayee: false,
+ *         isNetworkPayor: false,
+ *         isNetworkPayee: false,
+ *         accountType: Mercoa.AccountType.Business,
+ *         updatedAt: new Date("2024-01-02T00:00:00.000Z"),
+ *         createdAt: new Date("2024-01-01T00:00:00.000Z"),
+ *         profile: {
+ *             business: {
+ *                 email: "customer@acme.com",
+ *                 legalBusinessName: "Acme Inc.",
+ *                 businessType: Mercoa.BusinessType.Llc,
+ *                 phone: {
+ *                     countryCode: "1",
+ *                     number: "4155551234"
+ *                 },
+ *                 address: {
+ *                     addressLine1: "123 Main St",
+ *                     addressLine2: "Unit 1",
+ *                     city: "San Francisco",
+ *                     stateOrProvince: "CA",
+ *                     postalCode: "94105",
+ *                     country: "US"
+ *                 },
+ *                 taxIdProvided: true,
+ *                 ownersProvided: true
+ *             }
+ *         },
+ *         paymentMethods: [{
+ *                 type: "bankAccount",
+ *                 id: "pm_4794d597-70dc-4fec-b6ec-c5988e759769",
+ *                 accountName: "My Checking Account",
+ *                 bankName: "Chase",
+ *                 routingNumber: "12345678",
+ *                 accountNumber: "99988767623",
+ *                 accountType: Mercoa.BankType.Checking,
+ *                 status: Mercoa.BankStatus.Verified,
+ *                 isDefaultSource: true,
+ *                 isDefaultDestination: true,
+ *                 supportedCurrencies: [Mercoa.CurrencyCode.Usd],
+ *                 createdAt: new Date("2021-01-01T00:00:00.000Z"),
+ *                 updatedAt: new Date("2021-01-01T00:00:00.000Z")
+ *             }],
+ *         counterpartyType: [Mercoa.CounterpartyNetworkType.Entity]
+ *     }
+ *
+ * @example
+ *     {
  *         id: "ent_21661ac1-a2a8-4465-a6c0-64474ba8181d",
  *         foreignId: "MY-DB-ID-90909",
  *         name: "Big Box Store",
@@ -16,6 +71,8 @@ import * as Mercoa from "../../../index";
  *         isCustomer: false,
  *         isPayor: false,
  *         isPayee: true,
+ *         isNetworkPayor: false,
+ *         isNetworkPayee: false,
  *         accountType: Mercoa.AccountType.Business,
  *         updatedAt: new Date("2024-01-02T00:00:00.000Z"),
  *         createdAt: new Date("2024-01-01T00:00:00.000Z"),
@@ -43,11 +100,15 @@ import * as Mercoa from "../../../index";
  *                 createdAt: new Date("2021-01-01T00:00:00.000Z"),
  *                 updatedAt: new Date("2021-01-01T00:00:00.000Z")
  *             }],
- *         counterpartyType: [Mercoa.CounterpartyNetworkType.Entity, Mercoa.CounterpartyNetworkType.Network]
+ *         counterpartyType: [Mercoa.CounterpartyNetworkType.Entity]
  *     }
  */
 export interface CounterpartyResponse extends Mercoa.EntityResponse {
-    paymentMethods: Mercoa.PaymentMethodResponse[];
-    counterpartyType: Mercoa.CounterpartyNetworkType[];
+    /** If the entity searching for counterparties has an Account ID configured in the Payee/Payor relationship, it will be returned */
+    accountId?: string;
+    /** URL to the entity logo */
+    logo?: string;
+    paymentMethods?: Mercoa.PaymentMethodResponse[];
+    counterpartyType?: Mercoa.CounterpartyNetworkType[];
     invoiceMetrics?: Mercoa.CounterpartyInvoiceMetricsResponse;
 }

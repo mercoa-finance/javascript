@@ -19,6 +19,8 @@ import * as Mercoa from "../../../index";
  *                 isCustomer: false,
  *                 isPayor: false,
  *                 isPayee: true,
+ *                 isNetworkPayor: false,
+ *                 isNetworkPayee: false,
  *                 accountType: Mercoa.AccountType.Business,
  *                 updatedAt: new Date("2024-01-02T00:00:00.000Z"),
  *                 createdAt: new Date("2024-01-01T00:00:00.000Z"),
@@ -46,7 +48,7 @@ import * as Mercoa from "../../../index";
  *                         createdAt: new Date("2021-01-01T00:00:00.000Z"),
  *                         updatedAt: new Date("2021-01-01T00:00:00.000Z")
  *                     }],
- *                 counterpartyType: [Mercoa.CounterpartyNetworkType.Entity, Mercoa.CounterpartyNetworkType.Network]
+ *                 counterpartyType: [Mercoa.CounterpartyNetworkType.Entity]
  *             }]
  *     }
  */

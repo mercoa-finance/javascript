@@ -16,6 +16,8 @@ import * as Mercoa from "../../../index";
  *         isCustomer: true,
  *         isPayor: true,
  *         isPayee: false,
+ *         isNetworkPayor: false,
+ *         isNetworkPayee: false,
  *         accountType: Mercoa.AccountType.Business,
  *         updatedAt: new Date("2024-01-02T00:00:00.000Z"),
  *         createdAt: new Date("2024-01-01T00:00:00.000Z"),
@@ -53,6 +55,8 @@ import * as Mercoa from "../../../index";
  *         isCustomer: false,
  *         isPayor: false,
  *         isPayee: true,
+ *         isNetworkPayor: false,
+ *         isNetworkPayee: false,
  *         accountType: Mercoa.AccountType.Business,
  *         updatedAt: new Date("2024-01-02T00:00:00.000Z"),
  *         createdAt: new Date("2024-01-01T00:00:00.000Z"),
@@ -88,6 +92,10 @@ export interface EntityResponse {
     isPayor: boolean;
     /** True if this entity can receive payments. */
     isPayee: boolean;
+    /** True if this entity is available as a payor to any entity on your platform. Otherwise this entity will only be available as a payor to entities that have a direct relationship with this entity. */
+    isNetworkPayor: boolean;
+    /** True if this entity is available as a payee to any entity on your platform. Otherwise this entity will only be available as a payee to entities that have a direct relationship with this entity. */
+    isNetworkPayee: boolean;
     createdAt: Date;
     updatedAt: Date;
 }

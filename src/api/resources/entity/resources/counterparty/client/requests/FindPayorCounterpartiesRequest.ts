@@ -30,6 +30,10 @@ export interface FindPayorCounterpartiesRequest {
      */
     invoiceMetrics?: boolean;
     /**
+     * If true, will include counterparty logo as part of the response
+     */
+    logo?: boolean;
+    /**
      * Filter by counterparty ids
      */
     counterpartyId?: Mercoa.EntityId | Mercoa.EntityId[];

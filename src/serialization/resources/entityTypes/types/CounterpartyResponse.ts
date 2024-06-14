@@ -15,16 +15,20 @@ export const CounterpartyResponse: core.serialization.ObjectSchema<
     Mercoa.CounterpartyResponse
 > = core.serialization
     .object({
-        paymentMethods: core.serialization.list(PaymentMethodResponse),
-        counterpartyType: core.serialization.list(CounterpartyNetworkType),
+        accountId: core.serialization.string().optional(),
+        logo: core.serialization.string().optional(),
+        paymentMethods: core.serialization.list(PaymentMethodResponse).optional(),
+        counterpartyType: core.serialization.list(CounterpartyNetworkType).optional(),
         invoiceMetrics: CounterpartyInvoiceMetricsResponse.optional(),
     })
     .extend(EntityResponse);
 
 export declare namespace CounterpartyResponse {
     interface Raw extends EntityResponse.Raw {
-        paymentMethods: PaymentMethodResponse.Raw[];
-        counterpartyType: CounterpartyNetworkType.Raw[];
+        accountId?: string | null;
+        logo?: string | null;
+        paymentMethods?: PaymentMethodResponse.Raw[] | null;
+        counterpartyType?: CounterpartyNetworkType.Raw[] | null;
         invoiceMetrics?: CounterpartyInvoiceMetricsResponse.Raw | null;
     }
 }

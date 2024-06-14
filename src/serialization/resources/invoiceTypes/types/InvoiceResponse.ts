@@ -9,7 +9,7 @@ import { InvoiceId } from "./InvoiceId";
 import { InvoiceStatus } from "./InvoiceStatus";
 import { CurrencyCode } from "../../paymentMethodTypes/types/CurrencyCode";
 import { EntityId } from "../../entityTypes/types/EntityId";
-import { EntityResponse } from "../../entityTypes/types/EntityResponse";
+import { CounterpartyResponse } from "../../entityTypes/types/CounterpartyResponse";
 import { PaymentMethodResponse } from "../../paymentMethodTypes/types/PaymentMethodResponse";
 import { PaymentMethodId } from "../../paymentMethodTypes/types/PaymentMethodId";
 import { PaymentDestinationOptions } from "./PaymentDestinationOptions";
@@ -36,11 +36,11 @@ export const InvoiceResponse: core.serialization.ObjectSchema<serializers.Invoic
         serviceStartDate: core.serialization.date().optional(),
         serviceEndDate: core.serialization.date().optional(),
         payerId: EntityId.optional(),
-        payer: EntityResponse.optional(),
+        payer: CounterpartyResponse.optional(),
         paymentSource: PaymentMethodResponse.optional(),
         paymentSourceId: PaymentMethodId.optional(),
         vendorId: EntityId.optional(),
-        vendor: EntityResponse.optional(),
+        vendor: CounterpartyResponse.optional(),
         paymentDestination: PaymentMethodResponse.optional(),
         paymentDestinationId: PaymentMethodId.optional(),
         paymentDestinationOptions: PaymentDestinationOptions.optional(),
@@ -76,11 +76,11 @@ export declare namespace InvoiceResponse {
         serviceStartDate?: string | null;
         serviceEndDate?: string | null;
         payerId?: EntityId.Raw | null;
-        payer?: EntityResponse.Raw | null;
+        payer?: CounterpartyResponse.Raw | null;
         paymentSource?: PaymentMethodResponse.Raw | null;
         paymentSourceId?: PaymentMethodId.Raw | null;
         vendorId?: EntityId.Raw | null;
-        vendor?: EntityResponse.Raw | null;
+        vendor?: CounterpartyResponse.Raw | null;
         paymentDestination?: PaymentMethodResponse.Raw | null;
         paymentDestinationId?: PaymentMethodId.Raw | null;
         paymentDestinationOptions?: PaymentDestinationOptions.Raw | null;

@@ -29,6 +29,8 @@ import * as Mercoa from "../../../index";
  *                 isCustomer: true,
  *                 isPayor: true,
  *                 isPayee: false,
+ *                 isNetworkPayor: false,
+ *                 isNetworkPayee: false,
  *                 accountType: Mercoa.AccountType.Business,
  *                 updatedAt: new Date("2024-01-02T00:00:00.000Z"),
  *                 createdAt: new Date("2024-01-01T00:00:00.000Z"),
@@ -52,7 +54,23 @@ import * as Mercoa from "../../../index";
  *                         taxIdProvided: true,
  *                         ownersProvided: true
  *                     }
- *                 }
+ *                 },
+ *                 paymentMethods: [{
+ *                         type: "bankAccount",
+ *                         id: "pm_4794d597-70dc-4fec-b6ec-c5988e759769",
+ *                         accountName: "My Checking Account",
+ *                         bankName: "Chase",
+ *                         routingNumber: "12345678",
+ *                         accountNumber: "99988767623",
+ *                         accountType: Mercoa.BankType.Checking,
+ *                         status: Mercoa.BankStatus.Verified,
+ *                         isDefaultSource: true,
+ *                         isDefaultDestination: true,
+ *                         supportedCurrencies: [Mercoa.CurrencyCode.Usd],
+ *                         createdAt: new Date("2021-01-01T00:00:00.000Z"),
+ *                         updatedAt: new Date("2021-01-01T00:00:00.000Z")
+ *                     }],
+ *                 counterpartyType: [Mercoa.CounterpartyNetworkType.Entity]
  *             },
  *             vendorId: "ent_21661ac1-a2a8-4465-a6c0-64474ba8181d",
  *             vendor: {
@@ -65,6 +83,8 @@ import * as Mercoa from "../../../index";
  *                 isCustomer: false,
  *                 isPayor: false,
  *                 isPayee: true,
+ *                 isNetworkPayor: false,
+ *                 isNetworkPayee: false,
  *                 accountType: Mercoa.AccountType.Business,
  *                 updatedAt: new Date("2024-01-02T00:00:00.000Z"),
  *                 createdAt: new Date("2024-01-01T00:00:00.000Z"),
@@ -76,7 +96,23 @@ import * as Mercoa from "../../../index";
  *                         taxIdProvided: false,
  *                         ownersProvided: false
  *                     }
- *                 }
+ *                 },
+ *                 paymentMethods: [{
+ *                         type: "bankAccount",
+ *                         id: "pm_7610541f-4619-4033-8620-cfccfb811293",
+ *                         accountName: "Vendor Checking Account",
+ *                         bankName: "Chase",
+ *                         routingNumber: "66554433",
+ *                         accountNumber: "55934059697648",
+ *                         accountType: Mercoa.BankType.Checking,
+ *                         status: Mercoa.BankStatus.New,
+ *                         isDefaultSource: true,
+ *                         isDefaultDestination: true,
+ *                         supportedCurrencies: [Mercoa.CurrencyCode.Usd],
+ *                         createdAt: new Date("2021-01-01T00:00:00.000Z"),
+ *                         updatedAt: new Date("2021-01-01T00:00:00.000Z")
+ *                     }],
+ *                 counterpartyType: [Mercoa.CounterpartyNetworkType.Entity]
  *             },
  *             paymentDestinationConfirmed: false,
  *             hasDocuments: true,
@@ -116,6 +152,8 @@ import * as Mercoa from "../../../index";
  *             isCustomer: false,
  *             isPayor: false,
  *             isPayee: true,
+ *             isNetworkPayor: false,
+ *             isNetworkPayee: false,
  *             accountType: Mercoa.AccountType.Business,
  *             updatedAt: new Date("2024-01-02T00:00:00.000Z"),
  *             createdAt: new Date("2024-01-01T00:00:00.000Z"),
@@ -127,7 +165,23 @@ import * as Mercoa from "../../../index";
  *                     taxIdProvided: false,
  *                     ownersProvided: false
  *                 }
- *             }
+ *             },
+ *             paymentMethods: [{
+ *                     type: "bankAccount",
+ *                     id: "pm_7610541f-4619-4033-8620-cfccfb811293",
+ *                     accountName: "Vendor Checking Account",
+ *                     bankName: "Chase",
+ *                     routingNumber: "66554433",
+ *                     accountNumber: "55934059697648",
+ *                     accountType: Mercoa.BankType.Checking,
+ *                     status: Mercoa.BankStatus.New,
+ *                     isDefaultSource: true,
+ *                     isDefaultDestination: true,
+ *                     supportedCurrencies: [Mercoa.CurrencyCode.Usd],
+ *                     createdAt: new Date("2021-01-01T00:00:00.000Z"),
+ *                     updatedAt: new Date("2021-01-01T00:00:00.000Z")
+ *                 }],
+ *             counterpartyType: [Mercoa.CounterpartyNetworkType.Entity]
  *         },
  *         check: {
  *             id: "pm_5fde2f4a-facc-48ef-8f0d-6b7d087c7b18",
@@ -162,7 +216,7 @@ import * as Mercoa from "../../../index";
  */
 export interface OcrResponse {
     invoice: Mercoa.InvoiceResponse;
-    vendor: Mercoa.EntityResponse;
+    vendor: Mercoa.CounterpartyResponse;
     check?: Mercoa.CheckResponse;
     bankAccount?: Mercoa.BankAccountResponse;
 }

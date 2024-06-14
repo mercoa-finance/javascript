@@ -7,6 +7,7 @@ export * from "./EntityRequest";
 export * from "./EntityUpdateRequest";
 export * from "./EntityResponse";
 export * from "./EntityWithPaymentMethodResponse";
+export * from "./CounterpartyCustomizationRequest";
 export * from "./EntityAddPayeesRequest";
 export * from "./EntityHidePayeesRequest";
 export * from "./EntityAddPayorsRequest";

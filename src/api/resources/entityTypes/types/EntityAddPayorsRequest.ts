@@ -7,10 +7,16 @@ import * as Mercoa from "../../../index";
 /**
  * @example
  *     {
- *         payors: ["ent_21661ac1-a2a8-4465-a6c0-64474ba8181d"]
+ *         payors: ["ent_21661ac1-a2a8-4465-a6c0-64474ba8181d"],
+ *         customizations: [{
+ *                 counterpartyId: "ent_21661ac1-a2a8-4465-a6c0-64474ba8181d",
+ *                 accountId: "85866843"
+ *             }]
  *     }
  */
 export interface EntityAddPayorsRequest {
     /** List of payor entity IDs to associate with the entity */
     payors: Mercoa.EntityId[];
+    /** List of customizations to apply to the payors. If the payor is not currently a counterparty of the entity, the counterparty will be created with the provided customizations. */
+    customizations?: Mercoa.CounterpartyCustomizationRequest[];
 }

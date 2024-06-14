@@ -71,6 +71,10 @@ export interface EntityRequest {
     isPayor: boolean;
     /** If this entity will be receiving payments, set this to true. */
     isPayee: boolean;
+    /** Control if this entity should be available as a payor to any entity on your platform. If set to false, this entity will only be available as a payor to entities that have a direct relationship with this entity. Defaults to false. */
+    isNetworkPayor?: boolean;
+    /** Control if this entity should be available as a payee to any entity on your platform. If set to false, this entity will only be available as a payee to entities that have a direct relationship with this entity. Defaults to false. */
+    isNetworkPayee?: boolean;
     /** Base64 encoded PNG image data for the entity logo. */
     logo?: string;
 }
