@@ -17,6 +17,8 @@ export * as organizationTypes from "./organizationTypes";
 export * from "./organizationTypes/types";
 export * as paymentMethodTypes from "./paymentMethodTypes";
 export * from "./paymentMethodTypes/types";
+export * as webhooks from "./webhooks";
+export * from "./webhooks/types";
 export * from "./commons/errors";
 export * as invoice from "./invoice";
 export * as organization from "./organization";

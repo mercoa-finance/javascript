@@ -40,7 +40,7 @@ export class Metadata {
      * @throws {@link Mercoa.Unimplemented}
      *
      * @example
-     *     await mercoa.entity.metadata.getAll("ent_a0f6ea94-0761-4a5e-a416-3c453cb7eced")
+     *     await client.entity.metadata.getAll("ent_a0f6ea94-0761-4a5e-a416-3c453cb7eced")
      */
     public async getAll(
         entityId: Mercoa.EntityId,
@@ -56,7 +56,7 @@ export class Metadata {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.0",
+                "X-Fern-SDK-Version": "0.4.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -178,10 +178,10 @@ export class Metadata {
      * @throws {@link Mercoa.Unimplemented}
      *
      * @example
-     *     await mercoa.entity.metadata.get("ent_a0f6ea94-0761-4a5e-a416-3c453cb7eced", "propertyId")
+     *     await client.entity.metadata.get("ent_a0f6ea94-0761-4a5e-a416-3c453cb7eced", "propertyId")
      *
      * @example
-     *     await mercoa.entity.metadata.get("ent_a0f6ea94-0761-4a5e-a416-3c453cb7eced", "projectId")
+     *     await client.entity.metadata.get("ent_a0f6ea94-0761-4a5e-a416-3c453cb7eced", "projectId")
      */
     public async get(
         entityId: Mercoa.EntityId,
@@ -200,7 +200,7 @@ export class Metadata {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.0",
+                "X-Fern-SDK-Version": "0.4.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -323,10 +323,10 @@ export class Metadata {
      * @throws {@link Mercoa.Unimplemented}
      *
      * @example
-     *     await mercoa.entity.metadata.update("ent_a0f6ea94-0761-4a5e-a416-3c453cb7eced", "propertyId", ["{key: 'prop_123', value: 'Beach Rental'}", "{key: 'prop_456', value: 'City Rental'}"])
+     *     await client.entity.metadata.update("ent_a0f6ea94-0761-4a5e-a416-3c453cb7eced", "propertyId", ["{key: 'prop_123', value: 'Beach Rental'}", "{key: 'prop_456', value: 'City Rental'}"])
      *
      * @example
-     *     await mercoa.entity.metadata.update("ent_a0f6ea94-0761-4a5e-a416-3c453cb7eced", "projectId", ["proj_123", "proj_456"])
+     *     await client.entity.metadata.update("ent_a0f6ea94-0761-4a5e-a416-3c453cb7eced", "projectId", ["proj_123", "proj_456"])
      */
     public async update(
         entityId: Mercoa.EntityId,
@@ -346,7 +346,7 @@ export class Metadata {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.0",
+                "X-Fern-SDK-Version": "0.4.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -471,7 +471,7 @@ export class Metadata {
      * @throws {@link Mercoa.Unimplemented}
      *
      * @example
-     *     await mercoa.entity.metadata.delete("ent_a0f6ea94-0761-4a5e-a416-3c453cb7eced", "propertyId")
+     *     await client.entity.metadata.delete("ent_a0f6ea94-0761-4a5e-a416-3c453cb7eced", "propertyId")
      */
     public async delete(
         entityId: Mercoa.EntityId,
@@ -490,7 +490,7 @@ export class Metadata {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.0",
+                "X-Fern-SDK-Version": "0.4.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },

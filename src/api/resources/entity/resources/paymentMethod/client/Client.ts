@@ -39,10 +39,10 @@ export class PaymentMethod {
      * @throws {@link Mercoa.Unimplemented}
      *
      * @example
-     *     await mercoa.entity.paymentMethod.getAll("ent_8545a84e-a45f-41bf-bdf1-33b42a55812c")
+     *     await client.entity.paymentMethod.getAll("ent_8545a84e-a45f-41bf-bdf1-33b42a55812c")
      *
      * @example
-     *     await mercoa.entity.paymentMethod.getAll("ent_8545a84e-a45f-41bf-bdf1-33b42a55812c", {
+     *     await client.entity.paymentMethod.getAll("ent_8545a84e-a45f-41bf-bdf1-33b42a55812c", {
      *         type: Mercoa.PaymentMethodType.BankAccount
      *     })
      */
@@ -71,7 +71,7 @@ export class PaymentMethod {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.0",
+                "X-Fern-SDK-Version": "0.4.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -192,7 +192,7 @@ export class PaymentMethod {
      * @throws {@link Mercoa.Unimplemented}
      *
      * @example
-     *     await mercoa.entity.paymentMethod.create("ent_8545a84e-a45f-41bf-bdf1-33b42a55812c", {
+     *     await client.entity.paymentMethod.create("ent_8545a84e-a45f-41bf-bdf1-33b42a55812c", {
      *         type: "bankAccount",
      *         routingNumber: "12345678",
      *         accountNumber: "99988767623",
@@ -200,7 +200,7 @@ export class PaymentMethod {
      *     })
      *
      * @example
-     *     await mercoa.entity.paymentMethod.create("ent_8545a84e-a45f-41bf-bdf1-33b42a55812c", {
+     *     await client.entity.paymentMethod.create("ent_8545a84e-a45f-41bf-bdf1-33b42a55812c", {
      *         type: "bankAccount",
      *         routingNumber: "12345678",
      *         accountNumber: "99988767623",
@@ -213,7 +213,7 @@ export class PaymentMethod {
      *     })
      *
      * @example
-     *     await mercoa.entity.paymentMethod.create("ent_21661ac1-a2a8-4465-a6c0-64474ba8181d", {
+     *     await client.entity.paymentMethod.create("ent_21661ac1-a2a8-4465-a6c0-64474ba8181d", {
      *         type: "bankAccount",
      *         routingNumber: "66554433",
      *         accountNumber: "55934059697648",
@@ -221,7 +221,7 @@ export class PaymentMethod {
      *     })
      *
      * @example
-     *     await mercoa.entity.paymentMethod.create("ent_21661ac1-a2a8-4465-a6c0-64474ba8181d", {
+     *     await client.entity.paymentMethod.create("ent_21661ac1-a2a8-4465-a6c0-64474ba8181d", {
      *         type: "check",
      *         payToTheOrderOf: "John Doe",
      *         addressLine1: "123 Main St",
@@ -233,7 +233,7 @@ export class PaymentMethod {
      *     })
      *
      * @example
-     *     await mercoa.entity.paymentMethod.create("ent_21661ac1-a2a8-4465-a6c0-64474ba8181d", {
+     *     await client.entity.paymentMethod.create("ent_21661ac1-a2a8-4465-a6c0-64474ba8181d", {
      *         type: "custom",
      *         foreignId: "DB_FOREIGN_ID",
      *         accountName: "Vendor Wire Account",
@@ -262,7 +262,7 @@ export class PaymentMethod {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.0",
+                "X-Fern-SDK-Version": "0.4.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -383,7 +383,7 @@ export class PaymentMethod {
      * @throws {@link Mercoa.Unimplemented}
      *
      * @example
-     *     await mercoa.entity.paymentMethod.get("ent_8545a84e-a45f-41bf-bdf1-33b42a55812c", "pm_4794d597-70dc-4fec-b6ec-c5988e759769")
+     *     await client.entity.paymentMethod.get("ent_8545a84e-a45f-41bf-bdf1-33b42a55812c", "pm_4794d597-70dc-4fec-b6ec-c5988e759769")
      */
     public async get(
         entityId: Mercoa.EntityId,
@@ -402,7 +402,7 @@ export class PaymentMethod {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.0",
+                "X-Fern-SDK-Version": "0.4.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -525,7 +525,7 @@ export class PaymentMethod {
      * @throws {@link Mercoa.Unimplemented}
      *
      * @example
-     *     await mercoa.entity.paymentMethod.update("ent_8545a84e-a45f-41bf-bdf1-33b42a55812c", "pm_4794d597-70dc-4fec-b6ec-c5988e759769", {
+     *     await client.entity.paymentMethod.update("ent_8545a84e-a45f-41bf-bdf1-33b42a55812c", "pm_4794d597-70dc-4fec-b6ec-c5988e759769", {
      *         type: "bankAccount",
      *         defaultSource: true,
      *         defaultDestination: true
@@ -549,7 +549,7 @@ export class PaymentMethod {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.0",
+                "X-Fern-SDK-Version": "0.4.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -674,7 +674,7 @@ export class PaymentMethod {
      * @throws {@link Mercoa.Unimplemented}
      *
      * @example
-     *     await mercoa.entity.paymentMethod.delete("ent_8545a84e-a45f-41bf-bdf1-33b42a55812c", "pm_4794d597-70dc-4fec-b6ec-c5988e759769")
+     *     await client.entity.paymentMethod.delete("ent_8545a84e-a45f-41bf-bdf1-33b42a55812c", "pm_4794d597-70dc-4fec-b6ec-c5988e759769")
      */
     public async delete(
         entityId: Mercoa.EntityId,
@@ -693,7 +693,7 @@ export class PaymentMethod {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.0",
+                "X-Fern-SDK-Version": "0.4.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -810,7 +810,7 @@ export class PaymentMethod {
      * @throws {@link Mercoa.Unimplemented}
      *
      * @example
-     *     await mercoa.entity.paymentMethod.initiateMicroDeposits("ent_8545a84e-a45f-41bf-bdf1-33b42a55812c", "pm_4794d597-70dc-4fec-b6ec-c5988e759769")
+     *     await client.entity.paymentMethod.initiateMicroDeposits("ent_8545a84e-a45f-41bf-bdf1-33b42a55812c", "pm_4794d597-70dc-4fec-b6ec-c5988e759769")
      */
     public async initiateMicroDeposits(
         entityId: Mercoa.EntityId,
@@ -831,7 +831,7 @@ export class PaymentMethod {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.0",
+                "X-Fern-SDK-Version": "0.4.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -954,7 +954,7 @@ export class PaymentMethod {
      * @throws {@link Mercoa.Unimplemented}
      *
      * @example
-     *     await mercoa.entity.paymentMethod.completeMicroDeposits("ent_8545a84e-a45f-41bf-bdf1-33b42a55812c", "pm_4794d597-70dc-4fec-b6ec-c5988e759769", {
+     *     await client.entity.paymentMethod.completeMicroDeposits("ent_8545a84e-a45f-41bf-bdf1-33b42a55812c", "pm_4794d597-70dc-4fec-b6ec-c5988e759769", {
      *         amounts: [40, 2]
      *     })
      */
@@ -978,7 +978,7 @@ export class PaymentMethod {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.0",
+                "X-Fern-SDK-Version": "0.4.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -1103,7 +1103,7 @@ export class PaymentMethod {
      * @throws {@link Mercoa.Unimplemented}
      *
      * @example
-     *     await mercoa.entity.paymentMethod.getBalance("string", "string")
+     *     await client.entity.paymentMethod.getBalance("string", "string")
      */
     public async getBalance(
         entityId: Mercoa.EntityId,
@@ -1124,7 +1124,7 @@ export class PaymentMethod {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.0",
+                "X-Fern-SDK-Version": "0.4.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },

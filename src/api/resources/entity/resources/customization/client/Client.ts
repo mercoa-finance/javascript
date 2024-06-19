@@ -40,7 +40,7 @@ export class Customization {
      * @throws {@link Mercoa.Unimplemented}
      *
      * @example
-     *     await mercoa.entity.customization.get("ent_a0f6ea94-0761-4a5e-a416-3c453cb7eced")
+     *     await client.entity.customization.get("ent_a0f6ea94-0761-4a5e-a416-3c453cb7eced")
      */
     public async get(
         entityId: Mercoa.EntityId,
@@ -56,7 +56,7 @@ export class Customization {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.0",
+                "X-Fern-SDK-Version": "0.4.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -178,7 +178,7 @@ export class Customization {
      * @throws {@link Mercoa.Unimplemented}
      *
      * @example
-     *     await mercoa.entity.customization.update("ent_a0f6ea94-0761-4a5e-a416-3c453cb7eced", {
+     *     await client.entity.customization.update("ent_a0f6ea94-0761-4a5e-a416-3c453cb7eced", {
      *         metadata: [{
      *                 key: "my_custom_field",
      *                 disabled: true
@@ -222,7 +222,7 @@ export class Customization {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.0",
+                "X-Fern-SDK-Version": "0.4.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },

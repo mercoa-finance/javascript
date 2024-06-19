@@ -40,7 +40,7 @@ export class Notifications {
      * @throws {@link Mercoa.Unimplemented}
      *
      * @example
-     *     await mercoa.entity.user.notifications.find("ent_8545a84e-a45f-41bf-bdf1-33b42a55812c", "user_e24fc81c-c5ee-47e8-af42-4fe29d895506")
+     *     await client.entity.user.notifications.find("ent_8545a84e-a45f-41bf-bdf1-33b42a55812c", "user_e24fc81c-c5ee-47e8-af42-4fe29d895506")
      */
     public async find(
         entityId: Mercoa.EntityId,
@@ -90,7 +90,7 @@ export class Notifications {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.0",
+                "X-Fern-SDK-Version": "0.4.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -212,7 +212,7 @@ export class Notifications {
      * @throws {@link Mercoa.Unimplemented}
      *
      * @example
-     *     await mercoa.entity.user.notifications.get("ent_8545a84e-a45f-41bf-bdf1-33b42a55812c", "user_e24fc81c-c5ee-47e8-af42-4fe29d895506", "notif_7df2974a-4069-454c-912f-7e58ebe030fb")
+     *     await client.entity.user.notifications.get("ent_8545a84e-a45f-41bf-bdf1-33b42a55812c", "user_e24fc81c-c5ee-47e8-af42-4fe29d895506", "notif_7df2974a-4069-454c-912f-7e58ebe030fb")
      */
     public async get(
         entityId: Mercoa.EntityId,
@@ -234,7 +234,7 @@ export class Notifications {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.0",
+                "X-Fern-SDK-Version": "0.4.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },

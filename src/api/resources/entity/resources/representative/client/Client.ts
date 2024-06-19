@@ -40,7 +40,7 @@ export class Representative {
      * @throws {@link Mercoa.Unimplemented}
      *
      * @example
-     *     await mercoa.entity.representative.getAll("ent_8545a84e-a45f-41bf-bdf1-33b42a55812c")
+     *     await client.entity.representative.getAll("ent_8545a84e-a45f-41bf-bdf1-33b42a55812c")
      */
     public async getAll(
         entityId: Mercoa.EntityId,
@@ -56,7 +56,7 @@ export class Representative {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.0",
+                "X-Fern-SDK-Version": "0.4.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -176,7 +176,7 @@ export class Representative {
      * @throws {@link Mercoa.Unimplemented}
      *
      * @example
-     *     await mercoa.entity.representative.create("ent_8545a84e-a45f-41bf-bdf1-33b42a55812c", {
+     *     await client.entity.representative.create("ent_8545a84e-a45f-41bf-bdf1-33b42a55812c", {
      *         name: {
      *             firstName: "John",
      *             middleName: "Quincy",
@@ -226,7 +226,7 @@ export class Representative {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.0",
+                "X-Fern-SDK-Version": "0.4.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -347,7 +347,7 @@ export class Representative {
      * @throws {@link Mercoa.Unimplemented}
      *
      * @example
-     *     await mercoa.entity.representative.get("ent_8545a84e-a45f-41bf-bdf1-33b42a55812c", "rep_7df2974a-4069-454c-912f-7e58ebe030fb")
+     *     await client.entity.representative.get("ent_8545a84e-a45f-41bf-bdf1-33b42a55812c", "rep_7df2974a-4069-454c-912f-7e58ebe030fb")
      */
     public async get(
         entityId: Mercoa.EntityId,
@@ -368,7 +368,7 @@ export class Representative {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.0",
+                "X-Fern-SDK-Version": "0.4.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -488,7 +488,7 @@ export class Representative {
      * @throws {@link Mercoa.Unimplemented}
      *
      * @example
-     *     await mercoa.entity.representative.delete("ent_8545a84e-a45f-41bf-bdf1-33b42a55812c", "rep_7df2974a-4069-454c-912f-7e58ebe030fb")
+     *     await client.entity.representative.delete("ent_8545a84e-a45f-41bf-bdf1-33b42a55812c", "rep_7df2974a-4069-454c-912f-7e58ebe030fb")
      */
     public async delete(
         entityId: Mercoa.EntityId,
@@ -509,7 +509,7 @@ export class Representative {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.0",
+                "X-Fern-SDK-Version": "0.4.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },

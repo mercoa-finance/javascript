@@ -40,7 +40,7 @@ export class Fees {
      * @throws {@link Mercoa.Unimplemented}
      *
      * @example
-     *     await mercoa.fees.calculate({
+     *     await client.fees.calculate({
      *         amount: 100,
      *         paymentSourceId: "pm_4794d597-70dc-4fec-b6ec-c5988e759769",
      *         paymentDestinationId: "pm_4794d597-70dc-4fec-b6ec-c5988e759769"
@@ -60,7 +60,7 @@ export class Fees {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.0",
+                "X-Fern-SDK-Version": "0.4.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },

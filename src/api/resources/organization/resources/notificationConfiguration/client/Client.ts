@@ -39,7 +39,7 @@ export class NotificationConfiguration {
      * @throws {@link Mercoa.Unimplemented}
      *
      * @example
-     *     await mercoa.organization.notificationConfiguration.getAll()
+     *     await client.organization.notificationConfiguration.getAll()
      */
     public async getAll(
         requestOptions?: NotificationConfiguration.RequestOptions
@@ -54,7 +54,7 @@ export class NotificationConfiguration {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.0",
+                "X-Fern-SDK-Version": "0.4.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -178,7 +178,7 @@ export class NotificationConfiguration {
      * @throws {@link Mercoa.Unimplemented}
      *
      * @example
-     *     await mercoa.organization.notificationConfiguration.get(Mercoa.NotificationType.InvoiceApprovalNeeded)
+     *     await client.organization.notificationConfiguration.get(Mercoa.NotificationType.InvoiceApprovalNeeded)
      */
     public async get(
         notificationType: Mercoa.NotificationType,
@@ -196,7 +196,7 @@ export class NotificationConfiguration {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.0",
+                "X-Fern-SDK-Version": "0.4.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -318,7 +318,7 @@ export class NotificationConfiguration {
      * @throws {@link Mercoa.Unimplemented}
      *
      * @example
-     *     await mercoa.organization.notificationConfiguration.update(Mercoa.NotificationType.InvoiceApprovalNeeded, {
+     *     await client.organization.notificationConfiguration.update(Mercoa.NotificationType.InvoiceApprovalNeeded, {
      *         notificationType: "invoice",
      *         url: "string"
      *     })
@@ -340,7 +340,7 @@ export class NotificationConfiguration {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.0",
+                "X-Fern-SDK-Version": "0.4.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -464,7 +464,7 @@ export class NotificationConfiguration {
      * @throws {@link Mercoa.Unimplemented}
      *
      * @example
-     *     await mercoa.organization.notificationConfiguration.reset(Mercoa.NotificationType.InvoiceApprovalNeeded)
+     *     await client.organization.notificationConfiguration.reset(Mercoa.NotificationType.InvoiceApprovalNeeded)
      */
     public async reset(
         notificationType: Mercoa.NotificationType,
@@ -482,7 +482,7 @@ export class NotificationConfiguration {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.0",
+                "X-Fern-SDK-Version": "0.4.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },

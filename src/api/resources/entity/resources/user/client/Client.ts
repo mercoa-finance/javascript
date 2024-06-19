@@ -42,7 +42,7 @@ export class User {
      * @throws {@link Mercoa.Unimplemented}
      *
      * @example
-     *     await mercoa.entity.user.getAll("ent_a0f6ea94-0761-4a5e-a416-3c453cb7eced")
+     *     await client.entity.user.getAll("ent_a0f6ea94-0761-4a5e-a416-3c453cb7eced")
      */
     public async getAll(
         entityId: Mercoa.EntityId,
@@ -58,7 +58,7 @@ export class User {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.0",
+                "X-Fern-SDK-Version": "0.4.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -180,7 +180,7 @@ export class User {
      * @throws {@link Mercoa.Unimplemented}
      *
      * @example
-     *     await mercoa.entity.user.find("ent_a0f6ea94-0761-4a5e-a416-3c453cb7eced", {
+     *     await client.entity.user.find("ent_a0f6ea94-0761-4a5e-a416-3c453cb7eced", {
      *         name: "John"
      *     })
      */
@@ -233,7 +233,7 @@ export class User {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.0",
+                "X-Fern-SDK-Version": "0.4.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -354,7 +354,7 @@ export class User {
      * @throws {@link Mercoa.Unimplemented}
      *
      * @example
-     *     await mercoa.entity.user.create("ent_a0f6ea94-0761-4a5e-a416-3c453cb7eced", {
+     *     await client.entity.user.create("ent_a0f6ea94-0761-4a5e-a416-3c453cb7eced", {
      *         foreignId: "MY-DB-ID-12345",
      *         email: "john.doe@acme.com",
      *         name: "John Doe",
@@ -376,7 +376,7 @@ export class User {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.0",
+                "X-Fern-SDK-Version": "0.4.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -499,7 +499,7 @@ export class User {
      * @throws {@link Mercoa.Unimplemented}
      *
      * @example
-     *     await mercoa.entity.user.get("ent_a0f6ea94-0761-4a5e-a416-3c453cb7eced", "user_ec3aafc8-ea86-408a-a6c1-545497badbbb")
+     *     await client.entity.user.get("ent_a0f6ea94-0761-4a5e-a416-3c453cb7eced", "user_ec3aafc8-ea86-408a-a6c1-545497badbbb")
      */
     public async get(
         entityId: Mercoa.EntityId,
@@ -518,7 +518,7 @@ export class User {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.0",
+                "X-Fern-SDK-Version": "0.4.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -641,7 +641,7 @@ export class User {
      * @throws {@link Mercoa.Unimplemented}
      *
      * @example
-     *     await mercoa.entity.user.update("ent_a0f6ea94-0761-4a5e-a416-3c453cb7eced", "user_ec3aafc8-ea86-408a-a6c1-545497badbbb", {
+     *     await client.entity.user.update("ent_a0f6ea94-0761-4a5e-a416-3c453cb7eced", "user_ec3aafc8-ea86-408a-a6c1-545497badbbb", {
      *         foreignId: "MY-DB-ID-12345",
      *         email: "john.doe@acme.com",
      *         name: "John Doe",
@@ -666,7 +666,7 @@ export class User {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.0",
+                "X-Fern-SDK-Version": "0.4.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -789,7 +789,7 @@ export class User {
      * @throws {@link Mercoa.Unimplemented}
      *
      * @example
-     *     await mercoa.entity.user.delete("string", "string")
+     *     await client.entity.user.delete("string", "string")
      */
     public async delete(
         entityId: Mercoa.EntityId,
@@ -808,7 +808,7 @@ export class User {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.0",
+                "X-Fern-SDK-Version": "0.4.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -926,7 +926,7 @@ export class User {
      * @throws {@link Mercoa.Unimplemented}
      *
      * @example
-     *     await mercoa.entity.user.getToken("ent_a0f6ea94-0761-4a5e-a416-3c453cb7eced", "user_a0f6ea94-0761-4a5e-a416-3c453cb7eced", {
+     *     await client.entity.user.getToken("ent_a0f6ea94-0761-4a5e-a416-3c453cb7eced", "user_a0f6ea94-0761-4a5e-a416-3c453cb7eced", {
      *         expiresIn: "1h"
      *     })
      */
@@ -948,7 +948,7 @@ export class User {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.0",
+                "X-Fern-SDK-Version": "0.4.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },

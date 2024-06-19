@@ -39,7 +39,7 @@ export class CustomPaymentMethodSchema {
      * @throws {@link Mercoa.Unimplemented}
      *
      * @example
-     *     await mercoa.customPaymentMethodSchema.getAll()
+     *     await client.customPaymentMethodSchema.getAll()
      */
     public async getAll(
         requestOptions?: CustomPaymentMethodSchema.RequestOptions
@@ -54,7 +54,7 @@ export class CustomPaymentMethodSchema {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.0",
+                "X-Fern-SDK-Version": "0.4.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -175,7 +175,7 @@ export class CustomPaymentMethodSchema {
      * @throws {@link Mercoa.Unimplemented}
      *
      * @example
-     *     await mercoa.customPaymentMethodSchema.create({
+     *     await client.customPaymentMethodSchema.create({
      *         name: "Wire",
      *         isSource: false,
      *         isDestination: true,
@@ -205,7 +205,7 @@ export class CustomPaymentMethodSchema {
      *     })
      *
      * @example
-     *     await mercoa.customPaymentMethodSchema.create({
+     *     await client.customPaymentMethodSchema.create({
      *         name: "Check",
      *         isSource: false,
      *         isDestination: true,
@@ -248,7 +248,7 @@ export class CustomPaymentMethodSchema {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.0",
+                "X-Fern-SDK-Version": "0.4.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -373,7 +373,7 @@ export class CustomPaymentMethodSchema {
      * @throws {@link Mercoa.Unimplemented}
      *
      * @example
-     *     await mercoa.customPaymentMethodSchema.update("cpms_14f78dcd-4614-426e-a37a-7af262431d41", {
+     *     await client.customPaymentMethodSchema.update("cpms_14f78dcd-4614-426e-a37a-7af262431d41", {
      *         name: "Check",
      *         isSource: false,
      *         isDestination: true,
@@ -403,7 +403,7 @@ export class CustomPaymentMethodSchema {
      *     })
      *
      * @example
-     *     await mercoa.customPaymentMethodSchema.update("cpms_14f78dcd-4614-426e-a37a-7af262431d41", {
+     *     await client.customPaymentMethodSchema.update("cpms_14f78dcd-4614-426e-a37a-7af262431d41", {
      *         name: "Wire",
      *         isSource: false,
      *         isDestination: true,
@@ -449,7 +449,7 @@ export class CustomPaymentMethodSchema {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.0",
+                "X-Fern-SDK-Version": "0.4.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -573,7 +573,7 @@ export class CustomPaymentMethodSchema {
      * @throws {@link Mercoa.Unimplemented}
      *
      * @example
-     *     await mercoa.customPaymentMethodSchema.get("cpms_14f78dcd-4614-426e-a37a-7af262431d41")
+     *     await client.customPaymentMethodSchema.get("cpms_14f78dcd-4614-426e-a37a-7af262431d41")
      */
     public async get(
         schemaId: Mercoa.CustomPaymentMethodSchemaId,
@@ -591,7 +591,7 @@ export class CustomPaymentMethodSchema {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.0",
+                "X-Fern-SDK-Version": "0.4.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -712,7 +712,7 @@ export class CustomPaymentMethodSchema {
      * @throws {@link Mercoa.Unimplemented}
      *
      * @example
-     *     await mercoa.customPaymentMethodSchema.delete("cpms_14f78dcd-4614-426e-a37a-7af262431d41")
+     *     await client.customPaymentMethodSchema.delete("cpms_14f78dcd-4614-426e-a37a-7af262431d41")
      */
     public async delete(
         schemaId: Mercoa.CustomPaymentMethodSchemaId,
@@ -730,7 +730,7 @@ export class CustomPaymentMethodSchema {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.0",
+                "X-Fern-SDK-Version": "0.4.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },

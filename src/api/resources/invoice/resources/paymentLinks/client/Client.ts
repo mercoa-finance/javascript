@@ -40,7 +40,7 @@ export class PaymentLinks {
      * @throws {@link Mercoa.Unimplemented}
      *
      * @example
-     *     await mercoa.invoice.paymentLinks.getPayerLink("inv_a0f6ea94-0761-4a5e-a416-3c453cb7eced")
+     *     await client.invoice.paymentLinks.getPayerLink("inv_a0f6ea94-0761-4a5e-a416-3c453cb7eced")
      */
     public async getPayerLink(
         invoiceId: Mercoa.InvoiceId,
@@ -56,7 +56,7 @@ export class PaymentLinks {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.0",
+                "X-Fern-SDK-Version": "0.4.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -178,7 +178,7 @@ export class PaymentLinks {
      * @throws {@link Mercoa.Unimplemented}
      *
      * @example
-     *     await mercoa.invoice.paymentLinks.sendPayerEmail("inv_a0f6ea94-0761-4a5e-a416-3c453cb7eced", {
+     *     await client.invoice.paymentLinks.sendPayerEmail("inv_a0f6ea94-0761-4a5e-a416-3c453cb7eced", {
      *         attachInvoice: true
      *     })
      */
@@ -203,7 +203,7 @@ export class PaymentLinks {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.0",
+                "X-Fern-SDK-Version": "0.4.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -320,7 +320,7 @@ export class PaymentLinks {
      * @throws {@link Mercoa.Unimplemented}
      *
      * @example
-     *     await mercoa.invoice.paymentLinks.getVendorLink("inv_a0f6ea94-0761-4a5e-a416-3c453cb7eced")
+     *     await client.invoice.paymentLinks.getVendorLink("inv_a0f6ea94-0761-4a5e-a416-3c453cb7eced")
      */
     public async getVendorLink(
         invoiceId: Mercoa.InvoiceId,
@@ -336,7 +336,7 @@ export class PaymentLinks {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.0",
+                "X-Fern-SDK-Version": "0.4.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -457,7 +457,7 @@ export class PaymentLinks {
      * @throws {@link Mercoa.Unimplemented}
      *
      * @example
-     *     await mercoa.invoice.paymentLinks.sendVendorEmail("inv_a0f6ea94-0761-4a5e-a416-3c453cb7eced")
+     *     await client.invoice.paymentLinks.sendVendorEmail("inv_a0f6ea94-0761-4a5e-a416-3c453cb7eced")
      */
     public async sendVendorEmail(
         invoiceId: Mercoa.InvoiceId,
@@ -473,7 +473,7 @@ export class PaymentLinks {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.0",
+                "X-Fern-SDK-Version": "0.4.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },

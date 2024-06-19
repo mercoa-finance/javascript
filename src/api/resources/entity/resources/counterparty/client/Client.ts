@@ -41,7 +41,7 @@ export class Counterparty {
      * @throws {@link Mercoa.Unimplemented}
      *
      * @example
-     *     await mercoa.entity.counterparty.findPayees("ent_8545a84e-a45f-41bf-bdf1-33b42a55812c", {
+     *     await client.entity.counterparty.findPayees("ent_8545a84e-a45f-41bf-bdf1-33b42a55812c", {
      *         name: "Big Box",
      *         paymentMethods: true,
      *         invoiceMetrics: true
@@ -105,7 +105,7 @@ export class Counterparty {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.0",
+                "X-Fern-SDK-Version": "0.4.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -228,7 +228,7 @@ export class Counterparty {
      * @throws {@link Mercoa.Unimplemented}
      *
      * @example
-     *     await mercoa.entity.counterparty.findPayors("ent_8545a84e-a45f-41bf-bdf1-33b42a55812c", {
+     *     await client.entity.counterparty.findPayors("ent_8545a84e-a45f-41bf-bdf1-33b42a55812c", {
      *         name: "Big Box",
      *         paymentMethods: true,
      *         invoiceMetrics: true
@@ -292,7 +292,7 @@ export class Counterparty {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.0",
+                "X-Fern-SDK-Version": "0.4.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -415,7 +415,7 @@ export class Counterparty {
      * @throws {@link Mercoa.Unimplemented}
      *
      * @example
-     *     await mercoa.entity.counterparty.addPayees("ent_8545a84e-a45f-41bf-bdf1-33b42a55812c", {
+     *     await client.entity.counterparty.addPayees("ent_8545a84e-a45f-41bf-bdf1-33b42a55812c", {
      *         payees: ["ent_21661ac1-a2a8-4465-a6c0-64474ba8181d"],
      *         customizations: [{
      *                 counterpartyId: "ent_21661ac1-a2a8-4465-a6c0-64474ba8181d",
@@ -438,7 +438,7 @@ export class Counterparty {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.0",
+                "X-Fern-SDK-Version": "0.4.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -556,7 +556,7 @@ export class Counterparty {
      * @throws {@link Mercoa.Unimplemented}
      *
      * @example
-     *     await mercoa.entity.counterparty.hidePayees("ent_8545a84e-a45f-41bf-bdf1-33b42a55812c", {
+     *     await client.entity.counterparty.hidePayees("ent_8545a84e-a45f-41bf-bdf1-33b42a55812c", {
      *         payees: ["ent_21661ac1-a2a8-4465-a6c0-64474ba8181d"]
      *     })
      */
@@ -575,7 +575,7 @@ export class Counterparty {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.0",
+                "X-Fern-SDK-Version": "0.4.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -693,7 +693,7 @@ export class Counterparty {
      * @throws {@link Mercoa.Unimplemented}
      *
      * @example
-     *     await mercoa.entity.counterparty.addPayors("ent_8545a84e-a45f-41bf-bdf1-33b42a55812c", {
+     *     await client.entity.counterparty.addPayors("ent_8545a84e-a45f-41bf-bdf1-33b42a55812c", {
      *         payors: ["ent_21661ac1-a2a8-4465-a6c0-64474ba8181d"],
      *         customizations: [{
      *                 counterpartyId: "ent_21661ac1-a2a8-4465-a6c0-64474ba8181d",
@@ -716,7 +716,7 @@ export class Counterparty {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.0",
+                "X-Fern-SDK-Version": "0.4.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -834,7 +834,7 @@ export class Counterparty {
      * @throws {@link Mercoa.Unimplemented}
      *
      * @example
-     *     await mercoa.entity.counterparty.hidePayors("ent_8545a84e-a45f-41bf-bdf1-33b42a55812c", {
+     *     await client.entity.counterparty.hidePayors("ent_8545a84e-a45f-41bf-bdf1-33b42a55812c", {
      *         payors: ["ent_21661ac1-a2a8-4465-a6c0-64474ba8181d"]
      *     })
      */
@@ -853,7 +853,7 @@ export class Counterparty {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.0",
+                "X-Fern-SDK-Version": "0.4.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },

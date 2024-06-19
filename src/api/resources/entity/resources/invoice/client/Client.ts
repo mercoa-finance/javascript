@@ -41,7 +41,7 @@ export class Invoice {
      * @throws {@link Mercoa.Unimplemented}
      *
      * @example
-     *     await mercoa.entity.invoice.find("ent_8545a84e-a45f-41bf-bdf1-33b42a55812c", {
+     *     await client.entity.invoice.find("ent_8545a84e-a45f-41bf-bdf1-33b42a55812c", {
      *         excludeReceivables: true,
      *         orderBy: Mercoa.InvoiceOrderByField.CreatedAt,
      *         orderDirection: Mercoa.OrderDirection.Asc,
@@ -194,7 +194,7 @@ export class Invoice {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.0",
+                "X-Fern-SDK-Version": "0.4.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -317,7 +317,7 @@ export class Invoice {
      * @throws {@link Mercoa.Unimplemented}
      *
      * @example
-     *     await mercoa.entity.invoice.metrics("ent_8545a84e-a45f-41bf-bdf1-33b42a55812c", {
+     *     await client.entity.invoice.metrics("ent_8545a84e-a45f-41bf-bdf1-33b42a55812c", {
      *         returnByDate: Mercoa.InvoiceMetricsPerDateGroupBy.CreationDate,
      *         excludeReceivables: true,
      *         createdDateStart: new Date("2021-01-01T00:00:00.000Z"),
@@ -438,7 +438,7 @@ export class Invoice {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.0",
+                "X-Fern-SDK-Version": "0.4.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },

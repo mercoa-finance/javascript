@@ -40,7 +40,7 @@ export class Ocr {
      * @throws {@link Mercoa.Unimplemented}
      *
      * @example
-     *     await mercoa.ocr.ocr({
+     *     await client.ocr.ocr({
      *         vendorNetwork: Mercoa.VendorNetwork.Entity,
      *         entityId: "entity_8f86116b-3b4d-4ded-99ef-3bc929d8c33c",
      *         mimeType: "image/png",
@@ -58,7 +58,7 @@ export class Ocr {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.0",
+                "X-Fern-SDK-Version": "0.4.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -180,7 +180,7 @@ export class Ocr {
      * @throws {@link Mercoa.Unimplemented}
      *
      * @example
-     *     await mercoa.ocr.runAsyncOcr({
+     *     await client.ocr.runAsyncOcr({
      *         vendorNetwork: Mercoa.VendorNetwork.Entity,
      *         entityId: "entity_8f86116b-3b4d-4ded-99ef-3bc929d8c33c",
      *         mimeType: "image/png",
@@ -201,7 +201,7 @@ export class Ocr {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.0",
+                "X-Fern-SDK-Version": "0.4.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -323,7 +323,7 @@ export class Ocr {
      * @throws {@link Mercoa.Unimplemented}
      *
      * @example
-     *     await mercoa.ocr.getAsyncOcr("ocr_8f86116b-3b4d-4ded-99ef-3bc929d8c33c")
+     *     await client.ocr.getAsyncOcr("ocr_8f86116b-3b4d-4ded-99ef-3bc929d8c33c")
      */
     public async getAsyncOcr(jobId: string, requestOptions?: Ocr.RequestOptions): Promise<Mercoa.OcrJobResponse> {
         const _response = await core.fetcher({
@@ -336,7 +336,7 @@ export class Ocr {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.0",
+                "X-Fern-SDK-Version": "0.4.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },

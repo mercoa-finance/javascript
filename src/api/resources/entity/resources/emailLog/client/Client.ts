@@ -41,7 +41,7 @@ export class EmailLog {
      * @throws {@link Mercoa.Unimplemented}
      *
      * @example
-     *     await mercoa.entity.emailLog.find("ent_8545a84e-a45f-41bf-bdf1-33b42a55812c")
+     *     await client.entity.emailLog.find("ent_8545a84e-a45f-41bf-bdf1-33b42a55812c")
      */
     public async find(
         entityId: Mercoa.EntityId,
@@ -80,7 +80,7 @@ export class EmailLog {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.0",
+                "X-Fern-SDK-Version": "0.4.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -203,7 +203,7 @@ export class EmailLog {
      * @throws {@link Mercoa.Unimplemented}
      *
      * @example
-     *     await mercoa.entity.emailLog.get("ent_8545a84e-a45f-41bf-bdf1-33b42a55812c", "log_8545a84e-a45f-41bf-bdf1-33b42a55812c")
+     *     await client.entity.emailLog.get("ent_8545a84e-a45f-41bf-bdf1-33b42a55812c", "log_8545a84e-a45f-41bf-bdf1-33b42a55812c")
      */
     public async get(
         entityId: Mercoa.EntityId,
@@ -222,7 +222,7 @@ export class EmailLog {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.0",
+                "X-Fern-SDK-Version": "0.4.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },

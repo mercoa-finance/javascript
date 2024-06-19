@@ -40,7 +40,7 @@ export class NotificationPolicy {
      * @throws {@link Mercoa.Unimplemented}
      *
      * @example
-     *     await mercoa.entity.notificationPolicy.getAll("ent_8545a84e-a45f-41bf-bdf1-33b42a55812c")
+     *     await client.entity.notificationPolicy.getAll("ent_8545a84e-a45f-41bf-bdf1-33b42a55812c")
      */
     public async getAll(
         entityId: Mercoa.EntityId,
@@ -56,7 +56,7 @@ export class NotificationPolicy {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.0",
+                "X-Fern-SDK-Version": "0.4.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -178,10 +178,10 @@ export class NotificationPolicy {
      * @throws {@link Mercoa.Unimplemented}
      *
      * @example
-     *     await mercoa.entity.notificationPolicy.get("ent_8545a84e-a45f-41bf-bdf1-33b42a55812c", Mercoa.NotificationType.InvoiceApprovalNeeded)
+     *     await client.entity.notificationPolicy.get("ent_8545a84e-a45f-41bf-bdf1-33b42a55812c", Mercoa.NotificationType.InvoiceApprovalNeeded)
      *
      * @example
-     *     await mercoa.entity.notificationPolicy.get("ent_8545a84e-a45f-41bf-bdf1-33b42a55812c", Mercoa.NotificationType.InvoiceApproved)
+     *     await client.entity.notificationPolicy.get("ent_8545a84e-a45f-41bf-bdf1-33b42a55812c", Mercoa.NotificationType.InvoiceApproved)
      */
     public async get(
         entityId: Mercoa.EntityId,
@@ -202,7 +202,7 @@ export class NotificationPolicy {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.0",
+                "X-Fern-SDK-Version": "0.4.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -325,19 +325,19 @@ export class NotificationPolicy {
      * @throws {@link Mercoa.Unimplemented}
      *
      * @example
-     *     await mercoa.entity.notificationPolicy.update("ent_8545a84e-a45f-41bf-bdf1-33b42a55812c", Mercoa.NotificationType.InvoiceApprovalNeeded, {
+     *     await client.entity.notificationPolicy.update("ent_8545a84e-a45f-41bf-bdf1-33b42a55812c", Mercoa.NotificationType.InvoiceApprovalNeeded, {
      *         disabled: false,
      *         additionalRoles: ["admin", "approver"]
      *     })
      *
      * @example
-     *     await mercoa.entity.notificationPolicy.update("ent_8545a84e-a45f-41bf-bdf1-33b42a55812c", Mercoa.NotificationType.InvoiceApproved, {
+     *     await client.entity.notificationPolicy.update("ent_8545a84e-a45f-41bf-bdf1-33b42a55812c", Mercoa.NotificationType.InvoiceApproved, {
      *         disabled: false,
      *         additionalRoles: ["admin", "bookkeeper"]
      *     })
      *
      * @example
-     *     await mercoa.entity.notificationPolicy.update("ent_8545a84e-a45f-41bf-bdf1-33b42a55812c", Mercoa.NotificationType.InvoiceApproved, {
+     *     await client.entity.notificationPolicy.update("ent_8545a84e-a45f-41bf-bdf1-33b42a55812c", Mercoa.NotificationType.InvoiceApproved, {
      *         disabled: true,
      *         additionalRoles: []
      *     })
@@ -362,7 +362,7 @@ export class NotificationPolicy {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.0",
+                "X-Fern-SDK-Version": "0.4.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
