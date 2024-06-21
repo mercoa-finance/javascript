@@ -17,6 +17,8 @@ export const ApprovalPolicyResponse: core.serialization.ObjectSchema<
     trigger: core.serialization.list(Trigger),
     rule: Rule,
     upstreamPolicyId: ApprovalPolicyId,
+    createdAt: core.serialization.date(),
+    updatedAt: core.serialization.date(),
 });
 
 export declare namespace ApprovalPolicyResponse {
@@ -25,5 +27,7 @@ export declare namespace ApprovalPolicyResponse {
         trigger: Trigger.Raw[];
         rule: Rule.Raw;
         upstreamPolicyId: ApprovalPolicyId.Raw;
+        createdAt: string;
+        updatedAt: string;
     }
 }

@@ -21,7 +21,9 @@ import * as Mercoa from "../../../index";
  *                 value: ["Admin", "Controller"]
  *             }
  *         },
- *         upstreamPolicyId: "root"
+ *         upstreamPolicyId: "root",
+ *         updatedAt: new Date("2024-01-02T00:00:00.000Z"),
+ *         createdAt: new Date("2024-01-01T00:00:00.000Z")
  *     }
  *
  * @example
@@ -36,7 +38,9 @@ import * as Mercoa from "../../../index";
  *                 value: ["usr_8545a84e-a45f-41bf-bdf1-33b42a55812c", "usr_21661ac1-a2a8-4465-a6c0-64474ba8181d"]
  *             }
  *         },
- *         upstreamPolicyId: "root"
+ *         upstreamPolicyId: "root",
+ *         updatedAt: new Date("2024-01-02T00:00:00.000Z"),
+ *         createdAt: new Date("2024-01-01T00:00:00.000Z")
  *     }
  */
 export interface ApprovalPolicyResponse {
@@ -44,4 +48,6 @@ export interface ApprovalPolicyResponse {
     trigger: Mercoa.Trigger[];
     rule: Mercoa.Rule;
     upstreamPolicyId: Mercoa.ApprovalPolicyId;
+    createdAt: Date;
+    updatedAt: Date;
 }

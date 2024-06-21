@@ -32,7 +32,8 @@ import * as Mercoa from "../../../index";
  *                 displayName: "Routing Number",
  *                 type: Mercoa.CustomPaymentMethodSchemaFieldType.Number,
  *                 optional: false
- *             }]
+ *             }],
+ *         estimatedProcessingTime: 0
  *     }
  *
  * @example
@@ -62,7 +63,8 @@ import * as Mercoa from "../../../index";
  *                 displayName: "Address",
  *                 type: Mercoa.CustomPaymentMethodSchemaFieldType.Address,
  *                 optional: false
- *             }]
+ *             }],
+ *         estimatedProcessingTime: 7
  *     }
  */
 export interface CustomPaymentMethodSchemaRequest {
@@ -71,6 +73,8 @@ export interface CustomPaymentMethodSchemaRequest {
     isSource: boolean;
     /** This payment method can be used as a payment destination for an invoice */
     isDestination: boolean;
+    /** Estimated time in days for this payment method to process a payments. Set as 0 for same-day payment methods, -1 for unknown processing time. */
+    estimatedProcessingTime?: number;
     /** List of currencies that this payment method supports. If not provided, the payment method will support only USD. */
     supportedCurrencies?: Mercoa.CurrencyCode[];
     fields: Mercoa.CustomPaymentMethodSchemaField[];

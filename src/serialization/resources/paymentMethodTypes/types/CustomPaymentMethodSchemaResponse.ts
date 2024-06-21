@@ -19,6 +19,7 @@ export const CustomPaymentMethodSchemaResponse: core.serialization.ObjectSchema<
     isDestination: core.serialization.boolean(),
     supportedCurrencies: core.serialization.list(CurrencyCode),
     fields: core.serialization.list(CustomPaymentMethodSchemaField),
+    estimatedProcessingTime: core.serialization.number(),
     createdAt: core.serialization.date(),
     updatedAt: core.serialization.date(),
 });
@@ -31,6 +32,7 @@ export declare namespace CustomPaymentMethodSchemaResponse {
         isDestination: boolean;
         supportedCurrencies: CurrencyCode.Raw[];
         fields: CustomPaymentMethodSchemaField.Raw[];
+        estimatedProcessingTime: number;
         createdAt: string;
         updatedAt: string;
     }

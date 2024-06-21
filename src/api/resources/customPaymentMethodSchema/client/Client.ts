@@ -54,7 +54,7 @@ export class CustomPaymentMethodSchema {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.1",
+                "X-Fern-SDK-Version": "0.4.2",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -201,7 +201,8 @@ export class CustomPaymentMethodSchema {
      *                 displayName: "Routing Number",
      *                 type: Mercoa.CustomPaymentMethodSchemaFieldType.Number,
      *                 optional: false
-     *             }]
+     *             }],
+     *         estimatedProcessingTime: 0
      *     })
      *
      * @example
@@ -231,7 +232,8 @@ export class CustomPaymentMethodSchema {
      *                 displayName: "Address",
      *                 type: Mercoa.CustomPaymentMethodSchemaFieldType.Address,
      *                 optional: false
-     *             }]
+     *             }],
+     *         estimatedProcessingTime: 7
      *     })
      */
     public async create(
@@ -248,7 +250,7 @@ export class CustomPaymentMethodSchema {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.1",
+                "X-Fern-SDK-Version": "0.4.2",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -399,7 +401,8 @@ export class CustomPaymentMethodSchema {
      *                 displayName: "Address",
      *                 type: Mercoa.CustomPaymentMethodSchemaFieldType.Address,
      *                 optional: false
-     *             }]
+     *             }],
+     *         estimatedProcessingTime: 7
      *     })
      *
      * @example
@@ -429,7 +432,8 @@ export class CustomPaymentMethodSchema {
      *                 displayName: "Routing Number",
      *                 type: Mercoa.CustomPaymentMethodSchemaFieldType.Number,
      *                 optional: false
-     *             }]
+     *             }],
+     *         estimatedProcessingTime: 0
      *     })
      */
     public async update(
@@ -449,7 +453,7 @@ export class CustomPaymentMethodSchema {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.1",
+                "X-Fern-SDK-Version": "0.4.2",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -591,7 +595,7 @@ export class CustomPaymentMethodSchema {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.1",
+                "X-Fern-SDK-Version": "0.4.2",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -730,7 +734,7 @@ export class CustomPaymentMethodSchema {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.1",
+                "X-Fern-SDK-Version": "0.4.2",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },

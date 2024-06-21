@@ -35,7 +35,8 @@ import * as Mercoa from "../../../index";
  *                 optional: false
  *             }],
  *         createdAt: new Date("2021-01-01T00:00:00.000Z"),
- *         updatedAt: new Date("2021-01-01T00:00:00.000Z")
+ *         updatedAt: new Date("2021-01-01T00:00:00.000Z"),
+ *         estimatedProcessingTime: 0
  *     }
  *
  * @example
@@ -68,7 +69,8 @@ import * as Mercoa from "../../../index";
  *                 optional: false
  *             }],
  *         createdAt: new Date("2021-01-01T00:00:00.000Z"),
- *         updatedAt: new Date("2021-01-01T00:00:00.000Z")
+ *         updatedAt: new Date("2021-01-01T00:00:00.000Z"),
+ *         estimatedProcessingTime: 7
  *     }
  */
 export interface CustomPaymentMethodSchemaResponse {
@@ -81,6 +83,8 @@ export interface CustomPaymentMethodSchemaResponse {
     /** List of currencies that this payment method supports. */
     supportedCurrencies: Mercoa.CurrencyCode[];
     fields: Mercoa.CustomPaymentMethodSchemaField[];
+    /** Estimated time in days for this payment method to process a payments. 0 is an same-day payment methods, -1 is unknown processing time. */
+    estimatedProcessingTime: number;
     createdAt: Date;
     updatedAt: Date;
 }

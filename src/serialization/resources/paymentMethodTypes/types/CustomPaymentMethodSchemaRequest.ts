@@ -15,6 +15,7 @@ export const CustomPaymentMethodSchemaRequest: core.serialization.ObjectSchema<
     name: core.serialization.string(),
     isSource: core.serialization.boolean(),
     isDestination: core.serialization.boolean(),
+    estimatedProcessingTime: core.serialization.number().optional(),
     supportedCurrencies: core.serialization.list(CurrencyCode).optional(),
     fields: core.serialization.list(CustomPaymentMethodSchemaField),
 });
@@ -24,6 +25,7 @@ export declare namespace CustomPaymentMethodSchemaRequest {
         name: string;
         isSource: boolean;
         isDestination: boolean;
+        estimatedProcessingTime?: number | null;
         supportedCurrencies?: CurrencyCode.Raw[] | null;
         fields: CustomPaymentMethodSchemaField.Raw[];
     }
