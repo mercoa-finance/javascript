@@ -9,8 +9,29 @@ import * as core from "../../../../core";
 export const CustomPaymentMethodSchemaFieldType: core.serialization.Schema<
     serializers.CustomPaymentMethodSchemaFieldType.Raw,
     Mercoa.CustomPaymentMethodSchemaFieldType
-> = core.serialization.enum_(["text", "number", "select", "date", "phone", "email", "url", "address"]);
+> = core.serialization.enum_([
+    "text",
+    "number",
+    "select",
+    "date",
+    "phone",
+    "email",
+    "url",
+    "address",
+    "usBankRoutingNumber",
+    "usBankAccountNumber",
+]);
 
 export declare namespace CustomPaymentMethodSchemaFieldType {
-    type Raw = "text" | "number" | "select" | "date" | "phone" | "email" | "url" | "address";
+    type Raw =
+        | "text"
+        | "number"
+        | "select"
+        | "date"
+        | "phone"
+        | "email"
+        | "url"
+        | "address"
+        | "usBankRoutingNumber"
+        | "usBankAccountNumber";
 }

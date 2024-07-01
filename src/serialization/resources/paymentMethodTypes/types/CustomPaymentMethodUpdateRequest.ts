@@ -16,6 +16,7 @@ export const CustomPaymentMethodUpdateRequest: core.serialization.ObjectSchema<
         foreignId: core.serialization.string().optional(),
         accountName: core.serialization.string().optional(),
         accountNumber: core.serialization.string().optional(),
+        availableBalance: core.serialization.number().optional(),
         schemaId: CustomPaymentMethodSchemaId.optional(),
         data: core.serialization.record(core.serialization.string(), core.serialization.string()).optional(),
     })
@@ -26,6 +27,7 @@ export declare namespace CustomPaymentMethodUpdateRequest {
         foreignId?: string | null;
         accountName?: string | null;
         accountNumber?: string | null;
+        availableBalance?: number | null;
         schemaId?: CustomPaymentMethodSchemaId.Raw | null;
         data?: Record<string, string> | null;
     }

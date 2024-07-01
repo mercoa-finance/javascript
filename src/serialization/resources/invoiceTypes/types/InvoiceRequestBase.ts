@@ -13,6 +13,7 @@ import { PaymentDestinationOptions } from "./PaymentDestinationOptions";
 import { ApprovalSlotAssignment } from "./ApprovalSlotAssignment";
 import { InvoiceLineItemRequest } from "./InvoiceLineItemRequest";
 import { EntityUserId } from "../../entityTypes/types/EntityUserId";
+import { InvoiceFailureType } from "./InvoiceFailureType";
 
 export const InvoiceRequestBase: core.serialization.ObjectSchema<
     serializers.InvoiceRequestBase.Raw,
@@ -41,6 +42,7 @@ export const InvoiceRequestBase: core.serialization.ObjectSchema<
     document: core.serialization.string().optional(),
     uploadedImage: core.serialization.string().optional(),
     creatorUserId: EntityUserId.optional(),
+    failureType: InvoiceFailureType.optional(),
 });
 
 export declare namespace InvoiceRequestBase {
@@ -68,5 +70,6 @@ export declare namespace InvoiceRequestBase {
         document?: string | null;
         uploadedImage?: string | null;
         creatorUserId?: EntityUserId.Raw | null;
+        failureType?: InvoiceFailureType.Raw | null;
     }
 }

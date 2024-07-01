@@ -12,7 +12,7 @@ export interface InvoiceRequestBase {
     currency?: Mercoa.CurrencyCode;
     /** Date the invoice was issued. */
     invoiceDate?: Date;
-    /** Date when funds will be deducted from payer's account. */
+    /** Date when funds are scheduled to be deducted from payer's account. */
     deductionDate?: Date;
     /** Date of funds settlement. */
     settlementDate?: Date;
@@ -44,4 +44,6 @@ export interface InvoiceRequestBase {
     uploadedImage?: string;
     /** ID of entity user who created this invoice. */
     creatorUserId?: Mercoa.EntityUserId;
+    /** If the invoice failed to be paid, indicate the failure reason. Only applicable for invoices with custom payment methods. */
+    failureType?: Mercoa.InvoiceFailureType;
 }

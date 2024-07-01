@@ -26,7 +26,7 @@ import * as Mercoa from "../../../index";
  *     {
  *         name: "accountNumber",
  *         displayName: "Account Number",
- *         type: Mercoa.CustomPaymentMethodSchemaFieldType.Number,
+ *         type: Mercoa.CustomPaymentMethodSchemaFieldType.UsBankAccountNumber,
  *         optional: false,
  *         useAsAccountNumber: true
  *     }
@@ -35,7 +35,7 @@ import * as Mercoa from "../../../index";
  *     {
  *         name: "routingNumber",
  *         displayName: "Routing Number",
- *         type: Mercoa.CustomPaymentMethodSchemaFieldType.Number,
+ *         type: Mercoa.CustomPaymentMethodSchemaFieldType.UsBankRoutingNumber,
  *         optional: false
  *     }
  *

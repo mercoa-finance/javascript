@@ -10,7 +10,9 @@ export type CustomPaymentMethodSchemaFieldType =
     | "phone"
     | "email"
     | "url"
-    | "address";
+    | "address"
+    | "usBankRoutingNumber"
+    | "usBankAccountNumber";
 
 export const CustomPaymentMethodSchemaFieldType = {
     Text: "text",
@@ -21,4 +23,6 @@ export const CustomPaymentMethodSchemaFieldType = {
     Email: "email",
     Url: "url",
     Address: "address",
+    UsBankRoutingNumber: "usBankRoutingNumber",
+    UsBankAccountNumber: "usBankAccountNumber",
 } as const;

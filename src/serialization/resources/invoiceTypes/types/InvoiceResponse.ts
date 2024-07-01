@@ -29,6 +29,7 @@ export const InvoiceResponse: core.serialization.ObjectSchema<serializers.Invoic
         currency: CurrencyCode.optional(),
         invoiceDate: core.serialization.date().optional(),
         deductionDate: core.serialization.date().optional(),
+        processedAt: core.serialization.date().optional(),
         settlementDate: core.serialization.date().optional(),
         dueDate: core.serialization.date().optional(),
         invoiceNumber: core.serialization.string().optional(),
@@ -55,7 +56,6 @@ export const InvoiceResponse: core.serialization.ObjectSchema<serializers.Invoic
         foreignId: core.serialization.string().optional(),
         creatorUser: EntityUserResponse.optional(),
         failureType: InvoiceFailureType.optional(),
-        processedAt: core.serialization.date().optional(),
         createdAt: core.serialization.date(),
         updatedAt: core.serialization.date(),
         fees: InvoiceFeesResponse.optional(),
@@ -69,6 +69,7 @@ export declare namespace InvoiceResponse {
         currency?: CurrencyCode.Raw | null;
         invoiceDate?: string | null;
         deductionDate?: string | null;
+        processedAt?: string | null;
         settlementDate?: string | null;
         dueDate?: string | null;
         invoiceNumber?: string | null;
@@ -95,7 +96,6 @@ export declare namespace InvoiceResponse {
         foreignId?: string | null;
         creatorUser?: EntityUserResponse.Raw | null;
         failureType?: InvoiceFailureType.Raw | null;
-        processedAt?: string | null;
         createdAt: string;
         updatedAt: string;
         fees?: InvoiceFeesResponse.Raw | null;

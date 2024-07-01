@@ -9,6 +9,8 @@ export interface CustomPaymentMethodUpdateRequest extends Mercoa.PaymentMethodBa
     foreignId?: string;
     accountName?: string;
     accountNumber?: string;
+    /** The available balance for this payment method. */
+    availableBalance?: number;
     /** Payment method schema used for this payment method. Defines the fields that this payment method contains. */
     schemaId?: Mercoa.CustomPaymentMethodSchemaId;
     /** Object of key/value pairs that matches the keys in the linked payment method schema. */

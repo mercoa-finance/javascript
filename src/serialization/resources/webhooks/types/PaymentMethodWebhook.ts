@@ -7,6 +7,7 @@ import * as Mercoa from "../../../../api/index";
 import * as core from "../../../../core";
 import { EntityId } from "../../entityTypes/types/EntityId";
 import { PaymentMethodResponse } from "../../paymentMethodTypes/types/PaymentMethodResponse";
+import { EntityResponse } from "../../entityTypes/types/EntityResponse";
 
 export const PaymentMethodWebhook: core.serialization.ObjectSchema<
     serializers.PaymentMethodWebhook.Raw,
@@ -15,6 +16,7 @@ export const PaymentMethodWebhook: core.serialization.ObjectSchema<
     eventType: core.serialization.string(),
     entityId: EntityId,
     paymentMethod: PaymentMethodResponse,
+    entity: EntityResponse,
 });
 
 export declare namespace PaymentMethodWebhook {
@@ -22,5 +24,6 @@ export declare namespace PaymentMethodWebhook {
         eventType: string;
         entityId: EntityId.Raw;
         paymentMethod: PaymentMethodResponse.Raw;
+        entity: EntityResponse.Raw;
     }
 }

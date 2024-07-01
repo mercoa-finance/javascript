@@ -25,13 +25,13 @@ import * as Mercoa from "../../../index";
  *             }, {
  *                 name: "accountNumber",
  *                 displayName: "Account Number",
- *                 type: Mercoa.CustomPaymentMethodSchemaFieldType.Number,
+ *                 type: Mercoa.CustomPaymentMethodSchemaFieldType.UsBankAccountNumber,
  *                 optional: false,
  *                 useAsAccountNumber: true
  *             }, {
  *                 name: "routingNumber",
  *                 displayName: "Routing Number",
- *                 type: Mercoa.CustomPaymentMethodSchemaFieldType.Number,
+ *                 type: Mercoa.CustomPaymentMethodSchemaFieldType.UsBankRoutingNumber,
  *                 optional: false
  *             }],
  *         createdAt: new Date("2021-01-01T00:00:00.000Z"),
@@ -54,13 +54,13 @@ import * as Mercoa from "../../../index";
  *             }, {
  *                 name: "accountNumber",
  *                 displayName: "Account Number",
- *                 type: Mercoa.CustomPaymentMethodSchemaFieldType.Number,
+ *                 type: Mercoa.CustomPaymentMethodSchemaFieldType.UsBankAccountNumber,
  *                 optional: false,
  *                 useAsAccountNumber: true
  *             }, {
  *                 name: "routingNumber",
  *                 displayName: "Routing Number",
- *                 type: Mercoa.CustomPaymentMethodSchemaFieldType.Number,
+ *                 type: Mercoa.CustomPaymentMethodSchemaFieldType.UsBankRoutingNumber,
  *                 optional: false
  *             }, {
  *                 name: "address",
@@ -85,6 +85,7 @@ export interface CustomPaymentMethodSchemaResponse {
     fields: Mercoa.CustomPaymentMethodSchemaField[];
     /** Estimated time in days for this payment method to process a payments. 0 is an same-day payment methods, -1 is unknown processing time. */
     estimatedProcessingTime: number;
+    fees?: Mercoa.CustomPaymentMethodSchemaFee;
     createdAt: Date;
     updatedAt: Date;
 }

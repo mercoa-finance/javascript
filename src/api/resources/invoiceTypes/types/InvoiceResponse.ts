@@ -1767,8 +1767,10 @@ export interface InvoiceResponse {
     currency?: Mercoa.CurrencyCode;
     /** Date the invoice was issued. */
     invoiceDate?: Date;
-    /** Date when funds will be deducted from payer's account. */
+    /** Date when funds are scheduled to be deducted from payer's account. The actual deduction date may differ from this date, and will be reflected in the processedAt field. */
     deductionDate?: Date;
+    /** Date when the invoice payment was processed. */
+    processedAt?: Date;
     /** Date of funds settlement. */
     settlementDate?: Date;
     /** Due date of invoice. */
@@ -1804,7 +1806,6 @@ export interface InvoiceResponse {
     creatorUser?: Mercoa.EntityUserResponse;
     /** If the invoice failed to be paid, this field will be populated with the type of failure. */
     failureType?: Mercoa.InvoiceFailureType;
-    processedAt?: Date;
     createdAt: Date;
     updatedAt: Date;
     /** Fees associated with this invoice. */
