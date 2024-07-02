@@ -21,7 +21,7 @@ import * as Mercoa from "../../../index";
  */
 export interface CustomPaymentMethodRequest extends Mercoa.PaymentMethodBaseRequest {
     /** ID for this payment method in your system */
-    foreignId: string;
+    foreignId?: string;
     accountName?: string;
     accountNumber?: string;
     /** The available balance for this payment method. */

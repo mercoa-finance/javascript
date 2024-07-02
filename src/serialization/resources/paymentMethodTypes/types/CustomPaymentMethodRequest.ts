@@ -13,7 +13,7 @@ export const CustomPaymentMethodRequest: core.serialization.ObjectSchema<
     Mercoa.CustomPaymentMethodRequest
 > = core.serialization
     .object({
-        foreignId: core.serialization.string(),
+        foreignId: core.serialization.string().optional(),
         accountName: core.serialization.string().optional(),
         accountNumber: core.serialization.string().optional(),
         availableBalance: core.serialization.number().optional(),
@@ -24,7 +24,7 @@ export const CustomPaymentMethodRequest: core.serialization.ObjectSchema<
 
 export declare namespace CustomPaymentMethodRequest {
     interface Raw extends PaymentMethodBaseRequest.Raw {
-        foreignId: string;
+        foreignId?: string | null;
         accountName?: string | null;
         accountNumber?: string | null;
         availableBalance?: number | null;
