@@ -4,6 +4,7 @@
 
 import * as environments from "./environments";
 import * as core from "./core";
+import { EntityGroup } from "./api/resources/entityGroup/client/Client";
 import { Entity } from "./api/resources/entity/client/Client";
 import { Invoice } from "./api/resources/invoice/client/Client";
 import { Organization } from "./api/resources/organization/client/Client";
@@ -27,6 +28,12 @@ export declare namespace MercoaClient {
 
 export class MercoaClient {
     constructor(protected readonly _options: MercoaClient.Options) {}
+
+    protected _entityGroup: EntityGroup | undefined;
+
+    public get entityGroup(): EntityGroup {
+        return (this._entityGroup ??= new EntityGroup(this._options));
+    }
 
     protected _entity: Entity | undefined;
 

@@ -16,7 +16,7 @@ import * as Mercoa from "../../../index";
 export interface OcrRequest {
     /** MIME type of the image. Supported types are image/png, image/jpeg, and application/pdf. */
     mimeType: string;
-    /** Base64 encoded image or PDF. PNG, JPG, and PDF are supported. 10MB max. */
+    /** Base64 encoded image or PDF. PNG, JPG, WEBP, and PDF are supported. 10MB max. */
     image: string;
     /** Limit OCR vendor search to a specific network */
     vendorNetwork?: Mercoa.VendorNetwork;

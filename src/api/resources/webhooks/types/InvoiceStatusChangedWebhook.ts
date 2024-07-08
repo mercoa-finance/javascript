@@ -137,7 +137,16 @@ import * as Mercoa from "../../../index";
  *             updatedAt: new Date("2021-01-01T00:00:00.000Z")
  *         },
  *         newStatus: "new",
- *         previousStatus: "draft"
+ *         previousStatus: "draft",
+ *         user: {
+ *             id: "user_ec3aafc8-ea86-408a-a6c1-545497badbbb",
+ *             foreignId: "MY-DB-ID-12345",
+ *             email: "john.doe@acme.com",
+ *             name: "John Doe",
+ *             roles: ["admin", "approver"],
+ *             createdAt: new Date("2024-01-01T00:00:00.000Z"),
+ *             updatedAt: new Date("2024-01-01T00:00:00.000Z")
+ *         }
  *     }
  */
 export interface InvoiceStatusChangedWebhook extends Mercoa.InvoiceWebhook {

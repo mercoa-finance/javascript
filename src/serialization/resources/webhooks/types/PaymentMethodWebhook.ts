@@ -8,6 +8,7 @@ import * as core from "../../../../core";
 import { EntityId } from "../../entityTypes/types/EntityId";
 import { PaymentMethodResponse } from "../../paymentMethodTypes/types/PaymentMethodResponse";
 import { EntityResponse } from "../../entityTypes/types/EntityResponse";
+import { EntityUserResponse } from "../../entityTypes/types/EntityUserResponse";
 
 export const PaymentMethodWebhook: core.serialization.ObjectSchema<
     serializers.PaymentMethodWebhook.Raw,
@@ -17,6 +18,7 @@ export const PaymentMethodWebhook: core.serialization.ObjectSchema<
     entityId: EntityId,
     paymentMethod: PaymentMethodResponse,
     entity: EntityResponse,
+    user: EntityUserResponse.optional(),
 });
 
 export declare namespace PaymentMethodWebhook {
@@ -25,5 +27,6 @@ export declare namespace PaymentMethodWebhook {
         entityId: EntityId.Raw;
         paymentMethod: PaymentMethodResponse.Raw;
         entity: EntityResponse.Raw;
+        user?: EntityUserResponse.Raw | null;
     }
 }

@@ -6,6 +6,7 @@ import * as serializers from "../../../index";
 import * as Mercoa from "../../../../api/index";
 import * as core from "../../../../core";
 import { EntityId } from "../../entityTypes/types/EntityId";
+import { EntityUserResponse } from "../../entityTypes/types/EntityUserResponse";
 
 export const CounterpartyWebhook: core.serialization.ObjectSchema<
     serializers.CounterpartyWebhook.Raw,
@@ -14,6 +15,7 @@ export const CounterpartyWebhook: core.serialization.ObjectSchema<
     eventType: core.serialization.string(),
     payeeId: EntityId,
     payorId: EntityId,
+    user: EntityUserResponse.optional(),
 });
 
 export declare namespace CounterpartyWebhook {
@@ -21,5 +23,6 @@ export declare namespace CounterpartyWebhook {
         eventType: string;
         payeeId: EntityId.Raw;
         payorId: EntityId.Raw;
+        user?: EntityUserResponse.Raw | null;
     }
 }

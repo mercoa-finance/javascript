@@ -44,6 +44,15 @@ import * as Mercoa from "../../../index";
  *                     ownersProvided: true
  *                 }
  *             }
+ *         },
+ *         user: {
+ *             id: "user_ec3aafc8-ea86-408a-a6c1-545497badbbb",
+ *             foreignId: "MY-DB-ID-12345",
+ *             email: "john.doe@acme.com",
+ *             name: "John Doe",
+ *             roles: ["admin", "approver"],
+ *             createdAt: new Date("2024-01-01T00:00:00.000Z"),
+ *             updatedAt: new Date("2024-01-01T00:00:00.000Z")
  *         }
  *     }
  *
@@ -86,10 +95,21 @@ import * as Mercoa from "../../../index";
  *                     ownersProvided: true
  *                 }
  *             }
+ *         },
+ *         user: {
+ *             id: "user_ec3aafc8-ea86-408a-a6c1-545497badbbb",
+ *             foreignId: "MY-DB-ID-12345",
+ *             email: "john.doe@acme.com",
+ *             name: "John Doe",
+ *             roles: ["admin", "approver"],
+ *             createdAt: new Date("2024-01-01T00:00:00.000Z"),
+ *             updatedAt: new Date("2024-01-01T00:00:00.000Z")
  *         }
  *     }
  */
 export interface EntityWebhook {
     eventType: string;
     entity: Mercoa.EntityResponse;
+    /** User who initiated the change. */
+    user?: Mercoa.EntityUserResponse;
 }

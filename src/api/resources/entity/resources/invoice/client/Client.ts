@@ -70,7 +70,6 @@ export class Invoice {
             approverAction,
             invoiceId,
             status,
-            includeFees,
         } = request;
         const _queryParams: Record<string, string | string[] | object | object[]> = {};
         if (excludePayables != null) {
@@ -180,10 +179,6 @@ export class Invoice {
             }
         }
 
-        if (includeFees != null) {
-            _queryParams["includeFees"] = includeFees.toString();
-        }
-
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
@@ -194,7 +189,7 @@ export class Invoice {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.4",
+                "X-Fern-SDK-Version": "0.4.5",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -438,7 +433,7 @@ export class Invoice {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.4",
+                "X-Fern-SDK-Version": "0.4.5",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },

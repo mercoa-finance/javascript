@@ -6,16 +6,19 @@ import * as serializers from "../../../index";
 import * as Mercoa from "../../../../api/index";
 import * as core from "../../../../core";
 import { InvoiceResponse } from "../../invoiceTypes/types/InvoiceResponse";
+import { EntityUserResponse } from "../../entityTypes/types/EntityUserResponse";
 
 export const InvoiceWebhook: core.serialization.ObjectSchema<serializers.InvoiceWebhook.Raw, Mercoa.InvoiceWebhook> =
     core.serialization.object({
         eventType: core.serialization.string(),
         invoice: InvoiceResponse,
+        user: EntityUserResponse.optional(),
     });
 
 export declare namespace InvoiceWebhook {
     interface Raw {
         eventType: string;
         invoice: InvoiceResponse.Raw;
+        user?: EntityUserResponse.Raw | null;
     }
 }
