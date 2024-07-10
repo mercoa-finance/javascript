@@ -28,7 +28,7 @@ export class ExternalAccountingSystem {
     /**
      * Get the external accounting system connected to an entity
      *
-     * @param {Mercoa.EntityId} entityId
+     * @param {Mercoa.EntityId} entityId - Entity ID or Entity ForeignID
      * @param {ExternalAccountingSystem.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Mercoa.BadRequest}
@@ -58,7 +58,7 @@ export class ExternalAccountingSystem {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.5",
+                "X-Fern-SDK-Version": "0.4.6",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -167,7 +167,7 @@ export class ExternalAccountingSystem {
     /**
      * Create/Link an entity to an external accounting system like Codat or Rutter. If the entity is already linked to an external accounting system, this will return the existing connection.
      *
-     * @param {Mercoa.EntityId} entityId
+     * @param {Mercoa.EntityId} entityId - Entity ID or Entity ForeignID
      * @param {Mercoa.entity.ExternalAccountingSystemCompanyCreationRequest} request
      * @param {ExternalAccountingSystem.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -202,7 +202,7 @@ export class ExternalAccountingSystem {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.5",
+                "X-Fern-SDK-Version": "0.4.6",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -314,7 +314,7 @@ export class ExternalAccountingSystem {
     /**
      * Get a link to connect an entity to an external accounting system like Quickbooks or Xero
      *
-     * @param {Mercoa.EntityId} entityId
+     * @param {Mercoa.EntityId} entityId - Entity ID or Entity ForeignID
      * @param {ExternalAccountingSystem.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Mercoa.BadRequest}
@@ -344,7 +344,7 @@ export class ExternalAccountingSystem {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.5",
+                "X-Fern-SDK-Version": "0.4.6",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -453,7 +453,7 @@ export class ExternalAccountingSystem {
     /**
      * Sync an entity with an external accounting system. Will sync customers/vendors and invoices.
      *
-     * @param {Mercoa.EntityId} entityId
+     * @param {Mercoa.EntityId} entityId - Entity ID or Entity ForeignID
      * @param {Mercoa.entity.SyncExternalSystemRequest} request
      * @param {ExternalAccountingSystem.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -503,7 +503,7 @@ export class ExternalAccountingSystem {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.5",
+                "X-Fern-SDK-Version": "0.4.6",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },

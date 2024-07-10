@@ -28,7 +28,7 @@ export class EmailLog {
     /**
      * Get all incoming invoice emails for an entity.
      *
-     * @param {Mercoa.EntityId} entityId
+     * @param {Mercoa.EntityId} entityId - Entity ID or Entity ForeignID
      * @param {Mercoa.entity.emailLog.EntityEmailLogRequest} request
      * @param {EmailLog.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -80,7 +80,7 @@ export class EmailLog {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.5",
+                "X-Fern-SDK-Version": "0.4.6",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -190,7 +190,7 @@ export class EmailLog {
     /**
      * Get an email log by ID
      *
-     * @param {Mercoa.EntityId} entityId
+     * @param {Mercoa.EntityId} entityId - Entity ID or Entity ForeignID
      * @param {Mercoa.EmailLogId} logId
      * @param {EmailLog.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -222,7 +222,7 @@ export class EmailLog {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.5",
+                "X-Fern-SDK-Version": "0.4.6",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },

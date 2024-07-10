@@ -28,7 +28,7 @@ export class Metadata {
     /**
      * Retrieve all metadata options associated with this entity
      *
-     * @param {Mercoa.EntityId} entityId
+     * @param {Mercoa.EntityId} entityId - Entity ID or Entity ForeignID
      * @param {Metadata.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Mercoa.BadRequest}
@@ -56,7 +56,7 @@ export class Metadata {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.5",
+                "X-Fern-SDK-Version": "0.4.6",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -165,7 +165,7 @@ export class Metadata {
     /**
      * Retrieve metadata associated with a specific key
      *
-     * @param {Mercoa.EntityId} entityId
+     * @param {Mercoa.EntityId} entityId - Entity ID or Entity ForeignID
      * @param {string} key
      * @param {Metadata.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -200,7 +200,7 @@ export class Metadata {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.5",
+                "X-Fern-SDK-Version": "0.4.6",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -309,7 +309,7 @@ export class Metadata {
     /**
      * Update metadata associated with a specific key
      *
-     * @param {Mercoa.EntityId} entityId
+     * @param {Mercoa.EntityId} entityId - Entity ID or Entity ForeignID
      * @param {string} key
      * @param {string[]} request
      * @param {Metadata.RequestOptions} requestOptions - Request-specific configuration.
@@ -346,7 +346,7 @@ export class Metadata {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.5",
+                "X-Fern-SDK-Version": "0.4.6",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -458,7 +458,7 @@ export class Metadata {
     /**
      * Delete all metadata associated with a specific key
      *
-     * @param {Mercoa.EntityId} entityId
+     * @param {Mercoa.EntityId} entityId - Entity ID or Entity ForeignID
      * @param {string} key
      * @param {Metadata.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -490,7 +490,7 @@ export class Metadata {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.5",
+                "X-Fern-SDK-Version": "0.4.6",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },

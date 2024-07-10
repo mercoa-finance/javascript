@@ -11,6 +11,7 @@ export interface BusinessOnboardingOptions {
     type: Mercoa.OnboardingOption;
     doingBusinessAs: Mercoa.OnboardingOption;
     ein: Mercoa.OnboardingOption;
+    mcc: Mercoa.OnboardingOption;
     address: Mercoa.OnboardingOption;
     phone: Mercoa.OnboardingOption;
     formationDate: Mercoa.OnboardingOption;

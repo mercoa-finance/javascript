@@ -47,4 +47,5 @@ export interface BusinessProfileResponse {
     /** True if all representatives have been provided for this business. */
     ownersProvided?: boolean;
     taxIdProvided: boolean;
+    industryCodes?: Mercoa.IndustryCodes;
 }

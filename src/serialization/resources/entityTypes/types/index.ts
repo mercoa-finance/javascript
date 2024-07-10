@@ -66,3 +66,4 @@ export * from "./MetadataCustomizationRequest";
 export * from "./PaymentMethodCustomizationRequest";
 export * from "./EntityCustomizationRequest";
 export * from "./EntityCustomizationResponse";
+export * from "./IndustryCodes";

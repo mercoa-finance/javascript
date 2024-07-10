@@ -28,7 +28,7 @@ export class Invoice {
     /**
      * Get invoices for an entity with the given filters.
      *
-     * @param {Mercoa.EntityId} entityId
+     * @param {Mercoa.EntityId} entityId - Entity ID or Entity ForeignID
      * @param {Mercoa.entity.EntityGetInvoicesRequest} request
      * @param {Invoice.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -189,7 +189,7 @@ export class Invoice {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.5",
+                "X-Fern-SDK-Version": "0.4.6",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -299,7 +299,7 @@ export class Invoice {
     /**
      * Get invoice metrics for an entity with the given filters. Invoices will be grouped by currency. If none of excludePayables, excludeReceivables, payerId, vendorId, or invoiceId status filters are provided, excludeReceivables will be set to true.
      *
-     * @param {Mercoa.EntityId} entityId
+     * @param {Mercoa.EntityId} entityId - Entity ID or Entity ForeignID
      * @param {Mercoa.entity.InvoiceMetricsRequest} request
      * @param {Invoice.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -433,7 +433,7 @@ export class Invoice {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.5",
+                "X-Fern-SDK-Version": "0.4.6",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },

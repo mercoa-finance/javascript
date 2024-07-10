@@ -26,7 +26,7 @@ export class Notifications {
     constructor(protected readonly _options: Notifications.Options) {}
 
     /**
-     * @param {Mercoa.EntityId} entityId
+     * @param {Mercoa.EntityId} entityId - Entity ID or Entity ForeignID
      * @param {Mercoa.EntityUserId} userId
      * @param {Mercoa.entity.user.EntityGetNotificationsRequest} request
      * @param {Notifications.RequestOptions} requestOptions - Request-specific configuration.
@@ -90,7 +90,7 @@ export class Notifications {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.5",
+                "X-Fern-SDK-Version": "0.4.6",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -198,7 +198,7 @@ export class Notifications {
     }
 
     /**
-     * @param {Mercoa.EntityId} entityId
+     * @param {Mercoa.EntityId} entityId - Entity ID or Entity ForeignID
      * @param {Mercoa.EntityUserId} userId
      * @param {Mercoa.NotificationId} notificationId
      * @param {Notifications.RequestOptions} requestOptions - Request-specific configuration.
@@ -234,7 +234,7 @@ export class Notifications {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.5",
+                "X-Fern-SDK-Version": "0.4.6",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },

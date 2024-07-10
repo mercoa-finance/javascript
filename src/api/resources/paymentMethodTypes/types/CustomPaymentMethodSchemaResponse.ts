@@ -36,7 +36,9 @@ import * as Mercoa from "../../../index";
  *             }],
  *         createdAt: new Date("2021-01-01T00:00:00.000Z"),
  *         updatedAt: new Date("2021-01-01T00:00:00.000Z"),
- *         estimatedProcessingTime: 0
+ *         estimatedProcessingTime: 0,
+ *         maxAmount: 100000,
+ *         minAmount: 1
  *     }
  *
  * @example
@@ -70,7 +72,9 @@ import * as Mercoa from "../../../index";
  *             }],
  *         createdAt: new Date("2021-01-01T00:00:00.000Z"),
  *         updatedAt: new Date("2021-01-01T00:00:00.000Z"),
- *         estimatedProcessingTime: 7
+ *         estimatedProcessingTime: 7,
+ *         maxAmount: 50000,
+ *         minAmount: 1
  *     }
  */
 export interface CustomPaymentMethodSchemaResponse {
@@ -85,6 +89,10 @@ export interface CustomPaymentMethodSchemaResponse {
     fields: Mercoa.CustomPaymentMethodSchemaField[];
     /** Estimated time in days for this payment method to process a payments. 0 is an same-day payment methods, -1 is unknown processing time. */
     estimatedProcessingTime: number;
+    /** The maximum amount that can be transferred from this payment method in a single transaction. */
+    maxAmount?: number;
+    /** The minimum amount that can be transferred from this payment method in a single transaction. Default is 1. */
+    minAmount?: number;
     fees?: Mercoa.CustomPaymentMethodSchemaFee;
     createdAt: Date;
     updatedAt: Date;

@@ -1,5 +1,7 @@
 export * as bankLookup from "./bankLookup";
 export * from "./bankLookup/types";
+export * as calculate from "./calculate";
+export * from "./calculate/types";
 export * as commons from "./commons";
 export * from "./commons/types";
 export * as emailLogTypes from "./emailLogTypes";
@@ -9,8 +11,6 @@ export * from "./entityGroupTypes/types";
 export * as entityTypes from "./entityTypes";
 export * from "./entityTypes/types";
 export * as entity from "./entity";
-export * as fees from "./fees";
-export * from "./fees/types";
 export * as invoiceTypes from "./invoiceTypes";
 export * from "./invoiceTypes/types";
 export * as ocr from "./ocr";

@@ -33,7 +33,9 @@ import * as Mercoa from "../../../index";
  *                 type: Mercoa.CustomPaymentMethodSchemaFieldType.UsBankRoutingNumber,
  *                 optional: false
  *             }],
- *         estimatedProcessingTime: 0
+ *         estimatedProcessingTime: 0,
+ *         maxAmount: 100000,
+ *         minAmount: 1
  *     }
  *
  * @example
@@ -64,7 +66,9 @@ import * as Mercoa from "../../../index";
  *                 type: Mercoa.CustomPaymentMethodSchemaFieldType.Address,
  *                 optional: false
  *             }],
- *         estimatedProcessingTime: 7
+ *         estimatedProcessingTime: 7,
+ *         maxAmount: 50000,
+ *         minAmount: 1
  *     }
  */
 export interface CustomPaymentMethodSchemaRequest {
@@ -78,5 +82,9 @@ export interface CustomPaymentMethodSchemaRequest {
     fields: Mercoa.CustomPaymentMethodSchemaField[];
     /** Estimated time in days for this payment method to process a payments. Set as 0 for same-day payment methods, -1 for unknown processing time. */
     estimatedProcessingTime?: number;
+    /** The maximum amount that can be transferred from this payment method in a single transaction. */
+    maxAmount?: number;
+    /** The minimum amount that can be transferred from this payment method in a single transaction. Default is 1. */
+    minAmount?: number;
     fees?: Mercoa.CustomPaymentMethodSchemaFee;
 }

@@ -56,4 +56,6 @@ export interface BusinessProfileRequest {
     taxId?: Mercoa.TaxId;
     /** Date of business formation */
     formationDate?: Date;
+    /** Industry code for the business. Required to collect funds. */
+    industryCodes?: Mercoa.IndustryCodes;
 }

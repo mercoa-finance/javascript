@@ -28,7 +28,7 @@ export class ApprovalPolicy {
     /**
      * Retrieve all invoice approval policies associated with an entity
      *
-     * @param {Mercoa.EntityId} entityId
+     * @param {Mercoa.EntityId} entityId - Entity ID or Entity ForeignID
      * @param {ApprovalPolicy.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Mercoa.BadRequest}
@@ -56,7 +56,7 @@ export class ApprovalPolicy {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.5",
+                "X-Fern-SDK-Version": "0.4.6",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -165,7 +165,7 @@ export class ApprovalPolicy {
     /**
      * Create an invoice approval policy associated with an entity
      *
-     * @param {Mercoa.EntityId} entityId
+     * @param {Mercoa.EntityId} entityId - Entity ID or Entity ForeignID
      * @param {Mercoa.ApprovalPolicyRequest} request
      * @param {ApprovalPolicy.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -224,7 +224,7 @@ export class ApprovalPolicy {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.5",
+                "X-Fern-SDK-Version": "0.4.6",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -334,7 +334,7 @@ export class ApprovalPolicy {
     /**
      * Retrieve an invoice approval policy associated with an entity
      *
-     * @param {Mercoa.EntityId} entityId
+     * @param {Mercoa.EntityId} entityId - Entity ID or Entity ForeignID
      * @param {Mercoa.ApprovalPolicyId} policyId
      * @param {ApprovalPolicy.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -366,7 +366,7 @@ export class ApprovalPolicy {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.5",
+                "X-Fern-SDK-Version": "0.4.6",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -475,7 +475,7 @@ export class ApprovalPolicy {
     /**
      * Update an invoice approval policy associated with an entity
      *
-     * @param {Mercoa.EntityId} entityId
+     * @param {Mercoa.EntityId} entityId - Entity ID or Entity ForeignID
      * @param {Mercoa.ApprovalPolicyId} policyId
      * @param {Mercoa.ApprovalPolicyUpdateRequest} request
      * @param {ApprovalPolicy.RequestOptions} requestOptions - Request-specific configuration.
@@ -538,7 +538,7 @@ export class ApprovalPolicy {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.5",
+                "X-Fern-SDK-Version": "0.4.6",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -650,7 +650,7 @@ export class ApprovalPolicy {
     /**
      * Delete an invoice approval policy associated with Entity. BEWARE: Any approval policy deletion will result in all associated downstream policies also being deleted.
      *
-     * @param {Mercoa.EntityId} entityId
+     * @param {Mercoa.EntityId} entityId - Entity ID or Entity ForeignID
      * @param {Mercoa.ApprovalPolicyId} policyId
      * @param {ApprovalPolicy.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -682,7 +682,7 @@ export class ApprovalPolicy {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.5",
+                "X-Fern-SDK-Version": "0.4.6",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },

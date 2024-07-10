@@ -21,6 +21,8 @@ export const CustomPaymentMethodSchemaResponse: core.serialization.ObjectSchema<
     supportedCurrencies: core.serialization.list(CurrencyCode),
     fields: core.serialization.list(CustomPaymentMethodSchemaField),
     estimatedProcessingTime: core.serialization.number(),
+    maxAmount: core.serialization.number().optional(),
+    minAmount: core.serialization.number().optional(),
     fees: CustomPaymentMethodSchemaFee.optional(),
     createdAt: core.serialization.date(),
     updatedAt: core.serialization.date(),
@@ -35,6 +37,8 @@ export declare namespace CustomPaymentMethodSchemaResponse {
         supportedCurrencies: CurrencyCode.Raw[];
         fields: CustomPaymentMethodSchemaField.Raw[];
         estimatedProcessingTime: number;
+        maxAmount?: number | null;
+        minAmount?: number | null;
         fees?: CustomPaymentMethodSchemaFee.Raw | null;
         createdAt: string;
         updatedAt: string;

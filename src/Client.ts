@@ -9,8 +9,8 @@ import { Entity } from "./api/resources/entity/client/Client";
 import { Invoice } from "./api/resources/invoice/client/Client";
 import { Organization } from "./api/resources/organization/client/Client";
 import { BankLookup } from "./api/resources/bankLookup/client/Client";
+import { Calculate } from "./api/resources/calculate/client/Client";
 import { CustomPaymentMethodSchema } from "./api/resources/customPaymentMethodSchema/client/Client";
-import { Fees } from "./api/resources/fees/client/Client";
 import { Ocr } from "./api/resources/ocr/client/Client";
 
 export declare namespace MercoaClient {
@@ -59,16 +59,16 @@ export class MercoaClient {
         return (this._bankLookup ??= new BankLookup(this._options));
     }
 
+    protected _calculate: Calculate | undefined;
+
+    public get calculate(): Calculate {
+        return (this._calculate ??= new Calculate(this._options));
+    }
+
     protected _customPaymentMethodSchema: CustomPaymentMethodSchema | undefined;
 
     public get customPaymentMethodSchema(): CustomPaymentMethodSchema {
         return (this._customPaymentMethodSchema ??= new CustomPaymentMethodSchema(this._options));
-    }
-
-    protected _fees: Fees | undefined;
-
-    public get fees(): Fees {
-        return (this._fees ??= new Fees(this._options));
     }
 
     protected _ocr: Ocr | undefined;

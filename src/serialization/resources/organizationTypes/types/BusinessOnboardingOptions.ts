@@ -17,6 +17,7 @@ export const BusinessOnboardingOptions: core.serialization.ObjectSchema<
     type: OnboardingOption,
     doingBusinessAs: OnboardingOption,
     ein: OnboardingOption,
+    mcc: OnboardingOption,
     address: OnboardingOption,
     phone: OnboardingOption,
     formationDate: OnboardingOption,
@@ -33,6 +34,7 @@ export declare namespace BusinessOnboardingOptions {
         type: OnboardingOption.Raw;
         doingBusinessAs: OnboardingOption.Raw;
         ein: OnboardingOption.Raw;
+        mcc: OnboardingOption.Raw;
         address: OnboardingOption.Raw;
         phone: OnboardingOption.Raw;
         formationDate: OnboardingOption.Raw;

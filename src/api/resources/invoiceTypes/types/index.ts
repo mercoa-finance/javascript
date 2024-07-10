@@ -17,6 +17,7 @@ export * from "./ApproverAction";
 export * from "./InvoiceLineItemResponse";
 export * from "./InvoiceLineItemRequest";
 export * from "./AssociatedApprovalAction";
+export * from "./InvoiceFeesRequest";
 export * from "./InvoiceFeesResponse";
 export * from "./InvoiceStatus";
 export * from "./InvoiceFailureType";

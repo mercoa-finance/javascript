@@ -109,6 +109,7 @@ import * as Mercoa from "../../../index";
  *             },
  *             currency: Mercoa.CurrencyCode.Usd,
  *             amount: 100,
+ *             invoiceNumber: "INV-123",
  *             invoiceDate: new Date("2021-01-01T00:00:00.000Z"),
  *             dueDate: new Date("2021-01-31T00:00:00.000Z"),
  *             paymentSourceId: "pm_4794d597-70dc-4fec-b6ec-c5988e759769",

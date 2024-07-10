@@ -19,6 +19,8 @@ export const CustomPaymentMethodSchemaRequest: core.serialization.ObjectSchema<
     supportedCurrencies: core.serialization.list(CurrencyCode).optional(),
     fields: core.serialization.list(CustomPaymentMethodSchemaField),
     estimatedProcessingTime: core.serialization.number().optional(),
+    maxAmount: core.serialization.number().optional(),
+    minAmount: core.serialization.number().optional(),
     fees: CustomPaymentMethodSchemaFee.optional(),
 });
 
@@ -30,6 +32,8 @@ export declare namespace CustomPaymentMethodSchemaRequest {
         supportedCurrencies?: CurrencyCode.Raw[] | null;
         fields: CustomPaymentMethodSchemaField.Raw[];
         estimatedProcessingTime?: number | null;
+        maxAmount?: number | null;
+        minAmount?: number | null;
         fees?: CustomPaymentMethodSchemaFee.Raw | null;
     }
 }

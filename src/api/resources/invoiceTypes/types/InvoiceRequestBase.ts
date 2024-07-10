@@ -46,4 +46,6 @@ export interface InvoiceRequestBase {
     creatorUserId?: Mercoa.EntityUserId;
     /** If the invoice failed to be paid, indicate the failure reason. Only applicable for invoices with custom payment methods. */
     failureType?: Mercoa.InvoiceFailureType;
+    /** If using a custom payment method, you can override the default fees for this invoice. If not provided, the default fees for the custom payment method will be used. */
+    fees?: Mercoa.InvoiceFeesRequest;
 }

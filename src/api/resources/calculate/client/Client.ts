@@ -5,12 +5,11 @@
 import * as environments from "../../../../environments";
 import * as core from "../../../../core";
 import * as Mercoa from "../../../index";
-import urlJoin from "url-join";
 import * as serializers from "../../../../serialization/index";
+import urlJoin from "url-join";
 import * as errors from "../../../../errors/index";
-import { NotificationConfiguration } from "../resources/notificationConfiguration/client/Client";
 
-export declare namespace Organization {
+export declare namespace Calculate {
     interface Options {
         environment?: core.Supplier<environments.MercoaEnvironment | string>;
         token: core.Supplier<core.BearerToken>;
@@ -23,14 +22,14 @@ export declare namespace Organization {
     }
 }
 
-export class Organization {
-    constructor(protected readonly _options: Organization.Options) {}
+export class Calculate {
+    constructor(protected readonly _options: Calculate.Options) {}
 
     /**
-     * Get current organization information
+     * Calculate the estimated fees associated with an payment given the amount, payment source, and disbursement method. Can be used to calculate fees for a payment before creating an invoice.
      *
-     * @param {Mercoa.organization.GetOrganizationRequest} request
-     * @param {Organization.RequestOptions} requestOptions - Request-specific configuration.
+     * @param {Mercoa.CalculateFeesRequest} request
+     * @param {Calculate.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Mercoa.BadRequest}
      * @throws {@link Mercoa.Unauthorized}
@@ -41,214 +40,20 @@ export class Organization {
      * @throws {@link Mercoa.Unimplemented}
      *
      * @example
-     *     await client.organization.get({
-     *         paymentMethods: true,
-     *         emailProvider: true,
-     *         externalAccountingSystemProvider: true,
-     *         colorScheme: true,
-     *         payeeOnboardingOptions: true,
-     *         payorOnboardingOptions: true,
-     *         metadataSchema: true
+     *     await client.calculate.fee({
+     *         amount: 100,
+     *         paymentSourceId: "pm_4794d597-70dc-4fec-b6ec-c5988e759769",
+     *         paymentDestinationId: "pm_4794d597-70dc-4fec-b6ec-c5988e759769"
      *     })
      */
-    public async get(
-        request: Mercoa.organization.GetOrganizationRequest = {},
-        requestOptions?: Organization.RequestOptions
-    ): Promise<Mercoa.OrganizationResponse> {
-        const {
-            paymentMethods,
-            emailProvider,
-            externalAccountingSystemProvider,
-            colorScheme,
-            payeeOnboardingOptions,
-            payorOnboardingOptions,
-            metadataSchema,
-        } = request;
-        const _queryParams: Record<string, string | string[] | object | object[]> = {};
-        if (paymentMethods != null) {
-            _queryParams["paymentMethods"] = paymentMethods.toString();
-        }
-
-        if (emailProvider != null) {
-            _queryParams["emailProvider"] = emailProvider.toString();
-        }
-
-        if (externalAccountingSystemProvider != null) {
-            _queryParams["externalAccountingSystemProvider"] = externalAccountingSystemProvider.toString();
-        }
-
-        if (colorScheme != null) {
-            _queryParams["colorScheme"] = colorScheme.toString();
-        }
-
-        if (payeeOnboardingOptions != null) {
-            _queryParams["payeeOnboardingOptions"] = payeeOnboardingOptions.toString();
-        }
-
-        if (payorOnboardingOptions != null) {
-            _queryParams["payorOnboardingOptions"] = payorOnboardingOptions.toString();
-        }
-
-        if (metadataSchema != null) {
-            _queryParams["metadataSchema"] = metadataSchema.toString();
-        }
-
+    public async fee(
+        request: Mercoa.CalculateFeesRequest,
+        requestOptions?: Calculate.RequestOptions
+    ): Promise<Mercoa.InvoiceFeesResponse> {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
-                "organization"
-            ),
-            method: "GET",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.6",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-            },
-            contentType: "application/json",
-            queryParameters: _queryParams,
-            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
-            maxRetries: requestOptions?.maxRetries,
-            abortSignal: requestOptions?.abortSignal,
-        });
-        if (_response.ok) {
-            return await serializers.OrganizationResponse.parseOrThrow(_response.body, {
-                unrecognizedObjectKeys: "passthrough",
-                allowUnrecognizedUnionMembers: true,
-                allowUnrecognizedEnumValues: true,
-                breadcrumbsPrefix: ["response"],
-            });
-        }
-
-        if (_response.error.reason === "status-code") {
-            switch ((_response.error.body as any)?.["errorName"]) {
-                case "BadRequest":
-                    throw new Mercoa.BadRequest(
-                        await serializers.BadRequest.parseOrThrow(_response.error.body, {
-                            unrecognizedObjectKeys: "passthrough",
-                            allowUnrecognizedUnionMembers: true,
-                            allowUnrecognizedEnumValues: true,
-                            breadcrumbsPrefix: ["response"],
-                        })
-                    );
-                case "Unauthorized":
-                    throw new Mercoa.Unauthorized(
-                        await serializers.Unauthorized.parseOrThrow(_response.error.body, {
-                            unrecognizedObjectKeys: "passthrough",
-                            allowUnrecognizedUnionMembers: true,
-                            allowUnrecognizedEnumValues: true,
-                            breadcrumbsPrefix: ["response"],
-                        })
-                    );
-                case "Forbidden":
-                    throw new Mercoa.Forbidden(
-                        await serializers.Forbidden.parseOrThrow(_response.error.body, {
-                            unrecognizedObjectKeys: "passthrough",
-                            allowUnrecognizedUnionMembers: true,
-                            allowUnrecognizedEnumValues: true,
-                            breadcrumbsPrefix: ["response"],
-                        })
-                    );
-                case "NotFound":
-                    throw new Mercoa.NotFound(
-                        await serializers.NotFound.parseOrThrow(_response.error.body, {
-                            unrecognizedObjectKeys: "passthrough",
-                            allowUnrecognizedUnionMembers: true,
-                            allowUnrecognizedEnumValues: true,
-                            breadcrumbsPrefix: ["response"],
-                        })
-                    );
-                case "Conflict":
-                    throw new Mercoa.Conflict(
-                        await serializers.Conflict.parseOrThrow(_response.error.body, {
-                            unrecognizedObjectKeys: "passthrough",
-                            allowUnrecognizedUnionMembers: true,
-                            allowUnrecognizedEnumValues: true,
-                            breadcrumbsPrefix: ["response"],
-                        })
-                    );
-                case "InternalServerError":
-                    throw new Mercoa.InternalServerError(
-                        await serializers.InternalServerError.parseOrThrow(_response.error.body, {
-                            unrecognizedObjectKeys: "passthrough",
-                            allowUnrecognizedUnionMembers: true,
-                            allowUnrecognizedEnumValues: true,
-                            breadcrumbsPrefix: ["response"],
-                        })
-                    );
-                case "Unimplemented":
-                    throw new Mercoa.Unimplemented(
-                        await serializers.Unimplemented.parseOrThrow(_response.error.body, {
-                            unrecognizedObjectKeys: "passthrough",
-                            allowUnrecognizedUnionMembers: true,
-                            allowUnrecognizedEnumValues: true,
-                            breadcrumbsPrefix: ["response"],
-                        })
-                    );
-                default:
-                    throw new errors.MercoaError({
-                        statusCode: _response.error.statusCode,
-                        body: _response.error.body,
-                    });
-            }
-        }
-
-        switch (_response.error.reason) {
-            case "non-json":
-                throw new errors.MercoaError({
-                    statusCode: _response.error.statusCode,
-                    body: _response.error.rawBody,
-                });
-            case "timeout":
-                throw new errors.MercoaTimeoutError();
-            case "unknown":
-                throw new errors.MercoaError({
-                    message: _response.error.errorMessage,
-                });
-        }
-    }
-
-    /**
-     * Update current organization
-     *
-     * @param {Mercoa.OrganizationRequest} request
-     * @param {Organization.RequestOptions} requestOptions - Request-specific configuration.
-     *
-     * @throws {@link Mercoa.BadRequest}
-     * @throws {@link Mercoa.Unauthorized}
-     * @throws {@link Mercoa.Forbidden}
-     * @throws {@link Mercoa.NotFound}
-     * @throws {@link Mercoa.Conflict}
-     * @throws {@link Mercoa.InternalServerError}
-     * @throws {@link Mercoa.Unimplemented}
-     *
-     * @example
-     *     await client.organization.update({
-     *         name: "string",
-     *         logo: "string",
-     *         websiteUrl: "string",
-     *         supportEmail: "string",
-     *         paymentMethods: {},
-     *         emailProvider: {},
-     *         externalAccountingSystemProvider: {
-     *             type: "none"
-     *         },
-     *         colorScheme: {},
-     *         payeeOnboardingOptions: {},
-     *         payorOnboardingOptions: {},
-     *         metadataSchema: [{}]
-     *     })
-     */
-    public async update(
-        request: Mercoa.OrganizationRequest,
-        requestOptions?: Organization.RequestOptions
-    ): Promise<Mercoa.OrganizationResponse> {
-        const _response = await core.fetcher({
-            url: urlJoin(
-                (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
-                "organization"
+                "fees"
             ),
             method: "POST",
             headers: {
@@ -260,13 +65,13 @@ export class Organization {
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
-            body: await serializers.OrganizationRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
+            body: await serializers.CalculateFeesRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return await serializers.OrganizationResponse.parseOrThrow(_response.body, {
+            return await serializers.InvoiceFeesResponse.parseOrThrow(_response.body, {
                 unrecognizedObjectKeys: "passthrough",
                 allowUnrecognizedUnionMembers: true,
                 allowUnrecognizedEnumValues: true,
@@ -363,10 +168,10 @@ export class Organization {
     }
 
     /**
-     * Get log of all emails sent to this organization. Content format subject to change.
+     * Calculate the estimated payment timing given the deduction date, payment source, and disbursement method. Can be used to calculate timing for a payment.
      *
-     * @param {Mercoa.organization.GetEmailLogRequest} request
-     * @param {Organization.RequestOptions} requestOptions - Request-specific configuration.
+     * @param {Mercoa.CalculatePaymentTimingRequest} request
+     * @param {Calculate.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Mercoa.BadRequest}
      * @throws {@link Mercoa.Unauthorized}
@@ -377,41 +182,22 @@ export class Organization {
      * @throws {@link Mercoa.Unimplemented}
      *
      * @example
-     *     await client.organization.emailLog({
-     *         startDate: new Date("2024-01-15T09:30:00.000Z"),
-     *         endDate: new Date("2024-01-15T09:30:00.000Z"),
-     *         limit: 1,
-     *         startingAfter: "string"
+     *     await client.calculate.paymentTiming({
+     *         estimatedDeductionDate: new Date("2024-01-02T00:00:00.000Z"),
+     *         paymentSourceId: "pm_4794d597-70dc-4fec-b6ec-c5988e759769",
+     *         paymentDestinationId: "pm_4794d597-70dc-4fec-b6ec-c5988e759769"
      *     })
      */
-    public async emailLog(
-        request: Mercoa.organization.GetEmailLogRequest = {},
-        requestOptions?: Organization.RequestOptions
-    ): Promise<Mercoa.EmailLogResponse> {
-        const { startDate, endDate, limit, startingAfter } = request;
-        const _queryParams: Record<string, string | string[] | object | object[]> = {};
-        if (startDate != null) {
-            _queryParams["startDate"] = startDate.toISOString();
-        }
-
-        if (endDate != null) {
-            _queryParams["endDate"] = endDate.toISOString();
-        }
-
-        if (limit != null) {
-            _queryParams["limit"] = limit.toString();
-        }
-
-        if (startingAfter != null) {
-            _queryParams["startingAfter"] = startingAfter;
-        }
-
+    public async paymentTiming(
+        request: Mercoa.CalculatePaymentTimingRequest,
+        requestOptions?: Calculate.RequestOptions
+    ): Promise<Mercoa.CalculatePaymentTimingResponse> {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
-                "organization/emailLog"
+                "paymentTiming"
             ),
-            method: "GET",
+            method: "POST",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
@@ -421,13 +207,15 @@ export class Organization {
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
-            queryParameters: _queryParams,
+            body: await serializers.CalculatePaymentTimingRequest.jsonOrThrow(request, {
+                unrecognizedObjectKeys: "strip",
+            }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return await serializers.EmailLogResponse.parseOrThrow(_response.body, {
+            return await serializers.CalculatePaymentTimingResponse.parseOrThrow(_response.body, {
                 unrecognizedObjectKeys: "passthrough",
                 allowUnrecognizedUnionMembers: true,
                 allowUnrecognizedEnumValues: true,
@@ -521,12 +309,6 @@ export class Organization {
                     message: _response.error.errorMessage,
                 });
         }
-    }
-
-    protected _notificationConfiguration: NotificationConfiguration | undefined;
-
-    public get notificationConfiguration(): NotificationConfiguration {
-        return (this._notificationConfiguration ??= new NotificationConfiguration(this._options));
     }
 
     protected async _getAuthorizationHeader(): Promise<string> {

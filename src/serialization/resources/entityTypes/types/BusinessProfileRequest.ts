@@ -9,6 +9,7 @@ import { BusinessType } from "./BusinessType";
 import { PhoneNumber } from "../../commons/types/PhoneNumber";
 import { Address } from "../../commons/types/Address";
 import { TaxId } from "./TaxId";
+import { IndustryCodes } from "./IndustryCodes";
 
 export const BusinessProfileRequest: core.serialization.ObjectSchema<
     serializers.BusinessProfileRequest.Raw,
@@ -24,6 +25,7 @@ export const BusinessProfileRequest: core.serialization.ObjectSchema<
     address: Address.optional(),
     taxId: TaxId.optional(),
     formationDate: core.serialization.date().optional(),
+    industryCodes: IndustryCodes.optional(),
 });
 
 export declare namespace BusinessProfileRequest {
@@ -38,5 +40,6 @@ export declare namespace BusinessProfileRequest {
         address?: Address.Raw | null;
         taxId?: TaxId.Raw | null;
         formationDate?: string | null;
+        industryCodes?: IndustryCodes.Raw | null;
     }
 }
