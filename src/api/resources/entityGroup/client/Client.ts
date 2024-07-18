@@ -8,6 +8,7 @@ import * as Mercoa from "../../../index";
 import urlJoin from "url-join";
 import * as serializers from "../../../../serialization/index";
 import * as errors from "../../../../errors/index";
+import { User } from "../resources/user/client/Client";
 import { Invoice } from "../resources/invoice/client/Client";
 
 export declare namespace EntityGroup {
@@ -67,7 +68,7 @@ export class EntityGroup {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.6",
+                "X-Fern-SDK-Version": "0.4.7",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -207,7 +208,7 @@ export class EntityGroup {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.6",
+                "X-Fern-SDK-Version": "0.4.7",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -345,7 +346,7 @@ export class EntityGroup {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.6",
+                "X-Fern-SDK-Version": "0.4.7",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -486,7 +487,7 @@ export class EntityGroup {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.6",
+                "X-Fern-SDK-Version": "0.4.7",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -624,7 +625,7 @@ export class EntityGroup {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.6",
+                "X-Fern-SDK-Version": "0.4.7",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -723,6 +724,12 @@ export class EntityGroup {
                     message: _response.error.errorMessage,
                 });
         }
+    }
+
+    protected _user: User | undefined;
+
+    public get user(): User {
+        return (this._user ??= new User(this._options));
     }
 
     protected _invoice: Invoice | undefined;

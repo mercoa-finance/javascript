@@ -63,6 +63,8 @@ export class Invoice {
             limit,
             startingAfter,
             metadata,
+            lineItemMetadata,
+            lineItemGlAccountId,
             search,
             payerId,
             vendorId,
@@ -124,6 +126,40 @@ export class Invoice {
                     allowUnrecognizedEnumValues: true,
                     breadcrumbsPrefix: ["request", "metadata"],
                 });
+            }
+        }
+
+        if (lineItemMetadata != null) {
+            if (Array.isArray(lineItemMetadata)) {
+                _queryParams["lineItemMetadata"] = await Promise.all(
+                    lineItemMetadata.map(
+                        async (item) =>
+                            await serializers.InvoiceMetadataFilter.jsonOrThrow(item, {
+                                unrecognizedObjectKeys: "passthrough",
+                                allowUnrecognizedUnionMembers: true,
+                                allowUnrecognizedEnumValues: true,
+                                breadcrumbsPrefix: ["request", "lineItemMetadata"],
+                            })
+                    )
+                );
+            } else {
+                _queryParams["lineItemMetadata"] = await serializers.InvoiceMetadataFilter.jsonOrThrow(
+                    lineItemMetadata,
+                    {
+                        unrecognizedObjectKeys: "passthrough",
+                        allowUnrecognizedUnionMembers: true,
+                        allowUnrecognizedEnumValues: true,
+                        breadcrumbsPrefix: ["request", "lineItemMetadata"],
+                    }
+                );
+            }
+        }
+
+        if (lineItemGlAccountId != null) {
+            if (Array.isArray(lineItemGlAccountId)) {
+                _queryParams["lineItemGlAccountId"] = lineItemGlAccountId.map((item) => item);
+            } else {
+                _queryParams["lineItemGlAccountId"] = lineItemGlAccountId;
             }
         }
 
@@ -189,7 +225,7 @@ export class Invoice {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.6",
+                "X-Fern-SDK-Version": "0.4.7",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -433,7 +469,7 @@ export class Invoice {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.6",
+                "X-Fern-SDK-Version": "0.4.7",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },

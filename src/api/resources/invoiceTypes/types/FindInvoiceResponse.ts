@@ -59,6 +59,11 @@ import * as Mercoa from "../../../index";
  *                             ownersProvided: true
  *                         }
  *                     },
+ *                     accounts: [{
+ *                             accountId: "85866843",
+ *                             postalCode: "94105",
+ *                             nameOnAccount: "John Doe"
+ *                         }],
  *                     paymentMethods: [{
  *                             type: "bankAccount",
  *                             id: "pm_4794d597-70dc-4fec-b6ec-c5988e759769",

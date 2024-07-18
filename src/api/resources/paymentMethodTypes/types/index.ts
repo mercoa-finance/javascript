@@ -25,6 +25,8 @@ export * from "./CustomPaymentMethodSchemaFieldType";
 export * from "./CustomPaymentMethodSchemaFee";
 export * from "./CustomPaymentMethodFeeType";
 export * from "./CustomPaymentMethodSchemaField";
+export * from "./UtilityPaymentMethodRequest";
+export * from "./UtilityPaymentMethodResponse";
 export * from "./PaymentMethodType";
 export * from "./BankType";
 export * from "./BankStatus";

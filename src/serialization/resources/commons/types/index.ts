@@ -4,3 +4,5 @@ export * from "./Address";
 export * from "./PhoneNumber";
 export * from "./IndividualGovernmentId";
 export * from "./OrderDirection";
+export * from "./DocumentType";
+export * from "./DocumentResponse";

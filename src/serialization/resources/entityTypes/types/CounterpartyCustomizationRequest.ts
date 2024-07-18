@@ -6,18 +6,19 @@ import * as serializers from "../../../index";
 import * as Mercoa from "../../../../api/index";
 import * as core from "../../../../core";
 import { EntityId } from "./EntityId";
+import { CounterpartyCustomizationAccount } from "./CounterpartyCustomizationAccount";
 
 export const CounterpartyCustomizationRequest: core.serialization.ObjectSchema<
     serializers.CounterpartyCustomizationRequest.Raw,
     Mercoa.CounterpartyCustomizationRequest
 > = core.serialization.object({
     counterpartyId: EntityId,
-    accountId: core.serialization.string().optional(),
+    accounts: core.serialization.list(CounterpartyCustomizationAccount).optional(),
 });
 
 export declare namespace CounterpartyCustomizationRequest {
     interface Raw {
         counterpartyId: EntityId.Raw;
-        accountId?: string | null;
+        accounts?: CounterpartyCustomizationAccount.Raw[] | null;
     }
 }

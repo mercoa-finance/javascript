@@ -5,6 +5,7 @@
 import * as serializers from "../../../index";
 import * as Mercoa from "../../../../api/index";
 import * as core from "../../../../core";
+import { CounterpartyCustomizationAccount } from "./CounterpartyCustomizationAccount";
 import { PaymentMethodResponse } from "../../paymentMethodTypes/types/PaymentMethodResponse";
 import { CounterpartyNetworkType } from "./CounterpartyNetworkType";
 import { CounterpartyInvoiceMetricsResponse } from "./CounterpartyInvoiceMetricsResponse";
@@ -15,7 +16,7 @@ export const CounterpartyResponse: core.serialization.ObjectSchema<
     Mercoa.CounterpartyResponse
 > = core.serialization
     .object({
-        accountId: core.serialization.string().optional(),
+        accounts: core.serialization.list(CounterpartyCustomizationAccount).optional(),
         logo: core.serialization.string().optional(),
         paymentMethods: core.serialization.list(PaymentMethodResponse).optional(),
         counterpartyType: core.serialization.list(CounterpartyNetworkType).optional(),
@@ -25,7 +26,7 @@ export const CounterpartyResponse: core.serialization.ObjectSchema<
 
 export declare namespace CounterpartyResponse {
     interface Raw extends EntityResponse.Raw {
-        accountId?: string | null;
+        accounts?: CounterpartyCustomizationAccount.Raw[] | null;
         logo?: string | null;
         paymentMethods?: PaymentMethodResponse.Raw[] | null;
         counterpartyType?: CounterpartyNetworkType.Raw[] | null;

@@ -13,16 +13,16 @@ export const CounterpartyWebhook: core.serialization.ObjectSchema<
     Mercoa.CounterpartyWebhook
 > = core.serialization.object({
     eventType: core.serialization.string(),
-    payeeId: EntityId,
-    payorId: EntityId,
+    payeeId: core.serialization.list(EntityId),
+    payorId: core.serialization.list(EntityId),
     user: EntityUserResponse.optional(),
 });
 
 export declare namespace CounterpartyWebhook {
     interface Raw {
         eventType: string;
-        payeeId: EntityId.Raw;
-        payorId: EntityId.Raw;
+        payeeId: EntityId.Raw[];
+        payorId: EntityId.Raw[];
         user?: EntityUserResponse.Raw | null;
     }
 }

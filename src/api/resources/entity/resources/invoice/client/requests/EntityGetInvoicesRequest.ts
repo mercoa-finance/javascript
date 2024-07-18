@@ -51,6 +51,14 @@ export interface EntityGetInvoicesRequest {
      */
     metadata?: Mercoa.InvoiceMetadataFilter | Mercoa.InvoiceMetadataFilter[];
     /**
+     * Filter invoices by line item metadata. Each filter will be applied as an AND condition. Duplicate keys will be ignored.
+     */
+    lineItemMetadata?: Mercoa.InvoiceMetadataFilter | Mercoa.InvoiceMetadataFilter[];
+    /**
+     * Filter invoices by line item GL account ID. Each filter will be applied as an OR condition. Duplicate keys will be ignored.
+     */
+    lineItemGlAccountId?: string | string[];
+    /**
      * Find invoices by vendor name, invoice number, or amount. Partial matches are supported.
      */
     search?: string;

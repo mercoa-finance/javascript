@@ -19,7 +19,8 @@ import * as Mercoa from "../../../index";
  */
 export type PaymentDestinationOptions =
     | Mercoa.PaymentDestinationOptions.Check
-    | Mercoa.PaymentDestinationOptions.BankAccount;
+    | Mercoa.PaymentDestinationOptions.BankAccount
+    | Mercoa.PaymentDestinationOptions.Utility;
 
 export declare namespace PaymentDestinationOptions {
     interface Check extends Mercoa.CheckPaymentDestinationOptions {
@@ -28,5 +29,9 @@ export declare namespace PaymentDestinationOptions {
 
     interface BankAccount extends Mercoa.BankAccountPaymentDestinationOptions {
         type: "bankAccount";
+    }
+
+    interface Utility extends Mercoa.UtilityPaymentDestinationOptions {
+        type: "utility";
     }
 }

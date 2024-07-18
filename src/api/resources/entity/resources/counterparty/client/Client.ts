@@ -105,7 +105,7 @@ export class Counterparty {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.6",
+                "X-Fern-SDK-Version": "0.4.7",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -292,7 +292,7 @@ export class Counterparty {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.6",
+                "X-Fern-SDK-Version": "0.4.7",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -419,7 +419,11 @@ export class Counterparty {
      *         payees: ["ent_21661ac1-a2a8-4465-a6c0-64474ba8181d"],
      *         customizations: [{
      *                 counterpartyId: "ent_21661ac1-a2a8-4465-a6c0-64474ba8181d",
-     *                 accountId: "85866843"
+     *                 accounts: [{
+     *                         accountId: "85866843",
+     *                         postalCode: "94105",
+     *                         nameOnAccount: "John Doe"
+     *                     }]
      *             }]
      *     })
      */
@@ -438,7 +442,7 @@ export class Counterparty {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.6",
+                "X-Fern-SDK-Version": "0.4.7",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -575,7 +579,7 @@ export class Counterparty {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.6",
+                "X-Fern-SDK-Version": "0.4.7",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -697,7 +701,11 @@ export class Counterparty {
      *         payors: ["ent_21661ac1-a2a8-4465-a6c0-64474ba8181d"],
      *         customizations: [{
      *                 counterpartyId: "ent_21661ac1-a2a8-4465-a6c0-64474ba8181d",
-     *                 accountId: "85866843"
+     *                 accounts: [{
+     *                         accountId: "85866843",
+     *                         postalCode: "94105",
+     *                         nameOnAccount: "John Doe"
+     *                     }]
      *             }]
      *     })
      */
@@ -716,7 +724,7 @@ export class Counterparty {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.6",
+                "X-Fern-SDK-Version": "0.4.7",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -853,7 +861,7 @@ export class Counterparty {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.6",
+                "X-Fern-SDK-Version": "0.4.7",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },

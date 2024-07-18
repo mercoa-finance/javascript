@@ -10,7 +10,11 @@ import * as Mercoa from "../../../index";
  *         payors: ["ent_21661ac1-a2a8-4465-a6c0-64474ba8181d"],
  *         customizations: [{
  *                 counterpartyId: "ent_21661ac1-a2a8-4465-a6c0-64474ba8181d",
- *                 accountId: "85866843"
+ *                 accounts: [{
+ *                         accountId: "85866843",
+ *                         postalCode: "94105",
+ *                         nameOnAccount: "John Doe"
+ *                     }]
  *             }]
  *     }
  */

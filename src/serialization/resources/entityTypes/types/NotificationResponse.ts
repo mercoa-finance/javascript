@@ -8,6 +8,7 @@ import * as core from "../../../../core";
 import { NotificationId } from "./NotificationId";
 import { InvoiceId } from "../../invoiceTypes/types/InvoiceId";
 import { NotificationType } from "./NotificationType";
+import { NotificationStatus } from "./NotificationStatus";
 
 export const NotificationResponse: core.serialization.ObjectSchema<
     serializers.NotificationResponse.Raw,
@@ -16,6 +17,7 @@ export const NotificationResponse: core.serialization.ObjectSchema<
     id: NotificationId,
     invoiceId: InvoiceId.optional(),
     type: NotificationType,
+    status: NotificationStatus,
     createdAt: core.serialization.date(),
 });
 
@@ -24,6 +26,7 @@ export declare namespace NotificationResponse {
         id: NotificationId.Raw;
         invoiceId?: InvoiceId.Raw | null;
         type: NotificationType.Raw;
+        status: NotificationStatus.Raw;
         createdAt: string;
     }
 }

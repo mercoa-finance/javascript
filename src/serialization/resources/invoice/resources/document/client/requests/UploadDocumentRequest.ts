@@ -10,11 +10,11 @@ export const UploadDocumentRequest: core.serialization.Schema<
     serializers.invoice.UploadDocumentRequest.Raw,
     Mercoa.invoice.UploadDocumentRequest
 > = core.serialization.object({
-    document: core.serialization.string().optional(),
+    document: core.serialization.string(),
 });
 
 export declare namespace UploadDocumentRequest {
     interface Raw {
-        document?: string | null;
+        document: string;
     }
 }

@@ -33,4 +33,8 @@ export interface EntityGetNotificationsRequest {
      * The type of notification to filter by.
      */
     notificationType?: Mercoa.NotificationType | Mercoa.NotificationType[];
+    /**
+     * The status of the notification to filter by.
+     */
+    status?: Mercoa.NotificationStatus;
 }

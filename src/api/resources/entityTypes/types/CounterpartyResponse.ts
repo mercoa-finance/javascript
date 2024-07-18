@@ -42,6 +42,11 @@ import * as Mercoa from "../../../index";
  *                 ownersProvided: true
  *             }
  *         },
+ *         accounts: [{
+ *                 accountId: "85866843",
+ *                 postalCode: "94105",
+ *                 nameOnAccount: "John Doe"
+ *             }],
  *         paymentMethods: [{
  *                 type: "bankAccount",
  *                 id: "pm_4794d597-70dc-4fec-b6ec-c5988e759769",
@@ -104,8 +109,8 @@ import * as Mercoa from "../../../index";
  *     }
  */
 export interface CounterpartyResponse extends Mercoa.EntityResponse {
-    /** If the entity searching for counterparties has an Account ID configured in the Payee/Payor relationship, it will be returned */
-    accountId?: string;
+    /** If the entity searching for counterparties has any accounts configured in the Payee/Payor relationship, they will be returned */
+    accounts?: Mercoa.CounterpartyCustomizationAccount[];
     /** URL to the entity logo */
     logo?: string;
     paymentMethods?: Mercoa.PaymentMethodResponse[];

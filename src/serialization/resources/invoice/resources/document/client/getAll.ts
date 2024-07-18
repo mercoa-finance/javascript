@@ -5,7 +5,7 @@
 import * as serializers from "../../../../../index";
 import * as Mercoa from "../../../../../../api/index";
 import * as core from "../../../../../../core";
-import { DocumentResponse } from "../../../../invoiceTypes/types/DocumentResponse";
+import { DocumentResponse } from "../../../../commons/types/DocumentResponse";
 
 export const Response: core.serialization.Schema<
     serializers.invoice.document.getAll.Response.Raw,

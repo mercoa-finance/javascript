@@ -7,6 +7,7 @@ import * as Mercoa from "../../../../api/index";
 import * as core from "../../../../core";
 import { CheckPaymentDestinationOptions } from "./CheckPaymentDestinationOptions";
 import { BankAccountPaymentDestinationOptions } from "./BankAccountPaymentDestinationOptions";
+import { UtilityPaymentDestinationOptions } from "./UtilityPaymentDestinationOptions";
 
 export const PaymentDestinationOptions: core.serialization.Schema<
     serializers.PaymentDestinationOptions.Raw,
@@ -15,6 +16,7 @@ export const PaymentDestinationOptions: core.serialization.Schema<
     .union("type", {
         check: CheckPaymentDestinationOptions,
         bankAccount: BankAccountPaymentDestinationOptions,
+        utility: UtilityPaymentDestinationOptions,
     })
     .transform<Mercoa.PaymentDestinationOptions>({
         transform: (value) => value,
@@ -22,7 +24,10 @@ export const PaymentDestinationOptions: core.serialization.Schema<
     });
 
 export declare namespace PaymentDestinationOptions {
-    type Raw = PaymentDestinationOptions.Check | PaymentDestinationOptions.BankAccount;
+    type Raw =
+        | PaymentDestinationOptions.Check
+        | PaymentDestinationOptions.BankAccount
+        | PaymentDestinationOptions.Utility;
 
     interface Check extends CheckPaymentDestinationOptions.Raw {
         type: "check";
@@ -30,5 +35,9 @@ export declare namespace PaymentDestinationOptions {
 
     interface BankAccount extends BankAccountPaymentDestinationOptions.Raw {
         type: "bankAccount";
+    }
+
+    interface Utility extends UtilityPaymentDestinationOptions.Raw {
+        type: "utility";
     }
 }

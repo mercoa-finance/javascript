@@ -4,8 +4,19 @@
 
 import * as Mercoa from "../../../index";
 
+/**
+ * @example
+ *     {
+ *         counterpartyId: "ent_21661ac1-a2a8-4465-a6c0-64474ba8181d",
+ *         accounts: [{
+ *                 accountId: "85866843",
+ *                 postalCode: "94105",
+ *                 nameOnAccount: "John Doe"
+ *             }]
+ *     }
+ */
 export interface CounterpartyCustomizationRequest {
     counterpartyId: Mercoa.EntityId;
-    /** The ID the counterparty has assigned to this account. */
-    accountId?: string;
+    /** The list of accounts the entity has with the counterparty. */
+    accounts?: Mercoa.CounterpartyCustomizationAccount[];
 }
