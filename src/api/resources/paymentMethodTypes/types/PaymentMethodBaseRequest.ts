@@ -9,4 +9,8 @@ export interface PaymentMethodBaseRequest {
     defaultDestination?: boolean;
     /** ID for this payment method in the external accounting system (e.g Rutter or Codat) */
     externalAccountingSystemId?: string;
+    /** If true, this payment method will be frozen. Frozen payment methods cannot be used for payments, but will still be returned in API responses. */
+    frozen?: boolean;
+    /** Metadata associated with this payment method. */
+    metadata?: Record<string, string>;
 }

@@ -26,7 +26,7 @@ import * as Mercoa from "../../../index";
  *     }
  */
 export interface InvoiceLineItemResponse {
-    id: string;
+    id: Mercoa.InvoiceLineItemId;
     /** Total amount of line item in major units. */
     amount?: number;
     currency: Mercoa.CurrencyCode;

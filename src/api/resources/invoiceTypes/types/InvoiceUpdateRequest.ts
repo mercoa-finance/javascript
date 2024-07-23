@@ -23,6 +23,7 @@ import * as Mercoa from "../../../index";
  *             delivery: Mercoa.CheckDeliveryMethod.Mail
  *         },
  *         lineItems: [{
+ *                 id: "inli_26672f38-eb9a-48f1-a7a0-f1b855e38cd7",
  *                 amount: 100,
  *                 currency: Mercoa.CurrencyCode.Usd,
  *                 description: "Product A",
@@ -60,6 +61,7 @@ import * as Mercoa from "../../../index";
  *     }
  */
 export interface InvoiceUpdateRequest extends Mercoa.InvoiceRequestBase {
+    lineItems?: Mercoa.InvoiceLineItemUpdateRequest[];
     /** ID of entity who created this invoice. If creating a payable invoice (AP), this must be the same as the payerId. If creating a receivable invoice (AR), this must be the same as the vendorId. */
     creatorEntityId?: Mercoa.EntityId;
 }

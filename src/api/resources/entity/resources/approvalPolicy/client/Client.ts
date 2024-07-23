@@ -16,8 +16,11 @@ export declare namespace ApprovalPolicy {
     }
 
     interface RequestOptions {
+        /** The maximum time to wait for a response in seconds. */
         timeoutInSeconds?: number;
+        /** The number of times to retry the request. Defaults to 2. */
         maxRetries?: number;
+        /** A hook to abort the request. */
         abortSignal?: AbortSignal;
     }
 }
@@ -49,24 +52,25 @@ export class ApprovalPolicy {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
-                `/entity/${encodeURIComponent(await serializers.EntityId.jsonOrThrow(entityId))}/approval-policies`
+                `/entity/${encodeURIComponent(serializers.EntityId.jsonOrThrow(entityId))}/approval-policies`
             ),
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.7",
+                "X-Fern-SDK-Version": "0.4.8",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
+            requestType: "json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return await serializers.entity.approvalPolicy.getAll.Response.parseOrThrow(_response.body, {
+            return serializers.entity.approvalPolicy.getAll.Response.parseOrThrow(_response.body, {
                 unrecognizedObjectKeys: "passthrough",
                 allowUnrecognizedUnionMembers: true,
                 allowUnrecognizedEnumValues: true,
@@ -78,7 +82,7 @@ export class ApprovalPolicy {
             switch ((_response.error.body as any)?.["errorName"]) {
                 case "BadRequest":
                     throw new Mercoa.BadRequest(
-                        await serializers.BadRequest.parseOrThrow(_response.error.body, {
+                        serializers.BadRequest.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
@@ -87,7 +91,7 @@ export class ApprovalPolicy {
                     );
                 case "Unauthorized":
                     throw new Mercoa.Unauthorized(
-                        await serializers.Unauthorized.parseOrThrow(_response.error.body, {
+                        serializers.Unauthorized.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
@@ -96,7 +100,7 @@ export class ApprovalPolicy {
                     );
                 case "Forbidden":
                     throw new Mercoa.Forbidden(
-                        await serializers.Forbidden.parseOrThrow(_response.error.body, {
+                        serializers.Forbidden.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
@@ -105,7 +109,7 @@ export class ApprovalPolicy {
                     );
                 case "NotFound":
                     throw new Mercoa.NotFound(
-                        await serializers.NotFound.parseOrThrow(_response.error.body, {
+                        serializers.NotFound.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
@@ -114,7 +118,7 @@ export class ApprovalPolicy {
                     );
                 case "Conflict":
                     throw new Mercoa.Conflict(
-                        await serializers.Conflict.parseOrThrow(_response.error.body, {
+                        serializers.Conflict.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
@@ -123,7 +127,7 @@ export class ApprovalPolicy {
                     );
                 case "InternalServerError":
                     throw new Mercoa.InternalServerError(
-                        await serializers.InternalServerError.parseOrThrow(_response.error.body, {
+                        serializers.InternalServerError.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
@@ -132,7 +136,7 @@ export class ApprovalPolicy {
                     );
                 case "Unimplemented":
                     throw new Mercoa.Unimplemented(
-                        await serializers.Unimplemented.parseOrThrow(_response.error.body, {
+                        serializers.Unimplemented.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
@@ -217,25 +221,26 @@ export class ApprovalPolicy {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
-                `/entity/${encodeURIComponent(await serializers.EntityId.jsonOrThrow(entityId))}/approval-policy`
+                `/entity/${encodeURIComponent(serializers.EntityId.jsonOrThrow(entityId))}/approval-policy`
             ),
             method: "POST",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.7",
+                "X-Fern-SDK-Version": "0.4.8",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
-            body: await serializers.ApprovalPolicyRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
+            requestType: "json",
+            body: serializers.ApprovalPolicyRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return await serializers.ApprovalPolicyResponse.parseOrThrow(_response.body, {
+            return serializers.ApprovalPolicyResponse.parseOrThrow(_response.body, {
                 unrecognizedObjectKeys: "passthrough",
                 allowUnrecognizedUnionMembers: true,
                 allowUnrecognizedEnumValues: true,
@@ -247,7 +252,7 @@ export class ApprovalPolicy {
             switch ((_response.error.body as any)?.["errorName"]) {
                 case "BadRequest":
                     throw new Mercoa.BadRequest(
-                        await serializers.BadRequest.parseOrThrow(_response.error.body, {
+                        serializers.BadRequest.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
@@ -256,7 +261,7 @@ export class ApprovalPolicy {
                     );
                 case "Unauthorized":
                     throw new Mercoa.Unauthorized(
-                        await serializers.Unauthorized.parseOrThrow(_response.error.body, {
+                        serializers.Unauthorized.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
@@ -265,7 +270,7 @@ export class ApprovalPolicy {
                     );
                 case "Forbidden":
                     throw new Mercoa.Forbidden(
-                        await serializers.Forbidden.parseOrThrow(_response.error.body, {
+                        serializers.Forbidden.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
@@ -274,7 +279,7 @@ export class ApprovalPolicy {
                     );
                 case "NotFound":
                     throw new Mercoa.NotFound(
-                        await serializers.NotFound.parseOrThrow(_response.error.body, {
+                        serializers.NotFound.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
@@ -283,7 +288,7 @@ export class ApprovalPolicy {
                     );
                 case "Conflict":
                     throw new Mercoa.Conflict(
-                        await serializers.Conflict.parseOrThrow(_response.error.body, {
+                        serializers.Conflict.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
@@ -292,7 +297,7 @@ export class ApprovalPolicy {
                     );
                 case "InternalServerError":
                     throw new Mercoa.InternalServerError(
-                        await serializers.InternalServerError.parseOrThrow(_response.error.body, {
+                        serializers.InternalServerError.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
@@ -301,7 +306,7 @@ export class ApprovalPolicy {
                     );
                 case "Unimplemented":
                     throw new Mercoa.Unimplemented(
-                        await serializers.Unimplemented.parseOrThrow(_response.error.body, {
+                        serializers.Unimplemented.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
@@ -358,25 +363,26 @@ export class ApprovalPolicy {
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
                 `/entity/${encodeURIComponent(
-                    await serializers.EntityId.jsonOrThrow(entityId)
-                )}/approval-policy/${encodeURIComponent(await serializers.ApprovalPolicyId.jsonOrThrow(policyId))}`
+                    serializers.EntityId.jsonOrThrow(entityId)
+                )}/approval-policy/${encodeURIComponent(serializers.ApprovalPolicyId.jsonOrThrow(policyId))}`
             ),
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.7",
+                "X-Fern-SDK-Version": "0.4.8",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
+            requestType: "json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return await serializers.ApprovalPolicyResponse.parseOrThrow(_response.body, {
+            return serializers.ApprovalPolicyResponse.parseOrThrow(_response.body, {
                 unrecognizedObjectKeys: "passthrough",
                 allowUnrecognizedUnionMembers: true,
                 allowUnrecognizedEnumValues: true,
@@ -388,7 +394,7 @@ export class ApprovalPolicy {
             switch ((_response.error.body as any)?.["errorName"]) {
                 case "BadRequest":
                     throw new Mercoa.BadRequest(
-                        await serializers.BadRequest.parseOrThrow(_response.error.body, {
+                        serializers.BadRequest.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
@@ -397,7 +403,7 @@ export class ApprovalPolicy {
                     );
                 case "Unauthorized":
                     throw new Mercoa.Unauthorized(
-                        await serializers.Unauthorized.parseOrThrow(_response.error.body, {
+                        serializers.Unauthorized.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
@@ -406,7 +412,7 @@ export class ApprovalPolicy {
                     );
                 case "Forbidden":
                     throw new Mercoa.Forbidden(
-                        await serializers.Forbidden.parseOrThrow(_response.error.body, {
+                        serializers.Forbidden.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
@@ -415,7 +421,7 @@ export class ApprovalPolicy {
                     );
                 case "NotFound":
                     throw new Mercoa.NotFound(
-                        await serializers.NotFound.parseOrThrow(_response.error.body, {
+                        serializers.NotFound.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
@@ -424,7 +430,7 @@ export class ApprovalPolicy {
                     );
                 case "Conflict":
                     throw new Mercoa.Conflict(
-                        await serializers.Conflict.parseOrThrow(_response.error.body, {
+                        serializers.Conflict.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
@@ -433,7 +439,7 @@ export class ApprovalPolicy {
                     );
                 case "InternalServerError":
                     throw new Mercoa.InternalServerError(
-                        await serializers.InternalServerError.parseOrThrow(_response.error.body, {
+                        serializers.InternalServerError.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
@@ -442,7 +448,7 @@ export class ApprovalPolicy {
                     );
                 case "Unimplemented":
                     throw new Mercoa.Unimplemented(
-                        await serializers.Unimplemented.parseOrThrow(_response.error.body, {
+                        serializers.Unimplemented.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
@@ -530,28 +536,27 @@ export class ApprovalPolicy {
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
                 `/entity/${encodeURIComponent(
-                    await serializers.EntityId.jsonOrThrow(entityId)
-                )}/approval-policy/${encodeURIComponent(await serializers.ApprovalPolicyId.jsonOrThrow(policyId))}`
+                    serializers.EntityId.jsonOrThrow(entityId)
+                )}/approval-policy/${encodeURIComponent(serializers.ApprovalPolicyId.jsonOrThrow(policyId))}`
             ),
             method: "POST",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.7",
+                "X-Fern-SDK-Version": "0.4.8",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
-            body: await serializers.ApprovalPolicyUpdateRequest.jsonOrThrow(request, {
-                unrecognizedObjectKeys: "strip",
-            }),
+            requestType: "json",
+            body: serializers.ApprovalPolicyUpdateRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return await serializers.ApprovalPolicyResponse.parseOrThrow(_response.body, {
+            return serializers.ApprovalPolicyResponse.parseOrThrow(_response.body, {
                 unrecognizedObjectKeys: "passthrough",
                 allowUnrecognizedUnionMembers: true,
                 allowUnrecognizedEnumValues: true,
@@ -563,7 +568,7 @@ export class ApprovalPolicy {
             switch ((_response.error.body as any)?.["errorName"]) {
                 case "BadRequest":
                     throw new Mercoa.BadRequest(
-                        await serializers.BadRequest.parseOrThrow(_response.error.body, {
+                        serializers.BadRequest.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
@@ -572,7 +577,7 @@ export class ApprovalPolicy {
                     );
                 case "Unauthorized":
                     throw new Mercoa.Unauthorized(
-                        await serializers.Unauthorized.parseOrThrow(_response.error.body, {
+                        serializers.Unauthorized.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
@@ -581,7 +586,7 @@ export class ApprovalPolicy {
                     );
                 case "Forbidden":
                     throw new Mercoa.Forbidden(
-                        await serializers.Forbidden.parseOrThrow(_response.error.body, {
+                        serializers.Forbidden.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
@@ -590,7 +595,7 @@ export class ApprovalPolicy {
                     );
                 case "NotFound":
                     throw new Mercoa.NotFound(
-                        await serializers.NotFound.parseOrThrow(_response.error.body, {
+                        serializers.NotFound.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
@@ -599,7 +604,7 @@ export class ApprovalPolicy {
                     );
                 case "Conflict":
                     throw new Mercoa.Conflict(
-                        await serializers.Conflict.parseOrThrow(_response.error.body, {
+                        serializers.Conflict.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
@@ -608,7 +613,7 @@ export class ApprovalPolicy {
                     );
                 case "InternalServerError":
                     throw new Mercoa.InternalServerError(
-                        await serializers.InternalServerError.parseOrThrow(_response.error.body, {
+                        serializers.InternalServerError.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
@@ -617,7 +622,7 @@ export class ApprovalPolicy {
                     );
                 case "Unimplemented":
                     throw new Mercoa.Unimplemented(
-                        await serializers.Unimplemented.parseOrThrow(_response.error.body, {
+                        serializers.Unimplemented.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
@@ -674,19 +679,20 @@ export class ApprovalPolicy {
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
                 `/entity/${encodeURIComponent(
-                    await serializers.EntityId.jsonOrThrow(entityId)
-                )}/approval-policy/${encodeURIComponent(await serializers.ApprovalPolicyId.jsonOrThrow(policyId))}`
+                    serializers.EntityId.jsonOrThrow(entityId)
+                )}/approval-policy/${encodeURIComponent(serializers.ApprovalPolicyId.jsonOrThrow(policyId))}`
             ),
             method: "DELETE",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.7",
+                "X-Fern-SDK-Version": "0.4.8",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
+            requestType: "json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -699,7 +705,7 @@ export class ApprovalPolicy {
             switch ((_response.error.body as any)?.["errorName"]) {
                 case "BadRequest":
                     throw new Mercoa.BadRequest(
-                        await serializers.BadRequest.parseOrThrow(_response.error.body, {
+                        serializers.BadRequest.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
@@ -708,7 +714,7 @@ export class ApprovalPolicy {
                     );
                 case "Unauthorized":
                     throw new Mercoa.Unauthorized(
-                        await serializers.Unauthorized.parseOrThrow(_response.error.body, {
+                        serializers.Unauthorized.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
@@ -717,7 +723,7 @@ export class ApprovalPolicy {
                     );
                 case "Forbidden":
                     throw new Mercoa.Forbidden(
-                        await serializers.Forbidden.parseOrThrow(_response.error.body, {
+                        serializers.Forbidden.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
@@ -726,7 +732,7 @@ export class ApprovalPolicy {
                     );
                 case "NotFound":
                     throw new Mercoa.NotFound(
-                        await serializers.NotFound.parseOrThrow(_response.error.body, {
+                        serializers.NotFound.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
@@ -735,7 +741,7 @@ export class ApprovalPolicy {
                     );
                 case "Conflict":
                     throw new Mercoa.Conflict(
-                        await serializers.Conflict.parseOrThrow(_response.error.body, {
+                        serializers.Conflict.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
@@ -744,7 +750,7 @@ export class ApprovalPolicy {
                     );
                 case "InternalServerError":
                     throw new Mercoa.InternalServerError(
-                        await serializers.InternalServerError.parseOrThrow(_response.error.body, {
+                        serializers.InternalServerError.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
@@ -753,7 +759,7 @@ export class ApprovalPolicy {
                     );
                 case "Unimplemented":
                     throw new Mercoa.Unimplemented(
-                        await serializers.Unimplemented.parseOrThrow(_response.error.body, {
+                        serializers.Unimplemented.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,

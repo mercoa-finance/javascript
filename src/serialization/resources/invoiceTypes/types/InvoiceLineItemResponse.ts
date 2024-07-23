@@ -5,13 +5,14 @@
 import * as serializers from "../../../index";
 import * as Mercoa from "../../../../api/index";
 import * as core from "../../../../core";
+import { InvoiceLineItemId } from "./InvoiceLineItemId";
 import { CurrencyCode } from "../../paymentMethodTypes/types/CurrencyCode";
 
 export const InvoiceLineItemResponse: core.serialization.ObjectSchema<
     serializers.InvoiceLineItemResponse.Raw,
     Mercoa.InvoiceLineItemResponse
 > = core.serialization.object({
-    id: core.serialization.string(),
+    id: InvoiceLineItemId,
     amount: core.serialization.number().optional(),
     currency: CurrencyCode,
     description: core.serialization.string().optional(),
@@ -28,7 +29,7 @@ export const InvoiceLineItemResponse: core.serialization.ObjectSchema<
 
 export declare namespace InvoiceLineItemResponse {
     interface Raw {
-        id: string;
+        id: InvoiceLineItemId.Raw;
         amount?: number | null;
         currency: CurrencyCode.Raw;
         description?: string | null;

@@ -17,6 +17,8 @@ export const PaymentMethodBaseResponse: core.serialization.ObjectSchema<
     isDefaultDestination: core.serialization.boolean(),
     supportedCurrencies: core.serialization.list(CurrencyCode),
     externalAccountingSystemId: core.serialization.string().optional(),
+    frozen: core.serialization.boolean(),
+    metadata: core.serialization.record(core.serialization.string(), core.serialization.string()),
     createdAt: core.serialization.date(),
     updatedAt: core.serialization.date(),
 });
@@ -28,6 +30,8 @@ export declare namespace PaymentMethodBaseResponse {
         isDefaultDestination: boolean;
         supportedCurrencies: CurrencyCode.Raw[];
         externalAccountingSystemId?: string | null;
+        frozen: boolean;
+        metadata: Record<string, string>;
         createdAt: string;
         updatedAt: string;
     }

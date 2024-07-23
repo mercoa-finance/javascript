@@ -12,6 +12,7 @@ import { BankLookup } from "./api/resources/bankLookup/client/Client";
 import { Calculate } from "./api/resources/calculate/client/Client";
 import { CustomPaymentMethodSchema } from "./api/resources/customPaymentMethodSchema/client/Client";
 import { Ocr } from "./api/resources/ocr/client/Client";
+import { PaymentMethods } from "./api/resources/paymentMethods/client/Client";
 
 export declare namespace MercoaClient {
     interface Options {
@@ -20,8 +21,11 @@ export declare namespace MercoaClient {
     }
 
     interface RequestOptions {
+        /** The maximum time to wait for a response in seconds. */
         timeoutInSeconds?: number;
+        /** The number of times to retry the request. Defaults to 2. */
         maxRetries?: number;
+        /** A hook to abort the request. */
         abortSignal?: AbortSignal;
     }
 }
@@ -75,5 +79,11 @@ export class MercoaClient {
 
     public get ocr(): Ocr {
         return (this._ocr ??= new Ocr(this._options));
+    }
+
+    protected _paymentMethods: PaymentMethods | undefined;
+
+    public get paymentMethods(): PaymentMethods {
+        return (this._paymentMethods ??= new PaymentMethods(this._options));
     }
 }

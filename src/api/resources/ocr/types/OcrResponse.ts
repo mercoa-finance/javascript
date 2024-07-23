@@ -72,6 +72,8 @@ import * as Mercoa from "../../../index";
  *                         isDefaultSource: true,
  *                         isDefaultDestination: true,
  *                         supportedCurrencies: [Mercoa.CurrencyCode.Usd],
+ *                         metadata: {},
+ *                         frozen: false,
  *                         createdAt: new Date("2021-01-01T00:00:00.000Z"),
  *                         updatedAt: new Date("2021-01-01T00:00:00.000Z")
  *                     }],
@@ -114,6 +116,8 @@ import * as Mercoa from "../../../index";
  *                         isDefaultSource: true,
  *                         isDefaultDestination: true,
  *                         supportedCurrencies: [Mercoa.CurrencyCode.Usd],
+ *                         metadata: {},
+ *                         frozen: false,
  *                         createdAt: new Date("2021-01-01T00:00:00.000Z"),
  *                         updatedAt: new Date("2021-01-01T00:00:00.000Z")
  *                     }],
@@ -183,6 +187,8 @@ import * as Mercoa from "../../../index";
  *                     isDefaultSource: true,
  *                     isDefaultDestination: true,
  *                     supportedCurrencies: [Mercoa.CurrencyCode.Usd],
+ *                     metadata: {},
+ *                     frozen: false,
  *                     createdAt: new Date("2021-01-01T00:00:00.000Z"),
  *                     updatedAt: new Date("2021-01-01T00:00:00.000Z")
  *                 }],
@@ -200,6 +206,8 @@ import * as Mercoa from "../../../index";
  *             isDefaultSource: false,
  *             isDefaultDestination: true,
  *             supportedCurrencies: [Mercoa.CurrencyCode.Usd],
+ *             metadata: {},
+ *             frozen: false,
  *             createdAt: new Date("2021-01-01T00:00:00.000Z"),
  *             updatedAt: new Date("2021-01-01T00:00:00.000Z")
  *         },
@@ -214,6 +222,8 @@ import * as Mercoa from "../../../index";
  *             isDefaultSource: true,
  *             isDefaultDestination: true,
  *             supportedCurrencies: [Mercoa.CurrencyCode.Usd],
+ *             metadata: {},
+ *             frozen: false,
  *             createdAt: new Date("2021-01-01T00:00:00.000Z"),
  *             updatedAt: new Date("2021-01-01T00:00:00.000Z")
  *         }

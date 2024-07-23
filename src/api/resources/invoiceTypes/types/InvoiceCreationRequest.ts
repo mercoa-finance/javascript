@@ -77,6 +77,7 @@ import * as Mercoa from "../../../index";
  *     }
  */
 export interface InvoiceCreationRequest extends Mercoa.InvoiceRequestBase {
+    lineItems?: Mercoa.InvoiceLineItemCreationRequest[];
     /** ID of entity who created this invoice. */
     creatorEntityId: Mercoa.EntityId;
 }

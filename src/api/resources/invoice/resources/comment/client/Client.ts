@@ -16,8 +16,11 @@ export declare namespace Comment {
     }
 
     interface RequestOptions {
+        /** The maximum time to wait for a response in seconds. */
         timeoutInSeconds?: number;
+        /** The number of times to retry the request. Defaults to 2. */
         maxRetries?: number;
+        /** A hook to abort the request. */
         abortSignal?: AbortSignal;
     }
 }
@@ -49,24 +52,25 @@ export class Comment {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
-                `/invoice/${encodeURIComponent(await serializers.InvoiceId.jsonOrThrow(invoiceId))}/comments`
+                `/invoice/${encodeURIComponent(serializers.InvoiceId.jsonOrThrow(invoiceId))}/comments`
             ),
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.7",
+                "X-Fern-SDK-Version": "0.4.8",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
+            requestType: "json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return await serializers.invoice.comment.getAll.Response.parseOrThrow(_response.body, {
+            return serializers.invoice.comment.getAll.Response.parseOrThrow(_response.body, {
                 unrecognizedObjectKeys: "passthrough",
                 allowUnrecognizedUnionMembers: true,
                 allowUnrecognizedEnumValues: true,
@@ -78,7 +82,7 @@ export class Comment {
             switch ((_response.error.body as any)?.["errorName"]) {
                 case "BadRequest":
                     throw new Mercoa.BadRequest(
-                        await serializers.BadRequest.parseOrThrow(_response.error.body, {
+                        serializers.BadRequest.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
@@ -87,7 +91,7 @@ export class Comment {
                     );
                 case "Unauthorized":
                     throw new Mercoa.Unauthorized(
-                        await serializers.Unauthorized.parseOrThrow(_response.error.body, {
+                        serializers.Unauthorized.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
@@ -96,7 +100,7 @@ export class Comment {
                     );
                 case "Forbidden":
                     throw new Mercoa.Forbidden(
-                        await serializers.Forbidden.parseOrThrow(_response.error.body, {
+                        serializers.Forbidden.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
@@ -105,7 +109,7 @@ export class Comment {
                     );
                 case "NotFound":
                     throw new Mercoa.NotFound(
-                        await serializers.NotFound.parseOrThrow(_response.error.body, {
+                        serializers.NotFound.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
@@ -114,7 +118,7 @@ export class Comment {
                     );
                 case "Conflict":
                     throw new Mercoa.Conflict(
-                        await serializers.Conflict.parseOrThrow(_response.error.body, {
+                        serializers.Conflict.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
@@ -123,7 +127,7 @@ export class Comment {
                     );
                 case "InternalServerError":
                     throw new Mercoa.InternalServerError(
-                        await serializers.InternalServerError.parseOrThrow(_response.error.body, {
+                        serializers.InternalServerError.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
@@ -132,7 +136,7 @@ export class Comment {
                     );
                 case "Unimplemented":
                     throw new Mercoa.Unimplemented(
-                        await serializers.Unimplemented.parseOrThrow(_response.error.body, {
+                        serializers.Unimplemented.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
@@ -191,25 +195,26 @@ export class Comment {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
-                `/invoice/${encodeURIComponent(await serializers.InvoiceId.jsonOrThrow(invoiceId))}/comment`
+                `/invoice/${encodeURIComponent(serializers.InvoiceId.jsonOrThrow(invoiceId))}/comment`
             ),
             method: "POST",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.7",
+                "X-Fern-SDK-Version": "0.4.8",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
-            body: await serializers.CommentRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
+            requestType: "json",
+            body: serializers.CommentRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return await serializers.CommentResponse.parseOrThrow(_response.body, {
+            return serializers.CommentResponse.parseOrThrow(_response.body, {
                 unrecognizedObjectKeys: "passthrough",
                 allowUnrecognizedUnionMembers: true,
                 allowUnrecognizedEnumValues: true,
@@ -221,7 +226,7 @@ export class Comment {
             switch ((_response.error.body as any)?.["errorName"]) {
                 case "BadRequest":
                     throw new Mercoa.BadRequest(
-                        await serializers.BadRequest.parseOrThrow(_response.error.body, {
+                        serializers.BadRequest.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
@@ -230,7 +235,7 @@ export class Comment {
                     );
                 case "Unauthorized":
                     throw new Mercoa.Unauthorized(
-                        await serializers.Unauthorized.parseOrThrow(_response.error.body, {
+                        serializers.Unauthorized.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
@@ -239,7 +244,7 @@ export class Comment {
                     );
                 case "Forbidden":
                     throw new Mercoa.Forbidden(
-                        await serializers.Forbidden.parseOrThrow(_response.error.body, {
+                        serializers.Forbidden.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
@@ -248,7 +253,7 @@ export class Comment {
                     );
                 case "NotFound":
                     throw new Mercoa.NotFound(
-                        await serializers.NotFound.parseOrThrow(_response.error.body, {
+                        serializers.NotFound.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
@@ -257,7 +262,7 @@ export class Comment {
                     );
                 case "Conflict":
                     throw new Mercoa.Conflict(
-                        await serializers.Conflict.parseOrThrow(_response.error.body, {
+                        serializers.Conflict.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
@@ -266,7 +271,7 @@ export class Comment {
                     );
                 case "InternalServerError":
                     throw new Mercoa.InternalServerError(
-                        await serializers.InternalServerError.parseOrThrow(_response.error.body, {
+                        serializers.InternalServerError.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
@@ -275,7 +280,7 @@ export class Comment {
                     );
                 case "Unimplemented":
                     throw new Mercoa.Unimplemented(
-                        await serializers.Unimplemented.parseOrThrow(_response.error.body, {
+                        serializers.Unimplemented.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
@@ -330,25 +335,26 @@ export class Comment {
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
                 `/invoice/${encodeURIComponent(
-                    await serializers.InvoiceId.jsonOrThrow(invoiceId)
-                )}/comment/${encodeURIComponent(await serializers.CommentId.jsonOrThrow(commentId))}`
+                    serializers.InvoiceId.jsonOrThrow(invoiceId)
+                )}/comment/${encodeURIComponent(serializers.CommentId.jsonOrThrow(commentId))}`
             ),
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.7",
+                "X-Fern-SDK-Version": "0.4.8",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
+            requestType: "json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return await serializers.CommentResponse.parseOrThrow(_response.body, {
+            return serializers.CommentResponse.parseOrThrow(_response.body, {
                 unrecognizedObjectKeys: "passthrough",
                 allowUnrecognizedUnionMembers: true,
                 allowUnrecognizedEnumValues: true,
@@ -360,7 +366,7 @@ export class Comment {
             switch ((_response.error.body as any)?.["errorName"]) {
                 case "BadRequest":
                     throw new Mercoa.BadRequest(
-                        await serializers.BadRequest.parseOrThrow(_response.error.body, {
+                        serializers.BadRequest.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
@@ -369,7 +375,7 @@ export class Comment {
                     );
                 case "Unauthorized":
                     throw new Mercoa.Unauthorized(
-                        await serializers.Unauthorized.parseOrThrow(_response.error.body, {
+                        serializers.Unauthorized.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
@@ -378,7 +384,7 @@ export class Comment {
                     );
                 case "Forbidden":
                     throw new Mercoa.Forbidden(
-                        await serializers.Forbidden.parseOrThrow(_response.error.body, {
+                        serializers.Forbidden.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
@@ -387,7 +393,7 @@ export class Comment {
                     );
                 case "NotFound":
                     throw new Mercoa.NotFound(
-                        await serializers.NotFound.parseOrThrow(_response.error.body, {
+                        serializers.NotFound.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
@@ -396,7 +402,7 @@ export class Comment {
                     );
                 case "Conflict":
                     throw new Mercoa.Conflict(
-                        await serializers.Conflict.parseOrThrow(_response.error.body, {
+                        serializers.Conflict.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
@@ -405,7 +411,7 @@ export class Comment {
                     );
                 case "InternalServerError":
                     throw new Mercoa.InternalServerError(
-                        await serializers.InternalServerError.parseOrThrow(_response.error.body, {
+                        serializers.InternalServerError.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
@@ -414,7 +420,7 @@ export class Comment {
                     );
                 case "Unimplemented":
                     throw new Mercoa.Unimplemented(
-                        await serializers.Unimplemented.parseOrThrow(_response.error.body, {
+                        serializers.Unimplemented.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
@@ -476,26 +482,27 @@ export class Comment {
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
                 `/invoice/${encodeURIComponent(
-                    await serializers.InvoiceId.jsonOrThrow(invoiceId)
-                )}/comment/${encodeURIComponent(await serializers.CommentId.jsonOrThrow(commentId))}`
+                    serializers.InvoiceId.jsonOrThrow(invoiceId)
+                )}/comment/${encodeURIComponent(serializers.CommentId.jsonOrThrow(commentId))}`
             ),
             method: "POST",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.7",
+                "X-Fern-SDK-Version": "0.4.8",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
-            body: await serializers.CommentRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
+            requestType: "json",
+            body: serializers.CommentRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return await serializers.CommentResponse.parseOrThrow(_response.body, {
+            return serializers.CommentResponse.parseOrThrow(_response.body, {
                 unrecognizedObjectKeys: "passthrough",
                 allowUnrecognizedUnionMembers: true,
                 allowUnrecognizedEnumValues: true,
@@ -507,7 +514,7 @@ export class Comment {
             switch ((_response.error.body as any)?.["errorName"]) {
                 case "BadRequest":
                     throw new Mercoa.BadRequest(
-                        await serializers.BadRequest.parseOrThrow(_response.error.body, {
+                        serializers.BadRequest.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
@@ -516,7 +523,7 @@ export class Comment {
                     );
                 case "Unauthorized":
                     throw new Mercoa.Unauthorized(
-                        await serializers.Unauthorized.parseOrThrow(_response.error.body, {
+                        serializers.Unauthorized.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
@@ -525,7 +532,7 @@ export class Comment {
                     );
                 case "Forbidden":
                     throw new Mercoa.Forbidden(
-                        await serializers.Forbidden.parseOrThrow(_response.error.body, {
+                        serializers.Forbidden.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
@@ -534,7 +541,7 @@ export class Comment {
                     );
                 case "NotFound":
                     throw new Mercoa.NotFound(
-                        await serializers.NotFound.parseOrThrow(_response.error.body, {
+                        serializers.NotFound.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
@@ -543,7 +550,7 @@ export class Comment {
                     );
                 case "Conflict":
                     throw new Mercoa.Conflict(
-                        await serializers.Conflict.parseOrThrow(_response.error.body, {
+                        serializers.Conflict.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
@@ -552,7 +559,7 @@ export class Comment {
                     );
                 case "InternalServerError":
                     throw new Mercoa.InternalServerError(
-                        await serializers.InternalServerError.parseOrThrow(_response.error.body, {
+                        serializers.InternalServerError.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
@@ -561,7 +568,7 @@ export class Comment {
                     );
                 case "Unimplemented":
                     throw new Mercoa.Unimplemented(
-                        await serializers.Unimplemented.parseOrThrow(_response.error.body, {
+                        serializers.Unimplemented.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
@@ -618,19 +625,20 @@ export class Comment {
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
                 `/invoice/${encodeURIComponent(
-                    await serializers.InvoiceId.jsonOrThrow(invoiceId)
-                )}/comment/${encodeURIComponent(await serializers.CommentId.jsonOrThrow(commentId))}`
+                    serializers.InvoiceId.jsonOrThrow(invoiceId)
+                )}/comment/${encodeURIComponent(serializers.CommentId.jsonOrThrow(commentId))}`
             ),
             method: "DELETE",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.7",
+                "X-Fern-SDK-Version": "0.4.8",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
+            requestType: "json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -643,7 +651,7 @@ export class Comment {
             switch ((_response.error.body as any)?.["errorName"]) {
                 case "BadRequest":
                     throw new Mercoa.BadRequest(
-                        await serializers.BadRequest.parseOrThrow(_response.error.body, {
+                        serializers.BadRequest.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
@@ -652,7 +660,7 @@ export class Comment {
                     );
                 case "Unauthorized":
                     throw new Mercoa.Unauthorized(
-                        await serializers.Unauthorized.parseOrThrow(_response.error.body, {
+                        serializers.Unauthorized.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
@@ -661,7 +669,7 @@ export class Comment {
                     );
                 case "Forbidden":
                     throw new Mercoa.Forbidden(
-                        await serializers.Forbidden.parseOrThrow(_response.error.body, {
+                        serializers.Forbidden.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
@@ -670,7 +678,7 @@ export class Comment {
                     );
                 case "NotFound":
                     throw new Mercoa.NotFound(
-                        await serializers.NotFound.parseOrThrow(_response.error.body, {
+                        serializers.NotFound.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
@@ -679,7 +687,7 @@ export class Comment {
                     );
                 case "Conflict":
                     throw new Mercoa.Conflict(
-                        await serializers.Conflict.parseOrThrow(_response.error.body, {
+                        serializers.Conflict.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
@@ -688,7 +696,7 @@ export class Comment {
                     );
                 case "InternalServerError":
                     throw new Mercoa.InternalServerError(
-                        await serializers.InternalServerError.parseOrThrow(_response.error.body, {
+                        serializers.InternalServerError.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
@@ -697,7 +705,7 @@ export class Comment {
                     );
                 case "Unimplemented":
                     throw new Mercoa.Unimplemented(
-                        await serializers.Unimplemented.parseOrThrow(_response.error.body, {
+                        serializers.Unimplemented.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,

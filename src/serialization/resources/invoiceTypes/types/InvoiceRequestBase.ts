@@ -11,7 +11,6 @@ import { EntityId } from "../../entityTypes/types/EntityId";
 import { PaymentMethodId } from "../../paymentMethodTypes/types/PaymentMethodId";
 import { PaymentDestinationOptions } from "./PaymentDestinationOptions";
 import { ApprovalSlotAssignment } from "./ApprovalSlotAssignment";
-import { InvoiceLineItemRequest } from "./InvoiceLineItemRequest";
 import { EntityUserId } from "../../entityTypes/types/EntityUserId";
 import { InvoiceFailureType } from "./InvoiceFailureType";
 import { InvoiceFeesRequest } from "./InvoiceFeesRequest";
@@ -37,7 +36,6 @@ export const InvoiceRequestBase: core.serialization.ObjectSchema<
     paymentDestinationId: PaymentMethodId.optional(),
     paymentDestinationOptions: PaymentDestinationOptions.optional(),
     approvers: core.serialization.list(ApprovalSlotAssignment).optional(),
-    lineItems: core.serialization.list(InvoiceLineItemRequest).optional(),
     metadata: core.serialization.record(core.serialization.string(), core.serialization.string()).optional(),
     foreignId: core.serialization.string().optional(),
     document: core.serialization.string().optional(),
@@ -66,7 +64,6 @@ export declare namespace InvoiceRequestBase {
         paymentDestinationId?: PaymentMethodId.Raw | null;
         paymentDestinationOptions?: PaymentDestinationOptions.Raw | null;
         approvers?: ApprovalSlotAssignment.Raw[] | null;
-        lineItems?: InvoiceLineItemRequest.Raw[] | null;
         metadata?: Record<string, string> | null;
         foreignId?: string | null;
         document?: string | null;

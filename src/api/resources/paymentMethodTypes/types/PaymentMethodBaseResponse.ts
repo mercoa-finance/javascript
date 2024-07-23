@@ -13,6 +13,10 @@ export interface PaymentMethodBaseResponse {
     supportedCurrencies: Mercoa.CurrencyCode[];
     /** ID for this payment method in the external accounting system (e.g Rutter or Codat) */
     externalAccountingSystemId?: string;
+    /** Frozen payment methods cannot be used for payments, but will still be returned in API responses. */
+    frozen: boolean;
+    /** Metadata associated with this payment method. */
+    metadata: Record<string, string>;
     createdAt: Date;
     updatedAt: Date;
 }

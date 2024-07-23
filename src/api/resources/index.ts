@@ -26,4 +26,6 @@ export * as entityGroup from "./entityGroup";
 export * as invoice from "./invoice";
 export * as organization from "./organization";
 export * as customPaymentMethodSchema from "./customPaymentMethodSchema";
+export * as paymentMethods from "./paymentMethods";
 export * from "./bankLookup/client/requests";
+export * from "./paymentMethods/client/requests";

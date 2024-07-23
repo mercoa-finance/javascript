@@ -13,6 +13,8 @@ export const PaymentMethodBaseRequest: core.serialization.ObjectSchema<
     defaultSource: core.serialization.boolean().optional(),
     defaultDestination: core.serialization.boolean().optional(),
     externalAccountingSystemId: core.serialization.string().optional(),
+    frozen: core.serialization.boolean().optional(),
+    metadata: core.serialization.record(core.serialization.string(), core.serialization.string()).optional(),
 });
 
 export declare namespace PaymentMethodBaseRequest {
@@ -20,5 +22,7 @@ export declare namespace PaymentMethodBaseRequest {
         defaultSource?: boolean | null;
         defaultDestination?: boolean | null;
         externalAccountingSystemId?: string | null;
+        frozen?: boolean | null;
+        metadata?: Record<string, string> | null;
     }
 }

@@ -33,8 +33,7 @@ export interface InvoiceRequestBase {
     paymentDestinationOptions?: Mercoa.PaymentDestinationOptions;
     /** Set approvers for this invoice. */
     approvers?: Mercoa.ApprovalSlotAssignment[];
-    lineItems?: Mercoa.InvoiceLineItemRequest[];
-    /** Metadata associated with this invoice. You can specify up to 10 keys, with key names up to 40 characters long and values up to 200 characters long. */
+    /** Metadata associated with this invoice. */
     metadata?: Record<string, string>;
     /** The ID used to identify this invoice in your system. This ID must be unique within each creatorEntity in your system, e.g. two invoices with the same creatorEntity may not have the same foreign ID. */
     foreignId?: string;

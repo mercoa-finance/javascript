@@ -5,6 +5,7 @@
 import * as serializers from "../../../index";
 import * as Mercoa from "../../../../api/index";
 import * as core from "../../../../core";
+import { InvoiceLineItemUpdateRequest } from "./InvoiceLineItemUpdateRequest";
 import { EntityId } from "../../entityTypes/types/EntityId";
 import { InvoiceRequestBase } from "./InvoiceRequestBase";
 
@@ -13,12 +14,14 @@ export const InvoiceUpdateRequest: core.serialization.ObjectSchema<
     Mercoa.InvoiceUpdateRequest
 > = core.serialization
     .object({
+        lineItems: core.serialization.list(InvoiceLineItemUpdateRequest).optional(),
         creatorEntityId: EntityId.optional(),
     })
     .extend(InvoiceRequestBase);
 
 export declare namespace InvoiceUpdateRequest {
     interface Raw extends InvoiceRequestBase.Raw {
+        lineItems?: InvoiceLineItemUpdateRequest.Raw[] | null;
         creatorEntityId?: EntityId.Raw | null;
     }
 }
