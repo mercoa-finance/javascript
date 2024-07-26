@@ -75,6 +75,6 @@ export interface EntityRequest {
     isNetworkPayor?: boolean;
     /** Control if this entity should be available as a payee to any entity on your platform. If set to false, this entity will only be available as a payee to entities that have a direct relationship with this entity. Defaults to false. */
     isNetworkPayee?: boolean;
-    /** Base64 encoded PNG image data for the entity logo. */
+    /** Base64 encoded PNG image data for the entity logo. Max size 100KB. */
     logo?: string;
 }

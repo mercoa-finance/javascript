@@ -85,6 +85,8 @@ export interface EntityResponse {
     isCustomer: boolean;
     accountType: Mercoa.AccountType;
     profile: Mercoa.ProfileResponse;
+    /** URL for the entity logo */
+    logo?: string;
     status: Mercoa.EntityStatus;
     /** True if this entity has accepted the terms of service. */
     acceptedTos: boolean;

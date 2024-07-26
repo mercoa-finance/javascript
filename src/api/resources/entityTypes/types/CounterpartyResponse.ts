@@ -115,8 +115,6 @@ import * as Mercoa from "../../../index";
 export interface CounterpartyResponse extends Mercoa.EntityResponse {
     /** If the entity searching for counterparties has any accounts configured in the Payee/Payor relationship, they will be returned */
     accounts?: Mercoa.CounterpartyCustomizationAccount[];
-    /** URL to the entity logo */
-    logo?: string;
     paymentMethods?: Mercoa.PaymentMethodResponse[];
     counterpartyType?: Mercoa.CounterpartyNetworkType[];
     invoiceMetrics?: Mercoa.CounterpartyInvoiceMetricsResponse;

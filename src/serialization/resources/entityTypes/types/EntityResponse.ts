@@ -21,6 +21,7 @@ export const EntityResponse: core.serialization.ObjectSchema<serializers.EntityR
         isCustomer: core.serialization.boolean(),
         accountType: AccountType,
         profile: ProfileResponse,
+        logo: core.serialization.string().optional(),
         status: EntityStatus,
         acceptedTos: core.serialization.boolean(),
         isPayor: core.serialization.boolean(),
@@ -42,6 +43,7 @@ export declare namespace EntityResponse {
         isCustomer: boolean;
         accountType: AccountType.Raw;
         profile: ProfileResponse.Raw;
+        logo?: string | null;
         status: EntityStatus.Raw;
         acceptedTos: boolean;
         isPayor: boolean;

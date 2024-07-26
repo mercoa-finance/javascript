@@ -17,7 +17,6 @@ export const CounterpartyResponse: core.serialization.ObjectSchema<
 > = core.serialization
     .object({
         accounts: core.serialization.list(CounterpartyCustomizationAccount).optional(),
-        logo: core.serialization.string().optional(),
         paymentMethods: core.serialization.list(PaymentMethodResponse).optional(),
         counterpartyType: core.serialization.list(CounterpartyNetworkType).optional(),
         invoiceMetrics: CounterpartyInvoiceMetricsResponse.optional(),
@@ -27,7 +26,6 @@ export const CounterpartyResponse: core.serialization.ObjectSchema<
 export declare namespace CounterpartyResponse {
     interface Raw extends EntityResponse.Raw {
         accounts?: CounterpartyCustomizationAccount.Raw[] | null;
-        logo?: string | null;
         paymentMethods?: PaymentMethodResponse.Raw[] | null;
         counterpartyType?: CounterpartyNetworkType.Raw[] | null;
         invoiceMetrics?: CounterpartyInvoiceMetricsResponse.Raw | null;

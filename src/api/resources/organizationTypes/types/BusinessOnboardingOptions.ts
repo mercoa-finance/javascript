@@ -18,4 +18,5 @@ export interface BusinessOnboardingOptions {
     website: Mercoa.OnboardingOption;
     description: Mercoa.OnboardingOption;
     representatives: Mercoa.OnboardingOption;
+    logo: Mercoa.OnboardingOption;
 }

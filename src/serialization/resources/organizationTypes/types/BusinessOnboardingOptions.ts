@@ -24,6 +24,7 @@ export const BusinessOnboardingOptions: core.serialization.ObjectSchema<
     website: OnboardingOption,
     description: OnboardingOption,
     representatives: OnboardingOption,
+    logo: OnboardingOption,
 });
 
 export declare namespace BusinessOnboardingOptions {
@@ -41,5 +42,6 @@ export declare namespace BusinessOnboardingOptions {
         website: OnboardingOption.Raw;
         description: OnboardingOption.Raw;
         representatives: OnboardingOption.Raw;
+        logo: OnboardingOption.Raw;
     }
 }
