@@ -16,13 +16,17 @@ export interface GetAllInvoicesRequest {
      */
     entityId?: Mercoa.EntityId | Mercoa.EntityId[];
     /**
-     * Start date for invoice created on date filter.
+     * Start date filter. Defaults to CREATED_AT unless specified the dateType is specified
      */
     startDate?: Date;
     /**
-     * End date for invoice created date filter.
+     * End date filter. Defaults to CREATED_AT unless specified the dateType is specified
      */
     endDate?: Date;
+    /**
+     * Type of date to filter by if startDate and endDate filters are provided. Defaults to CREATED_AT.
+     */
+    dateType?: Mercoa.InvoiceDateFilter;
     /**
      * Field to order invoices by. Defaults to CREATED_AT.
      */

@@ -53,19 +53,31 @@ export interface InvoiceMetricsRequest {
      */
     status?: Mercoa.InvoiceStatus | Mercoa.InvoiceStatus[];
     /**
-     * Start date for invoice dueDate filter.
+     * Start date filter. Defaults to CREATED_AT unless specified the dateType is specified
+     */
+    startDate?: Date;
+    /**
+     * End date filter. Defaults to CREATED_AT unless specified the dateType is specified
+     */
+    endDate?: Date;
+    /**
+     * Type of date to filter by if startDate and endDate filters are provided. Defaults to CREATED_AT.
+     */
+    dateType?: Mercoa.InvoiceDateFilter;
+    /**
+     * DEPRECATED. Use startDate, endDate, and dateType instead. Start date for invoice dueDate filter.
      */
     dueDateStart?: Date;
     /**
-     * End date for invoice dueDate filter.
+     * DEPRECATED. Use startDate, endDate, and dateType instead. End date for invoice dueDate filter.
      */
     dueDateEnd?: Date;
     /**
-     * Start date for invoice created on date filter.
+     * DEPRECATED. Use startDate, endDate, and dateType instead. Start date for invoice created on date filter.
      */
     createdDateStart?: Date;
     /**
-     * End date for invoice created date filter.
+     * DEPRECATED. Use startDate, endDate, and dateType instead. End date for invoice created date filter.
      */
     createdDateEnd?: Date;
     /**

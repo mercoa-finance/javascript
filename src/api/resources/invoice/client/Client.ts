@@ -60,6 +60,7 @@ export class Invoice {
             entityId,
             startDate,
             endDate,
+            dateType,
             orderBy,
             orderDirection,
             limit,
@@ -90,6 +91,10 @@ export class Invoice {
 
         if (endDate != null) {
             _queryParams["endDate"] = endDate.toISOString();
+        }
+
+        if (dateType != null) {
+            _queryParams["dateType"] = dateType;
         }
 
         if (orderBy != null) {
@@ -222,7 +227,7 @@ export class Invoice {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.49",
+                "X-Fern-SDK-Version": "0.5.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -427,7 +432,7 @@ export class Invoice {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.49",
+                "X-Fern-SDK-Version": "0.5.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -536,7 +541,7 @@ export class Invoice {
     }
 
     /**
-     * @param {Mercoa.InvoiceId} invoiceId
+     * @param {Mercoa.InvoiceId} invoiceId - Invoice ID or Invoice ForeignID
      * @param {Invoice.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Mercoa.BadRequest}
@@ -564,7 +569,7 @@ export class Invoice {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.49",
+                "X-Fern-SDK-Version": "0.5.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -672,7 +677,7 @@ export class Invoice {
     }
 
     /**
-     * @param {Mercoa.InvoiceId} invoiceId
+     * @param {Mercoa.InvoiceId} invoiceId - Invoice ID or Invoice ForeignID
      * @param {Mercoa.InvoiceUpdateRequest} request
      * @param {Invoice.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -754,7 +759,7 @@ export class Invoice {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.49",
+                "X-Fern-SDK-Version": "0.5.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -865,7 +870,7 @@ export class Invoice {
     /**
      * Only invoices in the DRAFT and NEW status can be deleted.
      *
-     * @param {Mercoa.InvoiceId} invoiceId
+     * @param {Mercoa.InvoiceId} invoiceId - Invoice ID or Invoice ForeignID
      * @param {Invoice.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Mercoa.BadRequest}
@@ -890,7 +895,7 @@ export class Invoice {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.49",
+                "X-Fern-SDK-Version": "0.5.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },

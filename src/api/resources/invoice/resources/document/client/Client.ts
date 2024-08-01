@@ -31,7 +31,7 @@ export class Document {
     /**
      * Get attachments (scanned/uploaded PDFs and images) associated with this invoice
      *
-     * @param {Mercoa.InvoiceId} invoiceId
+     * @param {Mercoa.InvoiceId} invoiceId - Invoice ID or Invoice ForeignID
      * @param {Document.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Mercoa.BadRequest}
@@ -59,7 +59,7 @@ export class Document {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.49",
+                "X-Fern-SDK-Version": "0.5.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -169,7 +169,7 @@ export class Document {
     /**
      * Upload documents (scanned/uploaded PDFs and images) associated with this Invoice
      *
-     * @param {Mercoa.InvoiceId} invoiceId
+     * @param {Mercoa.InvoiceId} invoiceId - Invoice ID or Invoice ForeignID
      * @param {Mercoa.invoice.UploadDocumentRequest} request
      * @param {Document.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -201,7 +201,7 @@ export class Document {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.49",
+                "X-Fern-SDK-Version": "0.5.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -307,7 +307,7 @@ export class Document {
     /**
      * Delete an attachment (scanned/uploaded PDFs and images) associated with this invoice
      *
-     * @param {Mercoa.InvoiceId} invoiceId
+     * @param {Mercoa.InvoiceId} invoiceId - Invoice ID or Invoice ForeignID
      * @param {string} documentId
      * @param {Document.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -339,7 +339,7 @@ export class Document {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.49",
+                "X-Fern-SDK-Version": "0.5.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -444,7 +444,7 @@ export class Document {
     /**
      * Generate a PDF of the invoice. This PDF is generated from the data in the invoice, not from the uploaded documents.
      *
-     * @param {Mercoa.InvoiceId} invoiceId
+     * @param {Mercoa.InvoiceId} invoiceId - Invoice ID or Invoice ForeignID
      * @param {Document.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Mercoa.BadRequest}
@@ -472,7 +472,7 @@ export class Document {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.49",
+                "X-Fern-SDK-Version": "0.5.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -582,7 +582,7 @@ export class Document {
     /**
      * Get a PDF of the check for the invoice. If the invoice does not have check as the disbursement method, an error will be returned. If the disbursement option for the check is set to 'MAIL', a void copy of the check will be returned. If the disbursement option for the check is set to 'PRINT', a printable check will be returned. If the invoice is NOT marked as PAID, the check will be a void copy.
      *
-     * @param {Mercoa.InvoiceId} invoiceId
+     * @param {Mercoa.InvoiceId} invoiceId - Invoice ID or Invoice ForeignID
      * @param {Document.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Mercoa.BadRequest}
@@ -610,7 +610,7 @@ export class Document {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.49",
+                "X-Fern-SDK-Version": "0.5.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -720,7 +720,7 @@ export class Document {
     /**
      * Get the email subject and body that was used to create this invoice.
      *
-     * @param {Mercoa.InvoiceId} invoiceId
+     * @param {Mercoa.InvoiceId} invoiceId - Invoice ID or Invoice ForeignID
      * @param {Document.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Mercoa.BadRequest}
@@ -748,7 +748,7 @@ export class Document {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.49",
+                "X-Fern-SDK-Version": "0.5.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },

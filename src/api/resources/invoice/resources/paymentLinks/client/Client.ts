@@ -31,7 +31,7 @@ export class PaymentLinks {
     /**
      * Get temporary link for payer to send payment
      *
-     * @param {Mercoa.InvoiceId} invoiceId
+     * @param {Mercoa.InvoiceId} invoiceId - Invoice ID or Invoice ForeignID
      * @param {PaymentLinks.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Mercoa.BadRequest}
@@ -59,7 +59,7 @@ export class PaymentLinks {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.49",
+                "X-Fern-SDK-Version": "0.5.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -169,7 +169,7 @@ export class PaymentLinks {
     /**
      * Trigger email to payer inviting them to make payment
      *
-     * @param {Mercoa.InvoiceId} invoiceId
+     * @param {Mercoa.InvoiceId} invoiceId - Invoice ID or Invoice ForeignID
      * @param {Mercoa.invoice.SendPayerEmail} request
      * @param {PaymentLinks.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -207,7 +207,7 @@ export class PaymentLinks {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.49",
+                "X-Fern-SDK-Version": "0.5.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -313,7 +313,7 @@ export class PaymentLinks {
     /**
      * Get temporary link for vendor to accept payment
      *
-     * @param {Mercoa.InvoiceId} invoiceId
+     * @param {Mercoa.InvoiceId} invoiceId - Invoice ID or Invoice ForeignID
      * @param {PaymentLinks.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Mercoa.BadRequest}
@@ -341,7 +341,7 @@ export class PaymentLinks {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.49",
+                "X-Fern-SDK-Version": "0.5.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -451,7 +451,7 @@ export class PaymentLinks {
     /**
      * Trigger email to vendor inviting them into the vendor portal
      *
-     * @param {Mercoa.InvoiceId} invoiceId
+     * @param {Mercoa.InvoiceId} invoiceId - Invoice ID or Invoice ForeignID
      * @param {PaymentLinks.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Mercoa.BadRequest}
@@ -479,7 +479,7 @@ export class PaymentLinks {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.49",
+                "X-Fern-SDK-Version": "0.5.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },

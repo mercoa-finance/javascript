@@ -31,7 +31,7 @@ export class Comment {
     /**
      * Get all comments associated with this invoice
      *
-     * @param {Mercoa.InvoiceId} invoiceId
+     * @param {Mercoa.InvoiceId} invoiceId - Invoice ID or Invoice ForeignID
      * @param {Comment.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Mercoa.BadRequest}
@@ -59,7 +59,7 @@ export class Comment {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.49",
+                "X-Fern-SDK-Version": "0.5.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -169,7 +169,7 @@ export class Comment {
     /**
      * Add a comment to this invoice
      *
-     * @param {Mercoa.InvoiceId} invoiceId
+     * @param {Mercoa.InvoiceId} invoiceId - Invoice ID or Invoice ForeignID
      * @param {Mercoa.CommentRequest} request
      * @param {Comment.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -202,7 +202,7 @@ export class Comment {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.49",
+                "X-Fern-SDK-Version": "0.5.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -311,7 +311,7 @@ export class Comment {
     }
 
     /**
-     * @param {Mercoa.InvoiceId} invoiceId
+     * @param {Mercoa.InvoiceId} invoiceId - Invoice ID or Invoice ForeignID
      * @param {Mercoa.CommentId} commentId
      * @param {Comment.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -343,7 +343,7 @@ export class Comment {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.49",
+                "X-Fern-SDK-Version": "0.5.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -453,7 +453,7 @@ export class Comment {
     /**
      * Edit a comment on this invoice
      *
-     * @param {Mercoa.InvoiceId} invoiceId
+     * @param {Mercoa.InvoiceId} invoiceId - Invoice ID or Invoice ForeignID
      * @param {Mercoa.CommentId} commentId
      * @param {Mercoa.CommentRequest} request
      * @param {Comment.RequestOptions} requestOptions - Request-specific configuration.
@@ -490,7 +490,7 @@ export class Comment {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.49",
+                "X-Fern-SDK-Version": "0.5.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -601,7 +601,7 @@ export class Comment {
     /**
      * Delete a comment on this invoice
      *
-     * @param {Mercoa.InvoiceId} invoiceId
+     * @param {Mercoa.InvoiceId} invoiceId - Invoice ID or Invoice ForeignID
      * @param {Mercoa.CommentId} commentId
      * @param {Comment.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -633,7 +633,7 @@ export class Comment {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.49",
+                "X-Fern-SDK-Version": "0.5.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },

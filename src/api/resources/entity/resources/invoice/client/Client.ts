@@ -61,6 +61,7 @@ export class Invoice {
             excludeReceivables,
             startDate,
             endDate,
+            dateType,
             orderBy,
             orderDirection,
             limit,
@@ -91,6 +92,10 @@ export class Invoice {
 
         if (endDate != null) {
             _queryParams["endDate"] = endDate.toISOString();
+        }
+
+        if (dateType != null) {
+            _queryParams["dateType"] = dateType;
         }
 
         if (orderBy != null) {
@@ -223,7 +228,7 @@ export class Invoice {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.49",
+                "X-Fern-SDK-Version": "0.5.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -371,6 +376,9 @@ export class Invoice {
             approverId,
             invoiceId,
             status,
+            startDate,
+            endDate,
+            dateType,
             dueDateStart,
             dueDateEnd,
             createdDateStart,
@@ -434,6 +442,18 @@ export class Invoice {
             }
         }
 
+        if (startDate != null) {
+            _queryParams["startDate"] = startDate.toISOString();
+        }
+
+        if (endDate != null) {
+            _queryParams["endDate"] = endDate.toISOString();
+        }
+
+        if (dateType != null) {
+            _queryParams["dateType"] = dateType;
+        }
+
         if (dueDateStart != null) {
             _queryParams["dueDateStart"] = dueDateStart.toISOString();
         }
@@ -468,7 +488,7 @@ export class Invoice {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.49",
+                "X-Fern-SDK-Version": "0.5.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },

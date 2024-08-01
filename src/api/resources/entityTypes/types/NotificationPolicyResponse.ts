@@ -9,21 +9,24 @@ import * as Mercoa from "../../../index";
  *     {
  *         disabled: false,
  *         additionalRoles: ["admin", "approver"],
- *         type: Mercoa.NotificationType.InvoiceApprovalNeeded
+ *         type: Mercoa.NotificationType.InvoiceApprovalNeeded,
+ *         notifyCounterparty: true
  *     }
  *
  * @example
  *     {
  *         disabled: false,
  *         additionalRoles: ["admin", "bookkeeper"],
- *         type: Mercoa.NotificationType.InvoiceApproved
+ *         type: Mercoa.NotificationType.InvoiceApproved,
+ *         notifyCounterparty: false
  *     }
  *
  * @example
  *     {
  *         disabled: true,
  *         additionalRoles: [],
- *         type: Mercoa.NotificationType.InvoiceApproved
+ *         type: Mercoa.NotificationType.InvoiceApproved,
+ *         notifyCounterparty: false
  *     }
  */
 export interface NotificationPolicyResponse {
@@ -31,5 +34,7 @@ export interface NotificationPolicyResponse {
     disabled: boolean;
     /** List of user roles that should receive notifications in addition to the default users for this notification type */
     additionalRoles: string[];
+    /** True if the selected notification type is sent to the counterparty */
+    notifyCounterparty: boolean;
     type: Mercoa.NotificationType;
 }

@@ -2335,7 +2335,7 @@ await client.invoice.get("inv_8545a84e-a45f-41bf-bdf1-33b42a55812c");
 <dl>
 <dd>
 
-**invoiceId:** `Mercoa.InvoiceId`
+**invoiceId:** `Mercoa.InvoiceId` — Invoice ID or Invoice ForeignID
 
 </dd>
 </dl>
@@ -2419,7 +2419,7 @@ await client.invoice.update("inv_8545a84e-a45f-41bf-bdf1-33b42a55812c", {
 <dl>
 <dd>
 
-**invoiceId:** `Mercoa.InvoiceId`
+**invoiceId:** `Mercoa.InvoiceId` — Invoice ID or Invoice ForeignID
 
 </dd>
 </dl>
@@ -2490,7 +2490,7 @@ await client.invoice.delete("inv_8545a84e-a45f-41bf-bdf1-33b42a55812c");
 <dl>
 <dd>
 
-**invoiceId:** `Mercoa.InvoiceId`
+**invoiceId:** `Mercoa.InvoiceId` — Invoice ID or Invoice ForeignID
 
 </dd>
 </dl>
@@ -5728,6 +5728,7 @@ await client.entity.notificationPolicy.update(
     {
         disabled: false,
         additionalRoles: ["admin", "approver"],
+        notifyCounterparty: true,
     }
 );
 ```
@@ -5939,7 +5940,7 @@ await client.entity.paymentMethod.get(
 <dl>
 <dd>
 
-**paymentMethodId:** `Mercoa.PaymentMethodId`
+**paymentMethodId:** `Mercoa.PaymentMethodId` — Payment Method ID or Payment Method ForeignID
 
 </dd>
 </dl>
@@ -6018,7 +6019,7 @@ await client.entity.paymentMethod.update(
 <dl>
 <dd>
 
-**paymentMethodId:** `Mercoa.PaymentMethodId`
+**paymentMethodId:** `Mercoa.PaymentMethodId` — Payment Method ID or Payment Method ForeignID
 
 </dd>
 </dl>
@@ -6100,7 +6101,7 @@ await client.entity.paymentMethod.delete(
 <dl>
 <dd>
 
-**paymentMethodId:** `Mercoa.PaymentMethodId`
+**paymentMethodId:** `Mercoa.PaymentMethodId` — Payment Method ID or Payment Method ForeignID
 
 </dd>
 </dl>
@@ -6174,7 +6175,7 @@ await client.entity.paymentMethod.initiateMicroDeposits(
 <dl>
 <dd>
 
-**paymentMethodId:** `Mercoa.PaymentMethodId`
+**paymentMethodId:** `Mercoa.PaymentMethodId` — Payment Method ID or Payment Method ForeignID
 
 </dd>
 </dl>
@@ -6251,7 +6252,7 @@ await client.entity.paymentMethod.completeMicroDeposits(
 <dl>
 <dd>
 
-**paymentMethodId:** `Mercoa.PaymentMethodId`
+**paymentMethodId:** `Mercoa.PaymentMethodId` — Payment Method ID or Payment Method ForeignID
 
 </dd>
 </dl>
@@ -6330,7 +6331,7 @@ await client.entity.paymentMethod.getBalance("string", "string");
 <dl>
 <dd>
 
-**paymentMethodId:** `Mercoa.PaymentMethodId`
+**paymentMethodId:** `Mercoa.PaymentMethodId` — Payment Method ID or Payment Method ForeignID
 
 </dd>
 </dl>
@@ -7154,7 +7155,7 @@ await client.invoice.approval.addApprover("inv_3d61faa9-1754-4b7b-9fcb-88ff97f36
 <dl>
 <dd>
 
-**invoiceId:** `Mercoa.InvoiceId`
+**invoiceId:** `Mercoa.InvoiceId` — Invoice ID or Invoice ForeignID
 
 </dd>
 </dl>
@@ -7213,7 +7214,7 @@ await client.invoice.approval.approve("inv_3d61faa9-1754-4b7b-9fcb-88ff97f368ff"
 <dl>
 <dd>
 
-**invoiceId:** `Mercoa.InvoiceId`
+**invoiceId:** `Mercoa.InvoiceId` — Invoice ID or Invoice ForeignID
 
 </dd>
 </dl>
@@ -7272,7 +7273,7 @@ await client.invoice.approval.reject("inv_3d61faa9-1754-4b7b-9fcb-88ff97f368ff",
 <dl>
 <dd>
 
-**invoiceId:** `Mercoa.InvoiceId`
+**invoiceId:** `Mercoa.InvoiceId` — Invoice ID or Invoice ForeignID
 
 </dd>
 </dl>
@@ -7345,7 +7346,7 @@ await client.invoice.comment.getAll("inv_3d61faa9-1754-4b7b-9fcb-88ff97f368ff");
 <dl>
 <dd>
 
-**invoiceId:** `Mercoa.InvoiceId`
+**invoiceId:** `Mercoa.InvoiceId` — Invoice ID or Invoice ForeignID
 
 </dd>
 </dl>
@@ -7411,7 +7412,7 @@ await client.invoice.comment.create("inv_3d61faa9-1754-4b7b-9fcb-88ff97f368ff", 
 <dl>
 <dd>
 
-**invoiceId:** `Mercoa.InvoiceId`
+**invoiceId:** `Mercoa.InvoiceId` — Invoice ID or Invoice ForeignID
 
 </dd>
 </dl>
@@ -7467,7 +7468,7 @@ await client.invoice.comment.get("inv_3d61faa9-1754-4b7b-9fcb-88ff97f368ff", "ic
 <dl>
 <dd>
 
-**invoiceId:** `Mercoa.InvoiceId`
+**invoiceId:** `Mercoa.InvoiceId` — Invoice ID or Invoice ForeignID
 
 </dd>
 </dl>
@@ -7545,7 +7546,7 @@ await client.invoice.comment.update(
 <dl>
 <dd>
 
-**invoiceId:** `Mercoa.InvoiceId`
+**invoiceId:** `Mercoa.InvoiceId` — Invoice ID or Invoice ForeignID
 
 </dd>
 </dl>
@@ -7627,7 +7628,7 @@ await client.invoice.comment.delete(
 <dl>
 <dd>
 
-**invoiceId:** `Mercoa.InvoiceId`
+**invoiceId:** `Mercoa.InvoiceId` — Invoice ID or Invoice ForeignID
 
 </dd>
 </dl>
@@ -7700,7 +7701,7 @@ await client.invoice.document.getAll("inv_26e7b5d3-a739-4b23-9ad9-6aaa085f47a9")
 <dl>
 <dd>
 
-**invoiceId:** `Mercoa.InvoiceId`
+**invoiceId:** `Mercoa.InvoiceId` — Invoice ID or Invoice ForeignID
 
 </dd>
 </dl>
@@ -7766,7 +7767,7 @@ await client.invoice.document.upload("inv_26e7b5d3-a739-4b23-9ad9-6aaa085f47a9",
 <dl>
 <dd>
 
-**invoiceId:** `Mercoa.InvoiceId`
+**invoiceId:** `Mercoa.InvoiceId` — Invoice ID or Invoice ForeignID
 
 </dd>
 </dl>
@@ -7840,7 +7841,7 @@ await client.invoice.document.delete(
 <dl>
 <dd>
 
-**invoiceId:** `Mercoa.InvoiceId`
+**invoiceId:** `Mercoa.InvoiceId` — Invoice ID or Invoice ForeignID
 
 </dd>
 </dl>
@@ -7911,7 +7912,7 @@ await client.invoice.document.generateInvoicePdf("inv_26e7b5d3-a739-4b23-9ad9-6a
 <dl>
 <dd>
 
-**invoiceId:** `Mercoa.InvoiceId`
+**invoiceId:** `Mercoa.InvoiceId` — Invoice ID or Invoice ForeignID
 
 </dd>
 </dl>
@@ -7974,7 +7975,7 @@ await client.invoice.document.generateCheckPdf("inv_26e7b5d3-a739-4b23-9ad9-6aaa
 <dl>
 <dd>
 
-**invoiceId:** `Mercoa.InvoiceId`
+**invoiceId:** `Mercoa.InvoiceId` — Invoice ID or Invoice ForeignID
 
 </dd>
 </dl>
@@ -8037,7 +8038,7 @@ await client.invoice.document.getSourceEmail("inv_26e7b5d3-a739-4b23-9ad9-6aaa08
 <dl>
 <dd>
 
-**invoiceId:** `Mercoa.InvoiceId`
+**invoiceId:** `Mercoa.InvoiceId` — Invoice ID or Invoice ForeignID
 
 </dd>
 </dl>
@@ -8102,7 +8103,7 @@ await client.invoice.paymentLinks.getPayerLink("inv_a0f6ea94-0761-4a5e-a416-3c45
 <dl>
 <dd>
 
-**invoiceId:** `Mercoa.InvoiceId`
+**invoiceId:** `Mercoa.InvoiceId` — Invoice ID or Invoice ForeignID
 
 </dd>
 </dl>
@@ -8167,7 +8168,7 @@ await client.invoice.paymentLinks.sendPayerEmail("inv_a0f6ea94-0761-4a5e-a416-3c
 <dl>
 <dd>
 
-**invoiceId:** `Mercoa.InvoiceId`
+**invoiceId:** `Mercoa.InvoiceId` — Invoice ID or Invoice ForeignID
 
 </dd>
 </dl>
@@ -8238,7 +8239,7 @@ await client.invoice.paymentLinks.getVendorLink("inv_a0f6ea94-0761-4a5e-a416-3c4
 <dl>
 <dd>
 
-**invoiceId:** `Mercoa.InvoiceId`
+**invoiceId:** `Mercoa.InvoiceId` — Invoice ID or Invoice ForeignID
 
 </dd>
 </dl>
@@ -8301,7 +8302,7 @@ await client.invoice.paymentLinks.sendVendorEmail("inv_a0f6ea94-0761-4a5e-a416-3
 <dl>
 <dd>
 
-**invoiceId:** `Mercoa.InvoiceId`
+**invoiceId:** `Mercoa.InvoiceId` — Invoice ID or Invoice ForeignID
 
 </dd>
 </dl>

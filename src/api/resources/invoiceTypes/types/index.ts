@@ -26,6 +26,7 @@ export * from "./InvoiceFeesRequest";
 export * from "./InvoiceFeesResponse";
 export * from "./InvoiceStatus";
 export * from "./InvoiceFailureType";
+export * from "./InvoiceDateFilter";
 export * from "./InvoiceOrderByField";
 export * from "./InvoiceMetadataFilter";
 export * from "./InvoiceMetricsResponse";

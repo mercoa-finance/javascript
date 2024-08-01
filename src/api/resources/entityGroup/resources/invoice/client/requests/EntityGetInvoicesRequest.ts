@@ -31,6 +31,10 @@ export interface EntityGetInvoicesRequest {
      */
     endDate?: Date;
     /**
+     * Type of date to filter by if startDate and endDate filters are provided. Defaults to CREATED_AT.
+     */
+    dateType?: Mercoa.InvoiceDateFilter;
+    /**
      * Field to order invoices by. Defaults to CREATED_AT.
      */
     orderBy?: Mercoa.InvoiceOrderByField;

@@ -31,7 +31,7 @@ export class Approval {
     /**
      * Adds an approver to the invoice. Will select the first available approver slot that is not already filled and assign the approver to it. If no approver slots are available, an error will be returned. An explicit approver slot can be specified by setting the `approverSlot` field.
      *
-     * @param {Mercoa.InvoiceId} invoiceId
+     * @param {Mercoa.InvoiceId} invoiceId - Invoice ID or Invoice ForeignID
      * @param {Mercoa.AddApproverRequest} request
      * @param {Approval.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -64,7 +64,7 @@ export class Approval {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.49",
+                "X-Fern-SDK-Version": "0.5.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -168,7 +168,7 @@ export class Approval {
     }
 
     /**
-     * @param {Mercoa.InvoiceId} invoiceId
+     * @param {Mercoa.InvoiceId} invoiceId - Invoice ID or Invoice ForeignID
      * @param {Mercoa.ApprovalRequest} request
      * @param {Approval.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -201,7 +201,7 @@ export class Approval {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.49",
+                "X-Fern-SDK-Version": "0.5.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -305,7 +305,7 @@ export class Approval {
     }
 
     /**
-     * @param {Mercoa.InvoiceId} invoiceId
+     * @param {Mercoa.InvoiceId} invoiceId - Invoice ID or Invoice ForeignID
      * @param {Mercoa.ApprovalRequest} request
      * @param {Approval.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -338,7 +338,7 @@ export class Approval {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.49",
+                "X-Fern-SDK-Version": "0.5.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },

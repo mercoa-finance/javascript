@@ -74,7 +74,7 @@ export class PaymentMethod {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.49",
+                "X-Fern-SDK-Version": "0.5.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -266,7 +266,7 @@ export class PaymentMethod {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.49",
+                "X-Fern-SDK-Version": "0.5.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -376,7 +376,7 @@ export class PaymentMethod {
 
     /**
      * @param {Mercoa.EntityId} entityId - Entity ID or Entity ForeignID
-     * @param {Mercoa.PaymentMethodId} paymentMethodId
+     * @param {Mercoa.PaymentMethodId} paymentMethodId - Payment Method ID or Payment Method ForeignID
      * @param {PaymentMethod.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Mercoa.BadRequest}
@@ -407,7 +407,7 @@ export class PaymentMethod {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.49",
+                "X-Fern-SDK-Version": "0.5.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -518,7 +518,7 @@ export class PaymentMethod {
      * Only custom payment methods can be updated.
      *
      * @param {Mercoa.EntityId} entityId - Entity ID or Entity ForeignID
-     * @param {Mercoa.PaymentMethodId} paymentMethodId
+     * @param {Mercoa.PaymentMethodId} paymentMethodId - Payment Method ID or Payment Method ForeignID
      * @param {Mercoa.PaymentMethodUpdateRequest} request
      * @param {PaymentMethod.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -555,7 +555,7 @@ export class PaymentMethod {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.49",
+                "X-Fern-SDK-Version": "0.5.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -667,7 +667,7 @@ export class PaymentMethod {
      * Mark a payment method as inactive. This will not remove the payment method from the system, but will prevent it from being used in the future.
      *
      * @param {Mercoa.EntityId} entityId - Entity ID or Entity ForeignID
-     * @param {Mercoa.PaymentMethodId} paymentMethodId
+     * @param {Mercoa.PaymentMethodId} paymentMethodId - Payment Method ID or Payment Method ForeignID
      * @param {PaymentMethod.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Mercoa.BadRequest}
@@ -698,7 +698,7 @@ export class PaymentMethod {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.49",
+                "X-Fern-SDK-Version": "0.5.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -804,7 +804,7 @@ export class PaymentMethod {
      * Initiate micro deposits for a bank account
      *
      * @param {Mercoa.EntityId} entityId - Entity ID or Entity ForeignID
-     * @param {Mercoa.PaymentMethodId} paymentMethodId
+     * @param {Mercoa.PaymentMethodId} paymentMethodId - Payment Method ID or Payment Method ForeignID
      * @param {PaymentMethod.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Mercoa.BadRequest}
@@ -837,7 +837,7 @@ export class PaymentMethod {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.49",
+                "X-Fern-SDK-Version": "0.5.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -948,7 +948,7 @@ export class PaymentMethod {
      * Complete micro deposit verification
      *
      * @param {Mercoa.EntityId} entityId - Entity ID or Entity ForeignID
-     * @param {Mercoa.PaymentMethodId} paymentMethodId
+     * @param {Mercoa.PaymentMethodId} paymentMethodId - Payment Method ID or Payment Method ForeignID
      * @param {Mercoa.entity.CompleteMicroDepositsRequest} request
      * @param {PaymentMethod.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -985,7 +985,7 @@ export class PaymentMethod {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.49",
+                "X-Fern-SDK-Version": "0.5.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -1099,7 +1099,7 @@ export class PaymentMethod {
      * Deprecated. Get the available balance of a payment method. Only bank accounts added with Plaid are supported. This endpoint will return a cached value and will refresh the balance when called.
      *
      * @param {Mercoa.EntityId} entityId - Entity ID or Entity ForeignID
-     * @param {Mercoa.PaymentMethodId} paymentMethodId
+     * @param {Mercoa.PaymentMethodId} paymentMethodId - Payment Method ID or Payment Method ForeignID
      * @param {PaymentMethod.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Mercoa.BadRequest}
@@ -1132,7 +1132,7 @@ export class PaymentMethod {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.4.49",
+                "X-Fern-SDK-Version": "0.5.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
