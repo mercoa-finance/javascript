@@ -12,8 +12,7 @@
  * @example
  *     {
  *         disabled: false,
- *         additionalRoles: ["admin", "approver"],
- *         notifyCounterparty: true
+ *         additionalRoles: ["admin", "approver"]
  *     }
  *
  * @example
@@ -21,12 +20,28 @@
  *         disabled: false,
  *         additionalRoles: ["admin", "bookkeeper"]
  *     }
+ *
+ * @example
+ *     {
+ *         disabled: false,
+ *         additionalRoles: ["admin", "bookkeeper"],
+ *         notifyPayorCounterparty: true
+ *     }
+ *
+ * @example
+ *     {
+ *         disabled: false,
+ *         additionalRoles: ["admin", "bookkeeper"],
+ *         notifyPayeeCounterparty: true
+ *     }
  */
 export interface NotificationPolicyRequest {
     /** Set to true if the selected notification type should be disabled for this entity */
     disabled?: boolean;
     /** List of user roles that should receive notifications in addition to the default users for this notification type */
     additionalRoles?: string[];
-    /** Set to true if the selected notification type should be sent to the counterparty */
-    notifyCounterparty?: boolean;
+    /** Set to true if the selected notification type should be sent to the counterparty if this is a payable invoice. */
+    notifyPayeeCounterparty?: boolean;
+    /** Set to true if the selected notification type should be sent to the counterparty if this is a receivable invoice. */
+    notifyPayorCounterparty?: boolean;
 }

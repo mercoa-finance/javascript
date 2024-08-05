@@ -13,7 +13,8 @@ export const NotificationPolicyResponse: core.serialization.ObjectSchema<
 > = core.serialization.object({
     disabled: core.serialization.boolean(),
     additionalRoles: core.serialization.list(core.serialization.string()),
-    notifyCounterparty: core.serialization.boolean(),
+    notifyPayeeCounterparty: core.serialization.boolean(),
+    notifyPayorCounterparty: core.serialization.boolean(),
     type: NotificationType,
 });
 
@@ -21,7 +22,8 @@ export declare namespace NotificationPolicyResponse {
     interface Raw {
         disabled: boolean;
         additionalRoles: string[];
-        notifyCounterparty: boolean;
+        notifyPayeeCounterparty: boolean;
+        notifyPayorCounterparty: boolean;
         type: NotificationType.Raw;
     }
 }

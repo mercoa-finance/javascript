@@ -10,7 +10,8 @@ import * as Mercoa from "../../../index";
  *         disabled: false,
  *         additionalRoles: ["admin", "approver"],
  *         type: Mercoa.NotificationType.InvoiceApprovalNeeded,
- *         notifyCounterparty: true
+ *         notifyPayeeCounterparty: true,
+ *         notifyPayorCounterparty: true
  *     }
  *
  * @example
@@ -18,7 +19,8 @@ import * as Mercoa from "../../../index";
  *         disabled: false,
  *         additionalRoles: ["admin", "bookkeeper"],
  *         type: Mercoa.NotificationType.InvoiceApproved,
- *         notifyCounterparty: false
+ *         notifyPayeeCounterparty: false,
+ *         notifyPayorCounterparty: true
  *     }
  *
  * @example
@@ -26,7 +28,8 @@ import * as Mercoa from "../../../index";
  *         disabled: true,
  *         additionalRoles: [],
  *         type: Mercoa.NotificationType.InvoiceApproved,
- *         notifyCounterparty: false
+ *         notifyPayeeCounterparty: true,
+ *         notifyPayorCounterparty: false
  *     }
  */
 export interface NotificationPolicyResponse {
@@ -34,7 +37,9 @@ export interface NotificationPolicyResponse {
     disabled: boolean;
     /** List of user roles that should receive notifications in addition to the default users for this notification type */
     additionalRoles: string[];
-    /** True if the selected notification type is sent to the counterparty */
-    notifyCounterparty: boolean;
+    /** True if the selected notification type should be sent to the counterparty if this is a payable invoice. */
+    notifyPayeeCounterparty: boolean;
+    /** True if the selected notification type should be sent to the counterparty if this is a receivable invoice. */
+    notifyPayorCounterparty: boolean;
     type: Mercoa.NotificationType;
 }

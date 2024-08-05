@@ -12,13 +12,15 @@ export const NotificationPolicyRequest: core.serialization.ObjectSchema<
 > = core.serialization.object({
     disabled: core.serialization.boolean().optional(),
     additionalRoles: core.serialization.list(core.serialization.string()).optional(),
-    notifyCounterparty: core.serialization.boolean().optional(),
+    notifyPayeeCounterparty: core.serialization.boolean().optional(),
+    notifyPayorCounterparty: core.serialization.boolean().optional(),
 });
 
 export declare namespace NotificationPolicyRequest {
     interface Raw {
         disabled?: boolean | null;
         additionalRoles?: string[] | null;
-        notifyCounterparty?: boolean | null;
+        notifyPayeeCounterparty?: boolean | null;
+        notifyPayorCounterparty?: boolean | null;
     }
 }

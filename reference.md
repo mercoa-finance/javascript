@@ -5728,7 +5728,6 @@ await client.entity.notificationPolicy.update(
     {
         disabled: false,
         additionalRoles: ["admin", "approver"],
-        notifyCounterparty: true,
     }
 );
 ```
