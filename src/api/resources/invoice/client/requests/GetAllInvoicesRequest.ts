@@ -83,4 +83,8 @@ export interface GetAllInvoicesRequest {
      * Invoice status to filter on
      */
     status?: Mercoa.InvoiceStatus | Mercoa.InvoiceStatus[];
+    /**
+     * Filter invoices by recurring status
+     */
+    paymentType?: Mercoa.PaymentType[];
 }

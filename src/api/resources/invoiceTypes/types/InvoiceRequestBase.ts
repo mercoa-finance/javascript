@@ -12,7 +12,7 @@ export interface InvoiceRequestBase {
     currency?: Mercoa.CurrencyCode;
     /** Date the invoice was issued. */
     invoiceDate?: Date;
-    /** Date when funds are scheduled to be deducted from payer's account. */
+    /** Initial date when funds are scheduled to be deducted from payer's account. */
     deductionDate?: Date;
     /** Date of funds settlement. */
     settlementDate?: Date;
@@ -47,4 +47,6 @@ export interface InvoiceRequestBase {
     failureType?: Mercoa.InvoiceFailureType;
     /** If using a custom payment method, you can override the default fees for this invoice. If not provided, the default fees for the custom payment method will be used. */
     fees?: Mercoa.InvoiceFeesRequest;
+    /** If this is a recurring invoice, this will be the payment schedule for the invoice. If not provided, this will be a one-time invoice. */
+    paymentSchedule?: Mercoa.PaymentSchedule;
 }

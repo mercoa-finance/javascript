@@ -1920,8 +1920,10 @@ export interface InvoiceResponse {
     currency?: Mercoa.CurrencyCode;
     /** Date the invoice was issued. */
     invoiceDate?: Date;
-    /** Date when funds are scheduled to be deducted from payer's account. The actual deduction date may differ from this date, and will be reflected in the processedAt field. */
+    /** Initial date when funds are scheduled to be deducted from payer's account. The actual deduction date may differ from this date, and will be reflected in the processedAt field. */
     deductionDate?: Date;
+    /** If this is a recurring invoice, this will be the next date when funds are scheduled to be deducted from payer's account. */
+    nextDeductionDate?: Date;
     /** Date when the invoice payment was processed. */
     processedAt?: Date;
     /** Date of funds settlement. */
@@ -1955,6 +1957,8 @@ export interface InvoiceResponse {
     metadata: Record<string, string>;
     /** The ID used to identify this invoice in your system. This ID must be unique within each creatorEntity in your system, e.g. two invoices with the same creatorEntity may not have the same foreign ID. */
     foreignId?: string;
+    /** The ID of the entity who created this invoice. */
+    creatorEntityId?: Mercoa.EntityId;
     /** Entity user who created this invoice. */
     creatorUser?: Mercoa.EntityUserResponse;
     /** If the invoice failed to be paid, this field will be populated with the type of failure. */
@@ -1963,4 +1967,6 @@ export interface InvoiceResponse {
     updatedAt: Date;
     /** Fees associated with this invoice. */
     fees?: Mercoa.InvoiceFeesResponse;
+    /** If this is a recurring invoice, this will be the payment schedule for the invoice. If not provided, this will be a one-time invoice. */
+    paymentSchedule?: Mercoa.PaymentSchedule;
 }

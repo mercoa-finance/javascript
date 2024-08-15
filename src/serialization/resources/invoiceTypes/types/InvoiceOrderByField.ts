@@ -14,11 +14,26 @@ export const InvoiceOrderByField: core.serialization.Schema<
     "DUE_DATE",
     "CREATED_AT",
     "UPDATED_AT",
+    "DEDUCTION_DATE",
+    "INVOICE_DATE",
+    "SETTLEMENT_DATE",
     "INVOICE_NUMBER",
     "VENDOR_NAME",
     "PAYER_NAME",
+    "NEXT_PAYMENT_DATE",
 ]);
 
 export declare namespace InvoiceOrderByField {
-    type Raw = "AMOUNT" | "DUE_DATE" | "CREATED_AT" | "UPDATED_AT" | "INVOICE_NUMBER" | "VENDOR_NAME" | "PAYER_NAME";
+    type Raw =
+        | "AMOUNT"
+        | "DUE_DATE"
+        | "CREATED_AT"
+        | "UPDATED_AT"
+        | "DEDUCTION_DATE"
+        | "INVOICE_DATE"
+        | "SETTLEMENT_DATE"
+        | "INVOICE_NUMBER"
+        | "VENDOR_NAME"
+        | "PAYER_NAME"
+        | "NEXT_PAYMENT_DATE";
 }

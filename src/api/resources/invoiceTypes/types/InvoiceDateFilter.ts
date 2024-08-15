@@ -5,6 +5,7 @@
 export type InvoiceDateFilter =
     | "INVOICE_DATE"
     | "DEDUCTION_DATE"
+    | "NEXT_PAYMENT_DATE"
     | "DUE_DATE"
     | "SETTLEMENT_DATE"
     | "CREATED_AT"
@@ -13,6 +14,7 @@ export type InvoiceDateFilter =
 export const InvoiceDateFilter = {
     InvoiceDate: "INVOICE_DATE",
     DeductionDate: "DEDUCTION_DATE",
+    NextPaymentDate: "NEXT_PAYMENT_DATE",
     DueDate: "DUE_DATE",
     SettlementDate: "SETTLEMENT_DATE",
     CreatedAt: "CREATED_AT",

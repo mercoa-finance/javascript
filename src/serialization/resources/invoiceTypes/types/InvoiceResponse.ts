@@ -20,6 +20,7 @@ import { ApprovalPolicyResponse } from "../../entityTypes/types/ApprovalPolicyRe
 import { EntityUserResponse } from "../../entityTypes/types/EntityUserResponse";
 import { InvoiceFailureType } from "./InvoiceFailureType";
 import { InvoiceFeesResponse } from "./InvoiceFeesResponse";
+import { PaymentSchedule } from "./PaymentSchedule";
 
 export const InvoiceResponse: core.serialization.ObjectSchema<serializers.InvoiceResponse.Raw, Mercoa.InvoiceResponse> =
     core.serialization.object({
@@ -29,6 +30,7 @@ export const InvoiceResponse: core.serialization.ObjectSchema<serializers.Invoic
         currency: CurrencyCode.optional(),
         invoiceDate: core.serialization.date().optional(),
         deductionDate: core.serialization.date().optional(),
+        nextDeductionDate: core.serialization.date().optional(),
         processedAt: core.serialization.date().optional(),
         settlementDate: core.serialization.date().optional(),
         dueDate: core.serialization.date().optional(),
@@ -54,11 +56,13 @@ export const InvoiceResponse: core.serialization.ObjectSchema<serializers.Invoic
         approvalPolicy: core.serialization.list(ApprovalPolicyResponse),
         metadata: core.serialization.record(core.serialization.string(), core.serialization.string()),
         foreignId: core.serialization.string().optional(),
+        creatorEntityId: EntityId.optional(),
         creatorUser: EntityUserResponse.optional(),
         failureType: InvoiceFailureType.optional(),
         createdAt: core.serialization.date(),
         updatedAt: core.serialization.date(),
         fees: InvoiceFeesResponse.optional(),
+        paymentSchedule: PaymentSchedule.optional(),
     });
 
 export declare namespace InvoiceResponse {
@@ -69,6 +73,7 @@ export declare namespace InvoiceResponse {
         currency?: CurrencyCode.Raw | null;
         invoiceDate?: string | null;
         deductionDate?: string | null;
+        nextDeductionDate?: string | null;
         processedAt?: string | null;
         settlementDate?: string | null;
         dueDate?: string | null;
@@ -94,10 +99,12 @@ export declare namespace InvoiceResponse {
         approvalPolicy: ApprovalPolicyResponse.Raw[];
         metadata: Record<string, string>;
         foreignId?: string | null;
+        creatorEntityId?: EntityId.Raw | null;
         creatorUser?: EntityUserResponse.Raw | null;
         failureType?: InvoiceFailureType.Raw | null;
         createdAt: string;
         updatedAt: string;
         fees?: InvoiceFeesResponse.Raw | null;
+        paymentSchedule?: PaymentSchedule.Raw | null;
     }
 }

@@ -7,16 +7,24 @@ export type InvoiceOrderByField =
     | "DUE_DATE"
     | "CREATED_AT"
     | "UPDATED_AT"
+    | "DEDUCTION_DATE"
+    | "INVOICE_DATE"
+    | "SETTLEMENT_DATE"
     | "INVOICE_NUMBER"
     | "VENDOR_NAME"
-    | "PAYER_NAME";
+    | "PAYER_NAME"
+    | "NEXT_PAYMENT_DATE";
 
 export const InvoiceOrderByField = {
     Amount: "AMOUNT",
     DueDate: "DUE_DATE",
     CreatedAt: "CREATED_AT",
     UpdatedAt: "UPDATED_AT",
+    DeductionDate: "DEDUCTION_DATE",
+    InvoiceDate: "INVOICE_DATE",
+    SettlementDate: "SETTLEMENT_DATE",
     InvoiceNumber: "INVOICE_NUMBER",
     VendorName: "VENDOR_NAME",
     PayerName: "PAYER_NAME",
+    NextPaymentDate: "NEXT_PAYMENT_DATE",
 } as const;

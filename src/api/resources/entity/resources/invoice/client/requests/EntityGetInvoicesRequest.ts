@@ -90,4 +90,8 @@ export interface EntityGetInvoicesRequest {
      * Invoice status to filter on.
      */
     status?: Mercoa.InvoiceStatus | Mercoa.InvoiceStatus[];
+    /**
+     * Filter invoices by payment type.
+     */
+    paymentType?: Mercoa.PaymentType[];
 }

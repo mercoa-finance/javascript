@@ -14,6 +14,7 @@ import { ApprovalSlotAssignment } from "./ApprovalSlotAssignment";
 import { EntityUserId } from "../../entityTypes/types/EntityUserId";
 import { InvoiceFailureType } from "./InvoiceFailureType";
 import { InvoiceFeesRequest } from "./InvoiceFeesRequest";
+import { PaymentSchedule } from "./PaymentSchedule";
 
 export const InvoiceRequestBase: core.serialization.ObjectSchema<
     serializers.InvoiceRequestBase.Raw,
@@ -43,6 +44,7 @@ export const InvoiceRequestBase: core.serialization.ObjectSchema<
     creatorUserId: EntityUserId.optional(),
     failureType: InvoiceFailureType.optional(),
     fees: InvoiceFeesRequest.optional(),
+    paymentSchedule: PaymentSchedule.optional(),
 });
 
 export declare namespace InvoiceRequestBase {
@@ -71,5 +73,6 @@ export declare namespace InvoiceRequestBase {
         creatorUserId?: EntityUserId.Raw | null;
         failureType?: InvoiceFailureType.Raw | null;
         fees?: InvoiceFeesRequest.Raw | null;
+        paymentSchedule?: PaymentSchedule.Raw | null;
     }
 }
