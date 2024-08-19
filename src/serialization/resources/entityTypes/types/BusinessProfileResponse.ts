@@ -25,6 +25,9 @@ export const BusinessProfileResponse: core.serialization.ObjectSchema<
     ownersProvided: core.serialization.boolean().optional(),
     taxIdProvided: core.serialization.property("taxIDProvided", core.serialization.boolean()),
     industryCodes: IndustryCodes.optional(),
+    averageMonthlyTransactionVolume: core.serialization.number().optional(),
+    averageTransactionSize: core.serialization.number().optional(),
+    maxTransactionSize: core.serialization.number().optional(),
 });
 
 export declare namespace BusinessProfileResponse {
@@ -40,5 +43,8 @@ export declare namespace BusinessProfileResponse {
         ownersProvided?: boolean | null;
         taxIDProvided: boolean;
         industryCodes?: IndustryCodes.Raw | null;
+        averageMonthlyTransactionVolume?: number | null;
+        averageTransactionSize?: number | null;
+        maxTransactionSize?: number | null;
     }
 }

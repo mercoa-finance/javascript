@@ -11,6 +11,9 @@ import * as Mercoa from "../../../index";
  *         hasMore: false,
  *         data: [{
  *                 id: "entg_a3582b70-fd04-4888-9185-a640ae9048be",
+ *                 foreignId: "your-group-id",
+ *                 name: "AcmeConglomerate",
+ *                 emailToName: "acmegroup",
  *                 entities: [{
  *                         id: "ent_8545a84e-a45f-41bf-bdf1-33b42a55812c",
  *                         foreignId: "MY-DB-ID-12345",

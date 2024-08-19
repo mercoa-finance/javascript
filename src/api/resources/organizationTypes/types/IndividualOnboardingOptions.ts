@@ -4,12 +4,7 @@
 
 import * as Mercoa from "../../../index";
 
-export interface IndividualOnboardingOptions {
-    termsOfService: Mercoa.OnboardingOption;
-    email: Mercoa.OnboardingOption;
-    name: Mercoa.OnboardingOption;
+export interface IndividualOnboardingOptions extends Mercoa.CommonOnboardingOptions {
     dateOfBirth: Mercoa.OnboardingOption;
     ssn: Mercoa.OnboardingOption;
-    address: Mercoa.OnboardingOption;
-    phone: Mercoa.OnboardingOption;
 }

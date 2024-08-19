@@ -12,10 +12,16 @@ export const EntityGroupRequest: core.serialization.ObjectSchema<
     Mercoa.EntityGroupRequest
 > = core.serialization.object({
     entityIds: core.serialization.list(EntityId),
+    foreignId: core.serialization.string().optional(),
+    name: core.serialization.string().optional(),
+    emailToName: core.serialization.string().optional(),
 });
 
 export declare namespace EntityGroupRequest {
     interface Raw {
         entityIds: EntityId.Raw[];
+        foreignId?: string | null;
+        name?: string | null;
+        emailToName?: string | null;
     }
 }

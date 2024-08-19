@@ -23,6 +23,7 @@ export * from "./NotificationConfigurationResponse";
 export * from "./InvoiceNotificationConfigurationRequest";
 export * from "./InvoiceNotificationConfigurationResponse";
 export * from "./OnboardingOption";
+export * from "./CommonOnboardingOptions";
 export * from "./IndividualOnboardingOptions";
 export * from "./BusinessOnboardingOptions";
 export * from "./OnboardingOptionsRequest";

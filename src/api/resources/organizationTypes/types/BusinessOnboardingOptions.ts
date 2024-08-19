@@ -4,19 +4,17 @@
 
 import * as Mercoa from "../../../index";
 
-export interface BusinessOnboardingOptions {
-    termsOfService: Mercoa.OnboardingOption;
-    email: Mercoa.OnboardingOption;
-    name: Mercoa.OnboardingOption;
+export interface BusinessOnboardingOptions extends Mercoa.CommonOnboardingOptions {
     type: Mercoa.OnboardingOption;
     doingBusinessAs: Mercoa.OnboardingOption;
     ein: Mercoa.OnboardingOption;
     mcc: Mercoa.OnboardingOption;
-    address: Mercoa.OnboardingOption;
-    phone: Mercoa.OnboardingOption;
     formationDate: Mercoa.OnboardingOption;
     website: Mercoa.OnboardingOption;
     description: Mercoa.OnboardingOption;
     representatives: Mercoa.OnboardingOption;
     logo: Mercoa.OnboardingOption;
+    averageTransactionSize: Mercoa.OnboardingOption;
+    averageMonthlyTransactionVolume: Mercoa.OnboardingOption;
+    maxTransactionSize: Mercoa.OnboardingOption;
 }

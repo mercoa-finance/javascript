@@ -3,6 +3,7 @@
  */
 
 export type InvoiceStatus =
+    | "UNASSIGNED"
     | "DRAFT"
     | "NEW"
     | "APPROVED"
@@ -15,6 +16,7 @@ export type InvoiceStatus =
     | "FAILED";
 
 export const InvoiceStatus = {
+    Unassigned: "UNASSIGNED",
     Draft: "DRAFT",
     New: "NEW",
     Approved: "APPROVED",

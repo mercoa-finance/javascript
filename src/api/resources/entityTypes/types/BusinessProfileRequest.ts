@@ -58,4 +58,10 @@ export interface BusinessProfileRequest {
     formationDate?: Date;
     /** Industry code for the business. Required to collect funds. */
     industryCodes?: Mercoa.IndustryCodes;
+    /** Average monthly transaction volume for the business. Required to collect funds. */
+    averageMonthlyTransactionVolume?: number;
+    /** Average transaction size for the business. Required to collect funds. */
+    averageTransactionSize?: number;
+    /** Maximum transaction size for the business. Required to collect funds. */
+    maxTransactionSize?: number;
 }

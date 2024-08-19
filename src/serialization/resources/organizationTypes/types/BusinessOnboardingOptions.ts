@@ -6,42 +6,41 @@ import * as serializers from "../../../index";
 import * as Mercoa from "../../../../api/index";
 import * as core from "../../../../core";
 import { OnboardingOption } from "./OnboardingOption";
+import { CommonOnboardingOptions } from "./CommonOnboardingOptions";
 
 export const BusinessOnboardingOptions: core.serialization.ObjectSchema<
     serializers.BusinessOnboardingOptions.Raw,
     Mercoa.BusinessOnboardingOptions
-> = core.serialization.object({
-    termsOfService: OnboardingOption,
-    email: OnboardingOption,
-    name: OnboardingOption,
-    type: OnboardingOption,
-    doingBusinessAs: OnboardingOption,
-    ein: OnboardingOption,
-    mcc: OnboardingOption,
-    address: OnboardingOption,
-    phone: OnboardingOption,
-    formationDate: OnboardingOption,
-    website: OnboardingOption,
-    description: OnboardingOption,
-    representatives: OnboardingOption,
-    logo: OnboardingOption,
-});
+> = core.serialization
+    .object({
+        type: OnboardingOption,
+        doingBusinessAs: OnboardingOption,
+        ein: OnboardingOption,
+        mcc: OnboardingOption,
+        formationDate: OnboardingOption,
+        website: OnboardingOption,
+        description: OnboardingOption,
+        representatives: OnboardingOption,
+        logo: OnboardingOption,
+        averageTransactionSize: OnboardingOption,
+        averageMonthlyTransactionVolume: OnboardingOption,
+        maxTransactionSize: OnboardingOption,
+    })
+    .extend(CommonOnboardingOptions);
 
 export declare namespace BusinessOnboardingOptions {
-    interface Raw {
-        termsOfService: OnboardingOption.Raw;
-        email: OnboardingOption.Raw;
-        name: OnboardingOption.Raw;
+    interface Raw extends CommonOnboardingOptions.Raw {
         type: OnboardingOption.Raw;
         doingBusinessAs: OnboardingOption.Raw;
         ein: OnboardingOption.Raw;
         mcc: OnboardingOption.Raw;
-        address: OnboardingOption.Raw;
-        phone: OnboardingOption.Raw;
         formationDate: OnboardingOption.Raw;
         website: OnboardingOption.Raw;
         description: OnboardingOption.Raw;
         representatives: OnboardingOption.Raw;
         logo: OnboardingOption.Raw;
+        averageTransactionSize: OnboardingOption.Raw;
+        averageMonthlyTransactionVolume: OnboardingOption.Raw;
+        maxTransactionSize: OnboardingOption.Raw;
     }
 }

@@ -8,6 +8,7 @@ import * as core from "../../../../core";
 
 export const InvoiceStatus: core.serialization.Schema<serializers.InvoiceStatus.Raw, Mercoa.InvoiceStatus> =
     core.serialization.enum_([
+        "UNASSIGNED",
         "DRAFT",
         "NEW",
         "APPROVED",
@@ -22,6 +23,7 @@ export const InvoiceStatus: core.serialization.Schema<serializers.InvoiceStatus.
 
 export declare namespace InvoiceStatus {
     type Raw =
+        | "UNASSIGNED"
         | "DRAFT"
         | "NEW"
         | "APPROVED"

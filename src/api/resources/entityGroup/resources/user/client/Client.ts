@@ -31,7 +31,7 @@ export class User {
     /**
      * Search entity group users
      *
-     * @param {Mercoa.EntityGroupId} entityGroupId - Entity Group ID
+     * @param {Mercoa.EntityGroupId} entityGroupId - Entity Group ID or Entity Group ForeignID
      * @param {Mercoa.entityGroup.user.EntityFindEntityRequest} request
      * @param {User.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -97,7 +97,7 @@ export class User {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.5.2",
+                "X-Fern-SDK-Version": "0.5.3",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -208,7 +208,7 @@ export class User {
     /**
      * Create entity user that will be added to all entities in the group.
      *
-     * @param {Mercoa.EntityGroupId} entityGroupId - Entity Group ID
+     * @param {Mercoa.EntityGroupId} entityGroupId - Entity Group ID or Entity Group ForeignID
      * @param {Mercoa.EntityGroupUserRequest} request
      * @param {User.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -249,7 +249,7 @@ export class User {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.5.2",
+                "X-Fern-SDK-Version": "0.5.3",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -360,7 +360,7 @@ export class User {
     /**
      * Get entity user from a group
      *
-     * @param {Mercoa.EntityGroupId} entityGroupId - Entity Group ID
+     * @param {Mercoa.EntityGroupId} entityGroupId - Entity Group ID or Entity Group ForeignID
      * @param {string} foreignId - ID used to identify user in your system
      * @param {User.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -392,7 +392,7 @@ export class User {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.5.2",
+                "X-Fern-SDK-Version": "0.5.3",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -502,7 +502,7 @@ export class User {
     /**
      * Update entity user for all entities in the group.
      *
-     * @param {Mercoa.EntityGroupId} entityGroupId - Entity Group ID
+     * @param {Mercoa.EntityGroupId} entityGroupId - Entity Group ID or Entity Group ForeignID
      * @param {string} foreignId - ID used to identify user in your system
      * @param {Mercoa.EntityGroupUserRequest} request
      * @param {User.RequestOptions} requestOptions - Request-specific configuration.
@@ -547,7 +547,7 @@ export class User {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.5.2",
+                "X-Fern-SDK-Version": "0.5.3",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -658,7 +658,7 @@ export class User {
     /**
      * Delete entity user from all entities in the group. This will also remove the user from all approval policies. If an approval policy will break as a result of this operation, this request will fail.
      *
-     * @param {Mercoa.EntityGroupId} entityGroupId - Entity Group ID
+     * @param {Mercoa.EntityGroupId} entityGroupId - Entity Group ID or Entity Group ForeignID
      * @param {string} foreignId - ID used to identify user in your system
      * @param {User.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -690,7 +690,7 @@ export class User {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.5.2",
+                "X-Fern-SDK-Version": "0.5.3",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },

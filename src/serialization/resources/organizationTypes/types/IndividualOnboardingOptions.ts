@@ -6,28 +6,21 @@ import * as serializers from "../../../index";
 import * as Mercoa from "../../../../api/index";
 import * as core from "../../../../core";
 import { OnboardingOption } from "./OnboardingOption";
+import { CommonOnboardingOptions } from "./CommonOnboardingOptions";
 
 export const IndividualOnboardingOptions: core.serialization.ObjectSchema<
     serializers.IndividualOnboardingOptions.Raw,
     Mercoa.IndividualOnboardingOptions
-> = core.serialization.object({
-    termsOfService: OnboardingOption,
-    email: OnboardingOption,
-    name: OnboardingOption,
-    dateOfBirth: OnboardingOption,
-    ssn: OnboardingOption,
-    address: OnboardingOption,
-    phone: OnboardingOption,
-});
+> = core.serialization
+    .object({
+        dateOfBirth: OnboardingOption,
+        ssn: OnboardingOption,
+    })
+    .extend(CommonOnboardingOptions);
 
 export declare namespace IndividualOnboardingOptions {
-    interface Raw {
-        termsOfService: OnboardingOption.Raw;
-        email: OnboardingOption.Raw;
-        name: OnboardingOption.Raw;
+    interface Raw extends CommonOnboardingOptions.Raw {
         dateOfBirth: OnboardingOption.Raw;
         ssn: OnboardingOption.Raw;
-        address: OnboardingOption.Raw;
-        phone: OnboardingOption.Raw;
     }
 }

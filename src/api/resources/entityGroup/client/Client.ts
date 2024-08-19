@@ -71,7 +71,7 @@ export class EntityGroup {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.5.2",
+                "X-Fern-SDK-Version": "0.5.3",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -195,6 +195,9 @@ export class EntityGroup {
      *
      * @example
      *     await client.entityGroup.create({
+     *         foreignId: "your-group-id",
+     *         name: "AcmeConglomerate",
+     *         emailToName: "acmegroup",
      *         entityIds: ["ent_8545a84e-a45f-41bf-bdf1-33b42a55812c", "ent_21661ac1-a2a8-4465-a6c0-64474ba8181d"]
      *     })
      */
@@ -212,7 +215,7 @@ export class EntityGroup {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.5.2",
+                "X-Fern-SDK-Version": "0.5.3",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -323,7 +326,7 @@ export class EntityGroup {
     /**
      * Get an entity group
      *
-     * @param {Mercoa.EntityGroupId} entityGroupId
+     * @param {Mercoa.EntityGroupId} entityGroupId - Entity Group ID or Entity Group ForeignID
      * @param {EntityGroup.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Mercoa.BadRequest}
@@ -351,7 +354,7 @@ export class EntityGroup {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.5.2",
+                "X-Fern-SDK-Version": "0.5.3",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -461,7 +464,7 @@ export class EntityGroup {
     /**
      * Update an entity group
      *
-     * @param {Mercoa.EntityGroupId} entityGroupId
+     * @param {Mercoa.EntityGroupId} entityGroupId - Entity Group ID or Entity Group ForeignID
      * @param {Mercoa.EntityGroupRequest} request
      * @param {EntityGroup.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -475,6 +478,9 @@ export class EntityGroup {
      *
      * @example
      *     await client.entityGroup.update("entg_a3582b70-fd04-4888-9185-a640ae9048be", {
+     *         foreignId: "your-group-id",
+     *         name: "AcmeConglomerate",
+     *         emailToName: "acmegroup",
      *         entityIds: ["ent_8545a84e-a45f-41bf-bdf1-33b42a55812c", "ent_21661ac1-a2a8-4465-a6c0-64474ba8181d"]
      *     })
      */
@@ -493,7 +499,7 @@ export class EntityGroup {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.5.2",
+                "X-Fern-SDK-Version": "0.5.3",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -604,7 +610,7 @@ export class EntityGroup {
     /**
      * Delete an entity group
      *
-     * @param {Mercoa.EntityGroupId} entityGroupId
+     * @param {Mercoa.EntityGroupId} entityGroupId - Entity Group ID or Entity Group ForeignID
      * @param {EntityGroup.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Mercoa.BadRequest}
@@ -632,7 +638,7 @@ export class EntityGroup {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.5.2",
+                "X-Fern-SDK-Version": "0.5.3",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },

@@ -13,12 +13,18 @@ export const EntityGroupResponse: core.serialization.ObjectSchema<
     Mercoa.EntityGroupResponse
 > = core.serialization.object({
     id: EntityGroupId,
+    foreignId: core.serialization.string().optional(),
+    name: core.serialization.string().optional(),
+    emailToName: core.serialization.string().optional(),
     entities: core.serialization.list(EntityResponse),
 });
 
 export declare namespace EntityGroupResponse {
     interface Raw {
         id: EntityGroupId.Raw;
+        foreignId?: string | null;
+        name?: string | null;
+        emailToName?: string | null;
         entities: EntityResponse.Raw[];
     }
 }
