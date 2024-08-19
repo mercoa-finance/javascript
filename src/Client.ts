@@ -18,6 +18,8 @@ export declare namespace MercoaClient {
     interface Options {
         environment?: core.Supplier<environments.MercoaEnvironment | string>;
         token: core.Supplier<core.BearerToken>;
+        /** Override the X-API-Version header */
+        xApiVersion?: "2024-08-01";
     }
 
     interface RequestOptions {
@@ -27,6 +29,8 @@ export declare namespace MercoaClient {
         maxRetries?: number;
         /** A hook to abort the request. */
         abortSignal?: AbortSignal;
+        /** Override the X-API-Version header */
+        xApiVersion?: "2024-08-01";
     }
 }
 
