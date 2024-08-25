@@ -30,7 +30,7 @@ export interface FindPayeeCounterpartiesRequest {
      */
     invoiceMetrics?: boolean;
     /**
-     * Filter by counterparty ids
+     * Filter by counterparty ids (Foreign ID is supported)
      */
     counterpartyId?: Mercoa.EntityId | Mercoa.EntityId[];
     /**

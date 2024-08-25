@@ -98,6 +98,8 @@ export interface EntityResponse {
     isNetworkPayor: boolean;
     /** True if this entity is available as a payee to any entity on your platform. Otherwise this entity will only be available as a payee to entities that have a direct relationship with this entity. */
     isNetworkPayee: boolean;
+    /** Simple key/value metadata associated with this entity. For more complex metadata, use the Metadata API. */
+    metadata?: Record<string, string>;
     createdAt: Date;
     updatedAt: Date;
 }

@@ -21,6 +21,7 @@ export const EntityRequest: core.serialization.ObjectSchema<serializers.EntityRe
         isNetworkPayor: core.serialization.boolean().optional(),
         isNetworkPayee: core.serialization.boolean().optional(),
         logo: core.serialization.string().optional(),
+        metadata: core.serialization.record(core.serialization.string(), core.serialization.string()).optional(),
     });
 
 export declare namespace EntityRequest {
@@ -36,5 +37,6 @@ export declare namespace EntityRequest {
         isNetworkPayor?: boolean | null;
         isNetworkPayee?: boolean | null;
         logo?: string | null;
+        metadata?: Record<string, string> | null;
     }
 }

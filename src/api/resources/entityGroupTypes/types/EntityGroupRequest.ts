@@ -14,7 +14,7 @@ import * as Mercoa from "../../../index";
  *     }
  */
 export interface EntityGroupRequest {
-    entityIds: Mercoa.EntityId[];
+    entityIds?: Mercoa.EntityId[];
     foreignId?: string;
     name?: string;
     emailToName?: string;

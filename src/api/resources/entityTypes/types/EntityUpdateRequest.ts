@@ -77,4 +77,6 @@ export interface EntityUpdateRequest {
     isNetworkPayee?: boolean;
     /** Base64 encoded PNG image data for the entity logo. Max size 100KB. */
     logo?: string;
+    /** Simple key/value metadata associated with this entity. For more complex metadata, use the Metadata API. */
+    metadata?: Record<string, string>;
 }

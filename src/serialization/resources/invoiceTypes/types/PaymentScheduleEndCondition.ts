@@ -9,7 +9,7 @@ import * as core from "../../../../core";
 export const PaymentScheduleEndCondition: core.serialization.Schema<
     serializers.PaymentScheduleEndCondition.Raw,
     Mercoa.PaymentScheduleEndCondition
-> = core.serialization.undiscriminatedUnion([core.serialization.number(), core.serialization.string()]);
+> = core.serialization.undiscriminatedUnion([core.serialization.number(), core.serialization.date()]);
 
 export declare namespace PaymentScheduleEndCondition {
     type Raw = number | string;

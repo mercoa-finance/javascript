@@ -28,6 +28,7 @@ export const EntityResponse: core.serialization.ObjectSchema<serializers.EntityR
         isPayee: core.serialization.boolean(),
         isNetworkPayor: core.serialization.boolean(),
         isNetworkPayee: core.serialization.boolean(),
+        metadata: core.serialization.record(core.serialization.string(), core.serialization.string()).optional(),
         createdAt: core.serialization.date(),
         updatedAt: core.serialization.date(),
     });
@@ -50,6 +51,7 @@ export declare namespace EntityResponse {
         isPayee: boolean;
         isNetworkPayor: boolean;
         isNetworkPayee: boolean;
+        metadata?: Record<string, string> | null;
         createdAt: string;
         updatedAt: string;
     }

@@ -133,7 +133,7 @@ await client.entityGroup.create({
 </dl>
 </details>
 
-<details><summary><code>client.entityGroup.<a href="/src/api/resources/entityGroup/client/Client.ts">get</a>(entityGroupId) -> Mercoa.EntityGroupResponse</code></summary>
+<details><summary><code>client.entityGroup.<a href="/src/api/resources/entityGroup/client/Client.ts">get</a>(entityGroupId, { ...params }) -> Mercoa.EntityGroupResponse</code></summary>
 <dl>
 <dd>
 
@@ -178,6 +178,14 @@ await client.entityGroup.get("entg_a3582b70-fd04-4888-9185-a640ae9048be");
 <dd>
 
 **entityGroupId:** `Mercoa.EntityGroupId` — Entity Group ID or Entity Group ForeignID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `Mercoa.entityGroup.EntityGroupGetRequest`
 
 </dd>
 </dl>
@@ -317,6 +325,81 @@ await client.entityGroup.delete("string");
 <dd>
 
 **entityGroupId:** `Mercoa.EntityGroupId` — Entity Group ID or Entity Group ForeignID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `EntityGroup.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.entityGroup.<a href="/src/api/resources/entityGroup/client/Client.ts">getToken</a>(entityGroupId, { ...params }) -> string</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Generate a JWT token for an entity group with the given options. This token can be used to authenticate to any entity in the entity group in the Mercoa API and iFrame.
+
+<Warning>We recommend using [this endpoint](/api-reference/entity-group/user/get-token). This will enable features such as approvals and comments.</Warning>
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.entityGroup.getToken("entg_a0f6ea94-0761-4a5e-a416-3c453cb7eced", {
+    expiresIn: "1h",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**entityGroupId:** `Mercoa.EntityGroupId` — Entity Group ID or Entity Group ForeignID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `Mercoa.TokenGenerationOptions`
 
 </dd>
 </dl>
@@ -730,6 +813,87 @@ await client.entityGroup.user.delete("string", "string");
 </dl>
 </details>
 
+<details><summary><code>client.entityGroup.user.<a href="/src/api/resources/entityGroup/resources/user/client/Client.ts">getToken</a>(entityGroupId, foreignId, { ...params }) -> string</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Generate a JWT token for an entity group with the given options. This token can be used to authenticate to any entity in the entity group as the user in the Mercoa API and iFrame.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.entityGroup.user.getToken("entg_a0f6ea94-0761-4a5e-a416-3c453cb7eced", "MY-DB-ID-12345", {
+    expiresIn: "1h",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**entityGroupId:** `Mercoa.EntityGroupId` — Entity Group ID or Entity Group ForeignID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**foreignId:** `string` — ID used to identify user in your system
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `Mercoa.TokenGenerationOptions`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `User.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
 ## Entity
 
 <details><summary><code>client.entity.<a href="/src/api/resources/entity/client/Client.ts">find</a>({ ...params }) -> Mercoa.FindEntityResponse</code></summary>
@@ -878,7 +1042,7 @@ await client.entity.create({
 </dl>
 </details>
 
-<details><summary><code>client.entity.<a href="/src/api/resources/entity/client/Client.ts">get</a>(entityId) -> Mercoa.EntityResponse</code></summary>
+<details><summary><code>client.entity.<a href="/src/api/resources/entity/client/Client.ts">get</a>(entityId, { ...params }) -> Mercoa.EntityResponse</code></summary>
 <dl>
 <dd>
 
@@ -908,6 +1072,14 @@ await client.entity.get("ent_a0f6ea94-0761-4a5e-a416-3c453cb7eced");
 <dd>
 
 **entityId:** `Mercoa.EntityId` — Entity ID or Entity ForeignID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `Mercoa.entity.EntityGetRequest`
 
 </dd>
 </dl>
