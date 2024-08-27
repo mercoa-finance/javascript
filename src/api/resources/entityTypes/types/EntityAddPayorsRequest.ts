@@ -19,7 +19,7 @@ import * as Mercoa from "../../../index";
  *     }
  */
 export interface EntityAddPayorsRequest {
-    /** List of payor entity IDs to associate with the entity */
+    /** List of payor entity IDs or foreign IDs to associate with the entity */
     payors: Mercoa.EntityId[];
     /** List of customizations to apply to the payors. If the payor is not currently a counterparty of the entity, the counterparty will be created with the provided customizations. */
     customizations?: Mercoa.CounterpartyCustomizationRequest[];

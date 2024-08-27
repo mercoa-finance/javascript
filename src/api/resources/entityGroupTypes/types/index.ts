@@ -1,4 +1,5 @@
 export * from "./EntityGroupId";
+export * from "./EntityGroupEntityUpdateRequest";
 export * from "./EntityGroupRequest";
 export * from "./EntityGroupResponse";
 export * from "./EntityGroupFindResponse";

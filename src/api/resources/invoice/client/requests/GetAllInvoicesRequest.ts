@@ -12,7 +12,7 @@ import * as Mercoa from "../../../../index";
  */
 export interface GetAllInvoicesRequest {
     /**
-     * Filter invoices by the ID of the entity that created the invoice.
+     * Filter invoices by the ID or foreign ID of the entity that created the invoice.
      */
     entityId?: Mercoa.EntityId | Mercoa.EntityId[];
     /**
@@ -60,11 +60,11 @@ export interface GetAllInvoicesRequest {
      */
     lineItemGlAccountId?: string | string[];
     /**
-     * Filter invoices by payer ID.
+     * Filter invoices by payer ID or payer foreign ID.
      */
     payerId?: Mercoa.EntityId | Mercoa.EntityId[];
     /**
-     * Filter invoices by vendor ID.
+     * Filter invoices by vendor ID or vendor foreign ID.
      */
     vendorId?: Mercoa.EntityId | Mercoa.EntityId[];
     /**

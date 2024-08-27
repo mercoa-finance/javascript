@@ -11,6 +11,6 @@ import * as Mercoa from "../../../index";
  *     }
  */
 export interface EntityHidePayorsRequest {
-    /** List of payor entity IDs to hide */
+    /** List of payor entity IDs or foreign IDs to hide */
     payors: Mercoa.EntityId[];
 }

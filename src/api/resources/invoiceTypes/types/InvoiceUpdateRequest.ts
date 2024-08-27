@@ -62,6 +62,6 @@ import * as Mercoa from "../../../index";
  */
 export interface InvoiceUpdateRequest extends Mercoa.InvoiceRequestBase {
     lineItems?: Mercoa.InvoiceLineItemUpdateRequest[];
-    /** ID of entity who created this invoice. If creating a payable invoice (AP), this must be the same as the payerId. If creating a receivable invoice (AR), this must be the same as the vendorId. */
+    /** ID or foreign ID of entity who created this invoice. If creating a payable invoice (AP), this must be the same as the payerId. If creating a receivable invoice (AR), this must be the same as the vendorId. */
     creatorEntityId?: Mercoa.EntityId;
 }

@@ -418,6 +418,152 @@ await client.entityGroup.getToken("entg_a0f6ea94-0761-4a5e-a416-3c453cb7eced", {
 </dl>
 </details>
 
+<details><summary><code>client.entityGroup.<a href="/src/api/resources/entityGroup/client/Client.ts">addEntities</a>(entityGroupId, { ...params }) -> Mercoa.EntityGroupResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Add entities to an entity group
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.entityGroup.addEntities("entg_a0f6ea94-0761-4a5e-a416-3c453cb7eced", {
+    entityIds: ["ent_8545a84e-a45f-41bf-bdf1-33b42a55812c", "ent_21661ac1-a2a8-4465-a6c0-64474ba8181d"],
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**entityGroupId:** `Mercoa.EntityGroupId` — Entity Group ID or Entity Group ForeignID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `Mercoa.EntityGroupEntityUpdateRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `EntityGroup.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.entityGroup.<a href="/src/api/resources/entityGroup/client/Client.ts">removeEntities</a>(entityGroupId, { ...params }) -> Mercoa.EntityGroupResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Remove entities from an entity group
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.entityGroup.removeEntities("entg_a0f6ea94-0761-4a5e-a416-3c453cb7eced", {
+    entityIds: ["ent_8545a84e-a45f-41bf-bdf1-33b42a55812c", "ent_21661ac1-a2a8-4465-a6c0-64474ba8181d"],
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**entityGroupId:** `Mercoa.EntityGroupId` — Entity Group ID or Entity Group ForeignID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `Mercoa.EntityGroupEntityUpdateRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `EntityGroup.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
 ## EntityGroup User
 
 <details><summary><code>client.entityGroup.user.<a href="/src/api/resources/entityGroup/resources/user/client/Client.ts">find</a>(entityGroupId, { ...params }) -> Mercoa.FindEntityGroupUserResponse</code></summary>
@@ -6722,6 +6868,107 @@ await client.entity.representative.get(
 <dd>
 
 **representativeId:** `Mercoa.RepresentativeId`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Representative.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.entity.representative.<a href="/src/api/resources/entity/resources/representative/client/Client.ts">update</a>(entityId, representativeId, { ...params }) -> Mercoa.RepresentativeResponse</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.entity.representative.update(
+    "ent_8545a84e-a45f-41bf-bdf1-33b42a55812c",
+    "rep_7df2974a-4069-454c-912f-7e58ebe030fb",
+    {
+        name: {
+            firstName: "John",
+            middleName: "Quincy",
+            lastName: "Adams",
+            suffix: "Jr.",
+        },
+        phone: {
+            countryCode: "1",
+            number: "4155551234",
+        },
+        email: "john.doe@acme.com",
+        address: {
+            addressLine1: "123 Main St",
+            addressLine2: "Unit 1",
+            city: "San Francisco",
+            stateOrProvince: "CA",
+            postalCode: "94105",
+            country: "US",
+        },
+        birthDate: {
+            day: "1",
+            month: "1",
+            year: "1980",
+        },
+        governmentId: {
+            ssn: "123-45-6789",
+        },
+        responsibilities: {
+            isOwner: true,
+            ownershipPercentage: 40,
+            isController: true,
+        },
+    }
+);
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**entityId:** `Mercoa.EntityId` — Entity ID or Entity ForeignID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**representativeId:** `Mercoa.RepresentativeId`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `Mercoa.RepresentativeRequest`
 
 </dd>
 </dl>

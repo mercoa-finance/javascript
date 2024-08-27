@@ -5,21 +5,21 @@
 import * as serializers from "../../../index";
 import * as Mercoa from "../../../../api/index";
 import * as core from "../../../../core";
-import { EntityId } from "../../entityTypes/types/EntityId";
+import { EntityGroupEntityUpdateRequest } from "./EntityGroupEntityUpdateRequest";
 
 export const EntityGroupRequest: core.serialization.ObjectSchema<
     serializers.EntityGroupRequest.Raw,
     Mercoa.EntityGroupRequest
-> = core.serialization.object({
-    entityIds: core.serialization.list(EntityId).optional(),
-    foreignId: core.serialization.string().optional(),
-    name: core.serialization.string().optional(),
-    emailToName: core.serialization.string().optional(),
-});
+> = core.serialization
+    .object({
+        foreignId: core.serialization.string().optional(),
+        name: core.serialization.string().optional(),
+        emailToName: core.serialization.string().optional(),
+    })
+    .extend(EntityGroupEntityUpdateRequest);
 
 export declare namespace EntityGroupRequest {
-    interface Raw {
-        entityIds?: EntityId.Raw[] | null;
+    interface Raw extends EntityGroupEntityUpdateRequest.Raw {
         foreignId?: string | null;
         name?: string | null;
         emailToName?: string | null;

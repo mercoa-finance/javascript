@@ -23,9 +23,11 @@ export interface InvoiceRequestBase {
     noteToSelf?: string;
     serviceStartDate?: Date;
     serviceEndDate?: Date;
+    /** ID or foreign ID of the payer of this invoice. */
     payerId?: Mercoa.EntityId;
     /** ID of payment source for this invoice. If not provided, will attempt to use the default payment source for the payer when creating an invoice if a default payment source exists for the payer. */
     paymentSourceId?: Mercoa.PaymentMethodId;
+    /** ID or foreign ID of the vendor of this invoice. */
     vendorId?: Mercoa.EntityId;
     /** ID of payment destination for this invoice. If not provided, will attempt to use the default payment destination for the vendor when creating an invoice if a default payment destination exists for the vendor. */
     paymentDestinationId?: Mercoa.PaymentMethodId;

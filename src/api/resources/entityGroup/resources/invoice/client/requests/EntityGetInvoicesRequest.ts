@@ -59,11 +59,11 @@ export interface EntityGetInvoicesRequest {
      */
     search?: string;
     /**
-     * Filter invoices by payer ID.
+     * Filter invoices by payer ID or payer foreign ID.
      */
     payerId?: Mercoa.EntityId | Mercoa.EntityId[];
     /**
-     * Filter invoices by vendor ID.
+     * Filter invoices by vendor ID or vendor foreign ID.
      */
     vendorId?: Mercoa.EntityId | Mercoa.EntityId[];
     /**
