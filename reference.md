@@ -2584,6 +2584,7 @@ await client.invoice.create({
             name: "Product A",
             quantity: 1,
             unitPrice: 100,
+            category: Mercoa.InvoiceLineItemCategory.Expense,
             serviceStartDate: new Date("2021-01-01T00:00:00.000Z"),
             serviceEndDate: new Date("2021-01-31T00:00:00.000Z"),
             metadata: {
@@ -2716,6 +2717,7 @@ await client.invoice.update("inv_8545a84e-a45f-41bf-bdf1-33b42a55812c", {
             name: "Product A",
             quantity: 1,
             unitPrice: 100,
+            category: Mercoa.InvoiceLineItemCategory.Expense,
             serviceStartDate: new Date("2021-01-01T00:00:00.000Z"),
             serviceEndDate: new Date("2021-01-31T00:00:00.000Z"),
             metadata: {
@@ -6968,7 +6970,7 @@ await client.entity.representative.update(
 <dl>
 <dd>
 
-**request:** `Mercoa.RepresentativeRequest`
+**request:** `Mercoa.RepresentativeUpdateRequest`
 
 </dd>
 </dl>

@@ -39,6 +39,7 @@ export * from "./CounterpartyResponse";
 export * from "./CounterpartyInvoiceMetricsResponse";
 export * from "./CounterpartyInvoiceMetricsStatusResponse";
 export * from "./RepresentativeRequest";
+export * from "./RepresentativeUpdateRequest";
 export * from "./RepresentativeResponse";
 export * from "./Responsibilities";
 export * from "./EntityUserRequest";

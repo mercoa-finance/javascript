@@ -63,8 +63,8 @@ export class Representative {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.5.6",
-                "User-Agent": "@mercoa/javascript/0.5.6",
+                "X-Fern-SDK-Version": "0.5.7",
+                "User-Agent": "@mercoa/javascript/0.5.7",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
@@ -236,8 +236,8 @@ export class Representative {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.5.6",
-                "User-Agent": "@mercoa/javascript/0.5.6",
+                "X-Fern-SDK-Version": "0.5.7",
+                "User-Agent": "@mercoa/javascript/0.5.7",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
@@ -379,8 +379,8 @@ export class Representative {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.5.6",
-                "User-Agent": "@mercoa/javascript/0.5.6",
+                "X-Fern-SDK-Version": "0.5.7",
+                "User-Agent": "@mercoa/javascript/0.5.7",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
@@ -491,7 +491,7 @@ export class Representative {
     /**
      * @param {Mercoa.EntityId} entityId - Entity ID or Entity ForeignID
      * @param {Mercoa.RepresentativeId} representativeId
-     * @param {Mercoa.RepresentativeRequest} request
+     * @param {Mercoa.RepresentativeUpdateRequest} request
      * @param {Representative.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Mercoa.BadRequest}
@@ -541,7 +541,7 @@ export class Representative {
     public async update(
         entityId: Mercoa.EntityId,
         representativeId: Mercoa.RepresentativeId,
-        request: Mercoa.RepresentativeRequest,
+        request: Mercoa.RepresentativeUpdateRequest,
         requestOptions?: Representative.RequestOptions
     ): Promise<Mercoa.RepresentativeResponse> {
         const _response = await core.fetcher({
@@ -556,15 +556,15 @@ export class Representative {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.5.6",
-                "User-Agent": "@mercoa/javascript/0.5.6",
+                "X-Fern-SDK-Version": "0.5.7",
+                "User-Agent": "@mercoa/javascript/0.5.7",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
             requestType: "json",
-            body: serializers.RepresentativeRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
+            body: serializers.RepresentativeUpdateRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -699,8 +699,8 @@ export class Representative {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.5.6",
-                "User-Agent": "@mercoa/javascript/0.5.6",
+                "X-Fern-SDK-Version": "0.5.7",
+                "User-Agent": "@mercoa/javascript/0.5.7",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,

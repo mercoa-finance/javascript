@@ -11,6 +11,8 @@ export interface InvoiceLineItemRequestBase {
     quantity?: number;
     /** Unit price of the line item in major units. If the entered amount has more decimal places than the currency supports, trailing decimals will be truncated. */
     unitPrice?: number;
+    /** Category of the line item. Defaults to EXPENSE. */
+    category?: Mercoa.InvoiceLineItemCategory;
     serviceStartDate?: Date;
     serviceEndDate?: Date;
     metadata?: Record<string, string>;

@@ -7,6 +7,7 @@ import * as Mercoa from "../../../../api/index";
 import * as core from "../../../../core";
 import { InvoiceLineItemId } from "./InvoiceLineItemId";
 import { CurrencyCode } from "../../paymentMethodTypes/types/CurrencyCode";
+import { InvoiceLineItemCategory } from "./InvoiceLineItemCategory";
 
 export const InvoiceLineItemResponse: core.serialization.ObjectSchema<
     serializers.InvoiceLineItemResponse.Raw,
@@ -19,6 +20,7 @@ export const InvoiceLineItemResponse: core.serialization.ObjectSchema<
     name: core.serialization.string().optional(),
     quantity: core.serialization.number().optional(),
     unitPrice: core.serialization.number().optional(),
+    category: InvoiceLineItemCategory,
     serviceStartDate: core.serialization.date().optional(),
     serviceEndDate: core.serialization.date().optional(),
     metadata: core.serialization.record(core.serialization.string(), core.serialization.string()).optional(),
@@ -36,6 +38,7 @@ export declare namespace InvoiceLineItemResponse {
         name?: string | null;
         quantity?: number | null;
         unitPrice?: number | null;
+        category: InvoiceLineItemCategory.Raw;
         serviceStartDate?: string | null;
         serviceEndDate?: string | null;
         metadata?: Record<string, string> | null;

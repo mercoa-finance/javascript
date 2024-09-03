@@ -29,6 +29,7 @@ import * as Mercoa from "../../../index";
  *                 name: "Product A",
  *                 quantity: 1,
  *                 unitPrice: 100,
+ *                 category: Mercoa.InvoiceLineItemCategory.Expense,
  *                 serviceStartDate: new Date("2021-01-01T00:00:00.000Z"),
  *                 serviceEndDate: new Date("2021-01-31T00:00:00.000Z"),
  *                 metadata: {

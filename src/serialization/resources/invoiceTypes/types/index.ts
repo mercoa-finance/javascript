@@ -16,6 +16,7 @@ export * from "./AddApproverRequest";
 export * from "./ApprovalSlotAssignment";
 export * from "./ApprovalSlot";
 export * from "./ApproverAction";
+export * from "./InvoiceLineItemCategory";
 export * from "./InvoiceLineItemResponse";
 export * from "./InvoiceLineItemRequestBase";
 export * from "./InvoiceLineItemCreationRequest";
