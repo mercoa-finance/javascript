@@ -17,8 +17,8 @@ export const RepresentativeRequest: core.serialization.ObjectSchema<
     Mercoa.RepresentativeRequest
 > = core.serialization.object({
     name: FullName,
-    phone: PhoneNumber,
-    email: core.serialization.string(),
+    phone: PhoneNumber.optional(),
+    email: core.serialization.string().optional(),
     address: Address,
     birthDate: BirthDate,
     governmentId: core.serialization.property("governmentID", IndividualGovernmentId),
@@ -28,8 +28,8 @@ export const RepresentativeRequest: core.serialization.ObjectSchema<
 export declare namespace RepresentativeRequest {
     interface Raw {
         name: FullName.Raw;
-        phone: PhoneNumber.Raw;
-        email: string;
+        phone?: PhoneNumber.Raw | null;
+        email?: string | null;
         address: Address.Raw;
         birthDate: BirthDate.Raw;
         governmentID: IndividualGovernmentId.Raw;

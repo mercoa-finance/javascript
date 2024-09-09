@@ -11,6 +11,9 @@ import * as Mercoa from "../../../index";
  *         foreignId: "your-group-id",
  *         name: "AcmeConglomerate",
  *         emailToName: "acmegroup",
+ *         metadata: {
+ *             "key1": "value1"
+ *         },
  *         entities: [{
  *                 id: "ent_8545a84e-a45f-41bf-bdf1-33b42a55812c",
  *                 foreignId: "MY-DB-ID-12345",
@@ -80,4 +83,5 @@ export interface EntityGroupResponse {
     name?: string;
     emailToName?: string;
     entities: Mercoa.EntityResponse[];
+    metadata: Record<string, string>;
 }

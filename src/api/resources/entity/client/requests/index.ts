@@ -3,3 +3,4 @@ export { type EntityGetRequest } from "./EntityGetRequest";
 export { type PlaidLinkTokenRequest } from "./PlaidLinkTokenRequest";
 export { type GenerateOnboardingLink } from "./GenerateOnboardingLink";
 export { type SendOnboardingLink } from "./SendOnboardingLink";
+export { type EntityEntityGetEventsRequest } from "./EntityEntityGetEventsRequest";

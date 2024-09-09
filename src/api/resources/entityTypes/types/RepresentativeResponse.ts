@@ -70,8 +70,8 @@ import * as Mercoa from "../../../index";
 export interface RepresentativeResponse {
     id: Mercoa.RepresentativeId;
     name: Mercoa.FullName;
-    phone: Mercoa.PhoneNumber;
-    email: string;
+    phone?: Mercoa.PhoneNumber;
+    email?: string;
     address: Mercoa.Address;
     birthDateProvided: boolean;
     governmentIdProvided: boolean;

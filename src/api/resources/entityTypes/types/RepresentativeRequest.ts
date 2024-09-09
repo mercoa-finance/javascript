@@ -43,8 +43,10 @@ import * as Mercoa from "../../../index";
  */
 export interface RepresentativeRequest {
     name: Mercoa.FullName;
-    phone: Mercoa.PhoneNumber;
-    email: string;
+    /** Either phone or email is required. */
+    phone?: Mercoa.PhoneNumber;
+    /** Either phone or email is required. */
+    email?: string;
     address: Mercoa.Address;
     birthDate: Mercoa.BirthDate;
     governmentId: Mercoa.IndividualGovernmentId;

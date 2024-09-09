@@ -17,6 +17,7 @@ export const EntityGroupResponse: core.serialization.ObjectSchema<
     name: core.serialization.string().optional(),
     emailToName: core.serialization.string().optional(),
     entities: core.serialization.list(EntityResponse),
+    metadata: core.serialization.record(core.serialization.string(), core.serialization.string()),
 });
 
 export declare namespace EntityGroupResponse {
@@ -26,5 +27,6 @@ export declare namespace EntityGroupResponse {
         name?: string | null;
         emailToName?: string | null;
         entities: EntityResponse.Raw[];
+        metadata: Record<string, string>;
     }
 }

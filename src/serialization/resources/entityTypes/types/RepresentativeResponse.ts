@@ -17,8 +17,8 @@ export const RepresentativeResponse: core.serialization.ObjectSchema<
 > = core.serialization.object({
     id: RepresentativeId,
     name: FullName,
-    phone: PhoneNumber,
-    email: core.serialization.string(),
+    phone: PhoneNumber.optional(),
+    email: core.serialization.string().optional(),
     address: Address,
     birthDateProvided: core.serialization.boolean(),
     governmentIdProvided: core.serialization.property("governmentIDProvided", core.serialization.boolean()),
@@ -32,8 +32,8 @@ export declare namespace RepresentativeResponse {
     interface Raw {
         id: RepresentativeId.Raw;
         name: FullName.Raw;
-        phone: PhoneNumber.Raw;
-        email: string;
+        phone?: PhoneNumber.Raw | null;
+        email?: string | null;
         address: Address.Raw;
         birthDateProvided: boolean;
         governmentIDProvided: boolean;

@@ -17,4 +17,6 @@ export interface EntityGroupRequest extends Mercoa.EntityGroupEntityUpdateReques
     foreignId?: string;
     name?: string;
     emailToName?: string;
+    /** Metadata key/value pairs to associate with this group. Will overwrite existing metadata. */
+    metadata?: Record<string, string>;
 }

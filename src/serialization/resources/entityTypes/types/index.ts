@@ -70,4 +70,6 @@ export * from "./MetadataCustomizationRequest";
 export * from "./PaymentMethodCustomizationRequest";
 export * from "./EntityCustomizationRequest";
 export * from "./EntityCustomizationResponse";
+export * from "./EntityEvent";
+export * from "./EntityEventsResponse";
 export * from "./IndustryCodes";

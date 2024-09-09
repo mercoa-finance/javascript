@@ -15,6 +15,7 @@ export const EntityGroupRequest: core.serialization.ObjectSchema<
         foreignId: core.serialization.string().optional(),
         name: core.serialization.string().optional(),
         emailToName: core.serialization.string().optional(),
+        metadata: core.serialization.record(core.serialization.string(), core.serialization.string()).optional(),
     })
     .extend(EntityGroupEntityUpdateRequest);
 
@@ -23,5 +24,6 @@ export declare namespace EntityGroupRequest {
         foreignId?: string | null;
         name?: string | null;
         emailToName?: string | null;
+        metadata?: Record<string, string> | null;
     }
 }

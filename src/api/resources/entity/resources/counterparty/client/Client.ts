@@ -59,7 +59,16 @@ export class Counterparty {
         request: Mercoa.entity.FindPayeeCounterpartiesRequest = {},
         requestOptions?: Counterparty.RequestOptions
     ): Promise<Mercoa.FindCounterpartiesResponse> {
-        const { name, networkType, paymentMethods, invoiceMetrics, counterpartyId, limit, startingAfter } = request;
+        const {
+            name,
+            networkType,
+            paymentMethods,
+            invoiceMetrics,
+            counterpartyId,
+            returnMetadata,
+            limit,
+            startingAfter,
+        } = request;
         const _queryParams: Record<string, string | string[] | object | object[]> = {};
         if (name != null) {
             _queryParams["name"] = name;
@@ -89,6 +98,10 @@ export class Counterparty {
             }
         }
 
+        if (returnMetadata != null) {
+            _queryParams["returnMetadata"] = returnMetadata.toString();
+        }
+
         if (limit != null) {
             _queryParams["limit"] = limit.toString();
         }
@@ -107,8 +120,8 @@ export class Counterparty {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.5.7",
-                "User-Agent": "@mercoa/javascript/0.5.7",
+                "X-Fern-SDK-Version": "0.5.8-rc1",
+                "User-Agent": "@mercoa/javascript/0.5.8-rc1",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
@@ -244,7 +257,16 @@ export class Counterparty {
         request: Mercoa.entity.FindPayorCounterpartiesRequest = {},
         requestOptions?: Counterparty.RequestOptions
     ): Promise<Mercoa.FindCounterpartiesResponse> {
-        const { name, networkType, paymentMethods, invoiceMetrics, counterpartyId, limit, startingAfter } = request;
+        const {
+            name,
+            networkType,
+            paymentMethods,
+            invoiceMetrics,
+            counterpartyId,
+            returnMetadata,
+            limit,
+            startingAfter,
+        } = request;
         const _queryParams: Record<string, string | string[] | object | object[]> = {};
         if (name != null) {
             _queryParams["name"] = name;
@@ -274,6 +296,10 @@ export class Counterparty {
             }
         }
 
+        if (returnMetadata != null) {
+            _queryParams["returnMetadata"] = returnMetadata.toString();
+        }
+
         if (limit != null) {
             _queryParams["limit"] = limit.toString();
         }
@@ -292,8 +318,8 @@ export class Counterparty {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.5.7",
-                "User-Agent": "@mercoa/javascript/0.5.7",
+                "X-Fern-SDK-Version": "0.5.8-rc1",
+                "User-Agent": "@mercoa/javascript/0.5.8-rc1",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
@@ -445,8 +471,8 @@ export class Counterparty {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.5.7",
-                "User-Agent": "@mercoa/javascript/0.5.7",
+                "X-Fern-SDK-Version": "0.5.8-rc1",
+                "User-Agent": "@mercoa/javascript/0.5.8-rc1",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
@@ -585,8 +611,8 @@ export class Counterparty {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.5.7",
-                "User-Agent": "@mercoa/javascript/0.5.7",
+                "X-Fern-SDK-Version": "0.5.8-rc1",
+                "User-Agent": "@mercoa/javascript/0.5.8-rc1",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
@@ -733,8 +759,8 @@ export class Counterparty {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.5.7",
-                "User-Agent": "@mercoa/javascript/0.5.7",
+                "X-Fern-SDK-Version": "0.5.8-rc1",
+                "User-Agent": "@mercoa/javascript/0.5.8-rc1",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
@@ -873,8 +899,8 @@ export class Counterparty {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.5.7",
-                "User-Agent": "@mercoa/javascript/0.5.7",
+                "X-Fern-SDK-Version": "0.5.8-rc1",
+                "User-Agent": "@mercoa/javascript/0.5.8-rc1",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,

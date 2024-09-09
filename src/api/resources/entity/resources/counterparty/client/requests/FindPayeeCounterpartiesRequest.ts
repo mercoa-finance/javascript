@@ -34,6 +34,10 @@ export interface FindPayeeCounterpartiesRequest {
      */
     counterpartyId?: Mercoa.EntityId | Mercoa.EntityId[];
     /**
+     * If true, will return simple key/value metadata for the counterparties.
+     */
+    returnMetadata?: boolean;
+    /**
      * Number of counterparties to return. Limit can range between 1 and 100, and the default is 10.
      */
     limit?: number;
