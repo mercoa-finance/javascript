@@ -33,6 +33,8 @@ import * as Mercoa from "../../../index";
  *     }
  */
 export interface InvoiceMetricsPerDateResponse {
+    /** If groupBy is provided, this will be the group by value. */
+    group?: Record<string, string>[];
     date: Date;
     totalAmount: number;
     totalCount: number;

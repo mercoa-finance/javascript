@@ -126,7 +126,7 @@ export class Invoice {
             if (Array.isArray(metadata)) {
                 _queryParams["metadata"] = await Promise.all(
                     metadata.map(async (item) =>
-                        serializers.InvoiceMetadataFilter.jsonOrThrow(item, {
+                        serializers.MetadataFilter.jsonOrThrow(item, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
@@ -135,7 +135,7 @@ export class Invoice {
                     )
                 );
             } else {
-                _queryParams["metadata"] = serializers.InvoiceMetadataFilter.jsonOrThrow(metadata, {
+                _queryParams["metadata"] = serializers.MetadataFilter.jsonOrThrow(metadata, {
                     unrecognizedObjectKeys: "passthrough",
                     allowUnrecognizedUnionMembers: true,
                     allowUnrecognizedEnumValues: true,
@@ -148,7 +148,7 @@ export class Invoice {
             if (Array.isArray(lineItemMetadata)) {
                 _queryParams["lineItemMetadata"] = await Promise.all(
                     lineItemMetadata.map(async (item) =>
-                        serializers.InvoiceMetadataFilter.jsonOrThrow(item, {
+                        serializers.MetadataFilter.jsonOrThrow(item, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
@@ -157,7 +157,7 @@ export class Invoice {
                     )
                 );
             } else {
-                _queryParams["lineItemMetadata"] = serializers.InvoiceMetadataFilter.jsonOrThrow(lineItemMetadata, {
+                _queryParams["lineItemMetadata"] = serializers.MetadataFilter.jsonOrThrow(lineItemMetadata, {
                     unrecognizedObjectKeys: "passthrough",
                     allowUnrecognizedUnionMembers: true,
                     allowUnrecognizedEnumValues: true,
@@ -236,8 +236,8 @@ export class Invoice {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.5.8-rc1",
-                "User-Agent": "@mercoa/javascript/0.5.8-rc1",
+                "X-Fern-SDK-Version": "0.5.8",
+                "User-Agent": "@mercoa/javascript/0.5.8",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
@@ -444,8 +444,8 @@ export class Invoice {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.5.8-rc1",
-                "User-Agent": "@mercoa/javascript/0.5.8-rc1",
+                "X-Fern-SDK-Version": "0.5.8",
+                "User-Agent": "@mercoa/javascript/0.5.8",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
@@ -583,8 +583,8 @@ export class Invoice {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.5.8-rc1",
-                "User-Agent": "@mercoa/javascript/0.5.8-rc1",
+                "X-Fern-SDK-Version": "0.5.8",
+                "User-Agent": "@mercoa/javascript/0.5.8",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
@@ -776,8 +776,8 @@ export class Invoice {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.5.8-rc1",
-                "User-Agent": "@mercoa/javascript/0.5.8-rc1",
+                "X-Fern-SDK-Version": "0.5.8",
+                "User-Agent": "@mercoa/javascript/0.5.8",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
@@ -914,8 +914,8 @@ export class Invoice {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.5.8-rc1",
-                "User-Agent": "@mercoa/javascript/0.5.8-rc1",
+                "X-Fern-SDK-Version": "0.5.8",
+                "User-Agent": "@mercoa/javascript/0.5.8",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
@@ -1061,8 +1061,8 @@ export class Invoice {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.5.8-rc1",
-                "User-Agent": "@mercoa/javascript/0.5.8-rc1",
+                "X-Fern-SDK-Version": "0.5.8",
+                "User-Agent": "@mercoa/javascript/0.5.8",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,

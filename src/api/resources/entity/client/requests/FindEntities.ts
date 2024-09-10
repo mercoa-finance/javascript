@@ -41,7 +41,11 @@ export interface FindEntities {
      */
     name?: string;
     /**
-     * If true, will return simple key/value metadata for the entity. For more complex metadata, use the Metadata API.
+     * Filter entities by simple key/value metadata. Each filter will be applied as an AND condition. Duplicate keys will be ignored.
+     */
+    metadata?: Mercoa.MetadataFilter;
+    /**
+     * If true, will return simple key/value metadata for the entities. For more complex metadata, use the Metadata API.
      */
     returnMetadata?: boolean;
     /**

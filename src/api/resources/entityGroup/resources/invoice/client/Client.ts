@@ -121,7 +121,7 @@ export class Invoice {
             if (Array.isArray(metadata)) {
                 _queryParams["metadata"] = await Promise.all(
                     metadata.map(async (item) =>
-                        serializers.InvoiceMetadataFilter.jsonOrThrow(item, {
+                        serializers.MetadataFilter.jsonOrThrow(item, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
@@ -130,7 +130,7 @@ export class Invoice {
                     )
                 );
             } else {
-                _queryParams["metadata"] = serializers.InvoiceMetadataFilter.jsonOrThrow(metadata, {
+                _queryParams["metadata"] = serializers.MetadataFilter.jsonOrThrow(metadata, {
                     unrecognizedObjectKeys: "passthrough",
                     allowUnrecognizedUnionMembers: true,
                     allowUnrecognizedEnumValues: true,
@@ -205,8 +205,8 @@ export class Invoice {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.5.8-rc1",
-                "User-Agent": "@mercoa/javascript/0.5.8-rc1",
+                "X-Fern-SDK-Version": "0.5.8",
+                "User-Agent": "@mercoa/javascript/0.5.8",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
@@ -334,8 +334,8 @@ export class Invoice {
      *     await client.entityGroup.invoice.metrics("entg_8545a84e-a45f-41bf-bdf1-33b42a55812c", {
      *         returnByDate: Mercoa.InvoiceMetricsPerDateGroupBy.CreationDate,
      *         excludeReceivables: true,
-     *         createdDateStart: new Date("2021-01-01T00:00:00.000Z"),
-     *         createdDateEnd: new Date("2021-01-31T23:59:59.999Z"),
+     *         startDate: new Date("2021-01-01T00:00:00.000Z"),
+     *         endDate: new Date("2021-01-31T23:59:59.999Z"),
      *         currency: Mercoa.CurrencyCode.Usd,
      *         status: Mercoa.InvoiceStatus.New
      *     })
@@ -350,6 +350,8 @@ export class Invoice {
             excludePayables,
             excludeReceivables,
             returnByDate,
+            returnByDateFrequency,
+            groupBy,
             payerId,
             vendorId,
             approverId,
@@ -358,10 +360,6 @@ export class Invoice {
             startDate,
             endDate,
             dateType,
-            dueDateStart,
-            dueDateEnd,
-            createdDateStart,
-            createdDateEnd,
             currency,
         } = request;
         const _queryParams: Record<string, string | string[] | object | object[]> = {};
@@ -379,6 +377,18 @@ export class Invoice {
 
         if (returnByDate != null) {
             _queryParams["returnByDate"] = returnByDate;
+        }
+
+        if (returnByDateFrequency != null) {
+            _queryParams["returnByDateFrequency"] = returnByDateFrequency;
+        }
+
+        if (groupBy != null) {
+            if (Array.isArray(groupBy)) {
+                _queryParams["groupBy"] = groupBy.map((item) => item);
+            } else {
+                _queryParams["groupBy"] = groupBy;
+            }
         }
 
         if (payerId != null) {
@@ -433,22 +443,6 @@ export class Invoice {
             _queryParams["dateType"] = dateType;
         }
 
-        if (dueDateStart != null) {
-            _queryParams["dueDateStart"] = dueDateStart.toISOString();
-        }
-
-        if (dueDateEnd != null) {
-            _queryParams["dueDateEnd"] = dueDateEnd.toISOString();
-        }
-
-        if (createdDateStart != null) {
-            _queryParams["createdDateStart"] = createdDateStart.toISOString();
-        }
-
-        if (createdDateEnd != null) {
-            _queryParams["createdDateEnd"] = createdDateEnd.toISOString();
-        }
-
         if (currency != null) {
             if (Array.isArray(currency)) {
                 _queryParams["currency"] = currency.map((item) => item);
@@ -469,8 +463,8 @@ export class Invoice {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.5.8-rc1",
-                "User-Agent": "@mercoa/javascript/0.5.8-rc1",
+                "X-Fern-SDK-Version": "0.5.8",
+                "User-Agent": "@mercoa/javascript/0.5.8",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,

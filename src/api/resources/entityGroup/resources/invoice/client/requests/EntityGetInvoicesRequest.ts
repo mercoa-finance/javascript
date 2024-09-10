@@ -53,7 +53,7 @@ export interface EntityGetInvoicesRequest {
     /**
      * Filter invoices by metadata. Each filter will be applied as an AND condition. Duplicate keys will be ignored.
      */
-    metadata?: Mercoa.InvoiceMetadataFilter | Mercoa.InvoiceMetadataFilter[];
+    metadata?: Mercoa.MetadataFilter | Mercoa.MetadataFilter[];
     /**
      * Find invoices by vendor name, invoice number, or amount. Partial matches are supported.
      */

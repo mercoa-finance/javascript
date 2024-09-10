@@ -50,11 +50,11 @@ export interface GetAllInvoicesRequest {
     /**
      * Filter invoices by metadata. Each filter will be applied as an AND condition. Duplicate keys will be ignored.
      */
-    metadata?: Mercoa.InvoiceMetadataFilter | Mercoa.InvoiceMetadataFilter[];
+    metadata?: Mercoa.MetadataFilter | Mercoa.MetadataFilter[];
     /**
      * Filter invoices by line item metadata. Each filter will be applied as an AND condition. Duplicate keys will be ignored.
      */
-    lineItemMetadata?: Mercoa.InvoiceMetadataFilter | Mercoa.InvoiceMetadataFilter[];
+    lineItemMetadata?: Mercoa.MetadataFilter | Mercoa.MetadataFilter[];
     /**
      * Filter invoices by line item GL account ID. Each filter will be applied as an OR condition. Duplicate keys will be ignored.
      */

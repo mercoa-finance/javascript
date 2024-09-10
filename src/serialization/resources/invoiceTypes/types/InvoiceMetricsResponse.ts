@@ -12,6 +12,9 @@ export const InvoiceMetricsResponse: core.serialization.ObjectSchema<
     serializers.InvoiceMetricsResponse.Raw,
     Mercoa.InvoiceMetricsResponse
 > = core.serialization.object({
+    group: core.serialization
+        .list(core.serialization.record(core.serialization.string(), core.serialization.string()))
+        .optional(),
     totalAmount: core.serialization.number(),
     totalCount: core.serialization.number(),
     averageAmount: core.serialization.number(),
@@ -21,6 +24,7 @@ export const InvoiceMetricsResponse: core.serialization.ObjectSchema<
 
 export declare namespace InvoiceMetricsResponse {
     interface Raw {
+        group?: Record<string, string>[] | null;
         totalAmount: number;
         totalCount: number;
         averageAmount: number;

@@ -9,8 +9,8 @@ import * as Mercoa from "../../../../../../index";
  *     {
  *         returnByDate: Mercoa.InvoiceMetricsPerDateGroupBy.CreationDate,
  *         excludeReceivables: true,
- *         createdDateStart: new Date("2021-01-01T00:00:00.000Z"),
- *         createdDateEnd: new Date("2021-01-31T23:59:59.999Z"),
+ *         startDate: new Date("2021-01-01T00:00:00.000Z"),
+ *         endDate: new Date("2021-01-31T23:59:59.999Z"),
  *         currency: Mercoa.CurrencyCode.Usd,
  *         status: Mercoa.InvoiceStatus.New
  *     }
@@ -32,6 +32,14 @@ export interface InvoiceMetricsRequest {
      * Return invoice metrics grouped by date.
      */
     returnByDate?: Mercoa.InvoiceMetricsPerDateGroupBy;
+    /**
+     * Return invoice metrics grouped by date. Defaults to daily.
+     */
+    returnByDateFrequency?: Mercoa.InvoiceMetricsPerDateFrequency;
+    /**
+     * Return invoice metrics grouped by.
+     */
+    groupBy?: Mercoa.InvoiceMetricsGroupBy | Mercoa.InvoiceMetricsGroupBy[];
     /**
      * Filter invoices by payer ID.
      */
@@ -64,22 +72,6 @@ export interface InvoiceMetricsRequest {
      * Type of date to filter by if startDate and endDate filters are provided. Defaults to CREATED_AT.
      */
     dateType?: Mercoa.InvoiceDateFilter;
-    /**
-     * DEPRECATED. Use startDate, endDate, and dateType instead. Start date for invoice dueDate filter.
-     */
-    dueDateStart?: Date;
-    /**
-     * DEPRECATED. Use startDate, endDate, and dateType instead. End date for invoice dueDate filter.
-     */
-    dueDateEnd?: Date;
-    /**
-     * DEPRECATED. Use startDate, endDate, and dateType instead. Start date for invoice created on date filter.
-     */
-    createdDateStart?: Date;
-    /**
-     * DEPRECATED. Use startDate, endDate, and dateType instead. End date for invoice created date filter.
-     */
-    createdDateEnd?: Date;
     /**
      * Currency to filter on
      */

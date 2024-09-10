@@ -34,7 +34,11 @@ export interface FindPayorCounterpartiesRequest {
      */
     counterpartyId?: Mercoa.EntityId | Mercoa.EntityId[];
     /**
-     * If true, will return simple key/value metadata for the counterparties.
+     * Filter counterparties by simple key/value metadata. Each filter will be applied as an AND condition. Duplicate keys will be ignored.
+     */
+    metadata?: Mercoa.MetadataFilter;
+    /**
+     * If true, will return simple key/value metadata for the counterparties. For more complex metadata, use the Metadata API.
      */
     returnMetadata?: boolean;
     /**

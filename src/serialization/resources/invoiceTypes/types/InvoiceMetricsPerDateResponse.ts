@@ -11,6 +11,9 @@ export const InvoiceMetricsPerDateResponse: core.serialization.ObjectSchema<
     serializers.InvoiceMetricsPerDateResponse.Raw,
     Mercoa.InvoiceMetricsPerDateResponse
 > = core.serialization.object({
+    group: core.serialization
+        .list(core.serialization.record(core.serialization.string(), core.serialization.string()))
+        .optional(),
     date: core.serialization.date(),
     totalAmount: core.serialization.number(),
     totalCount: core.serialization.number(),
@@ -20,6 +23,7 @@ export const InvoiceMetricsPerDateResponse: core.serialization.ObjectSchema<
 
 export declare namespace InvoiceMetricsPerDateResponse {
     interface Raw {
+        group?: Record<string, string>[] | null;
         date: string;
         totalAmount: number;
         totalCount: number;
