@@ -7,6 +7,7 @@ import * as Mercoa from "../../../../api/index";
 import * as core from "../../../../core";
 import { AccountType } from "./AccountType";
 import { ProfileRequest } from "./ProfileRequest";
+import { EntityId } from "./EntityId";
 
 export const EntityUpdateRequest: core.serialization.ObjectSchema<
     serializers.EntityUpdateRequest.Raw,
@@ -24,6 +25,7 @@ export const EntityUpdateRequest: core.serialization.ObjectSchema<
     isNetworkPayee: core.serialization.boolean().optional(),
     logo: core.serialization.string().optional(),
     metadata: core.serialization.record(core.serialization.string(), core.serialization.string()).optional(),
+    connectedEntityId: EntityId.optional(),
 });
 
 export declare namespace EntityUpdateRequest {
@@ -40,5 +42,6 @@ export declare namespace EntityUpdateRequest {
         isNetworkPayee?: boolean | null;
         logo?: string | null;
         metadata?: Record<string, string> | null;
+        connectedEntityId?: EntityId.Raw | null;
     }
 }

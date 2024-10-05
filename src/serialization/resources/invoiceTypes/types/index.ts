@@ -5,6 +5,8 @@ export * from "./ApprovalSlotId";
 export * from "./InvoiceRequestBase";
 export * from "./InvoiceUpdateRequest";
 export * from "./InvoiceCreationRequest";
+export * from "./InvoiceCreationWithEntityRequest";
+export * from "./InvoiceCreationWithEntityGroupRequest";
 export * from "./InvoiceResponse";
 export * from "./PaymentDestinationOptions";
 export * from "./BankDeliveryMethod";

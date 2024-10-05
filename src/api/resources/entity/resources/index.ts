@@ -6,6 +6,7 @@ export * as approvalPolicy from "./approvalPolicy";
 export * as counterparty from "./counterparty";
 export * as customization from "./customization";
 export * as document from "./document";
+export * as emailTemplate from "./emailTemplate";
 export * as invoice from "./invoice";
 export * as metadata from "./metadata";
 export * as notificationPolicy from "./notificationPolicy";

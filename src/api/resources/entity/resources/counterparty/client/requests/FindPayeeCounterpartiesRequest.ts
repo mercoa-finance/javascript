@@ -40,7 +40,7 @@ export interface FindPayeeCounterpartiesRequest {
     /**
      * If true, will return simple key/value metadata for the counterparties. For more complex metadata, use the Metadata API.
      */
-    returnMetadata?: boolean;
+    returnMetadata?: string | string[];
     /**
      * Number of counterparties to return. Limit can range between 1 and 100, and the default is 10.
      */

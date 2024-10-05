@@ -5,23 +5,14 @@
 import * as serializers from "../../../index";
 import * as Mercoa from "../../../../api/index";
 import * as core from "../../../../core";
-import { InvoiceLineItemCreationRequest } from "./InvoiceLineItemCreationRequest";
-import { EntityId } from "../../entityTypes/types/EntityId";
-import { InvoiceRequestBase } from "./InvoiceRequestBase";
+import { InvoiceCreationWithEntityRequest } from "./InvoiceCreationWithEntityRequest";
+import { InvoiceCreationWithEntityGroupRequest } from "./InvoiceCreationWithEntityGroupRequest";
 
-export const InvoiceCreationRequest: core.serialization.ObjectSchema<
+export const InvoiceCreationRequest: core.serialization.Schema<
     serializers.InvoiceCreationRequest.Raw,
     Mercoa.InvoiceCreationRequest
-> = core.serialization
-    .object({
-        lineItems: core.serialization.list(InvoiceLineItemCreationRequest).optional(),
-        creatorEntityId: EntityId,
-    })
-    .extend(InvoiceRequestBase);
+> = core.serialization.undiscriminatedUnion([InvoiceCreationWithEntityRequest, InvoiceCreationWithEntityGroupRequest]);
 
 export declare namespace InvoiceCreationRequest {
-    interface Raw extends InvoiceRequestBase.Raw {
-        lineItems?: InvoiceLineItemCreationRequest.Raw[] | null;
-        creatorEntityId: EntityId.Raw;
-    }
+    type Raw = InvoiceCreationWithEntityRequest.Raw | InvoiceCreationWithEntityGroupRequest.Raw;
 }

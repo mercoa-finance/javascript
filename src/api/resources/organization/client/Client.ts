@@ -110,8 +110,8 @@ export class Organization {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.5.9-rc1",
-                "User-Agent": "@mercoa/javascript/0.5.9-rc1",
+                "X-Fern-SDK-Version": "0.5.9",
+                "User-Agent": "@mercoa/javascript/0.5.9",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
@@ -240,15 +240,368 @@ export class Organization {
      *         logo: "string",
      *         websiteUrl: "string",
      *         supportEmail: "string",
-     *         paymentMethods: {},
-     *         emailProvider: {},
+     *         paymentMethods: {
+     *             payerPayments: [{
+     *                     type: Mercoa.PaymentMethodType.Custom,
+     *                     name: {
+     *                         "key": "value"
+     *                     },
+     *                     active: true
+     *                 }],
+     *             backupDisbursements: [{
+     *                     type: Mercoa.PaymentMethodType.Custom,
+     *                     name: {
+     *                         "key": "value"
+     *                     },
+     *                     active: true
+     *                 }],
+     *             vendorDisbursements: [{
+     *                     type: Mercoa.PaymentMethodType.Custom,
+     *                     name: {
+     *                         "key": "value"
+     *                     },
+     *                     active: true
+     *                 }]
+     *         },
+     *         emailProvider: {
+     *             sender: {
+     *                 provider: Mercoa.EmailSenderProvider.None,
+     *                 fromEmail: "string",
+     *                 fromName: "string",
+     *                 apiKey: "string"
+     *             },
+     *             inboxDomain: "string",
+     *             alternativeInboxDomains: [{
+     *                     "key": "value"
+     *                 }]
+     *         },
      *         externalAccountingSystemProvider: {
      *             type: "none"
      *         },
-     *         colorScheme: {},
-     *         payeeOnboardingOptions: {},
-     *         payorOnboardingOptions: {},
-     *         metadataSchema: [{}]
+     *         colorScheme: {
+     *             primaryColor: "string",
+     *             secondaryColor: "string",
+     *             logoBackgroundColor: "string",
+     *             roundedCorners: 1
+     *         },
+     *         payeeOnboardingOptions: {
+     *             enableBusiness: true,
+     *             enableIndividual: true,
+     *             paymentMethod: true,
+     *             business: {
+     *                 type: {
+     *                     show: true,
+     *                     edit: true,
+     *                     required: true
+     *                 },
+     *                 doingBusinessAs: {
+     *                     show: true,
+     *                     edit: true,
+     *                     required: true
+     *                 },
+     *                 ein: {
+     *                     show: true,
+     *                     edit: true,
+     *                     required: true
+     *                 },
+     *                 mcc: {
+     *                     show: true,
+     *                     edit: true,
+     *                     required: true
+     *                 },
+     *                 formationDate: {
+     *                     show: true,
+     *                     edit: true,
+     *                     required: true
+     *                 },
+     *                 website: {
+     *                     show: true,
+     *                     edit: true,
+     *                     required: true
+     *                 },
+     *                 description: {
+     *                     show: true,
+     *                     edit: true,
+     *                     required: true
+     *                 },
+     *                 representatives: {
+     *                     show: true,
+     *                     edit: true,
+     *                     required: true
+     *                 },
+     *                 logo: {
+     *                     show: true,
+     *                     edit: true,
+     *                     required: true
+     *                 },
+     *                 averageTransactionSize: {
+     *                     show: true,
+     *                     edit: true,
+     *                     required: true
+     *                 },
+     *                 averageMonthlyTransactionVolume: {
+     *                     show: true,
+     *                     edit: true,
+     *                     required: true
+     *                 },
+     *                 maxTransactionSize: {
+     *                     show: true,
+     *                     edit: true,
+     *                     required: true
+     *                 },
+     *                 termsOfService: {
+     *                     show: true,
+     *                     edit: true,
+     *                     required: true
+     *                 },
+     *                 email: {
+     *                     show: true,
+     *                     edit: true,
+     *                     required: true
+     *                 },
+     *                 name: {
+     *                     show: true,
+     *                     edit: true,
+     *                     required: true
+     *                 },
+     *                 address: {
+     *                     show: true,
+     *                     edit: true,
+     *                     required: true
+     *                 },
+     *                 phone: {
+     *                     show: true,
+     *                     edit: true,
+     *                     required: true
+     *                 },
+     *                 tenNinetyNine: {
+     *                     show: true,
+     *                     edit: true,
+     *                     required: true
+     *                 },
+     *                 w9: {
+     *                     show: true,
+     *                     edit: true,
+     *                     required: true
+     *                 }
+     *             },
+     *             individual: {
+     *                 dateOfBirth: {
+     *                     show: true,
+     *                     edit: true,
+     *                     required: true
+     *                 },
+     *                 ssn: {
+     *                     show: true,
+     *                     edit: true,
+     *                     required: true
+     *                 },
+     *                 termsOfService: {
+     *                     show: true,
+     *                     edit: true,
+     *                     required: true
+     *                 },
+     *                 email: {
+     *                     show: true,
+     *                     edit: true,
+     *                     required: true
+     *                 },
+     *                 name: {
+     *                     show: true,
+     *                     edit: true,
+     *                     required: true
+     *                 },
+     *                 address: {
+     *                     show: true,
+     *                     edit: true,
+     *                     required: true
+     *                 },
+     *                 phone: {
+     *                     show: true,
+     *                     edit: true,
+     *                     required: true
+     *                 },
+     *                 tenNinetyNine: {
+     *                     show: true,
+     *                     edit: true,
+     *                     required: true
+     *                 },
+     *                 w9: {
+     *                     show: true,
+     *                     edit: true,
+     *                     required: true
+     *                 }
+     *             }
+     *         },
+     *         payorOnboardingOptions: {
+     *             enableBusiness: true,
+     *             enableIndividual: true,
+     *             paymentMethod: true,
+     *             business: {
+     *                 type: {
+     *                     show: true,
+     *                     edit: true,
+     *                     required: true
+     *                 },
+     *                 doingBusinessAs: {
+     *                     show: true,
+     *                     edit: true,
+     *                     required: true
+     *                 },
+     *                 ein: {
+     *                     show: true,
+     *                     edit: true,
+     *                     required: true
+     *                 },
+     *                 mcc: {
+     *                     show: true,
+     *                     edit: true,
+     *                     required: true
+     *                 },
+     *                 formationDate: {
+     *                     show: true,
+     *                     edit: true,
+     *                     required: true
+     *                 },
+     *                 website: {
+     *                     show: true,
+     *                     edit: true,
+     *                     required: true
+     *                 },
+     *                 description: {
+     *                     show: true,
+     *                     edit: true,
+     *                     required: true
+     *                 },
+     *                 representatives: {
+     *                     show: true,
+     *                     edit: true,
+     *                     required: true
+     *                 },
+     *                 logo: {
+     *                     show: true,
+     *                     edit: true,
+     *                     required: true
+     *                 },
+     *                 averageTransactionSize: {
+     *                     show: true,
+     *                     edit: true,
+     *                     required: true
+     *                 },
+     *                 averageMonthlyTransactionVolume: {
+     *                     show: true,
+     *                     edit: true,
+     *                     required: true
+     *                 },
+     *                 maxTransactionSize: {
+     *                     show: true,
+     *                     edit: true,
+     *                     required: true
+     *                 },
+     *                 termsOfService: {
+     *                     show: true,
+     *                     edit: true,
+     *                     required: true
+     *                 },
+     *                 email: {
+     *                     show: true,
+     *                     edit: true,
+     *                     required: true
+     *                 },
+     *                 name: {
+     *                     show: true,
+     *                     edit: true,
+     *                     required: true
+     *                 },
+     *                 address: {
+     *                     show: true,
+     *                     edit: true,
+     *                     required: true
+     *                 },
+     *                 phone: {
+     *                     show: true,
+     *                     edit: true,
+     *                     required: true
+     *                 },
+     *                 tenNinetyNine: {
+     *                     show: true,
+     *                     edit: true,
+     *                     required: true
+     *                 },
+     *                 w9: {
+     *                     show: true,
+     *                     edit: true,
+     *                     required: true
+     *                 }
+     *             },
+     *             individual: {
+     *                 dateOfBirth: {
+     *                     show: true,
+     *                     edit: true,
+     *                     required: true
+     *                 },
+     *                 ssn: {
+     *                     show: true,
+     *                     edit: true,
+     *                     required: true
+     *                 },
+     *                 termsOfService: {
+     *                     show: true,
+     *                     edit: true,
+     *                     required: true
+     *                 },
+     *                 email: {
+     *                     show: true,
+     *                     edit: true,
+     *                     required: true
+     *                 },
+     *                 name: {
+     *                     show: true,
+     *                     edit: true,
+     *                     required: true
+     *                 },
+     *                 address: {
+     *                     show: true,
+     *                     edit: true,
+     *                     required: true
+     *                 },
+     *                 phone: {
+     *                     show: true,
+     *                     edit: true,
+     *                     required: true
+     *                 },
+     *                 tenNinetyNine: {
+     *                     show: true,
+     *                     edit: true,
+     *                     required: true
+     *                 },
+     *                 w9: {
+     *                     show: true,
+     *                     edit: true,
+     *                     required: true
+     *                 }
+     *             }
+     *         },
+     *         metadataSchema: [{
+     *                 key: "string",
+     *                 displayName: "string",
+     *                 description: {
+     *                     "key": "value"
+     *                 },
+     *                 lineItem: {
+     *                     "key": "value"
+     *                 },
+     *                 type: Mercoa.MetadataType.String,
+     *                 allowMultiple: {
+     *                     "key": "value"
+     *                 },
+     *                 validationRules: {
+     *                     "key": "value"
+     *                 },
+     *                 showConditions: {
+     *                     "key": "value"
+     *                 }
+     *             }]
      *     })
      */
     public async update(
@@ -265,8 +618,8 @@ export class Organization {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.5.9-rc1",
-                "User-Agent": "@mercoa/javascript/0.5.9-rc1",
+                "X-Fern-SDK-Version": "0.5.9",
+                "User-Agent": "@mercoa/javascript/0.5.9",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
@@ -429,8 +782,8 @@ export class Organization {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.5.9-rc1",
-                "User-Agent": "@mercoa/javascript/0.5.9-rc1",
+                "X-Fern-SDK-Version": "0.5.9",
+                "User-Agent": "@mercoa/javascript/0.5.9",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,

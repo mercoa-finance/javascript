@@ -7,4 +7,5 @@ import * as Mercoa from "../../../index";
 export interface EmailProviderRequest {
     sender: Mercoa.EmailSenderRequest;
     inboxDomain: string;
+    alternativeInboxDomains?: string[];
 }

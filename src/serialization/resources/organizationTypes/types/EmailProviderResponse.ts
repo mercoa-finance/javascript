@@ -13,11 +13,13 @@ export const EmailProviderResponse: core.serialization.ObjectSchema<
 > = core.serialization.object({
     sender: EmailSenderResponse,
     inboxDomain: core.serialization.string(),
+    alternativeInboxDomains: core.serialization.list(core.serialization.string()),
 });
 
 export declare namespace EmailProviderResponse {
     interface Raw {
         sender: EmailSenderResponse.Raw;
         inboxDomain: string;
+        alternativeInboxDomains: string[];
     }
 }

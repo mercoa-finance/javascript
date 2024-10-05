@@ -14,6 +14,7 @@ import { ApprovalPolicy } from "../resources/approvalPolicy/client/Client";
 import { Counterparty } from "../resources/counterparty/client/Client";
 import { Customization } from "../resources/customization/client/Client";
 import { Document } from "../resources/document/client/Client";
+import { EmailTemplate } from "../resources/emailTemplate/client/Client";
 import { ExternalAccountingSystem } from "../resources/externalAccountingSystem/client/Client";
 import { Invoice } from "../resources/invoice/client/Client";
 import { Metadata } from "../resources/metadata/client/Client";
@@ -129,7 +130,11 @@ export class Entity {
         }
 
         if (returnMetadata != null) {
-            _queryParams["returnMetadata"] = returnMetadata.toString();
+            if (Array.isArray(returnMetadata)) {
+                _queryParams["returnMetadata"] = returnMetadata.map((item) => item);
+            } else {
+                _queryParams["returnMetadata"] = returnMetadata;
+            }
         }
 
         if (limit != null) {
@@ -150,8 +155,8 @@ export class Entity {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.5.9-rc1",
-                "User-Agent": "@mercoa/javascript/0.5.9-rc1",
+                "X-Fern-SDK-Version": "0.5.9",
+                "User-Agent": "@mercoa/javascript/0.5.9",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
@@ -337,8 +342,8 @@ export class Entity {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.5.9-rc1",
-                "User-Agent": "@mercoa/javascript/0.5.9-rc1",
+                "X-Fern-SDK-Version": "0.5.9",
+                "User-Agent": "@mercoa/javascript/0.5.9",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
@@ -471,7 +476,11 @@ export class Entity {
         const { returnMetadata } = request;
         const _queryParams: Record<string, string | string[] | object | object[]> = {};
         if (returnMetadata != null) {
-            _queryParams["returnMetadata"] = returnMetadata.toString();
+            if (Array.isArray(returnMetadata)) {
+                _queryParams["returnMetadata"] = returnMetadata.map((item) => item);
+            } else {
+                _queryParams["returnMetadata"] = returnMetadata;
+            }
         }
 
         const _response = await core.fetcher({
@@ -484,8 +493,8 @@ export class Entity {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.5.9-rc1",
-                "User-Agent": "@mercoa/javascript/0.5.9-rc1",
+                "X-Fern-SDK-Version": "0.5.9",
+                "User-Agent": "@mercoa/javascript/0.5.9",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
@@ -656,8 +665,8 @@ export class Entity {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.5.9-rc1",
-                "User-Agent": "@mercoa/javascript/0.5.9-rc1",
+                "X-Fern-SDK-Version": "0.5.9",
+                "User-Agent": "@mercoa/javascript/0.5.9",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
@@ -794,8 +803,8 @@ export class Entity {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.5.9-rc1",
-                "User-Agent": "@mercoa/javascript/0.5.9-rc1",
+                "X-Fern-SDK-Version": "0.5.9",
+                "User-Agent": "@mercoa/javascript/0.5.9",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
@@ -929,8 +938,8 @@ export class Entity {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.5.9-rc1",
-                "User-Agent": "@mercoa/javascript/0.5.9-rc1",
+                "X-Fern-SDK-Version": "0.5.9",
+                "User-Agent": "@mercoa/javascript/0.5.9",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
@@ -1063,8 +1072,8 @@ export class Entity {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.5.9-rc1",
-                "User-Agent": "@mercoa/javascript/0.5.9-rc1",
+                "X-Fern-SDK-Version": "0.5.9",
+                "User-Agent": "@mercoa/javascript/0.5.9",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
@@ -1204,8 +1213,8 @@ export class Entity {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.5.9-rc1",
-                "User-Agent": "@mercoa/javascript/0.5.9-rc1",
+                "X-Fern-SDK-Version": "0.5.9",
+                "User-Agent": "@mercoa/javascript/0.5.9",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
@@ -1355,8 +1364,8 @@ export class Entity {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.5.9-rc1",
-                "User-Agent": "@mercoa/javascript/0.5.9-rc1",
+                "X-Fern-SDK-Version": "0.5.9",
+                "User-Agent": "@mercoa/javascript/0.5.9",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
@@ -1512,8 +1521,8 @@ export class Entity {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.5.9-rc1",
-                "User-Agent": "@mercoa/javascript/0.5.9-rc1",
+                "X-Fern-SDK-Version": "0.5.9",
+                "User-Agent": "@mercoa/javascript/0.5.9",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
@@ -1670,8 +1679,8 @@ export class Entity {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.5.9-rc1",
-                "User-Agent": "@mercoa/javascript/0.5.9-rc1",
+                "X-Fern-SDK-Version": "0.5.9",
+                "User-Agent": "@mercoa/javascript/0.5.9",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
@@ -1818,8 +1827,8 @@ export class Entity {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.5.9-rc1",
-                "User-Agent": "@mercoa/javascript/0.5.9-rc1",
+                "X-Fern-SDK-Version": "0.5.9",
+                "User-Agent": "@mercoa/javascript/0.5.9",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
@@ -1962,6 +1971,12 @@ export class Entity {
 
     public get document(): Document {
         return (this._document ??= new Document(this._options));
+    }
+
+    protected _emailTemplate: EmailTemplate | undefined;
+
+    public get emailTemplate(): EmailTemplate {
+        return (this._emailTemplate ??= new EmailTemplate(this._options));
     }
 
     protected _externalAccountingSystem: ExternalAccountingSystem | undefined;

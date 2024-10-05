@@ -77,8 +77,6 @@ import * as Mercoa from "../../../index";
  *         deductionDate: new Date("2021-01-29T00:00:00.000Z")
  *     }
  */
-export interface InvoiceCreationRequest extends Mercoa.InvoiceRequestBase {
-    lineItems?: Mercoa.InvoiceLineItemCreationRequest[];
-    /** ID of entity who created this invoice. */
-    creatorEntityId: Mercoa.EntityId;
-}
+export type InvoiceCreationRequest =
+    | Mercoa.InvoiceCreationWithEntityRequest
+    | Mercoa.InvoiceCreationWithEntityGroupRequest;

@@ -45,9 +45,9 @@ export interface FindEntities {
      */
     metadata?: Mercoa.MetadataFilter;
     /**
-     * If true, will return simple key/value metadata for the entities. For more complex metadata, use the Metadata API.
+     * Return simple key/value metadata for the specified keys for the entities. For more complex metadata, use the Metadata API.
      */
-    returnMetadata?: boolean;
+    returnMetadata?: string | string[];
     /**
      * Number of entities to return. Limit can range between 1 and 100, and the default is 10.
      */

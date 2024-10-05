@@ -8,7 +8,7 @@
  */
 export interface EntityGroupGetRequest {
     /**
-     * If true, will return simple key/value metadata for entities in the group. For more complex metadata, use the Metadata API.
+     * Return simple key/value metadata for the specified keys for the entities in the group. For more complex metadata, use the Metadata API.
      */
-    returnEntityMetadata?: boolean;
+    returnEntityMetadata?: string | string[];
 }

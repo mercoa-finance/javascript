@@ -79,4 +79,6 @@ export interface EntityUpdateRequest {
     logo?: string;
     /** Simple key/value metadata associated with this entity. For more complex metadata, use the Metadata API. */
     metadata?: Record<string, string>;
+    /** The ID of the entity that this entity is connected to. This is used to trigger notifications to the connected entity when this entity is updated. */
+    connectedEntityId?: Mercoa.EntityId;
 }

@@ -5,6 +5,7 @@
 import * as serializers from "../../../index";
 import * as Mercoa from "../../../../api/index";
 import * as core from "../../../../core";
+import { EntityUserId } from "./EntityUserId";
 import { NotificationType } from "./NotificationType";
 
 export const NotificationPolicyResponse: core.serialization.ObjectSchema<
@@ -13,6 +14,7 @@ export const NotificationPolicyResponse: core.serialization.ObjectSchema<
 > = core.serialization.object({
     disabled: core.serialization.boolean(),
     additionalRoles: core.serialization.list(core.serialization.string()),
+    additionalUsers: core.serialization.list(EntityUserId),
     notifyPayeeCounterparty: core.serialization.boolean(),
     notifyPayorCounterparty: core.serialization.boolean(),
     type: NotificationType,
@@ -22,6 +24,7 @@ export declare namespace NotificationPolicyResponse {
     interface Raw {
         disabled: boolean;
         additionalRoles: string[];
+        additionalUsers: EntityUserId.Raw[];
         notifyPayeeCounterparty: boolean;
         notifyPayorCounterparty: boolean;
         type: NotificationType.Raw;

@@ -5,20 +5,17 @@
 import * as serializers from "../../../index";
 import * as Mercoa from "../../../../api/index";
 import * as core from "../../../../core";
+import { PlaidProcessorTokenRequest } from "./PlaidProcessorTokenRequest";
+import { PlaidPublicTokenRequest } from "./PlaidPublicTokenRequest";
+import { PlaidAccessTokenRequest } from "./PlaidAccessTokenRequest";
 
-export const PlaidLinkRequest: core.serialization.ObjectSchema<
-    serializers.PlaidLinkRequest.Raw,
-    Mercoa.PlaidLinkRequest
-> = core.serialization.object({
-    accountId: core.serialization.string(),
-    publicToken: core.serialization.string().optional(),
-    accessToken: core.serialization.string().optional(),
-});
+export const PlaidLinkRequest: core.serialization.Schema<serializers.PlaidLinkRequest.Raw, Mercoa.PlaidLinkRequest> =
+    core.serialization.undiscriminatedUnion([
+        PlaidProcessorTokenRequest,
+        PlaidPublicTokenRequest,
+        PlaidAccessTokenRequest,
+    ]);
 
 export declare namespace PlaidLinkRequest {
-    interface Raw {
-        accountId: string;
-        publicToken?: string | null;
-        accessToken?: string | null;
-    }
+    type Raw = PlaidProcessorTokenRequest.Raw | PlaidPublicTokenRequest.Raw | PlaidAccessTokenRequest.Raw;
 }

@@ -5,6 +5,7 @@
 import * as serializers from "../../../index";
 import * as Mercoa from "../../../../api/index";
 import * as core from "../../../../core";
+import { EntityUserId } from "./EntityUserId";
 
 export const NotificationPolicyRequest: core.serialization.ObjectSchema<
     serializers.NotificationPolicyRequest.Raw,
@@ -12,6 +13,7 @@ export const NotificationPolicyRequest: core.serialization.ObjectSchema<
 > = core.serialization.object({
     disabled: core.serialization.boolean().optional(),
     additionalRoles: core.serialization.list(core.serialization.string()).optional(),
+    additionalUsers: core.serialization.list(EntityUserId).optional(),
     notifyPayeeCounterparty: core.serialization.boolean().optional(),
     notifyPayorCounterparty: core.serialization.boolean().optional(),
 });
@@ -20,6 +22,7 @@ export declare namespace NotificationPolicyRequest {
     interface Raw {
         disabled?: boolean | null;
         additionalRoles?: string[] | null;
+        additionalUsers?: EntityUserId.Raw[] | null;
         notifyPayeeCounterparty?: boolean | null;
         notifyPayorCounterparty?: boolean | null;
     }

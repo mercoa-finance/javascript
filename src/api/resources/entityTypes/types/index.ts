@@ -1,5 +1,6 @@
 export * from "./EntityId";
 export * from "./EntityUserId";
+export * from "./EmailTemplateId";
 export * from "./ApprovalPolicyId";
 export * from "./RepresentativeId";
 export * from "./NotificationId";
@@ -45,6 +46,9 @@ export * from "./Responsibilities";
 export * from "./EntityUserRequest";
 export * from "./EntityUserResponse";
 export * from "./FindEntityUserResponse";
+export * from "./EmailTemplateType";
+export * from "./EmailTemplateRequest";
+export * from "./EmailTemplateResponse";
 export * from "./NotificationType";
 export * from "./NotificationStatus";
 export * from "./NotificationUpdateRequest";
