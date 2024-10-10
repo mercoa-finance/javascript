@@ -13,5 +13,6 @@ import * as Mercoa from "../../../index";
  */
 export interface CommentRequest {
     text: string;
+    /** The ID or the Foreign ID of the user who created the comment. */
     userId?: Mercoa.EntityUserId;
 }

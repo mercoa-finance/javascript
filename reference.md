@@ -114,7 +114,7 @@ await client.entityGroup.create({
 <dl>
 <dd>
 
-**request:** `Mercoa.EntityGroupRequest`
+**request:** `Mercoa.EntityGroupCreateRequest`
 
 </dd>
 </dl>
@@ -236,7 +236,6 @@ await client.entityGroup.update("entg_a3582b70-fd04-4888-9185-a640ae9048be", {
     foreignId: "your-group-id",
     name: "AcmeConglomerate",
     emailToName: "acmegroup",
-    entityIds: ["ent_8545a84e-a45f-41bf-bdf1-33b42a55812c", "ent_21661ac1-a2a8-4465-a6c0-64474ba8181d"],
 });
 ```
 
@@ -261,7 +260,7 @@ await client.entityGroup.update("entg_a3582b70-fd04-4888-9185-a640ae9048be", {
 <dl>
 <dd>
 
-**request:** `Mercoa.EntityGroupRequest`
+**request:** `Mercoa.EntityGroupUpdateRequest`
 
 </dd>
 </dl>
@@ -472,7 +471,7 @@ await client.entityGroup.addEntities("entg_a0f6ea94-0761-4a5e-a416-3c453cb7eced"
 <dl>
 <dd>
 
-**request:** `Mercoa.EntityGroupEntityUpdateRequest`
+**request:** `Mercoa.EntityGroupAddEntitiesRequest`
 
 </dd>
 </dl>
@@ -545,7 +544,7 @@ await client.entityGroup.removeEntities("entg_a0f6ea94-0761-4a5e-a416-3c453cb7ec
 <dl>
 <dd>
 
-**request:** `Mercoa.EntityGroupEntityUpdateRequest`
+**request:** `Mercoa.EntityGroupRemoveEntitiesRequest`
 
 </dd>
 </dl>
@@ -678,7 +677,7 @@ await client.entityGroup.user.create("entg_8545a84e-a45f-41bf-bdf1-33b42a55812c"
         },
         {
             roles: ["viewer"],
-            entityId: "ent_574s93r-3943-fu39-g9dfr-33b42a55812c",
+            entityId: "ent_9e02a20e-7749-47de-8d8a-f8ff2859fa90",
         },
     ],
 });
@@ -834,7 +833,7 @@ await client.entityGroup.user.update("entg_8545a84e-a45f-41bf-bdf1-33b42a55812c"
         },
         {
             roles: ["viewer"],
-            entityId: "ent_574s93r-3943-fu39-g9dfr-33b42a55812c",
+            entityId: "ent_9e02a20e-7749-47de-8d8a-f8ff2859fa90",
         },
     ],
 });

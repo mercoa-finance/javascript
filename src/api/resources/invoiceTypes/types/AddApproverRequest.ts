@@ -14,5 +14,6 @@ import * as Mercoa from "../../../index";
 export interface AddApproverRequest {
     /** The identifier for the approval slot this user is assigned to. */
     approvalSlotId?: Mercoa.ApprovalSlotId;
+    /** The ID or the Foreign ID of the user to add to the approval slot. */
     userId: Mercoa.EntityUserId;
 }

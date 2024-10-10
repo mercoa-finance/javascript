@@ -14,5 +14,6 @@ import * as Mercoa from "../../../index";
 export interface ApprovalRequest {
     /** Comment associated with this approval action. */
     text?: string;
+    /** The ID or the Foreign ID of the user */
     userId: Mercoa.EntityUserId;
 }

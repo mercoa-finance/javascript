@@ -55,6 +55,11 @@ import * as Mercoa from "../../../index";
  *                             country: "US"
  *                         },
  *                         taxIdProvided: true,
+ *                         taxId: {
+ *                             ein: {
+ *                                 number: "12-3456789"
+ *                             }
+ *                         },
  *                         ownersProvided: true
  *                     }
  *                 },
@@ -315,6 +320,11 @@ import * as Mercoa from "../../../index";
  *                             country: "US"
  *                         },
  *                         taxIdProvided: true,
+ *                         taxId: {
+ *                             ein: {
+ *                                 number: "12-3456789"
+ *                             }
+ *                         },
  *                         ownersProvided: true
  *                     }
  *                 },
@@ -575,6 +585,11 @@ import * as Mercoa from "../../../index";
  *                             country: "US"
  *                         },
  *                         taxIdProvided: true,
+ *                         taxId: {
+ *                             ein: {
+ *                                 number: "12-3456789"
+ *                             }
+ *                         },
  *                         ownersProvided: true
  *                     }
  *                 },
@@ -825,6 +840,11 @@ import * as Mercoa from "../../../index";
  *                             country: "US"
  *                         },
  *                         taxIdProvided: true,
+ *                         taxId: {
+ *                             ein: {
+ *                                 number: "12-3456789"
+ *                             }
+ *                         },
  *                         ownersProvided: true
  *                     }
  *                 },
@@ -912,6 +932,11 @@ import * as Mercoa from "../../../index";
  *                             country: "US"
  *                         },
  *                         taxIdProvided: true,
+ *                         taxId: {
+ *                             ein: {
+ *                                 number: "12-3456789"
+ *                             }
+ *                         },
  *                         ownersProvided: true
  *                     }
  *                 },
@@ -1066,6 +1091,11 @@ import * as Mercoa from "../../../index";
  *                             country: "US"
  *                         },
  *                         taxIdProvided: true,
+ *                         taxId: {
+ *                             ein: {
+ *                                 number: "12-3456789"
+ *                             }
+ *                         },
  *                         ownersProvided: true
  *                     }
  *                 },
@@ -1240,6 +1270,11 @@ import * as Mercoa from "../../../index";
  *                             country: "US"
  *                         },
  *                         taxIdProvided: true,
+ *                         taxId: {
+ *                             ein: {
+ *                                 number: "12-3456789"
+ *                             }
+ *                         },
  *                         ownersProvided: true
  *                     }
  *                 },
@@ -1414,6 +1449,11 @@ import * as Mercoa from "../../../index";
  *                             country: "US"
  *                         },
  *                         taxIdProvided: true,
+ *                         taxId: {
+ *                             ein: {
+ *                                 number: "12-3456789"
+ *                             }
+ *                         },
  *                         ownersProvided: true
  *                     }
  *                 },
@@ -1588,6 +1628,11 @@ import * as Mercoa from "../../../index";
  *                             country: "US"
  *                         },
  *                         taxIdProvided: true,
+ *                         taxId: {
+ *                             ein: {
+ *                                 number: "12-3456789"
+ *                             }
+ *                         },
  *                         ownersProvided: true
  *                     }
  *                 },
@@ -1762,6 +1807,11 @@ import * as Mercoa from "../../../index";
  *                             country: "US"
  *                         },
  *                         taxIdProvided: true,
+ *                         taxId: {
+ *                             ein: {
+ *                                 number: "12-3456789"
+ *                             }
+ *                         },
  *                         ownersProvided: true
  *                     }
  *                 },
@@ -1936,6 +1986,11 @@ import * as Mercoa from "../../../index";
  *                             country: "US"
  *                         },
  *                         taxIdProvided: true,
+ *                         taxId: {
+ *                             ein: {
+ *                                 number: "12-3456789"
+ *                             }
+ *                         },
  *                         ownersProvided: true
  *                     }
  *                 },
@@ -2110,6 +2165,11 @@ import * as Mercoa from "../../../index";
  *                             country: "US"
  *                         },
  *                         taxIdProvided: true,
+ *                         taxId: {
+ *                             ein: {
+ *                                 number: "12-3456789"
+ *                             }
+ *                         },
  *                         ownersProvided: true
  *                     }
  *                 },
@@ -2284,6 +2344,11 @@ import * as Mercoa from "../../../index";
  *                             country: "US"
  *                         },
  *                         taxIdProvided: true,
+ *                         taxId: {
+ *                             ein: {
+ *                                 number: "12-3456789"
+ *                             }
+ *                         },
  *                         ownersProvided: true
  *                     }
  *                 },

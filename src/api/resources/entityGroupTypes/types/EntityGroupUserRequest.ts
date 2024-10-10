@@ -15,7 +15,7 @@ import * as Mercoa from "../../../index";
  *                 entityId: "ent_21661ac1-a2a8-4465-a6c0-64474ba8181d"
  *             }, {
  *                 roles: ["viewer"],
- *                 entityId: "ent_574s93r-3943-fu39-g9dfr-33b42a55812c"
+ *                 entityId: "ent_9e02a20e-7749-47de-8d8a-f8ff2859fa90"
  *             }]
  *     }
  */

@@ -23,6 +23,11 @@ import * as Mercoa from "../../../index";
  *             country: "US"
  *         },
  *         taxIdProvided: true,
+ *         taxId: {
+ *             ein: {
+ *                 number: "12-3456789"
+ *             }
+ *         },
  *         ownersProvided: true
  *     }
  *
@@ -47,6 +52,7 @@ export interface BusinessProfileResponse {
     /** True if all representatives have been provided for this business. */
     ownersProvided?: boolean;
     taxIdProvided: boolean;
+    taxId?: Mercoa.TaxId;
     industryCodes?: Mercoa.IndustryCodes;
     averageMonthlyTransactionVolume?: number;
     averageTransactionSize?: number;

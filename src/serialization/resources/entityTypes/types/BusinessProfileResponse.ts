@@ -8,6 +8,7 @@ import * as core from "../../../../core";
 import { BusinessType } from "./BusinessType";
 import { PhoneNumber } from "../../commons/types/PhoneNumber";
 import { Address } from "../../commons/types/Address";
+import { TaxId } from "./TaxId";
 import { IndustryCodes } from "./IndustryCodes";
 
 export const BusinessProfileResponse: core.serialization.ObjectSchema<
@@ -24,6 +25,7 @@ export const BusinessProfileResponse: core.serialization.ObjectSchema<
     address: Address.optional(),
     ownersProvided: core.serialization.boolean().optional(),
     taxIdProvided: core.serialization.property("taxIDProvided", core.serialization.boolean()),
+    taxId: TaxId.optional(),
     industryCodes: IndustryCodes.optional(),
     averageMonthlyTransactionVolume: core.serialization.number().optional(),
     averageTransactionSize: core.serialization.number().optional(),
@@ -42,6 +44,7 @@ export declare namespace BusinessProfileResponse {
         address?: Address.Raw | null;
         ownersProvided?: boolean | null;
         taxIDProvided: boolean;
+        taxId?: TaxId.Raw | null;
         industryCodes?: IndustryCodes.Raw | null;
         averageMonthlyTransactionVolume?: number | null;
         averageTransactionSize?: number | null;

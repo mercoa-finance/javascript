@@ -7,15 +7,15 @@ import * as Mercoa from "../../../../api/index";
 import * as core from "../../../../core";
 import { EntityId } from "../../entityTypes/types/EntityId";
 
-export const EntityGroupEntityUpdateRequest: core.serialization.ObjectSchema<
-    serializers.EntityGroupEntityUpdateRequest.Raw,
-    Mercoa.EntityGroupEntityUpdateRequest
+export const EntityGroupRemoveEntitiesRequest: core.serialization.ObjectSchema<
+    serializers.EntityGroupRemoveEntitiesRequest.Raw,
+    Mercoa.EntityGroupRemoveEntitiesRequest
 > = core.serialization.object({
-    entityIds: core.serialization.list(EntityId).optional(),
+    entityIds: core.serialization.list(EntityId),
 });
 
-export declare namespace EntityGroupEntityUpdateRequest {
+export declare namespace EntityGroupRemoveEntitiesRequest {
     interface Raw {
-        entityIds?: EntityId.Raw[] | null;
+        entityIds: EntityId.Raw[];
     }
 }

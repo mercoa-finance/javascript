@@ -75,8 +75,8 @@ export class EntityGroup {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.5.9",
-                "User-Agent": "@mercoa/javascript/0.5.9",
+                "X-Fern-SDK-Version": "0.5.10-rc1",
+                "User-Agent": "@mercoa/javascript/0.5.10-rc1",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
@@ -188,7 +188,7 @@ export class EntityGroup {
     /**
      * Create an entity group
      *
-     * @param {Mercoa.EntityGroupRequest} request
+     * @param {Mercoa.EntityGroupCreateRequest} request
      * @param {EntityGroup.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Mercoa.BadRequest}
@@ -208,7 +208,7 @@ export class EntityGroup {
      *     })
      */
     public async create(
-        request: Mercoa.EntityGroupRequest,
+        request: Mercoa.EntityGroupCreateRequest,
         requestOptions?: EntityGroup.RequestOptions
     ): Promise<Mercoa.EntityGroupResponse> {
         const _response = await core.fetcher({
@@ -221,15 +221,15 @@ export class EntityGroup {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.5.9",
-                "User-Agent": "@mercoa/javascript/0.5.9",
+                "X-Fern-SDK-Version": "0.5.10-rc1",
+                "User-Agent": "@mercoa/javascript/0.5.10-rc1",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
             requestType: "json",
-            body: serializers.EntityGroupRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
+            body: serializers.EntityGroupCreateRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -374,8 +374,8 @@ export class EntityGroup {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.5.9",
-                "User-Agent": "@mercoa/javascript/0.5.9",
+                "X-Fern-SDK-Version": "0.5.10-rc1",
+                "User-Agent": "@mercoa/javascript/0.5.10-rc1",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
@@ -488,7 +488,7 @@ export class EntityGroup {
      * Update an entity group
      *
      * @param {Mercoa.EntityGroupId} entityGroupId - Entity Group ID or Entity Group ForeignID
-     * @param {Mercoa.EntityGroupRequest} request
+     * @param {Mercoa.EntityGroupUpdateRequest} request
      * @param {EntityGroup.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Mercoa.BadRequest}
@@ -503,13 +503,12 @@ export class EntityGroup {
      *     await client.entityGroup.update("entg_a3582b70-fd04-4888-9185-a640ae9048be", {
      *         foreignId: "your-group-id",
      *         name: "AcmeConglomerate",
-     *         emailToName: "acmegroup",
-     *         entityIds: ["ent_8545a84e-a45f-41bf-bdf1-33b42a55812c", "ent_21661ac1-a2a8-4465-a6c0-64474ba8181d"]
+     *         emailToName: "acmegroup"
      *     })
      */
     public async update(
         entityGroupId: Mercoa.EntityGroupId,
-        request: Mercoa.EntityGroupRequest,
+        request: Mercoa.EntityGroupUpdateRequest,
         requestOptions?: EntityGroup.RequestOptions
     ): Promise<Mercoa.EntityGroupResponse> {
         const _response = await core.fetcher({
@@ -522,15 +521,15 @@ export class EntityGroup {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.5.9",
-                "User-Agent": "@mercoa/javascript/0.5.9",
+                "X-Fern-SDK-Version": "0.5.10-rc1",
+                "User-Agent": "@mercoa/javascript/0.5.10-rc1",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
             requestType: "json",
-            body: serializers.EntityGroupRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
+            body: serializers.EntityGroupUpdateRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -663,8 +662,8 @@ export class EntityGroup {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.5.9",
-                "User-Agent": "@mercoa/javascript/0.5.9",
+                "X-Fern-SDK-Version": "0.5.10-rc1",
+                "User-Agent": "@mercoa/javascript/0.5.10-rc1",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
@@ -804,8 +803,8 @@ export class EntityGroup {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.5.9",
-                "User-Agent": "@mercoa/javascript/0.5.9",
+                "X-Fern-SDK-Version": "0.5.10-rc1",
+                "User-Agent": "@mercoa/javascript/0.5.10-rc1",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
@@ -918,7 +917,7 @@ export class EntityGroup {
      * Add entities to an entity group
      *
      * @param {Mercoa.EntityGroupId} entityGroupId - Entity Group ID or Entity Group ForeignID
-     * @param {Mercoa.EntityGroupEntityUpdateRequest} request
+     * @param {Mercoa.EntityGroupAddEntitiesRequest} request
      * @param {EntityGroup.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Mercoa.BadRequest}
@@ -936,7 +935,7 @@ export class EntityGroup {
      */
     public async addEntities(
         entityGroupId: Mercoa.EntityGroupId,
-        request: Mercoa.EntityGroupEntityUpdateRequest,
+        request: Mercoa.EntityGroupAddEntitiesRequest,
         requestOptions?: EntityGroup.RequestOptions
     ): Promise<Mercoa.EntityGroupResponse> {
         const _response = await core.fetcher({
@@ -949,15 +948,15 @@ export class EntityGroup {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.5.9",
-                "User-Agent": "@mercoa/javascript/0.5.9",
+                "X-Fern-SDK-Version": "0.5.10-rc1",
+                "User-Agent": "@mercoa/javascript/0.5.10-rc1",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
             requestType: "json",
-            body: serializers.EntityGroupEntityUpdateRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
+            body: serializers.EntityGroupAddEntitiesRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -1063,7 +1062,7 @@ export class EntityGroup {
      * Remove entities from an entity group
      *
      * @param {Mercoa.EntityGroupId} entityGroupId - Entity Group ID or Entity Group ForeignID
-     * @param {Mercoa.EntityGroupEntityUpdateRequest} request
+     * @param {Mercoa.EntityGroupRemoveEntitiesRequest} request
      * @param {EntityGroup.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Mercoa.BadRequest}
@@ -1081,7 +1080,7 @@ export class EntityGroup {
      */
     public async removeEntities(
         entityGroupId: Mercoa.EntityGroupId,
-        request: Mercoa.EntityGroupEntityUpdateRequest,
+        request: Mercoa.EntityGroupRemoveEntitiesRequest,
         requestOptions?: EntityGroup.RequestOptions
     ): Promise<Mercoa.EntityGroupResponse> {
         const _response = await core.fetcher({
@@ -1094,15 +1093,17 @@ export class EntityGroup {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.5.9",
-                "User-Agent": "@mercoa/javascript/0.5.9",
+                "X-Fern-SDK-Version": "0.5.10-rc1",
+                "User-Agent": "@mercoa/javascript/0.5.10-rc1",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
             requestType: "json",
-            body: serializers.EntityGroupEntityUpdateRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
+            body: serializers.EntityGroupRemoveEntitiesRequest.jsonOrThrow(request, {
+                unrecognizedObjectKeys: "strip",
+            }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,

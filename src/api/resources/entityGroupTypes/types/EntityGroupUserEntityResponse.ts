@@ -16,7 +16,7 @@ import * as Mercoa from "../../../index";
  *     {
  *         id: "user_3a3aafc8-ea86-408a-a6c1-545497badbbb",
  *         roles: ["viewer"],
- *         entityId: "ent_574s93r-3943-fu39-g9dfr-33b42a55812c"
+ *         entityId: "ent_9e02a20e-7749-47de-8d8a-f8ff2859fa90"
  *     }
  */
 export interface EntityGroupUserEntityResponse extends Mercoa.EntityGroupUserEntityRequest {

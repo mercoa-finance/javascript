@@ -43,7 +43,7 @@ export interface InvoiceRequestBase {
     document?: string;
     /** DEPRECATED. Use document field instead. */
     uploadedImage?: string;
-    /** ID of entity user who created this invoice. */
+    /** User ID or Foreign ID of entity user who created this invoice. */
     creatorUserId?: Mercoa.EntityUserId;
     /** If the invoice failed to be paid, indicate the failure reason. Only applicable for invoices with custom payment methods. */
     failureType?: Mercoa.InvoiceFailureType;
