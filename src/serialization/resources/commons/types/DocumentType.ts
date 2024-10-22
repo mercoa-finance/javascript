@@ -7,8 +7,8 @@ import * as Mercoa from "../../../../api/index";
 import * as core from "../../../../core";
 
 export const DocumentType: core.serialization.Schema<serializers.DocumentType.Raw, Mercoa.DocumentType> =
-    core.serialization.enum_(["INVOICE", "TEN_NINETY_NINE", "W9", "CHECK"]);
+    core.serialization.enum_(["INVOICE", "TEN_NINETY_NINE", "W9", "CHECK", "OTHER"]);
 
 export declare namespace DocumentType {
-    type Raw = "INVOICE" | "TEN_NINETY_NINE" | "W9" | "CHECK";
+    type Raw = "INVOICE" | "TEN_NINETY_NINE" | "W9" | "CHECK" | "OTHER";
 }

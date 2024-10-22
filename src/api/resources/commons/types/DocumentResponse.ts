@@ -35,6 +35,13 @@ import * as Mercoa from "../../../index";
  *         uri: "https://mercoa.com/pdf/not-real.pdf",
  *         type: Mercoa.DocumentType.Check
  *     }
+ *
+ * @example
+ *     {
+ *         mimeType: "application/pdf",
+ *         uri: "https://mercoa.com/pdf/not-real.pdf",
+ *         type: Mercoa.DocumentType.Other
+ *     }
  */
 export interface DocumentResponse {
     /** ID of the document. If not provided, this is a dynamic document that is generated on the fly. */

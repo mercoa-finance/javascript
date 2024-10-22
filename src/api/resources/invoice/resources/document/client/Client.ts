@@ -36,6 +36,7 @@ export class Document {
      * Get attachments (scanned/uploaded PDFs and images) associated with this invoice
      *
      * @param {Mercoa.InvoiceId} invoiceId - Invoice ID or Invoice ForeignID
+     * @param {Mercoa.invoice.GetDocumentsRequest} request
      * @param {Document.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Mercoa.BadRequest}
@@ -51,8 +52,19 @@ export class Document {
      */
     public async getAll(
         invoiceId: Mercoa.InvoiceId,
+        request: Mercoa.invoice.GetDocumentsRequest = {},
         requestOptions?: Document.RequestOptions
     ): Promise<Mercoa.DocumentResponse[]> {
+        const { type: type_ } = request;
+        const _queryParams: Record<string, string | string[] | object | object[]> = {};
+        if (type_ != null) {
+            if (Array.isArray(type_)) {
+                _queryParams["type"] = type_.map((item) => item);
+            } else {
+                _queryParams["type"] = type_;
+            }
+        }
+
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
@@ -63,13 +75,14 @@ export class Document {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.5.10",
-                "User-Agent": "@mercoa/javascript/0.5.10",
+                "X-Fern-SDK-Version": "0.5.11-rc1",
+                "User-Agent": "@mercoa/javascript/0.5.11-rc1",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
+            queryParameters: _queryParams,
             requestType: "json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
@@ -207,8 +220,8 @@ export class Document {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.5.10",
-                "User-Agent": "@mercoa/javascript/0.5.10",
+                "X-Fern-SDK-Version": "0.5.11-rc1",
+                "User-Agent": "@mercoa/javascript/0.5.11-rc1",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
@@ -347,8 +360,8 @@ export class Document {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.5.10",
-                "User-Agent": "@mercoa/javascript/0.5.10",
+                "X-Fern-SDK-Version": "0.5.11-rc1",
+                "User-Agent": "@mercoa/javascript/0.5.11-rc1",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
@@ -482,8 +495,8 @@ export class Document {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.5.10",
-                "User-Agent": "@mercoa/javascript/0.5.10",
+                "X-Fern-SDK-Version": "0.5.11-rc1",
+                "User-Agent": "@mercoa/javascript/0.5.11-rc1",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
@@ -622,8 +635,8 @@ export class Document {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.5.10",
-                "User-Agent": "@mercoa/javascript/0.5.10",
+                "X-Fern-SDK-Version": "0.5.11-rc1",
+                "User-Agent": "@mercoa/javascript/0.5.11-rc1",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
@@ -762,8 +775,8 @@ export class Document {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.5.10",
-                "User-Agent": "@mercoa/javascript/0.5.10",
+                "X-Fern-SDK-Version": "0.5.11-rc1",
+                "User-Agent": "@mercoa/javascript/0.5.11-rc1",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,

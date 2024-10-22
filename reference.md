@@ -9099,7 +9099,7 @@ await client.invoice.comment.delete(
 
 ## Invoice Document
 
-<details><summary><code>client.invoice.document.<a href="/src/api/resources/invoice/resources/document/client/Client.ts">getAll</a>(invoiceId) -> Mercoa.DocumentResponse[]</code></summary>
+<details><summary><code>client.invoice.document.<a href="/src/api/resources/invoice/resources/document/client/Client.ts">getAll</a>(invoiceId, { ...params }) -> Mercoa.DocumentResponse[]</code></summary>
 <dl>
 <dd>
 
@@ -9144,6 +9144,14 @@ await client.invoice.document.getAll("inv_26e7b5d3-a739-4b23-9ad9-6aaa085f47a9")
 <dd>
 
 **invoiceId:** `Mercoa.InvoiceId` — Invoice ID or Invoice ForeignID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `Mercoa.invoice.GetDocumentsRequest`
 
 </dd>
 </dl>
