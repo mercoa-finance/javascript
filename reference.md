@@ -1125,14 +1125,14 @@ await client.entity.create({
     isCustomer: true,
     isPayor: true,
     isPayee: false,
-    accountType: Mercoa.AccountType.Business,
+    accountType: "business",
     foreignId: "MY-DB-ID-12345",
     profile: {
         business: {
             email: "customer@acme.com",
             legalBusinessName: "Acme Inc.",
             website: "http://www.acme.com",
-            businessType: Mercoa.BusinessType.Llc,
+            businessType: "llc",
             phone: {
                 countryCode: "1",
                 number: "4155551234",
@@ -1260,14 +1260,14 @@ await client.entity.update("ent_a0f6ea94-0761-4a5e-a416-3c453cb7eced", {
     isCustomer: true,
     isPayor: true,
     isPayee: false,
-    accountType: Mercoa.AccountType.Business,
+    accountType: "business",
     foreignId: "MY-DB-ID-12345",
     profile: {
         business: {
             email: "customer@acme.com",
             legalBusinessName: "Acme Inc.",
             website: "http://www.acme.com",
-            businessType: Mercoa.BusinessType.Llc,
+            businessType: "llc",
             phone: {
                 countryCode: "1",
                 number: "4155551234",
@@ -1624,8 +1624,8 @@ Get a Plaid link token for an entity. This token can be used to add or update a 
 <dd>
 
 ```typescript
-await client.entity.plaidLinkToken("string", {
-    paymentMethodId: "string",
+await client.entity.plaidLinkToken("ent_8545a84e-a45f-41bf-bdf1-33b42a55812c", {
+    paymentMethodId: "pm_4794d597-70dc-4fec-b6ec-c5988e759769",
 });
 ```
 
@@ -1698,7 +1698,7 @@ Generate an onboarding link for the entity.
 
 ```typescript
 await client.entity.getOnboardingLink("ent_a0f6ea94-0761-4a5e-a416-3c453cb7eced", {
-    type: Mercoa.EntityOnboardingLinkType.Payor,
+    type: "PAYOR",
     expiresIn: "1h",
 });
 ```
@@ -1772,7 +1772,7 @@ Send an email with a onboarding link to the entity. The email will be sent to th
 
 ```typescript
 await client.entity.sendOnboardingLink("string", {
-    type: Mercoa.EntityOnboardingLinkType.Payee,
+    type: "PAYEE",
     expiresIn: "string",
     connectedEntityId: "string",
 });
@@ -2026,6 +2026,345 @@ await client.entity.emailLog.get(
 <dd>
 
 **requestOptions:** `EmailLog.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+## Entity PaymentMethod
+
+<details><summary><code>client.entity.paymentMethod.<a href="/src/api/resources/entity/resources/paymentMethod/client/Client.ts">getAll</a>(entityId, { ...params }) -> Mercoa.PaymentMethodResponse[]</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.entity.paymentMethod.getAll("ent_8545a84e-a45f-41bf-bdf1-33b42a55812c");
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**entityId:** `Mercoa.EntityId` — Entity ID or Entity ForeignID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `Mercoa.entity.paymentMethod.GetAllPaymentMethodsRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `PaymentMethod.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.entity.paymentMethod.<a href="/src/api/resources/entity/resources/paymentMethod/client/Client.ts">create</a>(entityId, { ...params }) -> Mercoa.PaymentMethodResponse</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.entity.paymentMethod.create("ent_8545a84e-a45f-41bf-bdf1-33b42a55812c", {
+    type: "bankAccount",
+    routingNumber: "12345678",
+    accountNumber: "99988767623",
+    accountType: "CHECKING",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**entityId:** `Mercoa.EntityId` — Entity ID or Entity ForeignID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `Mercoa.PaymentMethodRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `PaymentMethod.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.entity.paymentMethod.<a href="/src/api/resources/entity/resources/paymentMethod/client/Client.ts">get</a>(entityId, paymentMethodId) -> Mercoa.PaymentMethodResponse</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.entity.paymentMethod.get(
+    "ent_8545a84e-a45f-41bf-bdf1-33b42a55812c",
+    "pm_4794d597-70dc-4fec-b6ec-c5988e759769"
+);
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**entityId:** `Mercoa.EntityId` — Entity ID or Entity ForeignID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**paymentMethodId:** `Mercoa.PaymentMethodId` — Payment Method ID or Payment Method ForeignID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `PaymentMethod.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.entity.paymentMethod.<a href="/src/api/resources/entity/resources/paymentMethod/client/Client.ts">update</a>(entityId, paymentMethodId, { ...params }) -> Mercoa.PaymentMethodResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Only custom payment methods can be updated.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.entity.paymentMethod.update(
+    "ent_8545a84e-a45f-41bf-bdf1-33b42a55812c",
+    "pm_4794d597-70dc-4fec-b6ec-c5988e759769",
+    {
+        type: "bankAccount",
+        defaultSource: true,
+        defaultDestination: true,
+    }
+);
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**entityId:** `Mercoa.EntityId` — Entity ID or Entity ForeignID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**paymentMethodId:** `Mercoa.PaymentMethodId` — Payment Method ID or Payment Method ForeignID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `Mercoa.PaymentMethodUpdateRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `PaymentMethod.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.entity.paymentMethod.<a href="/src/api/resources/entity/resources/paymentMethod/client/Client.ts">delete</a>(entityId, paymentMethodId) -> void</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Mark a payment method as inactive. This will not remove the payment method from the system, but will prevent it from being used in the future.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.entity.paymentMethod.delete(
+    "ent_8545a84e-a45f-41bf-bdf1-33b42a55812c",
+    "pm_4794d597-70dc-4fec-b6ec-c5988e759769"
+);
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**entityId:** `Mercoa.EntityId` — Entity ID or Entity ForeignID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**paymentMethodId:** `Mercoa.PaymentMethodId` — Payment Method ID or Payment Method ForeignID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `PaymentMethod.RequestOptions`
 
 </dd>
 </dl>
@@ -2631,11 +2970,11 @@ await client.invoice.find({
 
 ```typescript
 await client.invoice.create({
-    status: Mercoa.InvoiceStatus.New,
+    status: "NEW",
     amount: 100,
-    currency: Mercoa.CurrencyCode.Usd,
-    invoiceDate: new Date("2021-01-01T00:00:00.000Z"),
-    dueDate: new Date("2021-01-31T00:00:00.000Z"),
+    currency: "USD",
+    invoiceDate: "2021-01-01T00:00:00Z",
+    dueDate: "2021-01-31T00:00:00Z",
     invoiceNumber: "INV-123",
     noteToSelf: "For the month of January",
     payerId: "ent_8545a84e-a45f-41bf-bdf1-33b42a55812c",
@@ -2644,19 +2983,19 @@ await client.invoice.create({
     paymentDestinationId: "pm_5fde2f4a-facc-48ef-8f0d-6b7d087c7b18",
     paymentDestinationOptions: {
         type: "check",
-        delivery: Mercoa.CheckDeliveryMethod.Mail,
+        delivery: "MAIL",
     },
     lineItems: [
         {
             amount: 100,
-            currency: Mercoa.CurrencyCode.Usd,
+            currency: "USD",
             description: "Product A",
             name: "Product A",
             quantity: 1,
             unitPrice: 100,
-            category: Mercoa.InvoiceLineItemCategory.Expense,
-            serviceStartDate: new Date("2021-01-01T00:00:00.000Z"),
-            serviceEndDate: new Date("2021-01-31T00:00:00.000Z"),
+            category: "EXPENSE",
+            serviceStartDate: "2021-01-01T00:00:00Z",
+            serviceEndDate: "2021-01-31T00:00:00Z",
             metadata: {
                 key1: "value1",
                 key2: "value2",
@@ -2763,11 +3102,11 @@ await client.invoice.get("inv_8545a84e-a45f-41bf-bdf1-33b42a55812c");
 
 ```typescript
 await client.invoice.update("inv_8545a84e-a45f-41bf-bdf1-33b42a55812c", {
-    status: Mercoa.InvoiceStatus.New,
+    status: "NEW",
     amount: 100,
-    currency: Mercoa.CurrencyCode.Usd,
-    invoiceDate: new Date("2021-01-01T00:00:00.000Z"),
-    dueDate: new Date("2021-01-31T00:00:00.000Z"),
+    currency: "USD",
+    invoiceDate: "2021-01-01T00:00:00Z",
+    dueDate: "2021-01-31T00:00:00Z",
     invoiceNumber: "INV-123",
     noteToSelf: "For the month of January",
     payerId: "ent_8545a84e-a45f-41bf-bdf1-33b42a55812c",
@@ -2776,20 +3115,20 @@ await client.invoice.update("inv_8545a84e-a45f-41bf-bdf1-33b42a55812c", {
     paymentDestinationId: "pm_5fde2f4a-facc-48ef-8f0d-6b7d087c7b18",
     paymentDestinationOptions: {
         type: "check",
-        delivery: Mercoa.CheckDeliveryMethod.Mail,
+        delivery: "MAIL",
     },
     lineItems: [
         {
             id: "inli_26672f38-eb9a-48f1-a7a0-f1b855e38cd7",
             amount: 100,
-            currency: Mercoa.CurrencyCode.Usd,
+            currency: "USD",
             description: "Product A",
             name: "Product A",
             quantity: 1,
             unitPrice: 100,
-            category: Mercoa.InvoiceLineItemCategory.Expense,
-            serviceStartDate: new Date("2021-01-01T00:00:00.000Z"),
-            serviceEndDate: new Date("2021-01-31T00:00:00.000Z"),
+            category: "EXPENSE",
+            serviceStartDate: "2021-01-01T00:00:00Z",
+            serviceEndDate: "2021-01-31T00:00:00Z",
             metadata: {
                 key1: "value1",
                 key2: "value2",
@@ -3012,8 +3351,8 @@ await client.invoice.lineItem.update(
     {
         name: "Product A",
         description: "Product A",
-        serviceStartDate: new Date("2021-01-01T00:00:00.000Z"),
-        serviceEndDate: new Date("2021-01-31T00:00:00.000Z"),
+        serviceStartDate: "2021-01-01T00:00:00Z",
+        serviceEndDate: "2021-01-31T00:00:00Z",
         metadata: {
             key1: "value1",
             key2: "value2",
@@ -3109,6 +3448,7 @@ await client.organization.get({
     payeeOnboardingOptions: true,
     payorOnboardingOptions: true,
     metadataSchema: true,
+    notificationEmailTemplate: true,
 });
 ```
 
@@ -3180,45 +3520,32 @@ await client.organization.update({
     paymentMethods: {
         payerPayments: [
             {
-                type: Mercoa.PaymentMethodType.Custom,
-                name: {
-                    key: "value",
-                },
+                type: "custom",
                 active: true,
             },
         ],
         backupDisbursements: [
             {
-                type: Mercoa.PaymentMethodType.Custom,
-                name: {
-                    key: "value",
-                },
+                type: "custom",
                 active: true,
             },
         ],
         vendorDisbursements: [
             {
-                type: Mercoa.PaymentMethodType.Custom,
-                name: {
-                    key: "value",
-                },
+                type: "custom",
                 active: true,
             },
         ],
     },
     emailProvider: {
         sender: {
-            provider: Mercoa.EmailSenderProvider.None,
+            provider: "none",
             fromEmail: "string",
             fromName: "string",
             apiKey: "string",
         },
         inboxDomain: "string",
-        alternativeInboxDomains: [
-            {
-                key: "value",
-            },
-        ],
+        alternativeInboxDomains: [],
     },
     externalAccountingSystemProvider: {
         type: "none",
@@ -3531,24 +3858,17 @@ await client.organization.update({
         {
             key: "string",
             displayName: "string",
-            description: {
-                key: "value",
-            },
-            lineItem: {
-                key: "value",
-            },
-            type: Mercoa.MetadataType.String,
-            allowMultiple: {
-                key: "value",
-            },
-            validationRules: {
-                key: "value",
-            },
-            showConditions: {
-                key: "value",
-            },
+            type: "STRING",
         },
     ],
+    notificationEmailTemplate: {
+        backgroundStyle: "string",
+        header: "string",
+        body: "string",
+        signature: "string",
+        footer: "string",
+        button: "string",
+    },
 });
 ```
 
@@ -3613,8 +3933,8 @@ Get log of all emails sent to this organization. Content format subject to chang
 
 ```typescript
 await client.organization.emailLog({
-    startDate: new Date("2024-01-15T09:30:00.000Z"),
-    endDate: new Date("2024-01-15T09:30:00.000Z"),
+    startDate: "2024-01-15T09:30:00Z",
+    endDate: "2024-01-15T09:30:00Z",
     limit: 1,
     startingAfter: "string",
 });
@@ -3817,7 +4137,7 @@ Calculate the estimated payment timing given the deduction date, payment source,
 
 ```typescript
 await client.calculate.paymentTiming({
-    estimatedDeductionDate: new Date("2024-01-02T00:00:00.000Z"),
+    estimatedDeductionDate: "2024-01-02T00:00:00Z",
     paymentSourceId: "pm_4794d597-70dc-4fec-b6ec-c5988e759769",
     paymentDestinationId: "pm_4794d597-70dc-4fec-b6ec-c5988e759769",
 });
@@ -3944,31 +4264,31 @@ await client.customPaymentMethodSchema.create({
     name: "Wire",
     isSource: false,
     isDestination: true,
-    supportedCurrencies: [Mercoa.CurrencyCode.Usd, Mercoa.CurrencyCode.Eur],
+    supportedCurrencies: ["USD", "EUR"],
     fields: [
         {
             name: "bankName",
             displayName: "Bank Name",
-            type: Mercoa.CustomPaymentMethodSchemaFieldType.Text,
+            type: "text",
             optional: false,
         },
         {
             name: "recipientName",
             displayName: "Recipient Name",
-            type: Mercoa.CustomPaymentMethodSchemaFieldType.Text,
+            type: "text",
             optional: false,
         },
         {
             name: "accountNumber",
             displayName: "Account Number",
-            type: Mercoa.CustomPaymentMethodSchemaFieldType.UsBankAccountNumber,
+            type: "usBankAccountNumber",
             optional: false,
             useAsAccountNumber: true,
         },
         {
             name: "routingNumber",
             displayName: "Routing Number",
-            type: Mercoa.CustomPaymentMethodSchemaFieldType.UsBankRoutingNumber,
+            type: "usBankRoutingNumber",
             optional: false,
         },
     ],
@@ -4042,31 +4362,31 @@ await client.customPaymentMethodSchema.update("cpms_14f78dcd-4614-426e-a37a-7af2
     name: "Check",
     isSource: false,
     isDestination: true,
-    supportedCurrencies: [Mercoa.CurrencyCode.Usd],
+    supportedCurrencies: ["USD"],
     fields: [
         {
             name: "payToTheOrderOf",
             displayName: "Pay To The Order Of",
-            type: Mercoa.CustomPaymentMethodSchemaFieldType.Text,
+            type: "text",
             optional: false,
         },
         {
             name: "accountNumber",
             displayName: "Account Number",
-            type: Mercoa.CustomPaymentMethodSchemaFieldType.UsBankAccountNumber,
+            type: "usBankAccountNumber",
             optional: false,
             useAsAccountNumber: true,
         },
         {
             name: "routingNumber",
             displayName: "Routing Number",
-            type: Mercoa.CustomPaymentMethodSchemaFieldType.UsBankRoutingNumber,
+            type: "usBankRoutingNumber",
             optional: false,
         },
         {
             name: "address",
             displayName: "Address",
-            type: Mercoa.CustomPaymentMethodSchemaFieldType.Address,
+            type: "address",
             optional: false,
         },
     ],
@@ -4274,8 +4594,8 @@ Get invoices for an entity group with the given filters.
 ```typescript
 await client.entityGroup.invoice.find("entg_8545a84e-a45f-41bf-bdf1-33b42a55812c", {
     excludeReceivables: true,
-    orderBy: Mercoa.InvoiceOrderByField.CreatedAt,
-    orderDirection: Mercoa.OrderDirection.Asc,
+    orderBy: "CREATED_AT",
+    orderDirection: "ASC",
     limit: 10,
 });
 ```
@@ -4349,12 +4669,12 @@ Get invoice metrics for an entity group with the given filters. Invoices will be
 
 ```typescript
 await client.entityGroup.invoice.metrics("entg_8545a84e-a45f-41bf-bdf1-33b42a55812c", {
-    returnByDate: Mercoa.InvoiceMetricsPerDateGroupBy.CreationDate,
+    returnByDate: "CREATION_DATE",
     excludeReceivables: true,
-    startDate: new Date("2021-01-01T00:00:00.000Z"),
-    endDate: new Date("2021-01-31T23:59:59.999Z"),
-    currency: Mercoa.CurrencyCode.Usd,
-    status: Mercoa.InvoiceStatus.New,
+    startDate: "2021-01-01T00:00:00.000Z",
+    endDate: "2021-01-31T23:59:59.999Z",
+    currency: "USD",
+    status: "NEW",
 });
 ```
 
@@ -4496,7 +4816,7 @@ await client.entity.approvalPolicy.create("ent_8545a84e-a45f-41bf-bdf1-33b42a558
         {
             type: "amount",
             amount: 100,
-            currency: Mercoa.CurrencyCode.Usd,
+            currency: "USD",
         },
     ],
     rule: {
@@ -4661,7 +4981,7 @@ await client.entity.approvalPolicy.update(
             {
                 type: "amount",
                 amount: 100,
-                currency: Mercoa.CurrencyCode.Usd,
+                currency: "USD",
             },
         ],
         rule: {
@@ -5373,28 +5693,28 @@ await client.entity.customization.update("ent_a0f6ea94-0761-4a5e-a416-3c453cb7ec
     ],
     paymentSource: [
         {
-            type: Mercoa.PaymentMethodType.BankAccount,
+            type: "bankAccount",
             disabled: true,
         },
         {
-            type: Mercoa.PaymentMethodType.Custom,
+            type: "custom",
             schemaId: "cpms_7df2974a-4069-454c-912f-7e58ebe030fb",
             disabled: true,
         },
     ],
     backupDisbursement: [
         {
-            type: Mercoa.PaymentMethodType.Check,
+            type: "check",
             disabled: true,
         },
     ],
     paymentDestination: [
         {
-            type: Mercoa.PaymentMethodType.BankAccount,
+            type: "bankAccount",
             disabled: true,
         },
         {
-            type: Mercoa.PaymentMethodType.Check,
+            type: "check",
             disabled: true,
         },
     ],
@@ -5545,7 +5865,7 @@ Upload documents associated with this entity
 await client.entity.document.upload("ent_26e7b5d3-a739-4b23-9ad9-6aaa085f47a9", {
     document:
         "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAIAQMAAAD+wSzIAAAABlBMVEX///+/v7+jQ3Y5AAAADklEQVQI12P4AIX8EAgALgAD/aNpbtEAAAAASUVORK5CYII",
-    type: Mercoa.DocumentType.TenNinetyNine,
+    type: "TEN_NINETY_NINE",
 });
 ```
 
@@ -5742,7 +6062,7 @@ await client.entity.emailTemplate.getAll("ent_a0f6ea94-0761-4a5e-a416-3c453cb7ec
 
 ```typescript
 await client.entity.emailTemplate.create("ent_a0f6ea94-0761-4a5e-a416-3c453cb7eced", {
-    templateType: Mercoa.EmailTemplateType.Payment,
+    templateType: "PAYMENT",
     name: "Generic Payment Email",
     subject: "Action Required - Your payment is due",
     content: "<h1>Your invoice has been sent.</h1>",
@@ -5896,7 +6216,7 @@ await client.entity.emailTemplate.update(
     "ent_a0f6ea94-0761-4a5e-a416-3c453cb7eced",
     "emt_8545a84e-a45f-41bf-bdf1-33b42a55812c",
     {
-        templateType: Mercoa.EmailTemplateType.Payment,
+        templateType: "PAYMENT",
         name: "Generic Payment Email",
         subject: "Action Required - Your payment is due",
         content: "<h1>Your invoice has been sent.</h1>",
@@ -6255,9 +6575,9 @@ Sync an entity with an external accounting system. Will sync customers/vendors a
 
 ```typescript
 await client.entity.externalAccountingSystem.sync("ent_8545a84e-a45f-41bf-bdf1-33b42a55812c", {
-    vendors: Mercoa.SyncType.Pull,
-    bills: Mercoa.SyncType.Push,
-    glAccounts: Mercoa.SyncType.Pull,
+    vendors: "pull",
+    bills: "push",
+    glAccounts: "pull",
 });
 ```
 
@@ -6333,8 +6653,8 @@ Get invoices for an entity with the given filters.
 ```typescript
 await client.entity.invoice.find("ent_8545a84e-a45f-41bf-bdf1-33b42a55812c", {
     excludeReceivables: true,
-    orderBy: Mercoa.InvoiceOrderByField.CreatedAt,
-    orderDirection: Mercoa.OrderDirection.Asc,
+    orderBy: "CREATED_AT",
+    orderDirection: "ASC",
     limit: 10,
 });
 ```
@@ -6408,12 +6728,12 @@ Get invoice metrics for an entity with the given filters. Invoices will always b
 
 ```typescript
 await client.entity.invoice.metrics("ent_8545a84e-a45f-41bf-bdf1-33b42a55812c", {
-    returnByDate: Mercoa.InvoiceMetricsPerDateGroupBy.CreationDate,
+    returnByDate: "CREATION_DATE",
     excludeReceivables: true,
-    startDate: new Date("2021-01-01T00:00:00.000Z"),
-    endDate: new Date("2021-01-31T23:59:59.999Z"),
-    currency: Mercoa.CurrencyCode.Usd,
-    status: Mercoa.InvoiceStatus.New,
+    startDate: "2021-01-01T00:00:00.000Z",
+    endDate: "2021-01-31T23:59:59.999Z",
+    currency: "USD",
+    status: "NEW",
 });
 ```
 
@@ -6839,10 +7159,7 @@ Retrieve notification policy associated with this entity
 <dd>
 
 ```typescript
-await client.entity.notificationPolicy.get(
-    "ent_8545a84e-a45f-41bf-bdf1-33b42a55812c",
-    Mercoa.NotificationType.InvoiceApprovalNeeded
-);
+await client.entity.notificationPolicy.get("ent_8545a84e-a45f-41bf-bdf1-33b42a55812c", "INVOICE_APPROVAL_NEEDED");
 ```
 
 </dd>
@@ -6913,14 +7230,10 @@ Update notification policy associated with this entity
 <dd>
 
 ```typescript
-await client.entity.notificationPolicy.update(
-    "ent_8545a84e-a45f-41bf-bdf1-33b42a55812c",
-    Mercoa.NotificationType.InvoiceApprovalNeeded,
-    {
-        disabled: false,
-        additionalRoles: ["admin", "approver"],
-    }
-);
+await client.entity.notificationPolicy.update("ent_8545a84e-a45f-41bf-bdf1-33b42a55812c", "INVOICE_APPROVAL_NEEDED", {
+    disabled: false,
+    additionalRoles: ["admin", "approver"],
+});
 ```
 
 </dd>
@@ -6971,346 +7284,9 @@ await client.entity.notificationPolicy.update(
 </dl>
 </details>
 
-## Entity PaymentMethod
+## Entity PaymentMethod BankAccount
 
-<details><summary><code>client.entity.paymentMethod.<a href="/src/api/resources/entity/resources/paymentMethod/client/Client.ts">getAll</a>(entityId, { ...params }) -> Mercoa.PaymentMethodResponse[]</code></summary>
-<dl>
-<dd>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.entity.paymentMethod.getAll("ent_8545a84e-a45f-41bf-bdf1-33b42a55812c");
-```
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**entityId:** `Mercoa.EntityId` — Entity ID or Entity ForeignID
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**request:** `Mercoa.entity.GetAllPaymentMethodsRequest`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `PaymentMethod.RequestOptions`
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>client.entity.paymentMethod.<a href="/src/api/resources/entity/resources/paymentMethod/client/Client.ts">create</a>(entityId, { ...params }) -> Mercoa.PaymentMethodResponse</code></summary>
-<dl>
-<dd>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.entity.paymentMethod.create("ent_8545a84e-a45f-41bf-bdf1-33b42a55812c", {
-    type: "bankAccount",
-    routingNumber: "12345678",
-    accountNumber: "99988767623",
-    accountType: Mercoa.BankType.Checking,
-});
-```
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**entityId:** `Mercoa.EntityId` — Entity ID or Entity ForeignID
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**request:** `Mercoa.PaymentMethodRequest`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `PaymentMethod.RequestOptions`
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>client.entity.paymentMethod.<a href="/src/api/resources/entity/resources/paymentMethod/client/Client.ts">get</a>(entityId, paymentMethodId) -> Mercoa.PaymentMethodResponse</code></summary>
-<dl>
-<dd>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.entity.paymentMethod.get(
-    "ent_8545a84e-a45f-41bf-bdf1-33b42a55812c",
-    "pm_4794d597-70dc-4fec-b6ec-c5988e759769"
-);
-```
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**entityId:** `Mercoa.EntityId` — Entity ID or Entity ForeignID
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**paymentMethodId:** `Mercoa.PaymentMethodId` — Payment Method ID or Payment Method ForeignID
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `PaymentMethod.RequestOptions`
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>client.entity.paymentMethod.<a href="/src/api/resources/entity/resources/paymentMethod/client/Client.ts">update</a>(entityId, paymentMethodId, { ...params }) -> Mercoa.PaymentMethodResponse</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-Only custom payment methods can be updated.
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.entity.paymentMethod.update(
-    "ent_8545a84e-a45f-41bf-bdf1-33b42a55812c",
-    "pm_4794d597-70dc-4fec-b6ec-c5988e759769",
-    {
-        type: "bankAccount",
-        defaultSource: true,
-        defaultDestination: true,
-    }
-);
-```
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**entityId:** `Mercoa.EntityId` — Entity ID or Entity ForeignID
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**paymentMethodId:** `Mercoa.PaymentMethodId` — Payment Method ID or Payment Method ForeignID
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**request:** `Mercoa.PaymentMethodUpdateRequest`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `PaymentMethod.RequestOptions`
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>client.entity.paymentMethod.<a href="/src/api/resources/entity/resources/paymentMethod/client/Client.ts">delete</a>(entityId, paymentMethodId) -> void</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-Mark a payment method as inactive. This will not remove the payment method from the system, but will prevent it from being used in the future.
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.entity.paymentMethod.delete(
-    "ent_8545a84e-a45f-41bf-bdf1-33b42a55812c",
-    "pm_4794d597-70dc-4fec-b6ec-c5988e759769"
-);
-```
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**entityId:** `Mercoa.EntityId` — Entity ID or Entity ForeignID
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**paymentMethodId:** `Mercoa.PaymentMethodId` — Payment Method ID or Payment Method ForeignID
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `PaymentMethod.RequestOptions`
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>client.entity.paymentMethod.<a href="/src/api/resources/entity/resources/paymentMethod/client/Client.ts">initiateMicroDeposits</a>(entityId, paymentMethodId) -> Mercoa.PaymentMethodResponse</code></summary>
+<details><summary><code>client.entity.paymentMethod.bankAccount.<a href="/src/api/resources/entity/resources/paymentMethod/resources/bankAccount/client/Client.ts">initiateMicroDeposits</a>(entityId, paymentMethodId) -> Mercoa.PaymentMethodResponse</code></summary>
 <dl>
 <dd>
 
@@ -7338,7 +7314,7 @@ Initiate micro deposits for a bank account
 <dd>
 
 ```typescript
-await client.entity.paymentMethod.initiateMicroDeposits(
+await client.entity.paymentMethod.bankAccount.initiateMicroDeposits(
     "ent_8545a84e-a45f-41bf-bdf1-33b42a55812c",
     "pm_4794d597-70dc-4fec-b6ec-c5988e759769"
 );
@@ -7373,7 +7349,7 @@ await client.entity.paymentMethod.initiateMicroDeposits(
 <dl>
 <dd>
 
-**requestOptions:** `PaymentMethod.RequestOptions`
+**requestOptions:** `BankAccount.RequestOptions`
 
 </dd>
 </dl>
@@ -7384,7 +7360,7 @@ await client.entity.paymentMethod.initiateMicroDeposits(
 </dl>
 </details>
 
-<details><summary><code>client.entity.paymentMethod.<a href="/src/api/resources/entity/resources/paymentMethod/client/Client.ts">completeMicroDeposits</a>(entityId, paymentMethodId, { ...params }) -> Mercoa.PaymentMethodResponse</code></summary>
+<details><summary><code>client.entity.paymentMethod.bankAccount.<a href="/src/api/resources/entity/resources/paymentMethod/resources/bankAccount/client/Client.ts">completeMicroDeposits</a>(entityId, paymentMethodId, { ...params }) -> Mercoa.PaymentMethodResponse</code></summary>
 <dl>
 <dd>
 
@@ -7412,7 +7388,7 @@ Complete micro deposit verification
 <dd>
 
 ```typescript
-await client.entity.paymentMethod.completeMicroDeposits(
+await client.entity.paymentMethod.bankAccount.completeMicroDeposits(
     "ent_8545a84e-a45f-41bf-bdf1-33b42a55812c",
     "pm_4794d597-70dc-4fec-b6ec-c5988e759769",
     {
@@ -7450,7 +7426,7 @@ await client.entity.paymentMethod.completeMicroDeposits(
 <dl>
 <dd>
 
-**request:** `Mercoa.entity.CompleteMicroDepositsRequest`
+**request:** `Mercoa.entity.paymentMethod.CompleteMicroDepositsRequest`
 
 </dd>
 </dl>
@@ -7458,7 +7434,7 @@ await client.entity.paymentMethod.completeMicroDeposits(
 <dl>
 <dd>
 
-**requestOptions:** `PaymentMethod.RequestOptions`
+**requestOptions:** `BankAccount.RequestOptions`
 
 </dd>
 </dl>
@@ -7469,7 +7445,7 @@ await client.entity.paymentMethod.completeMicroDeposits(
 </dl>
 </details>
 
-<details><summary><code>client.entity.paymentMethod.<a href="/src/api/resources/entity/resources/paymentMethod/client/Client.ts">getBalance</a>(entityId, paymentMethodId) -> Mercoa.PaymentMethodBalanceResponse</code></summary>
+<details><summary><code>client.entity.paymentMethod.bankAccount.<a href="/src/api/resources/entity/resources/paymentMethod/resources/bankAccount/client/Client.ts">getAccelerationFunds</a>(entityId, paymentMethodId) -> Mercoa.AccelerationFundsResponse</code></summary>
 <dl>
 <dd>
 
@@ -7481,7 +7457,7 @@ await client.entity.paymentMethod.completeMicroDeposits(
 <dl>
 <dd>
 
-Deprecated. Get the available balance of a payment method. Only bank accounts added with Plaid are supported. This endpoint will return a cached value and will refresh the balance when called.
+Get the available and pending balance of this entity's acceleration funds. The specified payment method must be a bank account.
 
 </dd>
 </dl>
@@ -7497,7 +7473,10 @@ Deprecated. Get the available balance of a payment method. Only bank accounts ad
 <dd>
 
 ```typescript
-await client.entity.paymentMethod.getBalance("string", "string");
+await client.entity.paymentMethod.bankAccount.getAccelerationFunds(
+    "ent_8545a84e-a45f-41bf-bdf1-33b42a55812c",
+    "pm_4794d597-70dc-4fec-b6ec-c5988e759769"
+);
 ```
 
 </dd>
@@ -7529,7 +7508,179 @@ await client.entity.paymentMethod.getBalance("string", "string");
 <dl>
 <dd>
 
-**requestOptions:** `PaymentMethod.RequestOptions`
+**requestOptions:** `BankAccount.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.entity.paymentMethod.bankAccount.<a href="/src/api/resources/entity/resources/paymentMethod/resources/bankAccount/client/Client.ts">addAccelerationFunds</a>(entityId, paymentMethodId, { ...params }) -> void</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Add acceleration funds to this entity from a bank account (this transfer is D+2). The specified payment method must be a bank account.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.entity.paymentMethod.bankAccount.addAccelerationFunds(
+    "ent_8545a84e-a45f-41bf-bdf1-33b42a55812c",
+    "pm_4794d597-70dc-4fec-b6ec-c5988e759769",
+    {
+        amount: 100,
+        currency: "USD",
+    }
+);
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**entityId:** `Mercoa.EntityId` — Entity ID or Entity ForeignID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**paymentMethodId:** `Mercoa.PaymentMethodId` — Payment Method ID or Payment Method ForeignID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `Mercoa.entity.paymentMethod.AddAccelerationFundsRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `BankAccount.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.entity.paymentMethod.bankAccount.<a href="/src/api/resources/entity/resources/paymentMethod/resources/bankAccount/client/Client.ts">removeAccelerationFunds</a>(entityId, paymentMethodId, { ...params }) -> void</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Remove acceleration funds from this entity to a bank account (this transfer is D+0). The specified payment method must be a bank account.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.entity.paymentMethod.bankAccount.removeAccelerationFunds(
+    "ent_8545a84e-a45f-41bf-bdf1-33b42a55812c",
+    "pm_4794d597-70dc-4fec-b6ec-c5988e759769",
+    {
+        amount: 100,
+        currency: "USD",
+    }
+);
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**entityId:** `Mercoa.EntityId` — Entity ID or Entity ForeignID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**paymentMethodId:** `Mercoa.PaymentMethodId` — Payment Method ID or Payment Method ForeignID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `Mercoa.entity.paymentMethod.RemoveAccelerationFundsRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `BankAccount.RequestOptions`
 
 </dd>
 </dl>
@@ -8020,7 +8171,7 @@ Retrieve notification policy associated with this entity user
 await client.entity.user.notificationPolicy.get(
     "ent_8545a84e-a45f-41bf-bdf1-33b42a55812c",
     "user_e24fc81c-c5ee-47e8-af42-4fe29d895506",
-    Mercoa.NotificationType.InvoiceApproved
+    "INVOICE_APPROVED"
 );
 ```
 
@@ -8103,7 +8254,7 @@ Update notification policy associated with this entity user
 await client.entity.user.notificationPolicy.update(
     "ent_8545a84e-a45f-41bf-bdf1-33b42a55812c",
     "user_e24fc81c-c5ee-47e8-af42-4fe29d895506",
-    Mercoa.NotificationType.InvoiceApproved,
+    "INVOICE_APPROVED",
     {
         disabled: true,
     }
@@ -8336,7 +8487,7 @@ await client.entity.user.notifications.update(
     "user_e24fc81c-c5ee-47e8-af42-4fe29d895506",
     "notif_7df2974a-4069-454c-912f-7e58ebe030fb",
     {
-        status: Mercoa.NotificationStatus.Read,
+        status: "READ",
     }
 );
 ```
@@ -9643,7 +9794,7 @@ Run OCR on an Base64 encoded image or PDF. This endpoint will block until the OC
 
 ```typescript
 await client.ocr.ocr({
-    vendorNetwork: Mercoa.VendorNetwork.Entity,
+    vendorNetwork: "entity",
     entityId: "entity_8f86116b-3b4d-4ded-99ef-3bc929d8c33c",
     mimeType: "image/png",
     image: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAIAQMAAAD+wSzIAAAABlBMVEX///+/v7+jQ3Y5AAAADklEQVQI12P4AIX8EAgALgAD/aNpbtEAAAAASUVORK5CYII",
@@ -9711,7 +9862,7 @@ Run OCR on an Base64 encoded image or PDF. This endpoint will return immediately
 
 ```typescript
 await client.ocr.runAsyncOcr({
-    vendorNetwork: Mercoa.VendorNetwork.Entity,
+    vendorNetwork: "entity",
     entityId: "entity_8f86116b-3b4d-4ded-99ef-3bc929d8c33c",
     mimeType: "image/png",
     image: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAIAQMAAAD+wSzIAAAABlBMVEX///+/v7+jQ3Y5AAAADklEQVQI12P4AIX8EAgALgAD/aNpbtEAAAAASUVORK5CYII",
@@ -9898,7 +10049,7 @@ Retrieve notification configuration for this notification type
 <dd>
 
 ```typescript
-await client.organization.notificationConfiguration.get(Mercoa.NotificationType.InvoiceApprovalNeeded);
+await client.organization.notificationConfiguration.get("INVOICE_APPROVAL_NEEDED");
 ```
 
 </dd>
@@ -9961,7 +10112,7 @@ Update notification configuration for this notification type
 <dd>
 
 ```typescript
-await client.organization.notificationConfiguration.update(Mercoa.NotificationType.InvoiceApprovalNeeded, {
+await client.organization.notificationConfiguration.update("INVOICE_APPROVAL_NEEDED", {
     notificationType: "invoice",
     url: "string",
 });
@@ -10035,7 +10186,7 @@ Reset notification configuration for this notification type
 <dd>
 
 ```typescript
-await client.organization.notificationConfiguration.reset(Mercoa.NotificationType.InvoiceApprovalNeeded);
+await client.organization.notificationConfiguration.reset("INVOICE_APPROVAL_NEEDED");
 ```
 
 </dd>

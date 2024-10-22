@@ -5,8 +5,8 @@
 /**
  * @example
  *     {
- *         startDate: new Date("2024-01-15T09:30:00.000Z"),
- *         endDate: new Date("2024-01-15T09:30:00.000Z"),
+ *         startDate: "2024-01-15T09:30:00Z",
+ *         endDate: "2024-01-15T09:30:00Z",
  *         limit: 1,
  *         startingAfter: "string"
  *     }

@@ -12,6 +12,7 @@ import { ExternalAccountingSystemProviderResponse } from "./ExternalAccountingSy
 import { ColorSchemeResponse } from "./ColorSchemeResponse";
 import { OnboardingOptionsResponse } from "./OnboardingOptionsResponse";
 import { MetadataSchema } from "./MetadataSchema";
+import { NotificationEmailTemplateResponse } from "./NotificationEmailTemplateResponse";
 
 export const OrganizationResponse: core.serialization.ObjectSchema<
     serializers.OrganizationResponse.Raw,
@@ -30,6 +31,7 @@ export const OrganizationResponse: core.serialization.ObjectSchema<
     payeeOnboardingOptions: OnboardingOptionsResponse.optional(),
     payorOnboardingOptions: OnboardingOptionsResponse.optional(),
     metadataSchema: core.serialization.list(MetadataSchema).optional(),
+    notificationEmailTemplate: NotificationEmailTemplateResponse.optional(),
 });
 
 export declare namespace OrganizationResponse {
@@ -47,5 +49,6 @@ export declare namespace OrganizationResponse {
         payeeOnboardingOptions?: OnboardingOptionsResponse.Raw | null;
         payorOnboardingOptions?: OnboardingOptionsResponse.Raw | null;
         metadataSchema?: MetadataSchema.Raw[] | null;
+        notificationEmailTemplate?: NotificationEmailTemplateResponse.Raw | null;
     }
 }

@@ -236,8 +236,8 @@ export class Invoice {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.5.10-rc1",
-                "User-Agent": "@mercoa/javascript/0.5.10-rc1",
+                "X-Fern-SDK-Version": "0.5.10",
+                "User-Agent": "@mercoa/javascript/0.5.10",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
@@ -360,11 +360,11 @@ export class Invoice {
      *
      * @example
      *     await client.invoice.create({
-     *         status: Mercoa.InvoiceStatus.New,
+     *         status: "NEW",
      *         amount: 100,
-     *         currency: Mercoa.CurrencyCode.Usd,
-     *         invoiceDate: new Date("2021-01-01T00:00:00.000Z"),
-     *         dueDate: new Date("2021-01-31T00:00:00.000Z"),
+     *         currency: "USD",
+     *         invoiceDate: "2021-01-01T00:00:00Z",
+     *         dueDate: "2021-01-31T00:00:00Z",
      *         invoiceNumber: "INV-123",
      *         noteToSelf: "For the month of January",
      *         payerId: "ent_8545a84e-a45f-41bf-bdf1-33b42a55812c",
@@ -373,18 +373,18 @@ export class Invoice {
      *         paymentDestinationId: "pm_5fde2f4a-facc-48ef-8f0d-6b7d087c7b18",
      *         paymentDestinationOptions: {
      *             type: "check",
-     *             delivery: Mercoa.CheckDeliveryMethod.Mail
+     *             delivery: "MAIL"
      *         },
      *         lineItems: [{
      *                 amount: 100,
-     *                 currency: Mercoa.CurrencyCode.Usd,
+     *                 currency: "USD",
      *                 description: "Product A",
      *                 name: "Product A",
      *                 quantity: 1,
      *                 unitPrice: 100,
-     *                 category: Mercoa.InvoiceLineItemCategory.Expense,
-     *                 serviceStartDate: new Date("2021-01-01T00:00:00.000Z"),
-     *                 serviceEndDate: new Date("2021-01-31T00:00:00.000Z"),
+     *                 category: "EXPENSE",
+     *                 serviceStartDate: "2021-01-01T00:00:00Z",
+     *                 serviceEndDate: "2021-01-31T00:00:00Z",
      *                 metadata: {
      *                     "key1": "value1",
      *                     "key2": "value2"
@@ -397,37 +397,37 @@ export class Invoice {
      *
      * @example
      *     await client.invoice.create({
-     *         status: Mercoa.InvoiceStatus.Draft,
+     *         status: "DRAFT",
      *         payerId: "ent_8545a84e-a45f-41bf-bdf1-33b42a55812c",
      *         creatorEntityId: "ent_8545a84e-a45f-41bf-bdf1-33b42a55812c"
      *     })
      *
      * @example
      *     await client.invoice.create({
-     *         status: Mercoa.InvoiceStatus.New,
+     *         status: "NEW",
      *         payerId: "ent_8545a84e-a45f-41bf-bdf1-33b42a55812c",
      *         creatorEntityId: "ent_8545a84e-a45f-41bf-bdf1-33b42a55812c",
      *         vendorId: "ent_21661ac1-a2a8-4465-a6c0-64474ba8181d",
-     *         currency: Mercoa.CurrencyCode.Usd,
+     *         currency: "USD",
      *         amount: 100,
-     *         invoiceDate: new Date("2021-01-01T00:00:00.000Z"),
-     *         dueDate: new Date("2021-01-31T00:00:00.000Z"),
+     *         invoiceDate: "2021-01-01T00:00:00Z",
+     *         dueDate: "2021-01-31T00:00:00Z",
      *         paymentSourceId: "pm_4794d597-70dc-4fec-b6ec-c5988e759769"
      *     })
      *
      * @example
      *     await client.invoice.create({
-     *         status: Mercoa.InvoiceStatus.Scheduled,
+     *         status: "SCHEDULED",
      *         payerId: "ent_8545a84e-a45f-41bf-bdf1-33b42a55812c",
      *         creatorEntityId: "ent_8545a84e-a45f-41bf-bdf1-33b42a55812c",
      *         vendorId: "ent_21661ac1-a2a8-4465-a6c0-64474ba8181d",
-     *         currency: Mercoa.CurrencyCode.Usd,
+     *         currency: "USD",
      *         amount: 100,
-     *         invoiceDate: new Date("2021-01-01T00:00:00.000Z"),
-     *         dueDate: new Date("2021-01-31T00:00:00.000Z"),
+     *         invoiceDate: "2021-01-01T00:00:00Z",
+     *         dueDate: "2021-01-31T00:00:00Z",
      *         paymentSourceId: "pm_4794d597-70dc-4fec-b6ec-c5988e759769",
      *         paymentDestinationId: "pm_5fde2f4a-facc-48ef-8f0d-6b7d087c7b18",
-     *         deductionDate: new Date("2021-01-29T00:00:00.000Z")
+     *         deductionDate: "2021-01-29T00:00:00Z"
      *     })
      */
     public async create(
@@ -444,8 +444,8 @@ export class Invoice {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.5.10-rc1",
-                "User-Agent": "@mercoa/javascript/0.5.10-rc1",
+                "X-Fern-SDK-Version": "0.5.10",
+                "User-Agent": "@mercoa/javascript/0.5.10",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
@@ -583,8 +583,8 @@ export class Invoice {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.5.10-rc1",
-                "User-Agent": "@mercoa/javascript/0.5.10-rc1",
+                "X-Fern-SDK-Version": "0.5.10",
+                "User-Agent": "@mercoa/javascript/0.5.10",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
@@ -707,11 +707,11 @@ export class Invoice {
      *
      * @example
      *     await client.invoice.update("inv_8545a84e-a45f-41bf-bdf1-33b42a55812c", {
-     *         status: Mercoa.InvoiceStatus.New,
+     *         status: "NEW",
      *         amount: 100,
-     *         currency: Mercoa.CurrencyCode.Usd,
-     *         invoiceDate: new Date("2021-01-01T00:00:00.000Z"),
-     *         dueDate: new Date("2021-01-31T00:00:00.000Z"),
+     *         currency: "USD",
+     *         invoiceDate: "2021-01-01T00:00:00Z",
+     *         dueDate: "2021-01-31T00:00:00Z",
      *         invoiceNumber: "INV-123",
      *         noteToSelf: "For the month of January",
      *         payerId: "ent_8545a84e-a45f-41bf-bdf1-33b42a55812c",
@@ -720,19 +720,19 @@ export class Invoice {
      *         paymentDestinationId: "pm_5fde2f4a-facc-48ef-8f0d-6b7d087c7b18",
      *         paymentDestinationOptions: {
      *             type: "check",
-     *             delivery: Mercoa.CheckDeliveryMethod.Mail
+     *             delivery: "MAIL"
      *         },
      *         lineItems: [{
      *                 id: "inli_26672f38-eb9a-48f1-a7a0-f1b855e38cd7",
      *                 amount: 100,
-     *                 currency: Mercoa.CurrencyCode.Usd,
+     *                 currency: "USD",
      *                 description: "Product A",
      *                 name: "Product A",
      *                 quantity: 1,
      *                 unitPrice: 100,
-     *                 category: Mercoa.InvoiceLineItemCategory.Expense,
-     *                 serviceStartDate: new Date("2021-01-01T00:00:00.000Z"),
-     *                 serviceEndDate: new Date("2021-01-31T00:00:00.000Z"),
+     *                 category: "EXPENSE",
+     *                 serviceStartDate: "2021-01-01T00:00:00Z",
+     *                 serviceEndDate: "2021-01-31T00:00:00Z",
      *                 metadata: {
      *                     "key1": "value1",
      *                     "key2": "value2"
@@ -745,20 +745,20 @@ export class Invoice {
      *
      * @example
      *     await client.invoice.update("inv_8545a84e-a45f-41bf-bdf1-33b42a55812c", {
-     *         status: Mercoa.InvoiceStatus.New,
+     *         status: "NEW",
      *         vendorId: "ent_21661ac1-a2a8-4465-a6c0-64474ba8181d",
-     *         currency: Mercoa.CurrencyCode.Usd,
+     *         currency: "USD",
      *         amount: 100,
-     *         invoiceDate: new Date("2021-01-01T00:00:00.000Z"),
-     *         dueDate: new Date("2021-01-31T00:00:00.000Z"),
+     *         invoiceDate: "2021-01-01T00:00:00Z",
+     *         dueDate: "2021-01-31T00:00:00Z",
      *         paymentSourceId: "pm_4794d597-70dc-4fec-b6ec-c5988e759769"
      *     })
      *
      * @example
      *     await client.invoice.update("inv_8545a84e-a45f-41bf-bdf1-33b42a55812c", {
-     *         status: Mercoa.InvoiceStatus.Scheduled,
+     *         status: "SCHEDULED",
      *         paymentDestinationId: "pm_5fde2f4a-facc-48ef-8f0d-6b7d087c7b18",
-     *         deductionDate: new Date("2021-01-29T00:00:00.000Z")
+     *         deductionDate: "2021-01-29T00:00:00Z"
      *     })
      */
     public async update(
@@ -776,8 +776,8 @@ export class Invoice {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.5.10-rc1",
-                "User-Agent": "@mercoa/javascript/0.5.10-rc1",
+                "X-Fern-SDK-Version": "0.5.10",
+                "User-Agent": "@mercoa/javascript/0.5.10",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
@@ -914,8 +914,8 @@ export class Invoice {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.5.10-rc1",
-                "User-Agent": "@mercoa/javascript/0.5.10-rc1",
+                "X-Fern-SDK-Version": "0.5.10",
+                "User-Agent": "@mercoa/javascript/0.5.10",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
@@ -1061,8 +1061,8 @@ export class Invoice {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.5.10-rc1",
-                "User-Agent": "@mercoa/javascript/0.5.10-rc1",
+                "X-Fern-SDK-Version": "0.5.10",
+                "User-Agent": "@mercoa/javascript/0.5.10",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,

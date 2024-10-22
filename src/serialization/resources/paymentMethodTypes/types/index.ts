@@ -7,8 +7,6 @@ export * from "./PaymentMethodUpdateRequest";
 export * from "./PaymentMethodResponse";
 export * from "./PaymentMethodWithEntityResponse";
 export * from "./PaymentMethodWithEntityFindResponse";
-export * from "./PaymentMethodBalanceStatus";
-export * from "./PaymentMethodBalanceResponse";
 export * from "./PlaidLinkRequest";
 export * from "./PlaidProcessorTokenRequest";
 export * from "./PlaidPublicTokenRequest";

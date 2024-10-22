@@ -9,8 +9,8 @@ import * as Mercoa from "../../../index";
  *     {
  *         name: "Product A",
  *         description: "Product A",
- *         serviceStartDate: new Date("2021-01-01T00:00:00.000Z"),
- *         serviceEndDate: new Date("2021-01-31T00:00:00.000Z"),
+ *         serviceStartDate: "2021-01-01T00:00:00Z",
+ *         serviceEndDate: "2021-01-31T00:00:00Z",
  *         metadata: {
  *             "key1": "value1",
  *             "key2": "value2"

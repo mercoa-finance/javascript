@@ -10,7 +10,7 @@ import * as Mercoa from "../../../../../../index";
  *
  * @example
  *     {
- *         type: Mercoa.PaymentMethodType.BankAccount
+ *         type: "bankAccount"
  *     }
  */
 export interface GetAllPaymentMethodsRequest {

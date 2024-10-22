@@ -7,7 +7,7 @@ import * as Mercoa from "../../../../index";
 /**
  * @example
  *     {
- *         paymentMethodId: "string"
+ *         paymentMethodId: "pm_4794d597-70dc-4fec-b6ec-c5988e759769"
  *     }
  */
 export interface PlaidLinkTokenRequest {

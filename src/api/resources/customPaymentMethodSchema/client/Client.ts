@@ -61,8 +61,8 @@ export class CustomPaymentMethodSchema {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.5.10-rc1",
-                "User-Agent": "@mercoa/javascript/0.5.10-rc1",
+                "X-Fern-SDK-Version": "0.5.10",
+                "User-Agent": "@mercoa/javascript/0.5.10",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
@@ -189,27 +189,27 @@ export class CustomPaymentMethodSchema {
      *         name: "Wire",
      *         isSource: false,
      *         isDestination: true,
-     *         supportedCurrencies: [Mercoa.CurrencyCode.Usd, Mercoa.CurrencyCode.Eur],
+     *         supportedCurrencies: ["USD", "EUR"],
      *         fields: [{
      *                 name: "bankName",
      *                 displayName: "Bank Name",
-     *                 type: Mercoa.CustomPaymentMethodSchemaFieldType.Text,
+     *                 type: "text",
      *                 optional: false
      *             }, {
      *                 name: "recipientName",
      *                 displayName: "Recipient Name",
-     *                 type: Mercoa.CustomPaymentMethodSchemaFieldType.Text,
+     *                 type: "text",
      *                 optional: false
      *             }, {
      *                 name: "accountNumber",
      *                 displayName: "Account Number",
-     *                 type: Mercoa.CustomPaymentMethodSchemaFieldType.UsBankAccountNumber,
+     *                 type: "usBankAccountNumber",
      *                 optional: false,
      *                 useAsAccountNumber: true
      *             }, {
      *                 name: "routingNumber",
      *                 displayName: "Routing Number",
-     *                 type: Mercoa.CustomPaymentMethodSchemaFieldType.UsBankRoutingNumber,
+     *                 type: "usBankRoutingNumber",
      *                 optional: false
      *             }],
      *         estimatedProcessingTime: 0,
@@ -222,27 +222,27 @@ export class CustomPaymentMethodSchema {
      *         name: "Check",
      *         isSource: false,
      *         isDestination: true,
-     *         supportedCurrencies: [Mercoa.CurrencyCode.Usd],
+     *         supportedCurrencies: ["USD"],
      *         fields: [{
      *                 name: "payToTheOrderOf",
      *                 displayName: "Pay To The Order Of",
-     *                 type: Mercoa.CustomPaymentMethodSchemaFieldType.Text,
+     *                 type: "text",
      *                 optional: false
      *             }, {
      *                 name: "accountNumber",
      *                 displayName: "Account Number",
-     *                 type: Mercoa.CustomPaymentMethodSchemaFieldType.UsBankAccountNumber,
+     *                 type: "usBankAccountNumber",
      *                 optional: false,
      *                 useAsAccountNumber: true
      *             }, {
      *                 name: "routingNumber",
      *                 displayName: "Routing Number",
-     *                 type: Mercoa.CustomPaymentMethodSchemaFieldType.UsBankRoutingNumber,
+     *                 type: "usBankRoutingNumber",
      *                 optional: false
      *             }, {
      *                 name: "address",
      *                 displayName: "Address",
-     *                 type: Mercoa.CustomPaymentMethodSchemaFieldType.Address,
+     *                 type: "address",
      *                 optional: false
      *             }],
      *         estimatedProcessingTime: 7,
@@ -264,8 +264,8 @@ export class CustomPaymentMethodSchema {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.5.10-rc1",
-                "User-Agent": "@mercoa/javascript/0.5.10-rc1",
+                "X-Fern-SDK-Version": "0.5.10",
+                "User-Agent": "@mercoa/javascript/0.5.10",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
@@ -396,27 +396,27 @@ export class CustomPaymentMethodSchema {
      *         name: "Check",
      *         isSource: false,
      *         isDestination: true,
-     *         supportedCurrencies: [Mercoa.CurrencyCode.Usd],
+     *         supportedCurrencies: ["USD"],
      *         fields: [{
      *                 name: "payToTheOrderOf",
      *                 displayName: "Pay To The Order Of",
-     *                 type: Mercoa.CustomPaymentMethodSchemaFieldType.Text,
+     *                 type: "text",
      *                 optional: false
      *             }, {
      *                 name: "accountNumber",
      *                 displayName: "Account Number",
-     *                 type: Mercoa.CustomPaymentMethodSchemaFieldType.UsBankAccountNumber,
+     *                 type: "usBankAccountNumber",
      *                 optional: false,
      *                 useAsAccountNumber: true
      *             }, {
      *                 name: "routingNumber",
      *                 displayName: "Routing Number",
-     *                 type: Mercoa.CustomPaymentMethodSchemaFieldType.UsBankRoutingNumber,
+     *                 type: "usBankRoutingNumber",
      *                 optional: false
      *             }, {
      *                 name: "address",
      *                 displayName: "Address",
-     *                 type: Mercoa.CustomPaymentMethodSchemaFieldType.Address,
+     *                 type: "address",
      *                 optional: false
      *             }],
      *         estimatedProcessingTime: 7,
@@ -429,27 +429,27 @@ export class CustomPaymentMethodSchema {
      *         name: "Wire",
      *         isSource: false,
      *         isDestination: true,
-     *         supportedCurrencies: [Mercoa.CurrencyCode.Usd, Mercoa.CurrencyCode.Eur],
+     *         supportedCurrencies: ["USD", "EUR"],
      *         fields: [{
      *                 name: "bankName",
      *                 displayName: "Bank Name",
-     *                 type: Mercoa.CustomPaymentMethodSchemaFieldType.Text,
+     *                 type: "text",
      *                 optional: false
      *             }, {
      *                 name: "recipientName",
      *                 displayName: "Recipient Name",
-     *                 type: Mercoa.CustomPaymentMethodSchemaFieldType.Text,
+     *                 type: "text",
      *                 optional: false
      *             }, {
      *                 name: "accountNumber",
      *                 displayName: "Account Number",
-     *                 type: Mercoa.CustomPaymentMethodSchemaFieldType.UsBankAccountNumber,
+     *                 type: "usBankAccountNumber",
      *                 optional: false,
      *                 useAsAccountNumber: true
      *             }, {
      *                 name: "routingNumber",
      *                 displayName: "Routing Number",
-     *                 type: Mercoa.CustomPaymentMethodSchemaFieldType.UsBankRoutingNumber,
+     *                 type: "usBankRoutingNumber",
      *                 optional: false
      *             }],
      *         estimatedProcessingTime: 0,
@@ -474,8 +474,8 @@ export class CustomPaymentMethodSchema {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.5.10-rc1",
-                "User-Agent": "@mercoa/javascript/0.5.10-rc1",
+                "X-Fern-SDK-Version": "0.5.10",
+                "User-Agent": "@mercoa/javascript/0.5.10",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
@@ -619,8 +619,8 @@ export class CustomPaymentMethodSchema {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.5.10-rc1",
-                "User-Agent": "@mercoa/javascript/0.5.10-rc1",
+                "X-Fern-SDK-Version": "0.5.10",
+                "User-Agent": "@mercoa/javascript/0.5.10",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
@@ -761,8 +761,8 @@ export class CustomPaymentMethodSchema {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.5.10-rc1",
-                "User-Agent": "@mercoa/javascript/0.5.10-rc1",
+                "X-Fern-SDK-Version": "0.5.10",
+                "User-Agent": "@mercoa/javascript/0.5.10",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,

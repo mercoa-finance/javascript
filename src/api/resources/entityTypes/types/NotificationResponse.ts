@@ -11,7 +11,7 @@ import * as Mercoa from "../../../index";
  *         invoiceId: "inv_26e7b5d3-a739-4b23-9ad9-6aaa085f47a9",
  *         type: Mercoa.NotificationType.InvoiceApprovalNeeded,
  *         status: Mercoa.NotificationStatus.Sent,
- *         createdAt: new Date("2024-01-01T00:00:00.000Z")
+ *         createdAt: "2024-01-01T00:00:00Z"
  *     }
  *
  * @example
@@ -20,7 +20,7 @@ import * as Mercoa from "../../../index";
  *         invoiceId: "inv_26e7b5d3-a739-4b23-9ad9-6aaa085f47a9",
  *         type: Mercoa.NotificationType.InvoiceApproved,
  *         status: Mercoa.NotificationStatus.Sent,
- *         createdAt: new Date("2024-01-01T00:00:00.000Z")
+ *         createdAt: "2024-01-01T00:00:00Z"
  *     }
  *
  * @example
@@ -29,7 +29,7 @@ import * as Mercoa from "../../../index";
  *         invoiceId: "inv_26e7b5d3-a739-4b23-9ad9-6aaa085f47a9",
  *         type: Mercoa.NotificationType.InvoiceApproved,
  *         status: Mercoa.NotificationStatus.Read,
- *         createdAt: new Date("2024-01-01T00:00:00.000Z")
+ *         createdAt: "2024-01-01T00:00:00Z"
  *     }
  */
 export interface NotificationResponse {

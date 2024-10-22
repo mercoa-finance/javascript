@@ -63,8 +63,8 @@ export class ApprovalPolicy {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.5.10-rc1",
-                "User-Agent": "@mercoa/javascript/0.5.10-rc1",
+                "X-Fern-SDK-Version": "0.5.10",
+                "User-Agent": "@mercoa/javascript/0.5.10",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
@@ -192,7 +192,7 @@ export class ApprovalPolicy {
      *         trigger: [{
      *                 type: "amount",
      *                 amount: 100,
-     *                 currency: Mercoa.CurrencyCode.Usd
+     *                 currency: "USD"
      *             }],
      *         rule: {
      *             type: "approver",
@@ -234,8 +234,8 @@ export class ApprovalPolicy {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.5.10-rc1",
-                "User-Agent": "@mercoa/javascript/0.5.10-rc1",
+                "X-Fern-SDK-Version": "0.5.10",
+                "User-Agent": "@mercoa/javascript/0.5.10",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
@@ -379,8 +379,8 @@ export class ApprovalPolicy {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.5.10-rc1",
-                "User-Agent": "@mercoa/javascript/0.5.10-rc1",
+                "X-Fern-SDK-Version": "0.5.10",
+                "User-Agent": "@mercoa/javascript/0.5.10",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
@@ -509,7 +509,7 @@ export class ApprovalPolicy {
      *         trigger: [{
      *                 type: "amount",
      *                 amount: 100,
-     *                 currency: Mercoa.CurrencyCode.Usd
+     *                 currency: "USD"
      *             }],
      *         rule: {
      *             type: "approver",
@@ -554,8 +554,8 @@ export class ApprovalPolicy {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.5.10-rc1",
-                "User-Agent": "@mercoa/javascript/0.5.10-rc1",
+                "X-Fern-SDK-Version": "0.5.10",
+                "User-Agent": "@mercoa/javascript/0.5.10",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
@@ -699,8 +699,8 @@ export class ApprovalPolicy {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.5.10-rc1",
-                "User-Agent": "@mercoa/javascript/0.5.10-rc1",
+                "X-Fern-SDK-Version": "0.5.10",
+                "User-Agent": "@mercoa/javascript/0.5.10",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,

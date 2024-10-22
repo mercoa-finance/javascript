@@ -15,8 +15,8 @@ import * as Mercoa from "../../../index";
  *                 email: "john.doe@acme.com",
  *                 name: "John Doe",
  *                 roles: ["admin", "approver"],
- *                 createdAt: new Date("2024-01-01T00:00:00.000Z"),
- *                 updatedAt: new Date("2024-01-01T00:00:00.000Z")
+ *                 createdAt: "2024-01-01T00:00:00Z",
+ *                 updatedAt: "2024-01-01T00:00:00Z"
  *             }]
  *     }
  */

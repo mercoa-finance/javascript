@@ -15,8 +15,8 @@ import * as Mercoa from "../../../index";
  *         quantity: 1,
  *         unitPrice: 100,
  *         category: Mercoa.InvoiceLineItemCategory.Expense,
- *         serviceStartDate: new Date("2021-01-01T00:00:00.000Z"),
- *         serviceEndDate: new Date("2021-01-31T00:00:00.000Z"),
+ *         serviceStartDate: "2021-01-01T00:00:00Z",
+ *         serviceEndDate: "2021-01-31T00:00:00Z",
  *         metadata: {
  *             "key1": "value1",
  *             "key2": "value2"

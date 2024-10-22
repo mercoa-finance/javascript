@@ -13,7 +13,7 @@ import * as Mercoa from "../../../index";
  *         to: "Jane Doe <jane.doe@example.com>",
  *         htmlBody: "<html><body><p>Hi Jane,</p><p>Please find attached the invoice for your recent purchase.</p><p>Thanks,</p><p>John</p></body></html>",
  *         textBody: "Hi Jane,\n\nPlease find attached the invoice for your recent purchase.\n\nThanks,\nJohn",
- *         createdAt: new Date("2021-01-01T00:00:00.000Z")
+ *         createdAt: "2021-01-01T00:00:00Z"
  *     }
  */
 export interface EmailLog {

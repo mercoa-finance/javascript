@@ -34,8 +34,8 @@ import * as Mercoa from "../../../index";
  *             ownershipPercentage: 40,
  *             isController: true
  *         },
- *         createdOn: new Date("2024-01-01T00:00:00.000Z"),
- *         updatedOn: new Date("2024-01-01T00:00:00.000Z")
+ *         createdOn: "2024-01-01T00:00:00Z",
+ *         updatedOn: "2024-01-01T00:00:00Z"
  *     }
  *
  * @example
@@ -63,8 +63,8 @@ import * as Mercoa from "../../../index";
  *             isOwner: true,
  *             ownershipPercentage: 40
  *         },
- *         createdOn: new Date("2024-01-01T00:00:00.000Z"),
- *         updatedOn: new Date("2024-01-01T00:00:00.000Z")
+ *         createdOn: "2024-01-01T00:00:00Z",
+ *         updatedOn: "2024-01-01T00:00:00Z"
  *     }
  */
 export interface RepresentativeResponse {

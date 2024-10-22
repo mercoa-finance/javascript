@@ -24,8 +24,8 @@ import * as Mercoa from "../../../index";
  *                     supportedCurrencies: [Mercoa.CurrencyCode.Usd],
  *                     metadata: {},
  *                     frozen: false,
- *                     createdAt: new Date("2021-01-01T00:00:00.000Z"),
- *                     updatedAt: new Date("2021-01-01T00:00:00.000Z")
+ *                     createdAt: "2021-01-01T00:00:00Z",
+ *                     updatedAt: "2021-01-01T00:00:00Z"
  *                 },
  *                 entity: {
  *                     id: "ent_8545a84e-a45f-41bf-bdf1-33b42a55812c",
@@ -40,8 +40,8 @@ import * as Mercoa from "../../../index";
  *                     isNetworkPayor: false,
  *                     isNetworkPayee: false,
  *                     accountType: Mercoa.AccountType.Business,
- *                     updatedAt: new Date("2024-01-02T00:00:00.000Z"),
- *                     createdAt: new Date("2024-01-01T00:00:00.000Z"),
+ *                     updatedAt: "2024-01-02T00:00:00Z",
+ *                     createdAt: "2024-01-01T00:00:00Z",
  *                     profile: {
  *                         business: {
  *                             email: "customer@acme.com",

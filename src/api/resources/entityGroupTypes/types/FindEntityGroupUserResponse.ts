@@ -22,8 +22,8 @@ import * as Mercoa from "../../../index";
  *                         roles: ["viewer"],
  *                         entityId: "ent_9e02a20e-7749-47de-8d8a-f8ff2859fa90"
  *                     }],
- *                 createdAt: new Date("2024-01-01T00:00:00.000Z"),
- *                 updatedAt: new Date("2024-01-01T00:00:00.000Z")
+ *                 createdAt: "2024-01-01T00:00:00Z",
+ *                 updatedAt: "2024-01-01T00:00:00Z"
  *             }]
  *     }
  */

@@ -67,8 +67,8 @@ export class Calculate {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.5.10-rc1",
-                "User-Agent": "@mercoa/javascript/0.5.10-rc1",
+                "X-Fern-SDK-Version": "0.5.10",
+                "User-Agent": "@mercoa/javascript/0.5.10",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
@@ -193,9 +193,14 @@ export class Calculate {
      *
      * @example
      *     await client.calculate.paymentTiming({
-     *         estimatedDeductionDate: new Date("2024-01-02T00:00:00.000Z"),
+     *         estimatedDeductionDate: "2024-01-02T00:00:00Z",
      *         paymentSourceId: "pm_4794d597-70dc-4fec-b6ec-c5988e759769",
      *         paymentDestinationId: "pm_4794d597-70dc-4fec-b6ec-c5988e759769"
+     *     })
+     *
+     * @example
+     *     await client.calculate.paymentTiming({
+     *         invoiceId: "inv_26e7b5d3-a739-4b23-9ad9-6aaa085f47a9"
      *     })
      */
     public async paymentTiming(
@@ -212,8 +217,8 @@ export class Calculate {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.5.10-rc1",
-                "User-Agent": "@mercoa/javascript/0.5.10-rc1",
+                "X-Fern-SDK-Version": "0.5.10",
+                "User-Agent": "@mercoa/javascript/0.5.10",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,

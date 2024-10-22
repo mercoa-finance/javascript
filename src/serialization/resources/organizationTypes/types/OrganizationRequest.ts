@@ -11,6 +11,7 @@ import { ExternalAccountingSystemProviderRequest } from "./ExternalAccountingSys
 import { ColorSchemeRequest } from "./ColorSchemeRequest";
 import { OnboardingOptionsRequest } from "./OnboardingOptionsRequest";
 import { MetadataSchema } from "./MetadataSchema";
+import { NotificationEmailTemplateRequest } from "./NotificationEmailTemplateRequest";
 
 export const OrganizationRequest: core.serialization.ObjectSchema<
     serializers.OrganizationRequest.Raw,
@@ -27,6 +28,7 @@ export const OrganizationRequest: core.serialization.ObjectSchema<
     payeeOnboardingOptions: OnboardingOptionsRequest.optional(),
     payorOnboardingOptions: OnboardingOptionsRequest.optional(),
     metadataSchema: core.serialization.list(MetadataSchema).optional(),
+    notificationEmailTemplate: NotificationEmailTemplateRequest.optional(),
 });
 
 export declare namespace OrganizationRequest {
@@ -42,5 +44,6 @@ export declare namespace OrganizationRequest {
         payeeOnboardingOptions?: OnboardingOptionsRequest.Raw | null;
         payorOnboardingOptions?: OnboardingOptionsRequest.Raw | null;
         metadataSchema?: MetadataSchema.Raw[] | null;
+        notificationEmailTemplate?: NotificationEmailTemplateRequest.Raw | null;
     }
 }

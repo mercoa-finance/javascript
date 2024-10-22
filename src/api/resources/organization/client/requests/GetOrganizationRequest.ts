@@ -11,7 +11,8 @@
  *         colorScheme: true,
  *         payeeOnboardingOptions: true,
  *         payorOnboardingOptions: true,
- *         metadataSchema: true
+ *         metadataSchema: true,
+ *         notificationEmailTemplate: true
  *     }
  */
 export interface GetOrganizationRequest {
@@ -43,4 +44,8 @@ export interface GetOrganizationRequest {
      * include metadata schema in response
      */
     metadataSchema?: boolean;
+    /**
+     * include notification-email-template in response
+     */
+    notificationEmailTemplate?: boolean;
 }

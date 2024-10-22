@@ -77,3 +77,5 @@ export * from "./EntityCustomizationResponse";
 export * from "./EntityEvent";
 export * from "./EntityEventsResponse";
 export * from "./IndustryCodes";
+export * from "./AccelerationFundsResponse";
+export * from "./AccelerationFundsBalanceResponse";

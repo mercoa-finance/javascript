@@ -13,14 +13,14 @@ import * as Mercoa from "../../../index";
  * @example
  *     {
  *         type: "daily",
- *         ends: new Date("2021-01-01T00:00:00.000Z")
+ *         ends: "2021-01-01T00:00:00Z"
  *     }
  *
  * @example
  *     {
  *         type: "weekly",
  *         repeatOn: [Mercoa.DayOfWeek.Monday, Mercoa.DayOfWeek.Wednesday, Mercoa.DayOfWeek.Friday],
- *         ends: new Date("2021-01-01T00:00:00.000Z")
+ *         ends: "2021-01-01T00:00:00Z"
  *     }
  *
  * @example
@@ -28,7 +28,7 @@ import * as Mercoa from "../../../index";
  *         type: "monthly",
  *         dayOffset: 10,
  *         offsetType: Mercoa.PaymentMonthRepeatType.Start,
- *         ends: new Date("2021-01-01T00:00:00.000Z")
+ *         ends: "2021-01-01T00:00:00Z"
  *     }
  *
  * @example
@@ -36,7 +36,7 @@ import * as Mercoa from "../../../index";
  *         type: "yearly",
  *         repeatOnDay: 10,
  *         repeatOnMonth: 1,
- *         ends: new Date("2021-01-01T00:00:00.000Z")
+ *         ends: "2021-01-01T00:00:00Z"
  *     }
  */
 export type PaymentSchedule =

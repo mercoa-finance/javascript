@@ -22,8 +22,8 @@ import * as Mercoa from "../../../index";
  *             }
  *         },
  *         upstreamPolicyId: "root",
- *         updatedAt: new Date("2024-01-02T00:00:00.000Z"),
- *         createdAt: new Date("2024-01-01T00:00:00.000Z")
+ *         updatedAt: "2024-01-02T00:00:00Z",
+ *         createdAt: "2024-01-01T00:00:00Z"
  *     }
  *
  * @example
@@ -39,8 +39,8 @@ import * as Mercoa from "../../../index";
  *             }
  *         },
  *         upstreamPolicyId: "root",
- *         updatedAt: new Date("2024-01-02T00:00:00.000Z"),
- *         createdAt: new Date("2024-01-01T00:00:00.000Z")
+ *         updatedAt: "2024-01-02T00:00:00Z",
+ *         createdAt: "2024-01-01T00:00:00Z"
  *     }
  */
 export interface ApprovalPolicyResponse {

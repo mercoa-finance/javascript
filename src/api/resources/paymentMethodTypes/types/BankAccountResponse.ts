@@ -19,8 +19,8 @@ import * as Mercoa from "../../../index";
  *         supportedCurrencies: [Mercoa.CurrencyCode.Usd],
  *         metadata: {},
  *         frozen: false,
- *         createdAt: new Date("2021-01-01T00:00:00.000Z"),
- *         updatedAt: new Date("2021-01-01T00:00:00.000Z")
+ *         createdAt: "2021-01-01T00:00:00Z",
+ *         updatedAt: "2021-01-01T00:00:00Z"
  *     }
  *
  * @example
@@ -37,8 +37,8 @@ import * as Mercoa from "../../../index";
  *         supportedCurrencies: [Mercoa.CurrencyCode.Usd],
  *         metadata: {},
  *         frozen: false,
- *         createdAt: new Date("2021-01-01T00:00:00.000Z"),
- *         updatedAt: new Date("2021-01-01T00:00:00.000Z")
+ *         createdAt: "2021-01-01T00:00:00Z",
+ *         updatedAt: "2021-01-01T00:00:00Z"
  *     }
  */
 export interface BankAccountResponse extends Mercoa.PaymentMethodBaseResponse {

@@ -15,11 +15,11 @@ import * as Mercoa from "../../../index";
  *             email: "john.doe@acme.com",
  *             name: "John Doe",
  *             roles: ["admin", "approver"],
- *             createdAt: new Date("2024-01-01T00:00:00.000Z"),
- *             updatedAt: new Date("2024-01-01T00:00:00.000Z")
+ *             createdAt: "2024-01-01T00:00:00Z",
+ *             updatedAt: "2024-01-01T00:00:00Z"
  *         },
- *         createdAt: new Date("2021-01-01T00:00:00.000Z"),
- *         updatedAt: new Date("2021-01-01T00:00:00.000Z")
+ *         createdAt: "2021-01-01T00:00:00Z",
+ *         updatedAt: "2021-01-01T00:00:00Z"
  *     }
  *
  * @example
@@ -32,15 +32,15 @@ import * as Mercoa from "../../../index";
  *             email: "john.doe@acme.com",
  *             name: "John Doe",
  *             roles: ["admin", "approver"],
- *             createdAt: new Date("2024-01-01T00:00:00.000Z"),
- *             updatedAt: new Date("2024-01-01T00:00:00.000Z")
+ *             createdAt: "2024-01-01T00:00:00Z",
+ *             updatedAt: "2024-01-01T00:00:00Z"
  *         },
  *         associatedApprovalAction: {
  *             userId: "user_e24fc81c-c5ee-47e8-af42-4fe29d895506",
  *             action: Mercoa.ApproverAction.Approve
  *         },
- *         createdAt: new Date("2021-01-01T00:00:00.000Z"),
- *         updatedAt: new Date("2021-01-01T00:00:00.000Z")
+ *         createdAt: "2021-01-01T00:00:00Z",
+ *         updatedAt: "2021-01-01T00:00:00Z"
  *     }
  */
 export interface CommentResponse {

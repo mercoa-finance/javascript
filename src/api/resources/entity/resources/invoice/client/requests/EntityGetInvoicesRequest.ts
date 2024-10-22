@@ -8,8 +8,8 @@ import * as Mercoa from "../../../../../../index";
  * @example
  *     {
  *         excludeReceivables: true,
- *         orderBy: Mercoa.InvoiceOrderByField.CreatedAt,
- *         orderDirection: Mercoa.OrderDirection.Asc,
+ *         orderBy: "CREATED_AT",
+ *         orderDirection: "ASC",
  *         limit: 10
  *     }
  */

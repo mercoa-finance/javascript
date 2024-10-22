@@ -7,6 +7,6 @@
  *     10
  *
  * @example
- *     new Date("2021-01-01T00:00:00.000Z")
+ *     "2021-01-01T00:00:00Z"
  */
 export type PaymentScheduleEndCondition = number | Date;

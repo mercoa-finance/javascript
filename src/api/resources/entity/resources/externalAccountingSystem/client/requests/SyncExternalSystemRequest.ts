@@ -7,9 +7,9 @@ import * as Mercoa from "../../../../../../index";
 /**
  * @example
  *     {
- *         vendors: Mercoa.entity.SyncType.Pull,
- *         bills: Mercoa.entity.SyncType.Push,
- *         glAccounts: Mercoa.entity.SyncType.Pull
+ *         vendors: "pull",
+ *         bills: "push",
+ *         glAccounts: "pull"
  *     }
  */
 export interface SyncExternalSystemRequest {

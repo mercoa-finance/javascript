@@ -55,7 +55,8 @@ export class Organization {
      *         colorScheme: true,
      *         payeeOnboardingOptions: true,
      *         payorOnboardingOptions: true,
-     *         metadataSchema: true
+     *         metadataSchema: true,
+     *         notificationEmailTemplate: true
      *     })
      */
     public async get(
@@ -70,6 +71,7 @@ export class Organization {
             payeeOnboardingOptions,
             payorOnboardingOptions,
             metadataSchema,
+            notificationEmailTemplate,
         } = request;
         const _queryParams: Record<string, string | string[] | object | object[]> = {};
         if (paymentMethods != null) {
@@ -100,6 +102,10 @@ export class Organization {
             _queryParams["metadataSchema"] = metadataSchema.toString();
         }
 
+        if (notificationEmailTemplate != null) {
+            _queryParams["notificationEmailTemplate"] = notificationEmailTemplate.toString();
+        }
+
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
@@ -110,8 +116,8 @@ export class Organization {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.5.10-rc1",
-                "User-Agent": "@mercoa/javascript/0.5.10-rc1",
+                "X-Fern-SDK-Version": "0.5.10",
+                "User-Agent": "@mercoa/javascript/0.5.10",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
@@ -242,38 +248,27 @@ export class Organization {
      *         supportEmail: "string",
      *         paymentMethods: {
      *             payerPayments: [{
-     *                     type: Mercoa.PaymentMethodType.Custom,
-     *                     name: {
-     *                         "key": "value"
-     *                     },
+     *                     type: "custom",
      *                     active: true
      *                 }],
      *             backupDisbursements: [{
-     *                     type: Mercoa.PaymentMethodType.Custom,
-     *                     name: {
-     *                         "key": "value"
-     *                     },
+     *                     type: "custom",
      *                     active: true
      *                 }],
      *             vendorDisbursements: [{
-     *                     type: Mercoa.PaymentMethodType.Custom,
-     *                     name: {
-     *                         "key": "value"
-     *                     },
+     *                     type: "custom",
      *                     active: true
      *                 }]
      *         },
      *         emailProvider: {
      *             sender: {
-     *                 provider: Mercoa.EmailSenderProvider.None,
+     *                 provider: "none",
      *                 fromEmail: "string",
      *                 fromName: "string",
      *                 apiKey: "string"
      *             },
      *             inboxDomain: "string",
-     *             alternativeInboxDomains: [{
-     *                     "key": "value"
-     *                 }]
+     *             alternativeInboxDomains: []
      *         },
      *         externalAccountingSystemProvider: {
      *             type: "none"
@@ -585,23 +580,16 @@ export class Organization {
      *         metadataSchema: [{
      *                 key: "string",
      *                 displayName: "string",
-     *                 description: {
-     *                     "key": "value"
-     *                 },
-     *                 lineItem: {
-     *                     "key": "value"
-     *                 },
-     *                 type: Mercoa.MetadataType.String,
-     *                 allowMultiple: {
-     *                     "key": "value"
-     *                 },
-     *                 validationRules: {
-     *                     "key": "value"
-     *                 },
-     *                 showConditions: {
-     *                     "key": "value"
-     *                 }
-     *             }]
+     *                 type: "STRING"
+     *             }],
+     *         notificationEmailTemplate: {
+     *             backgroundStyle: "string",
+     *             header: "string",
+     *             body: "string",
+     *             signature: "string",
+     *             footer: "string",
+     *             button: "string"
+     *         }
      *     })
      */
     public async update(
@@ -618,8 +606,8 @@ export class Organization {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.5.10-rc1",
-                "User-Agent": "@mercoa/javascript/0.5.10-rc1",
+                "X-Fern-SDK-Version": "0.5.10",
+                "User-Agent": "@mercoa/javascript/0.5.10",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
@@ -744,8 +732,8 @@ export class Organization {
      *
      * @example
      *     await client.organization.emailLog({
-     *         startDate: new Date("2024-01-15T09:30:00.000Z"),
-     *         endDate: new Date("2024-01-15T09:30:00.000Z"),
+     *         startDate: "2024-01-15T09:30:00Z",
+     *         endDate: "2024-01-15T09:30:00Z",
      *         limit: 1,
      *         startingAfter: "string"
      *     })
@@ -782,8 +770,8 @@ export class Organization {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.5.10-rc1",
-                "User-Agent": "@mercoa/javascript/0.5.10-rc1",
+                "X-Fern-SDK-Version": "0.5.10",
+                "User-Agent": "@mercoa/javascript/0.5.10",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,

@@ -36,6 +36,41 @@ import * as Mercoa from "../../../index";
  *
  * @example
  *     {
+ *         type: "bankAccount",
+ *         routingNumber: "",
+ *         accountNumber: "7623",
+ *         accountType: Mercoa.BankType.Checking,
+ *         plaid: {
+ *             publicToken: "public-sandbox-af1a0311-da53-4636-b754-dd15cc058176",
+ *             accountId: "account-sandbox-af1a0311-da53-4636-b754-dd15cc058176"
+ *         }
+ *     }
+ *
+ * @example
+ *     {
+ *         type: "bankAccount",
+ *         routingNumber: "12345678",
+ *         accountNumber: "99988767623",
+ *         accountType: Mercoa.BankType.Checking,
+ *         plaid: {
+ *             processorToken: "processor-sandbox-af1a0311-da53-4636-b754-dd15cc058176"
+ *         }
+ *     }
+ *
+ * @example
+ *     {
+ *         type: "bankAccount",
+ *         routingNumber: "",
+ *         accountNumber: "7623",
+ *         accountType: Mercoa.BankType.Checking,
+ *         plaid: {
+ *             accessToken: "access-sandbox-af1a0311-da53-4636-b754-dd15cc058176",
+ *             accountId: "account-sandbox-af1a0311-da53-4636-b754-dd15cc058176"
+ *         }
+ *     }
+ *
+ * @example
+ *     {
  *         type: "check",
  *         payToTheOrderOf: "John Doe",
  *         addressLine1: "123 Main St",

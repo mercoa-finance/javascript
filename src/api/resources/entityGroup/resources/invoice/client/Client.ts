@@ -50,8 +50,8 @@ export class Invoice {
      * @example
      *     await client.entityGroup.invoice.find("entg_8545a84e-a45f-41bf-bdf1-33b42a55812c", {
      *         excludeReceivables: true,
-     *         orderBy: Mercoa.InvoiceOrderByField.CreatedAt,
-     *         orderDirection: Mercoa.OrderDirection.Asc,
+     *         orderBy: "CREATED_AT",
+     *         orderDirection: "ASC",
      *         limit: 10
      *     })
      */
@@ -205,8 +205,8 @@ export class Invoice {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.5.10-rc1",
-                "User-Agent": "@mercoa/javascript/0.5.10-rc1",
+                "X-Fern-SDK-Version": "0.5.10",
+                "User-Agent": "@mercoa/javascript/0.5.10",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
@@ -332,12 +332,12 @@ export class Invoice {
      *
      * @example
      *     await client.entityGroup.invoice.metrics("entg_8545a84e-a45f-41bf-bdf1-33b42a55812c", {
-     *         returnByDate: Mercoa.InvoiceMetricsPerDateGroupBy.CreationDate,
+     *         returnByDate: "CREATION_DATE",
      *         excludeReceivables: true,
-     *         startDate: new Date("2021-01-01T00:00:00.000Z"),
-     *         endDate: new Date("2021-01-31T23:59:59.999Z"),
-     *         currency: Mercoa.CurrencyCode.Usd,
-     *         status: Mercoa.InvoiceStatus.New
+     *         startDate: "2021-01-01T00:00:00.000Z",
+     *         endDate: "2021-01-31T23:59:59.999Z",
+     *         currency: "USD",
+     *         status: "NEW"
      *     })
      */
     public async metrics(
@@ -463,8 +463,8 @@ export class Invoice {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.5.10-rc1",
-                "User-Agent": "@mercoa/javascript/0.5.10-rc1",
+                "X-Fern-SDK-Version": "0.5.10",
+                "User-Agent": "@mercoa/javascript/0.5.10",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,

@@ -7,7 +7,7 @@ import * as Mercoa from "../../../../index";
 /**
  * @example
  *     {
- *         type: Mercoa.EntityOnboardingLinkType.Payor,
+ *         type: "PAYOR",
  *         expiresIn: "1h"
  *     }
  */

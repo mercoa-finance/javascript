@@ -18,6 +18,8 @@ export * from "./EmailSenderRequest";
 export * from "./EmailSenderResponse";
 export * from "./ColorSchemeRequest";
 export * from "./ColorSchemeResponse";
+export * from "./NotificationEmailTemplateRequest";
+export * from "./NotificationEmailTemplateResponse";
 export * from "./NotificationConfigurationRequest";
 export * from "./NotificationConfigurationResponse";
 export * from "./InvoiceNotificationConfigurationRequest";

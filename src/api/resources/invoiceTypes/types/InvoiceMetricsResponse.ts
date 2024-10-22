@@ -13,21 +13,21 @@ import * as Mercoa from "../../../index";
  *         currency: Mercoa.CurrencyCode.Usd,
  *         dates: {
  *             "2021-01-01T00:00:00Z": {
- *                 date: new Date("2021-01-01T00:00:00.000Z"),
+ *                 date: "2021-01-01T00:00:00Z",
  *                 totalAmount: 100,
  *                 totalCount: 1,
  *                 averageAmount: 100,
  *                 currency: Mercoa.CurrencyCode.Usd
  *             },
  *             "2021-01-02T00:00:00Z": {
- *                 date: new Date("2021-01-02T00:00:00.000Z"),
+ *                 date: "2021-01-02T00:00:00Z",
  *                 totalAmount: 200,
  *                 totalCount: 2,
  *                 averageAmount: 100,
  *                 currency: Mercoa.CurrencyCode.Usd
  *             },
  *             "2021-01-03T00:00:00Z": {
- *                 date: new Date("2021-01-03T00:00:00.000Z"),
+ *                 date: "2021-01-03T00:00:00Z",
  *                 totalAmount: 400,
  *                 totalCount: 2,
  *                 averageAmount: 200,

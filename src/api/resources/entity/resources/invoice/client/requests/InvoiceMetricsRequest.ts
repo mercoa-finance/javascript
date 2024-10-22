@@ -7,12 +7,12 @@ import * as Mercoa from "../../../../../../index";
 /**
  * @example
  *     {
- *         returnByDate: Mercoa.InvoiceMetricsPerDateGroupBy.CreationDate,
+ *         returnByDate: "CREATION_DATE",
  *         excludeReceivables: true,
- *         startDate: new Date("2021-01-01T00:00:00.000Z"),
- *         endDate: new Date("2021-01-31T23:59:59.999Z"),
- *         currency: Mercoa.CurrencyCode.Usd,
- *         status: Mercoa.InvoiceStatus.New
+ *         startDate: "2021-01-01T00:00:00.000Z",
+ *         endDate: "2021-01-31T23:59:59.999Z",
+ *         currency: "USD",
+ *         status: "NEW"
  *     }
  */
 export interface InvoiceMetricsRequest {

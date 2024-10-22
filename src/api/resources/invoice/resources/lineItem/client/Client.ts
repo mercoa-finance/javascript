@@ -52,8 +52,8 @@ export class LineItem {
      *     await client.invoice.lineItem.update("in_d8f68285-1c6d-4d5a-a9e3-252c3180fac4", "inli_8aa84cb8-2ae7-4579-8fa3-87586e7c14a7", {
      *         name: "Product A",
      *         description: "Product A",
-     *         serviceStartDate: new Date("2021-01-01T00:00:00.000Z"),
-     *         serviceEndDate: new Date("2021-01-31T00:00:00.000Z"),
+     *         serviceStartDate: "2021-01-01T00:00:00Z",
+     *         serviceEndDate: "2021-01-31T00:00:00Z",
      *         metadata: {
      *             "key1": "value1",
      *             "key2": "value2"
@@ -79,8 +79,8 @@ export class LineItem {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.5.10-rc1",
-                "User-Agent": "@mercoa/javascript/0.5.10-rc1",
+                "X-Fern-SDK-Version": "0.5.10",
+                "User-Agent": "@mercoa/javascript/0.5.10",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,

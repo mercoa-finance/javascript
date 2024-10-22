@@ -8,7 +8,7 @@ import * as Mercoa from "../../../../../../index";
  * @example
  *     {
  *         document: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAIAQMAAAD+wSzIAAAABlBMVEX///+/v7+jQ3Y5AAAADklEQVQI12P4AIX8EAgALgAD/aNpbtEAAAAASUVORK5CYII",
- *         type: Mercoa.DocumentType.TenNinetyNine
+ *         type: "TEN_NINETY_NINE"
  *     }
  */
 export interface UploadDocumentRequest {

@@ -63,8 +63,8 @@ export class Customization {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.5.10-rc1",
-                "User-Agent": "@mercoa/javascript/0.5.10-rc1",
+                "X-Fern-SDK-Version": "0.5.10",
+                "User-Agent": "@mercoa/javascript/0.5.10",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
@@ -197,22 +197,22 @@ export class Customization {
      *                 disabled: false
      *             }],
      *         paymentSource: [{
-     *                 type: Mercoa.PaymentMethodType.BankAccount,
+     *                 type: "bankAccount",
      *                 disabled: true
      *             }, {
-     *                 type: Mercoa.PaymentMethodType.Custom,
+     *                 type: "custom",
      *                 schemaId: "cpms_7df2974a-4069-454c-912f-7e58ebe030fb",
      *                 disabled: true
      *             }],
      *         backupDisbursement: [{
-     *                 type: Mercoa.PaymentMethodType.Check,
+     *                 type: "check",
      *                 disabled: true
      *             }],
      *         paymentDestination: [{
-     *                 type: Mercoa.PaymentMethodType.BankAccount,
+     *                 type: "bankAccount",
      *                 disabled: true
      *             }, {
-     *                 type: Mercoa.PaymentMethodType.Check,
+     *                 type: "check",
      *                 disabled: true
      *             }]
      *     })
@@ -232,8 +232,8 @@ export class Customization {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.5.10-rc1",
-                "User-Agent": "@mercoa/javascript/0.5.10-rc1",
+                "X-Fern-SDK-Version": "0.5.10",
+                "User-Agent": "@mercoa/javascript/0.5.10",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,

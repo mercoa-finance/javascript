@@ -16,4 +16,5 @@ export interface OrganizationRequest {
     payeeOnboardingOptions?: Mercoa.OnboardingOptionsRequest;
     payorOnboardingOptions?: Mercoa.OnboardingOptionsRequest;
     metadataSchema?: Mercoa.MetadataSchema[];
+    notificationEmailTemplate?: Mercoa.NotificationEmailTemplateRequest;
 }

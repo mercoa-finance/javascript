@@ -20,8 +20,8 @@ import * as Mercoa from "../../../index";
  *         supportedCurrencies: [Mercoa.CurrencyCode.Usd],
  *         metadata: {},
  *         frozen: false,
- *         createdAt: new Date("2021-01-01T00:00:00.000Z"),
- *         updatedAt: new Date("2021-01-01T00:00:00.000Z")
+ *         createdAt: "2021-01-01T00:00:00Z",
+ *         updatedAt: "2021-01-01T00:00:00Z"
  *     }
  *
  * @example
@@ -39,8 +39,8 @@ import * as Mercoa from "../../../index";
  *         supportedCurrencies: [Mercoa.CurrencyCode.Usd],
  *         metadata: {},
  *         frozen: false,
- *         createdAt: new Date("2021-01-01T00:00:00.000Z"),
- *         updatedAt: new Date("2021-01-01T00:00:00.000Z"),
+ *         createdAt: "2021-01-01T00:00:00Z",
+ *         updatedAt: "2021-01-01T00:00:00Z",
  *         checkOptions: {
  *             enabled: true,
  *             initialCheckNumber: 5000,
@@ -63,8 +63,8 @@ import * as Mercoa from "../../../index";
  *         supportedCurrencies: [Mercoa.CurrencyCode.Usd],
  *         metadata: {},
  *         frozen: false,
- *         createdAt: new Date("2021-01-01T00:00:00.000Z"),
- *         updatedAt: new Date("2021-01-01T00:00:00.000Z")
+ *         createdAt: "2021-01-01T00:00:00Z",
+ *         updatedAt: "2021-01-01T00:00:00Z"
  *     }
  *
  * @example
@@ -83,8 +83,8 @@ import * as Mercoa from "../../../index";
  *         supportedCurrencies: [Mercoa.CurrencyCode.Usd],
  *         metadata: {},
  *         frozen: false,
- *         createdAt: new Date("2021-01-01T00:00:00.000Z"),
- *         updatedAt: new Date("2021-01-01T00:00:00.000Z")
+ *         createdAt: "2021-01-01T00:00:00Z",
+ *         updatedAt: "2021-01-01T00:00:00Z"
  *     }
  *
  * @example
@@ -124,8 +124,8 @@ import * as Mercoa from "../../../index";
  *                     optional: false
  *                 }],
  *             estimatedProcessingTime: 0,
- *             createdAt: new Date("2021-01-01T00:00:00.000Z"),
- *             updatedAt: new Date("2021-01-01T00:00:00.000Z")
+ *             createdAt: "2021-01-01T00:00:00Z",
+ *             updatedAt: "2021-01-01T00:00:00Z"
  *         },
  *         data: {
  *             "bankName": "Chase",
@@ -138,8 +138,8 @@ import * as Mercoa from "../../../index";
  *         supportedCurrencies: [Mercoa.CurrencyCode.Usd],
  *         metadata: {},
  *         frozen: false,
- *         createdAt: new Date("2021-01-01T00:00:00.000Z"),
- *         updatedAt: new Date("2021-01-01T00:00:00.000Z")
+ *         createdAt: "2021-01-01T00:00:00Z",
+ *         updatedAt: "2021-01-01T00:00:00Z"
  *     }
  */
 export type PaymentMethodResponse =

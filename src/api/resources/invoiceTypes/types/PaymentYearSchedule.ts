@@ -9,7 +9,7 @@ import * as Mercoa from "../../../index";
  *     {
  *         repeatOnDay: 10,
  *         repeatOnMonth: 1,
- *         ends: new Date("2021-01-01T00:00:00.000Z")
+ *         ends: "2021-01-01T00:00:00Z"
  *     }
  */
 export interface PaymentYearSchedule extends Mercoa.PaymentScheduleBase {

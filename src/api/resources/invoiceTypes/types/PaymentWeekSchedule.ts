@@ -8,7 +8,7 @@ import * as Mercoa from "../../../index";
  * @example
  *     {
  *         repeatOn: [Mercoa.DayOfWeek.Monday, Mercoa.DayOfWeek.Wednesday, Mercoa.DayOfWeek.Friday],
- *         ends: new Date("2021-01-01T00:00:00.000Z")
+ *         ends: "2021-01-01T00:00:00Z"
  *     }
  */
 export interface PaymentWeekSchedule extends Mercoa.PaymentScheduleBase {

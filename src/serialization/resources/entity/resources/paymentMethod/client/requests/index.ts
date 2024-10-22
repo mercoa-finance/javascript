@@ -1,1 +1,0 @@
-export { CompleteMicroDepositsRequest } from "./CompleteMicroDepositsRequest";

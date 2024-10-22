@@ -34,8 +34,8 @@ import * as Mercoa from "../../../index";
  *                 type: Mercoa.CustomPaymentMethodSchemaFieldType.UsBankRoutingNumber,
  *                 optional: false
  *             }],
- *         createdAt: new Date("2021-01-01T00:00:00.000Z"),
- *         updatedAt: new Date("2021-01-01T00:00:00.000Z"),
+ *         createdAt: "2021-01-01T00:00:00Z",
+ *         updatedAt: "2021-01-01T00:00:00Z",
  *         estimatedProcessingTime: 0,
  *         maxAmount: 100000,
  *         minAmount: 1
@@ -70,8 +70,8 @@ import * as Mercoa from "../../../index";
  *                 type: Mercoa.CustomPaymentMethodSchemaFieldType.Address,
  *                 optional: false
  *             }],
- *         createdAt: new Date("2021-01-01T00:00:00.000Z"),
- *         updatedAt: new Date("2021-01-01T00:00:00.000Z"),
+ *         createdAt: "2021-01-01T00:00:00Z",
+ *         updatedAt: "2021-01-01T00:00:00Z",
  *         estimatedProcessingTime: 7,
  *         maxAmount: 50000,
  *         minAmount: 1

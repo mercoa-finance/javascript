@@ -11,14 +11,14 @@ import * as Mercoa from "../../../index";
  *         status: Mercoa.InvoiceStatus.Paid,
  *         amount: 100,
  *         currency: Mercoa.CurrencyCode.Usd,
- *         invoiceDate: new Date("2021-01-01T00:00:00.000Z"),
- *         deductionDate: new Date("2021-01-01T00:00:00.000Z"),
- *         settlementDate: new Date("2021-01-03T00:00:00.000Z"),
- *         dueDate: new Date("2021-01-31T00:00:00.000Z"),
+ *         invoiceDate: "2021-01-01T00:00:00Z",
+ *         deductionDate: "2021-01-01T00:00:00Z",
+ *         settlementDate: "2021-01-03T00:00:00Z",
+ *         dueDate: "2021-01-31T00:00:00Z",
  *         invoiceNumber: "INV-123",
  *         noteToSelf: "For the month of January",
- *         serviceStartDate: new Date("2021-01-01T00:00:00.000Z"),
- *         serviceEndDate: new Date("2021-01-31T00:00:00.000Z"),
+ *         serviceStartDate: "2021-01-01T00:00:00Z",
+ *         serviceEndDate: "2021-01-31T00:00:00Z",
  *         payerId: "ent_8545a84e-a45f-41bf-bdf1-33b42a55812c",
  *         payer: {
  *             id: "ent_8545a84e-a45f-41bf-bdf1-33b42a55812c",
@@ -33,8 +33,8 @@ import * as Mercoa from "../../../index";
  *             isNetworkPayor: false,
  *             isNetworkPayee: false,
  *             accountType: Mercoa.AccountType.Business,
- *             updatedAt: new Date("2024-01-02T00:00:00.000Z"),
- *             createdAt: new Date("2024-01-01T00:00:00.000Z"),
+ *             updatedAt: "2024-01-02T00:00:00Z",
+ *             createdAt: "2024-01-01T00:00:00Z",
  *             profile: {
  *                 business: {
  *                     email: "customer@acme.com",
@@ -80,8 +80,8 @@ import * as Mercoa from "../../../index";
  *                     supportedCurrencies: [Mercoa.CurrencyCode.Usd],
  *                     metadata: {},
  *                     frozen: false,
- *                     createdAt: new Date("2021-01-01T00:00:00.000Z"),
- *                     updatedAt: new Date("2021-01-01T00:00:00.000Z")
+ *                     createdAt: "2021-01-01T00:00:00Z",
+ *                     updatedAt: "2021-01-01T00:00:00Z"
  *                 }],
  *             counterpartyType: [Mercoa.CounterpartyNetworkType.Entity]
  *         },
@@ -99,8 +99,8 @@ import * as Mercoa from "../../../index";
  *             supportedCurrencies: [Mercoa.CurrencyCode.Usd],
  *             metadata: {},
  *             frozen: false,
- *             createdAt: new Date("2021-01-01T00:00:00.000Z"),
- *             updatedAt: new Date("2021-01-01T00:00:00.000Z")
+ *             createdAt: "2021-01-01T00:00:00Z",
+ *             updatedAt: "2021-01-01T00:00:00Z"
  *         },
  *         paymentSourceId: "pm_4794d597-70dc-4fec-b6ec-c5988e759769",
  *         vendorId: "ent_21661ac1-a2a8-4465-a6c0-64474ba8181d",
@@ -117,8 +117,8 @@ import * as Mercoa from "../../../index";
  *             isNetworkPayor: false,
  *             isNetworkPayee: false,
  *             accountType: Mercoa.AccountType.Business,
- *             updatedAt: new Date("2024-01-02T00:00:00.000Z"),
- *             createdAt: new Date("2024-01-01T00:00:00.000Z"),
+ *             updatedAt: "2024-01-02T00:00:00Z",
+ *             createdAt: "2024-01-01T00:00:00Z",
  *             profile: {
  *                 business: {
  *                     email: "vendor@bigboxstore.com",
@@ -142,8 +142,8 @@ import * as Mercoa from "../../../index";
  *                     supportedCurrencies: [Mercoa.CurrencyCode.Usd],
  *                     metadata: {},
  *                     frozen: false,
- *                     createdAt: new Date("2021-01-01T00:00:00.000Z"),
- *                     updatedAt: new Date("2021-01-01T00:00:00.000Z")
+ *                     createdAt: "2021-01-01T00:00:00Z",
+ *                     updatedAt: "2021-01-01T00:00:00Z"
  *                 }],
  *             counterpartyType: [Mercoa.CounterpartyNetworkType.Entity]
  *         },
@@ -162,8 +162,8 @@ import * as Mercoa from "../../../index";
  *             supportedCurrencies: [Mercoa.CurrencyCode.Usd],
  *             metadata: {},
  *             frozen: false,
- *             createdAt: new Date("2021-01-01T00:00:00.000Z"),
- *             updatedAt: new Date("2021-01-01T00:00:00.000Z")
+ *             createdAt: "2021-01-01T00:00:00Z",
+ *             updatedAt: "2021-01-01T00:00:00Z"
  *         },
  *         paymentDestinationId: "pm_5fde2f4a-facc-48ef-8f0d-6b7d087c7b18",
  *         paymentDestinationOptions: {
@@ -182,15 +182,15 @@ import * as Mercoa from "../../../index";
  *                     email: "john.doe@acme.com",
  *                     name: "John Doe",
  *                     roles: ["admin", "approver"],
- *                     createdAt: new Date("2024-01-01T00:00:00.000Z"),
- *                     updatedAt: new Date("2024-01-01T00:00:00.000Z")
+ *                     createdAt: "2024-01-01T00:00:00Z",
+ *                     updatedAt: "2024-01-01T00:00:00Z"
  *                 },
  *                 associatedApprovalAction: {
  *                     userId: "user_e24fc81c-c5ee-47e8-af42-4fe29d895506",
  *                     action: Mercoa.ApproverAction.Approve
  *                 },
- *                 createdAt: new Date("2021-01-01T00:00:00.000Z"),
- *                 updatedAt: new Date("2021-01-01T00:00:00.000Z")
+ *                 createdAt: "2021-01-01T00:00:00Z",
+ *                 updatedAt: "2021-01-01T00:00:00Z"
  *             }],
  *         lineItems: [{
  *                 id: "inli_26672f38-eb9a-48f1-a7a0-f1b855e38cd7",
@@ -201,15 +201,15 @@ import * as Mercoa from "../../../index";
  *                 quantity: 1,
  *                 unitPrice: 100,
  *                 category: Mercoa.InvoiceLineItemCategory.Expense,
- *                 serviceStartDate: new Date("2021-01-01T00:00:00.000Z"),
- *                 serviceEndDate: new Date("2021-01-31T00:00:00.000Z"),
+ *                 serviceStartDate: "2021-01-01T00:00:00Z",
+ *                 serviceEndDate: "2021-01-31T00:00:00Z",
  *                 metadata: {
  *                     "key1": "value1",
  *                     "key2": "value2"
  *                 },
  *                 glAccountId: "600394",
- *                 createdAt: new Date("2021-01-01T00:00:00.000Z"),
- *                 updatedAt: new Date("2021-01-01T00:00:00.000Z")
+ *                 createdAt: "2021-01-01T00:00:00Z",
+ *                 updatedAt: "2021-01-01T00:00:00Z"
  *             }],
  *         approvers: [{
  *                 approvalPolicyId: "apvl_5ce50275-1789-42ea-bc60-bb7e6d03635c",
@@ -218,7 +218,7 @@ import * as Mercoa from "../../../index";
  *                 action: Mercoa.ApproverAction.Approve,
  *                 eligibleUserIds: ["user_e24fc81c-c5ee-47e8-af42-4fe29d895506"],
  *                 eligibleRoles: ["admin"],
- *                 date: new Date("2021-01-01T00:00:00.000Z")
+ *                 date: "2021-01-01T00:00:00Z"
  *             }],
  *         approvalPolicy: [{
  *                 id: "apvl_8545a84e-a45f-41bf-bdf1-33b42a55812c",
@@ -236,8 +236,8 @@ import * as Mercoa from "../../../index";
  *                     }
  *                 },
  *                 upstreamPolicyId: "root",
- *                 updatedAt: new Date("2024-01-02T00:00:00.000Z"),
- *                 createdAt: new Date("2024-01-01T00:00:00.000Z")
+ *                 updatedAt: "2024-01-02T00:00:00Z",
+ *                 createdAt: "2024-01-01T00:00:00Z"
  *             }],
  *         metadata: {
  *             "key1": "value1",
@@ -250,12 +250,12 @@ import * as Mercoa from "../../../index";
  *             email: "john.doe@acme.com",
  *             name: "John Doe",
  *             roles: ["admin", "approver"],
- *             createdAt: new Date("2024-01-01T00:00:00.000Z"),
- *             updatedAt: new Date("2024-01-01T00:00:00.000Z")
+ *             createdAt: "2024-01-01T00:00:00Z",
+ *             updatedAt: "2024-01-01T00:00:00Z"
  *         },
- *         processedAt: new Date("2021-01-01T00:00:00.000Z"),
- *         createdAt: new Date("2021-01-01T00:00:00.000Z"),
- *         updatedAt: new Date("2021-01-01T00:00:00.000Z")
+ *         processedAt: "2021-01-01T00:00:00Z",
+ *         createdAt: "2021-01-01T00:00:00Z",
+ *         updatedAt: "2021-01-01T00:00:00Z"
  *     }
  *
  * @example
@@ -264,12 +264,12 @@ import * as Mercoa from "../../../index";
  *         status: Mercoa.InvoiceStatus.Draft,
  *         amount: 100,
  *         currency: Mercoa.CurrencyCode.Usd,
- *         invoiceDate: new Date("2021-01-01T00:00:00.000Z"),
- *         dueDate: new Date("2021-01-31T00:00:00.000Z"),
+ *         invoiceDate: "2021-01-01T00:00:00Z",
+ *         dueDate: "2021-01-31T00:00:00Z",
  *         invoiceNumber: "INV-123",
  *         noteToSelf: "For the month of January",
- *         serviceStartDate: new Date("2021-01-01T00:00:00.000Z"),
- *         serviceEndDate: new Date("2021-01-31T00:00:00.000Z"),
+ *         serviceStartDate: "2021-01-01T00:00:00Z",
+ *         serviceEndDate: "2021-01-31T00:00:00Z",
  *         payerId: "ent_8545a84e-a45f-41bf-bdf1-33b42a55812c",
  *         payer: {
  *             id: "ent_8545a84e-a45f-41bf-bdf1-33b42a55812c",
@@ -284,8 +284,8 @@ import * as Mercoa from "../../../index";
  *             isNetworkPayor: false,
  *             isNetworkPayee: false,
  *             accountType: Mercoa.AccountType.Business,
- *             updatedAt: new Date("2024-01-02T00:00:00.000Z"),
- *             createdAt: new Date("2024-01-01T00:00:00.000Z"),
+ *             updatedAt: "2024-01-02T00:00:00Z",
+ *             createdAt: "2024-01-01T00:00:00Z",
  *             profile: {
  *                 business: {
  *                     email: "customer@acme.com",
@@ -331,8 +331,8 @@ import * as Mercoa from "../../../index";
  *                     supportedCurrencies: [Mercoa.CurrencyCode.Usd],
  *                     metadata: {},
  *                     frozen: false,
- *                     createdAt: new Date("2021-01-01T00:00:00.000Z"),
- *                     updatedAt: new Date("2021-01-01T00:00:00.000Z")
+ *                     createdAt: "2021-01-01T00:00:00Z",
+ *                     updatedAt: "2021-01-01T00:00:00Z"
  *                 }],
  *             counterpartyType: [Mercoa.CounterpartyNetworkType.Entity]
  *         },
@@ -350,8 +350,8 @@ import * as Mercoa from "../../../index";
  *             isNetworkPayor: false,
  *             isNetworkPayee: false,
  *             accountType: Mercoa.AccountType.Business,
- *             updatedAt: new Date("2024-01-02T00:00:00.000Z"),
- *             createdAt: new Date("2024-01-01T00:00:00.000Z"),
+ *             updatedAt: "2024-01-02T00:00:00Z",
+ *             createdAt: "2024-01-01T00:00:00Z",
  *             profile: {
  *                 business: {
  *                     email: "vendor@bigboxstore.com",
@@ -375,8 +375,8 @@ import * as Mercoa from "../../../index";
  *                     supportedCurrencies: [Mercoa.CurrencyCode.Usd],
  *                     metadata: {},
  *                     frozen: false,
- *                     createdAt: new Date("2021-01-01T00:00:00.000Z"),
- *                     updatedAt: new Date("2021-01-01T00:00:00.000Z")
+ *                     createdAt: "2021-01-01T00:00:00Z",
+ *                     updatedAt: "2021-01-01T00:00:00Z"
  *                 }],
  *             counterpartyType: [Mercoa.CounterpartyNetworkType.Entity]
  *         },
@@ -393,21 +393,21 @@ import * as Mercoa from "../../../index";
  *                 quantity: 1,
  *                 unitPrice: 100,
  *                 category: Mercoa.InvoiceLineItemCategory.Expense,
- *                 serviceStartDate: new Date("2021-01-01T00:00:00.000Z"),
- *                 serviceEndDate: new Date("2021-01-31T00:00:00.000Z"),
+ *                 serviceStartDate: "2021-01-01T00:00:00Z",
+ *                 serviceEndDate: "2021-01-31T00:00:00Z",
  *                 metadata: {
  *                     "key1": "value1",
  *                     "key2": "value2"
  *                 },
  *                 glAccountId: "600394",
- *                 createdAt: new Date("2021-01-01T00:00:00.000Z"),
- *                 updatedAt: new Date("2021-01-01T00:00:00.000Z")
+ *                 createdAt: "2021-01-01T00:00:00Z",
+ *                 updatedAt: "2021-01-01T00:00:00Z"
  *             }],
  *         approvers: [],
  *         approvalPolicy: [],
  *         metadata: {},
- *         createdAt: new Date("2021-01-01T00:00:00.000Z"),
- *         updatedAt: new Date("2021-01-01T00:00:00.000Z")
+ *         createdAt: "2021-01-01T00:00:00Z",
+ *         updatedAt: "2021-01-01T00:00:00Z"
  *     }
  *
  * @example
@@ -428,8 +428,8 @@ import * as Mercoa from "../../../index";
  *             isNetworkPayor: false,
  *             isNetworkPayee: false,
  *             accountType: Mercoa.AccountType.Business,
- *             updatedAt: new Date("2024-01-02T00:00:00.000Z"),
- *             createdAt: new Date("2024-01-01T00:00:00.000Z"),
+ *             updatedAt: "2024-01-02T00:00:00Z",
+ *             createdAt: "2024-01-01T00:00:00Z",
  *             profile: {
  *                 business: {
  *                     email: "customer@acme.com",
@@ -475,8 +475,8 @@ import * as Mercoa from "../../../index";
  *                     supportedCurrencies: [Mercoa.CurrencyCode.Usd],
  *                     metadata: {},
  *                     frozen: false,
- *                     createdAt: new Date("2021-01-01T00:00:00.000Z"),
- *                     updatedAt: new Date("2021-01-01T00:00:00.000Z")
+ *                     createdAt: "2021-01-01T00:00:00Z",
+ *                     updatedAt: "2021-01-01T00:00:00Z"
  *                 }],
  *             counterpartyType: [Mercoa.CounterpartyNetworkType.Entity]
  *         },
@@ -486,8 +486,8 @@ import * as Mercoa from "../../../index";
  *         approvers: [],
  *         approvalPolicy: [],
  *         metadata: {},
- *         createdAt: new Date("2021-01-01T00:00:00.000Z"),
- *         updatedAt: new Date("2021-01-01T00:00:00.000Z")
+ *         createdAt: "2021-01-01T00:00:00Z",
+ *         updatedAt: "2021-01-01T00:00:00Z"
  *     }
  *
  * @example
@@ -508,8 +508,8 @@ import * as Mercoa from "../../../index";
  *             isNetworkPayor: false,
  *             isNetworkPayee: false,
  *             accountType: Mercoa.AccountType.Business,
- *             updatedAt: new Date("2024-01-02T00:00:00.000Z"),
- *             createdAt: new Date("2024-01-01T00:00:00.000Z"),
+ *             updatedAt: "2024-01-02T00:00:00Z",
+ *             createdAt: "2024-01-01T00:00:00Z",
  *             profile: {
  *                 business: {
  *                     email: "customer@acme.com",
@@ -555,8 +555,8 @@ import * as Mercoa from "../../../index";
  *                     supportedCurrencies: [Mercoa.CurrencyCode.Usd],
  *                     metadata: {},
  *                     frozen: false,
- *                     createdAt: new Date("2021-01-01T00:00:00.000Z"),
- *                     updatedAt: new Date("2021-01-01T00:00:00.000Z")
+ *                     createdAt: "2021-01-01T00:00:00Z",
+ *                     updatedAt: "2021-01-01T00:00:00Z"
  *                 }],
  *             counterpartyType: [Mercoa.CounterpartyNetworkType.Entity]
  *         },
@@ -574,8 +574,8 @@ import * as Mercoa from "../../../index";
  *             isNetworkPayor: false,
  *             isNetworkPayee: false,
  *             accountType: Mercoa.AccountType.Business,
- *             updatedAt: new Date("2024-01-02T00:00:00.000Z"),
- *             createdAt: new Date("2024-01-01T00:00:00.000Z"),
+ *             updatedAt: "2024-01-02T00:00:00Z",
+ *             createdAt: "2024-01-01T00:00:00Z",
  *             profile: {
  *                 business: {
  *                     email: "vendor@bigboxstore.com",
@@ -599,16 +599,16 @@ import * as Mercoa from "../../../index";
  *                     supportedCurrencies: [Mercoa.CurrencyCode.Usd],
  *                     metadata: {},
  *                     frozen: false,
- *                     createdAt: new Date("2021-01-01T00:00:00.000Z"),
- *                     updatedAt: new Date("2021-01-01T00:00:00.000Z")
+ *                     createdAt: "2021-01-01T00:00:00Z",
+ *                     updatedAt: "2021-01-01T00:00:00Z"
  *                 }],
  *             counterpartyType: [Mercoa.CounterpartyNetworkType.Entity]
  *         },
  *         currency: Mercoa.CurrencyCode.Usd,
  *         amount: 100,
  *         invoiceNumber: "INV-123",
- *         invoiceDate: new Date("2021-01-01T00:00:00.000Z"),
- *         dueDate: new Date("2021-01-31T00:00:00.000Z"),
+ *         invoiceDate: "2021-01-01T00:00:00Z",
+ *         dueDate: "2021-01-31T00:00:00Z",
  *         paymentSourceId: "pm_4794d597-70dc-4fec-b6ec-c5988e759769",
  *         paymentSource: {
  *             type: "bankAccount",
@@ -624,8 +624,8 @@ import * as Mercoa from "../../../index";
  *             supportedCurrencies: [Mercoa.CurrencyCode.Usd],
  *             metadata: {},
  *             frozen: false,
- *             createdAt: new Date("2021-01-01T00:00:00.000Z"),
- *             updatedAt: new Date("2021-01-01T00:00:00.000Z")
+ *             createdAt: "2021-01-01T00:00:00Z",
+ *             updatedAt: "2021-01-01T00:00:00Z"
  *         },
  *         paymentDestinationConfirmed: true,
  *         hasDocuments: true,
@@ -633,8 +633,8 @@ import * as Mercoa from "../../../index";
  *         approvers: [],
  *         approvalPolicy: [],
  *         metadata: {},
- *         createdAt: new Date("2021-01-01T00:00:00.000Z"),
- *         updatedAt: new Date("2021-01-01T00:00:00.000Z")
+ *         createdAt: "2021-01-01T00:00:00Z",
+ *         updatedAt: "2021-01-01T00:00:00Z"
  *     }
  *
  * @example
@@ -655,8 +655,8 @@ import * as Mercoa from "../../../index";
  *             isNetworkPayor: false,
  *             isNetworkPayee: false,
  *             accountType: Mercoa.AccountType.Business,
- *             updatedAt: new Date("2024-01-02T00:00:00.000Z"),
- *             createdAt: new Date("2024-01-01T00:00:00.000Z"),
+ *             updatedAt: "2024-01-02T00:00:00Z",
+ *             createdAt: "2024-01-01T00:00:00Z",
  *             profile: {
  *                 business: {
  *                     email: "customer@acme.com",
@@ -702,8 +702,8 @@ import * as Mercoa from "../../../index";
  *                     supportedCurrencies: [Mercoa.CurrencyCode.Usd],
  *                     metadata: {},
  *                     frozen: false,
- *                     createdAt: new Date("2021-01-01T00:00:00.000Z"),
- *                     updatedAt: new Date("2021-01-01T00:00:00.000Z")
+ *                     createdAt: "2021-01-01T00:00:00Z",
+ *                     updatedAt: "2021-01-01T00:00:00Z"
  *                 }],
  *             counterpartyType: [Mercoa.CounterpartyNetworkType.Entity]
  *         },
@@ -721,8 +721,8 @@ import * as Mercoa from "../../../index";
  *             isNetworkPayor: false,
  *             isNetworkPayee: false,
  *             accountType: Mercoa.AccountType.Business,
- *             updatedAt: new Date("2024-01-02T00:00:00.000Z"),
- *             createdAt: new Date("2024-01-01T00:00:00.000Z"),
+ *             updatedAt: "2024-01-02T00:00:00Z",
+ *             createdAt: "2024-01-01T00:00:00Z",
  *             profile: {
  *                 business: {
  *                     email: "vendor@bigboxstore.com",
@@ -746,16 +746,16 @@ import * as Mercoa from "../../../index";
  *                     supportedCurrencies: [Mercoa.CurrencyCode.Usd],
  *                     metadata: {},
  *                     frozen: false,
- *                     createdAt: new Date("2021-01-01T00:00:00.000Z"),
- *                     updatedAt: new Date("2021-01-01T00:00:00.000Z")
+ *                     createdAt: "2021-01-01T00:00:00Z",
+ *                     updatedAt: "2021-01-01T00:00:00Z"
  *                 }],
  *             counterpartyType: [Mercoa.CounterpartyNetworkType.Entity]
  *         },
  *         currency: Mercoa.CurrencyCode.Usd,
  *         amount: 100,
  *         invoiceNumber: "INV-123",
- *         invoiceDate: new Date("2021-01-01T00:00:00.000Z"),
- *         dueDate: new Date("2021-01-31T00:00:00.000Z"),
+ *         invoiceDate: "2021-01-01T00:00:00Z",
+ *         dueDate: "2021-01-31T00:00:00Z",
  *         paymentSourceId: "pm_4794d597-70dc-4fec-b6ec-c5988e759769",
  *         paymentSource: {
  *             type: "bankAccount",
@@ -771,8 +771,8 @@ import * as Mercoa from "../../../index";
  *             supportedCurrencies: [Mercoa.CurrencyCode.Usd],
  *             metadata: {},
  *             frozen: false,
- *             createdAt: new Date("2021-01-01T00:00:00.000Z"),
- *             updatedAt: new Date("2021-01-01T00:00:00.000Z")
+ *             createdAt: "2021-01-01T00:00:00Z",
+ *             updatedAt: "2021-01-01T00:00:00Z"
  *         },
  *         paymentDestinationId: "pm_5fde2f4a-facc-48ef-8f0d-6b7d087c7b18",
  *         paymentDestination: {
@@ -790,18 +790,18 @@ import * as Mercoa from "../../../index";
  *             supportedCurrencies: [Mercoa.CurrencyCode.Usd],
  *             metadata: {},
  *             frozen: false,
- *             createdAt: new Date("2021-01-01T00:00:00.000Z"),
- *             updatedAt: new Date("2021-01-01T00:00:00.000Z")
+ *             createdAt: "2021-01-01T00:00:00Z",
+ *             updatedAt: "2021-01-01T00:00:00Z"
  *         },
- *         deductionDate: new Date("2021-01-29T00:00:00.000Z"),
+ *         deductionDate: "2021-01-29T00:00:00Z",
  *         paymentDestinationConfirmed: true,
  *         hasDocuments: true,
  *         hasSourceEmail: true,
  *         approvers: [],
  *         approvalPolicy: [],
  *         metadata: {},
- *         createdAt: new Date("2021-01-01T00:00:00.000Z"),
- *         updatedAt: new Date("2021-01-01T00:00:00.000Z")
+ *         createdAt: "2021-01-01T00:00:00Z",
+ *         updatedAt: "2021-01-01T00:00:00Z"
  *     }
  *
  * @example
@@ -822,8 +822,8 @@ import * as Mercoa from "../../../index";
  *             isNetworkPayor: false,
  *             isNetworkPayee: false,
  *             accountType: Mercoa.AccountType.Business,
- *             updatedAt: new Date("2024-01-02T00:00:00.000Z"),
- *             createdAt: new Date("2024-01-01T00:00:00.000Z"),
+ *             updatedAt: "2024-01-02T00:00:00Z",
+ *             createdAt: "2024-01-01T00:00:00Z",
  *             profile: {
  *                 business: {
  *                     email: "customer@acme.com",
@@ -869,8 +869,8 @@ import * as Mercoa from "../../../index";
  *                     supportedCurrencies: [Mercoa.CurrencyCode.Usd],
  *                     metadata: {},
  *                     frozen: false,
- *                     createdAt: new Date("2021-01-01T00:00:00.000Z"),
- *                     updatedAt: new Date("2021-01-01T00:00:00.000Z")
+ *                     createdAt: "2021-01-01T00:00:00Z",
+ *                     updatedAt: "2021-01-01T00:00:00Z"
  *                 }],
  *             counterpartyType: [Mercoa.CounterpartyNetworkType.Entity]
  *         },
@@ -888,8 +888,8 @@ import * as Mercoa from "../../../index";
  *             isNetworkPayor: false,
  *             isNetworkPayee: false,
  *             accountType: Mercoa.AccountType.Business,
- *             updatedAt: new Date("2024-01-02T00:00:00.000Z"),
- *             createdAt: new Date("2024-01-01T00:00:00.000Z"),
+ *             updatedAt: "2024-01-02T00:00:00Z",
+ *             createdAt: "2024-01-01T00:00:00Z",
  *             profile: {
  *                 business: {
  *                     email: "vendor@bigboxstore.com",
@@ -913,16 +913,16 @@ import * as Mercoa from "../../../index";
  *                     supportedCurrencies: [Mercoa.CurrencyCode.Usd],
  *                     metadata: {},
  *                     frozen: false,
- *                     createdAt: new Date("2021-01-01T00:00:00.000Z"),
- *                     updatedAt: new Date("2021-01-01T00:00:00.000Z")
+ *                     createdAt: "2021-01-01T00:00:00Z",
+ *                     updatedAt: "2021-01-01T00:00:00Z"
  *                 }],
  *             counterpartyType: [Mercoa.CounterpartyNetworkType.Entity]
  *         },
  *         currency: Mercoa.CurrencyCode.Usd,
  *         amount: 100,
  *         invoiceNumber: "INV-123",
- *         invoiceDate: new Date("2021-01-01T00:00:00.000Z"),
- *         dueDate: new Date("2021-01-31T00:00:00.000Z"),
+ *         invoiceDate: "2021-01-01T00:00:00Z",
+ *         dueDate: "2021-01-31T00:00:00Z",
  *         paymentSourceId: "pm_4794d597-70dc-4fec-b6ec-c5988e759769",
  *         paymentSource: {
  *             type: "bankAccount",
@@ -938,8 +938,8 @@ import * as Mercoa from "../../../index";
  *             supportedCurrencies: [Mercoa.CurrencyCode.Usd],
  *             metadata: {},
  *             frozen: false,
- *             createdAt: new Date("2021-01-01T00:00:00.000Z"),
- *             updatedAt: new Date("2021-01-01T00:00:00.000Z")
+ *             createdAt: "2021-01-01T00:00:00Z",
+ *             updatedAt: "2021-01-01T00:00:00Z"
  *         },
  *         paymentDestinationId: "pm_5fde2f4a-facc-48ef-8f0d-6b7d087c7b18",
  *         paymentDestination: {
@@ -957,18 +957,18 @@ import * as Mercoa from "../../../index";
  *             supportedCurrencies: [Mercoa.CurrencyCode.Usd],
  *             metadata: {},
  *             frozen: false,
- *             createdAt: new Date("2021-01-01T00:00:00.000Z"),
- *             updatedAt: new Date("2021-01-01T00:00:00.000Z")
+ *             createdAt: "2021-01-01T00:00:00Z",
+ *             updatedAt: "2021-01-01T00:00:00Z"
  *         },
- *         deductionDate: new Date("2021-01-29T00:00:00.000Z"),
+ *         deductionDate: "2021-01-29T00:00:00Z",
  *         paymentDestinationConfirmed: true,
  *         hasDocuments: true,
  *         hasSourceEmail: true,
  *         approvers: [],
  *         approvalPolicy: [],
  *         metadata: {},
- *         createdAt: new Date("2021-01-01T00:00:00.000Z"),
- *         updatedAt: new Date("2021-01-01T00:00:00.000Z")
+ *         createdAt: "2021-01-01T00:00:00Z",
+ *         updatedAt: "2021-01-01T00:00:00Z"
  *     }
  *
  * @example
@@ -989,8 +989,8 @@ import * as Mercoa from "../../../index";
  *             isNetworkPayor: false,
  *             isNetworkPayee: false,
  *             accountType: Mercoa.AccountType.Business,
- *             updatedAt: new Date("2024-01-02T00:00:00.000Z"),
- *             createdAt: new Date("2024-01-01T00:00:00.000Z"),
+ *             updatedAt: "2024-01-02T00:00:00Z",
+ *             createdAt: "2024-01-01T00:00:00Z",
  *             profile: {
  *                 business: {
  *                     email: "customer@acme.com",
@@ -1036,8 +1036,8 @@ import * as Mercoa from "../../../index";
  *                     supportedCurrencies: [Mercoa.CurrencyCode.Usd],
  *                     metadata: {},
  *                     frozen: false,
- *                     createdAt: new Date("2021-01-01T00:00:00.000Z"),
- *                     updatedAt: new Date("2021-01-01T00:00:00.000Z")
+ *                     createdAt: "2021-01-01T00:00:00Z",
+ *                     updatedAt: "2021-01-01T00:00:00Z"
  *                 }],
  *             counterpartyType: [Mercoa.CounterpartyNetworkType.Entity]
  *         },
@@ -1055,8 +1055,8 @@ import * as Mercoa from "../../../index";
  *             isNetworkPayor: false,
  *             isNetworkPayee: false,
  *             accountType: Mercoa.AccountType.Business,
- *             updatedAt: new Date("2024-01-02T00:00:00.000Z"),
- *             createdAt: new Date("2024-01-01T00:00:00.000Z"),
+ *             updatedAt: "2024-01-02T00:00:00Z",
+ *             createdAt: "2024-01-01T00:00:00Z",
  *             profile: {
  *                 business: {
  *                     email: "vendor@bigboxstore.com",
@@ -1080,16 +1080,16 @@ import * as Mercoa from "../../../index";
  *                     supportedCurrencies: [Mercoa.CurrencyCode.Usd],
  *                     metadata: {},
  *                     frozen: false,
- *                     createdAt: new Date("2021-01-01T00:00:00.000Z"),
- *                     updatedAt: new Date("2021-01-01T00:00:00.000Z")
+ *                     createdAt: "2021-01-01T00:00:00Z",
+ *                     updatedAt: "2021-01-01T00:00:00Z"
  *                 }],
  *             counterpartyType: [Mercoa.CounterpartyNetworkType.Entity]
  *         },
  *         currency: Mercoa.CurrencyCode.Usd,
  *         amount: 100,
  *         invoiceNumber: "INV-123",
- *         invoiceDate: new Date("2021-01-01T00:00:00.000Z"),
- *         dueDate: new Date("2021-01-31T00:00:00.000Z"),
+ *         invoiceDate: "2021-01-01T00:00:00Z",
+ *         dueDate: "2021-01-31T00:00:00Z",
  *         paymentSourceId: "pm_4794d597-70dc-4fec-b6ec-c5988e759769",
  *         paymentSource: {
  *             type: "bankAccount",
@@ -1105,8 +1105,8 @@ import * as Mercoa from "../../../index";
  *             supportedCurrencies: [Mercoa.CurrencyCode.Usd],
  *             metadata: {},
  *             frozen: false,
- *             createdAt: new Date("2021-01-01T00:00:00.000Z"),
- *             updatedAt: new Date("2021-01-01T00:00:00.000Z")
+ *             createdAt: "2021-01-01T00:00:00Z",
+ *             updatedAt: "2021-01-01T00:00:00Z"
  *         },
  *         paymentDestinationId: "pm_5fde2f4a-facc-48ef-8f0d-6b7d087c7b18",
  *         paymentDestination: {
@@ -1124,18 +1124,18 @@ import * as Mercoa from "../../../index";
  *             supportedCurrencies: [Mercoa.CurrencyCode.Usd],
  *             metadata: {},
  *             frozen: false,
- *             createdAt: new Date("2021-01-01T00:00:00.000Z"),
- *             updatedAt: new Date("2021-01-01T00:00:00.000Z")
+ *             createdAt: "2021-01-01T00:00:00Z",
+ *             updatedAt: "2021-01-01T00:00:00Z"
  *         },
- *         deductionDate: new Date("2021-01-29T00:00:00.000Z"),
+ *         deductionDate: "2021-01-29T00:00:00Z",
  *         paymentDestinationConfirmed: true,
  *         hasDocuments: true,
  *         hasSourceEmail: true,
  *         approvers: [],
  *         approvalPolicy: [],
  *         metadata: {},
- *         createdAt: new Date("2021-01-01T00:00:00.000Z"),
- *         updatedAt: new Date("2021-01-01T00:00:00.000Z")
+ *         createdAt: "2021-01-01T00:00:00Z",
+ *         updatedAt: "2021-01-01T00:00:00Z"
  *     }
  *
  * @example
@@ -1156,8 +1156,8 @@ import * as Mercoa from "../../../index";
  *             isNetworkPayor: false,
  *             isNetworkPayee: false,
  *             accountType: Mercoa.AccountType.Business,
- *             updatedAt: new Date("2024-01-02T00:00:00.000Z"),
- *             createdAt: new Date("2024-01-01T00:00:00.000Z"),
+ *             updatedAt: "2024-01-02T00:00:00Z",
+ *             createdAt: "2024-01-01T00:00:00Z",
  *             profile: {
  *                 business: {
  *                     email: "customer@acme.com",
@@ -1203,8 +1203,8 @@ import * as Mercoa from "../../../index";
  *                     supportedCurrencies: [Mercoa.CurrencyCode.Usd],
  *                     metadata: {},
  *                     frozen: false,
- *                     createdAt: new Date("2021-01-01T00:00:00.000Z"),
- *                     updatedAt: new Date("2021-01-01T00:00:00.000Z")
+ *                     createdAt: "2021-01-01T00:00:00Z",
+ *                     updatedAt: "2021-01-01T00:00:00Z"
  *                 }],
  *             counterpartyType: [Mercoa.CounterpartyNetworkType.Entity]
  *         },
@@ -1222,8 +1222,8 @@ import * as Mercoa from "../../../index";
  *             isNetworkPayor: false,
  *             isNetworkPayee: false,
  *             accountType: Mercoa.AccountType.Business,
- *             updatedAt: new Date("2024-01-02T00:00:00.000Z"),
- *             createdAt: new Date("2024-01-01T00:00:00.000Z"),
+ *             updatedAt: "2024-01-02T00:00:00Z",
+ *             createdAt: "2024-01-01T00:00:00Z",
  *             profile: {
  *                 business: {
  *                     email: "vendor@bigboxstore.com",
@@ -1247,16 +1247,16 @@ import * as Mercoa from "../../../index";
  *                     supportedCurrencies: [Mercoa.CurrencyCode.Usd],
  *                     metadata: {},
  *                     frozen: false,
- *                     createdAt: new Date("2021-01-01T00:00:00.000Z"),
- *                     updatedAt: new Date("2021-01-01T00:00:00.000Z")
+ *                     createdAt: "2021-01-01T00:00:00Z",
+ *                     updatedAt: "2021-01-01T00:00:00Z"
  *                 }],
  *             counterpartyType: [Mercoa.CounterpartyNetworkType.Entity]
  *         },
  *         currency: Mercoa.CurrencyCode.Usd,
  *         amount: 100,
  *         invoiceNumber: "INV-123",
- *         invoiceDate: new Date("2021-01-01T00:00:00.000Z"),
- *         dueDate: new Date("2021-01-31T00:00:00.000Z"),
+ *         invoiceDate: "2021-01-01T00:00:00Z",
+ *         dueDate: "2021-01-31T00:00:00Z",
  *         paymentSourceId: "pm_4794d597-70dc-4fec-b6ec-c5988e759769",
  *         paymentSource: {
  *             type: "bankAccount",
@@ -1272,8 +1272,8 @@ import * as Mercoa from "../../../index";
  *             supportedCurrencies: [Mercoa.CurrencyCode.Usd],
  *             metadata: {},
  *             frozen: false,
- *             createdAt: new Date("2021-01-01T00:00:00.000Z"),
- *             updatedAt: new Date("2021-01-01T00:00:00.000Z")
+ *             createdAt: "2021-01-01T00:00:00Z",
+ *             updatedAt: "2021-01-01T00:00:00Z"
  *         },
  *         paymentDestinationId: "pm_5fde2f4a-facc-48ef-8f0d-6b7d087c7b18",
  *         paymentDestination: {
@@ -1291,18 +1291,18 @@ import * as Mercoa from "../../../index";
  *             supportedCurrencies: [Mercoa.CurrencyCode.Usd],
  *             metadata: {},
  *             frozen: false,
- *             createdAt: new Date("2021-01-01T00:00:00.000Z"),
- *             updatedAt: new Date("2021-01-01T00:00:00.000Z")
+ *             createdAt: "2021-01-01T00:00:00Z",
+ *             updatedAt: "2021-01-01T00:00:00Z"
  *         },
- *         deductionDate: new Date("2021-01-29T00:00:00.000Z"),
+ *         deductionDate: "2021-01-29T00:00:00Z",
  *         paymentDestinationConfirmed: true,
  *         hasDocuments: true,
  *         hasSourceEmail: true,
  *         approvers: [],
  *         approvalPolicy: [],
  *         metadata: {},
- *         createdAt: new Date("2021-01-01T00:00:00.000Z"),
- *         updatedAt: new Date("2021-01-01T00:00:00.000Z")
+ *         createdAt: "2021-01-01T00:00:00Z",
+ *         updatedAt: "2021-01-01T00:00:00Z"
  *     }
  *
  * @example
@@ -1323,8 +1323,8 @@ import * as Mercoa from "../../../index";
  *             isNetworkPayor: false,
  *             isNetworkPayee: false,
  *             accountType: Mercoa.AccountType.Business,
- *             updatedAt: new Date("2024-01-02T00:00:00.000Z"),
- *             createdAt: new Date("2024-01-01T00:00:00.000Z"),
+ *             updatedAt: "2024-01-02T00:00:00Z",
+ *             createdAt: "2024-01-01T00:00:00Z",
  *             profile: {
  *                 business: {
  *                     email: "customer@acme.com",
@@ -1370,8 +1370,8 @@ import * as Mercoa from "../../../index";
  *                     supportedCurrencies: [Mercoa.CurrencyCode.Usd],
  *                     metadata: {},
  *                     frozen: false,
- *                     createdAt: new Date("2021-01-01T00:00:00.000Z"),
- *                     updatedAt: new Date("2021-01-01T00:00:00.000Z")
+ *                     createdAt: "2021-01-01T00:00:00Z",
+ *                     updatedAt: "2021-01-01T00:00:00Z"
  *                 }],
  *             counterpartyType: [Mercoa.CounterpartyNetworkType.Entity]
  *         },
@@ -1389,8 +1389,8 @@ import * as Mercoa from "../../../index";
  *             isNetworkPayor: false,
  *             isNetworkPayee: false,
  *             accountType: Mercoa.AccountType.Business,
- *             updatedAt: new Date("2024-01-02T00:00:00.000Z"),
- *             createdAt: new Date("2024-01-01T00:00:00.000Z"),
+ *             updatedAt: "2024-01-02T00:00:00Z",
+ *             createdAt: "2024-01-01T00:00:00Z",
  *             profile: {
  *                 business: {
  *                     email: "vendor@bigboxstore.com",
@@ -1414,16 +1414,16 @@ import * as Mercoa from "../../../index";
  *                     supportedCurrencies: [Mercoa.CurrencyCode.Usd],
  *                     metadata: {},
  *                     frozen: false,
- *                     createdAt: new Date("2021-01-01T00:00:00.000Z"),
- *                     updatedAt: new Date("2021-01-01T00:00:00.000Z")
+ *                     createdAt: "2021-01-01T00:00:00Z",
+ *                     updatedAt: "2021-01-01T00:00:00Z"
  *                 }],
  *             counterpartyType: [Mercoa.CounterpartyNetworkType.Entity]
  *         },
  *         currency: Mercoa.CurrencyCode.Usd,
  *         amount: 100,
  *         invoiceNumber: "INV-123",
- *         invoiceDate: new Date("2021-01-01T00:00:00.000Z"),
- *         dueDate: new Date("2021-01-31T00:00:00.000Z"),
+ *         invoiceDate: "2021-01-01T00:00:00Z",
+ *         dueDate: "2021-01-31T00:00:00Z",
  *         paymentSourceId: "pm_4794d597-70dc-4fec-b6ec-c5988e759769",
  *         paymentSource: {
  *             type: "bankAccount",
@@ -1439,8 +1439,8 @@ import * as Mercoa from "../../../index";
  *             supportedCurrencies: [Mercoa.CurrencyCode.Usd],
  *             metadata: {},
  *             frozen: false,
- *             createdAt: new Date("2021-01-01T00:00:00.000Z"),
- *             updatedAt: new Date("2021-01-01T00:00:00.000Z")
+ *             createdAt: "2021-01-01T00:00:00Z",
+ *             updatedAt: "2021-01-01T00:00:00Z"
  *         },
  *         paymentDestinationId: "pm_5fde2f4a-facc-48ef-8f0d-6b7d087c7b18",
  *         paymentDestination: {
@@ -1458,18 +1458,18 @@ import * as Mercoa from "../../../index";
  *             supportedCurrencies: [Mercoa.CurrencyCode.Usd],
  *             metadata: {},
  *             frozen: false,
- *             createdAt: new Date("2021-01-01T00:00:00.000Z"),
- *             updatedAt: new Date("2021-01-01T00:00:00.000Z")
+ *             createdAt: "2021-01-01T00:00:00Z",
+ *             updatedAt: "2021-01-01T00:00:00Z"
  *         },
- *         deductionDate: new Date("2021-01-29T00:00:00.000Z"),
+ *         deductionDate: "2021-01-29T00:00:00Z",
  *         paymentDestinationConfirmed: true,
  *         hasDocuments: true,
  *         hasSourceEmail: true,
  *         approvers: [],
  *         approvalPolicy: [],
  *         metadata: {},
- *         createdAt: new Date("2021-01-01T00:00:00.000Z"),
- *         updatedAt: new Date("2021-01-01T00:00:00.000Z")
+ *         createdAt: "2021-01-01T00:00:00Z",
+ *         updatedAt: "2021-01-01T00:00:00Z"
  *     }
  *
  * @example
@@ -1490,8 +1490,8 @@ import * as Mercoa from "../../../index";
  *             isNetworkPayor: false,
  *             isNetworkPayee: false,
  *             accountType: Mercoa.AccountType.Business,
- *             updatedAt: new Date("2024-01-02T00:00:00.000Z"),
- *             createdAt: new Date("2024-01-01T00:00:00.000Z"),
+ *             updatedAt: "2024-01-02T00:00:00Z",
+ *             createdAt: "2024-01-01T00:00:00Z",
  *             profile: {
  *                 business: {
  *                     email: "customer@acme.com",
@@ -1537,8 +1537,8 @@ import * as Mercoa from "../../../index";
  *                     supportedCurrencies: [Mercoa.CurrencyCode.Usd],
  *                     metadata: {},
  *                     frozen: false,
- *                     createdAt: new Date("2021-01-01T00:00:00.000Z"),
- *                     updatedAt: new Date("2021-01-01T00:00:00.000Z")
+ *                     createdAt: "2021-01-01T00:00:00Z",
+ *                     updatedAt: "2021-01-01T00:00:00Z"
  *                 }],
  *             counterpartyType: [Mercoa.CounterpartyNetworkType.Entity]
  *         },
@@ -1556,8 +1556,8 @@ import * as Mercoa from "../../../index";
  *             isNetworkPayor: false,
  *             isNetworkPayee: false,
  *             accountType: Mercoa.AccountType.Business,
- *             updatedAt: new Date("2024-01-02T00:00:00.000Z"),
- *             createdAt: new Date("2024-01-01T00:00:00.000Z"),
+ *             updatedAt: "2024-01-02T00:00:00Z",
+ *             createdAt: "2024-01-01T00:00:00Z",
  *             profile: {
  *                 business: {
  *                     email: "vendor@bigboxstore.com",
@@ -1581,16 +1581,16 @@ import * as Mercoa from "../../../index";
  *                     supportedCurrencies: [Mercoa.CurrencyCode.Usd],
  *                     metadata: {},
  *                     frozen: false,
- *                     createdAt: new Date("2021-01-01T00:00:00.000Z"),
- *                     updatedAt: new Date("2021-01-01T00:00:00.000Z")
+ *                     createdAt: "2021-01-01T00:00:00Z",
+ *                     updatedAt: "2021-01-01T00:00:00Z"
  *                 }],
  *             counterpartyType: [Mercoa.CounterpartyNetworkType.Entity]
  *         },
  *         currency: Mercoa.CurrencyCode.Usd,
  *         amount: 100,
  *         invoiceNumber: "INV-123",
- *         invoiceDate: new Date("2021-01-01T00:00:00.000Z"),
- *         dueDate: new Date("2021-01-31T00:00:00.000Z"),
+ *         invoiceDate: "2021-01-01T00:00:00Z",
+ *         dueDate: "2021-01-31T00:00:00Z",
  *         paymentSourceId: "pm_4794d597-70dc-4fec-b6ec-c5988e759769",
  *         paymentSource: {
  *             type: "bankAccount",
@@ -1606,8 +1606,8 @@ import * as Mercoa from "../../../index";
  *             supportedCurrencies: [Mercoa.CurrencyCode.Usd],
  *             metadata: {},
  *             frozen: false,
- *             createdAt: new Date("2021-01-01T00:00:00.000Z"),
- *             updatedAt: new Date("2021-01-01T00:00:00.000Z")
+ *             createdAt: "2021-01-01T00:00:00Z",
+ *             updatedAt: "2021-01-01T00:00:00Z"
  *         },
  *         paymentDestinationId: "pm_5fde2f4a-facc-48ef-8f0d-6b7d087c7b18",
  *         paymentDestination: {
@@ -1625,18 +1625,18 @@ import * as Mercoa from "../../../index";
  *             supportedCurrencies: [Mercoa.CurrencyCode.Usd],
  *             metadata: {},
  *             frozen: false,
- *             createdAt: new Date("2021-01-01T00:00:00.000Z"),
- *             updatedAt: new Date("2021-01-01T00:00:00.000Z")
+ *             createdAt: "2021-01-01T00:00:00Z",
+ *             updatedAt: "2021-01-01T00:00:00Z"
  *         },
- *         deductionDate: new Date("2021-01-29T00:00:00.000Z"),
+ *         deductionDate: "2021-01-29T00:00:00Z",
  *         paymentDestinationConfirmed: true,
  *         hasDocuments: true,
  *         hasSourceEmail: true,
  *         approvers: [],
  *         approvalPolicy: [],
  *         metadata: {},
- *         createdAt: new Date("2021-01-01T00:00:00.000Z"),
- *         updatedAt: new Date("2021-01-01T00:00:00.000Z")
+ *         createdAt: "2021-01-01T00:00:00Z",
+ *         updatedAt: "2021-01-01T00:00:00Z"
  *     }
  *
  * @example
@@ -1657,8 +1657,8 @@ import * as Mercoa from "../../../index";
  *             isNetworkPayor: false,
  *             isNetworkPayee: false,
  *             accountType: Mercoa.AccountType.Business,
- *             updatedAt: new Date("2024-01-02T00:00:00.000Z"),
- *             createdAt: new Date("2024-01-01T00:00:00.000Z"),
+ *             updatedAt: "2024-01-02T00:00:00Z",
+ *             createdAt: "2024-01-01T00:00:00Z",
  *             profile: {
  *                 business: {
  *                     email: "customer@acme.com",
@@ -1704,8 +1704,8 @@ import * as Mercoa from "../../../index";
  *                     supportedCurrencies: [Mercoa.CurrencyCode.Usd],
  *                     metadata: {},
  *                     frozen: false,
- *                     createdAt: new Date("2021-01-01T00:00:00.000Z"),
- *                     updatedAt: new Date("2021-01-01T00:00:00.000Z")
+ *                     createdAt: "2021-01-01T00:00:00Z",
+ *                     updatedAt: "2021-01-01T00:00:00Z"
  *                 }],
  *             counterpartyType: [Mercoa.CounterpartyNetworkType.Entity]
  *         },
@@ -1723,8 +1723,8 @@ import * as Mercoa from "../../../index";
  *             isNetworkPayor: false,
  *             isNetworkPayee: false,
  *             accountType: Mercoa.AccountType.Business,
- *             updatedAt: new Date("2024-01-02T00:00:00.000Z"),
- *             createdAt: new Date("2024-01-01T00:00:00.000Z"),
+ *             updatedAt: "2024-01-02T00:00:00Z",
+ *             createdAt: "2024-01-01T00:00:00Z",
  *             profile: {
  *                 business: {
  *                     email: "vendor@bigboxstore.com",
@@ -1748,16 +1748,16 @@ import * as Mercoa from "../../../index";
  *                     supportedCurrencies: [Mercoa.CurrencyCode.Usd],
  *                     metadata: {},
  *                     frozen: false,
- *                     createdAt: new Date("2021-01-01T00:00:00.000Z"),
- *                     updatedAt: new Date("2021-01-01T00:00:00.000Z")
+ *                     createdAt: "2021-01-01T00:00:00Z",
+ *                     updatedAt: "2021-01-01T00:00:00Z"
  *                 }],
  *             counterpartyType: [Mercoa.CounterpartyNetworkType.Entity]
  *         },
  *         currency: Mercoa.CurrencyCode.Usd,
  *         amount: 100,
  *         invoiceNumber: "INV-123",
- *         invoiceDate: new Date("2021-01-01T00:00:00.000Z"),
- *         dueDate: new Date("2021-01-31T00:00:00.000Z"),
+ *         invoiceDate: "2021-01-01T00:00:00Z",
+ *         dueDate: "2021-01-31T00:00:00Z",
  *         paymentSourceId: "pm_4794d597-70dc-4fec-b6ec-c5988e759769",
  *         paymentSource: {
  *             type: "bankAccount",
@@ -1773,8 +1773,8 @@ import * as Mercoa from "../../../index";
  *             supportedCurrencies: [Mercoa.CurrencyCode.Usd],
  *             metadata: {},
  *             frozen: false,
- *             createdAt: new Date("2021-01-01T00:00:00.000Z"),
- *             updatedAt: new Date("2021-01-01T00:00:00.000Z")
+ *             createdAt: "2021-01-01T00:00:00Z",
+ *             updatedAt: "2021-01-01T00:00:00Z"
  *         },
  *         paymentDestinationId: "pm_5fde2f4a-facc-48ef-8f0d-6b7d087c7b18",
  *         paymentDestination: {
@@ -1792,18 +1792,18 @@ import * as Mercoa from "../../../index";
  *             supportedCurrencies: [Mercoa.CurrencyCode.Usd],
  *             metadata: {},
  *             frozen: false,
- *             createdAt: new Date("2021-01-01T00:00:00.000Z"),
- *             updatedAt: new Date("2021-01-01T00:00:00.000Z")
+ *             createdAt: "2021-01-01T00:00:00Z",
+ *             updatedAt: "2021-01-01T00:00:00Z"
  *         },
- *         deductionDate: new Date("2021-01-29T00:00:00.000Z"),
+ *         deductionDate: "2021-01-29T00:00:00Z",
  *         paymentDestinationConfirmed: true,
  *         hasDocuments: true,
  *         hasSourceEmail: true,
  *         approvers: [],
  *         approvalPolicy: [],
  *         metadata: {},
- *         createdAt: new Date("2021-01-01T00:00:00.000Z"),
- *         updatedAt: new Date("2021-01-01T00:00:00.000Z")
+ *         createdAt: "2021-01-01T00:00:00Z",
+ *         updatedAt: "2021-01-01T00:00:00Z"
  *     }
  *
  * @example
@@ -1824,8 +1824,8 @@ import * as Mercoa from "../../../index";
  *             isNetworkPayor: false,
  *             isNetworkPayee: false,
  *             accountType: Mercoa.AccountType.Business,
- *             updatedAt: new Date("2024-01-02T00:00:00.000Z"),
- *             createdAt: new Date("2024-01-01T00:00:00.000Z"),
+ *             updatedAt: "2024-01-02T00:00:00Z",
+ *             createdAt: "2024-01-01T00:00:00Z",
  *             profile: {
  *                 business: {
  *                     email: "customer@acme.com",
@@ -1871,8 +1871,8 @@ import * as Mercoa from "../../../index";
  *                     supportedCurrencies: [Mercoa.CurrencyCode.Usd],
  *                     metadata: {},
  *                     frozen: false,
- *                     createdAt: new Date("2021-01-01T00:00:00.000Z"),
- *                     updatedAt: new Date("2021-01-01T00:00:00.000Z")
+ *                     createdAt: "2021-01-01T00:00:00Z",
+ *                     updatedAt: "2021-01-01T00:00:00Z"
  *                 }],
  *             counterpartyType: [Mercoa.CounterpartyNetworkType.Entity]
  *         },
@@ -1890,8 +1890,8 @@ import * as Mercoa from "../../../index";
  *             isNetworkPayor: false,
  *             isNetworkPayee: false,
  *             accountType: Mercoa.AccountType.Business,
- *             updatedAt: new Date("2024-01-02T00:00:00.000Z"),
- *             createdAt: new Date("2024-01-01T00:00:00.000Z"),
+ *             updatedAt: "2024-01-02T00:00:00Z",
+ *             createdAt: "2024-01-01T00:00:00Z",
  *             profile: {
  *                 business: {
  *                     email: "vendor@bigboxstore.com",
@@ -1915,16 +1915,16 @@ import * as Mercoa from "../../../index";
  *                     supportedCurrencies: [Mercoa.CurrencyCode.Usd],
  *                     metadata: {},
  *                     frozen: false,
- *                     createdAt: new Date("2021-01-01T00:00:00.000Z"),
- *                     updatedAt: new Date("2021-01-01T00:00:00.000Z")
+ *                     createdAt: "2021-01-01T00:00:00Z",
+ *                     updatedAt: "2021-01-01T00:00:00Z"
  *                 }],
  *             counterpartyType: [Mercoa.CounterpartyNetworkType.Entity]
  *         },
  *         currency: Mercoa.CurrencyCode.Usd,
  *         amount: 100,
  *         invoiceNumber: "INV-123",
- *         invoiceDate: new Date("2021-01-01T00:00:00.000Z"),
- *         dueDate: new Date("2021-01-31T00:00:00.000Z"),
+ *         invoiceDate: "2021-01-01T00:00:00Z",
+ *         dueDate: "2021-01-31T00:00:00Z",
  *         paymentSourceId: "pm_4794d597-70dc-4fec-b6ec-c5988e759769",
  *         paymentSource: {
  *             type: "bankAccount",
@@ -1940,8 +1940,8 @@ import * as Mercoa from "../../../index";
  *             supportedCurrencies: [Mercoa.CurrencyCode.Usd],
  *             metadata: {},
  *             frozen: false,
- *             createdAt: new Date("2021-01-01T00:00:00.000Z"),
- *             updatedAt: new Date("2021-01-01T00:00:00.000Z")
+ *             createdAt: "2021-01-01T00:00:00Z",
+ *             updatedAt: "2021-01-01T00:00:00Z"
  *         },
  *         paymentDestinationId: "pm_5fde2f4a-facc-48ef-8f0d-6b7d087c7b18",
  *         paymentDestination: {
@@ -1959,18 +1959,18 @@ import * as Mercoa from "../../../index";
  *             supportedCurrencies: [Mercoa.CurrencyCode.Usd],
  *             metadata: {},
  *             frozen: false,
- *             createdAt: new Date("2021-01-01T00:00:00.000Z"),
- *             updatedAt: new Date("2021-01-01T00:00:00.000Z")
+ *             createdAt: "2021-01-01T00:00:00Z",
+ *             updatedAt: "2021-01-01T00:00:00Z"
  *         },
- *         deductionDate: new Date("2021-01-29T00:00:00.000Z"),
+ *         deductionDate: "2021-01-29T00:00:00Z",
  *         paymentDestinationConfirmed: true,
  *         hasDocuments: true,
  *         hasSourceEmail: true,
  *         approvers: [],
  *         approvalPolicy: [],
  *         metadata: {},
- *         createdAt: new Date("2021-01-01T00:00:00.000Z"),
- *         updatedAt: new Date("2021-01-01T00:00:00.000Z")
+ *         createdAt: "2021-01-01T00:00:00Z",
+ *         updatedAt: "2021-01-01T00:00:00Z"
  *     }
  */
 export interface InvoiceResponse {
