@@ -44,6 +44,7 @@ export const InvoiceRequestBase: core.serialization.ObjectSchema<
     creatorUserId: EntityUserId.optional(),
     failureType: InvoiceFailureType.optional(),
     fees: InvoiceFeesRequest.optional(),
+    batchPayment: core.serialization.boolean().optional(),
     paymentSchedule: PaymentSchedule.optional(),
 });
 
@@ -73,6 +74,7 @@ export declare namespace InvoiceRequestBase {
         creatorUserId?: EntityUserId.Raw | null;
         failureType?: InvoiceFailureType.Raw | null;
         fees?: InvoiceFeesRequest.Raw | null;
+        batchPayment?: boolean | null;
         paymentSchedule?: PaymentSchedule.Raw | null;
     }
 }

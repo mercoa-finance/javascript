@@ -48,6 +48,7 @@ export const InvoiceResponse: core.serialization.ObjectSchema<serializers.Invoic
         paymentDestinationId: PaymentMethodId.optional(),
         paymentDestinationOptions: PaymentDestinationOptions.optional(),
         paymentDestinationConfirmed: core.serialization.boolean(),
+        batchPayment: core.serialization.boolean().optional(),
         hasDocuments: core.serialization.boolean(),
         hasSourceEmail: core.serialization.boolean(),
         comments: core.serialization.list(CommentResponse).optional(),
@@ -91,6 +92,7 @@ export declare namespace InvoiceResponse {
         paymentDestinationId?: PaymentMethodId.Raw | null;
         paymentDestinationOptions?: PaymentDestinationOptions.Raw | null;
         paymentDestinationConfirmed: boolean;
+        batchPayment?: boolean | null;
         hasDocuments: boolean;
         hasSourceEmail: boolean;
         comments?: CommentResponse.Raw[] | null;

@@ -49,6 +49,8 @@ export interface InvoiceRequestBase {
     failureType?: Mercoa.InvoiceFailureType;
     /** If using a custom payment method, you can override the default fees for this invoice. If not provided, the default fees for the custom payment method will be used. */
     fees?: Mercoa.InvoiceFeesRequest;
+    /** If true, this invoice will be paid as a batch payment. Batches are automatically determined by Mercoa based on the payment source, destination, and scheduled payment date. */
+    batchPayment?: boolean;
     /** If this is a recurring invoice, this will be the payment schedule for the invoice. If not provided, this will be a one-time invoice. */
     paymentSchedule?: Mercoa.PaymentSchedule;
 }

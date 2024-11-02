@@ -13,6 +13,7 @@ import { ColorSchemeResponse } from "./ColorSchemeResponse";
 import { OnboardingOptionsResponse } from "./OnboardingOptionsResponse";
 import { MetadataSchema } from "./MetadataSchema";
 import { NotificationEmailTemplateResponse } from "./NotificationEmailTemplateResponse";
+import { EntityId } from "../../entityTypes/types/EntityId";
 
 export const OrganizationResponse: core.serialization.ObjectSchema<
     serializers.OrganizationResponse.Raw,
@@ -32,6 +33,7 @@ export const OrganizationResponse: core.serialization.ObjectSchema<
     payorOnboardingOptions: OnboardingOptionsResponse.optional(),
     metadataSchema: core.serialization.list(MetadataSchema).optional(),
     notificationEmailTemplate: NotificationEmailTemplateResponse.optional(),
+    organizationEntityId: EntityId.optional(),
 });
 
 export declare namespace OrganizationResponse {
@@ -50,5 +52,6 @@ export declare namespace OrganizationResponse {
         payorOnboardingOptions?: OnboardingOptionsResponse.Raw | null;
         metadataSchema?: MetadataSchema.Raw[] | null;
         notificationEmailTemplate?: NotificationEmailTemplateResponse.Raw | null;
+        organizationEntityId?: EntityId.Raw | null;
     }
 }

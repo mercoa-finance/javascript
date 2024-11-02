@@ -36,6 +36,7 @@ export class PaymentLinks {
      * Get temporary link for payer to send payment
      *
      * @param {Mercoa.InvoiceId} invoiceId - Invoice ID or Invoice ForeignID
+     * @param {Mercoa.invoice.PayerLinkRequest} request
      * @param {PaymentLinks.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Mercoa.BadRequest}
@@ -51,8 +52,15 @@ export class PaymentLinks {
      */
     public async getPayerLink(
         invoiceId: Mercoa.InvoiceId,
+        request: Mercoa.invoice.PayerLinkRequest = {},
         requestOptions?: PaymentLinks.RequestOptions
     ): Promise<string> {
+        const { expiresIn } = request;
+        const _queryParams: Record<string, string | string[] | object | object[]> = {};
+        if (expiresIn != null) {
+            _queryParams["expiresIn"] = expiresIn;
+        }
+
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
@@ -63,13 +71,14 @@ export class PaymentLinks {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.5.11-rc1",
-                "User-Agent": "@mercoa/javascript/0.5.11-rc1",
+                "X-Fern-SDK-Version": "0.5.11",
+                "User-Agent": "@mercoa/javascript/0.5.11",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
+            queryParameters: _queryParams,
             requestType: "json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
@@ -213,8 +222,8 @@ export class PaymentLinks {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.5.11-rc1",
-                "User-Agent": "@mercoa/javascript/0.5.11-rc1",
+                "X-Fern-SDK-Version": "0.5.11",
+                "User-Agent": "@mercoa/javascript/0.5.11",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
@@ -322,6 +331,7 @@ export class PaymentLinks {
      * Get temporary link for vendor to accept payment
      *
      * @param {Mercoa.InvoiceId} invoiceId - Invoice ID or Invoice ForeignID
+     * @param {Mercoa.invoice.VendorLinkRequest} request
      * @param {PaymentLinks.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Mercoa.BadRequest}
@@ -337,8 +347,15 @@ export class PaymentLinks {
      */
     public async getVendorLink(
         invoiceId: Mercoa.InvoiceId,
+        request: Mercoa.invoice.VendorLinkRequest = {},
         requestOptions?: PaymentLinks.RequestOptions
     ): Promise<string> {
+        const { expiresIn } = request;
+        const _queryParams: Record<string, string | string[] | object | object[]> = {};
+        if (expiresIn != null) {
+            _queryParams["expiresIn"] = expiresIn;
+        }
+
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
@@ -349,13 +366,14 @@ export class PaymentLinks {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.5.11-rc1",
-                "User-Agent": "@mercoa/javascript/0.5.11-rc1",
+                "X-Fern-SDK-Version": "0.5.11",
+                "User-Agent": "@mercoa/javascript/0.5.11",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
+            queryParameters: _queryParams,
             requestType: "json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
@@ -489,8 +507,8 @@ export class PaymentLinks {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.5.11-rc1",
-                "User-Agent": "@mercoa/javascript/0.5.11-rc1",
+                "X-Fern-SDK-Version": "0.5.11",
+                "User-Agent": "@mercoa/javascript/0.5.11",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,

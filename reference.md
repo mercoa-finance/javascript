@@ -9509,7 +9509,7 @@ await client.invoice.document.getSourceEmail("inv_26e7b5d3-a739-4b23-9ad9-6aaa08
 
 ## Invoice PaymentLinks
 
-<details><summary><code>client.invoice.paymentLinks.<a href="/src/api/resources/invoice/resources/paymentLinks/client/Client.ts">getPayerLink</a>(invoiceId) -> string</code></summary>
+<details><summary><code>client.invoice.paymentLinks.<a href="/src/api/resources/invoice/resources/paymentLinks/client/Client.ts">getPayerLink</a>(invoiceId, { ...params }) -> string</code></summary>
 <dl>
 <dd>
 
@@ -9554,6 +9554,14 @@ await client.invoice.paymentLinks.getPayerLink("inv_a0f6ea94-0761-4a5e-a416-3c45
 <dd>
 
 **invoiceId:** `Mercoa.InvoiceId` — Invoice ID or Invoice ForeignID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `Mercoa.invoice.PayerLinkRequest`
 
 </dd>
 </dl>
@@ -9645,7 +9653,7 @@ await client.invoice.paymentLinks.sendPayerEmail("inv_a0f6ea94-0761-4a5e-a416-3c
 </dl>
 </details>
 
-<details><summary><code>client.invoice.paymentLinks.<a href="/src/api/resources/invoice/resources/paymentLinks/client/Client.ts">getVendorLink</a>(invoiceId) -> string</code></summary>
+<details><summary><code>client.invoice.paymentLinks.<a href="/src/api/resources/invoice/resources/paymentLinks/client/Client.ts">getVendorLink</a>(invoiceId, { ...params }) -> string</code></summary>
 <dl>
 <dd>
 
@@ -9690,6 +9698,14 @@ await client.invoice.paymentLinks.getVendorLink("inv_a0f6ea94-0761-4a5e-a416-3c4
 <dd>
 
 **invoiceId:** `Mercoa.InvoiceId` — Invoice ID or Invoice ForeignID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `Mercoa.invoice.VendorLinkRequest`
 
 </dd>
 </dl>
