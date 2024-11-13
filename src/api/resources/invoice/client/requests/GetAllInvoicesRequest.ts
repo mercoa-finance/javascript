@@ -87,4 +87,8 @@ export interface GetAllInvoicesRequest {
      * Filter invoices by recurring status
      */
     paymentType?: Mercoa.PaymentType[];
+    /**
+     * Filter invoice by invoice template ID
+     */
+    invoiceTemplateId?: Mercoa.InvoiceTemplateId | Mercoa.InvoiceTemplateId[];
 }

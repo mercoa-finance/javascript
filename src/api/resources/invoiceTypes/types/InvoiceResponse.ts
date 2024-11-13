@@ -7,7 +7,7 @@ import * as Mercoa from "../../../index";
 /**
  * @example
  *     {
- *         id: "inv_26e7b5d3-a739-4b23-9ad9-6aaa085f47a9",
+ *         id: "in_26e7b5d3-a739-4b23-9ad9-6aaa085f47a9",
  *         status: Mercoa.InvoiceStatus.Paid,
  *         amount: 100,
  *         currency: Mercoa.CurrencyCode.Usd,
@@ -260,7 +260,7 @@ import * as Mercoa from "../../../index";
  *
  * @example
  *     {
- *         id: "inv_26e7b5d3-a739-4b23-9ad9-6aaa085f47a9",
+ *         id: "in_26e7b5d3-a739-4b23-9ad9-6aaa085f47a9",
  *         status: Mercoa.InvoiceStatus.Draft,
  *         amount: 100,
  *         currency: Mercoa.CurrencyCode.Usd,
@@ -412,7 +412,7 @@ import * as Mercoa from "../../../index";
  *
  * @example
  *     {
- *         id: "inv_26e7b5d3-a739-4b23-9ad9-6aaa085f47a9",
+ *         id: "in_26e7b5d3-a739-4b23-9ad9-6aaa085f47a9",
  *         status: Mercoa.InvoiceStatus.Draft,
  *         payerId: "ent_8545a84e-a45f-41bf-bdf1-33b42a55812c",
  *         payer: {
@@ -492,7 +492,7 @@ import * as Mercoa from "../../../index";
  *
  * @example
  *     {
- *         id: "inv_26e7b5d3-a739-4b23-9ad9-6aaa085f47a9",
+ *         id: "in_26e7b5d3-a739-4b23-9ad9-6aaa085f47a9",
  *         status: Mercoa.InvoiceStatus.New,
  *         payerId: "ent_8545a84e-a45f-41bf-bdf1-33b42a55812c",
  *         payer: {
@@ -639,7 +639,7 @@ import * as Mercoa from "../../../index";
  *
  * @example
  *     {
- *         id: "inv_26e7b5d3-a739-4b23-9ad9-6aaa085f47a9",
+ *         id: "in_26e7b5d3-a739-4b23-9ad9-6aaa085f47a9",
  *         status: Mercoa.InvoiceStatus.Approved,
  *         payerId: "ent_8545a84e-a45f-41bf-bdf1-33b42a55812c",
  *         payer: {
@@ -806,7 +806,7 @@ import * as Mercoa from "../../../index";
  *
  * @example
  *     {
- *         id: "inv_26e7b5d3-a739-4b23-9ad9-6aaa085f47a9",
+ *         id: "in_26e7b5d3-a739-4b23-9ad9-6aaa085f47a9",
  *         status: Mercoa.InvoiceStatus.Refused,
  *         payerId: "ent_8545a84e-a45f-41bf-bdf1-33b42a55812c",
  *         payer: {
@@ -973,7 +973,7 @@ import * as Mercoa from "../../../index";
  *
  * @example
  *     {
- *         id: "inv_26e7b5d3-a739-4b23-9ad9-6aaa085f47a9",
+ *         id: "in_26e7b5d3-a739-4b23-9ad9-6aaa085f47a9",
  *         status: Mercoa.InvoiceStatus.Scheduled,
  *         payerId: "ent_8545a84e-a45f-41bf-bdf1-33b42a55812c",
  *         payer: {
@@ -1140,7 +1140,7 @@ import * as Mercoa from "../../../index";
  *
  * @example
  *     {
- *         id: "inv_26e7b5d3-a739-4b23-9ad9-6aaa085f47a9",
+ *         id: "in_26e7b5d3-a739-4b23-9ad9-6aaa085f47a9",
  *         status: Mercoa.InvoiceStatus.Pending,
  *         payerId: "ent_8545a84e-a45f-41bf-bdf1-33b42a55812c",
  *         payer: {
@@ -1307,7 +1307,7 @@ import * as Mercoa from "../../../index";
  *
  * @example
  *     {
- *         id: "inv_26e7b5d3-a739-4b23-9ad9-6aaa085f47a9",
+ *         id: "in_26e7b5d3-a739-4b23-9ad9-6aaa085f47a9",
  *         status: Mercoa.InvoiceStatus.Paid,
  *         payerId: "ent_8545a84e-a45f-41bf-bdf1-33b42a55812c",
  *         payer: {
@@ -1474,7 +1474,7 @@ import * as Mercoa from "../../../index";
  *
  * @example
  *     {
- *         id: "inv_26e7b5d3-a739-4b23-9ad9-6aaa085f47a9",
+ *         id: "in_26e7b5d3-a739-4b23-9ad9-6aaa085f47a9",
  *         status: Mercoa.InvoiceStatus.Failed,
  *         payerId: "ent_8545a84e-a45f-41bf-bdf1-33b42a55812c",
  *         payer: {
@@ -1641,7 +1641,7 @@ import * as Mercoa from "../../../index";
  *
  * @example
  *     {
- *         id: "inv_26e7b5d3-a739-4b23-9ad9-6aaa085f47a9",
+ *         id: "in_26e7b5d3-a739-4b23-9ad9-6aaa085f47a9",
  *         status: Mercoa.InvoiceStatus.Archived,
  *         payerId: "ent_8545a84e-a45f-41bf-bdf1-33b42a55812c",
  *         payer: {
@@ -1808,7 +1808,7 @@ import * as Mercoa from "../../../index";
  *
  * @example
  *     {
- *         id: "inv_26e7b5d3-a739-4b23-9ad9-6aaa085f47a9",
+ *         id: "in_26e7b5d3-a739-4b23-9ad9-6aaa085f47a9",
  *         status: Mercoa.InvoiceStatus.Canceled,
  *         payerId: "ent_8545a84e-a45f-41bf-bdf1-33b42a55812c",
  *         payer: {
@@ -1975,7 +1975,7 @@ import * as Mercoa from "../../../index";
  *
  * @example
  *     {
- *         id: "inv_26e7b5d3-a739-4b23-9ad9-6aaa085f47a9",
+ *         id: "in_26e7b5d3-a739-4b23-9ad9-6aaa085f47a9",
  *         status: Mercoa.InvoiceStatus.Draft,
  *         payerId: "ent_8545a84e-a45f-41bf-bdf1-33b42a55812c",
  *         payer: {
@@ -2141,64 +2141,16 @@ import * as Mercoa from "../../../index";
  *         updatedAt: "2021-01-01T00:00:00Z"
  *     }
  */
-export interface InvoiceResponse {
+export interface InvoiceResponse extends Mercoa.InvoiceResponseBase {
     id: Mercoa.InvoiceId;
-    status: Mercoa.InvoiceStatus;
-    /** Total amount of invoice in major units */
-    amount?: number;
-    /** Currency code for the amount. Defaults to USD. */
-    currency?: Mercoa.CurrencyCode;
-    /** Date the invoice was issued. */
-    invoiceDate?: Date;
-    /** Initial date when funds are scheduled to be deducted from payer's account. The actual deduction date may differ from this date, and will be reflected in the processedAt field. */
-    deductionDate?: Date;
-    /** If this is a recurring invoice, this will be the next date when funds are scheduled to be deducted from payer's account. */
-    nextDeductionDate?: Date;
     /** Date when the invoice payment was processed. */
     processedAt?: Date;
     /** Date of funds settlement. */
     settlementDate?: Date;
-    /** Due date of invoice. */
-    dueDate?: Date;
-    invoiceNumber?: string;
-    noteToSelf?: string;
-    serviceStartDate?: Date;
-    serviceEndDate?: Date;
-    payerId?: Mercoa.EntityId;
-    payer?: Mercoa.CounterpartyResponse;
-    paymentSource?: Mercoa.PaymentMethodResponse;
-    paymentSourceId?: Mercoa.PaymentMethodId;
-    vendorId?: Mercoa.EntityId;
-    vendor?: Mercoa.CounterpartyResponse;
-    paymentDestination?: Mercoa.PaymentMethodResponse;
-    paymentDestinationId?: Mercoa.PaymentMethodId;
-    paymentDestinationOptions?: Mercoa.PaymentDestinationOptions;
-    /** True if the payment destination has been confirmed by the vendor. False if the payment destination has been set (for example, a check to an address) but has not been confirmed by the vendor. */
-    paymentDestinationConfirmed: boolean;
-    /** If true, this invoice will be paid as a batch payment. Batches are automatically determined by Mercoa based on the payment source, destination, and scheduled payment date. */
-    batchPayment?: boolean;
-    /** True if the invoice has documents attached. */
-    hasDocuments: boolean;
-    /** True if the invoice was created by an incoming email. */
-    hasSourceEmail: boolean;
-    comments?: Mercoa.CommentResponse[];
-    lineItems?: Mercoa.InvoiceLineItemResponse[];
-    approvers: Mercoa.ApprovalSlot[];
-    approvalPolicy: Mercoa.ApprovalPolicyResponse[];
-    /** Metadata associated with this invoice. */
-    metadata: Record<string, string>;
     /** The ID used to identify this invoice in your system. This ID must be unique within each creatorEntity in your system, e.g. two invoices with the same creatorEntity may not have the same foreign ID. */
     foreignId?: string;
-    /** The ID of the entity who created this invoice. */
-    creatorEntityId?: Mercoa.EntityId;
-    /** Entity user who created this invoice. */
-    creatorUser?: Mercoa.EntityUserResponse;
     /** If the invoice failed to be paid, this field will be populated with the type of failure. */
     failureType?: Mercoa.InvoiceFailureType;
-    createdAt: Date;
-    updatedAt: Date;
-    /** Fees associated with this invoice. */
-    fees?: Mercoa.InvoiceFeesResponse;
-    /** If this is a recurring invoice, this will be the payment schedule for the invoice. If not provided, this will be a one-time invoice. */
-    paymentSchedule?: Mercoa.PaymentSchedule;
+    /** If the invoice failed to be paid, this field will be populated with the reason of failure. */
+    failureReason?: Mercoa.InvoiceFailureReason;
 }

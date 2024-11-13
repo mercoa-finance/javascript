@@ -47,7 +47,7 @@ export class Comment {
      * @throws {@link Mercoa.Unimplemented}
      *
      * @example
-     *     await client.invoice.comment.getAll("inv_3d61faa9-1754-4b7b-9fcb-88ff97f368ff")
+     *     await client.invoice.comment.getAll("in_3d61faa9-1754-4b7b-9fcb-88ff97f368ff")
      */
     public async getAll(
         invoiceId: Mercoa.InvoiceId,
@@ -63,8 +63,8 @@ export class Comment {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.5.11",
-                "User-Agent": "@mercoa/javascript/0.5.11",
+                "X-Fern-SDK-Version": "0.5.12",
+                "User-Agent": "@mercoa/javascript/0.5.12",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
@@ -188,7 +188,7 @@ export class Comment {
      * @throws {@link Mercoa.Unimplemented}
      *
      * @example
-     *     await client.invoice.comment.create("inv_3d61faa9-1754-4b7b-9fcb-88ff97f368ff", {
+     *     await client.invoice.comment.create("in_3d61faa9-1754-4b7b-9fcb-88ff97f368ff", {
      *         text: "This is a comment",
      *         userId: "user_e24fc81c-c5ee-47e8-af42-4fe29d895506"
      *     })
@@ -208,8 +208,8 @@ export class Comment {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.5.11",
-                "User-Agent": "@mercoa/javascript/0.5.11",
+                "X-Fern-SDK-Version": "0.5.12",
+                "User-Agent": "@mercoa/javascript/0.5.12",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
@@ -332,7 +332,7 @@ export class Comment {
      * @throws {@link Mercoa.Unimplemented}
      *
      * @example
-     *     await client.invoice.comment.get("inv_3d61faa9-1754-4b7b-9fcb-88ff97f368ff", "ic_3d61faa9-1754-4b7b-9fcb-88ff97f368ff")
+     *     await client.invoice.comment.get("in_3d61faa9-1754-4b7b-9fcb-88ff97f368ff", "ic_3d61faa9-1754-4b7b-9fcb-88ff97f368ff")
      */
     public async get(
         invoiceId: Mercoa.InvoiceId,
@@ -351,8 +351,8 @@ export class Comment {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.5.11",
-                "User-Agent": "@mercoa/javascript/0.5.11",
+                "X-Fern-SDK-Version": "0.5.12",
+                "User-Agent": "@mercoa/javascript/0.5.12",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
@@ -477,7 +477,7 @@ export class Comment {
      * @throws {@link Mercoa.Unimplemented}
      *
      * @example
-     *     await client.invoice.comment.update("inv_3d61faa9-1754-4b7b-9fcb-88ff97f368ff", "ic_3d61faa9-1754-4b7b-9fcb-88ff97f368ff", {
+     *     await client.invoice.comment.update("in_3d61faa9-1754-4b7b-9fcb-88ff97f368ff", "ic_3d61faa9-1754-4b7b-9fcb-88ff97f368ff", {
      *         text: "This is a comment",
      *         userId: "user_e24fc81c-c5ee-47e8-af42-4fe29d895506"
      *     })
@@ -500,8 +500,8 @@ export class Comment {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.5.11",
-                "User-Agent": "@mercoa/javascript/0.5.11",
+                "X-Fern-SDK-Version": "0.5.12",
+                "User-Agent": "@mercoa/javascript/0.5.12",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
@@ -626,7 +626,7 @@ export class Comment {
      * @throws {@link Mercoa.Unimplemented}
      *
      * @example
-     *     await client.invoice.comment.delete("inv_3d61faa9-1754-4b7b-9fcb-88ff97f368ff", "ic_3d61faa9-1754-4b7b-9fcb-88ff97f368ff")
+     *     await client.invoice.comment.delete("in_3d61faa9-1754-4b7b-9fcb-88ff97f368ff", "ic_3d61faa9-1754-4b7b-9fcb-88ff97f368ff")
      */
     public async delete(
         invoiceId: Mercoa.InvoiceId,
@@ -645,8 +645,8 @@ export class Comment {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.5.11",
-                "User-Agent": "@mercoa/javascript/0.5.11",
+                "X-Fern-SDK-Version": "0.5.12",
+                "User-Agent": "@mercoa/javascript/0.5.12",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,

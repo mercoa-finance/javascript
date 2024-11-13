@@ -29,6 +29,7 @@ export const OrganizationRequest: core.serialization.ObjectSchema<
     payorOnboardingOptions: OnboardingOptionsRequest.optional(),
     metadataSchema: core.serialization.list(MetadataSchema).optional(),
     notificationEmailTemplate: NotificationEmailTemplateRequest.optional(),
+    customDomains: core.serialization.list(core.serialization.string()).optional(),
 });
 
 export declare namespace OrganizationRequest {
@@ -45,5 +46,6 @@ export declare namespace OrganizationRequest {
         payorOnboardingOptions?: OnboardingOptionsRequest.Raw | null;
         metadataSchema?: MetadataSchema.Raw[] | null;
         notificationEmailTemplate?: NotificationEmailTemplateRequest.Raw | null;
+        customDomains?: string[] | null;
     }
 }

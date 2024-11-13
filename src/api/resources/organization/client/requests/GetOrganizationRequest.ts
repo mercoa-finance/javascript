@@ -12,7 +12,8 @@
  *         payeeOnboardingOptions: true,
  *         payorOnboardingOptions: true,
  *         metadataSchema: true,
- *         notificationEmailTemplate: true
+ *         notificationEmailTemplate: true,
+ *         customDomains: true
  *     }
  */
 export interface GetOrganizationRequest {
@@ -48,4 +49,8 @@ export interface GetOrganizationRequest {
      * include notification-email-template in response
      */
     notificationEmailTemplate?: boolean;
+    /**
+     * include custom domains in response
+     */
+    customDomains?: boolean;
 }

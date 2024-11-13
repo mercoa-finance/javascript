@@ -48,7 +48,7 @@ export class PaymentLinks {
      * @throws {@link Mercoa.Unimplemented}
      *
      * @example
-     *     await client.invoice.paymentLinks.getPayerLink("inv_a0f6ea94-0761-4a5e-a416-3c453cb7eced")
+     *     await client.invoice.paymentLinks.getPayerLink("in_a0f6ea94-0761-4a5e-a416-3c453cb7eced")
      */
     public async getPayerLink(
         invoiceId: Mercoa.InvoiceId,
@@ -71,8 +71,8 @@ export class PaymentLinks {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.5.11",
-                "User-Agent": "@mercoa/javascript/0.5.11",
+                "X-Fern-SDK-Version": "0.5.12",
+                "User-Agent": "@mercoa/javascript/0.5.12",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
@@ -197,7 +197,7 @@ export class PaymentLinks {
      * @throws {@link Mercoa.Unimplemented}
      *
      * @example
-     *     await client.invoice.paymentLinks.sendPayerEmail("inv_a0f6ea94-0761-4a5e-a416-3c453cb7eced", {
+     *     await client.invoice.paymentLinks.sendPayerEmail("in_a0f6ea94-0761-4a5e-a416-3c453cb7eced", {
      *         attachInvoice: true
      *     })
      */
@@ -222,8 +222,8 @@ export class PaymentLinks {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.5.11",
-                "User-Agent": "@mercoa/javascript/0.5.11",
+                "X-Fern-SDK-Version": "0.5.12",
+                "User-Agent": "@mercoa/javascript/0.5.12",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
@@ -343,7 +343,7 @@ export class PaymentLinks {
      * @throws {@link Mercoa.Unimplemented}
      *
      * @example
-     *     await client.invoice.paymentLinks.getVendorLink("inv_a0f6ea94-0761-4a5e-a416-3c453cb7eced")
+     *     await client.invoice.paymentLinks.getVendorLink("in_a0f6ea94-0761-4a5e-a416-3c453cb7eced")
      */
     public async getVendorLink(
         invoiceId: Mercoa.InvoiceId,
@@ -366,8 +366,8 @@ export class PaymentLinks {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.5.11",
-                "User-Agent": "@mercoa/javascript/0.5.11",
+                "X-Fern-SDK-Version": "0.5.12",
+                "User-Agent": "@mercoa/javascript/0.5.12",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
@@ -491,7 +491,7 @@ export class PaymentLinks {
      * @throws {@link Mercoa.Unimplemented}
      *
      * @example
-     *     await client.invoice.paymentLinks.sendVendorEmail("inv_a0f6ea94-0761-4a5e-a416-3c453cb7eced")
+     *     await client.invoice.paymentLinks.sendVendorEmail("in_a0f6ea94-0761-4a5e-a416-3c453cb7eced")
      */
     public async sendVendorEmail(
         invoiceId: Mercoa.InvoiceId,
@@ -507,8 +507,8 @@ export class PaymentLinks {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.5.11",
-                "User-Agent": "@mercoa/javascript/0.5.11",
+                "X-Fern-SDK-Version": "0.5.12",
+                "User-Agent": "@mercoa/javascript/0.5.12",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,

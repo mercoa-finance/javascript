@@ -19,5 +19,6 @@ export interface OrganizationResponse {
     payorOnboardingOptions?: Mercoa.OnboardingOptionsResponse;
     metadataSchema?: Mercoa.MetadataSchema[];
     notificationEmailTemplate?: Mercoa.NotificationEmailTemplateResponse;
+    customDomains?: string[];
     organizationEntityId?: Mercoa.EntityId;
 }

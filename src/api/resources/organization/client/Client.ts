@@ -56,7 +56,8 @@ export class Organization {
      *         payeeOnboardingOptions: true,
      *         payorOnboardingOptions: true,
      *         metadataSchema: true,
-     *         notificationEmailTemplate: true
+     *         notificationEmailTemplate: true,
+     *         customDomains: true
      *     })
      */
     public async get(
@@ -72,6 +73,7 @@ export class Organization {
             payorOnboardingOptions,
             metadataSchema,
             notificationEmailTemplate,
+            customDomains,
         } = request;
         const _queryParams: Record<string, string | string[] | object | object[]> = {};
         if (paymentMethods != null) {
@@ -106,6 +108,10 @@ export class Organization {
             _queryParams["notificationEmailTemplate"] = notificationEmailTemplate.toString();
         }
 
+        if (customDomains != null) {
+            _queryParams["customDomains"] = customDomains.toString();
+        }
+
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
@@ -116,8 +122,8 @@ export class Organization {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.5.11",
-                "User-Agent": "@mercoa/javascript/0.5.11",
+                "X-Fern-SDK-Version": "0.5.12",
+                "User-Agent": "@mercoa/javascript/0.5.12",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
@@ -378,6 +384,11 @@ export class Organization {
      *                     show: true,
      *                     edit: true,
      *                     required: true
+     *                 },
+     *                 bankStatement: {
+     *                     show: true,
+     *                     edit: true,
+     *                     required: true
      *                 }
      *             },
      *             individual: {
@@ -422,6 +433,11 @@ export class Organization {
      *                     required: true
      *                 },
      *                 w9: {
+     *                     show: true,
+     *                     edit: true,
+     *                     required: true
+     *                 },
+     *                 bankStatement: {
      *                     show: true,
      *                     edit: true,
      *                     required: true
@@ -527,6 +543,11 @@ export class Organization {
      *                     show: true,
      *                     edit: true,
      *                     required: true
+     *                 },
+     *                 bankStatement: {
+     *                     show: true,
+     *                     edit: true,
+     *                     required: true
      *                 }
      *             },
      *             individual: {
@@ -574,6 +595,11 @@ export class Organization {
      *                     show: true,
      *                     edit: true,
      *                     required: true
+     *                 },
+     *                 bankStatement: {
+     *                     show: true,
+     *                     edit: true,
+     *                     required: true
      *                 }
      *             }
      *         },
@@ -589,7 +615,8 @@ export class Organization {
      *             signature: "string",
      *             footer: "string",
      *             button: "string"
-     *         }
+     *         },
+     *         customDomains: ["string"]
      *     })
      */
     public async update(
@@ -606,8 +633,8 @@ export class Organization {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.5.11",
-                "User-Agent": "@mercoa/javascript/0.5.11",
+                "X-Fern-SDK-Version": "0.5.12",
+                "User-Agent": "@mercoa/javascript/0.5.12",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
@@ -770,8 +797,8 @@ export class Organization {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.5.11",
-                "User-Agent": "@mercoa/javascript/0.5.11",
+                "X-Fern-SDK-Version": "0.5.12",
+                "User-Agent": "@mercoa/javascript/0.5.12",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,

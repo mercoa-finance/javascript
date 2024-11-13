@@ -1889,6 +1889,474 @@ await client.entity.events("ent_a0f6ea94-0761-4a5e-a416-3c453cb7eced");
 </dl>
 </details>
 
+## Entity Counterparty
+
+<details><summary><code>client.entity.counterparty.<a href="/src/api/resources/entity/resources/counterparty/client/Client.ts">findPayees</a>(entityId, { ...params }) -> Mercoa.FindCounterpartiesResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Find payee counterparties. This endpoint lets you find vendors linked to the entity.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.entity.counterparty.findPayees("ent_8545a84e-a45f-41bf-bdf1-33b42a55812c", {
+    name: "Big Box",
+    paymentMethods: true,
+    invoiceMetrics: true,
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**entityId:** `Mercoa.EntityId` — Entity ID or Entity ForeignID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `Mercoa.entity.counterparty.FindPayeeCounterpartiesRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Counterparty.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.entity.counterparty.<a href="/src/api/resources/entity/resources/counterparty/client/Client.ts">findPayors</a>(entityId, { ...params }) -> Mercoa.FindCounterpartiesResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Find payor counterparties. This endpoint lets you find customers linked to the entity.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.entity.counterparty.findPayors("ent_8545a84e-a45f-41bf-bdf1-33b42a55812c", {
+    name: "Big Box",
+    paymentMethods: true,
+    invoiceMetrics: true,
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**entityId:** `Mercoa.EntityId` — Entity ID or Entity ForeignID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `Mercoa.entity.counterparty.FindPayorCounterpartiesRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Counterparty.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.entity.counterparty.<a href="/src/api/resources/entity/resources/counterparty/client/Client.ts">addPayees</a>(entityId, { ...params }) -> void</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Create association between Entity and a given list of Payees. If a Payee has previously been archived, unarchive the Payee.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.entity.counterparty.addPayees("ent_8545a84e-a45f-41bf-bdf1-33b42a55812c", {
+    payees: ["ent_21661ac1-a2a8-4465-a6c0-64474ba8181d"],
+    customizations: [
+        {
+            counterpartyId: "ent_21661ac1-a2a8-4465-a6c0-64474ba8181d",
+            accounts: [
+                {
+                    accountId: "85866843",
+                    postalCode: "94105",
+                    nameOnAccount: "John Doe",
+                },
+            ],
+        },
+    ],
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**entityId:** `Mercoa.EntityId` — Entity ID or Entity ForeignID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `Mercoa.EntityAddPayeesRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Counterparty.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.entity.counterparty.<a href="/src/api/resources/entity/resources/counterparty/client/Client.ts">hidePayees</a>(entityId, { ...params }) -> void</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Marks Payees as unsearchable by Entity via Counterparty search. Invoices associated with these Payees will still be searchable via Invoice search.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.entity.counterparty.hidePayees("ent_8545a84e-a45f-41bf-bdf1-33b42a55812c", {
+    payees: ["ent_21661ac1-a2a8-4465-a6c0-64474ba8181d"],
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**entityId:** `Mercoa.EntityId` — Entity ID or Entity ForeignID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `Mercoa.EntityHidePayeesRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Counterparty.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.entity.counterparty.<a href="/src/api/resources/entity/resources/counterparty/client/Client.ts">addPayors</a>(entityId, { ...params }) -> void</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Create association between Entity and a given list of Payors. If a Payor has previously been archived, unarchive the Payor.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.entity.counterparty.addPayors("ent_8545a84e-a45f-41bf-bdf1-33b42a55812c", {
+    payors: ["ent_21661ac1-a2a8-4465-a6c0-64474ba8181d"],
+    customizations: [
+        {
+            counterpartyId: "ent_21661ac1-a2a8-4465-a6c0-64474ba8181d",
+            accounts: [
+                {
+                    accountId: "85866843",
+                    postalCode: "94105",
+                    nameOnAccount: "John Doe",
+                },
+            ],
+        },
+    ],
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**entityId:** `Mercoa.EntityId` — Entity ID or Entity ForeignID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `Mercoa.EntityAddPayorsRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Counterparty.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.entity.counterparty.<a href="/src/api/resources/entity/resources/counterparty/client/Client.ts">hidePayors</a>(entityId, { ...params }) -> void</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Marks Payors as unsearchable by Entity via Counterparty search. Invoices associated with these Payors will still be searchable via Invoice search.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.entity.counterparty.hidePayors("ent_8545a84e-a45f-41bf-bdf1-33b42a55812c", {
+    payors: ["ent_21661ac1-a2a8-4465-a6c0-64474ba8181d"],
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**entityId:** `Mercoa.EntityId` — Entity ID or Entity ForeignID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `Mercoa.EntityHidePayorsRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Counterparty.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
 ## Entity EmailLog
 
 <details><summary><code>client.entity.emailLog.<a href="/src/api/resources/entity/resources/emailLog/client/Client.ts">find</a>(entityId, { ...params }) -> Mercoa.EmailLogResponse</code></summary>
@@ -2889,6 +3357,463 @@ await client.entity.user.getToken(
 </dl>
 </details>
 
+## InvoiceTemplate
+
+<details><summary><code>client.invoiceTemplate.<a href="/src/api/resources/invoiceTemplate/client/Client.ts">find</a>({ ...params }) -> Mercoa.FindInvoiceTemplateResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Search invoice templates for all entities in the organization
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.invoiceTemplate.find({
+    entityId: "ent_8545a84e-a45f-41bf-bdf1-33b42a55812c",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Mercoa.invoiceTemplate.GetAllInvoiceTemplatesRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `InvoiceTemplate.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.invoiceTemplate.<a href="/src/api/resources/invoiceTemplate/client/Client.ts">create</a>({ ...params }) -> Mercoa.InvoiceTemplateResponse</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.invoiceTemplate.create({
+    status: "NEW",
+    amount: 100,
+    currency: "USD",
+    invoiceDate: "2021-01-01T00:00:00Z",
+    dueDate: "2021-01-13T00:00:00Z",
+    deductionDate: "2021-01-10T00:00:00Z",
+    paymentSchedule: {
+        type: "monthly",
+        dayOffset: 10,
+        offsetType: "start",
+        ends: "2021-01-01T00:00:00Z",
+    },
+    invoiceNumber: "INV-123",
+    noteToSelf: "Monthly recurring payment",
+    payerId: "ent_8545a84e-a45f-41bf-bdf1-33b42a55812c",
+    paymentSourceId: "pm_4794d597-70dc-4fec-b6ec-c5988e759769",
+    vendorId: "ent_21661ac1-a2a8-4465-a6c0-64474ba8181d",
+    paymentDestinationId: "pm_5fde2f4a-facc-48ef-8f0d-6b7d087c7b18",
+    paymentDestinationOptions: {
+        type: "check",
+        delivery: "MAIL",
+    },
+    lineItems: [
+        {
+            amount: 100,
+            currency: "USD",
+            description: "Product A",
+            name: "Product A",
+            quantity: 1,
+            unitPrice: 100,
+            category: "EXPENSE",
+            serviceStartDate: "2021-01-01T00:00:00Z",
+            serviceEndDate: "2021-01-31T00:00:00Z",
+            metadata: {
+                key1: "value1",
+                key2: "value2",
+            },
+            glAccountId: "600394",
+        },
+    ],
+    creatorEntityId: "ent_8545a84e-a45f-41bf-bdf1-33b42a55812c",
+    creatorUserId: "user_e24fc81c-c5ee-47e8-af42-4fe29d895506",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Mercoa.InvoiceTemplateCreationRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `InvoiceTemplate.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.invoiceTemplate.<a href="/src/api/resources/invoiceTemplate/client/Client.ts">get</a>(invoiceTemplateId) -> Mercoa.InvoiceTemplateResponse</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.invoiceTemplate.get("invt_13c07096-5848-4aeb-ae7d-6576289034c4");
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**invoiceTemplateId:** `Mercoa.InvoiceTemplateId` — Invoice Template ID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `InvoiceTemplate.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.invoiceTemplate.<a href="/src/api/resources/invoiceTemplate/client/Client.ts">update</a>(invoiceTemplateId, { ...params }) -> Mercoa.InvoiceTemplateResponse</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.invoiceTemplate.update("invt_13c07096-5848-4aeb-ae7d-6576289034c4", {
+    status: "NEW",
+    amount: 100,
+    currency: "USD",
+    invoiceDate: "2021-01-01T00:00:00Z",
+    dueDate: "2021-01-31T00:00:00Z",
+    invoiceNumber: "INV-123",
+    noteToSelf: "For the month of January",
+    payerId: "ent_8545a84e-a45f-41bf-bdf1-33b42a55812c",
+    paymentSourceId: "pm_4794d597-70dc-4fec-b6ec-c5988e759769",
+    vendorId: "ent_21661ac1-a2a8-4465-a6c0-64474ba8181d",
+    paymentDestinationId: "pm_5fde2f4a-facc-48ef-8f0d-6b7d087c7b18",
+    paymentDestinationOptions: {
+        type: "check",
+        delivery: "MAIL",
+    },
+    lineItems: [
+        {
+            id: "inli_26672f38-eb9a-48f1-a7a0-f1b855e38cd7",
+            amount: 100,
+            currency: "USD",
+            description: "Product A",
+            name: "Product A",
+            quantity: 1,
+            unitPrice: 100,
+            category: "EXPENSE",
+            serviceStartDate: "2021-01-01T00:00:00Z",
+            serviceEndDate: "2021-01-31T00:00:00Z",
+            metadata: {
+                key1: "value1",
+                key2: "value2",
+            },
+            glAccountId: "600394",
+        },
+    ],
+    creatorEntityId: "ent_8545a84e-a45f-41bf-bdf1-33b42a55812c",
+    creatorUserId: "user_e24fc81c-c5ee-47e8-af42-4fe29d895506",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**invoiceTemplateId:** `Mercoa.InvoiceTemplateId` — Invoice Template ID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `Mercoa.InvoiceTemplateUpdateRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `InvoiceTemplate.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.invoiceTemplate.<a href="/src/api/resources/invoiceTemplate/client/Client.ts">delete</a>(invoiceTemplateId) -> void</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Only invoice templates in the UNASSIGNED and DRAFT statuses can be deleted.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.invoiceTemplate.delete("invt_13c07096-5848-4aeb-ae7d-6576289034c4");
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**invoiceTemplateId:** `Mercoa.InvoiceTemplateId` — Invoice Template ID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `InvoiceTemplate.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+## InvoiceTemplate LineItem
+
+<details><summary><code>client.invoiceTemplate.lineItem.<a href="/src/api/resources/invoiceTemplate/resources/lineItem/client/Client.ts">update</a>(invoiceTemplateId, lineItemId, { ...params }) -> Mercoa.InvoiceTemplateResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Update invoice template line item
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.invoiceTemplate.lineItem.update(
+    "invt_13c07096-5848-4aeb-ae7d-6576289034c4",
+    "inli_8aa84cb8-2ae7-4579-8fa3-87586e7c14a7",
+    {
+        name: "Product A",
+        description: "Product A",
+        serviceStartDate: "2021-01-01T00:00:00Z",
+        serviceEndDate: "2021-01-31T00:00:00Z",
+        metadata: {
+            key1: "value1",
+            key2: "value2",
+        },
+        glAccountId: "600394",
+    }
+);
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**invoiceTemplateId:** `Mercoa.InvoiceTemplateId` — Invoice Template ID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**lineItemId:** `Mercoa.InvoiceLineItemId` — Invoice Line Item ID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `Mercoa.InvoiceLineItemIndividualUpdateRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `LineItem.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
 ## Invoice
 
 <details><summary><code>client.invoice.<a href="/src/api/resources/invoice/client/Client.ts">find</a>({ ...params }) -> Mercoa.FindInvoiceResponse</code></summary>
@@ -3053,7 +3978,7 @@ await client.invoice.create({
 <dd>
 
 ```typescript
-await client.invoice.get("inv_8545a84e-a45f-41bf-bdf1-33b42a55812c");
+await client.invoice.get("in_8545a84e-a45f-41bf-bdf1-33b42a55812c");
 ```
 
 </dd>
@@ -3101,7 +4026,7 @@ await client.invoice.get("inv_8545a84e-a45f-41bf-bdf1-33b42a55812c");
 <dd>
 
 ```typescript
-await client.invoice.update("inv_8545a84e-a45f-41bf-bdf1-33b42a55812c", {
+await client.invoice.update("in_8545a84e-a45f-41bf-bdf1-33b42a55812c", {
     status: "NEW",
     amount: 100,
     currency: "USD",
@@ -3193,7 +4118,7 @@ await client.invoice.update("inv_8545a84e-a45f-41bf-bdf1-33b42a55812c", {
 <dl>
 <dd>
 
-Only invoices in the DRAFT and NEW status can be deleted.
+Only invoices in the UNASSIGNED and DRAFT statuses can be deleted.
 
 </dd>
 </dl>
@@ -3209,7 +4134,7 @@ Only invoices in the DRAFT and NEW status can be deleted.
 <dd>
 
 ```typescript
-await client.invoice.delete("inv_8545a84e-a45f-41bf-bdf1-33b42a55812c");
+await client.invoice.delete("in_8545a84e-a45f-41bf-bdf1-33b42a55812c");
 ```
 
 </dd>
@@ -3272,7 +4197,7 @@ Get all events for an invoice
 <dd>
 
 ```typescript
-await client.invoice.events("inv_8545a84e-a45f-41bf-bdf1-33b42a55812c");
+await client.invoice.events("in_8545a84e-a45f-41bf-bdf1-33b42a55812c");
 ```
 
 </dd>
@@ -3449,6 +4374,7 @@ await client.organization.get({
     payorOnboardingOptions: true,
     metadataSchema: true,
     notificationEmailTemplate: true,
+    customDomains: true,
 });
 ```
 
@@ -3656,6 +4582,11 @@ await client.organization.update({
                 edit: true,
                 required: true,
             },
+            bankStatement: {
+                show: true,
+                edit: true,
+                required: true,
+            },
         },
         individual: {
             dateOfBirth: {
@@ -3699,6 +4630,11 @@ await client.organization.update({
                 required: true,
             },
             w9: {
+                show: true,
+                edit: true,
+                required: true,
+            },
+            bankStatement: {
                 show: true,
                 edit: true,
                 required: true,
@@ -3805,6 +4741,11 @@ await client.organization.update({
                 edit: true,
                 required: true,
             },
+            bankStatement: {
+                show: true,
+                edit: true,
+                required: true,
+            },
         },
         individual: {
             dateOfBirth: {
@@ -3852,6 +4793,11 @@ await client.organization.update({
                 edit: true,
                 required: true,
             },
+            bankStatement: {
+                show: true,
+                edit: true,
+                required: true,
+            },
         },
     },
     metadataSchema: [
@@ -3869,6 +4815,7 @@ await client.organization.update({
         footer: "string",
         button: "string",
     },
+    customDomains: ["string"],
 });
 ```
 
@@ -5119,26 +6066,11 @@ await client.entity.approvalPolicy.delete(
 </dl>
 </details>
 
-## Entity Counterparty
+## Entity Counterparty VendorCredit
 
-<details><summary><code>client.entity.counterparty.<a href="/src/api/resources/entity/resources/counterparty/client/Client.ts">findPayees</a>(entityId, { ...params }) -> Mercoa.FindCounterpartiesResponse</code></summary>
+<details><summary><code>client.entity.counterparty.vendorCredit.<a href="/src/api/resources/entity/resources/counterparty/resources/vendorCredit/client/Client.ts">getAll</a>(entityId, counterpartyId) -> Mercoa.FindVendorCreditResponse</code></summary>
 <dl>
 <dd>
-
-#### 📝 Description
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-Find payee counterparties. This endpoint lets you find vendors linked to the entity.
-
-</dd>
-</dl>
-</dd>
-</dl>
 
 #### 🔌 Usage
 
@@ -5149,11 +6081,10 @@ Find payee counterparties. This endpoint lets you find vendors linked to the ent
 <dd>
 
 ```typescript
-await client.entity.counterparty.findPayees("ent_8545a84e-a45f-41bf-bdf1-33b42a55812c", {
-    name: "Big Box",
-    paymentMethods: true,
-    invoiceMetrics: true,
-});
+await client.entity.counterparty.vendorCredit.getAll(
+    "ent_8545a84e-a45f-41bf-bdf1-33b42a55812c",
+    "ent_21661ac1-a2a8-4465-a6c0-64474ba8181d"
+);
 ```
 
 </dd>
@@ -5177,7 +6108,7 @@ await client.entity.counterparty.findPayees("ent_8545a84e-a45f-41bf-bdf1-33b42a5
 <dl>
 <dd>
 
-**request:** `Mercoa.entity.FindPayeeCounterpartiesRequest`
+**counterpartyId:** `Mercoa.EntityId` — Counterparty Entity ID or Counterparty Entity ForeignID
 
 </dd>
 </dl>
@@ -5185,7 +6116,7 @@ await client.entity.counterparty.findPayees("ent_8545a84e-a45f-41bf-bdf1-33b42a5
 <dl>
 <dd>
 
-**requestOptions:** `Counterparty.RequestOptions`
+**requestOptions:** `VendorCredit.RequestOptions`
 
 </dd>
 </dl>
@@ -5196,24 +6127,9 @@ await client.entity.counterparty.findPayees("ent_8545a84e-a45f-41bf-bdf1-33b42a5
 </dl>
 </details>
 
-<details><summary><code>client.entity.counterparty.<a href="/src/api/resources/entity/resources/counterparty/client/Client.ts">findPayors</a>(entityId, { ...params }) -> Mercoa.FindCounterpartiesResponse</code></summary>
+<details><summary><code>client.entity.counterparty.vendorCredit.<a href="/src/api/resources/entity/resources/counterparty/resources/vendorCredit/client/Client.ts">get</a>(entityId, counterpartyId, vendorCreditId) -> Mercoa.VendorCreditResponse</code></summary>
 <dl>
 <dd>
-
-#### 📝 Description
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-Find payor counterparties. This endpoint lets you find customers linked to the entity.
-
-</dd>
-</dl>
-</dd>
-</dl>
 
 #### 🔌 Usage
 
@@ -5224,11 +6140,11 @@ Find payor counterparties. This endpoint lets you find customers linked to the e
 <dd>
 
 ```typescript
-await client.entity.counterparty.findPayors("ent_8545a84e-a45f-41bf-bdf1-33b42a55812c", {
-    name: "Big Box",
-    paymentMethods: true,
-    invoiceMetrics: true,
-});
+await client.entity.counterparty.vendorCredit.get(
+    "ent_8545a84e-a45f-41bf-bdf1-33b42a55812c",
+    "ent_21661ac1-a2a8-4465-a6c0-64474ba8181d",
+    "vcr_c3f4c87d-794d-4543-9562-575cdddfc0d7"
+);
 ```
 
 </dd>
@@ -5252,7 +6168,7 @@ await client.entity.counterparty.findPayors("ent_8545a84e-a45f-41bf-bdf1-33b42a5
 <dl>
 <dd>
 
-**request:** `Mercoa.entity.FindPayorCounterpartiesRequest`
+**counterpartyId:** `Mercoa.EntityId` — Counterparty Entity ID or Counterparty Entity ForeignID
 
 </dd>
 </dl>
@@ -5260,7 +6176,15 @@ await client.entity.counterparty.findPayors("ent_8545a84e-a45f-41bf-bdf1-33b42a5
 <dl>
 <dd>
 
-**requestOptions:** `Counterparty.RequestOptions`
+**vendorCreditId:** `Mercoa.VendorCreditId` — ID of the vendor credit to retrieve
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `VendorCredit.RequestOptions`
 
 </dd>
 </dl>
@@ -5271,24 +6195,9 @@ await client.entity.counterparty.findPayors("ent_8545a84e-a45f-41bf-bdf1-33b42a5
 </dl>
 </details>
 
-<details><summary><code>client.entity.counterparty.<a href="/src/api/resources/entity/resources/counterparty/client/Client.ts">addPayees</a>(entityId, { ...params }) -> void</code></summary>
+<details><summary><code>client.entity.counterparty.vendorCredit.<a href="/src/api/resources/entity/resources/counterparty/resources/vendorCredit/client/Client.ts">create</a>(entityId, counterpartyId, { ...params }) -> Mercoa.VendorCreditResponse</code></summary>
 <dl>
 <dd>
-
-#### 📝 Description
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-Create association between Entity and a given list of Payees. If a Payee has previously been archived, unarchive the Payee.
-
-</dd>
-</dl>
-</dd>
-</dl>
 
 #### 🔌 Usage
 
@@ -5299,21 +6208,15 @@ Create association between Entity and a given list of Payees. If a Payee has pre
 <dd>
 
 ```typescript
-await client.entity.counterparty.addPayees("ent_8545a84e-a45f-41bf-bdf1-33b42a55812c", {
-    payees: ["ent_21661ac1-a2a8-4465-a6c0-64474ba8181d"],
-    customizations: [
-        {
-            counterpartyId: "ent_21661ac1-a2a8-4465-a6c0-64474ba8181d",
-            accounts: [
-                {
-                    accountId: "85866843",
-                    postalCode: "94105",
-                    nameOnAccount: "John Doe",
-                },
-            ],
-        },
-    ],
-});
+await client.entity.counterparty.vendorCredit.create(
+    "ent_8545a84e-a45f-41bf-bdf1-33b42a55812c",
+    "ent_21661ac1-a2a8-4465-a6c0-64474ba8181d",
+    {
+        totalAmount: 100,
+        currency: "USD",
+        note: "This is a note",
+    }
+);
 ```
 
 </dd>
@@ -5337,7 +6240,7 @@ await client.entity.counterparty.addPayees("ent_8545a84e-a45f-41bf-bdf1-33b42a55
 <dl>
 <dd>
 
-**request:** `Mercoa.EntityAddPayeesRequest`
+**counterpartyId:** `Mercoa.EntityId` — Counterparty Entity ID or Counterparty Entity ForeignID
 
 </dd>
 </dl>
@@ -5345,7 +6248,15 @@ await client.entity.counterparty.addPayees("ent_8545a84e-a45f-41bf-bdf1-33b42a55
 <dl>
 <dd>
 
-**requestOptions:** `Counterparty.RequestOptions`
+**request:** `Mercoa.VendorCreditRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `VendorCredit.RequestOptions`
 
 </dd>
 </dl>
@@ -5356,24 +6267,9 @@ await client.entity.counterparty.addPayees("ent_8545a84e-a45f-41bf-bdf1-33b42a55
 </dl>
 </details>
 
-<details><summary><code>client.entity.counterparty.<a href="/src/api/resources/entity/resources/counterparty/client/Client.ts">hidePayees</a>(entityId, { ...params }) -> void</code></summary>
+<details><summary><code>client.entity.counterparty.vendorCredit.<a href="/src/api/resources/entity/resources/counterparty/resources/vendorCredit/client/Client.ts">delete</a>(entityId, counterpartyId, vendorCreditId) -> void</code></summary>
 <dl>
 <dd>
-
-#### 📝 Description
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-Marks Payees as unsearchable by Entity via Counterparty search. Invoices associated with these Payees will still be searchable via Invoice search.
-
-</dd>
-</dl>
-</dd>
-</dl>
 
 #### 🔌 Usage
 
@@ -5384,9 +6280,11 @@ Marks Payees as unsearchable by Entity via Counterparty search. Invoices associa
 <dd>
 
 ```typescript
-await client.entity.counterparty.hidePayees("ent_8545a84e-a45f-41bf-bdf1-33b42a55812c", {
-    payees: ["ent_21661ac1-a2a8-4465-a6c0-64474ba8181d"],
-});
+await client.entity.counterparty.vendorCredit.delete(
+    "ent_8545a84e-a45f-41bf-bdf1-33b42a55812c",
+    "ent_21661ac1-a2a8-4465-a6c0-64474ba8181d",
+    "vcr_c3f4c87d-794d-4543-9562-575cdddfc0d7"
+);
 ```
 
 </dd>
@@ -5410,7 +6308,7 @@ await client.entity.counterparty.hidePayees("ent_8545a84e-a45f-41bf-bdf1-33b42a5
 <dl>
 <dd>
 
-**request:** `Mercoa.EntityHidePayeesRequest`
+**counterpartyId:** `Mercoa.EntityId` — Counterparty Entity ID or Counterparty Entity ForeignID
 
 </dd>
 </dl>
@@ -5418,76 +6316,7 @@ await client.entity.counterparty.hidePayees("ent_8545a84e-a45f-41bf-bdf1-33b42a5
 <dl>
 <dd>
 
-**requestOptions:** `Counterparty.RequestOptions`
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>client.entity.counterparty.<a href="/src/api/resources/entity/resources/counterparty/client/Client.ts">addPayors</a>(entityId, { ...params }) -> void</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-Create association between Entity and a given list of Payors. If a Payor has previously been archived, unarchive the Payor.
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.entity.counterparty.addPayors("ent_8545a84e-a45f-41bf-bdf1-33b42a55812c", {
-    payors: ["ent_21661ac1-a2a8-4465-a6c0-64474ba8181d"],
-    customizations: [
-        {
-            counterpartyId: "ent_21661ac1-a2a8-4465-a6c0-64474ba8181d",
-            accounts: [
-                {
-                    accountId: "85866843",
-                    postalCode: "94105",
-                    nameOnAccount: "John Doe",
-                },
-            ],
-        },
-    ],
-});
-```
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**entityId:** `Mercoa.EntityId` — Entity ID or Entity ForeignID
+**vendorCreditId:** `Mercoa.VendorCreditId` — ID of the vendor credit to delete
 
 </dd>
 </dl>
@@ -5495,88 +6324,7 @@ await client.entity.counterparty.addPayors("ent_8545a84e-a45f-41bf-bdf1-33b42a55
 <dl>
 <dd>
 
-**request:** `Mercoa.EntityAddPayorsRequest`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `Counterparty.RequestOptions`
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>client.entity.counterparty.<a href="/src/api/resources/entity/resources/counterparty/client/Client.ts">hidePayors</a>(entityId, { ...params }) -> void</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-Marks Payors as unsearchable by Entity via Counterparty search. Invoices associated with these Payors will still be searchable via Invoice search.
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.entity.counterparty.hidePayors("ent_8545a84e-a45f-41bf-bdf1-33b42a55812c", {
-    payors: ["ent_21661ac1-a2a8-4465-a6c0-64474ba8181d"],
-});
-```
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**entityId:** `Mercoa.EntityId` — Entity ID or Entity ForeignID
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**request:** `Mercoa.EntityHidePayorsRequest`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `Counterparty.RequestOptions`
+**requestOptions:** `VendorCredit.RequestOptions`
 
 </dd>
 </dl>
@@ -8548,6 +9296,610 @@ await client.entity.user.notifications.update(
 </dl>
 </details>
 
+## InvoiceTemplate Approval
+
+<details><summary><code>client.invoiceTemplate.approval.<a href="/src/api/resources/invoiceTemplate/resources/approval/client/Client.ts">addApprover</a>(invoiceTemplateId, { ...params }) -> void</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Adds an approver to the invoice template. Will select the first available approver slot that is not already filled and assign the approver to it. If no approver slots are available, an error will be returned. An explicit approver slot can be specified by setting the `approverSlot` field.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.invoiceTemplate.approval.addApprover("invt_13c07096-5848-4aeb-ae7d-6576289034c4", {
+    approvalSlotId: "inap_9bb311c9-7c15-4c9e-8148-63814e0abec6",
+    userId: "user_e24fc81c-c5ee-47e8-af42-4fe29d895506",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**invoiceTemplateId:** `Mercoa.InvoiceTemplateId` — Invoice Template ID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `Mercoa.AddApproverRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Approval.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.invoiceTemplate.approval.<a href="/src/api/resources/invoiceTemplate/resources/approval/client/Client.ts">approve</a>(invoiceTemplateId, { ...params }) -> void</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.invoiceTemplate.approval.approve("invt_13c07096-5848-4aeb-ae7d-6576289034c4", {
+    text: "This is a reason for my action",
+    userId: "user_e24fc81c-c5ee-47e8-af42-4fe29d895506",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**invoiceTemplateId:** `Mercoa.InvoiceTemplateId` — Invoice Template ID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `Mercoa.ApprovalRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Approval.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.invoiceTemplate.approval.<a href="/src/api/resources/invoiceTemplate/resources/approval/client/Client.ts">reject</a>(invoiceTemplateId, { ...params }) -> void</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.invoiceTemplate.approval.reject("invt_13c07096-5848-4aeb-ae7d-6576289034c4", {
+    text: "This is a reason for my action",
+    userId: "user_e24fc81c-c5ee-47e8-af42-4fe29d895506",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**invoiceTemplateId:** `Mercoa.InvoiceTemplateId` — Invoice Template ID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `Mercoa.ApprovalRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Approval.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+## InvoiceTemplate Document
+
+<details><summary><code>client.invoiceTemplate.document.<a href="/src/api/resources/invoiceTemplate/resources/document/client/Client.ts">getAll</a>(invoiceTemplateId, { ...params }) -> Mercoa.DocumentResponse[]</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Get attachments (scanned/uploaded PDFs and images) associated with this invoice template
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.invoiceTemplate.document.getAll("invt_13c07096-5848-4aeb-ae7d-6576289034c4");
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**invoiceTemplateId:** `Mercoa.InvoiceTemplateId` — Invoice Template ID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `Mercoa.invoiceTemplate.GetDocumentsRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Document.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.invoiceTemplate.document.<a href="/src/api/resources/invoiceTemplate/resources/document/client/Client.ts">upload</a>(invoiceTemplateId, { ...params }) -> void</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Upload documents (scanned/uploaded PDFs and images) associated with this invoice template
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.invoiceTemplate.document.upload("invt_13c07096-5848-4aeb-ae7d-6576289034c4", {
+    document:
+        "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAIAQMAAAD+wSzIAAAABlBMVEX///+/v7+jQ3Y5AAAADklEQVQI12P4AIX8EAgALgAD/aNpbtEAAAAASUVORK5CYII",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**invoiceTemplateId:** `Mercoa.InvoiceTemplateId` — Invoice Template ID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `Mercoa.invoiceTemplate.UploadDocumentRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Document.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.invoiceTemplate.document.<a href="/src/api/resources/invoiceTemplate/resources/document/client/Client.ts">delete</a>(invoiceTemplateId, documentId) -> void</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Delete an attachment (scanned/uploaded PDFs and images) associated with this invoice template
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.invoiceTemplate.document.delete(
+    "invt_13c07096-5848-4aeb-ae7d-6576289034c4",
+    "doc_37e6af0a-e637-48fd-b825-d6947b38c4e2"
+);
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**invoiceTemplateId:** `Mercoa.InvoiceTemplateId` — Invoice Template ID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**documentId:** `string`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Document.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.invoiceTemplate.document.<a href="/src/api/resources/invoiceTemplate/resources/document/client/Client.ts">generateInvoicePdf</a>(invoiceTemplateId) -> Mercoa.DocumentResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Generate a PDF of the invoice. This PDF is generated from the data in the invoice, not from the uploaded documents.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.invoiceTemplate.document.generateInvoicePdf("invt_13c07096-5848-4aeb-ae7d-6576289034c4");
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**invoiceTemplateId:** `Mercoa.InvoiceTemplateId` — Invoice Template ID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Document.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.invoiceTemplate.document.<a href="/src/api/resources/invoiceTemplate/resources/document/client/Client.ts">generateCheckPdf</a>(invoiceTemplateId) -> Mercoa.DocumentResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Get a PDF of the check for the invoice. If the invoice does not have check as the disbursement method, an error will be returned. If the disbursement option for the check is set to 'MAIL', a void copy of the check will be returned. If the disbursement option for the check is set to 'PRINT', a printable check will be returned. If the invoice is NOT marked as PAID, the check will be a void copy.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.invoiceTemplate.document.generateCheckPdf("invt_13c07096-5848-4aeb-ae7d-6576289034c4");
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**invoiceTemplateId:** `Mercoa.InvoiceTemplateId` — Invoice Template ID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Document.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.invoiceTemplate.document.<a href="/src/api/resources/invoiceTemplate/resources/document/client/Client.ts">getSourceEmail</a>(invoiceTemplateId) -> Mercoa.EmailLogResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Get the email subject and body that was used to create this invoice.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.invoiceTemplate.document.getSourceEmail("invt_13c07096-5848-4aeb-ae7d-6576289034c4");
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**invoiceTemplateId:** `Mercoa.InvoiceTemplateId` — Invoice Template ID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Document.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
 ## Invoice Approval
 
 <details><summary><code>client.invoice.approval.<a href="/src/api/resources/invoice/resources/approval/client/Client.ts">addApprover</a>(invoiceId, { ...params }) -> void</code></summary>
@@ -8578,7 +9930,7 @@ Adds an approver to the invoice. Will select the first available approver slot t
 <dd>
 
 ```typescript
-await client.invoice.approval.addApprover("inv_3d61faa9-1754-4b7b-9fcb-88ff97f368ff", {
+await client.invoice.approval.addApprover("in_3d61faa9-1754-4b7b-9fcb-88ff97f368ff", {
     approvalSlotId: "inap_9bb311c9-7c15-4c9e-8148-63814e0abec6",
     userId: "user_e24fc81c-c5ee-47e8-af42-4fe29d895506",
 });
@@ -8637,7 +9989,7 @@ await client.invoice.approval.addApprover("inv_3d61faa9-1754-4b7b-9fcb-88ff97f36
 <dd>
 
 ```typescript
-await client.invoice.approval.approve("inv_3d61faa9-1754-4b7b-9fcb-88ff97f368ff", {
+await client.invoice.approval.approve("in_3d61faa9-1754-4b7b-9fcb-88ff97f368ff", {
     text: "This is a reason for my action",
     userId: "user_e24fc81c-c5ee-47e8-af42-4fe29d895506",
 });
@@ -8696,7 +10048,7 @@ await client.invoice.approval.approve("inv_3d61faa9-1754-4b7b-9fcb-88ff97f368ff"
 <dd>
 
 ```typescript
-await client.invoice.approval.reject("inv_3d61faa9-1754-4b7b-9fcb-88ff97f368ff", {
+await client.invoice.approval.reject("in_3d61faa9-1754-4b7b-9fcb-88ff97f368ff", {
     text: "This is a reason for my action",
     userId: "user_e24fc81c-c5ee-47e8-af42-4fe29d895506",
 });
@@ -8772,7 +10124,7 @@ Get all comments associated with this invoice
 <dd>
 
 ```typescript
-await client.invoice.comment.getAll("inv_3d61faa9-1754-4b7b-9fcb-88ff97f368ff");
+await client.invoice.comment.getAll("in_3d61faa9-1754-4b7b-9fcb-88ff97f368ff");
 ```
 
 </dd>
@@ -8835,7 +10187,7 @@ Add a comment to this invoice
 <dd>
 
 ```typescript
-await client.invoice.comment.create("inv_3d61faa9-1754-4b7b-9fcb-88ff97f368ff", {
+await client.invoice.comment.create("in_3d61faa9-1754-4b7b-9fcb-88ff97f368ff", {
     text: "This is a comment",
     userId: "user_e24fc81c-c5ee-47e8-af42-4fe29d895506",
 });
@@ -8894,7 +10246,7 @@ await client.invoice.comment.create("inv_3d61faa9-1754-4b7b-9fcb-88ff97f368ff", 
 <dd>
 
 ```typescript
-await client.invoice.comment.get("inv_3d61faa9-1754-4b7b-9fcb-88ff97f368ff", "ic_3d61faa9-1754-4b7b-9fcb-88ff97f368ff");
+await client.invoice.comment.get("in_3d61faa9-1754-4b7b-9fcb-88ff97f368ff", "ic_3d61faa9-1754-4b7b-9fcb-88ff97f368ff");
 ```
 
 </dd>
@@ -8966,7 +10318,7 @@ Edit a comment on this invoice
 
 ```typescript
 await client.invoice.comment.update(
-    "inv_3d61faa9-1754-4b7b-9fcb-88ff97f368ff",
+    "in_3d61faa9-1754-4b7b-9fcb-88ff97f368ff",
     "ic_3d61faa9-1754-4b7b-9fcb-88ff97f368ff",
     {
         text: "This is a comment",
@@ -9052,7 +10404,7 @@ Delete a comment on this invoice
 
 ```typescript
 await client.invoice.comment.delete(
-    "inv_3d61faa9-1754-4b7b-9fcb-88ff97f368ff",
+    "in_3d61faa9-1754-4b7b-9fcb-88ff97f368ff",
     "ic_3d61faa9-1754-4b7b-9fcb-88ff97f368ff"
 );
 ```
@@ -9127,7 +10479,7 @@ Get attachments (scanned/uploaded PDFs and images) associated with this invoice
 <dd>
 
 ```typescript
-await client.invoice.document.getAll("inv_26e7b5d3-a739-4b23-9ad9-6aaa085f47a9");
+await client.invoice.document.getAll("in_26e7b5d3-a739-4b23-9ad9-6aaa085f47a9");
 ```
 
 </dd>
@@ -9198,7 +10550,7 @@ Upload documents (scanned/uploaded PDFs and images) associated with this Invoice
 <dd>
 
 ```typescript
-await client.invoice.document.upload("inv_26e7b5d3-a739-4b23-9ad9-6aaa085f47a9", {
+await client.invoice.document.upload("in_26e7b5d3-a739-4b23-9ad9-6aaa085f47a9", {
     document:
         "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAIAQMAAAD+wSzIAAAABlBMVEX///+/v7+jQ3Y5AAAADklEQVQI12P4AIX8EAgALgAD/aNpbtEAAAAASUVORK5CYII",
 });
@@ -9273,7 +10625,7 @@ Delete an attachment (scanned/uploaded PDFs and images) associated with this inv
 
 ```typescript
 await client.invoice.document.delete(
-    "inv_26e7b5d3-a739-4b23-9ad9-6aaa085f47a9",
+    "in_26e7b5d3-a739-4b23-9ad9-6aaa085f47a9",
     "doc_37e6af0a-e637-48fd-b825-d6947b38c4e2"
 );
 ```
@@ -9346,7 +10698,7 @@ Generate a PDF of the invoice. This PDF is generated from the data in the invoic
 <dd>
 
 ```typescript
-await client.invoice.document.generateInvoicePdf("inv_26e7b5d3-a739-4b23-9ad9-6aaa085f47a9");
+await client.invoice.document.generateInvoicePdf("in_26e7b5d3-a739-4b23-9ad9-6aaa085f47a9");
 ```
 
 </dd>
@@ -9409,7 +10761,7 @@ Get a PDF of the check for the invoice. If the invoice does not have check as th
 <dd>
 
 ```typescript
-await client.invoice.document.generateCheckPdf("inv_26e7b5d3-a739-4b23-9ad9-6aaa085f47a9");
+await client.invoice.document.generateCheckPdf("in_26e7b5d3-a739-4b23-9ad9-6aaa085f47a9");
 ```
 
 </dd>
@@ -9472,7 +10824,7 @@ Get the email subject and body that was used to create this invoice.
 <dd>
 
 ```typescript
-await client.invoice.document.getSourceEmail("inv_26e7b5d3-a739-4b23-9ad9-6aaa085f47a9");
+await client.invoice.document.getSourceEmail("in_26e7b5d3-a739-4b23-9ad9-6aaa085f47a9");
 ```
 
 </dd>
@@ -9537,7 +10889,7 @@ Get temporary link for payer to send payment
 <dd>
 
 ```typescript
-await client.invoice.paymentLinks.getPayerLink("inv_a0f6ea94-0761-4a5e-a416-3c453cb7eced");
+await client.invoice.paymentLinks.getPayerLink("in_a0f6ea94-0761-4a5e-a416-3c453cb7eced");
 ```
 
 </dd>
@@ -9608,7 +10960,7 @@ Trigger email to payer inviting them to make payment
 <dd>
 
 ```typescript
-await client.invoice.paymentLinks.sendPayerEmail("inv_a0f6ea94-0761-4a5e-a416-3c453cb7eced", {
+await client.invoice.paymentLinks.sendPayerEmail("in_a0f6ea94-0761-4a5e-a416-3c453cb7eced", {
     attachInvoice: true,
 });
 ```
@@ -9681,7 +11033,7 @@ Get temporary link for vendor to accept payment
 <dd>
 
 ```typescript
-await client.invoice.paymentLinks.getVendorLink("inv_a0f6ea94-0761-4a5e-a416-3c453cb7eced");
+await client.invoice.paymentLinks.getVendorLink("in_a0f6ea94-0761-4a5e-a416-3c453cb7eced");
 ```
 
 </dd>
@@ -9752,7 +11104,7 @@ Trigger email to vendor inviting them into the vendor portal
 <dd>
 
 ```typescript
-await client.invoice.paymentLinks.sendVendorEmail("inv_a0f6ea94-0761-4a5e-a416-3c453cb7eced");
+await client.invoice.paymentLinks.sendVendorEmail("in_a0f6ea94-0761-4a5e-a416-3c453cb7eced");
 ```
 
 </dd>

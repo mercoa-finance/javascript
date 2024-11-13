@@ -6,6 +6,7 @@ import * as environments from "./environments";
 import * as core from "./core";
 import { EntityGroup } from "./api/resources/entityGroup/client/Client";
 import { Entity } from "./api/resources/entity/client/Client";
+import { InvoiceTemplate } from "./api/resources/invoiceTemplate/client/Client";
 import { Invoice } from "./api/resources/invoice/client/Client";
 import { Organization } from "./api/resources/organization/client/Client";
 import { BankLookup } from "./api/resources/bankLookup/client/Client";
@@ -47,6 +48,12 @@ export class MercoaClient {
 
     public get entity(): Entity {
         return (this._entity ??= new Entity(this._options));
+    }
+
+    protected _invoiceTemplate: InvoiceTemplate | undefined;
+
+    public get invoiceTemplate(): InvoiceTemplate {
+        return (this._invoiceTemplate ??= new InvoiceTemplate(this._options));
     }
 
     protected _invoice: Invoice | undefined;

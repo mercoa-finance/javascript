@@ -9,7 +9,7 @@ import * as Mercoa from "../../../index";
  *     {
  *         eventType: "invoice.email",
  *         invoice: {
- *             id: "inv_26e7b5d3-a739-4b23-9ad9-6aaa085f47a9",
+ *             id: "in_26e7b5d3-a739-4b23-9ad9-6aaa085f47a9",
  *             status: Mercoa.InvoiceStatus.Paid,
  *             amount: 100,
  *             currency: Mercoa.CurrencyCode.Usd,
@@ -264,7 +264,7 @@ import * as Mercoa from "../../../index";
  * @example
  *     {
  *         eventType: "invoice.email",
- *         existingInvoiceId: "inv_21661ac1-a2a8-4465-a6c0-64474ba8181d"
+ *         existingInvoiceId: "in_21661ac1-a2a8-4465-a6c0-64474ba8181d"
  *     }
  */
 export interface InvoiceEmailWebhook {

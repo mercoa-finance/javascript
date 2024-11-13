@@ -18,6 +18,7 @@ export const CommonOnboardingOptions: core.serialization.ObjectSchema<
     phone: OnboardingOption,
     tenNinetyNine: OnboardingOption,
     w9: OnboardingOption,
+    bankStatement: OnboardingOption,
 });
 
 export declare namespace CommonOnboardingOptions {
@@ -29,5 +30,6 @@ export declare namespace CommonOnboardingOptions {
         phone: OnboardingOption.Raw;
         tenNinetyNine: OnboardingOption.Raw;
         w9: OnboardingOption.Raw;
+        bankStatement: OnboardingOption.Raw;
     }
 }

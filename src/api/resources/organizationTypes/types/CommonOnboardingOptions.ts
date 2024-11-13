@@ -12,4 +12,5 @@ export interface CommonOnboardingOptions {
     phone: Mercoa.OnboardingOption;
     tenNinetyNine: Mercoa.OnboardingOption;
     w9: Mercoa.OnboardingOption;
+    bankStatement: Mercoa.OnboardingOption;
 }

@@ -14,7 +14,7 @@ import * as Mercoa from "../../../index";
  *
  * @example
  *     {
- *         invoiceId: "inv_26e7b5d3-a739-4b23-9ad9-6aaa085f47a9"
+ *         invoiceId: "in_26e7b5d3-a739-4b23-9ad9-6aaa085f47a9"
  *     }
  */
 export type CalculatePaymentTimingRequest = Mercoa.EstimatedTiming | Mercoa.InvoiceTiming;

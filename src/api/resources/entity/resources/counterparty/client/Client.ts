@@ -8,6 +8,7 @@ import * as Mercoa from "../../../../../index";
 import * as serializers from "../../../../../../serialization/index";
 import urlJoin from "url-join";
 import * as errors from "../../../../../../errors/index";
+import { VendorCredit } from "../resources/vendorCredit/client/Client";
 
 export declare namespace Counterparty {
     interface Options {
@@ -36,7 +37,7 @@ export class Counterparty {
      * Find payee counterparties. This endpoint lets you find vendors linked to the entity.
      *
      * @param {Mercoa.EntityId} entityId - Entity ID or Entity ForeignID
-     * @param {Mercoa.entity.FindPayeeCounterpartiesRequest} request
+     * @param {Mercoa.entity.counterparty.FindPayeeCounterpartiesRequest} request
      * @param {Counterparty.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Mercoa.BadRequest}
@@ -56,7 +57,7 @@ export class Counterparty {
      */
     public async findPayees(
         entityId: Mercoa.EntityId,
-        request: Mercoa.entity.FindPayeeCounterpartiesRequest = {},
+        request: Mercoa.entity.counterparty.FindPayeeCounterpartiesRequest = {},
         requestOptions?: Counterparty.RequestOptions
     ): Promise<Mercoa.FindCounterpartiesResponse> {
         const {
@@ -147,8 +148,8 @@ export class Counterparty {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.5.11",
-                "User-Agent": "@mercoa/javascript/0.5.11",
+                "X-Fern-SDK-Version": "0.5.12",
+                "User-Agent": "@mercoa/javascript/0.5.12",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
@@ -261,7 +262,7 @@ export class Counterparty {
      * Find payor counterparties. This endpoint lets you find customers linked to the entity.
      *
      * @param {Mercoa.EntityId} entityId - Entity ID or Entity ForeignID
-     * @param {Mercoa.entity.FindPayorCounterpartiesRequest} request
+     * @param {Mercoa.entity.counterparty.FindPayorCounterpartiesRequest} request
      * @param {Counterparty.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Mercoa.BadRequest}
@@ -281,7 +282,7 @@ export class Counterparty {
      */
     public async findPayors(
         entityId: Mercoa.EntityId,
-        request: Mercoa.entity.FindPayorCounterpartiesRequest = {},
+        request: Mercoa.entity.counterparty.FindPayorCounterpartiesRequest = {},
         requestOptions?: Counterparty.RequestOptions
     ): Promise<Mercoa.FindCounterpartiesResponse> {
         const {
@@ -372,8 +373,8 @@ export class Counterparty {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.5.11",
-                "User-Agent": "@mercoa/javascript/0.5.11",
+                "X-Fern-SDK-Version": "0.5.12",
+                "User-Agent": "@mercoa/javascript/0.5.12",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
@@ -525,8 +526,8 @@ export class Counterparty {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.5.11",
-                "User-Agent": "@mercoa/javascript/0.5.11",
+                "X-Fern-SDK-Version": "0.5.12",
+                "User-Agent": "@mercoa/javascript/0.5.12",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
@@ -665,8 +666,8 @@ export class Counterparty {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.5.11",
-                "User-Agent": "@mercoa/javascript/0.5.11",
+                "X-Fern-SDK-Version": "0.5.12",
+                "User-Agent": "@mercoa/javascript/0.5.12",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
@@ -813,8 +814,8 @@ export class Counterparty {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.5.11",
-                "User-Agent": "@mercoa/javascript/0.5.11",
+                "X-Fern-SDK-Version": "0.5.12",
+                "User-Agent": "@mercoa/javascript/0.5.12",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
@@ -953,8 +954,8 @@ export class Counterparty {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.5.11",
-                "User-Agent": "@mercoa/javascript/0.5.11",
+                "X-Fern-SDK-Version": "0.5.12",
+                "User-Agent": "@mercoa/javascript/0.5.12",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
@@ -1056,6 +1057,12 @@ export class Counterparty {
                     message: _response.error.errorMessage,
                 });
         }
+    }
+
+    protected _vendorCredit: VendorCredit | undefined;
+
+    public get vendorCredit(): VendorCredit {
+        return (this._vendorCredit ??= new VendorCredit(this._options));
     }
 
     protected async _getAuthorizationHeader(): Promise<string> {

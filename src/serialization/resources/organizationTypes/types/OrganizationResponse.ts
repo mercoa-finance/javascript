@@ -33,6 +33,7 @@ export const OrganizationResponse: core.serialization.ObjectSchema<
     payorOnboardingOptions: OnboardingOptionsResponse.optional(),
     metadataSchema: core.serialization.list(MetadataSchema).optional(),
     notificationEmailTemplate: NotificationEmailTemplateResponse.optional(),
+    customDomains: core.serialization.list(core.serialization.string()).optional(),
     organizationEntityId: EntityId.optional(),
 });
 
@@ -52,6 +53,7 @@ export declare namespace OrganizationResponse {
         payorOnboardingOptions?: OnboardingOptionsResponse.Raw | null;
         metadataSchema?: MetadataSchema.Raw[] | null;
         notificationEmailTemplate?: NotificationEmailTemplateResponse.Raw | null;
+        customDomains?: string[] | null;
         organizationEntityId?: EntityId.Raw | null;
     }
 }
