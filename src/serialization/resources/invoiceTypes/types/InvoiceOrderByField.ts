@@ -20,7 +20,6 @@ export const InvoiceOrderByField: core.serialization.Schema<
     "INVOICE_NUMBER",
     "VENDOR_NAME",
     "PAYER_NAME",
-    "NEXT_PAYMENT_DATE",
 ]);
 
 export declare namespace InvoiceOrderByField {
@@ -34,6 +33,5 @@ export declare namespace InvoiceOrderByField {
         | "SETTLEMENT_DATE"
         | "INVOICE_NUMBER"
         | "VENDOR_NAME"
-        | "PAYER_NAME"
-        | "NEXT_PAYMENT_DATE";
+        | "PAYER_NAME";
 }

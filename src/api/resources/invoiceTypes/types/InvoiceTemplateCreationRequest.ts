@@ -52,5 +52,5 @@ import * as Mercoa from "../../../index";
 export interface InvoiceTemplateCreationRequest extends Mercoa.InvoiceTemplateRequestBase {
     lineItems?: Mercoa.InvoiceLineItemCreationRequest[];
     /** ID of the entity who created this invoice template. */
-    creatorEntityId: Mercoa.EntityId;
+    creatorEntityId?: Mercoa.EntityId;
 }

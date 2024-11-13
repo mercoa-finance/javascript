@@ -12,8 +12,7 @@ export type InvoiceOrderByField =
     | "SETTLEMENT_DATE"
     | "INVOICE_NUMBER"
     | "VENDOR_NAME"
-    | "PAYER_NAME"
-    | "NEXT_PAYMENT_DATE";
+    | "PAYER_NAME";
 
 export const InvoiceOrderByField = {
     Amount: "AMOUNT",
@@ -26,5 +25,4 @@ export const InvoiceOrderByField = {
     InvoiceNumber: "INVOICE_NUMBER",
     VendorName: "VENDOR_NAME",
     PayerName: "PAYER_NAME",
-    NextPaymentDate: "NEXT_PAYMENT_DATE",
 } as const;

@@ -29,7 +29,6 @@ export const InvoiceResponseBase: core.serialization.ObjectSchema<
     currency: CurrencyCode.optional(),
     invoiceDate: core.serialization.date().optional(),
     deductionDate: core.serialization.date().optional(),
-    nextDeductionDate: core.serialization.date().optional(),
     dueDate: core.serialization.date().optional(),
     invoiceNumber: core.serialization.string().optional(),
     noteToSelf: core.serialization.string().optional(),
@@ -68,7 +67,6 @@ export declare namespace InvoiceResponseBase {
         currency?: CurrencyCode.Raw | null;
         invoiceDate?: string | null;
         deductionDate?: string | null;
-        nextDeductionDate?: string | null;
         dueDate?: string | null;
         invoiceNumber?: string | null;
         noteToSelf?: string | null;

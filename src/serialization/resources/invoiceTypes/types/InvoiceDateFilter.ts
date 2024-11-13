@@ -10,7 +10,6 @@ export const InvoiceDateFilter: core.serialization.Schema<serializers.InvoiceDat
     core.serialization.enum_([
         "INVOICE_DATE",
         "DEDUCTION_DATE",
-        "NEXT_PAYMENT_DATE",
         "DUE_DATE",
         "SETTLEMENT_DATE",
         "CREATED_AT",
@@ -18,12 +17,5 @@ export const InvoiceDateFilter: core.serialization.Schema<serializers.InvoiceDat
     ]);
 
 export declare namespace InvoiceDateFilter {
-    type Raw =
-        | "INVOICE_DATE"
-        | "DEDUCTION_DATE"
-        | "NEXT_PAYMENT_DATE"
-        | "DUE_DATE"
-        | "SETTLEMENT_DATE"
-        | "CREATED_AT"
-        | "UPDATED_AT";
+    type Raw = "INVOICE_DATE" | "DEDUCTION_DATE" | "DUE_DATE" | "SETTLEMENT_DATE" | "CREATED_AT" | "UPDATED_AT";
 }
