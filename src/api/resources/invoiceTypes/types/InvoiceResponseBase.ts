@@ -14,6 +14,8 @@ export interface InvoiceResponseBase {
     invoiceDate?: Date;
     /** Initial date when funds are scheduled to be deducted from payer's account. The actual deduction date may differ from this date, and will be reflected in the processedAt field. */
     deductionDate?: Date;
+    /** For invoice templates, this is the date when the next recurring payment will be scheduled. */
+    nextDeductionDate?: Date;
     /** Due date of invoice. */
     dueDate?: Date;
     invoiceNumber?: string;
