@@ -32,12 +32,24 @@ import * as Mercoa from "../../../index";
  *             }, {
  *                 type: Mercoa.PaymentMethodType.Check,
  *                 disabled: true
- *             }]
+ *             }],
+ *         ocr: {
+ *             lineItems: true,
+ *             invoiceMetadata: true,
+ *             lineItemMetadata: true,
+ *             lineItemGlAccountId: true,
+ *             predictMetadata: true
+ *         },
+ *         notifications: {
+ *             assumeRole: "admin"
+ *         }
  *     }
  */
 export interface EntityCustomizationRequest {
-    metadata: Mercoa.MetadataCustomizationRequest[];
-    paymentSource: Mercoa.PaymentMethodCustomizationRequest[];
-    backupDisbursement: Mercoa.PaymentMethodCustomizationRequest[];
-    paymentDestination: Mercoa.PaymentMethodCustomizationRequest[];
+    metadata?: Mercoa.MetadataCustomizationRequest[];
+    paymentSource?: Mercoa.PaymentMethodCustomizationRequest[];
+    backupDisbursement?: Mercoa.PaymentMethodCustomizationRequest[];
+    paymentDestination?: Mercoa.PaymentMethodCustomizationRequest[];
+    ocr?: Mercoa.OcrCustomizationRequest;
+    notifications?: Mercoa.NotificationCustomizationRequest;
 }

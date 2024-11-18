@@ -7,6 +7,8 @@ import * as Mercoa from "../../../../api/index";
 import * as core from "../../../../core";
 import { MetadataCustomizationRequest } from "./MetadataCustomizationRequest";
 import { PaymentMethodCustomizationRequest } from "./PaymentMethodCustomizationRequest";
+import { OcrCustomizationRequest } from "./OcrCustomizationRequest";
+import { NotificationCustomizationRequest } from "./NotificationCustomizationRequest";
 
 export const EntityCustomizationResponse: core.serialization.ObjectSchema<
     serializers.EntityCustomizationResponse.Raw,
@@ -16,6 +18,8 @@ export const EntityCustomizationResponse: core.serialization.ObjectSchema<
     paymentSource: core.serialization.list(PaymentMethodCustomizationRequest),
     backupDisbursement: core.serialization.list(PaymentMethodCustomizationRequest),
     paymentDestination: core.serialization.list(PaymentMethodCustomizationRequest),
+    ocr: OcrCustomizationRequest,
+    notifications: NotificationCustomizationRequest,
 });
 
 export declare namespace EntityCustomizationResponse {
@@ -24,5 +28,7 @@ export declare namespace EntityCustomizationResponse {
         paymentSource: PaymentMethodCustomizationRequest.Raw[];
         backupDisbursement: PaymentMethodCustomizationRequest.Raw[];
         paymentDestination: PaymentMethodCustomizationRequest.Raw[];
+        ocr: OcrCustomizationRequest.Raw;
+        notifications: NotificationCustomizationRequest.Raw;
     }
 }

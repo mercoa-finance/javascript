@@ -15,6 +15,7 @@ import { EntityUserId } from "../../entityTypes/types/EntityUserId";
 import { InvoiceFailureType } from "./InvoiceFailureType";
 import { InvoiceFeesRequest } from "./InvoiceFeesRequest";
 import { PaymentSchedule } from "./PaymentSchedule";
+import { VendorCreditId } from "../../vendorCreditTypes/types/VendorCreditId";
 
 export const InvoiceRequestBase: core.serialization.ObjectSchema<
     serializers.InvoiceRequestBase.Raw,
@@ -46,6 +47,7 @@ export const InvoiceRequestBase: core.serialization.ObjectSchema<
     fees: InvoiceFeesRequest.optional(),
     batchPayment: core.serialization.boolean().optional(),
     paymentSchedule: PaymentSchedule.optional(),
+    vendorCreditIds: core.serialization.list(VendorCreditId).optional(),
 });
 
 export declare namespace InvoiceRequestBase {
@@ -76,5 +78,6 @@ export declare namespace InvoiceRequestBase {
         fees?: InvoiceFeesRequest.Raw | null;
         batchPayment?: boolean | null;
         paymentSchedule?: PaymentSchedule.Raw | null;
+        vendorCreditIds?: VendorCreditId.Raw[] | null;
     }
 }

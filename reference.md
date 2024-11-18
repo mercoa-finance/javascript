@@ -4026,7 +4026,7 @@ await client.invoice.get("in_8545a84e-a45f-41bf-bdf1-33b42a55812c");
 <dd>
 
 ```typescript
-await client.invoice.update("in_8545a84e-a45f-41bf-bdf1-33b42a55812c", {
+await client.invoice.update("in_26e7b5d3-a739-4b23-9ad9-6aaa085f47a9", {
     status: "NEW",
     amount: 100,
     currency: "USD",
@@ -6335,6 +6335,92 @@ await client.entity.counterparty.vendorCredit.delete(
 </dl>
 </details>
 
+<details><summary><code>client.entity.counterparty.vendorCredit.<a href="/src/api/resources/entity/resources/counterparty/resources/vendorCredit/client/Client.ts">estimateUsage</a>(entityId, counterpartyId, { ...params }) -> Mercoa.CalculateVendorCreditUsageResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Estimate the usage of vendor credits on an invoice of a given amount
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.entity.counterparty.vendorCredit.estimateUsage(
+    "ent_8545a84e-a45f-41bf-bdf1-33b42a55812c",
+    "ent_21661ac1-a2a8-4465-a6c0-64474ba8181d",
+    {
+        amount: 150,
+        currency: "USD",
+    }
+);
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**entityId:** `Mercoa.EntityId` — Entity ID or Entity ForeignID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**counterpartyId:** `Mercoa.EntityId` — Counterparty Entity ID or Counterparty Entity ForeignID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `Mercoa.entity.counterparty.CalculateVendorCreditUsageRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `VendorCredit.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
 ## Entity Customization
 
 <details><summary><code>client.entity.customization.<a href="/src/api/resources/entity/resources/customization/client/Client.ts">get</a>(entityId) -> Mercoa.EntityCustomizationResponse</code></summary>
@@ -6466,6 +6552,16 @@ await client.entity.customization.update("ent_a0f6ea94-0761-4a5e-a416-3c453cb7ec
             disabled: true,
         },
     ],
+    ocr: {
+        lineItems: true,
+        invoiceMetadata: true,
+        lineItemMetadata: true,
+        lineItemGlAccountId: true,
+        predictMetadata: true,
+    },
+    notifications: {
+        assumeRole: "admin",
+    },
 });
 ```
 
@@ -11532,3 +11628,117 @@ await client.organization.notificationConfiguration.update("INVOICE_APPROVAL_NEE
 
 </dd>
 </dl>
+</details>
+
+<details><summary><code>client.organization.notificationConfiguration.<a href="/src/api/resources/organization/resources/notificationConfiguration/client/Client.ts">reset</a>(notificationType) -> void</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Reset notification configuration for this notification type
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.organization.notificationConfiguration.reset("INVOICE_APPROVAL_NEEDED");
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**notificationType:** `Mercoa.NotificationType`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `NotificationConfiguration.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+## PaymentMethods
+
+<details><summary><code>client.paymentMethods.<a href="/src/api/resources/paymentMethods/client/Client.ts">find</a>({ ...params }) -> Mercoa.PaymentMethodWithEntityFindResponse</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.paymentMethods.find();
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Mercoa.FindPaymentMethodsRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `PaymentMethods.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>

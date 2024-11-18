@@ -7,22 +7,28 @@ import * as Mercoa from "../../../../api/index";
 import * as core from "../../../../core";
 import { MetadataCustomizationRequest } from "./MetadataCustomizationRequest";
 import { PaymentMethodCustomizationRequest } from "./PaymentMethodCustomizationRequest";
+import { OcrCustomizationRequest } from "./OcrCustomizationRequest";
+import { NotificationCustomizationRequest } from "./NotificationCustomizationRequest";
 
 export const EntityCustomizationRequest: core.serialization.ObjectSchema<
     serializers.EntityCustomizationRequest.Raw,
     Mercoa.EntityCustomizationRequest
 > = core.serialization.object({
-    metadata: core.serialization.list(MetadataCustomizationRequest),
-    paymentSource: core.serialization.list(PaymentMethodCustomizationRequest),
-    backupDisbursement: core.serialization.list(PaymentMethodCustomizationRequest),
-    paymentDestination: core.serialization.list(PaymentMethodCustomizationRequest),
+    metadata: core.serialization.list(MetadataCustomizationRequest).optional(),
+    paymentSource: core.serialization.list(PaymentMethodCustomizationRequest).optional(),
+    backupDisbursement: core.serialization.list(PaymentMethodCustomizationRequest).optional(),
+    paymentDestination: core.serialization.list(PaymentMethodCustomizationRequest).optional(),
+    ocr: OcrCustomizationRequest.optional(),
+    notifications: NotificationCustomizationRequest.optional(),
 });
 
 export declare namespace EntityCustomizationRequest {
     interface Raw {
-        metadata: MetadataCustomizationRequest.Raw[];
-        paymentSource: PaymentMethodCustomizationRequest.Raw[];
-        backupDisbursement: PaymentMethodCustomizationRequest.Raw[];
-        paymentDestination: PaymentMethodCustomizationRequest.Raw[];
+        metadata?: MetadataCustomizationRequest.Raw[] | null;
+        paymentSource?: PaymentMethodCustomizationRequest.Raw[] | null;
+        backupDisbursement?: PaymentMethodCustomizationRequest.Raw[] | null;
+        paymentDestination?: PaymentMethodCustomizationRequest.Raw[] | null;
+        ocr?: OcrCustomizationRequest.Raw | null;
+        notifications?: NotificationCustomizationRequest.Raw | null;
     }
 }

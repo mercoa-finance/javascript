@@ -20,6 +20,8 @@ export * as organizationTypes from "./organizationTypes";
 export * from "./organizationTypes/types";
 export * as paymentMethodTypes from "./paymentMethodTypes";
 export * from "./paymentMethodTypes/types";
+export * as transaction from "./transaction";
+export * from "./transaction/types";
 export * as vendorCreditTypes from "./vendorCreditTypes";
 export * from "./vendorCreditTypes/types";
 export * as webhooks from "./webhooks";

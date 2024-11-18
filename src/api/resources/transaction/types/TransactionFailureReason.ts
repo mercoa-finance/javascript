@@ -9,7 +9,7 @@
  *         description: "The source bank account does not have sufficient funds"
  *     }
  */
-export interface InvoiceFailureReason {
+export interface TransactionFailureReason {
     /** The failure reason code. */
     code?: string;
     /** The failure reason description. */

@@ -11,11 +11,13 @@ export const ApproverRule: core.serialization.ObjectSchema<serializers.ApproverR
     core.serialization.object({
         numApprovers: core.serialization.number(),
         identifierList: IdentifierList,
+        autoAssign: core.serialization.boolean().optional(),
     });
 
 export declare namespace ApproverRule {
     interface Raw {
         numApprovers: number;
         identifierList: IdentifierList.Raw;
+        autoAssign?: boolean | null;
     }
 }

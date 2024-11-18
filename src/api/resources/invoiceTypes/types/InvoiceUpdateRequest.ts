@@ -65,6 +65,11 @@ import * as Mercoa from "../../../index";
  *     {
  *         batchPayment: true
  *     }
+ *
+ * @example
+ *     {
+ *         vendorCreditIds: ["vcr_c3f4c87d-794d-4543-9562-575cdddfc0d7"]
+ *     }
  */
 export interface InvoiceUpdateRequest extends Mercoa.InvoiceRequestBase {
     lineItems?: Mercoa.InvoiceLineItemUpdateRequest[];

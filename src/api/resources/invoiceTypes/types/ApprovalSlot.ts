@@ -53,6 +53,7 @@ export interface ApprovalSlot {
     approvalPolicyId: Mercoa.ApprovalPolicyId;
     /** The identifier for this approval slot */
     approvalSlotId: Mercoa.ApprovalSlotId;
+    /** The ID of the user who is assigned to the approval slot. If undefined, the approval slot is assigned to all eligible approvers. */
     assignedUserId?: Mercoa.EntityUserId;
     action: Mercoa.ApproverAction;
     eligibleRoles: string[];

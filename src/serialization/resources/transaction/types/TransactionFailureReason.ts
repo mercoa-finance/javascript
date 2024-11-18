@@ -6,15 +6,15 @@ import * as serializers from "../../../index";
 import * as Mercoa from "../../../../api/index";
 import * as core from "../../../../core";
 
-export const InvoiceFailureReason: core.serialization.ObjectSchema<
-    serializers.InvoiceFailureReason.Raw,
-    Mercoa.InvoiceFailureReason
+export const TransactionFailureReason: core.serialization.ObjectSchema<
+    serializers.TransactionFailureReason.Raw,
+    Mercoa.TransactionFailureReason
 > = core.serialization.object({
     code: core.serialization.string().optional(),
     description: core.serialization.string().optional(),
 });
 
-export declare namespace InvoiceFailureReason {
+export declare namespace TransactionFailureReason {
     interface Raw {
         code?: string | null;
         description?: string | null;

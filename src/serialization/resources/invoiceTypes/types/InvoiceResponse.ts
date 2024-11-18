@@ -7,7 +7,8 @@ import * as Mercoa from "../../../../api/index";
 import * as core from "../../../../core";
 import { InvoiceId } from "./InvoiceId";
 import { InvoiceFailureType } from "./InvoiceFailureType";
-import { InvoiceFailureReason } from "./InvoiceFailureReason";
+import { TransactionResponseWithoutInvoices } from "../../transaction/types/TransactionResponseWithoutInvoices";
+import { VendorCreditId } from "../../vendorCreditTypes/types/VendorCreditId";
 import { InvoiceResponseBase } from "./InvoiceResponseBase";
 
 export const InvoiceResponse: core.serialization.ObjectSchema<serializers.InvoiceResponse.Raw, Mercoa.InvoiceResponse> =
@@ -18,7 +19,8 @@ export const InvoiceResponse: core.serialization.ObjectSchema<serializers.Invoic
             settlementDate: core.serialization.date().optional(),
             foreignId: core.serialization.string().optional(),
             failureType: InvoiceFailureType.optional(),
-            failureReason: InvoiceFailureReason.optional(),
+            transactions: core.serialization.list(TransactionResponseWithoutInvoices).optional(),
+            vendorCreditIds: core.serialization.list(VendorCreditId).optional(),
         })
         .extend(InvoiceResponseBase);
 
@@ -29,6 +31,7 @@ export declare namespace InvoiceResponse {
         settlementDate?: string | null;
         foreignId?: string | null;
         failureType?: InvoiceFailureType.Raw | null;
-        failureReason?: InvoiceFailureReason.Raw | null;
+        transactions?: TransactionResponseWithoutInvoices.Raw[] | null;
+        vendorCreditIds?: VendorCreditId.Raw[] | null;
     }
 }

@@ -72,6 +72,8 @@ export * from "./CounterpartyNetworkType";
 export * from "./EntityMetadataResponse";
 export * from "./MetadataCustomizationRequest";
 export * from "./PaymentMethodCustomizationRequest";
+export * from "./OcrCustomizationRequest";
+export * from "./NotificationCustomizationRequest";
 export * from "./EntityCustomizationRequest";
 export * from "./EntityCustomizationResponse";
 export * from "./EntityEvent";

@@ -33,7 +33,6 @@ export * from "./InvoiceLineItemIndividualUpdateRequest";
 export * from "./AssociatedApprovalAction";
 export * from "./InvoiceFeesRequest";
 export * from "./InvoiceFeesResponse";
-export * from "./InvoiceFailureReason";
 export * from "./InvoiceStatus";
 export * from "./InvoiceFailureType";
 export * from "./InvoiceDateFilter";

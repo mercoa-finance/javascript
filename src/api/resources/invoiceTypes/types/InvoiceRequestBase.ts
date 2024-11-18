@@ -53,4 +53,6 @@ export interface InvoiceRequestBase {
     batchPayment?: boolean;
     /** If this is a recurring invoice, this will be the payment schedule for the invoice. If not provided, this will be a one-time invoice. */
     paymentSchedule?: Mercoa.PaymentSchedule;
+    /** The IDs of the vendor credits to be applied to this invoice. Passing this field will un-apply any previously applied vendor credits. */
+    vendorCreditIds?: Mercoa.VendorCreditId[];
 }

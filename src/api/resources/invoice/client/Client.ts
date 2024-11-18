@@ -245,8 +245,8 @@ export class Invoice {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.5.13-rc2",
-                "User-Agent": "@mercoa/javascript/0.5.13-rc2",
+                "X-Fern-SDK-Version": "0.6.0",
+                "User-Agent": "@mercoa/javascript/0.6.0",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
@@ -453,8 +453,8 @@ export class Invoice {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.5.13-rc2",
-                "User-Agent": "@mercoa/javascript/0.5.13-rc2",
+                "X-Fern-SDK-Version": "0.6.0",
+                "User-Agent": "@mercoa/javascript/0.6.0",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
@@ -592,8 +592,8 @@ export class Invoice {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.5.13-rc2",
-                "User-Agent": "@mercoa/javascript/0.5.13-rc2",
+                "X-Fern-SDK-Version": "0.6.0",
+                "User-Agent": "@mercoa/javascript/0.6.0",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
@@ -715,7 +715,7 @@ export class Invoice {
      * @throws {@link Mercoa.Unimplemented}
      *
      * @example
-     *     await client.invoice.update("in_8545a84e-a45f-41bf-bdf1-33b42a55812c", {
+     *     await client.invoice.update("in_26e7b5d3-a739-4b23-9ad9-6aaa085f47a9", {
      *         status: "NEW",
      *         amount: 100,
      *         currency: "USD",
@@ -753,7 +753,7 @@ export class Invoice {
      *     })
      *
      * @example
-     *     await client.invoice.update("in_8545a84e-a45f-41bf-bdf1-33b42a55812c", {
+     *     await client.invoice.update("in_26e7b5d3-a739-4b23-9ad9-6aaa085f47a9", {
      *         status: "NEW",
      *         vendorId: "ent_21661ac1-a2a8-4465-a6c0-64474ba8181d",
      *         currency: "USD",
@@ -764,15 +764,20 @@ export class Invoice {
      *     })
      *
      * @example
-     *     await client.invoice.update("in_8545a84e-a45f-41bf-bdf1-33b42a55812c", {
+     *     await client.invoice.update("in_26e7b5d3-a739-4b23-9ad9-6aaa085f47a9", {
      *         status: "SCHEDULED",
      *         paymentDestinationId: "pm_5fde2f4a-facc-48ef-8f0d-6b7d087c7b18",
      *         deductionDate: "2021-01-29T00:00:00Z"
      *     })
      *
      * @example
-     *     await client.invoice.update("in_8545a84e-a45f-41bf-bdf1-33b42a55812c", {
+     *     await client.invoice.update("in_26e7b5d3-a739-4b23-9ad9-6aaa085f47a9", {
      *         batchPayment: true
+     *     })
+     *
+     * @example
+     *     await client.invoice.update("in_26e7b5d3-a739-4b23-9ad9-6aaa085f47a9", {
+     *         vendorCreditIds: ["vcr_c3f4c87d-794d-4543-9562-575cdddfc0d7"]
      *     })
      */
     public async update(
@@ -790,8 +795,8 @@ export class Invoice {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.5.13-rc2",
-                "User-Agent": "@mercoa/javascript/0.5.13-rc2",
+                "X-Fern-SDK-Version": "0.6.0",
+                "User-Agent": "@mercoa/javascript/0.6.0",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
@@ -928,8 +933,8 @@ export class Invoice {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.5.13-rc2",
-                "User-Agent": "@mercoa/javascript/0.5.13-rc2",
+                "X-Fern-SDK-Version": "0.6.0",
+                "User-Agent": "@mercoa/javascript/0.6.0",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
@@ -1075,8 +1080,8 @@ export class Invoice {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.5.13-rc2",
-                "User-Agent": "@mercoa/javascript/0.5.13-rc2",
+                "X-Fern-SDK-Version": "0.6.0",
+                "User-Agent": "@mercoa/javascript/0.6.0",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
