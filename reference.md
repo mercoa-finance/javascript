@@ -3459,6 +3459,7 @@ await client.invoiceTemplate.create({
     paymentDestinationOptions: {
         type: "check",
         delivery: "MAIL",
+        printDescription: true,
     },
     lineItems: [
         {
@@ -3591,6 +3592,7 @@ await client.invoiceTemplate.update("invt_13c07096-5848-4aeb-ae7d-6576289034c4",
     paymentDestinationOptions: {
         type: "check",
         delivery: "MAIL",
+        printDescription: true,
     },
     lineItems: [
         {
@@ -3909,6 +3911,7 @@ await client.invoice.create({
     paymentDestinationOptions: {
         type: "check",
         delivery: "MAIL",
+        printDescription: true,
     },
     lineItems: [
         {
@@ -4041,6 +4044,7 @@ await client.invoice.update("in_26e7b5d3-a739-4b23-9ad9-6aaa085f47a9", {
     paymentDestinationOptions: {
         type: "check",
         delivery: "MAIL",
+        printDescription: true,
     },
     lineItems: [
         {
@@ -11733,6 +11737,138 @@ await client.paymentMethods.find();
 <dd>
 
 **requestOptions:** `PaymentMethods.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+## Transaction
+
+<details><summary><code>client.transaction.<a href="/src/api/resources/transaction/client/Client.ts">find</a>({ ...params }) -> Mercoa.FindTransactionsResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Search transactions
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.transaction.find({
+    startDate: "2024-01-15T09:30:00Z",
+    endDate: "2024-01-15T09:30:00Z",
+    limit: 10,
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Mercoa.FindTransactionsRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Transaction.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.transaction.<a href="/src/api/resources/transaction/client/Client.ts">get</a>(transactionId) -> Mercoa.TransactionResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Get Transaction
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.transaction.get("trx_bb08e72f-19f8-45f3-bcf9-46fdc46cb2f4");
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**transactionId:** `Mercoa.TransactionId`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Transaction.RequestOptions`
 
 </dd>
 </dl>

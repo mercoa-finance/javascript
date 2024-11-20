@@ -34,3 +34,4 @@ export * as customPaymentMethodSchema from "./customPaymentMethodSchema";
 export * as paymentMethods from "./paymentMethods";
 export * from "./bankLookup/client/requests";
 export * from "./paymentMethods/client/requests";
+export * from "./transaction/client/requests";

@@ -20,7 +20,8 @@ import * as Mercoa from "../../../index";
  *         paymentDestinationId: "pm_5fde2f4a-facc-48ef-8f0d-6b7d087c7b18",
  *         paymentDestinationOptions: {
  *             type: "check",
- *             delivery: Mercoa.CheckDeliveryMethod.Mail
+ *             delivery: Mercoa.CheckDeliveryMethod.Mail,
+ *             printDescription: true
  *         },
  *         lineItems: [{
  *                 id: "inli_26672f38-eb9a-48f1-a7a0-f1b855e38cd7",

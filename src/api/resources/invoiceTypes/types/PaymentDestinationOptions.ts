@@ -8,7 +8,8 @@ import * as Mercoa from "../../../index";
  * @example
  *     {
  *         type: "check",
- *         delivery: Mercoa.CheckDeliveryMethod.Mail
+ *         delivery: Mercoa.CheckDeliveryMethod.Mail,
+ *         printDescription: true
  *     }
  *
  * @example

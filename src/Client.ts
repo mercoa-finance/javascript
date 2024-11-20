@@ -14,6 +14,7 @@ import { Calculate } from "./api/resources/calculate/client/Client";
 import { CustomPaymentMethodSchema } from "./api/resources/customPaymentMethodSchema/client/Client";
 import { Ocr } from "./api/resources/ocr/client/Client";
 import { PaymentMethods } from "./api/resources/paymentMethods/client/Client";
+import { Transaction } from "./api/resources/transaction/client/Client";
 
 export declare namespace MercoaClient {
     interface Options {
@@ -96,5 +97,11 @@ export class MercoaClient {
 
     public get paymentMethods(): PaymentMethods {
         return (this._paymentMethods ??= new PaymentMethods(this._options));
+    }
+
+    protected _transaction: Transaction | undefined;
+
+    public get transaction(): Transaction {
+        return (this._transaction ??= new Transaction(this._options));
     }
 }

@@ -12,10 +12,12 @@ export const CheckPaymentDestinationOptions: core.serialization.ObjectSchema<
     Mercoa.CheckPaymentDestinationOptions
 > = core.serialization.object({
     delivery: CheckDeliveryMethod.optional(),
+    printDescription: core.serialization.boolean().optional(),
 });
 
 export declare namespace CheckPaymentDestinationOptions {
     interface Raw {
         delivery?: CheckDeliveryMethod.Raw | null;
+        printDescription?: boolean | null;
     }
 }
