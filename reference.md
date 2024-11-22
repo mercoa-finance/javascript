@@ -2845,69 +2845,6 @@ await client.entity.paymentMethod.delete(
 
 ## Entity User
 
-<details><summary><code>client.entity.user.<a href="/src/api/resources/entity/resources/user/client/Client.ts">getAll</a>(entityId) -> Mercoa.EntityUserResponse[]</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-Get all entity users (DEPRECATED, use Search Entity Users)
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.entity.user.getAll("ent_a0f6ea94-0761-4a5e-a416-3c453cb7eced");
-```
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**entityId:** `Mercoa.EntityId` — Entity ID or Entity ForeignID
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `User.RequestOptions`
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-</dd>
-</dl>
-</details>
-
 <details><summary><code>client.entity.user.<a href="/src/api/resources/entity/resources/user/client/Client.ts">find</a>(entityId, { ...params }) -> Mercoa.FindEntityUserResponse</code></summary>
 <dl>
 <dd>

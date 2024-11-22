@@ -75,6 +75,10 @@ export interface EntityGetInvoicesRequest {
      */
     vendorId?: Mercoa.EntityId | Mercoa.EntityId[];
     /**
+     * Filter invoices by the ID or foreign ID of the user that created the invoice.
+     */
+    creatorUserId?: Mercoa.EntityUserId | Mercoa.EntityUserId[];
+    /**
      * Filter invoices by assigned approver user ID.
      */
     approverId?: Mercoa.EntityUserId | Mercoa.EntityUserId[];

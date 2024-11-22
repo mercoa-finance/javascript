@@ -12,7 +12,7 @@ import * as Mercoa from "../../../../index";
  */
 export interface GetAllInvoiceTemplatesRequest {
     /**
-     * Filter invoice templates by the ID or foreign ID of the entity that created the invoice template.
+     * Filter invoice templates by the ID or foreign ID of the entity that is the payer or the vendor of the invoice template.
      */
     entityId?: Mercoa.EntityId | Mercoa.EntityId[];
     /**
@@ -67,6 +67,10 @@ export interface GetAllInvoiceTemplatesRequest {
      * Filter invoice templates by vendor ID or vendor foreign ID.
      */
     vendorId?: Mercoa.EntityId | Mercoa.EntityId[];
+    /**
+     * Filter invoices by the ID or foreign ID of the user that created the invoice.
+     */
+    creatorUserId?: Mercoa.EntityUserId | Mercoa.EntityUserId[];
     /**
      * Filter invoice templates by assigned approver user ID.
      */

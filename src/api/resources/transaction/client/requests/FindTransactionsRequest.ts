@@ -14,7 +14,7 @@ import * as Mercoa from "../../../../index";
  */
 export interface FindTransactionsRequest {
     /**
-     * Filter invoices by the ID or foreign ID of the entity that created the transaction.
+     * Filter transactions by the ID or foreign ID of the entity that is the payer or the vendor of the invoice that created the transaction.
      */
     entityId?: Mercoa.EntityId | Mercoa.EntityId[];
     /**
@@ -26,13 +26,13 @@ export interface FindTransactionsRequest {
      */
     endDate?: Date;
     /**
-     * Number of invoices to return. Limit can range between 1 and 100, and the default is 10.
+     * Number of transactions to return. Limit can range between 1 and 100, and the default is 10.
      */
     limit?: number;
     /**
-     * The ID of the invoice to start after. If not provided, the first page of invoices will be returned.
+     * The ID of the transactions to start after. If not provided, the first page of transactions will be returned.
      */
-    startingAfter?: Mercoa.InvoiceId;
+    startingAfter?: Mercoa.TransactionId;
     /**
      * Find transactions by vendor name, invoice number, or amount. Partial matches are supported.
      */
@@ -57,6 +57,10 @@ export interface FindTransactionsRequest {
      * Filter transactions by vendor ID or vendor foreign ID.
      */
     vendorId?: Mercoa.EntityId | Mercoa.EntityId[];
+    /**
+     * Filter transactions by the ID or foreign ID of the user that created the invoice that created the transaction.
+     */
+    creatorUserId?: Mercoa.EntityUserId | Mercoa.EntityUserId[];
     /**
      * Filter transactions by invoice ID.
      */

@@ -69,6 +69,7 @@ export class Transaction {
             lineItemGlAccountId,
             payerId,
             vendorId,
+            creatorUserId,
             invoiceId,
             transactionId,
             status,
@@ -171,6 +172,14 @@ export class Transaction {
             }
         }
 
+        if (creatorUserId != null) {
+            if (Array.isArray(creatorUserId)) {
+                _queryParams["creatorUserId"] = creatorUserId.map((item) => item);
+            } else {
+                _queryParams["creatorUserId"] = creatorUserId;
+            }
+        }
+
         if (invoiceId != null) {
             if (Array.isArray(invoiceId)) {
                 _queryParams["invoiceId"] = invoiceId.map((item) => item);
@@ -213,8 +222,8 @@ export class Transaction {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.6.1",
-                "User-Agent": "@mercoa/javascript/0.6.1",
+                "X-Fern-SDK-Version": "0.6.2",
+                "User-Agent": "@mercoa/javascript/0.6.2",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
@@ -354,8 +363,8 @@ export class Transaction {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.6.1",
-                "User-Agent": "@mercoa/javascript/0.6.1",
+                "X-Fern-SDK-Version": "0.6.2",
+                "User-Agent": "@mercoa/javascript/0.6.2",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
