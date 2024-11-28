@@ -17,6 +17,7 @@ export const TransactionResponse: core.serialization.Schema<
         bankAccountToBankAccount: TransactionResponseBankToBankWithInvoices,
         bankAccountToMailedCheck: TransactionResponseBankToMailedCheckWithInvoices,
         custom: TransactionResponseCustomWithInvoices,
+        offPlatform: TransactionResponseCustomWithInvoices,
     })
     .transform<Mercoa.TransactionResponse>({
         transform: (value) => value,
@@ -27,7 +28,8 @@ export declare namespace TransactionResponse {
     type Raw =
         | TransactionResponse.BankAccountToBankAccount
         | TransactionResponse.BankAccountToMailedCheck
-        | TransactionResponse.Custom;
+        | TransactionResponse.Custom
+        | TransactionResponse.OffPlatform;
 
     interface BankAccountToBankAccount extends TransactionResponseBankToBankWithInvoices.Raw {
         type: "bankAccountToBankAccount";
@@ -39,5 +41,9 @@ export declare namespace TransactionResponse {
 
     interface Custom extends TransactionResponseCustomWithInvoices.Raw {
         type: "custom";
+    }
+
+    interface OffPlatform extends TransactionResponseCustomWithInvoices.Raw {
+        type: "offPlatform";
     }
 }

@@ -7,7 +7,8 @@ import * as Mercoa from "../../../index";
 export type TransactionResponseWithoutInvoices =
     | Mercoa.TransactionResponseWithoutInvoices.BankAccountToBankAccount
     | Mercoa.TransactionResponseWithoutInvoices.BankAccountToMailedCheck
-    | Mercoa.TransactionResponseWithoutInvoices.Custom;
+    | Mercoa.TransactionResponseWithoutInvoices.Custom
+    | Mercoa.TransactionResponseWithoutInvoices.OffPlatform;
 
 export declare namespace TransactionResponseWithoutInvoices {
     interface BankAccountToBankAccount extends Mercoa.TransactionResponseBankToBankBase {
@@ -20,5 +21,9 @@ export declare namespace TransactionResponseWithoutInvoices {
 
     interface Custom extends Mercoa.TransactionResponseBase {
         type: "custom";
+    }
+
+    interface OffPlatform extends Mercoa.TransactionResponseBase {
+        type: "offPlatform";
     }
 }

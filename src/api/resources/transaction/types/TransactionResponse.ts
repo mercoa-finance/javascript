@@ -709,7 +709,8 @@ import * as Mercoa from "../../../index";
 export type TransactionResponse =
     | Mercoa.TransactionResponse.BankAccountToBankAccount
     | Mercoa.TransactionResponse.BankAccountToMailedCheck
-    | Mercoa.TransactionResponse.Custom;
+    | Mercoa.TransactionResponse.Custom
+    | Mercoa.TransactionResponse.OffPlatform;
 
 export declare namespace TransactionResponse {
     interface BankAccountToBankAccount extends Mercoa.TransactionResponseBankToBankWithInvoices {
@@ -722,5 +723,9 @@ export declare namespace TransactionResponse {
 
     interface Custom extends Mercoa.TransactionResponseCustomWithInvoices {
         type: "custom";
+    }
+
+    interface OffPlatform extends Mercoa.TransactionResponseCustomWithInvoices {
+        type: "offPlatform";
     }
 }

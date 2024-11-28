@@ -14,6 +14,8 @@ export const ColorSchemeRequest: core.serialization.ObjectSchema<
     secondaryColor: core.serialization.string().optional(),
     logoBackgroundColor: core.serialization.string().optional(),
     roundedCorners: core.serialization.number().optional(),
+    fontFamily: core.serialization.string().optional(),
+    fontSize: core.serialization.string().optional(),
 });
 
 export declare namespace ColorSchemeRequest {
@@ -22,5 +24,7 @@ export declare namespace ColorSchemeRequest {
         secondaryColor?: string | null;
         logoBackgroundColor?: string | null;
         roundedCorners?: number | null;
+        fontFamily?: string | null;
+        fontSize?: string | null;
     }
 }

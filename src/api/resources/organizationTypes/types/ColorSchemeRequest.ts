@@ -7,4 +7,6 @@ export interface ColorSchemeRequest {
     secondaryColor?: string;
     logoBackgroundColor?: string;
     roundedCorners?: number;
+    fontFamily?: string;
+    fontSize?: string;
 }

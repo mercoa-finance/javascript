@@ -7,8 +7,8 @@ import * as Mercoa from "../../../../api/index";
 import * as core from "../../../../core";
 
 export const TransactionType: core.serialization.Schema<serializers.TransactionType.Raw, Mercoa.TransactionType> =
-    core.serialization.enum_(["bankAccountToBankAccount", "bankAccountToMailedCheck", "custom"]);
+    core.serialization.enum_(["bankAccountToBankAccount", "bankAccountToMailedCheck", "custom", "offPlatform"]);
 
 export declare namespace TransactionType {
-    type Raw = "bankAccountToBankAccount" | "bankAccountToMailedCheck" | "custom";
+    type Raw = "bankAccountToBankAccount" | "bankAccountToMailedCheck" | "custom" | "offPlatform";
 }

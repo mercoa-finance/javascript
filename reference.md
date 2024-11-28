@@ -4422,6 +4422,8 @@ await client.organization.update({
         secondaryColor: "string",
         logoBackgroundColor: "string",
         roundedCorners: 1,
+        fontFamily: "string",
+        fontSize: "string",
     },
     payeeOnboardingOptions: {
         enableBusiness: true,
