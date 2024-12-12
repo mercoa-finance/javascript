@@ -6,6 +6,6 @@ import * as Mercoa from "../../../index";
 
 export interface MetadataFilter {
     key: string;
-    /** If multiple values are provided, the filter will match if any of the values match (OR filter) */
+    /** If multiple values are provided, the filter will match if any of the values match (OR filter). To filter for the absence of a key, use the value 'NULL'. */
     value: Mercoa.StringOrStringArray;
 }

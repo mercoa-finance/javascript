@@ -14,9 +14,13 @@ import * as Mercoa from "../../../../../../index";
  */
 export interface FindPayorCounterpartiesRequest {
     /**
-     * Filter by counterparty name
+     * Use search instead. Deprecated. Filter counterparties by name. Partial matches are supported.
      */
     name?: string;
+    /**
+     * Filter counterparties by name or email. Partial matches are supported.
+     */
+    search?: string;
     /**
      * Filter by network type. By default, only ENTITY counterparties are returned.
      */

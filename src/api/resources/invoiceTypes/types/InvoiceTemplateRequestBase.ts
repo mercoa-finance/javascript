@@ -45,4 +45,8 @@ export interface InvoiceTemplateRequestBase {
     batchPayment?: boolean;
     /** If this is a recurring invoice, this will be the payment schedule for the invoice. If not provided, this will be a one-time invoice. */
     paymentSchedule?: Mercoa.PaymentSchedule;
+    /** Tax amount for this invoice. */
+    taxAmount?: number;
+    /** Shipping amount for this invoice. */
+    shippingAmount?: number;
 }

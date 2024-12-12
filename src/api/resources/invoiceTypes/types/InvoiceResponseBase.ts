@@ -40,6 +40,10 @@ export interface InvoiceResponseBase {
     /** True if the invoice was created by an incoming email. */
     hasSourceEmail: boolean;
     lineItems?: Mercoa.InvoiceLineItemResponse[];
+    /** Tax amount for this invoice. */
+    taxAmount?: number;
+    /** Shipping amount for this invoice. */
+    shippingAmount?: number;
     approvers: Mercoa.ApprovalSlot[];
     approvalPolicy: Mercoa.ApprovalPolicyResponse[];
     /** Metadata associated with this invoice. */

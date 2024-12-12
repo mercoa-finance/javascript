@@ -174,6 +174,13 @@ import * as Mercoa from "../../../index";
  *                 printDescription: true
  *             },
  *             paymentDestinationConfirmed: true,
+ *             transactions: [{
+ *                     type: "bankAccountToBankAccount",
+ *                     id: "trx_bb08e72f-19f8-45f3-bcf9-46fdc46cb2f4",
+ *                     status: Mercoa.TransactionStatus.Completed,
+ *                     createdAt: "2024-01-01T00:00:00Z",
+ *                     updatedAt: "2024-01-01T00:00:00Z"
+ *                 }],
  *             hasDocuments: true,
  *             hasSourceEmail: true,
  *             comments: [{
@@ -440,6 +447,13 @@ import * as Mercoa from "../../../index";
  *                 printDescription: true
  *             },
  *             paymentDestinationConfirmed: true,
+ *             transactions: [{
+ *                     type: "bankAccountToBankAccount",
+ *                     id: "trx_bb08e72f-19f8-45f3-bcf9-46fdc46cb2f4",
+ *                     status: Mercoa.TransactionStatus.Completed,
+ *                     createdAt: "2024-01-01T00:00:00Z",
+ *                     updatedAt: "2024-01-01T00:00:00Z"
+ *                 }],
  *             hasDocuments: true,
  *             hasSourceEmail: true,
  *             comments: [{
@@ -706,6 +720,13 @@ import * as Mercoa from "../../../index";
  *                 printDescription: true
  *             },
  *             paymentDestinationConfirmed: true,
+ *             transactions: [{
+ *                     type: "bankAccountToBankAccount",
+ *                     id: "trx_bb08e72f-19f8-45f3-bcf9-46fdc46cb2f4",
+ *                     status: Mercoa.TransactionStatus.Completed,
+ *                     createdAt: "2024-01-01T00:00:00Z",
+ *                     updatedAt: "2024-01-01T00:00:00Z"
+ *                 }],
  *             hasDocuments: true,
  *             hasSourceEmail: true,
  *             comments: [{
@@ -1756,6 +1777,13 @@ import * as Mercoa from "../../../index";
  *             approvers: [],
  *             approvalPolicy: [],
  *             metadata: {},
+ *             transactions: [{
+ *                     type: "bankAccountToBankAccount",
+ *                     id: "trx_bb08e72f-19f8-45f3-bcf9-46fdc46cb2f4",
+ *                     status: Mercoa.TransactionStatus.Pending,
+ *                     createdAt: "2024-01-01T00:00:00Z",
+ *                     updatedAt: "2024-01-01T00:00:00Z"
+ *                 }],
  *             createdAt: "2021-01-01T00:00:00Z",
  *             updatedAt: "2021-01-01T00:00:00Z"
  *         },
@@ -2114,6 +2142,13 @@ import * as Mercoa from "../../../index";
  *             approvers: [],
  *             approvalPolicy: [],
  *             metadata: {},
+ *             transactions: [{
+ *                     type: "bankAccountToBankAccount",
+ *                     id: "trx_bb08e72f-19f8-45f3-bcf9-46fdc46cb2f4",
+ *                     status: Mercoa.TransactionStatus.Completed,
+ *                     createdAt: "2024-01-01T00:00:00Z",
+ *                     updatedAt: "2024-01-01T00:00:00Z"
+ *                 }],
  *             createdAt: "2021-01-01T00:00:00Z",
  *             updatedAt: "2021-01-01T00:00:00Z"
  *         },
@@ -2293,6 +2328,17 @@ import * as Mercoa from "../../../index";
  *             approvers: [],
  *             approvalPolicy: [],
  *             metadata: {},
+ *             transactions: [{
+ *                     type: "bankAccountToBankAccount",
+ *                     id: "trx_bb08e72f-19f8-45f3-bcf9-46fdc46cb2f4",
+ *                     status: Mercoa.TransactionStatus.Failed,
+ *                     failureReason: {
+ *                         code: "R01",
+ *                         description: "The source bank account does not have sufficient funds"
+ *                     },
+ *                     createdAt: "2024-01-01T00:00:00Z",
+ *                     updatedAt: "2024-01-01T00:00:00Z"
+ *                 }],
  *             createdAt: "2021-01-01T00:00:00Z",
  *             updatedAt: "2021-01-01T00:00:00Z"
  *         },

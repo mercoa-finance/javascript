@@ -3383,8 +3383,7 @@ await client.invoiceTemplate.create({
     deductionDate: "2021-01-10T00:00:00Z",
     paymentSchedule: {
         type: "monthly",
-        dayOffset: 10,
-        offsetType: "start",
+        repeatOnDay: 10,
         ends: "2021-01-01T00:00:00Z",
     },
     invoiceNumber: "INV-123",
@@ -6501,6 +6500,7 @@ await client.entity.customization.update("ent_a0f6ea94-0761-4a5e-a416-3c453cb7ec
         lineItemMetadata: true,
         lineItemGlAccountId: true,
         predictMetadata: true,
+        taxAndShippingAsLineItems: true,
     },
     notifications: {
         assumeRole: "admin",

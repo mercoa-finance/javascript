@@ -41,6 +41,8 @@ export const InvoiceTemplateRequestBase: core.serialization.ObjectSchema<
     fees: InvoiceFeesRequest.optional(),
     batchPayment: core.serialization.boolean().optional(),
     paymentSchedule: PaymentSchedule.optional(),
+    taxAmount: core.serialization.number().optional(),
+    shippingAmount: core.serialization.number().optional(),
 });
 
 export declare namespace InvoiceTemplateRequestBase {
@@ -67,5 +69,7 @@ export declare namespace InvoiceTemplateRequestBase {
         fees?: InvoiceFeesRequest.Raw | null;
         batchPayment?: boolean | null;
         paymentSchedule?: PaymentSchedule.Raw | null;
+        taxAmount?: number | null;
+        shippingAmount?: number | null;
     }
 }

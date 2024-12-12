@@ -37,9 +37,13 @@ export interface FindEntities {
      */
     isPayor?: boolean;
     /**
-     * Filter entities by name. Partial matches are supported.
+     * Use search instead. Deprecated. Filter entities by name. Partial matches are supported.
      */
     name?: string;
+    /**
+     * Find entities by name, email, or emailTo. Partial matches are supported.
+     */
+    search?: string;
     /**
      * Filter entities by simple key/value metadata. Each filter will be applied as an AND condition. Duplicate keys will be ignored.
      */

@@ -49,6 +49,8 @@ export const InvoiceResponseBase: core.serialization.ObjectSchema<
     hasDocuments: core.serialization.boolean(),
     hasSourceEmail: core.serialization.boolean(),
     lineItems: core.serialization.list(InvoiceLineItemResponse).optional(),
+    taxAmount: core.serialization.number().optional(),
+    shippingAmount: core.serialization.number().optional(),
     approvers: core.serialization.list(ApprovalSlot),
     approvalPolicy: core.serialization.list(ApprovalPolicyResponse),
     metadata: core.serialization.record(core.serialization.string(), core.serialization.string()),
@@ -88,6 +90,8 @@ export declare namespace InvoiceResponseBase {
         hasDocuments: boolean;
         hasSourceEmail: boolean;
         lineItems?: InvoiceLineItemResponse.Raw[] | null;
+        taxAmount?: number | null;
+        shippingAmount?: number | null;
         approvers: ApprovalSlot.Raw[];
         approvalPolicy: ApprovalPolicyResponse.Raw[];
         metadata: Record<string, string>;

@@ -48,6 +48,8 @@ export const InvoiceRequestBase: core.serialization.ObjectSchema<
     batchPayment: core.serialization.boolean().optional(),
     paymentSchedule: PaymentSchedule.optional(),
     vendorCreditIds: core.serialization.list(VendorCreditId).optional(),
+    taxAmount: core.serialization.number().optional(),
+    shippingAmount: core.serialization.number().optional(),
 });
 
 export declare namespace InvoiceRequestBase {
@@ -79,5 +81,7 @@ export declare namespace InvoiceRequestBase {
         batchPayment?: boolean | null;
         paymentSchedule?: PaymentSchedule.Raw | null;
         vendorCreditIds?: VendorCreditId.Raw[] | null;
+        taxAmount?: number | null;
+        shippingAmount?: number | null;
     }
 }

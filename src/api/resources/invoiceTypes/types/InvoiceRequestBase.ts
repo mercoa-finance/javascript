@@ -55,4 +55,8 @@ export interface InvoiceRequestBase {
     paymentSchedule?: Mercoa.PaymentSchedule;
     /** The IDs of the vendor credits to be applied to this invoice. Passing this field will un-apply any previously applied vendor credits. */
     vendorCreditIds?: Mercoa.VendorCreditId[];
+    /** Tax amount for this invoice. */
+    taxAmount?: number;
+    /** Shipping amount for this invoice. */
+    shippingAmount?: number;
 }

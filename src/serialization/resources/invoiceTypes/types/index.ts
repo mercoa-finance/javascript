@@ -52,7 +52,6 @@ export * from "./PaymentScheduleEndCondition";
 export * from "./PaymentScheduleBase";
 export * from "./DayOfWeek";
 export * from "./PaymentWeekSchedule";
-export * from "./PaymentMonthRepeatType";
 export * from "./PaymentMonthSchedule";
 export * from "./PaymentYearSchedule";
 export * from "./PaymentSchedule";

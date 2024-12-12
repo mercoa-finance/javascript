@@ -62,6 +62,7 @@ export class Counterparty {
     ): Promise<Mercoa.FindCounterpartiesResponse> {
         const {
             name,
+            search,
             networkType,
             paymentMethods,
             invoiceMetrics,
@@ -74,6 +75,10 @@ export class Counterparty {
         const _queryParams: Record<string, string | string[] | object | object[]> = {};
         if (name != null) {
             _queryParams["name"] = name;
+        }
+
+        if (search != null) {
+            _queryParams["search"] = search;
         }
 
         if (networkType != null) {
@@ -148,8 +153,8 @@ export class Counterparty {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.6.3",
-                "User-Agent": "@mercoa/javascript/0.6.3",
+                "X-Fern-SDK-Version": "0.6.4",
+                "User-Agent": "@mercoa/javascript/0.6.4",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
@@ -287,6 +292,7 @@ export class Counterparty {
     ): Promise<Mercoa.FindCounterpartiesResponse> {
         const {
             name,
+            search,
             networkType,
             paymentMethods,
             invoiceMetrics,
@@ -299,6 +305,10 @@ export class Counterparty {
         const _queryParams: Record<string, string | string[] | object | object[]> = {};
         if (name != null) {
             _queryParams["name"] = name;
+        }
+
+        if (search != null) {
+            _queryParams["search"] = search;
         }
 
         if (networkType != null) {
@@ -373,8 +383,8 @@ export class Counterparty {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.6.3",
-                "User-Agent": "@mercoa/javascript/0.6.3",
+                "X-Fern-SDK-Version": "0.6.4",
+                "User-Agent": "@mercoa/javascript/0.6.4",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
@@ -526,8 +536,8 @@ export class Counterparty {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.6.3",
-                "User-Agent": "@mercoa/javascript/0.6.3",
+                "X-Fern-SDK-Version": "0.6.4",
+                "User-Agent": "@mercoa/javascript/0.6.4",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
@@ -666,8 +676,8 @@ export class Counterparty {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.6.3",
-                "User-Agent": "@mercoa/javascript/0.6.3",
+                "X-Fern-SDK-Version": "0.6.4",
+                "User-Agent": "@mercoa/javascript/0.6.4",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
@@ -814,8 +824,8 @@ export class Counterparty {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.6.3",
-                "User-Agent": "@mercoa/javascript/0.6.3",
+                "X-Fern-SDK-Version": "0.6.4",
+                "User-Agent": "@mercoa/javascript/0.6.4",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
@@ -954,8 +964,8 @@ export class Counterparty {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.6.3",
-                "User-Agent": "@mercoa/javascript/0.6.3",
+                "X-Fern-SDK-Version": "0.6.4",
+                "User-Agent": "@mercoa/javascript/0.6.4",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,

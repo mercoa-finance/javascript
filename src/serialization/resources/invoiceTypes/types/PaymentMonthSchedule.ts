@@ -5,7 +5,6 @@
 import * as serializers from "../../../index";
 import * as Mercoa from "../../../../api/index";
 import * as core from "../../../../core";
-import { PaymentMonthRepeatType } from "./PaymentMonthRepeatType";
 import { PaymentScheduleBase } from "./PaymentScheduleBase";
 
 export const PaymentMonthSchedule: core.serialization.ObjectSchema<
@@ -13,14 +12,14 @@ export const PaymentMonthSchedule: core.serialization.ObjectSchema<
     Mercoa.PaymentMonthSchedule
 > = core.serialization
     .object({
-        dayOffset: core.serialization.number(),
-        offsetType: PaymentMonthRepeatType.optional(),
+        dayOffset: core.serialization.number().optional(),
+        repeatOnDay: core.serialization.number(),
     })
     .extend(PaymentScheduleBase);
 
 export declare namespace PaymentMonthSchedule {
     interface Raw extends PaymentScheduleBase.Raw {
-        dayOffset: number;
-        offsetType?: PaymentMonthRepeatType.Raw | null;
+        dayOffset?: number | null;
+        repeatOnDay: number;
     }
 }

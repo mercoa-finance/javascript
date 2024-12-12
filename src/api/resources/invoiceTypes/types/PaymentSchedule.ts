@@ -26,8 +26,7 @@ import * as Mercoa from "../../../index";
  * @example
  *     {
  *         type: "monthly",
- *         dayOffset: 10,
- *         offsetType: Mercoa.PaymentMonthRepeatType.Start,
+ *         repeatOnDay: 10,
  *         ends: "2021-01-01T00:00:00Z"
  *     }
  *

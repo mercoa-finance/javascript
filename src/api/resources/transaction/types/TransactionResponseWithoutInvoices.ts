@@ -4,6 +4,48 @@
 
 import * as Mercoa from "../../../index";
 
+/**
+ * @example
+ *     {
+ *         type: "bankAccountToBankAccount",
+ *         id: "trx_bb08e72f-19f8-45f3-bcf9-46fdc46cb2f4",
+ *         status: Mercoa.TransactionStatus.Pending,
+ *         createdAt: "2024-01-01T00:00:00Z",
+ *         updatedAt: "2024-01-01T00:00:00Z"
+ *     }
+ *
+ * @example
+ *     {
+ *         type: "bankAccountToBankAccount",
+ *         id: "trx_bb08e72f-19f8-45f3-bcf9-46fdc46cb2f4",
+ *         status: Mercoa.TransactionStatus.Completed,
+ *         createdAt: "2024-01-01T00:00:00Z",
+ *         updatedAt: "2024-01-01T00:00:00Z"
+ *     }
+ *
+ * @example
+ *     {
+ *         type: "bankAccountToBankAccount",
+ *         id: "trx_bb08e72f-19f8-45f3-bcf9-46fdc46cb2f4",
+ *         status: Mercoa.TransactionStatus.Failed,
+ *         failureReason: {
+ *             code: "R01",
+ *             description: "The source bank account does not have sufficient funds"
+ *         },
+ *         createdAt: "2024-01-01T00:00:00Z",
+ *         updatedAt: "2024-01-01T00:00:00Z"
+ *     }
+ *
+ * @example
+ *     {
+ *         type: "bankAccountToMailedCheck",
+ *         id: "trx_bb08e72f-19f8-45f3-bcf9-46fdc46cb2f4",
+ *         checkNumber: 4005,
+ *         status: Mercoa.TransactionStatus.Completed,
+ *         createdAt: "2024-01-01T00:00:00Z",
+ *         updatedAt: "2024-01-01T00:00:00Z"
+ *     }
+ */
 export type TransactionResponseWithoutInvoices =
     | Mercoa.TransactionResponseWithoutInvoices.BankAccountToBankAccount
     | Mercoa.TransactionResponseWithoutInvoices.BankAccountToMailedCheck

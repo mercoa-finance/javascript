@@ -15,8 +15,7 @@ import * as Mercoa from "../../../index";
  *         deductionDate: "2021-01-10T00:00:00Z",
  *         paymentSchedule: {
  *             type: "monthly",
- *             dayOffset: 10,
- *             offsetType: Mercoa.PaymentMonthRepeatType.Start,
+ *             repeatOnDay: 10,
  *             ends: "2021-01-01T00:00:00Z"
  *         },
  *         invoiceNumber: "INV-123",

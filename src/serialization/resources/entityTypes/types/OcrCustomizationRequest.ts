@@ -15,6 +15,7 @@ export const OcrCustomizationRequest: core.serialization.ObjectSchema<
     lineItemMetadata: core.serialization.boolean().optional(),
     lineItemGlAccountId: core.serialization.boolean().optional(),
     predictMetadata: core.serialization.boolean().optional(),
+    taxAndShippingAsLineItems: core.serialization.boolean().optional(),
 });
 
 export declare namespace OcrCustomizationRequest {
@@ -24,5 +25,6 @@ export declare namespace OcrCustomizationRequest {
         lineItemMetadata?: boolean | null;
         lineItemGlAccountId?: boolean | null;
         predictMetadata?: boolean | null;
+        taxAndShippingAsLineItems?: boolean | null;
     }
 }

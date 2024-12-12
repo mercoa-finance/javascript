@@ -9,7 +9,8 @@
  *         invoiceMetadata: true,
  *         lineItemMetadata: true,
  *         lineItemGlAccountId: true,
- *         predictMetadata: true
+ *         predictMetadata: true,
+ *         taxAndShippingAsLineItems: true
  *     }
  */
 export interface OcrCustomizationRequest {
@@ -23,4 +24,6 @@ export interface OcrCustomizationRequest {
     lineItemGlAccountId?: boolean;
     /** Use AI to predict metadata from historical data. Defaults to true. */
     predictMetadata?: boolean;
+    /** Pull tax and shipping information as line items. Defaults to true. If false, tax and shipping will extracted as invoice level fields. */
+    taxAndShippingAsLineItems?: boolean;
 }
