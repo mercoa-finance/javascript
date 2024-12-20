@@ -10,13 +10,13 @@ export const PlaidPublicTokenRequest: core.serialization.ObjectSchema<
     serializers.PlaidPublicTokenRequest.Raw,
     Mercoa.PlaidPublicTokenRequest
 > = core.serialization.object({
-    accountId: core.serialization.string(),
+    accountId: core.serialization.string().optional(),
     publicToken: core.serialization.string(),
 });
 
 export declare namespace PlaidPublicTokenRequest {
     interface Raw {
-        accountId: string;
+        accountId?: string | null;
         publicToken: string;
     }
 }

@@ -5,7 +5,6 @@
 import * as serializers from "../../../index";
 import * as Mercoa from "../../../../api/index";
 import * as core from "../../../../core";
-import { InvoiceLineItemCategory } from "./InvoiceLineItemCategory";
 
 export const InvoiceLineItemIndividualUpdateRequest: core.serialization.ObjectSchema<
     serializers.InvoiceLineItemIndividualUpdateRequest.Raw,
@@ -13,7 +12,7 @@ export const InvoiceLineItemIndividualUpdateRequest: core.serialization.ObjectSc
 > = core.serialization.object({
     name: core.serialization.string().optional(),
     description: core.serialization.string().optional(),
-    category: InvoiceLineItemCategory.optional(),
+    category: core.serialization.string().optional(),
     serviceStartDate: core.serialization.date().optional(),
     serviceEndDate: core.serialization.date().optional(),
     metadata: core.serialization.record(core.serialization.string(), core.serialization.string()).optional(),
@@ -24,7 +23,7 @@ export declare namespace InvoiceLineItemIndividualUpdateRequest {
     interface Raw {
         name?: string | null;
         description?: string | null;
-        category?: InvoiceLineItemCategory.Raw | null;
+        category?: string | null;
         serviceStartDate?: string | null;
         serviceEndDate?: string | null;
         metadata?: Record<string, string> | null;

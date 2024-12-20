@@ -43,6 +43,9 @@ import * as Mercoa from "../../../index";
  *         },
  *         notifications: {
  *             assumeRole: "admin"
+ *         },
+ *         workflow: {
+ *             autoAdvanceInvoiceStatus: true
  *         }
  *     }
  */
@@ -53,4 +56,5 @@ export interface EntityCustomizationRequest {
     paymentDestination?: Mercoa.PaymentMethodCustomizationRequest[];
     ocr?: Mercoa.OcrCustomizationRequest;
     notifications?: Mercoa.NotificationCustomizationRequest;
+    workflow?: Mercoa.WorkflowCustomizationRequest;
 }

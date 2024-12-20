@@ -5,38 +5,12 @@
 import * as serializers from "../../../index";
 import * as Mercoa from "../../../../api/index";
 import * as core from "../../../../core";
-import { AccountType } from "./AccountType";
-import { ProfileRequest } from "./ProfileRequest";
+import { EntityCreationRequest } from "./EntityCreationRequest";
+import { EntityCloneRequest } from "./EntityCloneRequest";
 
-export const EntityRequest: core.serialization.ObjectSchema<serializers.EntityRequest.Raw, Mercoa.EntityRequest> =
-    core.serialization.object({
-        foreignId: core.serialization.string().optional(),
-        emailTo: core.serialization.string().optional(),
-        emailToAlias: core.serialization.list(core.serialization.string()).optional(),
-        isCustomer: core.serialization.boolean(),
-        accountType: AccountType,
-        profile: ProfileRequest,
-        isPayor: core.serialization.boolean(),
-        isPayee: core.serialization.boolean(),
-        isNetworkPayor: core.serialization.boolean().optional(),
-        isNetworkPayee: core.serialization.boolean().optional(),
-        logo: core.serialization.string().optional(),
-        metadata: core.serialization.record(core.serialization.string(), core.serialization.string()).optional(),
-    });
+export const EntityRequest: core.serialization.Schema<serializers.EntityRequest.Raw, Mercoa.EntityRequest> =
+    core.serialization.undiscriminatedUnion([EntityCreationRequest, EntityCloneRequest]);
 
 export declare namespace EntityRequest {
-    interface Raw {
-        foreignId?: string | null;
-        emailTo?: string | null;
-        emailToAlias?: string[] | null;
-        isCustomer: boolean;
-        accountType: AccountType.Raw;
-        profile: ProfileRequest.Raw;
-        isPayor: boolean;
-        isPayee: boolean;
-        isNetworkPayor?: boolean | null;
-        isNetworkPayee?: boolean | null;
-        logo?: string | null;
-        metadata?: Record<string, string> | null;
-    }
+    type Raw = EntityCreationRequest.Raw | EntityCloneRequest.Raw;
 }

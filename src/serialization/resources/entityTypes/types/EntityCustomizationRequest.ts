@@ -9,6 +9,7 @@ import { MetadataCustomizationRequest } from "./MetadataCustomizationRequest";
 import { PaymentMethodCustomizationRequest } from "./PaymentMethodCustomizationRequest";
 import { OcrCustomizationRequest } from "./OcrCustomizationRequest";
 import { NotificationCustomizationRequest } from "./NotificationCustomizationRequest";
+import { WorkflowCustomizationRequest } from "./WorkflowCustomizationRequest";
 
 export const EntityCustomizationRequest: core.serialization.ObjectSchema<
     serializers.EntityCustomizationRequest.Raw,
@@ -20,6 +21,7 @@ export const EntityCustomizationRequest: core.serialization.ObjectSchema<
     paymentDestination: core.serialization.list(PaymentMethodCustomizationRequest).optional(),
     ocr: OcrCustomizationRequest.optional(),
     notifications: NotificationCustomizationRequest.optional(),
+    workflow: WorkflowCustomizationRequest.optional(),
 });
 
 export declare namespace EntityCustomizationRequest {
@@ -30,5 +32,6 @@ export declare namespace EntityCustomizationRequest {
         paymentDestination?: PaymentMethodCustomizationRequest.Raw[] | null;
         ocr?: OcrCustomizationRequest.Raw | null;
         notifications?: NotificationCustomizationRequest.Raw | null;
+        workflow?: WorkflowCustomizationRequest.Raw | null;
     }
 }

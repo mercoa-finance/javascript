@@ -55,28 +55,11 @@ import * as Mercoa from "../../../index";
  *             }
  *         }
  *     }
+ *
+ * @example
+ *     {
+ *         createFromId: "ent_8545a84e-a45f-41bf-bdf1-33b42a55812c",
+ *         foreignId: "MY-DB-ID-12345"
+ *     }
  */
-export interface EntityRequest {
-    /** The ID used to identify this entity in your system. This ID must be unique across all entities in your system. */
-    foreignId?: string;
-    /** Sets the email address to which to send invoices to be added to the Invoice Inbox. Only provide the local-part/username of the email address, do not include the @domain.com */
-    emailTo?: string;
-    /** Email inbox alias addresses. Used when forwarding emails to the emailTo address from an alias. Include the full email address. */
-    emailToAlias?: string[];
-    /** If this entity has a direct relationship with your organization (e.g your direct customer or client), set this to true. Otherwise, set to false (e.g your customer's vendors). */
-    isCustomer: boolean;
-    accountType: Mercoa.AccountType;
-    profile: Mercoa.ProfileRequest;
-    /** If this entity will be paying invoices, set this to true. */
-    isPayor: boolean;
-    /** If this entity will be receiving payments, set this to true. */
-    isPayee: boolean;
-    /** Control if this entity should be available as a payor to any entity on your platform. If set to false, this entity will only be available as a payor to entities that have a direct relationship with this entity. Defaults to false. */
-    isNetworkPayor?: boolean;
-    /** Control if this entity should be available as a payee to any entity on your platform. If set to false, this entity will only be available as a payee to entities that have a direct relationship with this entity. Defaults to false. */
-    isNetworkPayee?: boolean;
-    /** Base64 encoded PNG image data for the entity logo. Max size 100KB. */
-    logo?: string;
-    /** Simple key/value metadata associated with this entity. For more complex metadata, use the Metadata API. */
-    metadata?: Record<string, string>;
-}
+export type EntityRequest = Mercoa.EntityCreationRequest | Mercoa.EntityCloneRequest;

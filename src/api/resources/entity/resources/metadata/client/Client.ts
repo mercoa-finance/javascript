@@ -63,8 +63,8 @@ export class Metadata {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.6.4",
-                "User-Agent": "@mercoa/javascript/0.6.4",
+                "X-Fern-SDK-Version": "0.6.5",
+                "User-Agent": "@mercoa/javascript/0.6.5",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
@@ -210,8 +210,8 @@ export class Metadata {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.6.4",
-                "User-Agent": "@mercoa/javascript/0.6.4",
+                "X-Fern-SDK-Version": "0.6.5",
+                "User-Agent": "@mercoa/javascript/0.6.5",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
@@ -340,6 +340,12 @@ export class Metadata {
      *
      * @example
      *     await client.entity.metadata.update("ent_a0f6ea94-0761-4a5e-a416-3c453cb7eced", "projectId", ["proj_123", "proj_456"])
+     *
+     * @example
+     *     await client.entity.metadata.update("ent_a0f6ea94-0761-4a5e-a416-3c453cb7eced", "glAccountId", ["{key: '60205', value: '60205 Marketing Expense'}", "{key: '60215', value: '60215 Office Expense'}", "{key: '60225', value: '60225 Payroll Expense'}", "{key: '60550', value: '60550 Rent Expense'}"])
+     *
+     * @example
+     *     await client.entity.metadata.update("ent_a0f6ea94-0761-4a5e-a416-3c453cb7eced", "glAccountId", ["{key: '60205', value: {value: '60205 Marketing Expense', subtitle: 'Expense'}}", "{key: '60215', value: {value: '60215 Office Expense', subtitle: 'Expense'}}", "{key: '60225', value: {value: '60225 Payroll Expense', subtitle: 'Expense'}}", "{key: '60550', value: {value: '60550 Rent Expense', subtitle: 'Expense'}}"])
      */
     public async update(
         entityId: Mercoa.EntityId,
@@ -359,8 +365,8 @@ export class Metadata {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.6.4",
-                "User-Agent": "@mercoa/javascript/0.6.4",
+                "X-Fern-SDK-Version": "0.6.5",
+                "User-Agent": "@mercoa/javascript/0.6.5",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
@@ -504,8 +510,8 @@ export class Metadata {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.6.4",
-                "User-Agent": "@mercoa/javascript/0.6.4",
+                "X-Fern-SDK-Version": "0.6.5",
+                "User-Agent": "@mercoa/javascript/0.6.5",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,

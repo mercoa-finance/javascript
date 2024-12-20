@@ -3,8 +3,8 @@
  */
 
 export interface PlaidPublicTokenRequest {
-    /** Plaid account ID */
-    accountId: string;
+    /** Plaid account ID. If not provided, will try to match the provided routing number and account number. */
+    accountId?: string;
     /** Public token received from Plaid Link. Use this if linking the account using the Plaid Link frontend component. */
     publicToken: string;
 }

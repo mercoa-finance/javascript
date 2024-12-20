@@ -14,7 +14,7 @@ import * as Mercoa from "../../../index";
  *         name: "Product A",
  *         quantity: 1,
  *         unitPrice: 100,
- *         category: Mercoa.InvoiceLineItemCategory.Expense,
+ *         category: "EXPENSE",
  *         serviceStartDate: "2021-01-01T00:00:00Z",
  *         serviceEndDate: "2021-01-31T00:00:00Z",
  *         metadata: {
@@ -36,7 +36,8 @@ export interface InvoiceLineItemResponse {
     quantity?: number;
     /** Unit price of line item in major units. */
     unitPrice?: number;
-    category: Mercoa.InvoiceLineItemCategory;
+    /** Category of the line item. Defaults to 'EXPENSE'. */
+    category: string;
     serviceStartDate?: Date;
     serviceEndDate?: Date;
     metadata?: Record<string, string>;

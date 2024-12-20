@@ -212,7 +212,7 @@ import * as Mercoa from "../../../index";
  *                         name: "Product A",
  *                         quantity: 1,
  *                         unitPrice: 100,
- *                         category: Mercoa.InvoiceLineItemCategory.Expense,
+ *                         category: "EXPENSE",
  *                         serviceStartDate: "2021-01-01T00:00:00Z",
  *                         serviceEndDate: "2021-01-31T00:00:00Z",
  *                         metadata: {
@@ -480,7 +480,7 @@ import * as Mercoa from "../../../index";
  *                         name: "Product A",
  *                         quantity: 1,
  *                         unitPrice: 100,
- *                         category: Mercoa.InvoiceLineItemCategory.Expense,
+ *                         category: "EXPENSE",
  *                         serviceStartDate: "2021-01-01T00:00:00Z",
  *                         serviceEndDate: "2021-01-31T00:00:00Z",
  *                         metadata: {
@@ -938,7 +938,7 @@ import * as Mercoa from "../../../index";
  *                         name: "Product A",
  *                         quantity: 1,
  *                         unitPrice: 100,
- *                         category: Mercoa.InvoiceLineItemCategory.Expense,
+ *                         category: "EXPENSE",
  *                         serviceStartDate: "2021-01-01T00:00:00Z",
  *                         serviceEndDate: "2021-01-31T00:00:00Z",
  *                         metadata: {

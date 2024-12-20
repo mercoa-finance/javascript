@@ -6505,6 +6505,9 @@ await client.entity.customization.update("ent_a0f6ea94-0761-4a5e-a416-3c453cb7ec
     notifications: {
         assumeRole: "admin",
     },
+    workflow: {
+        autoAdvanceInvoiceStatus: true,
+    },
 });
 ```
 

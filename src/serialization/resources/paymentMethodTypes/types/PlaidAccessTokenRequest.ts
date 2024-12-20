@@ -10,13 +10,13 @@ export const PlaidAccessTokenRequest: core.serialization.ObjectSchema<
     serializers.PlaidAccessTokenRequest.Raw,
     Mercoa.PlaidAccessTokenRequest
 > = core.serialization.object({
-    accountId: core.serialization.string(),
+    accountId: core.serialization.string().optional(),
     accessToken: core.serialization.string(),
 });
 
 export declare namespace PlaidAccessTokenRequest {
     interface Raw {
-        accountId: string;
+        accountId?: string | null;
         accessToken: string;
     }
 }
