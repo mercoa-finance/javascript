@@ -61,8 +61,8 @@ export class NotificationConfiguration {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.6.5",
-                "User-Agent": "@mercoa/javascript/0.6.5",
+                "X-Fern-SDK-Version": "0.6.6",
+                "User-Agent": "@mercoa/javascript/0.6.6",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
@@ -203,8 +203,8 @@ export class NotificationConfiguration {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.6.5",
-                "User-Agent": "@mercoa/javascript/0.6.5",
+                "X-Fern-SDK-Version": "0.6.6",
+                "User-Agent": "@mercoa/javascript/0.6.6",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
@@ -330,7 +330,7 @@ export class NotificationConfiguration {
      * @example
      *     await client.organization.notificationConfiguration.update("INVOICE_APPROVAL_NEEDED", {
      *         notificationType: "invoice",
-     *         url: "string"
+     *         url: "url"
      *     })
      */
     public async update(
@@ -350,8 +350,8 @@ export class NotificationConfiguration {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.6.5",
-                "User-Agent": "@mercoa/javascript/0.6.5",
+                "X-Fern-SDK-Version": "0.6.6",
+                "User-Agent": "@mercoa/javascript/0.6.6",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
@@ -495,8 +495,8 @@ export class NotificationConfiguration {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.6.5",
-                "User-Agent": "@mercoa/javascript/0.6.5",
+                "X-Fern-SDK-Version": "0.6.6",
+                "User-Agent": "@mercoa/javascript/0.6.6",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,

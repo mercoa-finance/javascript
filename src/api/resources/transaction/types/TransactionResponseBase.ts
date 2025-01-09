@@ -7,6 +7,18 @@ import * as Mercoa from "../../../index";
 export interface TransactionResponseBase {
     id: Mercoa.TransactionId;
     status: Mercoa.TransactionStatus;
+    amount: number;
+    currency: string;
+    payerId: Mercoa.EntityId;
+    payer: Mercoa.CounterpartyResponse;
+    paymentSource: Mercoa.PaymentMethodResponse;
+    paymentSourceId: Mercoa.PaymentMethodId;
+    vendorId: Mercoa.EntityId;
+    vendor: Mercoa.CounterpartyResponse;
+    paymentDestination: Mercoa.PaymentMethodResponse;
+    paymentDestinationId: Mercoa.PaymentMethodId;
+    paymentDestinationOptions?: Mercoa.PaymentDestinationOptions;
+    fees?: Mercoa.InvoiceFeesResponse;
     createdAt: Date;
     updatedAt: Date;
 }

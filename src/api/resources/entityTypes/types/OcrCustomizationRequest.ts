@@ -6,6 +6,7 @@
  * @example
  *     {
  *         lineItems: true,
+ *         collapseLineItems: true,
  *         invoiceMetadata: true,
  *         lineItemMetadata: true,
  *         lineItemGlAccountId: true,
@@ -16,6 +17,8 @@
 export interface OcrCustomizationRequest {
     /** Extract line items from the invoice. Defaults to true. */
     lineItems?: boolean;
+    /** If true, the line items will be collapsed into a single line item. Defaults to false. */
+    collapseLineItems?: boolean;
     /** Pull custom metadata at the invoice level. Defaults to true. */
     invoiceMetadata?: boolean;
     /** Pull custom metadata at the line item level. Defaults to true. */

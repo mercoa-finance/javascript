@@ -87,7 +87,7 @@ export interface EntityGetInvoicesRequest {
      */
     approverAction?: Mercoa.ApproverAction | Mercoa.ApproverAction[];
     /**
-     * Filter invoices by invoice ID.
+     * Filter invoices by invoice ID or invoice foreign ID.
      */
     invoiceId?: Mercoa.InvoiceId | Mercoa.InvoiceId[];
     /**

@@ -57,3 +57,6 @@ export * from "./PaymentSchedule";
 export * from "./PaymentType";
 export * from "./InvoiceEvent";
 export * from "./InvoiceEventsResponse";
+export * from "./BulkInvoiceCreationRequest";
+export * from "./BulkInvoiceCreationFromObjectResponse";
+export * from "./BulkInvoiceCreationResponse";

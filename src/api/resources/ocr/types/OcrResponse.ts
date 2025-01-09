@@ -7,6 +7,7 @@ import * as Mercoa from "../../../index";
 /**
  * @example
  *     {
+ *         jobId: "ocr_8f86116b-3b4d-4ded-99ef-3bc929d8c33c",
  *         invoice: {
  *             id: "in_26e7b5d3-a739-4b23-9ad9-6aaa085f47a9",
  *             status: Mercoa.InvoiceStatus.Draft,
@@ -236,6 +237,7 @@ import * as Mercoa from "../../../index";
  *     }
  */
 export interface OcrResponse {
+    jobId: Mercoa.OcrJobId;
     invoice: Mercoa.InvoiceResponse;
     vendor: Mercoa.CounterpartyResponse;
     check?: Mercoa.CheckResponse;

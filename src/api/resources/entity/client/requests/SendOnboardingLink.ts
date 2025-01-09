@@ -7,9 +7,7 @@ import * as Mercoa from "../../../../index";
 /**
  * @example
  *     {
- *         type: "PAYEE",
- *         expiresIn: "string",
- *         connectedEntityId: "string"
+ *         type: "PAYEE"
  *     }
  */
 export interface SendOnboardingLink {

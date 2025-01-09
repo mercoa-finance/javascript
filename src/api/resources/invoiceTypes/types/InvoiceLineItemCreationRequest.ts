@@ -25,6 +25,6 @@ import * as Mercoa from "../../../index";
  */
 export interface InvoiceLineItemCreationRequest extends Mercoa.InvoiceLineItemRequestBase {
     /** Total amount of line item in major units. If the entered amount has more decimal places than the currency supports, trailing decimals will be truncated. */
-    amount: number;
-    description: string;
+    amount?: number;
+    description?: string;
 }

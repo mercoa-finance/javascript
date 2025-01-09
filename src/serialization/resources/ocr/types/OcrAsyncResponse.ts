@@ -5,16 +5,17 @@
 import * as serializers from "../../../index";
 import * as Mercoa from "../../../../api/index";
 import * as core from "../../../../core";
+import { OcrJobId } from "./OcrJobId";
 
 export const OcrAsyncResponse: core.serialization.ObjectSchema<
     serializers.OcrAsyncResponse.Raw,
     Mercoa.OcrAsyncResponse
 > = core.serialization.object({
-    jobId: core.serialization.string(),
+    jobId: OcrJobId,
 });
 
 export declare namespace OcrAsyncResponse {
     interface Raw {
-        jobId: string;
+        jobId: OcrJobId.Raw;
     }
 }

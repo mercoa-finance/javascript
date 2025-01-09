@@ -19,6 +19,7 @@ import { EntityUserResponse } from "../../entityTypes/types/EntityUserResponse";
 import { CommentResponse } from "./CommentResponse";
 import { InvoiceFeesResponse } from "./InvoiceFeesResponse";
 import { PaymentSchedule } from "./PaymentSchedule";
+import { OcrJobId } from "../../ocr/types/OcrJobId";
 
 export const InvoiceResponseBase: core.serialization.ObjectSchema<
     serializers.InvoiceResponseBase.Raw,
@@ -61,6 +62,7 @@ export const InvoiceResponseBase: core.serialization.ObjectSchema<
     comments: core.serialization.list(CommentResponse).optional(),
     fees: InvoiceFeesResponse.optional(),
     paymentSchedule: PaymentSchedule.optional(),
+    ocrJobId: OcrJobId.optional(),
 });
 
 export declare namespace InvoiceResponseBase {
@@ -102,5 +104,6 @@ export declare namespace InvoiceResponseBase {
         comments?: CommentResponse.Raw[] | null;
         fees?: InvoiceFeesResponse.Raw | null;
         paymentSchedule?: PaymentSchedule.Raw | null;
+        ocrJobId?: OcrJobId.Raw | null;
     }
 }

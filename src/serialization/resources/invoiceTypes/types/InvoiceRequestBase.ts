@@ -16,6 +16,7 @@ import { InvoiceFailureType } from "./InvoiceFailureType";
 import { InvoiceFeesRequest } from "./InvoiceFeesRequest";
 import { PaymentSchedule } from "./PaymentSchedule";
 import { VendorCreditId } from "../../vendorCreditTypes/types/VendorCreditId";
+import { OcrJobId } from "../../ocr/types/OcrJobId";
 
 export const InvoiceRequestBase: core.serialization.ObjectSchema<
     serializers.InvoiceRequestBase.Raw,
@@ -50,6 +51,7 @@ export const InvoiceRequestBase: core.serialization.ObjectSchema<
     vendorCreditIds: core.serialization.list(VendorCreditId).optional(),
     taxAmount: core.serialization.number().optional(),
     shippingAmount: core.serialization.number().optional(),
+    ocrJobId: OcrJobId.optional(),
 });
 
 export declare namespace InvoiceRequestBase {
@@ -83,5 +85,6 @@ export declare namespace InvoiceRequestBase {
         vendorCreditIds?: VendorCreditId.Raw[] | null;
         taxAmount?: number | null;
         shippingAmount?: number | null;
+        ocrJobId?: OcrJobId.Raw | null;
     }
 }

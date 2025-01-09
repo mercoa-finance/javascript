@@ -307,7 +307,7 @@ Delete an entity group
 <dd>
 
 ```typescript
-await client.entityGroup.delete("string");
+await client.entityGroup.delete("entityGroupId");
 ```
 
 </dd>
@@ -915,7 +915,7 @@ Delete entity user from all entities in the group. This will also remove the use
 <dd>
 
 ```typescript
-await client.entityGroup.user.delete("string", "string");
+await client.entityGroup.user.delete("entityGroupId", "foreignId");
 ```
 
 </dd>
@@ -1358,7 +1358,7 @@ Will archive the entity. This action cannot be undone, and the entity will no lo
 <dd>
 
 ```typescript
-await client.entity.delete("string");
+await client.entity.delete("entityId");
 ```
 
 </dd>
@@ -1771,10 +1771,8 @@ Send an email with a onboarding link to the entity. The email will be sent to th
 <dd>
 
 ```typescript
-await client.entity.sendOnboardingLink("string", {
+await client.entity.sendOnboardingLink("entityId", {
     type: "PAYEE",
-    expiresIn: "string",
-    connectedEntityId: "string",
 });
 ```
 
@@ -3166,7 +3164,7 @@ Delete entity user. This will also remove the user from all approval policies. I
 <dd>
 
 ```typescript
-await client.entity.user.delete("string", "string");
+await client.entity.user.delete("entityId", "userId");
 ```
 
 </dd>
@@ -4305,17 +4303,7 @@ Get current organization information
 <dd>
 
 ```typescript
-await client.organization.get({
-    paymentMethods: true,
-    emailProvider: true,
-    externalAccountingSystemProvider: true,
-    colorScheme: true,
-    payeeOnboardingOptions: true,
-    payorOnboardingOptions: true,
-    metadataSchema: true,
-    notificationEmailTemplate: true,
-    customDomains: true,
-});
+await client.organization.get();
 ```
 
 </dd>
@@ -4378,387 +4366,7 @@ Update current organization
 <dd>
 
 ```typescript
-await client.organization.update({
-    name: "string",
-    logo: "string",
-    websiteUrl: "string",
-    supportEmail: "string",
-    paymentMethods: {
-        payerPayments: [
-            {
-                type: "custom",
-                active: true,
-            },
-        ],
-        backupDisbursements: [
-            {
-                type: "custom",
-                active: true,
-            },
-        ],
-        vendorDisbursements: [
-            {
-                type: "custom",
-                active: true,
-            },
-        ],
-    },
-    emailProvider: {
-        sender: {
-            provider: "none",
-            fromEmail: "string",
-            fromName: "string",
-            apiKey: "string",
-        },
-        inboxDomain: "string",
-        alternativeInboxDomains: [],
-    },
-    externalAccountingSystemProvider: {
-        type: "none",
-    },
-    colorScheme: {
-        primaryColor: "string",
-        secondaryColor: "string",
-        logoBackgroundColor: "string",
-        roundedCorners: 1,
-        fontFamily: "string",
-        fontSize: "string",
-    },
-    payeeOnboardingOptions: {
-        enableBusiness: true,
-        enableIndividual: true,
-        paymentMethod: true,
-        business: {
-            type: {
-                show: true,
-                edit: true,
-                required: true,
-            },
-            doingBusinessAs: {
-                show: true,
-                edit: true,
-                required: true,
-            },
-            ein: {
-                show: true,
-                edit: true,
-                required: true,
-            },
-            mcc: {
-                show: true,
-                edit: true,
-                required: true,
-            },
-            formationDate: {
-                show: true,
-                edit: true,
-                required: true,
-            },
-            website: {
-                show: true,
-                edit: true,
-                required: true,
-            },
-            description: {
-                show: true,
-                edit: true,
-                required: true,
-            },
-            representatives: {
-                show: true,
-                edit: true,
-                required: true,
-            },
-            logo: {
-                show: true,
-                edit: true,
-                required: true,
-            },
-            averageTransactionSize: {
-                show: true,
-                edit: true,
-                required: true,
-            },
-            averageMonthlyTransactionVolume: {
-                show: true,
-                edit: true,
-                required: true,
-            },
-            maxTransactionSize: {
-                show: true,
-                edit: true,
-                required: true,
-            },
-            termsOfService: {
-                show: true,
-                edit: true,
-                required: true,
-            },
-            email: {
-                show: true,
-                edit: true,
-                required: true,
-            },
-            name: {
-                show: true,
-                edit: true,
-                required: true,
-            },
-            address: {
-                show: true,
-                edit: true,
-                required: true,
-            },
-            phone: {
-                show: true,
-                edit: true,
-                required: true,
-            },
-            tenNinetyNine: {
-                show: true,
-                edit: true,
-                required: true,
-            },
-            w9: {
-                show: true,
-                edit: true,
-                required: true,
-            },
-            bankStatement: {
-                show: true,
-                edit: true,
-                required: true,
-            },
-        },
-        individual: {
-            dateOfBirth: {
-                show: true,
-                edit: true,
-                required: true,
-            },
-            ssn: {
-                show: true,
-                edit: true,
-                required: true,
-            },
-            termsOfService: {
-                show: true,
-                edit: true,
-                required: true,
-            },
-            email: {
-                show: true,
-                edit: true,
-                required: true,
-            },
-            name: {
-                show: true,
-                edit: true,
-                required: true,
-            },
-            address: {
-                show: true,
-                edit: true,
-                required: true,
-            },
-            phone: {
-                show: true,
-                edit: true,
-                required: true,
-            },
-            tenNinetyNine: {
-                show: true,
-                edit: true,
-                required: true,
-            },
-            w9: {
-                show: true,
-                edit: true,
-                required: true,
-            },
-            bankStatement: {
-                show: true,
-                edit: true,
-                required: true,
-            },
-        },
-    },
-    payorOnboardingOptions: {
-        enableBusiness: true,
-        enableIndividual: true,
-        paymentMethod: true,
-        business: {
-            type: {
-                show: true,
-                edit: true,
-                required: true,
-            },
-            doingBusinessAs: {
-                show: true,
-                edit: true,
-                required: true,
-            },
-            ein: {
-                show: true,
-                edit: true,
-                required: true,
-            },
-            mcc: {
-                show: true,
-                edit: true,
-                required: true,
-            },
-            formationDate: {
-                show: true,
-                edit: true,
-                required: true,
-            },
-            website: {
-                show: true,
-                edit: true,
-                required: true,
-            },
-            description: {
-                show: true,
-                edit: true,
-                required: true,
-            },
-            representatives: {
-                show: true,
-                edit: true,
-                required: true,
-            },
-            logo: {
-                show: true,
-                edit: true,
-                required: true,
-            },
-            averageTransactionSize: {
-                show: true,
-                edit: true,
-                required: true,
-            },
-            averageMonthlyTransactionVolume: {
-                show: true,
-                edit: true,
-                required: true,
-            },
-            maxTransactionSize: {
-                show: true,
-                edit: true,
-                required: true,
-            },
-            termsOfService: {
-                show: true,
-                edit: true,
-                required: true,
-            },
-            email: {
-                show: true,
-                edit: true,
-                required: true,
-            },
-            name: {
-                show: true,
-                edit: true,
-                required: true,
-            },
-            address: {
-                show: true,
-                edit: true,
-                required: true,
-            },
-            phone: {
-                show: true,
-                edit: true,
-                required: true,
-            },
-            tenNinetyNine: {
-                show: true,
-                edit: true,
-                required: true,
-            },
-            w9: {
-                show: true,
-                edit: true,
-                required: true,
-            },
-            bankStatement: {
-                show: true,
-                edit: true,
-                required: true,
-            },
-        },
-        individual: {
-            dateOfBirth: {
-                show: true,
-                edit: true,
-                required: true,
-            },
-            ssn: {
-                show: true,
-                edit: true,
-                required: true,
-            },
-            termsOfService: {
-                show: true,
-                edit: true,
-                required: true,
-            },
-            email: {
-                show: true,
-                edit: true,
-                required: true,
-            },
-            name: {
-                show: true,
-                edit: true,
-                required: true,
-            },
-            address: {
-                show: true,
-                edit: true,
-                required: true,
-            },
-            phone: {
-                show: true,
-                edit: true,
-                required: true,
-            },
-            tenNinetyNine: {
-                show: true,
-                edit: true,
-                required: true,
-            },
-            w9: {
-                show: true,
-                edit: true,
-                required: true,
-            },
-            bankStatement: {
-                show: true,
-                edit: true,
-                required: true,
-            },
-        },
-    },
-    metadataSchema: [
-        {
-            key: "string",
-            displayName: "string",
-            type: "STRING",
-        },
-    ],
-    notificationEmailTemplate: {
-        backgroundStyle: "string",
-        header: "string",
-        body: "string",
-        signature: "string",
-        footer: "string",
-        button: "string",
-    },
-    customDomains: ["string"],
-});
+await client.organization.update({});
 ```
 
 </dd>
@@ -4821,12 +4429,7 @@ Get log of all emails sent to this organization. Content format subject to chang
 <dd>
 
 ```typescript
-await client.organization.emailLog({
-    startDate: "2024-01-15T09:30:00Z",
-    endDate: "2024-01-15T09:30:00Z",
-    limit: 1,
-    startingAfter: "string",
-});
+await client.organization.emailLog();
 ```
 
 </dd>
@@ -6008,6 +5611,111 @@ await client.entity.approvalPolicy.delete(
 </dl>
 </details>
 
+## Entity Bulk
+
+<details><summary><code>client.entity.bulk.<a href="/src/api/resources/entity/resources/bulk/client/Client.ts">create</a>({ ...params }) -> Mercoa.BulkEntityCreationResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Create multiple entities in bulk. This endpoint will process synchronously and return a list of entities that were created or failed to create.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.entity.bulk.create({
+    connectedEntity: {
+        id: "ent_a0f6ea94-0761-4a5e-a416-3c453cb7eced",
+        linkCreatedAsPayor: false,
+        linkCreatedAsPayee: true,
+    },
+    entities: [
+        {
+            isCustomer: true,
+            isPayor: true,
+            isPayee: false,
+            accountType: "business",
+            foreignId: "MY-DB-ID-12345",
+            profile: {
+                business: {
+                    email: "customer@acme.com",
+                    legalBusinessName: "Acme Inc.",
+                    website: "http://www.acme.com",
+                    businessType: "llc",
+                    phone: {
+                        countryCode: "1",
+                        number: "4155551234",
+                    },
+                    address: {
+                        addressLine1: "123 Main St",
+                        addressLine2: "Unit 1",
+                        city: "San Francisco",
+                        stateOrProvince: "CA",
+                        postalCode: "94105",
+                        country: "US",
+                    },
+                    taxId: {
+                        ein: {
+                            number: "12-3456789",
+                        },
+                    },
+                },
+            },
+        },
+    ],
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Mercoa.BulkEntityCreationRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Bulk.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
 ## Entity Counterparty VendorCredit
 
 <details><summary><code>client.entity.counterparty.vendorCredit.<a href="/src/api/resources/entity/resources/counterparty/resources/vendorCredit/client/Client.ts">getAll</a>(entityId, counterpartyId) -> Mercoa.FindVendorCreditResponse</code></summary>
@@ -6496,6 +6204,7 @@ await client.entity.customization.update("ent_a0f6ea94-0761-4a5e-a416-3c453cb7ec
     ],
     ocr: {
         lineItems: true,
+        collapseLineItems: true,
         invoiceMetadata: true,
         lineItemMetadata: true,
         lineItemGlAccountId: true,
@@ -7091,7 +6800,7 @@ Delete entity email template. This will also remove the email template from all 
 <dd>
 
 ```typescript
-await client.entity.emailTemplate.delete("string", "string");
+await client.entity.emailTemplate.delete("entityId", "emailTemplateId");
 ```
 
 </dd>
@@ -10136,6 +9845,112 @@ await client.invoice.approval.reject("in_3d61faa9-1754-4b7b-9fcb-88ff97f368ff", 
 </dl>
 </details>
 
+## Invoice Bulk
+
+<details><summary><code>client.invoice.bulk.<a href="/src/api/resources/invoice/resources/bulk/client/Client.ts">create</a>({ ...params }) -> Mercoa.BulkInvoiceCreationResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Create multiple invoices in bulk. This endpoint will process synchronously and return a list of invoices that were created or failed to create.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.invoice.bulk.create({
+    invoices: [
+        {
+            status: "NEW",
+            amount: 100,
+            currency: "USD",
+            invoiceDate: "2021-01-01T00:00:00Z",
+            dueDate: "2021-01-31T00:00:00Z",
+            invoiceNumber: "INV-123",
+            noteToSelf: "For the month of January",
+            payerId: "ent_8545a84e-a45f-41bf-bdf1-33b42a55812c",
+            paymentSourceId: "pm_4794d597-70dc-4fec-b6ec-c5988e759769",
+            vendorId: "ent_21661ac1-a2a8-4465-a6c0-64474ba8181d",
+            paymentDestinationId: "pm_5fde2f4a-facc-48ef-8f0d-6b7d087c7b18",
+            paymentDestinationOptions: {
+                type: "check",
+                delivery: "MAIL",
+                printDescription: true,
+            },
+            lineItems: [
+                {
+                    amount: 100,
+                    currency: "USD",
+                    description: "Product A",
+                    name: "Product A",
+                    quantity: 1,
+                    unitPrice: 100,
+                    category: "EXPENSE",
+                    serviceStartDate: "2021-01-01T00:00:00Z",
+                    serviceEndDate: "2021-01-31T00:00:00Z",
+                    metadata: {
+                        key1: "value1",
+                        key2: "value2",
+                    },
+                    glAccountId: "600394",
+                },
+            ],
+            creatorEntityId: "ent_8545a84e-a45f-41bf-bdf1-33b42a55812c",
+            creatorUserId: "user_e24fc81c-c5ee-47e8-af42-4fe29d895506",
+        },
+    ],
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Mercoa.BulkInvoiceCreationRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Bulk.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
 ## Invoice Comment
 
 <details><summary><code>client.invoice.comment.<a href="/src/api/resources/invoice/resources/comment/client/Client.ts">getAll</a>(invoiceId) -> Mercoa.CommentResponse[]</code></summary>
@@ -11532,7 +11347,7 @@ Update notification configuration for this notification type
 ```typescript
 await client.organization.notificationConfiguration.update("INVOICE_APPROVAL_NEEDED", {
     notificationType: "invoice",
-    url: "string",
+    url: "url",
 });
 ```
 

@@ -25,7 +25,7 @@ export interface CalculateVendorCreditUsageRequest {
      */
     excludedInvoiceIds?: Mercoa.InvoiceId[];
     /**
-     * List of vendor credit IDs to include in the calculation. If not provided, all applicable vendor credits will be included, while an empty list will not include ANY vendor credits. This is useful for recalculating vendor credit usage on invoices that have a fixed list of applied vendor credits (e.g. a SCHEDULED or PENDING invoice).
+     * List of vendor credit IDs to include in the calculation. If not provided, all applicable vendor credits will be included, while an empty list will not include ANY vendor credits.  This is useful for recalculating vendor credit usage on invoices that have a fixed list of applied vendor credits (e.g. a SCHEDULED or PENDING invoice).
      */
     includedVendorCreditIds?: Mercoa.VendorCreditId[];
 }

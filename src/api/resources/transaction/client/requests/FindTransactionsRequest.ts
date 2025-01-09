@@ -62,7 +62,7 @@ export interface FindTransactionsRequest {
      */
     creatorUserId?: Mercoa.EntityUserId | Mercoa.EntityUserId[];
     /**
-     * Filter transactions by invoice ID.
+     * Filter transactions by invoice ID. Does not support foreign ID.
      */
     invoiceId?: Mercoa.InvoiceId | Mercoa.InvoiceId[];
     /**

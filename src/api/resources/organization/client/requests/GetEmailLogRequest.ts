@@ -4,12 +4,7 @@
 
 /**
  * @example
- *     {
- *         startDate: "2024-01-15T09:30:00Z",
- *         endDate: "2024-01-15T09:30:00Z",
- *         limit: 1,
- *         startingAfter: "string"
- *     }
+ *     {}
  */
 export interface GetEmailLogRequest {
     startDate?: Date;

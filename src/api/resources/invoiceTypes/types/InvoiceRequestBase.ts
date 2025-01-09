@@ -59,4 +59,6 @@ export interface InvoiceRequestBase {
     taxAmount?: number;
     /** Shipping amount for this invoice. */
     shippingAmount?: number;
+    /** ID of the OCR job that processed this invoice. */
+    ocrJobId?: Mercoa.OcrJobId;
 }

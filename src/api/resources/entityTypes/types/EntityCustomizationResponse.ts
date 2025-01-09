@@ -35,6 +35,7 @@ import * as Mercoa from "../../../index";
  *             }],
  *         ocr: {
  *             lineItems: true,
+ *             collapseLineItems: true,
  *             invoiceMetadata: true,
  *             lineItemMetadata: true,
  *             lineItemGlAccountId: true,
@@ -54,7 +55,7 @@ export interface EntityCustomizationResponse {
     paymentSource: Mercoa.PaymentMethodCustomizationRequest[];
     backupDisbursement: Mercoa.PaymentMethodCustomizationRequest[];
     paymentDestination: Mercoa.PaymentMethodCustomizationRequest[];
-    ocr: Mercoa.OcrCustomizationRequest;
+    ocr: Mercoa.OcrCustomizationResponse;
     notifications: Mercoa.NotificationCustomizationRequest;
     workflow: Mercoa.WorkflowCustomizationRequest;
 }

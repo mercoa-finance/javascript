@@ -59,4 +59,6 @@ export interface InvoiceResponseBase {
     fees?: Mercoa.InvoiceFeesResponse;
     /** If this is a recurring invoice, this will be the payment schedule for the invoice. If not provided, this will be a one-time invoice. */
     paymentSchedule?: Mercoa.PaymentSchedule;
+    /** ID of the OCR job that processed this invoice. */
+    ocrJobId?: Mercoa.OcrJobId;
 }

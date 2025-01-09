@@ -5,7 +5,7 @@
 import * as Mercoa from "../../../index";
 
 export interface OcrJobResponse {
-    jobId: string;
+    jobId: Mercoa.OcrJobId;
     status: Mercoa.OcrJobStatus;
     data?: Mercoa.OcrResponse;
 }

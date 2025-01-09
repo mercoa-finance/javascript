@@ -4,17 +4,7 @@
 
 /**
  * @example
- *     {
- *         paymentMethods: true,
- *         emailProvider: true,
- *         externalAccountingSystemProvider: true,
- *         colorScheme: true,
- *         payeeOnboardingOptions: true,
- *         payorOnboardingOptions: true,
- *         metadataSchema: true,
- *         notificationEmailTemplate: true,
- *         customDomains: true
- *     }
+ *     {}
  */
 export interface GetOrganizationRequest {
     /**

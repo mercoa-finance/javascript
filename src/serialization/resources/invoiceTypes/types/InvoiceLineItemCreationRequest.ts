@@ -12,14 +12,14 @@ export const InvoiceLineItemCreationRequest: core.serialization.ObjectSchema<
     Mercoa.InvoiceLineItemCreationRequest
 > = core.serialization
     .object({
-        amount: core.serialization.number(),
-        description: core.serialization.string(),
+        amount: core.serialization.number().optional(),
+        description: core.serialization.string().optional(),
     })
     .extend(InvoiceLineItemRequestBase);
 
 export declare namespace InvoiceLineItemCreationRequest {
     interface Raw extends InvoiceLineItemRequestBase.Raw {
-        amount: number;
-        description: string;
+        amount?: number | null;
+        description?: string | null;
     }
 }

@@ -49,6 +49,10 @@ import * as Mercoa from "../../../index";
  *     }
  */
 export interface ApprovalSlot {
+    /** The identifier for the upstream policy this slot is associated with. */
+    upstreamPolicyId?: Mercoa.ApprovalPolicyId;
+    /** Whether all upstream policies are approved. */
+    upstreamPoliciesApproved?: boolean;
     /** The identifier for the approval policy this slot is associated with. */
     approvalPolicyId: Mercoa.ApprovalPolicyId;
     /** The identifier for this approval slot */

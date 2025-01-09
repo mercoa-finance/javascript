@@ -35,6 +35,7 @@ import * as Mercoa from "../../../index";
  *             }],
  *         ocr: {
  *             lineItems: true,
+ *             collapseLineItems: true,
  *             invoiceMetadata: true,
  *             lineItemMetadata: true,
  *             lineItemGlAccountId: true,

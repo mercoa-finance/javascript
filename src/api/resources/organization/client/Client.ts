@@ -48,17 +48,7 @@ export class Organization {
      * @throws {@link Mercoa.Unimplemented}
      *
      * @example
-     *     await client.organization.get({
-     *         paymentMethods: true,
-     *         emailProvider: true,
-     *         externalAccountingSystemProvider: true,
-     *         colorScheme: true,
-     *         payeeOnboardingOptions: true,
-     *         payorOnboardingOptions: true,
-     *         metadataSchema: true,
-     *         notificationEmailTemplate: true,
-     *         customDomains: true
-     *     })
+     *     await client.organization.get()
      */
     public async get(
         request: Mercoa.organization.GetOrganizationRequest = {},
@@ -122,8 +112,8 @@ export class Organization {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.6.5",
-                "User-Agent": "@mercoa/javascript/0.6.5",
+                "X-Fern-SDK-Version": "0.6.6",
+                "User-Agent": "@mercoa/javascript/0.6.6",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
@@ -247,379 +237,7 @@ export class Organization {
      * @throws {@link Mercoa.Unimplemented}
      *
      * @example
-     *     await client.organization.update({
-     *         name: "string",
-     *         logo: "string",
-     *         websiteUrl: "string",
-     *         supportEmail: "string",
-     *         paymentMethods: {
-     *             payerPayments: [{
-     *                     type: "custom",
-     *                     active: true
-     *                 }],
-     *             backupDisbursements: [{
-     *                     type: "custom",
-     *                     active: true
-     *                 }],
-     *             vendorDisbursements: [{
-     *                     type: "custom",
-     *                     active: true
-     *                 }]
-     *         },
-     *         emailProvider: {
-     *             sender: {
-     *                 provider: "none",
-     *                 fromEmail: "string",
-     *                 fromName: "string",
-     *                 apiKey: "string"
-     *             },
-     *             inboxDomain: "string",
-     *             alternativeInboxDomains: []
-     *         },
-     *         externalAccountingSystemProvider: {
-     *             type: "none"
-     *         },
-     *         colorScheme: {
-     *             primaryColor: "string",
-     *             secondaryColor: "string",
-     *             logoBackgroundColor: "string",
-     *             roundedCorners: 1,
-     *             fontFamily: "string",
-     *             fontSize: "string"
-     *         },
-     *         payeeOnboardingOptions: {
-     *             enableBusiness: true,
-     *             enableIndividual: true,
-     *             paymentMethod: true,
-     *             business: {
-     *                 type: {
-     *                     show: true,
-     *                     edit: true,
-     *                     required: true
-     *                 },
-     *                 doingBusinessAs: {
-     *                     show: true,
-     *                     edit: true,
-     *                     required: true
-     *                 },
-     *                 ein: {
-     *                     show: true,
-     *                     edit: true,
-     *                     required: true
-     *                 },
-     *                 mcc: {
-     *                     show: true,
-     *                     edit: true,
-     *                     required: true
-     *                 },
-     *                 formationDate: {
-     *                     show: true,
-     *                     edit: true,
-     *                     required: true
-     *                 },
-     *                 website: {
-     *                     show: true,
-     *                     edit: true,
-     *                     required: true
-     *                 },
-     *                 description: {
-     *                     show: true,
-     *                     edit: true,
-     *                     required: true
-     *                 },
-     *                 representatives: {
-     *                     show: true,
-     *                     edit: true,
-     *                     required: true
-     *                 },
-     *                 logo: {
-     *                     show: true,
-     *                     edit: true,
-     *                     required: true
-     *                 },
-     *                 averageTransactionSize: {
-     *                     show: true,
-     *                     edit: true,
-     *                     required: true
-     *                 },
-     *                 averageMonthlyTransactionVolume: {
-     *                     show: true,
-     *                     edit: true,
-     *                     required: true
-     *                 },
-     *                 maxTransactionSize: {
-     *                     show: true,
-     *                     edit: true,
-     *                     required: true
-     *                 },
-     *                 termsOfService: {
-     *                     show: true,
-     *                     edit: true,
-     *                     required: true
-     *                 },
-     *                 email: {
-     *                     show: true,
-     *                     edit: true,
-     *                     required: true
-     *                 },
-     *                 name: {
-     *                     show: true,
-     *                     edit: true,
-     *                     required: true
-     *                 },
-     *                 address: {
-     *                     show: true,
-     *                     edit: true,
-     *                     required: true
-     *                 },
-     *                 phone: {
-     *                     show: true,
-     *                     edit: true,
-     *                     required: true
-     *                 },
-     *                 tenNinetyNine: {
-     *                     show: true,
-     *                     edit: true,
-     *                     required: true
-     *                 },
-     *                 w9: {
-     *                     show: true,
-     *                     edit: true,
-     *                     required: true
-     *                 },
-     *                 bankStatement: {
-     *                     show: true,
-     *                     edit: true,
-     *                     required: true
-     *                 }
-     *             },
-     *             individual: {
-     *                 dateOfBirth: {
-     *                     show: true,
-     *                     edit: true,
-     *                     required: true
-     *                 },
-     *                 ssn: {
-     *                     show: true,
-     *                     edit: true,
-     *                     required: true
-     *                 },
-     *                 termsOfService: {
-     *                     show: true,
-     *                     edit: true,
-     *                     required: true
-     *                 },
-     *                 email: {
-     *                     show: true,
-     *                     edit: true,
-     *                     required: true
-     *                 },
-     *                 name: {
-     *                     show: true,
-     *                     edit: true,
-     *                     required: true
-     *                 },
-     *                 address: {
-     *                     show: true,
-     *                     edit: true,
-     *                     required: true
-     *                 },
-     *                 phone: {
-     *                     show: true,
-     *                     edit: true,
-     *                     required: true
-     *                 },
-     *                 tenNinetyNine: {
-     *                     show: true,
-     *                     edit: true,
-     *                     required: true
-     *                 },
-     *                 w9: {
-     *                     show: true,
-     *                     edit: true,
-     *                     required: true
-     *                 },
-     *                 bankStatement: {
-     *                     show: true,
-     *                     edit: true,
-     *                     required: true
-     *                 }
-     *             }
-     *         },
-     *         payorOnboardingOptions: {
-     *             enableBusiness: true,
-     *             enableIndividual: true,
-     *             paymentMethod: true,
-     *             business: {
-     *                 type: {
-     *                     show: true,
-     *                     edit: true,
-     *                     required: true
-     *                 },
-     *                 doingBusinessAs: {
-     *                     show: true,
-     *                     edit: true,
-     *                     required: true
-     *                 },
-     *                 ein: {
-     *                     show: true,
-     *                     edit: true,
-     *                     required: true
-     *                 },
-     *                 mcc: {
-     *                     show: true,
-     *                     edit: true,
-     *                     required: true
-     *                 },
-     *                 formationDate: {
-     *                     show: true,
-     *                     edit: true,
-     *                     required: true
-     *                 },
-     *                 website: {
-     *                     show: true,
-     *                     edit: true,
-     *                     required: true
-     *                 },
-     *                 description: {
-     *                     show: true,
-     *                     edit: true,
-     *                     required: true
-     *                 },
-     *                 representatives: {
-     *                     show: true,
-     *                     edit: true,
-     *                     required: true
-     *                 },
-     *                 logo: {
-     *                     show: true,
-     *                     edit: true,
-     *                     required: true
-     *                 },
-     *                 averageTransactionSize: {
-     *                     show: true,
-     *                     edit: true,
-     *                     required: true
-     *                 },
-     *                 averageMonthlyTransactionVolume: {
-     *                     show: true,
-     *                     edit: true,
-     *                     required: true
-     *                 },
-     *                 maxTransactionSize: {
-     *                     show: true,
-     *                     edit: true,
-     *                     required: true
-     *                 },
-     *                 termsOfService: {
-     *                     show: true,
-     *                     edit: true,
-     *                     required: true
-     *                 },
-     *                 email: {
-     *                     show: true,
-     *                     edit: true,
-     *                     required: true
-     *                 },
-     *                 name: {
-     *                     show: true,
-     *                     edit: true,
-     *                     required: true
-     *                 },
-     *                 address: {
-     *                     show: true,
-     *                     edit: true,
-     *                     required: true
-     *                 },
-     *                 phone: {
-     *                     show: true,
-     *                     edit: true,
-     *                     required: true
-     *                 },
-     *                 tenNinetyNine: {
-     *                     show: true,
-     *                     edit: true,
-     *                     required: true
-     *                 },
-     *                 w9: {
-     *                     show: true,
-     *                     edit: true,
-     *                     required: true
-     *                 },
-     *                 bankStatement: {
-     *                     show: true,
-     *                     edit: true,
-     *                     required: true
-     *                 }
-     *             },
-     *             individual: {
-     *                 dateOfBirth: {
-     *                     show: true,
-     *                     edit: true,
-     *                     required: true
-     *                 },
-     *                 ssn: {
-     *                     show: true,
-     *                     edit: true,
-     *                     required: true
-     *                 },
-     *                 termsOfService: {
-     *                     show: true,
-     *                     edit: true,
-     *                     required: true
-     *                 },
-     *                 email: {
-     *                     show: true,
-     *                     edit: true,
-     *                     required: true
-     *                 },
-     *                 name: {
-     *                     show: true,
-     *                     edit: true,
-     *                     required: true
-     *                 },
-     *                 address: {
-     *                     show: true,
-     *                     edit: true,
-     *                     required: true
-     *                 },
-     *                 phone: {
-     *                     show: true,
-     *                     edit: true,
-     *                     required: true
-     *                 },
-     *                 tenNinetyNine: {
-     *                     show: true,
-     *                     edit: true,
-     *                     required: true
-     *                 },
-     *                 w9: {
-     *                     show: true,
-     *                     edit: true,
-     *                     required: true
-     *                 },
-     *                 bankStatement: {
-     *                     show: true,
-     *                     edit: true,
-     *                     required: true
-     *                 }
-     *             }
-     *         },
-     *         metadataSchema: [{
-     *                 key: "string",
-     *                 displayName: "string",
-     *                 type: "STRING"
-     *             }],
-     *         notificationEmailTemplate: {
-     *             backgroundStyle: "string",
-     *             header: "string",
-     *             body: "string",
-     *             signature: "string",
-     *             footer: "string",
-     *             button: "string"
-     *         },
-     *         customDomains: ["string"]
-     *     })
+     *     await client.organization.update({})
      */
     public async update(
         request: Mercoa.OrganizationRequest,
@@ -635,8 +253,8 @@ export class Organization {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.6.5",
-                "User-Agent": "@mercoa/javascript/0.6.5",
+                "X-Fern-SDK-Version": "0.6.6",
+                "User-Agent": "@mercoa/javascript/0.6.6",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
@@ -760,12 +378,7 @@ export class Organization {
      * @throws {@link Mercoa.Unimplemented}
      *
      * @example
-     *     await client.organization.emailLog({
-     *         startDate: "2024-01-15T09:30:00Z",
-     *         endDate: "2024-01-15T09:30:00Z",
-     *         limit: 1,
-     *         startingAfter: "string"
-     *     })
+     *     await client.organization.emailLog()
      */
     public async emailLog(
         request: Mercoa.organization.GetEmailLogRequest = {},
@@ -799,8 +412,8 @@ export class Organization {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.6.5",
-                "User-Agent": "@mercoa/javascript/0.6.5",
+                "X-Fern-SDK-Version": "0.6.6",
+                "User-Agent": "@mercoa/javascript/0.6.6",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,

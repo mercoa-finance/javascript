@@ -7,6 +7,12 @@ import * as Mercoa from "../../../../api/index";
 import * as core from "../../../../core";
 import { TransactionId } from "./TransactionId";
 import { TransactionStatus } from "./TransactionStatus";
+import { EntityId } from "../../entityTypes/types/EntityId";
+import { CounterpartyResponse } from "../../entityTypes/types/CounterpartyResponse";
+import { PaymentMethodResponse } from "../../paymentMethodTypes/types/PaymentMethodResponse";
+import { PaymentMethodId } from "../../paymentMethodTypes/types/PaymentMethodId";
+import { PaymentDestinationOptions } from "../../invoiceTypes/types/PaymentDestinationOptions";
+import { InvoiceFeesResponse } from "../../invoiceTypes/types/InvoiceFeesResponse";
 
 export const TransactionResponseBase: core.serialization.ObjectSchema<
     serializers.TransactionResponseBase.Raw,
@@ -14,6 +20,18 @@ export const TransactionResponseBase: core.serialization.ObjectSchema<
 > = core.serialization.object({
     id: TransactionId,
     status: TransactionStatus,
+    amount: core.serialization.number(),
+    currency: core.serialization.string(),
+    payerId: EntityId,
+    payer: CounterpartyResponse,
+    paymentSource: PaymentMethodResponse,
+    paymentSourceId: PaymentMethodId,
+    vendorId: EntityId,
+    vendor: CounterpartyResponse,
+    paymentDestination: PaymentMethodResponse,
+    paymentDestinationId: PaymentMethodId,
+    paymentDestinationOptions: PaymentDestinationOptions.optional(),
+    fees: InvoiceFeesResponse.optional(),
     createdAt: core.serialization.date(),
     updatedAt: core.serialization.date(),
 });
@@ -22,6 +40,18 @@ export declare namespace TransactionResponseBase {
     interface Raw {
         id: TransactionId.Raw;
         status: TransactionStatus.Raw;
+        amount: number;
+        currency: string;
+        payerId: EntityId.Raw;
+        payer: CounterpartyResponse.Raw;
+        paymentSource: PaymentMethodResponse.Raw;
+        paymentSourceId: PaymentMethodId.Raw;
+        vendorId: EntityId.Raw;
+        vendor: CounterpartyResponse.Raw;
+        paymentDestination: PaymentMethodResponse.Raw;
+        paymentDestinationId: PaymentMethodId.Raw;
+        paymentDestinationOptions?: PaymentDestinationOptions.Raw | null;
+        fees?: InvoiceFeesResponse.Raw | null;
         createdAt: string;
         updatedAt: string;
     }

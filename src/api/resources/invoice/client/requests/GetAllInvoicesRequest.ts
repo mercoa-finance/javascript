@@ -72,7 +72,7 @@ export interface GetAllInvoicesRequest {
      */
     creatorUserId?: Mercoa.EntityUserId | Mercoa.EntityUserId[];
     /**
-     * Filter invoices by assigned approver user ID.
+     * Filter invoices by assigned approver user ID. Only invoices with all upstream policies approved will be returned.
      */
     approverId?: Mercoa.EntityUserId | Mercoa.EntityUserId[];
     /**
@@ -80,7 +80,7 @@ export interface GetAllInvoicesRequest {
      */
     approverAction?: Mercoa.ApproverAction | Mercoa.ApproverAction[];
     /**
-     * Filter invoices by invoice ID.
+     * Filter invoices by invoice ID or invoice foreign ID.
      */
     invoiceId?: Mercoa.InvoiceId | Mercoa.InvoiceId[];
     /**

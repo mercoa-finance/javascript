@@ -12,6 +12,8 @@ import { ApproverAction } from "./ApproverAction";
 
 export const ApprovalSlot: core.serialization.ObjectSchema<serializers.ApprovalSlot.Raw, Mercoa.ApprovalSlot> =
     core.serialization.object({
+        upstreamPolicyId: ApprovalPolicyId.optional(),
+        upstreamPoliciesApproved: core.serialization.boolean().optional(),
         approvalPolicyId: ApprovalPolicyId,
         approvalSlotId: ApprovalSlotId,
         assignedUserId: EntityUserId.optional(),
@@ -23,6 +25,8 @@ export const ApprovalSlot: core.serialization.ObjectSchema<serializers.ApprovalS
 
 export declare namespace ApprovalSlot {
     interface Raw {
+        upstreamPolicyId?: ApprovalPolicyId.Raw | null;
+        upstreamPoliciesApproved?: boolean | null;
         approvalPolicyId: ApprovalPolicyId.Raw;
         approvalSlotId: ApprovalSlotId.Raw;
         assignedUserId?: EntityUserId.Raw | null;

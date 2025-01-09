@@ -11,6 +11,7 @@ export const OcrCustomizationRequest: core.serialization.ObjectSchema<
     Mercoa.OcrCustomizationRequest
 > = core.serialization.object({
     lineItems: core.serialization.boolean().optional(),
+    collapseLineItems: core.serialization.boolean().optional(),
     invoiceMetadata: core.serialization.boolean().optional(),
     lineItemMetadata: core.serialization.boolean().optional(),
     lineItemGlAccountId: core.serialization.boolean().optional(),
@@ -21,6 +22,7 @@ export const OcrCustomizationRequest: core.serialization.ObjectSchema<
 export declare namespace OcrCustomizationRequest {
     interface Raw {
         lineItems?: boolean | null;
+        collapseLineItems?: boolean | null;
         invoiceMetadata?: boolean | null;
         lineItemMetadata?: boolean | null;
         lineItemGlAccountId?: boolean | null;
