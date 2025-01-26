@@ -9,8 +9,8 @@ import * as core from "../../../../core";
 export const EmailSenderProvider: core.serialization.Schema<
     serializers.EmailSenderProvider.Raw,
     Mercoa.EmailSenderProvider
-> = core.serialization.enum_(["none", "sendgrid", "ses", "resend"]);
+> = core.serialization.enum_(["none", "sendgrid", "ses", "resend", "cloudmailin"]);
 
 export declare namespace EmailSenderProvider {
-    type Raw = "none" | "sendgrid" | "ses" | "resend";
+    type Raw = "none" | "sendgrid" | "ses" | "resend" | "cloudmailin";
 }

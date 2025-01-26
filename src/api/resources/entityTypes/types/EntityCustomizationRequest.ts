@@ -15,22 +15,22 @@ import * as Mercoa from "../../../index";
  *                 disabled: false
  *             }],
  *         paymentSource: [{
- *                 type: Mercoa.PaymentMethodType.BankAccount,
+ *                 type: "bankAccount",
  *                 disabled: true
  *             }, {
- *                 type: Mercoa.PaymentMethodType.Custom,
+ *                 type: "custom",
  *                 schemaId: "cpms_7df2974a-4069-454c-912f-7e58ebe030fb",
  *                 disabled: true
  *             }],
  *         backupDisbursement: [{
- *                 type: Mercoa.PaymentMethodType.Check,
+ *                 type: "check",
  *                 disabled: true
  *             }],
  *         paymentDestination: [{
- *                 type: Mercoa.PaymentMethodType.BankAccount,
+ *                 type: "bankAccount",
  *                 disabled: true
  *             }, {
- *                 type: Mercoa.PaymentMethodType.Check,
+ *                 type: "check",
  *                 disabled: true
  *             }],
  *         ocr: {

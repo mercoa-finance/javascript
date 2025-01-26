@@ -35,7 +35,7 @@ export class Bulk {
     /**
      * Create multiple invoices in bulk. This endpoint will process synchronously and return a list of invoices that were created or failed to create.
      *
-     * @param {Mercoa.BulkInvoiceCreationRequest} request
+     * @param {Mercoa.invoice.BulkInvoiceCreationRequest} request
      * @param {Bulk.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Mercoa.BadRequest}
@@ -48,48 +48,56 @@ export class Bulk {
      *
      * @example
      *     await client.invoice.bulk.create({
-     *         invoices: [{
-     *                 status: "NEW",
-     *                 amount: 100,
-     *                 currency: "USD",
-     *                 invoiceDate: "2021-01-01T00:00:00Z",
-     *                 dueDate: "2021-01-31T00:00:00Z",
-     *                 invoiceNumber: "INV-123",
-     *                 noteToSelf: "For the month of January",
-     *                 payerId: "ent_8545a84e-a45f-41bf-bdf1-33b42a55812c",
-     *                 paymentSourceId: "pm_4794d597-70dc-4fec-b6ec-c5988e759769",
-     *                 vendorId: "ent_21661ac1-a2a8-4465-a6c0-64474ba8181d",
-     *                 paymentDestinationId: "pm_5fde2f4a-facc-48ef-8f0d-6b7d087c7b18",
-     *                 paymentDestinationOptions: {
-     *                     type: "check",
-     *                     delivery: "MAIL",
-     *                     printDescription: true
-     *                 },
-     *                 lineItems: [{
-     *                         amount: 100,
-     *                         currency: "USD",
-     *                         description: "Product A",
-     *                         name: "Product A",
-     *                         quantity: 1,
-     *                         unitPrice: 100,
-     *                         category: "EXPENSE",
-     *                         serviceStartDate: "2021-01-01T00:00:00Z",
-     *                         serviceEndDate: "2021-01-31T00:00:00Z",
-     *                         metadata: {
-     *                             "key1": "value1",
-     *                             "key2": "value2"
-     *                         },
-     *                         glAccountId: "600394"
-     *                     }],
-     *                 creatorEntityId: "ent_8545a84e-a45f-41bf-bdf1-33b42a55812c",
-     *                 creatorUserId: "user_e24fc81c-c5ee-47e8-af42-4fe29d895506"
-     *             }]
+     *         body: {
+     *             invoices: [{
+     *                     status: "NEW",
+     *                     amount: 100,
+     *                     currency: "USD",
+     *                     invoiceDate: "2021-01-01T00:00:00Z",
+     *                     dueDate: "2021-01-31T00:00:00Z",
+     *                     invoiceNumber: "INV-123",
+     *                     noteToSelf: "For the month of January",
+     *                     payerId: "ent_8545a84e-a45f-41bf-bdf1-33b42a55812c",
+     *                     paymentSourceId: "pm_4794d597-70dc-4fec-b6ec-c5988e759769",
+     *                     vendorId: "ent_21661ac1-a2a8-4465-a6c0-64474ba8181d",
+     *                     paymentDestinationId: "pm_5fde2f4a-facc-48ef-8f0d-6b7d087c7b18",
+     *                     paymentDestinationOptions: {
+     *                         type: "check",
+     *                         delivery: "MAIL",
+     *                         printDescription: true
+     *                     },
+     *                     lineItems: [{
+     *                             amount: 100,
+     *                             currency: "USD",
+     *                             description: "Product A",
+     *                             name: "Product A",
+     *                             quantity: 1,
+     *                             unitPrice: 100,
+     *                             category: "EXPENSE",
+     *                             serviceStartDate: "2021-01-01T00:00:00Z",
+     *                             serviceEndDate: "2021-01-31T00:00:00Z",
+     *                             metadata: {
+     *                                 "key1": "value1",
+     *                                 "key2": "value2"
+     *                             },
+     *                             glAccountId: "600394"
+     *                         }],
+     *                     creatorEntityId: "ent_8545a84e-a45f-41bf-bdf1-33b42a55812c",
+     *                     creatorUserId: "user_e24fc81c-c5ee-47e8-af42-4fe29d895506"
+     *                 }]
+     *         }
      *     })
      */
     public async create(
-        request: Mercoa.BulkInvoiceCreationRequest,
+        request: Mercoa.invoice.BulkInvoiceCreationRequest,
         requestOptions?: Bulk.RequestOptions
     ): Promise<Mercoa.BulkInvoiceCreationResponse> {
+        const { emitWebhooks, body: _body } = request;
+        const _queryParams: Record<string, string | string[] | object | object[]> = {};
+        if (emitWebhooks != null) {
+            _queryParams["emitWebhooks"] = emitWebhooks.toString();
+        }
+
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
@@ -100,15 +108,16 @@ export class Bulk {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.6.6",
-                "User-Agent": "@mercoa/javascript/0.6.6",
+                "X-Fern-SDK-Version": "0.6.7",
+                "User-Agent": "@mercoa/javascript/0.6.7",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
+            queryParameters: _queryParams,
             requestType: "json",
-            body: serializers.BulkInvoiceCreationRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
+            body: serializers.BulkInvoiceCreationRequest.jsonOrThrow(_body, { unrecognizedObjectKeys: "strip" }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,

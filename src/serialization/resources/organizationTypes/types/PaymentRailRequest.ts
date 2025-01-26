@@ -5,21 +5,76 @@
 import * as serializers from "../../../index";
 import * as Mercoa from "../../../../api/index";
 import * as core from "../../../../core";
-import { PaymentMethodType } from "../../paymentMethodTypes/types/PaymentMethodType";
+import { BankPaymentRailRequest } from "./BankPaymentRailRequest";
+import { GenericPaymentRailRequest } from "./GenericPaymentRailRequest";
+import { CheckPaymentRailRequest } from "./CheckPaymentRailRequest";
+import { CustomPaymentRailRequest } from "./CustomPaymentRailRequest";
 
-export const PaymentRailRequest: core.serialization.ObjectSchema<
+export const PaymentRailRequest: core.serialization.Schema<
     serializers.PaymentRailRequest.Raw,
     Mercoa.PaymentRailRequest
-> = core.serialization.object({
-    type: PaymentMethodType,
-    name: core.serialization.string().optional(),
-    active: core.serialization.boolean(),
-});
+> = core.serialization
+    .union("type", {
+        bankAccount: BankPaymentRailRequest,
+        card: GenericPaymentRailRequest,
+        virtualCard: GenericPaymentRailRequest,
+        check: CheckPaymentRailRequest,
+        custom: CustomPaymentRailRequest,
+        bnpl: GenericPaymentRailRequest,
+        offPlatform: GenericPaymentRailRequest,
+        utility: GenericPaymentRailRequest,
+        na: GenericPaymentRailRequest,
+    })
+    .transform<Mercoa.PaymentRailRequest>({
+        transform: (value) => value,
+        untransform: (value) => value,
+    });
 
 export declare namespace PaymentRailRequest {
-    interface Raw {
-        type: PaymentMethodType.Raw;
-        name?: string | null;
-        active: boolean;
+    type Raw =
+        | PaymentRailRequest.BankAccount
+        | PaymentRailRequest.Card
+        | PaymentRailRequest.VirtualCard
+        | PaymentRailRequest.Check
+        | PaymentRailRequest.Custom
+        | PaymentRailRequest.Bnpl
+        | PaymentRailRequest.OffPlatform
+        | PaymentRailRequest.Utility
+        | PaymentRailRequest.Na;
+
+    interface BankAccount extends BankPaymentRailRequest.Raw {
+        type: "bankAccount";
+    }
+
+    interface Card extends GenericPaymentRailRequest.Raw {
+        type: "card";
+    }
+
+    interface VirtualCard extends GenericPaymentRailRequest.Raw {
+        type: "virtualCard";
+    }
+
+    interface Check extends CheckPaymentRailRequest.Raw {
+        type: "check";
+    }
+
+    interface Custom extends CustomPaymentRailRequest.Raw {
+        type: "custom";
+    }
+
+    interface Bnpl extends GenericPaymentRailRequest.Raw {
+        type: "bnpl";
+    }
+
+    interface OffPlatform extends GenericPaymentRailRequest.Raw {
+        type: "offPlatform";
+    }
+
+    interface Utility extends GenericPaymentRailRequest.Raw {
+        type: "utility";
+    }
+
+    interface Na extends GenericPaymentRailRequest.Raw {
+        type: "na";
     }
 }

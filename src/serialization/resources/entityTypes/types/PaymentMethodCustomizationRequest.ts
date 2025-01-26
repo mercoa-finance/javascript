@@ -5,21 +5,76 @@
 import * as serializers from "../../../index";
 import * as Mercoa from "../../../../api/index";
 import * as core from "../../../../core";
-import { PaymentMethodType } from "../../paymentMethodTypes/types/PaymentMethodType";
+import { BankAccountPaymentMethodCustomizationRequest } from "./BankAccountPaymentMethodCustomizationRequest";
+import { GenericPaymentMethodCustomizationRequest } from "./GenericPaymentMethodCustomizationRequest";
+import { CheckPaymentMethodCustomizationRequest } from "./CheckPaymentMethodCustomizationRequest";
+import { CustomPaymentMethodCustomizationRequest } from "./CustomPaymentMethodCustomizationRequest";
 
-export const PaymentMethodCustomizationRequest: core.serialization.ObjectSchema<
+export const PaymentMethodCustomizationRequest: core.serialization.Schema<
     serializers.PaymentMethodCustomizationRequest.Raw,
     Mercoa.PaymentMethodCustomizationRequest
-> = core.serialization.object({
-    type: PaymentMethodType,
-    schemaId: core.serialization.string().optional(),
-    disabled: core.serialization.boolean(),
-});
+> = core.serialization
+    .union("type", {
+        bankAccount: BankAccountPaymentMethodCustomizationRequest,
+        card: GenericPaymentMethodCustomizationRequest,
+        virtualCard: GenericPaymentMethodCustomizationRequest,
+        check: CheckPaymentMethodCustomizationRequest,
+        custom: CustomPaymentMethodCustomizationRequest,
+        bnpl: GenericPaymentMethodCustomizationRequest,
+        offPlatform: GenericPaymentMethodCustomizationRequest,
+        utility: GenericPaymentMethodCustomizationRequest,
+        na: GenericPaymentMethodCustomizationRequest,
+    })
+    .transform<Mercoa.PaymentMethodCustomizationRequest>({
+        transform: (value) => value,
+        untransform: (value) => value,
+    });
 
 export declare namespace PaymentMethodCustomizationRequest {
-    interface Raw {
-        type: PaymentMethodType.Raw;
-        schemaId?: string | null;
-        disabled: boolean;
+    type Raw =
+        | PaymentMethodCustomizationRequest.BankAccount
+        | PaymentMethodCustomizationRequest.Card
+        | PaymentMethodCustomizationRequest.VirtualCard
+        | PaymentMethodCustomizationRequest.Check
+        | PaymentMethodCustomizationRequest.Custom
+        | PaymentMethodCustomizationRequest.Bnpl
+        | PaymentMethodCustomizationRequest.OffPlatform
+        | PaymentMethodCustomizationRequest.Utility
+        | PaymentMethodCustomizationRequest.Na;
+
+    interface BankAccount extends BankAccountPaymentMethodCustomizationRequest.Raw {
+        type: "bankAccount";
+    }
+
+    interface Card extends GenericPaymentMethodCustomizationRequest.Raw {
+        type: "card";
+    }
+
+    interface VirtualCard extends GenericPaymentMethodCustomizationRequest.Raw {
+        type: "virtualCard";
+    }
+
+    interface Check extends CheckPaymentMethodCustomizationRequest.Raw {
+        type: "check";
+    }
+
+    interface Custom extends CustomPaymentMethodCustomizationRequest.Raw {
+        type: "custom";
+    }
+
+    interface Bnpl extends GenericPaymentMethodCustomizationRequest.Raw {
+        type: "bnpl";
+    }
+
+    interface OffPlatform extends GenericPaymentMethodCustomizationRequest.Raw {
+        type: "offPlatform";
+    }
+
+    interface Utility extends GenericPaymentMethodCustomizationRequest.Raw {
+        type: "utility";
+    }
+
+    interface Na extends GenericPaymentMethodCustomizationRequest.Raw {
+        type: "na";
     }
 }

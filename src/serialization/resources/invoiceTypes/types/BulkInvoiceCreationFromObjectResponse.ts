@@ -11,12 +11,14 @@ export const BulkInvoiceCreationFromObjectResponse: core.serialization.ObjectSch
     Mercoa.BulkInvoiceCreationFromObjectResponse
 > = core.serialization.object({
     id: core.serialization.string().optional(),
+    foreignId: core.serialization.string().optional(),
     error: core.serialization.string().optional(),
 });
 
 export declare namespace BulkInvoiceCreationFromObjectResponse {
     interface Raw {
         id?: string | null;
+        foreignId?: string | null;
         error?: string | null;
     }
 }

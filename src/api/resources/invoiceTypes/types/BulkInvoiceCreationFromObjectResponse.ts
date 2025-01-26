@@ -5,12 +5,21 @@
 /**
  * @example
  *     {
- *         id: "ent_21661ac1-a2a8-4465-a6c0-64474ba8181d"
+ *         id: "ent_21661ac1-a2a8-4465-a6c0-64474ba8181d",
+ *         foreignId: "YOUR-INVOICE-ID"
+ *     }
+ *
+ * @example
+ *     {
+ *         error: "Invoice creation failed",
+ *         foreignId: "YOUR-SECOND-INVOICE-ID"
  *     }
  */
 export interface BulkInvoiceCreationFromObjectResponse {
     /** The ID of the invoice that was created. If the invoice was not created, this will be undefined */
     id?: string;
+    /** If provided, this is the foreign ID of the invoice that was created. */
+    foreignId?: string;
     /** The error message if the invoice was not created */
     error?: string;
 }

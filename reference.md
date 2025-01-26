@@ -1596,79 +1596,6 @@ await client.entity.getToken("ent_a0f6ea94-0761-4a5e-a416-3c453cb7eced", {
 </dl>
 </details>
 
-<details><summary><code>client.entity.<a href="/src/api/resources/entity/client/Client.ts">plaidLinkToken</a>(entityId, { ...params }) -> string</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-Get a Plaid link token for an entity. This token can be used to add or update a bank account to the entity using Plaid Link.
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.entity.plaidLinkToken("ent_8545a84e-a45f-41bf-bdf1-33b42a55812c", {
-    paymentMethodId: "pm_4794d597-70dc-4fec-b6ec-c5988e759769",
-});
-```
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**entityId:** `Mercoa.EntityId` — Entity ID or Entity ForeignID
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**request:** `Mercoa.entity.PlaidLinkTokenRequest`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `Entity.RequestOptions`
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-</dd>
-</dl>
-</details>
-
 <details><summary><code>client.entity.<a href="/src/api/resources/entity/client/Client.ts">getOnboardingLink</a>(entityId, { ...params }) -> string</code></summary>
 <dl>
 <dd>
@@ -2823,6 +2750,142 @@ await client.entity.paymentMethod.delete(
 <dd>
 
 **paymentMethodId:** `Mercoa.PaymentMethodId` — Payment Method ID or Payment Method ForeignID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `PaymentMethod.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.entity.paymentMethod.<a href="/src/api/resources/entity/resources/paymentMethod/client/Client.ts">plaidLinkToken</a>(entityId, { ...params }) -> string</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Get a Plaid link token for an entity. This token can be used to add or update a bank account to the entity using Plaid Link.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.entity.paymentMethod.plaidLinkToken("ent_8545a84e-a45f-41bf-bdf1-33b42a55812c", {
+    paymentMethodId: "pm_4794d597-70dc-4fec-b6ec-c5988e759769",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**entityId:** `Mercoa.EntityId` — Entity ID or Entity ForeignID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `Mercoa.entity.paymentMethod.PlaidLinkTokenRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `PaymentMethod.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.entity.paymentMethod.<a href="/src/api/resources/entity/resources/paymentMethod/client/Client.ts">cardLinkToken</a>(entityId) -> Mercoa.CardLinkTokenResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Get a card link token for an entity. This token is used by the frontend components to generate a PCI compliant form to add a card to the entity.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.entity.paymentMethod.cardLinkToken("ent_8545a84e-a45f-41bf-bdf1-33b42a55812c");
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**entityId:** `Mercoa.EntityId` — Entity ID or Entity ForeignID
 
 </dd>
 </dl>
@@ -5642,45 +5705,47 @@ Create multiple entities in bulk. This endpoint will process synchronously and r
 
 ```typescript
 await client.entity.bulk.create({
-    connectedEntity: {
-        id: "ent_a0f6ea94-0761-4a5e-a416-3c453cb7eced",
-        linkCreatedAsPayor: false,
-        linkCreatedAsPayee: true,
-    },
-    entities: [
-        {
-            isCustomer: true,
-            isPayor: true,
-            isPayee: false,
-            accountType: "business",
-            foreignId: "MY-DB-ID-12345",
-            profile: {
-                business: {
-                    email: "customer@acme.com",
-                    legalBusinessName: "Acme Inc.",
-                    website: "http://www.acme.com",
-                    businessType: "llc",
-                    phone: {
-                        countryCode: "1",
-                        number: "4155551234",
-                    },
-                    address: {
-                        addressLine1: "123 Main St",
-                        addressLine2: "Unit 1",
-                        city: "San Francisco",
-                        stateOrProvince: "CA",
-                        postalCode: "94105",
-                        country: "US",
-                    },
-                    taxId: {
-                        ein: {
-                            number: "12-3456789",
+    body: {
+        connectedEntity: {
+            id: "ent_a0f6ea94-0761-4a5e-a416-3c453cb7eced",
+            linkCreatedAsPayor: false,
+            linkCreatedAsPayee: true,
+        },
+        entities: [
+            {
+                isCustomer: true,
+                isPayor: true,
+                isPayee: false,
+                accountType: "business",
+                foreignId: "MY-DB-ID-12345",
+                profile: {
+                    business: {
+                        email: "customer@acme.com",
+                        legalBusinessName: "Acme Inc.",
+                        website: "http://www.acme.com",
+                        businessType: "llc",
+                        phone: {
+                            countryCode: "1",
+                            number: "4155551234",
+                        },
+                        address: {
+                            addressLine1: "123 Main St",
+                            addressLine2: "Unit 1",
+                            city: "San Francisco",
+                            stateOrProvince: "CA",
+                            postalCode: "94105",
+                            country: "US",
+                        },
+                        taxId: {
+                            ein: {
+                                number: "12-3456789",
+                            },
                         },
                     },
                 },
             },
-        },
-    ],
+        ],
+    },
 });
 ```
 
@@ -5697,7 +5762,7 @@ await client.entity.bulk.create({
 <dl>
 <dd>
 
-**request:** `Mercoa.BulkEntityCreationRequest`
+**request:** `Mercoa.entity.BulkEntityCreationRequest`
 
 </dd>
 </dl>
@@ -9876,46 +9941,48 @@ Create multiple invoices in bulk. This endpoint will process synchronously and r
 
 ```typescript
 await client.invoice.bulk.create({
-    invoices: [
-        {
-            status: "NEW",
-            amount: 100,
-            currency: "USD",
-            invoiceDate: "2021-01-01T00:00:00Z",
-            dueDate: "2021-01-31T00:00:00Z",
-            invoiceNumber: "INV-123",
-            noteToSelf: "For the month of January",
-            payerId: "ent_8545a84e-a45f-41bf-bdf1-33b42a55812c",
-            paymentSourceId: "pm_4794d597-70dc-4fec-b6ec-c5988e759769",
-            vendorId: "ent_21661ac1-a2a8-4465-a6c0-64474ba8181d",
-            paymentDestinationId: "pm_5fde2f4a-facc-48ef-8f0d-6b7d087c7b18",
-            paymentDestinationOptions: {
-                type: "check",
-                delivery: "MAIL",
-                printDescription: true,
-            },
-            lineItems: [
-                {
-                    amount: 100,
-                    currency: "USD",
-                    description: "Product A",
-                    name: "Product A",
-                    quantity: 1,
-                    unitPrice: 100,
-                    category: "EXPENSE",
-                    serviceStartDate: "2021-01-01T00:00:00Z",
-                    serviceEndDate: "2021-01-31T00:00:00Z",
-                    metadata: {
-                        key1: "value1",
-                        key2: "value2",
-                    },
-                    glAccountId: "600394",
+    body: {
+        invoices: [
+            {
+                status: "NEW",
+                amount: 100,
+                currency: "USD",
+                invoiceDate: "2021-01-01T00:00:00Z",
+                dueDate: "2021-01-31T00:00:00Z",
+                invoiceNumber: "INV-123",
+                noteToSelf: "For the month of January",
+                payerId: "ent_8545a84e-a45f-41bf-bdf1-33b42a55812c",
+                paymentSourceId: "pm_4794d597-70dc-4fec-b6ec-c5988e759769",
+                vendorId: "ent_21661ac1-a2a8-4465-a6c0-64474ba8181d",
+                paymentDestinationId: "pm_5fde2f4a-facc-48ef-8f0d-6b7d087c7b18",
+                paymentDestinationOptions: {
+                    type: "check",
+                    delivery: "MAIL",
+                    printDescription: true,
                 },
-            ],
-            creatorEntityId: "ent_8545a84e-a45f-41bf-bdf1-33b42a55812c",
-            creatorUserId: "user_e24fc81c-c5ee-47e8-af42-4fe29d895506",
-        },
-    ],
+                lineItems: [
+                    {
+                        amount: 100,
+                        currency: "USD",
+                        description: "Product A",
+                        name: "Product A",
+                        quantity: 1,
+                        unitPrice: 100,
+                        category: "EXPENSE",
+                        serviceStartDate: "2021-01-01T00:00:00Z",
+                        serviceEndDate: "2021-01-31T00:00:00Z",
+                        metadata: {
+                            key1: "value1",
+                            key2: "value2",
+                        },
+                        glAccountId: "600394",
+                    },
+                ],
+                creatorEntityId: "ent_8545a84e-a45f-41bf-bdf1-33b42a55812c",
+                creatorUserId: "user_e24fc81c-c5ee-47e8-af42-4fe29d895506",
+            },
+        ],
+    },
 });
 ```
 
@@ -9932,7 +9999,7 @@ await client.invoice.bulk.create({
 <dl>
 <dd>
 
-**request:** `Mercoa.BulkInvoiceCreationRequest`
+**request:** `Mercoa.invoice.BulkInvoiceCreationRequest`
 
 </dd>
 </dl>

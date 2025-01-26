@@ -13,14 +13,14 @@ export const TokenGenerationInvoiceOptions: core.serialization.ObjectSchema<
     Mercoa.TokenGenerationInvoiceOptions
 > = core.serialization.object({
     lineItems: LineItemAvailabilities.optional(),
-    disableLineItems: core.serialization.boolean().optional(),
     status: core.serialization.list(InvoiceStatus),
+    recurring: core.serialization.boolean().optional(),
 });
 
 export declare namespace TokenGenerationInvoiceOptions {
     interface Raw {
         lineItems?: LineItemAvailabilities.Raw | null;
-        disableLineItems?: boolean | null;
         status: InvoiceStatus.Raw[];
+        recurring?: boolean | null;
     }
 }

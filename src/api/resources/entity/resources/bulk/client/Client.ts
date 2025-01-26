@@ -35,7 +35,7 @@ export class Bulk {
     /**
      * Create multiple entities in bulk. This endpoint will process synchronously and return a list of entities that were created or failed to create.
      *
-     * @param {Mercoa.BulkEntityCreationRequest} request
+     * @param {Mercoa.entity.BulkEntityCreationRequest} request
      * @param {Bulk.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Mercoa.BadRequest}
@@ -48,49 +48,57 @@ export class Bulk {
      *
      * @example
      *     await client.entity.bulk.create({
-     *         connectedEntity: {
-     *             id: "ent_a0f6ea94-0761-4a5e-a416-3c453cb7eced",
-     *             linkCreatedAsPayor: false,
-     *             linkCreatedAsPayee: true
-     *         },
-     *         entities: [{
-     *                 isCustomer: true,
-     *                 isPayor: true,
-     *                 isPayee: false,
-     *                 accountType: "business",
-     *                 foreignId: "MY-DB-ID-12345",
-     *                 profile: {
-     *                     business: {
-     *                         email: "customer@acme.com",
-     *                         legalBusinessName: "Acme Inc.",
-     *                         website: "http://www.acme.com",
-     *                         businessType: "llc",
-     *                         phone: {
-     *                             countryCode: "1",
-     *                             number: "4155551234"
-     *                         },
-     *                         address: {
-     *                             addressLine1: "123 Main St",
-     *                             addressLine2: "Unit 1",
-     *                             city: "San Francisco",
-     *                             stateOrProvince: "CA",
-     *                             postalCode: "94105",
-     *                             country: "US"
-     *                         },
-     *                         taxId: {
-     *                             ein: {
-     *                                 number: "12-3456789"
+     *         body: {
+     *             connectedEntity: {
+     *                 id: "ent_a0f6ea94-0761-4a5e-a416-3c453cb7eced",
+     *                 linkCreatedAsPayor: false,
+     *                 linkCreatedAsPayee: true
+     *             },
+     *             entities: [{
+     *                     isCustomer: true,
+     *                     isPayor: true,
+     *                     isPayee: false,
+     *                     accountType: "business",
+     *                     foreignId: "MY-DB-ID-12345",
+     *                     profile: {
+     *                         business: {
+     *                             email: "customer@acme.com",
+     *                             legalBusinessName: "Acme Inc.",
+     *                             website: "http://www.acme.com",
+     *                             businessType: "llc",
+     *                             phone: {
+     *                                 countryCode: "1",
+     *                                 number: "4155551234"
+     *                             },
+     *                             address: {
+     *                                 addressLine1: "123 Main St",
+     *                                 addressLine2: "Unit 1",
+     *                                 city: "San Francisco",
+     *                                 stateOrProvince: "CA",
+     *                                 postalCode: "94105",
+     *                                 country: "US"
+     *                             },
+     *                             taxId: {
+     *                                 ein: {
+     *                                     number: "12-3456789"
+     *                                 }
      *                             }
      *                         }
      *                     }
-     *                 }
-     *             }]
+     *                 }]
+     *         }
      *     })
      */
     public async create(
-        request: Mercoa.BulkEntityCreationRequest,
+        request: Mercoa.entity.BulkEntityCreationRequest,
         requestOptions?: Bulk.RequestOptions
     ): Promise<Mercoa.BulkEntityCreationResponse> {
+        const { emitWebhooks, body: _body } = request;
+        const _queryParams: Record<string, string | string[] | object | object[]> = {};
+        if (emitWebhooks != null) {
+            _queryParams["emitWebhooks"] = emitWebhooks.toString();
+        }
+
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
@@ -101,15 +109,16 @@ export class Bulk {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.6.6",
-                "User-Agent": "@mercoa/javascript/0.6.6",
+                "X-Fern-SDK-Version": "0.6.7",
+                "User-Agent": "@mercoa/javascript/0.6.7",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
+            queryParameters: _queryParams,
             requestType: "json",
-            body: serializers.BulkEntityCreationRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
+            body: serializers.BulkEntityCreationRequest.jsonOrThrow(_body, { unrecognizedObjectKeys: "strip" }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,

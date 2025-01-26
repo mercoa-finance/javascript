@@ -11,7 +11,7 @@ import * as Mercoa from "../../../../../../index";
  *     }
  */
 export interface UploadDocumentRequest {
-    /** Base64 encoded image or PDF of invoice document. PNG, JPG, WEBP, and PDF are supported. 10MB max. */
+    /** Base64-encoded string. Supported file types include PNG, JPG, WEBP, PDF, and all Microsoft Office formats (automatically converted to PDF). Max file size 10MB. */
     document: string;
     /** Specify Document Type, defaults to INVOICE */
     type?: Mercoa.DocumentType;

@@ -7,7 +7,7 @@ import * as Mercoa from "../../../index";
 export interface TokenGenerationInvoiceOptions {
     /** Defaults to OPTIONAL. If set to REQUIRED, the user will be required to provide at least one line item when creating an invoice. If set to DISABLED, the user will not be able to provide line items when creating an invoice. */
     lineItems?: Mercoa.LineItemAvailabilities;
-    /** DEPRECATED. Use lineItems instead. */
-    disableLineItems?: boolean;
     status: Mercoa.InvoiceStatus[];
+    /** If true, recurring invoice templates will be available to the user. */
+    recurring?: boolean;
 }

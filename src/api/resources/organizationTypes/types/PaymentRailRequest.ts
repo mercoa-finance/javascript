@@ -4,9 +4,51 @@
 
 import * as Mercoa from "../../../index";
 
-export interface PaymentRailRequest {
-    type: Mercoa.PaymentMethodType;
-    /** For custom payment methods, this is the ID of the schema. */
-    name?: string;
-    active: boolean;
+export type PaymentRailRequest =
+    | Mercoa.PaymentRailRequest.BankAccount
+    | Mercoa.PaymentRailRequest.Card
+    | Mercoa.PaymentRailRequest.VirtualCard
+    | Mercoa.PaymentRailRequest.Check
+    | Mercoa.PaymentRailRequest.Custom
+    | Mercoa.PaymentRailRequest.Bnpl
+    | Mercoa.PaymentRailRequest.OffPlatform
+    | Mercoa.PaymentRailRequest.Utility
+    | Mercoa.PaymentRailRequest.Na;
+
+export declare namespace PaymentRailRequest {
+    interface BankAccount extends Mercoa.BankPaymentRailRequest {
+        type: "bankAccount";
+    }
+
+    interface Card extends Mercoa.GenericPaymentRailRequest {
+        type: "card";
+    }
+
+    interface VirtualCard extends Mercoa.GenericPaymentRailRequest {
+        type: "virtualCard";
+    }
+
+    interface Check extends Mercoa.CheckPaymentRailRequest {
+        type: "check";
+    }
+
+    interface Custom extends Mercoa.CustomPaymentRailRequest {
+        type: "custom";
+    }
+
+    interface Bnpl extends Mercoa.GenericPaymentRailRequest {
+        type: "bnpl";
+    }
+
+    interface OffPlatform extends Mercoa.GenericPaymentRailRequest {
+        type: "offPlatform";
+    }
+
+    interface Utility extends Mercoa.GenericPaymentRailRequest {
+        type: "utility";
+    }
+
+    interface Na extends Mercoa.GenericPaymentRailRequest {
+        type: "na";
+    }
 }

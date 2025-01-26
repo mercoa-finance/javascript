@@ -8,7 +8,11 @@ import * as Mercoa from "../../../index";
  * @example
  *     {
  *         data: [{
- *                 id: "ent_21661ac1-a2a8-4465-a6c0-64474ba8181d"
+ *                 id: "ent_21661ac1-a2a8-4465-a6c0-64474ba8181d",
+ *                 foreignId: "YOUR-INVOICE-ID"
+ *             }, {
+ *                 error: "Invoice creation failed",
+ *                 foreignId: "YOUR-SECOND-INVOICE-ID"
  *             }]
  *     }
  */

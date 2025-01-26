@@ -13,6 +13,7 @@ export * as invoice from "./invoice";
 export * as metadata from "./metadata";
 export * as notificationPolicy from "./notificationPolicy";
 export * as representative from "./representative";
+export * from "./bulk/client/requests";
 export * from "./document/client/requests";
 export * from "./externalAccountingSystem/client/requests";
 export * from "./invoice/client/requests";

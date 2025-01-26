@@ -5,23 +5,76 @@
 import * as serializers from "../../../index";
 import * as Mercoa from "../../../../api/index";
 import * as core from "../../../../core";
-import { PaymentMethodType } from "../../paymentMethodTypes/types/PaymentMethodType";
+import { BankPaymentRailResponse } from "./BankPaymentRailResponse";
+import { GenericPaymentRailResponse } from "./GenericPaymentRailResponse";
+import { CheckPaymentRailResponse } from "./CheckPaymentRailResponse";
+import { CustomPaymentRailResponse } from "./CustomPaymentRailResponse";
 
-export const PaymentRailResponse: core.serialization.ObjectSchema<
+export const PaymentRailResponse: core.serialization.Schema<
     serializers.PaymentRailResponse.Raw,
     Mercoa.PaymentRailResponse
-> = core.serialization.object({
-    type: PaymentMethodType,
-    name: core.serialization.string(),
-    active: core.serialization.boolean(),
-    available: core.serialization.boolean().optional(),
-});
+> = core.serialization
+    .union("type", {
+        bankAccount: BankPaymentRailResponse,
+        card: GenericPaymentRailResponse,
+        virtualCard: GenericPaymentRailResponse,
+        check: CheckPaymentRailResponse,
+        custom: CustomPaymentRailResponse,
+        bnpl: GenericPaymentRailResponse,
+        offPlatform: GenericPaymentRailResponse,
+        utility: GenericPaymentRailResponse,
+        na: GenericPaymentRailResponse,
+    })
+    .transform<Mercoa.PaymentRailResponse>({
+        transform: (value) => value,
+        untransform: (value) => value,
+    });
 
 export declare namespace PaymentRailResponse {
-    interface Raw {
-        type: PaymentMethodType.Raw;
-        name: string;
-        active: boolean;
-        available?: boolean | null;
+    type Raw =
+        | PaymentRailResponse.BankAccount
+        | PaymentRailResponse.Card
+        | PaymentRailResponse.VirtualCard
+        | PaymentRailResponse.Check
+        | PaymentRailResponse.Custom
+        | PaymentRailResponse.Bnpl
+        | PaymentRailResponse.OffPlatform
+        | PaymentRailResponse.Utility
+        | PaymentRailResponse.Na;
+
+    interface BankAccount extends BankPaymentRailResponse.Raw {
+        type: "bankAccount";
+    }
+
+    interface Card extends GenericPaymentRailResponse.Raw {
+        type: "card";
+    }
+
+    interface VirtualCard extends GenericPaymentRailResponse.Raw {
+        type: "virtualCard";
+    }
+
+    interface Check extends CheckPaymentRailResponse.Raw {
+        type: "check";
+    }
+
+    interface Custom extends CustomPaymentRailResponse.Raw {
+        type: "custom";
+    }
+
+    interface Bnpl extends GenericPaymentRailResponse.Raw {
+        type: "bnpl";
+    }
+
+    interface OffPlatform extends GenericPaymentRailResponse.Raw {
+        type: "offPlatform";
+    }
+
+    interface Utility extends GenericPaymentRailResponse.Raw {
+        type: "utility";
+    }
+
+    interface Na extends GenericPaymentRailResponse.Raw {
+        type: "na";
     }
 }

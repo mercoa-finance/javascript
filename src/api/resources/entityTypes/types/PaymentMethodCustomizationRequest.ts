@@ -7,33 +7,74 @@ import * as Mercoa from "../../../index";
 /**
  * @example
  *     {
- *         type: Mercoa.PaymentMethodType.BankAccount,
+ *         type: "bankAccount",
  *         disabled: true
  *     }
  *
  * @example
  *     {
- *         type: Mercoa.PaymentMethodType.Custom,
+ *         type: "custom",
  *         schemaId: "cpms_7df2974a-4069-454c-912f-7e58ebe030fb",
  *         disabled: true
  *     }
  *
  * @example
  *     {
- *         type: Mercoa.PaymentMethodType.Check,
+ *         type: "check",
  *         disabled: true
  *     }
  *
  * @example
  *     {
- *         type: Mercoa.PaymentMethodType.Card,
+ *         type: "card",
  *         disabled: true
  *     }
  */
-export interface PaymentMethodCustomizationRequest {
-    type: Mercoa.PaymentMethodType;
-    /** If type is custom, this is the ID of the schema to use for this payment method. */
-    schemaId?: string;
-    /** If true, this method will will not be available to the entity. */
-    disabled: boolean;
+export type PaymentMethodCustomizationRequest =
+    | Mercoa.PaymentMethodCustomizationRequest.BankAccount
+    | Mercoa.PaymentMethodCustomizationRequest.Card
+    | Mercoa.PaymentMethodCustomizationRequest.VirtualCard
+    | Mercoa.PaymentMethodCustomizationRequest.Check
+    | Mercoa.PaymentMethodCustomizationRequest.Custom
+    | Mercoa.PaymentMethodCustomizationRequest.Bnpl
+    | Mercoa.PaymentMethodCustomizationRequest.OffPlatform
+    | Mercoa.PaymentMethodCustomizationRequest.Utility
+    | Mercoa.PaymentMethodCustomizationRequest.Na;
+
+export declare namespace PaymentMethodCustomizationRequest {
+    interface BankAccount extends Mercoa.BankAccountPaymentMethodCustomizationRequest {
+        type: "bankAccount";
+    }
+
+    interface Card extends Mercoa.GenericPaymentMethodCustomizationRequest {
+        type: "card";
+    }
+
+    interface VirtualCard extends Mercoa.GenericPaymentMethodCustomizationRequest {
+        type: "virtualCard";
+    }
+
+    interface Check extends Mercoa.CheckPaymentMethodCustomizationRequest {
+        type: "check";
+    }
+
+    interface Custom extends Mercoa.CustomPaymentMethodCustomizationRequest {
+        type: "custom";
+    }
+
+    interface Bnpl extends Mercoa.GenericPaymentMethodCustomizationRequest {
+        type: "bnpl";
+    }
+
+    interface OffPlatform extends Mercoa.GenericPaymentMethodCustomizationRequest {
+        type: "offPlatform";
+    }
+
+    interface Utility extends Mercoa.GenericPaymentMethodCustomizationRequest {
+        type: "utility";
+    }
+
+    interface Na extends Mercoa.GenericPaymentMethodCustomizationRequest {
+        type: "na";
+    }
 }

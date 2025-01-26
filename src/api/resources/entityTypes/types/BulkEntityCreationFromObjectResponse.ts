@@ -5,12 +5,21 @@
 /**
  * @example
  *     {
- *         id: "ent_21661ac1-a2a8-4465-a6c0-64474ba8181d"
+ *         id: "ent_21661ac1-a2a8-4465-a6c0-64474ba8181d",
+ *         foreignId: "YOUR-ENTITY-ID"
+ *     }
+ *
+ * @example
+ *     {
+ *         error: "Entity creation failed",
+ *         foreignId: "YOUR-SECOND-ENTITY-ID"
  *     }
  */
 export interface BulkEntityCreationFromObjectResponse {
     /** The ID of the entity that was created. If the entity was not created, this will be undefined */
     id?: string;
+    /** If provided, this is the foreign ID of the entity that was created. */
+    foreignId?: string;
     /** The error message if the entity was not created */
     error?: string;
 }

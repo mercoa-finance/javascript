@@ -4,11 +4,51 @@
 
 import * as Mercoa from "../../../index";
 
-export interface PaymentRailResponse {
-    type: Mercoa.PaymentMethodType;
-    /** For custom payment methods, this is the ID of the schema. */
-    name: string;
-    active: boolean;
-    /** unused */
-    available?: boolean;
+export type PaymentRailResponse =
+    | Mercoa.PaymentRailResponse.BankAccount
+    | Mercoa.PaymentRailResponse.Card
+    | Mercoa.PaymentRailResponse.VirtualCard
+    | Mercoa.PaymentRailResponse.Check
+    | Mercoa.PaymentRailResponse.Custom
+    | Mercoa.PaymentRailResponse.Bnpl
+    | Mercoa.PaymentRailResponse.OffPlatform
+    | Mercoa.PaymentRailResponse.Utility
+    | Mercoa.PaymentRailResponse.Na;
+
+export declare namespace PaymentRailResponse {
+    interface BankAccount extends Mercoa.BankPaymentRailResponse {
+        type: "bankAccount";
+    }
+
+    interface Card extends Mercoa.GenericPaymentRailResponse {
+        type: "card";
+    }
+
+    interface VirtualCard extends Mercoa.GenericPaymentRailResponse {
+        type: "virtualCard";
+    }
+
+    interface Check extends Mercoa.CheckPaymentRailResponse {
+        type: "check";
+    }
+
+    interface Custom extends Mercoa.CustomPaymentRailResponse {
+        type: "custom";
+    }
+
+    interface Bnpl extends Mercoa.GenericPaymentRailResponse {
+        type: "bnpl";
+    }
+
+    interface OffPlatform extends Mercoa.GenericPaymentRailResponse {
+        type: "offPlatform";
+    }
+
+    interface Utility extends Mercoa.GenericPaymentRailResponse {
+        type: "utility";
+    }
+
+    interface Na extends Mercoa.GenericPaymentRailResponse {
+        type: "na";
+    }
 }

@@ -11,12 +11,14 @@ export const BulkEntityCreationFromObjectResponse: core.serialization.ObjectSche
     Mercoa.BulkEntityCreationFromObjectResponse
 > = core.serialization.object({
     id: core.serialization.string().optional(),
+    foreignId: core.serialization.string().optional(),
     error: core.serialization.string().optional(),
 });
 
 export declare namespace BulkEntityCreationFromObjectResponse {
     interface Raw {
         id?: string | null;
+        foreignId?: string | null;
         error?: string | null;
     }
 }
