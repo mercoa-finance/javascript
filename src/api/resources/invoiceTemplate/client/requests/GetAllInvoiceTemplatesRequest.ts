@@ -44,7 +44,7 @@ export interface GetAllInvoiceTemplatesRequest {
      */
     startingAfter?: Mercoa.InvoiceTemplateId;
     /**
-     * Find invoice templates by vendor name, invoice number, or amount. Partial matches are supported.
+     * Find invoice templates by vendor name, check number, invoice number, or amount. Partial matches are supported.
      */
     search?: string;
     /**

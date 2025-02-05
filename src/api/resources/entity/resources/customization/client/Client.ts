@@ -63,8 +63,8 @@ export class Customization {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.6.7",
-                "User-Agent": "@mercoa/javascript/0.6.7",
+                "X-Fern-SDK-Version": "0.6.8",
+                "User-Agent": "@mercoa/javascript/0.6.8",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
@@ -198,7 +198,8 @@ export class Customization {
      *             }],
      *         paymentSource: [{
      *                 type: "bankAccount",
-     *                 disabled: true
+     *                 disabled: true,
+     *                 defaultDeliveryMethod: "ACH_SAME_DAY"
      *             }, {
      *                 type: "custom",
      *                 schemaId: "cpms_7df2974a-4069-454c-912f-7e58ebe030fb",
@@ -206,14 +207,19 @@ export class Customization {
      *             }],
      *         backupDisbursement: [{
      *                 type: "check",
-     *                 disabled: true
+     *                 disabled: true,
+     *                 defaultDeliveryMethod: "MAIL",
+     *                 printDescription: true
      *             }],
      *         paymentDestination: [{
      *                 type: "bankAccount",
-     *                 disabled: true
+     *                 disabled: true,
+     *                 defaultDeliveryMethod: "ACH_SAME_DAY"
      *             }, {
      *                 type: "check",
-     *                 disabled: true
+     *                 disabled: true,
+     *                 defaultDeliveryMethod: "MAIL",
+     *                 printDescription: true
      *             }],
      *         ocr: {
      *             lineItems: true,
@@ -247,8 +253,8 @@ export class Customization {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.6.7",
-                "User-Agent": "@mercoa/javascript/0.6.7",
+                "X-Fern-SDK-Version": "0.6.8",
+                "User-Agent": "@mercoa/javascript/0.6.8",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,

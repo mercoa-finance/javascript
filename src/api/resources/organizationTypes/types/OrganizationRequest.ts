@@ -18,4 +18,5 @@ export interface OrganizationRequest {
     metadataSchema?: Mercoa.MetadataSchema[];
     notificationEmailTemplate?: Mercoa.NotificationEmailTemplateRequest;
     customDomains?: string[];
+    rolePermissionConfig?: Mercoa.RolePermissionConfigRequest;
 }

@@ -40,6 +40,10 @@ export interface GetOrganizationRequest {
      */
     notificationEmailTemplate?: boolean;
     /**
+     * include role permission config in response
+     */
+    rolePermissionConfig?: boolean;
+    /**
      * include custom domains in response
      */
     customDomains?: boolean;

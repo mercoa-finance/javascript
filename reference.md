@@ -6244,6 +6244,7 @@ await client.entity.customization.update("ent_a0f6ea94-0761-4a5e-a416-3c453cb7ec
         {
             type: "bankAccount",
             disabled: true,
+            defaultDeliveryMethod: "ACH_SAME_DAY",
         },
         {
             type: "custom",
@@ -6255,16 +6256,21 @@ await client.entity.customization.update("ent_a0f6ea94-0761-4a5e-a416-3c453cb7ec
         {
             type: "check",
             disabled: true,
+            defaultDeliveryMethod: "MAIL",
+            printDescription: true,
         },
     ],
     paymentDestination: [
         {
             type: "bankAccount",
             disabled: true,
+            defaultDeliveryMethod: "ACH_SAME_DAY",
         },
         {
             type: "check",
             disabled: true,
+            defaultDeliveryMethod: "MAIL",
+            printDescription: true,
         },
     ],
     ocr: {

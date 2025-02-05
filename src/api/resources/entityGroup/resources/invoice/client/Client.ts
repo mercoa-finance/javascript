@@ -80,6 +80,8 @@ export class Invoice {
             invoiceId,
             status,
             paymentType,
+            returnPayerMetadata,
+            returnVendorMetadata,
         } = request;
         const _queryParams: Record<string, string | string[] | object | object[]> = {};
         if (excludePayables != null) {
@@ -204,6 +206,14 @@ export class Invoice {
             _queryParams["paymentType"] = JSON.stringify(paymentType);
         }
 
+        if (returnPayerMetadata != null) {
+            _queryParams["returnPayerMetadata"] = returnPayerMetadata.toString();
+        }
+
+        if (returnVendorMetadata != null) {
+            _queryParams["returnVendorMetadata"] = returnVendorMetadata.toString();
+        }
+
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
@@ -214,8 +224,8 @@ export class Invoice {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.6.7",
-                "User-Agent": "@mercoa/javascript/0.6.7",
+                "X-Fern-SDK-Version": "0.6.8",
+                "User-Agent": "@mercoa/javascript/0.6.8",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
@@ -472,8 +482,8 @@ export class Invoice {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.6.7",
-                "User-Agent": "@mercoa/javascript/0.6.7",
+                "X-Fern-SDK-Version": "0.6.8",
+                "User-Agent": "@mercoa/javascript/0.6.8",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,

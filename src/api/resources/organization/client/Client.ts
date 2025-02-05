@@ -63,6 +63,7 @@ export class Organization {
             payorOnboardingOptions,
             metadataSchema,
             notificationEmailTemplate,
+            rolePermissionConfig,
             customDomains,
         } = request;
         const _queryParams: Record<string, string | string[] | object | object[]> = {};
@@ -98,6 +99,10 @@ export class Organization {
             _queryParams["notificationEmailTemplate"] = notificationEmailTemplate.toString();
         }
 
+        if (rolePermissionConfig != null) {
+            _queryParams["rolePermissionConfig"] = rolePermissionConfig.toString();
+        }
+
         if (customDomains != null) {
             _queryParams["customDomains"] = customDomains.toString();
         }
@@ -112,8 +117,8 @@ export class Organization {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.6.7",
-                "User-Agent": "@mercoa/javascript/0.6.7",
+                "X-Fern-SDK-Version": "0.6.8",
+                "User-Agent": "@mercoa/javascript/0.6.8",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
@@ -253,8 +258,8 @@ export class Organization {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.6.7",
-                "User-Agent": "@mercoa/javascript/0.6.7",
+                "X-Fern-SDK-Version": "0.6.8",
+                "User-Agent": "@mercoa/javascript/0.6.8",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
@@ -412,8 +417,8 @@ export class Organization {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.6.7",
-                "User-Agent": "@mercoa/javascript/0.6.7",
+                "X-Fern-SDK-Version": "0.6.8",
+                "User-Agent": "@mercoa/javascript/0.6.8",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,

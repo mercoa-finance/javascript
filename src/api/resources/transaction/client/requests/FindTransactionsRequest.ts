@@ -34,7 +34,7 @@ export interface FindTransactionsRequest {
      */
     startingAfter?: Mercoa.TransactionId;
     /**
-     * Find transactions by vendor name, invoice number, or amount. Partial matches are supported.
+     * Find transactions by vendor name, invoice number, check number, or amount. Partial matches are supported.
      */
     search?: string;
     /**

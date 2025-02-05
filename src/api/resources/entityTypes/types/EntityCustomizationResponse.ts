@@ -16,7 +16,8 @@ import * as Mercoa from "../../../index";
  *             }],
  *         paymentSource: [{
  *                 type: "bankAccount",
- *                 disabled: true
+ *                 disabled: true,
+ *                 defaultDeliveryMethod: Mercoa.BankDeliveryMethod.AchSameDay
  *             }, {
  *                 type: "custom",
  *                 schemaId: "cpms_7df2974a-4069-454c-912f-7e58ebe030fb",
@@ -24,14 +25,19 @@ import * as Mercoa from "../../../index";
  *             }],
  *         backupDisbursement: [{
  *                 type: "check",
- *                 disabled: true
+ *                 disabled: true,
+ *                 defaultDeliveryMethod: Mercoa.CheckDeliveryMethod.Mail,
+ *                 printDescription: true
  *             }],
  *         paymentDestination: [{
  *                 type: "bankAccount",
- *                 disabled: true
+ *                 disabled: true,
+ *                 defaultDeliveryMethod: Mercoa.BankDeliveryMethod.AchSameDay
  *             }, {
  *                 type: "check",
- *                 disabled: true
+ *                 disabled: true,
+ *                 defaultDeliveryMethod: Mercoa.CheckDeliveryMethod.Mail,
+ *                 printDescription: true
  *             }],
  *         ocr: {
  *             lineItems: true,

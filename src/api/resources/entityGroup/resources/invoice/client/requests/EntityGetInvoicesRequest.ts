@@ -55,7 +55,7 @@ export interface EntityGetInvoicesRequest {
      */
     metadata?: Mercoa.MetadataFilter | Mercoa.MetadataFilter[];
     /**
-     * Find invoices by vendor name, invoice number, or amount. Partial matches are supported.
+     * Find invoices by vendor name, invoice number, check number, or amount. Partial matches are supported.
      */
     search?: string;
     /**
@@ -90,4 +90,12 @@ export interface EntityGetInvoicesRequest {
      * Filter invoices by recurring status
      */
     paymentType?: Mercoa.PaymentType[];
+    /**
+     * Whether to return payer metadata in the response
+     */
+    returnPayerMetadata?: boolean;
+    /**
+     * Whether to return vendor metadata in the response
+     */
+    returnVendorMetadata?: boolean;
 }

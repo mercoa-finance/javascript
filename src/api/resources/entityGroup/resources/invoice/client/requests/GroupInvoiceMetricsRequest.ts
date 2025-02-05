@@ -17,7 +17,7 @@ import * as Mercoa from "../../../../../../index";
  */
 export interface GroupInvoiceMetricsRequest {
     /**
-     * Find invoices by vendor name, invoice number, or amount. Partial matches are supported.
+     * Find invoices by vendor name, invoice number, check number, or amount. Partial matches are supported.
      */
     search?: string;
     /**

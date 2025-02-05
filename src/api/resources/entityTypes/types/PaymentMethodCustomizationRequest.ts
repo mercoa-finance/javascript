@@ -8,7 +8,8 @@ import * as Mercoa from "../../../index";
  * @example
  *     {
  *         type: "bankAccount",
- *         disabled: true
+ *         disabled: true,
+ *         defaultDeliveryMethod: Mercoa.BankDeliveryMethod.AchSameDay
  *     }
  *
  * @example
@@ -21,7 +22,9 @@ import * as Mercoa from "../../../index";
  * @example
  *     {
  *         type: "check",
- *         disabled: true
+ *         disabled: true,
+ *         defaultDeliveryMethod: Mercoa.CheckDeliveryMethod.Mail,
+ *         printDescription: true
  *     }
  *
  * @example
