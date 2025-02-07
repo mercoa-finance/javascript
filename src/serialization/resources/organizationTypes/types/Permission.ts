@@ -25,6 +25,15 @@ export const Permission: core.serialization.Schema<serializers.Permission.Raw, M
         "invoice.create.new",
         "invoice.create.approved",
         "invoice.create.scheduled",
+        "invoice.create.archived",
+        "invoice.create.cancel",
+        "invoice.update.all",
+        "invoice.update.draft",
+        "invoice.update.new",
+        "invoice.update.approved",
+        "invoice.update.scheduled",
+        "invoice.update.archived",
+        "invoice.update.cancel",
         "invoice.delete",
         "invoice.comment.view",
         "invoice.comment.create",
@@ -56,6 +65,15 @@ export declare namespace Permission {
         | "invoice.create.new"
         | "invoice.create.approved"
         | "invoice.create.scheduled"
+        | "invoice.create.archived"
+        | "invoice.create.cancel"
+        | "invoice.update.all"
+        | "invoice.update.draft"
+        | "invoice.update.new"
+        | "invoice.update.approved"
+        | "invoice.update.scheduled"
+        | "invoice.update.archived"
+        | "invoice.update.cancel"
         | "invoice.delete"
         | "invoice.comment.view"
         | "invoice.comment.create"

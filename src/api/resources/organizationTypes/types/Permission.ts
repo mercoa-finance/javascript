@@ -20,6 +20,15 @@ export type Permission =
     | "invoice.create.new"
     | "invoice.create.approved"
     | "invoice.create.scheduled"
+    | "invoice.create.archived"
+    | "invoice.create.cancel"
+    | "invoice.update.all"
+    | "invoice.update.draft"
+    | "invoice.update.new"
+    | "invoice.update.approved"
+    | "invoice.update.scheduled"
+    | "invoice.update.archived"
+    | "invoice.update.cancel"
     | "invoice.delete"
     | "invoice.comment.view"
     | "invoice.comment.create"
@@ -49,6 +58,15 @@ export const Permission = {
     InvoiceCreateNew: "invoice.create.new",
     InvoiceCreateApproved: "invoice.create.approved",
     InvoiceCreateScheduled: "invoice.create.scheduled",
+    InvoiceCreateArchived: "invoice.create.archived",
+    InvoiceCreateCancel: "invoice.create.cancel",
+    InvoiceUpdateAll: "invoice.update.all",
+    InvoiceUpdateDraft: "invoice.update.draft",
+    InvoiceUpdateNew: "invoice.update.new",
+    InvoiceUpdateApproved: "invoice.update.approved",
+    InvoiceUpdateScheduled: "invoice.update.scheduled",
+    InvoiceUpdateArchived: "invoice.update.archived",
+    InvoiceUpdateCancel: "invoice.update.cancel",
     InvoiceDelete: "invoice.delete",
     InvoiceCommentView: "invoice.comment.view",
     InvoiceCommentCreate: "invoice.comment.create",
