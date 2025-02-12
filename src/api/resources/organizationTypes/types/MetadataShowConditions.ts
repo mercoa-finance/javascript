@@ -5,6 +5,8 @@
 import * as Mercoa from "../../../index";
 
 export interface MetadataShowConditions {
+    /** Always hide this field. Useful for getting data from OCR and AI predictions that you don't want to show in the UI. */
+    alwaysHide?: boolean;
     /** Show this field only if the entity has values set for the metadata key. */
     hasOptions?: boolean;
     /** Show this field only if a document has been attached. */

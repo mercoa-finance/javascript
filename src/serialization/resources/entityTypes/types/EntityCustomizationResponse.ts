@@ -10,6 +10,8 @@ import { PaymentMethodCustomizationRequest } from "./PaymentMethodCustomizationR
 import { OcrCustomizationResponse } from "./OcrCustomizationResponse";
 import { NotificationCustomizationRequest } from "./NotificationCustomizationRequest";
 import { WorkflowCustomizationRequest } from "./WorkflowCustomizationRequest";
+import { RolePermissionRequest } from "../../organizationTypes/types/RolePermissionRequest";
+import { Permission } from "../../organizationTypes/types/Permission";
 
 export const EntityCustomizationResponse: core.serialization.ObjectSchema<
     serializers.EntityCustomizationResponse.Raw,
@@ -22,6 +24,7 @@ export const EntityCustomizationResponse: core.serialization.ObjectSchema<
     ocr: OcrCustomizationResponse,
     notifications: NotificationCustomizationRequest,
     workflow: WorkflowCustomizationRequest,
+    rolePermissions: RolePermissionRequest,
 });
 
 export declare namespace EntityCustomizationResponse {
@@ -33,5 +36,6 @@ export declare namespace EntityCustomizationResponse {
         ocr: OcrCustomizationResponse.Raw;
         notifications: NotificationCustomizationRequest.Raw;
         workflow: WorkflowCustomizationRequest.Raw;
+        rolePermissions: RolePermissionRequest.Raw;
     }
 }

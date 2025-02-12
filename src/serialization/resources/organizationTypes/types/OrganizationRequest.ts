@@ -12,7 +12,7 @@ import { ColorSchemeRequest } from "./ColorSchemeRequest";
 import { OnboardingOptionsRequest } from "./OnboardingOptionsRequest";
 import { MetadataSchema } from "./MetadataSchema";
 import { NotificationEmailTemplateRequest } from "./NotificationEmailTemplateRequest";
-import { RolePermissionConfigRequest } from "./RolePermissionConfigRequest";
+import { RolePermissionRequest } from "./RolePermissionRequest";
 import { Permission } from "./Permission";
 
 export const OrganizationRequest: core.serialization.ObjectSchema<
@@ -32,7 +32,7 @@ export const OrganizationRequest: core.serialization.ObjectSchema<
     metadataSchema: core.serialization.list(MetadataSchema).optional(),
     notificationEmailTemplate: NotificationEmailTemplateRequest.optional(),
     customDomains: core.serialization.list(core.serialization.string()).optional(),
-    rolePermissionConfig: RolePermissionConfigRequest.optional(),
+    rolePermissions: RolePermissionRequest.optional(),
 });
 
 export declare namespace OrganizationRequest {
@@ -50,6 +50,6 @@ export declare namespace OrganizationRequest {
         metadataSchema?: MetadataSchema.Raw[] | null;
         notificationEmailTemplate?: NotificationEmailTemplateRequest.Raw | null;
         customDomains?: string[] | null;
-        rolePermissionConfig?: RolePermissionConfigRequest.Raw | null;
+        rolePermissions?: RolePermissionRequest.Raw | null;
     }
 }

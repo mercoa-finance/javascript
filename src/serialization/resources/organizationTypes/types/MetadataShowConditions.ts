@@ -11,6 +11,7 @@ export const MetadataShowConditions: core.serialization.ObjectSchema<
     serializers.MetadataShowConditions.Raw,
     Mercoa.MetadataShowConditions
 > = core.serialization.object({
+    alwaysHide: core.serialization.boolean().optional(),
     hasOptions: core.serialization.boolean().optional(),
     hasDocument: core.serialization.boolean().optional(),
     hasNoLineItems: core.serialization.boolean().optional(),
@@ -22,6 +23,7 @@ export const MetadataShowConditions: core.serialization.ObjectSchema<
 
 export declare namespace MetadataShowConditions {
     interface Raw {
+        alwaysHide?: boolean | null;
         hasOptions?: boolean | null;
         hasDocument?: boolean | null;
         hasNoLineItems?: boolean | null;

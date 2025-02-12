@@ -25,6 +25,32 @@ import * as Mercoa from "../../../index";
  *         createdAt: "2021-01-01T00:00:00Z",
  *         updatedAt: "2021-01-01T00:00:00Z"
  *     }
+ *
+ * @example
+ *     {
+ *         id: "inli_26672f38-eb9a-48f1-a7a0-f1b855e38cd7",
+ *         amount: 20,
+ *         currency: Mercoa.CurrencyCode.Usd,
+ *         quantity: 1,
+ *         unitPrice: 20,
+ *         name: "Monthly Subscription Service Fee",
+ *         category: "EXPENSE",
+ *         createdAt: "2025-01-29T00:00:00Z",
+ *         updatedAt: "2025-01-29T00:00:00Z"
+ *     }
+ *
+ * @example
+ *     {
+ *         id: "inli_26672f38-eb9a-48f1-a7a0-f1b855e38cd7",
+ *         amount: 20,
+ *         currency: Mercoa.CurrencyCode.Usd,
+ *         quantity: 2,
+ *         unitPrice: 20,
+ *         name: "Monthly Subscription Service Fee",
+ *         category: "EXPENSE",
+ *         createdAt: "2025-01-29T00:00:00Z",
+ *         updatedAt: "2025-01-29T00:00:00Z"
+ *     }
  */
 export interface InvoiceLineItemResponse {
     id: Mercoa.InvoiceLineItemId;

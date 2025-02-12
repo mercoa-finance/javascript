@@ -7,11 +7,11 @@ import * as Mercoa from "../../../../api/index";
 import * as core from "../../../../core";
 import { Permission } from "./Permission";
 
-export const RolePermissionConfigRequest: core.serialization.Schema<
-    serializers.RolePermissionConfigRequest.Raw,
-    Mercoa.RolePermissionConfigRequest
+export const RolePermissionRequest: core.serialization.Schema<
+    serializers.RolePermissionRequest.Raw,
+    Mercoa.RolePermissionRequest
 > = core.serialization.record(core.serialization.string(), core.serialization.list(Permission));
 
-export declare namespace RolePermissionConfigRequest {
+export declare namespace RolePermissionRequest {
     type Raw = Record<string, Permission.Raw[]>;
 }

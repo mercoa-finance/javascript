@@ -14,7 +14,7 @@ import { OnboardingOptionsResponse } from "./OnboardingOptionsResponse";
 import { MetadataSchema } from "./MetadataSchema";
 import { NotificationEmailTemplateResponse } from "./NotificationEmailTemplateResponse";
 import { EntityId } from "../../entityTypes/types/EntityId";
-import { RolePermissionConfigResponse } from "./RolePermissionConfigResponse";
+import { RolePermissionResponse } from "./RolePermissionResponse";
 import { Permission } from "./Permission";
 
 export const OrganizationResponse: core.serialization.ObjectSchema<
@@ -37,7 +37,7 @@ export const OrganizationResponse: core.serialization.ObjectSchema<
     notificationEmailTemplate: NotificationEmailTemplateResponse.optional(),
     customDomains: core.serialization.list(core.serialization.string()).optional(),
     organizationEntityId: EntityId.optional(),
-    rolePermissionConfig: RolePermissionConfigResponse.optional(),
+    rolePermissions: RolePermissionResponse.optional(),
 });
 
 export declare namespace OrganizationResponse {
@@ -58,6 +58,6 @@ export declare namespace OrganizationResponse {
         notificationEmailTemplate?: NotificationEmailTemplateResponse.Raw | null;
         customDomains?: string[] | null;
         organizationEntityId?: EntityId.Raw | null;
-        rolePermissionConfig?: RolePermissionConfigResponse.Raw | null;
+        rolePermissions?: RolePermissionResponse.Raw | null;
     }
 }

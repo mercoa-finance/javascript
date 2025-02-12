@@ -42,7 +42,7 @@ export interface GetOrganizationRequest {
     /**
      * include role permission config in response
      */
-    rolePermissionConfig?: boolean;
+    rolePermissions?: boolean;
     /**
      * include custom domains in response
      */
