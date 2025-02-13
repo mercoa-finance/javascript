@@ -8,6 +8,6 @@ export interface OnboardingOptionsResponse {
     enableBusiness: boolean;
     enableIndividual: boolean;
     paymentMethod: boolean;
-    business: Mercoa.BusinessOnboardingOptions;
-    individual: Mercoa.IndividualOnboardingOptions;
+    business: Mercoa.BusinessOnboardingOptionsResponse;
+    individual: Mercoa.IndividualOnboardingOptionsResponse;
 }

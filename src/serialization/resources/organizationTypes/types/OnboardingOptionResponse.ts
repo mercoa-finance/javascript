@@ -6,16 +6,16 @@ import * as serializers from "../../../index";
 import * as Mercoa from "../../../../api/index";
 import * as core from "../../../../core";
 
-export const OnboardingOption: core.serialization.ObjectSchema<
-    serializers.OnboardingOption.Raw,
-    Mercoa.OnboardingOption
+export const OnboardingOptionResponse: core.serialization.ObjectSchema<
+    serializers.OnboardingOptionResponse.Raw,
+    Mercoa.OnboardingOptionResponse
 > = core.serialization.object({
     show: core.serialization.boolean(),
     edit: core.serialization.boolean(),
     required: core.serialization.boolean(),
 });
 
-export declare namespace OnboardingOption {
+export declare namespace OnboardingOptionResponse {
     interface Raw {
         show: boolean;
         edit: boolean;

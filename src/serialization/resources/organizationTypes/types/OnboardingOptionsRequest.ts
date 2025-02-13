@@ -5,8 +5,8 @@
 import * as serializers from "../../../index";
 import * as Mercoa from "../../../../api/index";
 import * as core from "../../../../core";
-import { BusinessOnboardingOptions } from "./BusinessOnboardingOptions";
-import { IndividualOnboardingOptions } from "./IndividualOnboardingOptions";
+import { BusinessOnboardingOptionsRequest } from "./BusinessOnboardingOptionsRequest";
+import { IndividualOnboardingOptionsRequest } from "./IndividualOnboardingOptionsRequest";
 
 export const OnboardingOptionsRequest: core.serialization.ObjectSchema<
     serializers.OnboardingOptionsRequest.Raw,
@@ -15,8 +15,8 @@ export const OnboardingOptionsRequest: core.serialization.ObjectSchema<
     enableBusiness: core.serialization.boolean().optional(),
     enableIndividual: core.serialization.boolean().optional(),
     paymentMethod: core.serialization.boolean().optional(),
-    business: BusinessOnboardingOptions.optional(),
-    individual: IndividualOnboardingOptions.optional(),
+    business: BusinessOnboardingOptionsRequest.optional(),
+    individual: IndividualOnboardingOptionsRequest.optional(),
 });
 
 export declare namespace OnboardingOptionsRequest {
@@ -24,7 +24,7 @@ export declare namespace OnboardingOptionsRequest {
         enableBusiness?: boolean | null;
         enableIndividual?: boolean | null;
         paymentMethod?: boolean | null;
-        business?: BusinessOnboardingOptions.Raw | null;
-        individual?: IndividualOnboardingOptions.Raw | null;
+        business?: BusinessOnboardingOptionsRequest.Raw | null;
+        individual?: IndividualOnboardingOptionsRequest.Raw | null;
     }
 }
