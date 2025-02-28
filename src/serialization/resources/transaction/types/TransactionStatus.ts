@@ -7,8 +7,17 @@ import * as Mercoa from "../../../../api/index";
 import * as core from "../../../../core";
 
 export const TransactionStatus: core.serialization.Schema<serializers.TransactionStatus.Raw, Mercoa.TransactionStatus> =
-    core.serialization.enum_(["CREATED", "PENDING", "COMPLETED", "FAILED", "REVERSED", "QUEUED", "CANCELED"]);
+    core.serialization.enum_([
+        "CREATED",
+        "PENDING",
+        "COMPLETED",
+        "FAILED",
+        "REVERSED",
+        "QUEUED",
+        "CANCELED",
+        "RETURNED",
+    ]);
 
 export declare namespace TransactionStatus {
-    type Raw = "CREATED" | "PENDING" | "COMPLETED" | "FAILED" | "REVERSED" | "QUEUED" | "CANCELED";
+    type Raw = "CREATED" | "PENDING" | "COMPLETED" | "FAILED" | "REVERSED" | "QUEUED" | "CANCELED" | "RETURNED";
 }

@@ -4,7 +4,7 @@
 
 import * as Mercoa from "../../../index";
 
-export interface TransactionResponseBankToBankWithInvoices extends Mercoa.TransactionResponseBankToBankBase {
+export interface TransactionResponseBankToBankWithInvoices extends Mercoa.TransactionResponseAchBase {
     /** Invoices associated with this transaction */
     invoices: Mercoa.InvoiceResponse[];
 }

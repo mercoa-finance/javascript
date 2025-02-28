@@ -5,8 +5,8 @@
 import * as serializers from "../../../index";
 import * as Mercoa from "../../../../api/index";
 import * as core from "../../../../core";
-import { TransactionResponseBankToBankBase } from "./TransactionResponseBankToBankBase";
-import { TransactionResponseBankToMailedCheckBase } from "./TransactionResponseBankToMailedCheckBase";
+import { TransactionResponseAchBase } from "./TransactionResponseAchBase";
+import { TransactionResponseMailedCheckBase } from "./TransactionResponseMailedCheckBase";
 import { TransactionResponseBase } from "./TransactionResponseBase";
 
 export const TransactionResponseWithoutInvoices: core.serialization.Schema<
@@ -14,8 +14,11 @@ export const TransactionResponseWithoutInvoices: core.serialization.Schema<
     Mercoa.TransactionResponseWithoutInvoices
 > = core.serialization
     .union("type", {
-        bankAccountToBankAccount: TransactionResponseBankToBankBase,
-        bankAccountToMailedCheck: TransactionResponseBankToMailedCheckBase,
+        bankAccountToBankAccount: TransactionResponseAchBase,
+        bankAccountToMailedCheck: TransactionResponseMailedCheckBase,
+        bankAccountToWallet: TransactionResponseAchBase,
+        cardToWallet: TransactionResponseBase,
+        walletToBankAccount: TransactionResponseAchBase,
         custom: TransactionResponseBase,
         offPlatform: TransactionResponseBase,
     })
@@ -28,15 +31,30 @@ export declare namespace TransactionResponseWithoutInvoices {
     type Raw =
         | TransactionResponseWithoutInvoices.BankAccountToBankAccount
         | TransactionResponseWithoutInvoices.BankAccountToMailedCheck
+        | TransactionResponseWithoutInvoices.BankAccountToWallet
+        | TransactionResponseWithoutInvoices.CardToWallet
+        | TransactionResponseWithoutInvoices.WalletToBankAccount
         | TransactionResponseWithoutInvoices.Custom
         | TransactionResponseWithoutInvoices.OffPlatform;
 
-    interface BankAccountToBankAccount extends TransactionResponseBankToBankBase.Raw {
+    interface BankAccountToBankAccount extends TransactionResponseAchBase.Raw {
         type: "bankAccountToBankAccount";
     }
 
-    interface BankAccountToMailedCheck extends TransactionResponseBankToMailedCheckBase.Raw {
+    interface BankAccountToMailedCheck extends TransactionResponseMailedCheckBase.Raw {
         type: "bankAccountToMailedCheck";
+    }
+
+    interface BankAccountToWallet extends TransactionResponseAchBase.Raw {
+        type: "bankAccountToWallet";
+    }
+
+    interface CardToWallet extends TransactionResponseBase.Raw {
+        type: "cardToWallet";
+    }
+
+    interface WalletToBankAccount extends TransactionResponseAchBase.Raw {
+        type: "walletToBankAccount";
     }
 
     interface Custom extends TransactionResponseBase.Raw {

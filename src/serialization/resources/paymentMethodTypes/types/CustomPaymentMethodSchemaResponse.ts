@@ -8,7 +8,6 @@ import * as core from "../../../../core";
 import { CustomPaymentMethodSchemaId } from "./CustomPaymentMethodSchemaId";
 import { CurrencyCode } from "./CurrencyCode";
 import { CustomPaymentMethodSchemaField } from "./CustomPaymentMethodSchemaField";
-import { CustomPaymentMethodSchemaFee } from "./CustomPaymentMethodSchemaFee";
 
 export const CustomPaymentMethodSchemaResponse: core.serialization.ObjectSchema<
     serializers.CustomPaymentMethodSchemaResponse.Raw,
@@ -23,7 +22,6 @@ export const CustomPaymentMethodSchemaResponse: core.serialization.ObjectSchema<
     estimatedProcessingTime: core.serialization.number(),
     maxAmount: core.serialization.number().optional(),
     minAmount: core.serialization.number().optional(),
-    fees: CustomPaymentMethodSchemaFee.optional(),
     createdAt: core.serialization.date(),
     updatedAt: core.serialization.date(),
 });
@@ -39,7 +37,6 @@ export declare namespace CustomPaymentMethodSchemaResponse {
         estimatedProcessingTime: number;
         maxAmount?: number | null;
         minAmount?: number | null;
-        fees?: CustomPaymentMethodSchemaFee.Raw | null;
         createdAt: string;
         updatedAt: string;
     }

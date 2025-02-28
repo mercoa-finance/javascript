@@ -7,6 +7,9 @@ import * as Mercoa from "../../../../api/index";
 import * as core from "../../../../core";
 import { TransactionResponseBankToBankWithInvoices } from "./TransactionResponseBankToBankWithInvoices";
 import { TransactionResponseBankToMailedCheckWithInvoices } from "./TransactionResponseBankToMailedCheckWithInvoices";
+import { TransactionResponseBankToWalletWithInvoices } from "./TransactionResponseBankToWalletWithInvoices";
+import { TransactionResponseCardToWalletWithInvoices } from "./TransactionResponseCardToWalletWithInvoices";
+import { TransactionResponseWalletToBankWithInvoices } from "./TransactionResponseWalletToBankWithInvoices";
 import { TransactionResponseCustomWithInvoices } from "./TransactionResponseCustomWithInvoices";
 
 export const TransactionResponse: core.serialization.Schema<
@@ -16,6 +19,9 @@ export const TransactionResponse: core.serialization.Schema<
     .union("type", {
         bankAccountToBankAccount: TransactionResponseBankToBankWithInvoices,
         bankAccountToMailedCheck: TransactionResponseBankToMailedCheckWithInvoices,
+        bankAccountToWallet: TransactionResponseBankToWalletWithInvoices,
+        cardToWallet: TransactionResponseCardToWalletWithInvoices,
+        walletToBankAccount: TransactionResponseWalletToBankWithInvoices,
         custom: TransactionResponseCustomWithInvoices,
         offPlatform: TransactionResponseCustomWithInvoices,
     })
@@ -28,6 +34,9 @@ export declare namespace TransactionResponse {
     type Raw =
         | TransactionResponse.BankAccountToBankAccount
         | TransactionResponse.BankAccountToMailedCheck
+        | TransactionResponse.BankAccountToWallet
+        | TransactionResponse.CardToWallet
+        | TransactionResponse.WalletToBankAccount
         | TransactionResponse.Custom
         | TransactionResponse.OffPlatform;
 
@@ -37,6 +46,18 @@ export declare namespace TransactionResponse {
 
     interface BankAccountToMailedCheck extends TransactionResponseBankToMailedCheckWithInvoices.Raw {
         type: "bankAccountToMailedCheck";
+    }
+
+    interface BankAccountToWallet extends TransactionResponseBankToWalletWithInvoices.Raw {
+        type: "bankAccountToWallet";
+    }
+
+    interface CardToWallet extends TransactionResponseCardToWalletWithInvoices.Raw {
+        type: "cardToWallet";
+    }
+
+    interface WalletToBankAccount extends TransactionResponseWalletToBankWithInvoices.Raw {
+        type: "walletToBankAccount";
     }
 
     interface Custom extends TransactionResponseCustomWithInvoices.Raw {

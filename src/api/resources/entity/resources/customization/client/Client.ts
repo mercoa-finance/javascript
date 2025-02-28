@@ -63,8 +63,8 @@ export class Customization {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.6.10",
-                "User-Agent": "@mercoa/javascript/0.6.10",
+                "X-Fern-SDK-Version": "0.6.11",
+                "User-Agent": "@mercoa/javascript/0.6.11",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
@@ -238,6 +238,84 @@ export class Customization {
      *         },
      *         rolePermissions: {
      *             "admin": ["invoice.all", "paymentMethod.all"]
+     *         },
+     *         fees: {
+     *             payable: {
+     *                 source: {
+     *                     achStandard: {
+     *                         type: "flat",
+     *                         amount: 2.5
+     *                     },
+     *                     achSameDay: {
+     *                         type: "percentage",
+     *                         amount: 2.5
+     *                     },
+     *                     checkPrint: {
+     *                         type: "flat",
+     *                         amount: 2.5
+     *                     },
+     *                     checkMail: {
+     *                         type: "flat",
+     *                         amount: 2.5
+     *                     }
+     *                 },
+     *                 destination: {
+     *                     achStandard: {
+     *                         type: "flat",
+     *                         amount: 2.5
+     *                     },
+     *                     achSameDay: {
+     *                         type: "percentage",
+     *                         amount: 2.5
+     *                     },
+     *                     checkPrint: {
+     *                         type: "flat",
+     *                         amount: 2.5
+     *                     },
+     *                     checkMail: {
+     *                         type: "flat",
+     *                         amount: 2.5
+     *                     }
+     *                 }
+     *             },
+     *             receivable: {
+     *                 source: {
+     *                     achStandard: {
+     *                         type: "flat",
+     *                         amount: 2.5
+     *                     },
+     *                     achSameDay: {
+     *                         type: "percentage",
+     *                         amount: 2.5
+     *                     },
+     *                     checkPrint: {
+     *                         type: "flat",
+     *                         amount: 2.5
+     *                     },
+     *                     checkMail: {
+     *                         type: "flat",
+     *                         amount: 2.5
+     *                     }
+     *                 },
+     *                 destination: {
+     *                     achStandard: {
+     *                         type: "flat",
+     *                         amount: 2.5
+     *                     },
+     *                     achSameDay: {
+     *                         type: "percentage",
+     *                         amount: 2.5
+     *                     },
+     *                     checkPrint: {
+     *                         type: "flat",
+     *                         amount: 2.5
+     *                     },
+     *                     checkMail: {
+     *                         type: "flat",
+     *                         amount: 2.5
+     *                     }
+     *                 }
+     *             }
      *         }
      *     })
      */
@@ -256,8 +334,8 @@ export class Customization {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.6.10",
-                "User-Agent": "@mercoa/javascript/0.6.10",
+                "X-Fern-SDK-Version": "0.6.11",
+                "User-Agent": "@mercoa/javascript/0.6.11",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,

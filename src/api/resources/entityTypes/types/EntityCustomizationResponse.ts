@@ -56,6 +56,84 @@ import * as Mercoa from "../../../index";
  *         },
  *         rolePermissions: {
  *             "admin": [Mercoa.Permission.InvoiceAll, Mercoa.Permission.PaymentMethodAll]
+ *         },
+ *         fees: {
+ *             payable: {
+ *                 source: {
+ *                     achStandard: {
+ *                         type: "flat",
+ *                         amount: 2.5
+ *                     },
+ *                     achSameDay: {
+ *                         type: "percentage",
+ *                         amount: 2.5
+ *                     },
+ *                     checkPrint: {
+ *                         type: "flat",
+ *                         amount: 2.5
+ *                     },
+ *                     checkMail: {
+ *                         type: "flat",
+ *                         amount: 2.5
+ *                     }
+ *                 },
+ *                 destination: {
+ *                     achStandard: {
+ *                         type: "flat",
+ *                         amount: 2.5
+ *                     },
+ *                     achSameDay: {
+ *                         type: "percentage",
+ *                         amount: 2.5
+ *                     },
+ *                     checkPrint: {
+ *                         type: "flat",
+ *                         amount: 2.5
+ *                     },
+ *                     checkMail: {
+ *                         type: "flat",
+ *                         amount: 2.5
+ *                     }
+ *                 }
+ *             },
+ *             receivable: {
+ *                 source: {
+ *                     achStandard: {
+ *                         type: "flat",
+ *                         amount: 2.5
+ *                     },
+ *                     achSameDay: {
+ *                         type: "percentage",
+ *                         amount: 2.5
+ *                     },
+ *                     checkPrint: {
+ *                         type: "flat",
+ *                         amount: 2.5
+ *                     },
+ *                     checkMail: {
+ *                         type: "flat",
+ *                         amount: 2.5
+ *                     }
+ *                 },
+ *                 destination: {
+ *                     achStandard: {
+ *                         type: "flat",
+ *                         amount: 2.5
+ *                     },
+ *                     achSameDay: {
+ *                         type: "percentage",
+ *                         amount: 2.5
+ *                     },
+ *                     checkPrint: {
+ *                         type: "flat",
+ *                         amount: 2.5
+ *                     },
+ *                     checkMail: {
+ *                         type: "flat",
+ *                         amount: 2.5
+ *                     }
+ *                 }
+ *             }
  *         }
  *     }
  */
@@ -67,5 +145,6 @@ export interface EntityCustomizationResponse {
     ocr: Mercoa.OcrCustomizationResponse;
     notifications: Mercoa.NotificationCustomizationRequest;
     workflow: Mercoa.WorkflowCustomizationRequest;
+    fees: Mercoa.FeeCustomizationRequest;
     rolePermissions: Mercoa.RolePermissionRequest;
 }

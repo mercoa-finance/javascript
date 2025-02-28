@@ -7,16 +7,16 @@ import * as Mercoa from "../../../../api/index";
 import * as core from "../../../../core";
 import { TransactionResponseBase } from "./TransactionResponseBase";
 
-export const TransactionResponseBankToMailedCheckBase: core.serialization.ObjectSchema<
-    serializers.TransactionResponseBankToMailedCheckBase.Raw,
-    Mercoa.TransactionResponseBankToMailedCheckBase
+export const TransactionResponseMailedCheckBase: core.serialization.ObjectSchema<
+    serializers.TransactionResponseMailedCheckBase.Raw,
+    Mercoa.TransactionResponseMailedCheckBase
 > = core.serialization
     .object({
         checkNumber: core.serialization.number(),
     })
     .extend(TransactionResponseBase);
 
-export declare namespace TransactionResponseBankToMailedCheckBase {
+export declare namespace TransactionResponseMailedCheckBase {
     interface Raw extends TransactionResponseBase.Raw {
         checkNumber: number;
     }

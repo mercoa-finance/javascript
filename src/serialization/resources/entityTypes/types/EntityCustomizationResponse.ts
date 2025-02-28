@@ -5,11 +5,12 @@
 import * as serializers from "../../../index";
 import * as Mercoa from "../../../../api/index";
 import * as core from "../../../../core";
-import { MetadataCustomizationRequest } from "./MetadataCustomizationRequest";
-import { PaymentMethodCustomizationRequest } from "./PaymentMethodCustomizationRequest";
-import { OcrCustomizationResponse } from "./OcrCustomizationResponse";
-import { NotificationCustomizationRequest } from "./NotificationCustomizationRequest";
-import { WorkflowCustomizationRequest } from "./WorkflowCustomizationRequest";
+import { MetadataCustomizationRequest } from "../../customizationTypes/types/MetadataCustomizationRequest";
+import { PaymentMethodCustomizationRequest } from "../../customizationTypes/types/PaymentMethodCustomizationRequest";
+import { OcrCustomizationResponse } from "../../customizationTypes/types/OcrCustomizationResponse";
+import { NotificationCustomizationRequest } from "../../customizationTypes/types/NotificationCustomizationRequest";
+import { WorkflowCustomizationRequest } from "../../customizationTypes/types/WorkflowCustomizationRequest";
+import { FeeCustomizationRequest } from "../../customizationTypes/types/FeeCustomizationRequest";
 import { RolePermissionRequest } from "../../organizationTypes/types/RolePermissionRequest";
 import { Permission } from "../../organizationTypes/types/Permission";
 
@@ -24,6 +25,7 @@ export const EntityCustomizationResponse: core.serialization.ObjectSchema<
     ocr: OcrCustomizationResponse,
     notifications: NotificationCustomizationRequest,
     workflow: WorkflowCustomizationRequest,
+    fees: FeeCustomizationRequest,
     rolePermissions: RolePermissionRequest,
 });
 
@@ -36,6 +38,7 @@ export declare namespace EntityCustomizationResponse {
         ocr: OcrCustomizationResponse.Raw;
         notifications: NotificationCustomizationRequest.Raw;
         workflow: WorkflowCustomizationRequest.Raw;
+        fees: FeeCustomizationRequest.Raw;
         rolePermissions: RolePermissionRequest.Raw;
     }
 }

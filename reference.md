@@ -7037,6 +7037,84 @@ await client.entity.customization.update("ent_a0f6ea94-0761-4a5e-a416-3c453cb7ec
     rolePermissions: {
         admin: ["invoice.all", "paymentMethod.all"],
     },
+    fees: {
+        payable: {
+            source: {
+                achStandard: {
+                    type: "flat",
+                    amount: 2.5,
+                },
+                achSameDay: {
+                    type: "percentage",
+                    amount: 2.5,
+                },
+                checkPrint: {
+                    type: "flat",
+                    amount: 2.5,
+                },
+                checkMail: {
+                    type: "flat",
+                    amount: 2.5,
+                },
+            },
+            destination: {
+                achStandard: {
+                    type: "flat",
+                    amount: 2.5,
+                },
+                achSameDay: {
+                    type: "percentage",
+                    amount: 2.5,
+                },
+                checkPrint: {
+                    type: "flat",
+                    amount: 2.5,
+                },
+                checkMail: {
+                    type: "flat",
+                    amount: 2.5,
+                },
+            },
+        },
+        receivable: {
+            source: {
+                achStandard: {
+                    type: "flat",
+                    amount: 2.5,
+                },
+                achSameDay: {
+                    type: "percentage",
+                    amount: 2.5,
+                },
+                checkPrint: {
+                    type: "flat",
+                    amount: 2.5,
+                },
+                checkMail: {
+                    type: "flat",
+                    amount: 2.5,
+                },
+            },
+            destination: {
+                achStandard: {
+                    type: "flat",
+                    amount: 2.5,
+                },
+                achSameDay: {
+                    type: "percentage",
+                    amount: 2.5,
+                },
+                checkPrint: {
+                    type: "flat",
+                    amount: 2.5,
+                },
+                checkMail: {
+                    type: "flat",
+                    amount: 2.5,
+                },
+            },
+        },
+    },
 });
 ```
 
@@ -10763,6 +10841,207 @@ await client.invoice.bulk.create({
 <dd>
 
 **requestOptions:** `Bulk.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+## Invoice Collection
+
+<details><summary><code>client.invoice.collection.<a href="/src/api/resources/invoice/resources/collection/client/Client.ts">getNextAction</a>(invoiceId) -> Mercoa.ActionResponse | undefined</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Get the collection agent's next action on this invoice. This endpoint will return an empty object if there is no action to return.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.invoice.collection.getNextAction("in_3d61faa9-1754-4b7b-9fcb-88ff97f368ff");
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**invoiceId:** `Mercoa.InvoiceId` — Invoice ID or Invoice ForeignID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Collection.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.invoice.collection.<a href="/src/api/resources/invoice/resources/collection/client/Client.ts">updateNextAction</a>(invoiceId, { ...params }) -> Mercoa.ActionResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Update the collection agent's next action on this invoice with natural language. Note that updating any APPROVED action will reset the action to SUGGESTED. This endpoint will throw an error if there is no action to update.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.invoice.collection.updateNextAction("in_3d61faa9-1754-4b7b-9fcb-88ff97f368ff", {
+    feedback: "Use a more stern tone",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**invoiceId:** `Mercoa.InvoiceId` — Invoice ID or Invoice ForeignID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `Mercoa.UpdateNextActionRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Collection.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.invoice.collection.<a href="/src/api/resources/invoice/resources/collection/client/Client.ts">approveNextAction</a>(invoiceId) -> Mercoa.ActionResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Approve the collection agent's next action on this invoice. This endpoint will throw an error if there is no action to approve.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.invoice.collection.approveNextAction("in_3d61faa9-1754-4b7b-9fcb-88ff97f368ff");
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**invoiceId:** `Mercoa.InvoiceId` — Invoice ID or Invoice ForeignID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Collection.RequestOptions`
 
 </dd>
 </dl>

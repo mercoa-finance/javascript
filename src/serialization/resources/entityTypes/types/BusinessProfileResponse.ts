@@ -26,6 +26,7 @@ export const BusinessProfileResponse: core.serialization.ObjectSchema<
     ownersProvided: core.serialization.boolean().optional(),
     taxIdProvided: core.serialization.property("taxIDProvided", core.serialization.boolean()),
     taxId: TaxId.optional(),
+    formationDate: core.serialization.date().optional(),
     industryCodes: IndustryCodes.optional(),
     averageMonthlyTransactionVolume: core.serialization.number().optional(),
     averageTransactionSize: core.serialization.number().optional(),
@@ -45,6 +46,7 @@ export declare namespace BusinessProfileResponse {
         ownersProvided?: boolean | null;
         taxIDProvided: boolean;
         taxId?: TaxId.Raw | null;
+        formationDate?: string | null;
         industryCodes?: IndustryCodes.Raw | null;
         averageMonthlyTransactionVolume?: number | null;
         averageTransactionSize?: number | null;

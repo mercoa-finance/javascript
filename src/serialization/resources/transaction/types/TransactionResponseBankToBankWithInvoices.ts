@@ -6,7 +6,7 @@ import * as serializers from "../../../index";
 import * as Mercoa from "../../../../api/index";
 import * as core from "../../../../core";
 import { InvoiceResponse } from "../../invoiceTypes/types/InvoiceResponse";
-import { TransactionResponseBankToBankBase } from "./TransactionResponseBankToBankBase";
+import { TransactionResponseAchBase } from "./TransactionResponseAchBase";
 
 export const TransactionResponseBankToBankWithInvoices: core.serialization.ObjectSchema<
     serializers.TransactionResponseBankToBankWithInvoices.Raw,
@@ -15,10 +15,10 @@ export const TransactionResponseBankToBankWithInvoices: core.serialization.Objec
     .object({
         invoices: core.serialization.list(InvoiceResponse),
     })
-    .extend(TransactionResponseBankToBankBase);
+    .extend(TransactionResponseAchBase);
 
 export declare namespace TransactionResponseBankToBankWithInvoices {
-    interface Raw extends TransactionResponseBankToBankBase.Raw {
+    interface Raw extends TransactionResponseAchBase.Raw {
         invoices: InvoiceResponse.Raw[];
     }
 }

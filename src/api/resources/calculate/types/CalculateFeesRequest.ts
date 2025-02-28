@@ -17,10 +17,14 @@ export interface CalculateFeesRequest {
     amount: number;
     /** Currency code for the amount. Defaults to USD. */
     currency?: Mercoa.CurrencyCode;
+    /** ID of the entity creating the invoice. If not provided, the fees will be calculated with the default pricing for the organization. */
+    creatorEntityId?: Mercoa.EntityId;
     /** ID of payment source. */
     paymentSourceId: Mercoa.PaymentMethodId;
     /** ID of payment destination. */
     paymentDestinationId: Mercoa.PaymentMethodId;
     /** Options for the payment destination. Depending on the payment destination, this may include things such as check delivery method. */
     paymentDestinationOptions?: Mercoa.PaymentDestinationOptions;
+    /** Type of payment to calculate fees for. Defaults to PAYABLE (Accounts Payable). */
+    type?: Mercoa.FeeCalculationType;
 }

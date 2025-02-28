@@ -86,5 +86,4 @@ export interface CustomPaymentMethodSchemaRequest {
     maxAmount?: number;
     /** The minimum amount that can be transferred from this payment method in a single transaction. Default is 1. */
     minAmount?: number;
-    fees?: Mercoa.CustomPaymentMethodSchemaFee;
 }

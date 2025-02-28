@@ -6,8 +6,10 @@ import * as serializers from "../../../index";
 import * as Mercoa from "../../../../api/index";
 import * as core from "../../../../core";
 import { CurrencyCode } from "../../paymentMethodTypes/types/CurrencyCode";
+import { EntityId } from "../../entityTypes/types/EntityId";
 import { PaymentMethodId } from "../../paymentMethodTypes/types/PaymentMethodId";
 import { PaymentDestinationOptions } from "../../invoiceTypes/types/PaymentDestinationOptions";
+import { FeeCalculationType } from "./FeeCalculationType";
 
 export const CalculateFeesRequest: core.serialization.ObjectSchema<
     serializers.CalculateFeesRequest.Raw,
@@ -15,17 +17,21 @@ export const CalculateFeesRequest: core.serialization.ObjectSchema<
 > = core.serialization.object({
     amount: core.serialization.number(),
     currency: CurrencyCode.optional(),
+    creatorEntityId: EntityId.optional(),
     paymentSourceId: PaymentMethodId,
     paymentDestinationId: PaymentMethodId,
     paymentDestinationOptions: PaymentDestinationOptions.optional(),
+    type: FeeCalculationType.optional(),
 });
 
 export declare namespace CalculateFeesRequest {
     interface Raw {
         amount: number;
         currency?: CurrencyCode.Raw | null;
+        creatorEntityId?: EntityId.Raw | null;
         paymentSourceId: PaymentMethodId.Raw;
         paymentDestinationId: PaymentMethodId.Raw;
         paymentDestinationOptions?: PaymentDestinationOptions.Raw | null;
+        type?: FeeCalculationType.Raw | null;
     }
 }

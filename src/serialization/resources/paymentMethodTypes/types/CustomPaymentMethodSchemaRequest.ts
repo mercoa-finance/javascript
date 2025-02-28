@@ -7,7 +7,6 @@ import * as Mercoa from "../../../../api/index";
 import * as core from "../../../../core";
 import { CurrencyCode } from "./CurrencyCode";
 import { CustomPaymentMethodSchemaField } from "./CustomPaymentMethodSchemaField";
-import { CustomPaymentMethodSchemaFee } from "./CustomPaymentMethodSchemaFee";
 
 export const CustomPaymentMethodSchemaRequest: core.serialization.ObjectSchema<
     serializers.CustomPaymentMethodSchemaRequest.Raw,
@@ -21,7 +20,6 @@ export const CustomPaymentMethodSchemaRequest: core.serialization.ObjectSchema<
     estimatedProcessingTime: core.serialization.number().optional(),
     maxAmount: core.serialization.number().optional(),
     minAmount: core.serialization.number().optional(),
-    fees: CustomPaymentMethodSchemaFee.optional(),
 });
 
 export declare namespace CustomPaymentMethodSchemaRequest {
@@ -34,6 +32,5 @@ export declare namespace CustomPaymentMethodSchemaRequest {
         estimatedProcessingTime?: number | null;
         maxAmount?: number | null;
         minAmount?: number | null;
-        fees?: CustomPaymentMethodSchemaFee.Raw | null;
     }
 }

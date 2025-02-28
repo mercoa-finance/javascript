@@ -6,7 +6,7 @@ import * as serializers from "../../../index";
 import * as Mercoa from "../../../../api/index";
 import * as core from "../../../../core";
 import { InvoiceResponse } from "../../invoiceTypes/types/InvoiceResponse";
-import { TransactionResponseBankToMailedCheckBase } from "./TransactionResponseBankToMailedCheckBase";
+import { TransactionResponseMailedCheckBase } from "./TransactionResponseMailedCheckBase";
 
 export const TransactionResponseBankToMailedCheckWithInvoices: core.serialization.ObjectSchema<
     serializers.TransactionResponseBankToMailedCheckWithInvoices.Raw,
@@ -15,10 +15,10 @@ export const TransactionResponseBankToMailedCheckWithInvoices: core.serializatio
     .object({
         invoices: core.serialization.list(InvoiceResponse),
     })
-    .extend(TransactionResponseBankToMailedCheckBase);
+    .extend(TransactionResponseMailedCheckBase);
 
 export declare namespace TransactionResponseBankToMailedCheckWithInvoices {
-    interface Raw extends TransactionResponseBankToMailedCheckBase.Raw {
+    interface Raw extends TransactionResponseMailedCheckBase.Raw {
         invoices: InvoiceResponse.Raw[];
     }
 }

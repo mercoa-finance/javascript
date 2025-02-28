@@ -8,16 +8,16 @@ import * as core from "../../../../core";
 import { TransactionFailureReason } from "./TransactionFailureReason";
 import { TransactionResponseBase } from "./TransactionResponseBase";
 
-export const TransactionResponseBankToBankBase: core.serialization.ObjectSchema<
-    serializers.TransactionResponseBankToBankBase.Raw,
-    Mercoa.TransactionResponseBankToBankBase
+export const TransactionResponseAchBase: core.serialization.ObjectSchema<
+    serializers.TransactionResponseAchBase.Raw,
+    Mercoa.TransactionResponseAchBase
 > = core.serialization
     .object({
         failureReason: TransactionFailureReason.optional(),
     })
     .extend(TransactionResponseBase);
 
-export declare namespace TransactionResponseBankToBankBase {
+export declare namespace TransactionResponseAchBase {
     interface Raw extends TransactionResponseBase.Raw {
         failureReason?: TransactionFailureReason.Raw | null;
     }

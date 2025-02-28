@@ -53,6 +53,7 @@ export interface BusinessProfileResponse {
     ownersProvided?: boolean;
     taxIdProvided: boolean;
     taxId?: Mercoa.TaxId;
+    formationDate?: Date;
     industryCodes?: Mercoa.IndustryCodes;
     averageMonthlyTransactionVolume?: number;
     averageTransactionSize?: number;

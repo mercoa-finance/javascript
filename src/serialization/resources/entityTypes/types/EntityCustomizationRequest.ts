@@ -5,11 +5,12 @@
 import * as serializers from "../../../index";
 import * as Mercoa from "../../../../api/index";
 import * as core from "../../../../core";
-import { MetadataCustomizationRequest } from "./MetadataCustomizationRequest";
-import { PaymentMethodCustomizationRequest } from "./PaymentMethodCustomizationRequest";
-import { OcrCustomizationRequest } from "./OcrCustomizationRequest";
-import { NotificationCustomizationRequest } from "./NotificationCustomizationRequest";
-import { WorkflowCustomizationRequest } from "./WorkflowCustomizationRequest";
+import { MetadataCustomizationRequest } from "../../customizationTypes/types/MetadataCustomizationRequest";
+import { PaymentMethodCustomizationRequest } from "../../customizationTypes/types/PaymentMethodCustomizationRequest";
+import { OcrCustomizationRequest } from "../../customizationTypes/types/OcrCustomizationRequest";
+import { NotificationCustomizationRequest } from "../../customizationTypes/types/NotificationCustomizationRequest";
+import { WorkflowCustomizationRequest } from "../../customizationTypes/types/WorkflowCustomizationRequest";
+import { FeeCustomizationRequest } from "../../customizationTypes/types/FeeCustomizationRequest";
 import { RolePermissionRequest } from "../../organizationTypes/types/RolePermissionRequest";
 import { Permission } from "../../organizationTypes/types/Permission";
 
@@ -24,6 +25,7 @@ export const EntityCustomizationRequest: core.serialization.ObjectSchema<
     ocr: OcrCustomizationRequest.optional(),
     notifications: NotificationCustomizationRequest.optional(),
     workflow: WorkflowCustomizationRequest.optional(),
+    fees: FeeCustomizationRequest.optional(),
     rolePermissions: RolePermissionRequest.optional(),
 });
 
@@ -36,6 +38,7 @@ export declare namespace EntityCustomizationRequest {
         ocr?: OcrCustomizationRequest.Raw | null;
         notifications?: NotificationCustomizationRequest.Raw | null;
         workflow?: WorkflowCustomizationRequest.Raw | null;
+        fees?: FeeCustomizationRequest.Raw | null;
         rolePermissions?: RolePermissionRequest.Raw | null;
     }
 }
