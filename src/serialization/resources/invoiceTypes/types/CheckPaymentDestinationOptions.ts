@@ -16,7 +16,7 @@ export const CheckPaymentDestinationOptions: core.serialization.ObjectSchema<
 });
 
 export declare namespace CheckPaymentDestinationOptions {
-    interface Raw {
+    export interface Raw {
         delivery?: CheckDeliveryMethod.Raw | null;
         printDescription?: boolean | null;
     }

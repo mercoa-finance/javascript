@@ -18,7 +18,7 @@ export const ContractInvoiceLineItemSchema: core.serialization.ObjectSchema<
 });
 
 export declare namespace ContractInvoiceLineItemSchema {
-    interface Raw {
+    export interface Raw {
         name: string;
         unitPrice?: number | null;
         currency?: CurrencyCode.Raw | null;

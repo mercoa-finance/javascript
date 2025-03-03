@@ -15,7 +15,7 @@ export const EntityMetadataResponse: core.serialization.ObjectSchema<
 });
 
 export declare namespace EntityMetadataResponse {
-    interface Raw {
+    export interface Raw {
         key: string;
         value: string[];
     }

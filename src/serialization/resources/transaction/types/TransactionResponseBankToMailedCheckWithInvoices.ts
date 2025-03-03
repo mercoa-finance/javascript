@@ -18,7 +18,7 @@ export const TransactionResponseBankToMailedCheckWithInvoices: core.serializatio
     .extend(TransactionResponseMailedCheckBase);
 
 export declare namespace TransactionResponseBankToMailedCheckWithInvoices {
-    interface Raw extends TransactionResponseMailedCheckBase.Raw {
+    export interface Raw extends TransactionResponseMailedCheckBase.Raw {
         invoices: InvoiceResponse.Raw[];
     }
 }

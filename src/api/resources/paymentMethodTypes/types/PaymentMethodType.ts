@@ -12,7 +12,6 @@ export type PaymentMethodType =
     | "virtualCard"
     | "offPlatform"
     | "utility";
-
 export const PaymentMethodType = {
     Custom: "custom",
     Check: "check",

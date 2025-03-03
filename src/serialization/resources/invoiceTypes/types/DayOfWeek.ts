@@ -10,5 +10,5 @@ export const DayOfWeek: core.serialization.Schema<serializers.DayOfWeek.Raw, Mer
     core.serialization.enum_(["0", "1", "2", "3", "4", "5", "6"]);
 
 export declare namespace DayOfWeek {
-    type Raw = "0" | "1" | "2" | "3" | "4" | "5" | "6";
+    export type Raw = "0" | "1" | "2" | "3" | "4" | "5" | "6";
 }

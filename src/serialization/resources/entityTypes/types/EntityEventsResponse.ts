@@ -16,7 +16,7 @@ export const EntityEventsResponse: core.serialization.ObjectSchema<
 });
 
 export declare namespace EntityEventsResponse {
-    interface Raw {
+    export interface Raw {
         data: EntityEvent.Raw[];
         count: number;
     }

@@ -18,7 +18,7 @@ export const EstimatedTiming: core.serialization.ObjectSchema<serializers.Estima
     });
 
 export declare namespace EstimatedTiming {
-    interface Raw {
+    export interface Raw {
         estimatedDeductionDate?: string | null;
         processedAt?: string | null;
         paymentSourceId: PaymentMethodId.Raw;

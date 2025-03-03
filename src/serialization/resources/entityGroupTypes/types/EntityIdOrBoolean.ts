@@ -11,5 +11,5 @@ export const EntityIdOrBoolean: core.serialization.Schema<serializers.EntityIdOr
     core.serialization.undiscriminatedUnion([core.serialization.boolean(), EntityId]);
 
 export declare namespace EntityIdOrBoolean {
-    type Raw = boolean | EntityId.Raw;
+    export type Raw = boolean | EntityId.Raw;
 }

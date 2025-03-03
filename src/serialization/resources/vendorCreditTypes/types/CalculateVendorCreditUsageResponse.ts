@@ -18,7 +18,7 @@ export const CalculateVendorCreditUsageResponse: core.serialization.ObjectSchema
 });
 
 export declare namespace CalculateVendorCreditUsageResponse {
-    interface Raw {
+    export interface Raw {
         remainingAmount: number;
         currency: CurrencyCode.Raw;
         vendorCredits: VendorCreditResponse.Raw[];

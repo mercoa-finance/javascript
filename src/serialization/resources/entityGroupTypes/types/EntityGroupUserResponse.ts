@@ -20,7 +20,7 @@ export const EntityGroupUserResponse: core.serialization.ObjectSchema<
 });
 
 export declare namespace EntityGroupUserResponse {
-    interface Raw {
+    export interface Raw {
         foreignId: string;
         email?: string | null;
         name?: string | null;

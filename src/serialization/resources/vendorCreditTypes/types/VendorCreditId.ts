@@ -10,5 +10,5 @@ export const VendorCreditId: core.serialization.Schema<serializers.VendorCreditI
     core.serialization.string();
 
 export declare namespace VendorCreditId {
-    type Raw = string;
+    export type Raw = string;
 }

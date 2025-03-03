@@ -9,5 +9,5 @@ export const InternalServerError: core.serialization.Schema<serializers.Internal
     core.serialization.string();
 
 export declare namespace InternalServerError {
-    type Raw = string;
+    export type Raw = string;
 }

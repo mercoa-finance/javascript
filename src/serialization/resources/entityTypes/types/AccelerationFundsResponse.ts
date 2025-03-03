@@ -20,7 +20,7 @@ export const AccelerationFundsResponse: core.serialization.ObjectSchema<
 });
 
 export declare namespace AccelerationFundsResponse {
-    interface Raw {
+    export interface Raw {
         entityId: EntityId.Raw;
         paymentMethodId: PaymentMethodId.Raw;
         availableBalance: AccelerationFundsBalanceResponse.Raw;

@@ -20,7 +20,7 @@ export const OcrCustomizationResponse: core.serialization.ObjectSchema<
 });
 
 export declare namespace OcrCustomizationResponse {
-    interface Raw {
+    export interface Raw {
         lineItems: boolean;
         collapseLineItems: boolean;
         invoiceMetadata: boolean;

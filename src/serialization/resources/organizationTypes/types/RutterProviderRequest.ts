@@ -15,7 +15,7 @@ export const RutterProviderRequest: core.serialization.ObjectSchema<
 });
 
 export declare namespace RutterProviderRequest {
-    interface Raw {
+    export interface Raw {
         clientId: string;
         clientSecret: string;
     }

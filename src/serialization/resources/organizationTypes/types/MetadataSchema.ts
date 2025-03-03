@@ -22,7 +22,7 @@ export const MetadataSchema: core.serialization.ObjectSchema<serializers.Metadat
     });
 
 export declare namespace MetadataSchema {
-    interface Raw {
+    export interface Raw {
         key: string;
         displayName: string;
         description?: string | null;

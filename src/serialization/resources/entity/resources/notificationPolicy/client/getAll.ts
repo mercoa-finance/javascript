@@ -13,5 +13,5 @@ export const Response: core.serialization.Schema<
 > = core.serialization.list(NotificationPolicyResponse);
 
 export declare namespace Response {
-    type Raw = NotificationPolicyResponse.Raw[];
+    export type Raw = NotificationPolicyResponse.Raw[];
 }

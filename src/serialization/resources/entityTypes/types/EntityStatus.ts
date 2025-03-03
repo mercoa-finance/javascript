@@ -10,5 +10,5 @@ export const EntityStatus: core.serialization.Schema<serializers.EntityStatus.Ra
     core.serialization.enum_(["unverified", "pending", "resubmit", "review", "verified", "failed"]);
 
 export declare namespace EntityStatus {
-    type Raw = "unverified" | "pending" | "resubmit" | "review" | "verified" | "failed";
+    export type Raw = "unverified" | "pending" | "resubmit" | "review" | "verified" | "failed";
 }

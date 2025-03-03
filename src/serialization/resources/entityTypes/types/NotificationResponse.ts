@@ -22,7 +22,7 @@ export const NotificationResponse: core.serialization.ObjectSchema<
 });
 
 export declare namespace NotificationResponse {
-    interface Raw {
+    export interface Raw {
         id: NotificationId.Raw;
         invoiceId?: InvoiceId.Raw | null;
         type: NotificationType.Raw;

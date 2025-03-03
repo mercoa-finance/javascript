@@ -3,7 +3,6 @@
  */
 
 export type SyncType = "none" | "push" | "pull" | "both";
-
 export const SyncType = {
     None: "none",
     Push: "push",

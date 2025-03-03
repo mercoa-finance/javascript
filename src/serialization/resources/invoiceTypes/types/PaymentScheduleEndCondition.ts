@@ -12,5 +12,5 @@ export const PaymentScheduleEndCondition: core.serialization.Schema<
 > = core.serialization.undiscriminatedUnion([core.serialization.number(), core.serialization.date()]);
 
 export declare namespace PaymentScheduleEndCondition {
-    type Raw = number | string;
+    export type Raw = number | string;
 }

@@ -6,7 +6,6 @@
  * Type of payment to calculate fees for.
  */
 export type FeeCalculationType = "PAYABLE" | "RECEIVABLE";
-
 export const FeeCalculationType = {
     Payable: "PAYABLE",
     Receivable: "RECEIVABLE",

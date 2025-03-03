@@ -10,5 +10,5 @@ export const DefaultFee: core.serialization.ObjectSchema<serializers.DefaultFee.
     core.serialization.object({});
 
 export declare namespace DefaultFee {
-    interface Raw {}
+    export interface Raw {}
 }

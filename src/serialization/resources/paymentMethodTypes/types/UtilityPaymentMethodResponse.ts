@@ -17,7 +17,7 @@ export const UtilityPaymentMethodResponse: core.serialization.ObjectSchema<
     .extend(PaymentMethodBaseResponse);
 
 export declare namespace UtilityPaymentMethodResponse {
-    interface Raw extends PaymentMethodBaseResponse.Raw {
+    export interface Raw extends PaymentMethodBaseResponse.Raw {
         utilityId: string;
     }
 }

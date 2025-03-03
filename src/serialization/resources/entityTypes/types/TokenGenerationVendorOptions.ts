@@ -16,7 +16,7 @@ export const TokenGenerationVendorOptions: core.serialization.ObjectSchema<
 });
 
 export declare namespace TokenGenerationVendorOptions {
-    interface Raw {
+    export interface Raw {
         disableCreation?: boolean | null;
         network: VendorNetwork.Raw;
     }

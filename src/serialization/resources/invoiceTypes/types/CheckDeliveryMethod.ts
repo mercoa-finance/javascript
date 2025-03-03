@@ -12,5 +12,5 @@ export const CheckDeliveryMethod: core.serialization.Schema<
 > = core.serialization.enum_(["PRINT", "MAIL"]);
 
 export declare namespace CheckDeliveryMethod {
-    type Raw = "PRINT" | "MAIL";
+    export type Raw = "PRINT" | "MAIL";
 }

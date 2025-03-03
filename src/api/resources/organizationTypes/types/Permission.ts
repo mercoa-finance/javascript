@@ -39,7 +39,6 @@ export type Permission =
     | "paymentMethod.create"
     | "paymentMethod.update"
     | "paymentMethod.delete";
-
 export const Permission = {
     InvoiceAll: "invoice.all",
     InvoiceViewAll: "invoice.view.all",

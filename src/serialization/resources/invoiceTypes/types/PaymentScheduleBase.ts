@@ -16,7 +16,7 @@ export const PaymentScheduleBase: core.serialization.ObjectSchema<
 });
 
 export declare namespace PaymentScheduleBase {
-    interface Raw {
+    export interface Raw {
         repeatEvery?: number | null;
         ends?: PaymentScheduleEndCondition.Raw | null;
     }

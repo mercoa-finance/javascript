@@ -16,7 +16,7 @@ export const BulkInvoiceCreationWebhook: core.serialization.ObjectSchema<
 });
 
 export declare namespace BulkInvoiceCreationWebhook {
-    interface Raw {
+    export interface Raw {
         eventType: string;
         data: BulkInvoiceCreationFromObjectResponse.Raw[];
     }

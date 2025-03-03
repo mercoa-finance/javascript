@@ -3,7 +3,6 @@
  */
 
 export type EntityOnboardingLinkType = "PAYEE" | "PAYOR";
-
 export const EntityOnboardingLinkType = {
     Payee: "PAYEE",
     Payor: "PAYOR",

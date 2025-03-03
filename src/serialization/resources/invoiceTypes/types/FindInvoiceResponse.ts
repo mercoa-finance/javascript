@@ -17,7 +17,7 @@ export const FindInvoiceResponse: core.serialization.ObjectSchema<
 });
 
 export declare namespace FindInvoiceResponse {
-    interface Raw {
+    export interface Raw {
         count: number;
         hasMore: boolean;
         data: InvoiceResponse.Raw[];

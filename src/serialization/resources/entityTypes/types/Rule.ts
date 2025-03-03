@@ -17,9 +17,9 @@ export const Rule: core.serialization.Schema<serializers.Rule.Raw, Mercoa.Rule> 
     });
 
 export declare namespace Rule {
-    type Raw = Rule.Approver;
+    export type Raw = Rule.Approver;
 
-    interface Approver extends ApproverRule.Raw {
+    export interface Approver extends ApproverRule.Raw {
         type: "approver";
     }
 }

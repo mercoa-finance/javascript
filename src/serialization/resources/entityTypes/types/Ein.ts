@@ -11,7 +11,7 @@ export const Ein: core.serialization.ObjectSchema<serializers.Ein.Raw, Mercoa.Ei
 });
 
 export declare namespace Ein {
-    interface Raw {
+    export interface Raw {
         number: string;
     }
 }

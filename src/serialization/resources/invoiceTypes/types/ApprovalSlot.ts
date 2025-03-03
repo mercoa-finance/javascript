@@ -24,7 +24,7 @@ export const ApprovalSlot: core.serialization.ObjectSchema<serializers.ApprovalS
     });
 
 export declare namespace ApprovalSlot {
-    interface Raw {
+    export interface Raw {
         upstreamPolicyId?: ApprovalPolicyId.Raw | null;
         upstreamPoliciesApproved?: boolean | null;
         approvalPolicyId: ApprovalPolicyId.Raw;

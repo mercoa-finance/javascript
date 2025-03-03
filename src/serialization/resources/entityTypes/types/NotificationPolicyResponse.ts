@@ -21,7 +21,7 @@ export const NotificationPolicyResponse: core.serialization.ObjectSchema<
 });
 
 export declare namespace NotificationPolicyResponse {
-    interface Raw {
+    export interface Raw {
         disabled: boolean;
         additionalRoles: string[];
         additionalUsers: EntityUserId.Raw[];

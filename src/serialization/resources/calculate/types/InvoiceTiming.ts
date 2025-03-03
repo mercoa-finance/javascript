@@ -13,7 +13,7 @@ export const InvoiceTiming: core.serialization.ObjectSchema<serializers.InvoiceT
     });
 
 export declare namespace InvoiceTiming {
-    interface Raw {
+    export interface Raw {
         invoiceId: InvoiceId.Raw;
     }
 }

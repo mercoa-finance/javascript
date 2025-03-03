@@ -13,5 +13,5 @@ export const BankType: core.serialization.Schema<serializers.BankType.Raw, Merco
 ]);
 
 export declare namespace BankType {
-    type Raw = "CHECKING" | "SAVINGS" | "UNKNOWN";
+    export type Raw = "CHECKING" | "SAVINGS" | "UNKNOWN";
 }

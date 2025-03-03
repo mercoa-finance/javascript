@@ -16,7 +16,7 @@ export const FeeCustomizationRequest: core.serialization.ObjectSchema<
 });
 
 export declare namespace FeeCustomizationRequest {
-    interface Raw {
+    export interface Raw {
         payable?: FeeCustomizationDetailRequest.Raw | null;
         receivable?: FeeCustomizationDetailRequest.Raw | null;
     }

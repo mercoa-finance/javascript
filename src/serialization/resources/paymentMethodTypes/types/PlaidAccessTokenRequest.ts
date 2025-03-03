@@ -15,7 +15,7 @@ export const PlaidAccessTokenRequest: core.serialization.ObjectSchema<
 });
 
 export declare namespace PlaidAccessTokenRequest {
-    interface Raw {
+    export interface Raw {
         accountId?: string | null;
         accessToken: string;
     }

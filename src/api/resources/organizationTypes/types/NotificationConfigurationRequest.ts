@@ -6,8 +6,8 @@ import * as Mercoa from "../../../index";
 
 export type NotificationConfigurationRequest = Mercoa.NotificationConfigurationRequest.Invoice;
 
-export declare namespace NotificationConfigurationRequest {
-    interface Invoice extends Mercoa.InvoiceNotificationConfigurationRequest {
+export namespace NotificationConfigurationRequest {
+    export interface Invoice extends Mercoa.InvoiceNotificationConfigurationRequest {
         notificationType: "invoice";
     }
 }

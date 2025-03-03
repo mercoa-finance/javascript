@@ -10,5 +10,5 @@ export const ActionId: core.serialization.Schema<serializers.ActionId.Raw, Merco
     core.serialization.string();
 
 export declare namespace ActionId {
-    type Raw = string;
+    export type Raw = string;
 }

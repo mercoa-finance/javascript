@@ -18,7 +18,7 @@ export const InvoiceFailureType: core.serialization.Schema<
 ]);
 
 export declare namespace InvoiceFailureType {
-    type Raw =
+    export type Raw =
         | "SOURCE_PAYMENT_ERROR"
         | "DESTINATION_PAYMENT_ERROR"
         | "REJECTED_HIGH_RISK"

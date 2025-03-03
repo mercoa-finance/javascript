@@ -14,7 +14,7 @@ export const InvoiceNotificationConfigurationRequest: core.serialization.ObjectS
 });
 
 export declare namespace InvoiceNotificationConfigurationRequest {
-    interface Raw {
+    export interface Raw {
         url: string;
     }
 }

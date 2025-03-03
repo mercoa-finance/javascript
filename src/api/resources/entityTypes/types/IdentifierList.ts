@@ -12,13 +12,13 @@ export type IdentifierList =
      * List of entity user IDs that should be used to determine approvers */
     | Mercoa.IdentifierList.UserList;
 
-export declare namespace IdentifierList {
-    interface RolesList {
+export namespace IdentifierList {
+    export interface RolesList {
         type: "rolesList";
         value: string[];
     }
 
-    interface UserList {
+    export interface UserList {
         type: "userList";
         value: Mercoa.EntityUserId[];
     }

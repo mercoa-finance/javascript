@@ -18,7 +18,7 @@ export const ContractRecurrenceCreateRequest: core.serialization.ObjectSchema<
 });
 
 export declare namespace ContractRecurrenceCreateRequest {
-    interface Raw {
+    export interface Raw {
         rrule: string;
         justification: string;
         filteredContractSummary: string;

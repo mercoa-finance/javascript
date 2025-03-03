@@ -14,5 +14,5 @@ export const CalculatePaymentTimingRequest: core.serialization.Schema<
 > = core.serialization.undiscriminatedUnion([EstimatedTiming, InvoiceTiming]);
 
 export declare namespace CalculatePaymentTimingRequest {
-    type Raw = EstimatedTiming.Raw | InvoiceTiming.Raw;
+    export type Raw = EstimatedTiming.Raw | InvoiceTiming.Raw;
 }

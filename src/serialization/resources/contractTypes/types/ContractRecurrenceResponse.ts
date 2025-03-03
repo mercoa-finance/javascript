@@ -26,7 +26,7 @@ export const ContractRecurrenceResponse: core.serialization.ObjectSchema<
 });
 
 export declare namespace ContractRecurrenceResponse {
-    interface Raw {
+    export interface Raw {
         id: ContractRecurrenceId.Raw;
         contractId: ContractId.Raw;
         rrule: string;

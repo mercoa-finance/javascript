@@ -55,7 +55,7 @@ export const InvoiceRequestBase: core.serialization.ObjectSchema<
 });
 
 export declare namespace InvoiceRequestBase {
-    interface Raw {
+    export interface Raw {
         status?: InvoiceStatus.Raw | null;
         amount?: number | null;
         currency?: CurrencyCode.Raw | null;

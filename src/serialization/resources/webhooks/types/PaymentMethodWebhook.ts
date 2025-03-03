@@ -22,7 +22,7 @@ export const PaymentMethodWebhook: core.serialization.ObjectSchema<
 });
 
 export declare namespace PaymentMethodWebhook {
-    interface Raw {
+    export interface Raw {
         eventType: string;
         entityId: EntityId.Raw;
         paymentMethod: PaymentMethodResponse.Raw;

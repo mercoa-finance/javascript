@@ -15,7 +15,7 @@ export const RutterProviderResponse: core.serialization.ObjectSchema<
 });
 
 export declare namespace RutterProviderResponse {
-    interface Raw {
+    export interface Raw {
         hasClientId: boolean;
         hasClientSecret: boolean;
     }

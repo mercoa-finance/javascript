@@ -18,7 +18,7 @@ export const TransactionResponseBankToBankWithInvoices: core.serialization.Objec
     .extend(TransactionResponseAchBase);
 
 export declare namespace TransactionResponseBankToBankWithInvoices {
-    interface Raw extends TransactionResponseAchBase.Raw {
+    export interface Raw extends TransactionResponseAchBase.Raw {
         invoices: InvoiceResponse.Raw[];
     }
 }

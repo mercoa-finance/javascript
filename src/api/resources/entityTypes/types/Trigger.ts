@@ -14,16 +14,16 @@ import * as Mercoa from "../../../index";
  */
 export type Trigger = Mercoa.Trigger.Amount | Mercoa.Trigger.Vendor | Mercoa.Trigger.Metadata;
 
-export declare namespace Trigger {
-    interface Amount extends Mercoa.AmountTrigger {
+export namespace Trigger {
+    export interface Amount extends Mercoa.AmountTrigger {
         type: "amount";
     }
 
-    interface Vendor extends Mercoa.VendorTrigger {
+    export interface Vendor extends Mercoa.VendorTrigger {
         type: "vendor";
     }
 
-    interface Metadata extends Mercoa.MetadataTrigger {
+    export interface Metadata extends Mercoa.MetadataTrigger {
         type: "metadata";
     }
 }

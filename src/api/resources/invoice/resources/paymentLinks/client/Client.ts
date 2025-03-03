@@ -10,20 +10,24 @@ import urlJoin from "url-join";
 import * as errors from "../../../../../../errors/index";
 
 export declare namespace PaymentLinks {
-    interface Options {
+    export interface Options {
         environment?: core.Supplier<environments.MercoaEnvironment | string>;
+        /** Specify a custom URL to connect the client to. */
+        baseUrl?: core.Supplier<string>;
         token: core.Supplier<core.BearerToken>;
         /** Override the X-API-Version header */
         xApiVersion?: "2024-08-01";
     }
 
-    interface RequestOptions {
+    export interface RequestOptions {
         /** The maximum time to wait for a response in seconds. */
         timeoutInSeconds?: number;
         /** The number of times to retry the request. Defaults to 2. */
         maxRetries?: number;
         /** A hook to abort the request. */
         abortSignal?: AbortSignal;
+        /** Additional headers to include in the request. */
+        headers?: Record<string, string>;
         /** Override the X-API-Version header */
         xApiVersion?: "2024-08-01";
     }
@@ -53,29 +57,32 @@ export class PaymentLinks {
     public async getPayerLink(
         invoiceId: Mercoa.InvoiceId,
         request: Mercoa.invoice.PayerLinkRequest = {},
-        requestOptions?: PaymentLinks.RequestOptions
+        requestOptions?: PaymentLinks.RequestOptions,
     ): Promise<string> {
         const { expiresIn } = request;
-        const _queryParams: Record<string, string | string[] | object | object[]> = {};
+        const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
         if (expiresIn != null) {
             _queryParams["expiresIn"] = expiresIn;
         }
 
         const _response = await core.fetcher({
             url: urlJoin(
-                (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
-                `/invoice/${encodeURIComponent(serializers.InvoiceId.jsonOrThrow(invoiceId))}/payerLink`
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (await core.Supplier.get(this._options.environment)) ??
+                    environments.MercoaEnvironment.Production,
+                `/invoice/${encodeURIComponent(serializers.InvoiceId.jsonOrThrow(invoiceId))}/payerLink`,
             ),
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.6.11",
-                "User-Agent": "@mercoa/javascript/0.6.11",
+                "X-Fern-SDK-Version": "0.6.12",
+                "User-Agent": "@mercoa/javascript/0.6.12",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...requestOptions?.headers,
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -102,7 +109,7 @@ export class PaymentLinks {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "Unauthorized":
                     throw new Mercoa.Unauthorized(
@@ -111,7 +118,7 @@ export class PaymentLinks {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "Forbidden":
                     throw new Mercoa.Forbidden(
@@ -120,7 +127,7 @@ export class PaymentLinks {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "NotFound":
                     throw new Mercoa.NotFound(
@@ -129,7 +136,7 @@ export class PaymentLinks {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "Conflict":
                     throw new Mercoa.Conflict(
@@ -138,7 +145,7 @@ export class PaymentLinks {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "InternalServerError":
                     throw new Mercoa.InternalServerError(
@@ -147,7 +154,7 @@ export class PaymentLinks {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "Unimplemented":
                     throw new Mercoa.Unimplemented(
@@ -156,7 +163,7 @@ export class PaymentLinks {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 default:
                     throw new errors.MercoaError({
@@ -173,7 +180,9 @@ export class PaymentLinks {
                     body: _response.error.rawBody,
                 });
             case "timeout":
-                throw new errors.MercoaTimeoutError();
+                throw new errors.MercoaTimeoutError(
+                    "Timeout exceeded when calling GET /invoice/{invoiceId}/payerLink.",
+                );
             case "unknown":
                 throw new errors.MercoaError({
                     message: _response.error.errorMessage,
@@ -204,29 +213,32 @@ export class PaymentLinks {
     public async sendPayerEmail(
         invoiceId: Mercoa.InvoiceId,
         request: Mercoa.invoice.SendPayerEmail = {},
-        requestOptions?: PaymentLinks.RequestOptions
+        requestOptions?: PaymentLinks.RequestOptions,
     ): Promise<void> {
         const { attachInvoice } = request;
-        const _queryParams: Record<string, string | string[] | object | object[]> = {};
+        const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
         if (attachInvoice != null) {
             _queryParams["attachInvoice"] = attachInvoice.toString();
         }
 
         const _response = await core.fetcher({
             url: urlJoin(
-                (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
-                `/invoice/${encodeURIComponent(serializers.InvoiceId.jsonOrThrow(invoiceId))}/sendPayerEmail`
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (await core.Supplier.get(this._options.environment)) ??
+                    environments.MercoaEnvironment.Production,
+                `/invoice/${encodeURIComponent(serializers.InvoiceId.jsonOrThrow(invoiceId))}/sendPayerEmail`,
             ),
             method: "POST",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.6.11",
-                "User-Agent": "@mercoa/javascript/0.6.11",
+                "X-Fern-SDK-Version": "0.6.12",
+                "User-Agent": "@mercoa/javascript/0.6.12",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...requestOptions?.headers,
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -248,7 +260,7 @@ export class PaymentLinks {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "Unauthorized":
                     throw new Mercoa.Unauthorized(
@@ -257,7 +269,7 @@ export class PaymentLinks {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "Forbidden":
                     throw new Mercoa.Forbidden(
@@ -266,7 +278,7 @@ export class PaymentLinks {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "NotFound":
                     throw new Mercoa.NotFound(
@@ -275,7 +287,7 @@ export class PaymentLinks {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "Conflict":
                     throw new Mercoa.Conflict(
@@ -284,7 +296,7 @@ export class PaymentLinks {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "InternalServerError":
                     throw new Mercoa.InternalServerError(
@@ -293,7 +305,7 @@ export class PaymentLinks {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "Unimplemented":
                     throw new Mercoa.Unimplemented(
@@ -302,7 +314,7 @@ export class PaymentLinks {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 default:
                     throw new errors.MercoaError({
@@ -319,7 +331,9 @@ export class PaymentLinks {
                     body: _response.error.rawBody,
                 });
             case "timeout":
-                throw new errors.MercoaTimeoutError();
+                throw new errors.MercoaTimeoutError(
+                    "Timeout exceeded when calling POST /invoice/{invoiceId}/sendPayerEmail.",
+                );
             case "unknown":
                 throw new errors.MercoaError({
                     message: _response.error.errorMessage,
@@ -348,29 +362,32 @@ export class PaymentLinks {
     public async getVendorLink(
         invoiceId: Mercoa.InvoiceId,
         request: Mercoa.invoice.VendorLinkRequest = {},
-        requestOptions?: PaymentLinks.RequestOptions
+        requestOptions?: PaymentLinks.RequestOptions,
     ): Promise<string> {
         const { expiresIn } = request;
-        const _queryParams: Record<string, string | string[] | object | object[]> = {};
+        const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
         if (expiresIn != null) {
             _queryParams["expiresIn"] = expiresIn;
         }
 
         const _response = await core.fetcher({
             url: urlJoin(
-                (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
-                `/invoice/${encodeURIComponent(serializers.InvoiceId.jsonOrThrow(invoiceId))}/vendorLink`
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (await core.Supplier.get(this._options.environment)) ??
+                    environments.MercoaEnvironment.Production,
+                `/invoice/${encodeURIComponent(serializers.InvoiceId.jsonOrThrow(invoiceId))}/vendorLink`,
             ),
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.6.11",
-                "User-Agent": "@mercoa/javascript/0.6.11",
+                "X-Fern-SDK-Version": "0.6.12",
+                "User-Agent": "@mercoa/javascript/0.6.12",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...requestOptions?.headers,
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -397,7 +414,7 @@ export class PaymentLinks {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "Unauthorized":
                     throw new Mercoa.Unauthorized(
@@ -406,7 +423,7 @@ export class PaymentLinks {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "Forbidden":
                     throw new Mercoa.Forbidden(
@@ -415,7 +432,7 @@ export class PaymentLinks {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "NotFound":
                     throw new Mercoa.NotFound(
@@ -424,7 +441,7 @@ export class PaymentLinks {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "Conflict":
                     throw new Mercoa.Conflict(
@@ -433,7 +450,7 @@ export class PaymentLinks {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "InternalServerError":
                     throw new Mercoa.InternalServerError(
@@ -442,7 +459,7 @@ export class PaymentLinks {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "Unimplemented":
                     throw new Mercoa.Unimplemented(
@@ -451,7 +468,7 @@ export class PaymentLinks {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 default:
                     throw new errors.MercoaError({
@@ -468,7 +485,9 @@ export class PaymentLinks {
                     body: _response.error.rawBody,
                 });
             case "timeout":
-                throw new errors.MercoaTimeoutError();
+                throw new errors.MercoaTimeoutError(
+                    "Timeout exceeded when calling GET /invoice/{invoiceId}/vendorLink.",
+                );
             case "unknown":
                 throw new errors.MercoaError({
                     message: _response.error.errorMessage,
@@ -495,23 +514,26 @@ export class PaymentLinks {
      */
     public async sendVendorEmail(
         invoiceId: Mercoa.InvoiceId,
-        requestOptions?: PaymentLinks.RequestOptions
+        requestOptions?: PaymentLinks.RequestOptions,
     ): Promise<void> {
         const _response = await core.fetcher({
             url: urlJoin(
-                (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
-                `/invoice/${encodeURIComponent(serializers.InvoiceId.jsonOrThrow(invoiceId))}/sendVendorEmail`
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (await core.Supplier.get(this._options.environment)) ??
+                    environments.MercoaEnvironment.Production,
+                `/invoice/${encodeURIComponent(serializers.InvoiceId.jsonOrThrow(invoiceId))}/sendVendorEmail`,
             ),
             method: "POST",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.6.11",
-                "User-Agent": "@mercoa/javascript/0.6.11",
+                "X-Fern-SDK-Version": "0.6.12",
+                "User-Agent": "@mercoa/javascript/0.6.12",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...requestOptions?.headers,
             },
             contentType: "application/json",
             requestType: "json",
@@ -532,7 +554,7 @@ export class PaymentLinks {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "Unauthorized":
                     throw new Mercoa.Unauthorized(
@@ -541,7 +563,7 @@ export class PaymentLinks {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "Forbidden":
                     throw new Mercoa.Forbidden(
@@ -550,7 +572,7 @@ export class PaymentLinks {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "NotFound":
                     throw new Mercoa.NotFound(
@@ -559,7 +581,7 @@ export class PaymentLinks {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "Conflict":
                     throw new Mercoa.Conflict(
@@ -568,7 +590,7 @@ export class PaymentLinks {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "InternalServerError":
                     throw new Mercoa.InternalServerError(
@@ -577,7 +599,7 @@ export class PaymentLinks {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "Unimplemented":
                     throw new Mercoa.Unimplemented(
@@ -586,7 +608,7 @@ export class PaymentLinks {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 default:
                     throw new errors.MercoaError({
@@ -603,7 +625,9 @@ export class PaymentLinks {
                     body: _response.error.rawBody,
                 });
             case "timeout":
-                throw new errors.MercoaTimeoutError();
+                throw new errors.MercoaTimeoutError(
+                    "Timeout exceeded when calling POST /invoice/{invoiceId}/sendVendorEmail.",
+                );
             case "unknown":
                 throw new errors.MercoaError({
                     message: _response.error.errorMessage,

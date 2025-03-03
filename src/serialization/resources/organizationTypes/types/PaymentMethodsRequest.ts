@@ -17,7 +17,7 @@ export const PaymentMethodsRequest: core.serialization.ObjectSchema<
 });
 
 export declare namespace PaymentMethodsRequest {
-    interface Raw {
+    export interface Raw {
         payerPayments: PaymentRailRequest.Raw[];
         backupDisbursements: PaymentRailRequest.Raw[];
         vendorDisbursements: PaymentRailRequest.Raw[];

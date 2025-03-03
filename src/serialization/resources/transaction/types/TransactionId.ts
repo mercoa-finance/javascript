@@ -10,5 +10,5 @@ export const TransactionId: core.serialization.Schema<serializers.TransactionId.
     core.serialization.string();
 
 export declare namespace TransactionId {
-    type Raw = string;
+    export type Raw = string;
 }

@@ -18,7 +18,7 @@ export const PaymentMonthSchedule: core.serialization.ObjectSchema<
     .extend(PaymentScheduleBase);
 
 export declare namespace PaymentMonthSchedule {
-    interface Raw extends PaymentScheduleBase.Raw {
+    export interface Raw extends PaymentScheduleBase.Raw {
         dayOffset?: number | null;
         repeatOnDay: number;
     }

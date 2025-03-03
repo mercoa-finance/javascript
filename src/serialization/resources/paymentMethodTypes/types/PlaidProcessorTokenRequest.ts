@@ -14,7 +14,7 @@ export const PlaidProcessorTokenRequest: core.serialization.ObjectSchema<
 });
 
 export declare namespace PlaidProcessorTokenRequest {
-    interface Raw {
+    export interface Raw {
         processorToken: string;
     }
 }

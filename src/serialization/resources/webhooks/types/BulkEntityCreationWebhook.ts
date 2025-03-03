@@ -16,7 +16,7 @@ export const BulkEntityCreationWebhook: core.serialization.ObjectSchema<
 });
 
 export declare namespace BulkEntityCreationWebhook {
-    interface Raw {
+    export interface Raw {
         eventType: string;
         data: BulkEntityCreationFromObjectResponse.Raw[];
     }

@@ -15,5 +15,5 @@ export const StringOrStringArray: core.serialization.Schema<
 ]);
 
 export declare namespace StringOrStringArray {
-    type Raw = string | string[];
+    export type Raw = string | string[];
 }

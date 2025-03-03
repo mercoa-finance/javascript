@@ -3,7 +3,6 @@
  */
 
 export type NotificationStatus = "PENDING" | "SENT" | "READ" | "FAILED";
-
 export const NotificationStatus = {
     Pending: "PENDING",
     Sent: "SENT",

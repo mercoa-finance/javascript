@@ -3,7 +3,6 @@
  */
 
 export type ActionStatus = "SUGGESTED" | "APPROVED" | "COMPLETED";
-
 export const ActionStatus = {
     Suggested: "SUGGESTED",
     Approved: "APPROVED",

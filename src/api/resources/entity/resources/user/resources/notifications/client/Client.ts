@@ -10,20 +10,24 @@ import urlJoin from "url-join";
 import * as errors from "../../../../../../../../errors/index";
 
 export declare namespace Notifications {
-    interface Options {
+    export interface Options {
         environment?: core.Supplier<environments.MercoaEnvironment | string>;
+        /** Specify a custom URL to connect the client to. */
+        baseUrl?: core.Supplier<string>;
         token: core.Supplier<core.BearerToken>;
         /** Override the X-API-Version header */
         xApiVersion?: "2024-08-01";
     }
 
-    interface RequestOptions {
+    export interface RequestOptions {
         /** The maximum time to wait for a response in seconds. */
         timeoutInSeconds?: number;
         /** The number of times to retry the request. Defaults to 2. */
         maxRetries?: number;
         /** A hook to abort the request. */
         abortSignal?: AbortSignal;
+        /** Additional headers to include in the request. */
+        headers?: Record<string, string>;
         /** Override the X-API-Version header */
         xApiVersion?: "2024-08-01";
     }
@@ -53,10 +57,10 @@ export class Notifications {
         entityId: Mercoa.EntityId,
         userId: Mercoa.EntityUserId,
         request: Mercoa.entity.user.EntityGetNotificationsRequest = {},
-        requestOptions?: Notifications.RequestOptions
+        requestOptions?: Notifications.RequestOptions,
     ): Promise<Mercoa.FindNotificationResponse> {
         const { startDate, endDate, orderDirection, limit, startingAfter, notificationType, status } = request;
-        const _queryParams: Record<string, string | string[] | object | object[]> = {};
+        const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
         if (startDate != null) {
             _queryParams["startDate"] = startDate.toISOString();
         }
@@ -66,7 +70,9 @@ export class Notifications {
         }
 
         if (orderDirection != null) {
-            _queryParams["orderDirection"] = orderDirection;
+            _queryParams["orderDirection"] = serializers.OrderDirection.jsonOrThrow(orderDirection, {
+                unrecognizedObjectKeys: "strip",
+            });
         }
 
         if (limit != null) {
@@ -79,33 +85,40 @@ export class Notifications {
 
         if (notificationType != null) {
             if (Array.isArray(notificationType)) {
-                _queryParams["notificationType"] = notificationType.map((item) => item);
+                _queryParams["notificationType"] = notificationType.map((item) =>
+                    serializers.NotificationType.jsonOrThrow(item, { unrecognizedObjectKeys: "strip" }),
+                );
             } else {
-                _queryParams["notificationType"] = notificationType;
+                _queryParams["notificationType"] = serializers.NotificationType.jsonOrThrow(notificationType, {
+                    unrecognizedObjectKeys: "strip",
+                });
             }
         }
 
         if (status != null) {
-            _queryParams["status"] = status;
+            _queryParams["status"] = serializers.NotificationStatus.jsonOrThrow(status, {
+                unrecognizedObjectKeys: "strip",
+            });
         }
 
         const _response = await core.fetcher({
             url: urlJoin(
-                (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
-                `/entity/${encodeURIComponent(serializers.EntityId.jsonOrThrow(entityId))}/user/${encodeURIComponent(
-                    serializers.EntityUserId.jsonOrThrow(userId)
-                )}/notifications`
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (await core.Supplier.get(this._options.environment)) ??
+                    environments.MercoaEnvironment.Production,
+                `/entity/${encodeURIComponent(serializers.EntityId.jsonOrThrow(entityId))}/user/${encodeURIComponent(serializers.EntityUserId.jsonOrThrow(userId))}/notifications`,
             ),
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.6.11",
-                "User-Agent": "@mercoa/javascript/0.6.11",
+                "X-Fern-SDK-Version": "0.6.12",
+                "User-Agent": "@mercoa/javascript/0.6.12",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...requestOptions?.headers,
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -132,7 +145,7 @@ export class Notifications {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "Unauthorized":
                     throw new Mercoa.Unauthorized(
@@ -141,7 +154,7 @@ export class Notifications {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "Forbidden":
                     throw new Mercoa.Forbidden(
@@ -150,7 +163,7 @@ export class Notifications {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "NotFound":
                     throw new Mercoa.NotFound(
@@ -159,7 +172,7 @@ export class Notifications {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "Conflict":
                     throw new Mercoa.Conflict(
@@ -168,7 +181,7 @@ export class Notifications {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "InternalServerError":
                     throw new Mercoa.InternalServerError(
@@ -177,7 +190,7 @@ export class Notifications {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "Unimplemented":
                     throw new Mercoa.Unimplemented(
@@ -186,7 +199,7 @@ export class Notifications {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 default:
                     throw new errors.MercoaError({
@@ -203,7 +216,9 @@ export class Notifications {
                     body: _response.error.rawBody,
                 });
             case "timeout":
-                throw new errors.MercoaTimeoutError();
+                throw new errors.MercoaTimeoutError(
+                    "Timeout exceeded when calling GET /entity/{entityId}/user/{userId}/notifications.",
+                );
             case "unknown":
                 throw new errors.MercoaError({
                     message: _response.error.errorMessage,
@@ -232,25 +247,26 @@ export class Notifications {
         entityId: Mercoa.EntityId,
         userId: Mercoa.EntityUserId,
         notificationId: Mercoa.NotificationId,
-        requestOptions?: Notifications.RequestOptions
+        requestOptions?: Notifications.RequestOptions,
     ): Promise<Mercoa.NotificationResponse> {
         const _response = await core.fetcher({
             url: urlJoin(
-                (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
-                `/entity/${encodeURIComponent(serializers.EntityId.jsonOrThrow(entityId))}/user/${encodeURIComponent(
-                    serializers.EntityUserId.jsonOrThrow(userId)
-                )}/notification/${encodeURIComponent(serializers.NotificationId.jsonOrThrow(notificationId))}`
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (await core.Supplier.get(this._options.environment)) ??
+                    environments.MercoaEnvironment.Production,
+                `/entity/${encodeURIComponent(serializers.EntityId.jsonOrThrow(entityId))}/user/${encodeURIComponent(serializers.EntityUserId.jsonOrThrow(userId))}/notification/${encodeURIComponent(serializers.NotificationId.jsonOrThrow(notificationId))}`,
             ),
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.6.11",
-                "User-Agent": "@mercoa/javascript/0.6.11",
+                "X-Fern-SDK-Version": "0.6.12",
+                "User-Agent": "@mercoa/javascript/0.6.12",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...requestOptions?.headers,
             },
             contentType: "application/json",
             requestType: "json",
@@ -276,7 +292,7 @@ export class Notifications {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "Unauthorized":
                     throw new Mercoa.Unauthorized(
@@ -285,7 +301,7 @@ export class Notifications {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "Forbidden":
                     throw new Mercoa.Forbidden(
@@ -294,7 +310,7 @@ export class Notifications {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "NotFound":
                     throw new Mercoa.NotFound(
@@ -303,7 +319,7 @@ export class Notifications {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "Conflict":
                     throw new Mercoa.Conflict(
@@ -312,7 +328,7 @@ export class Notifications {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "InternalServerError":
                     throw new Mercoa.InternalServerError(
@@ -321,7 +337,7 @@ export class Notifications {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "Unimplemented":
                     throw new Mercoa.Unimplemented(
@@ -330,7 +346,7 @@ export class Notifications {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 default:
                     throw new errors.MercoaError({
@@ -347,7 +363,9 @@ export class Notifications {
                     body: _response.error.rawBody,
                 });
             case "timeout":
-                throw new errors.MercoaTimeoutError();
+                throw new errors.MercoaTimeoutError(
+                    "Timeout exceeded when calling GET /entity/{entityId}/user/{userId}/notification/{notificationId}.",
+                );
             case "unknown":
                 throw new errors.MercoaError({
                     message: _response.error.errorMessage,
@@ -382,25 +400,26 @@ export class Notifications {
         userId: Mercoa.EntityUserId,
         notificationId: Mercoa.NotificationId,
         request: Mercoa.NotificationUpdateRequest,
-        requestOptions?: Notifications.RequestOptions
+        requestOptions?: Notifications.RequestOptions,
     ): Promise<Mercoa.NotificationResponse> {
         const _response = await core.fetcher({
             url: urlJoin(
-                (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
-                `/entity/${encodeURIComponent(serializers.EntityId.jsonOrThrow(entityId))}/user/${encodeURIComponent(
-                    serializers.EntityUserId.jsonOrThrow(userId)
-                )}/notification/${encodeURIComponent(serializers.NotificationId.jsonOrThrow(notificationId))}`
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (await core.Supplier.get(this._options.environment)) ??
+                    environments.MercoaEnvironment.Production,
+                `/entity/${encodeURIComponent(serializers.EntityId.jsonOrThrow(entityId))}/user/${encodeURIComponent(serializers.EntityUserId.jsonOrThrow(userId))}/notification/${encodeURIComponent(serializers.NotificationId.jsonOrThrow(notificationId))}`,
             ),
             method: "PUT",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.6.11",
-                "User-Agent": "@mercoa/javascript/0.6.11",
+                "X-Fern-SDK-Version": "0.6.12",
+                "User-Agent": "@mercoa/javascript/0.6.12",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...requestOptions?.headers,
             },
             contentType: "application/json",
             requestType: "json",
@@ -427,7 +446,7 @@ export class Notifications {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "Unauthorized":
                     throw new Mercoa.Unauthorized(
@@ -436,7 +455,7 @@ export class Notifications {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "Forbidden":
                     throw new Mercoa.Forbidden(
@@ -445,7 +464,7 @@ export class Notifications {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "NotFound":
                     throw new Mercoa.NotFound(
@@ -454,7 +473,7 @@ export class Notifications {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "Conflict":
                     throw new Mercoa.Conflict(
@@ -463,7 +482,7 @@ export class Notifications {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "InternalServerError":
                     throw new Mercoa.InternalServerError(
@@ -472,7 +491,7 @@ export class Notifications {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "Unimplemented":
                     throw new Mercoa.Unimplemented(
@@ -481,7 +500,7 @@ export class Notifications {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 default:
                     throw new errors.MercoaError({
@@ -498,7 +517,9 @@ export class Notifications {
                     body: _response.error.rawBody,
                 });
             case "timeout":
-                throw new errors.MercoaTimeoutError();
+                throw new errors.MercoaTimeoutError(
+                    "Timeout exceeded when calling PUT /entity/{entityId}/user/{userId}/notification/{notificationId}.",
+                );
             case "unknown":
                 throw new errors.MercoaError({
                     message: _response.error.errorMessage,

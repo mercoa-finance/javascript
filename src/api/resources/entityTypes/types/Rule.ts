@@ -27,8 +27,8 @@ import * as Mercoa from "../../../index";
  */
 export type Rule = Mercoa.Rule.Approver;
 
-export declare namespace Rule {
-    interface Approver extends Mercoa.ApproverRule {
+export namespace Rule {
+    export interface Approver extends Mercoa.ApproverRule {
         type: "approver";
     }
 }

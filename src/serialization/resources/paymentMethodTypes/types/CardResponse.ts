@@ -21,7 +21,7 @@ export const CardResponse: core.serialization.ObjectSchema<serializers.CardRespo
         .extend(PaymentMethodBaseResponse);
 
 export declare namespace CardResponse {
-    interface Raw extends PaymentMethodBaseResponse.Raw {
+    export interface Raw extends PaymentMethodBaseResponse.Raw {
         cardType: CardType.Raw;
         cardBrand: CardBrand.Raw;
         lastFour: string;

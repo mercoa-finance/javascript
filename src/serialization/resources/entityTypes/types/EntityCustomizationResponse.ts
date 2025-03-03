@@ -30,7 +30,7 @@ export const EntityCustomizationResponse: core.serialization.ObjectSchema<
 });
 
 export declare namespace EntityCustomizationResponse {
-    interface Raw {
+    export interface Raw {
         metadata: MetadataCustomizationRequest.Raw[];
         paymentSource: PaymentMethodCustomizationRequest.Raw[];
         backupDisbursement: PaymentMethodCustomizationRequest.Raw[];

@@ -14,7 +14,7 @@ export const AmountTrigger: core.serialization.ObjectSchema<serializers.AmountTr
     });
 
 export declare namespace AmountTrigger {
-    interface Raw {
+    export interface Raw {
         amount: number;
         currency: CurrencyCode.Raw;
     }

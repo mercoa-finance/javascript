@@ -18,7 +18,7 @@ export const EntityGroupUserEntityResponse: core.serialization.ObjectSchema<
     .extend(EntityGroupUserEntityRequest);
 
 export declare namespace EntityGroupUserEntityResponse {
-    interface Raw extends EntityGroupUserEntityRequest.Raw {
+    export interface Raw extends EntityGroupUserEntityRequest.Raw {
         id: EntityUserId.Raw;
     }
 }

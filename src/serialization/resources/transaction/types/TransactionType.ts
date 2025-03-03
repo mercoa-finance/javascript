@@ -18,7 +18,7 @@ export const TransactionType: core.serialization.Schema<serializers.TransactionT
     ]);
 
 export declare namespace TransactionType {
-    type Raw =
+    export type Raw =
         | "bankAccountToBankAccount"
         | "bankAccountToMailedCheck"
         | "bankAccountToWallet"

@@ -16,7 +16,7 @@ export const AccelerationFundsBalanceResponse: core.serialization.ObjectSchema<
 });
 
 export declare namespace AccelerationFundsBalanceResponse {
-    interface Raw {
+    export interface Raw {
         amount: number;
         currency: CurrencyCode.Raw;
     }

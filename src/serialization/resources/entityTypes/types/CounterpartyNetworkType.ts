@@ -12,5 +12,5 @@ export const CounterpartyNetworkType: core.serialization.Schema<
 > = core.serialization.enum_(["ENTITY", "NETWORK"]);
 
 export declare namespace CounterpartyNetworkType {
-    type Raw = "ENTITY" | "NETWORK";
+    export type Raw = "ENTITY" | "NETWORK";
 }

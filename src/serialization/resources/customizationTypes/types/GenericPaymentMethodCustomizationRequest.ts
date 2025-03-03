@@ -14,7 +14,7 @@ export const GenericPaymentMethodCustomizationRequest: core.serialization.Object
 });
 
 export declare namespace GenericPaymentMethodCustomizationRequest {
-    interface Raw {
+    export interface Raw {
         disabled: boolean;
     }
 }

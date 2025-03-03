@@ -10,5 +10,5 @@ export const SyncType: core.serialization.Schema<serializers.entity.SyncType.Raw
     core.serialization.enum_(["none", "push", "pull", "both"]);
 
 export declare namespace SyncType {
-    type Raw = "none" | "push" | "pull" | "both";
+    export type Raw = "none" | "push" | "pull" | "both";
 }

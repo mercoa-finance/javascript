@@ -3,7 +3,6 @@
  */
 
 export type CardBrand = "AmericanExpress" | "Discover" | "Mastercard" | "Visa";
-
 export const CardBrand = {
     AmericanExpress: "AmericanExpress",
     Discover: "Discover",

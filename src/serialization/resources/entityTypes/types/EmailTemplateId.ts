@@ -10,5 +10,5 @@ export const EmailTemplateId: core.serialization.Schema<serializers.EmailTemplat
     core.serialization.string();
 
 export declare namespace EmailTemplateId {
-    type Raw = string;
+    export type Raw = string;
 }

@@ -23,7 +23,7 @@ export const InvoiceMetricsResponse: core.serialization.ObjectSchema<
 });
 
 export declare namespace InvoiceMetricsResponse {
-    interface Raw {
+    export interface Raw {
         group?: Record<string, string>[] | null;
         totalAmount: number;
         totalCount: number;

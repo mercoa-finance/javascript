@@ -17,7 +17,7 @@ export const TransactionResponseMailedCheckBase: core.serialization.ObjectSchema
     .extend(TransactionResponseBase);
 
 export declare namespace TransactionResponseMailedCheckBase {
-    interface Raw extends TransactionResponseBase.Raw {
+    export interface Raw extends TransactionResponseBase.Raw {
         checkNumber: number;
     }
 }

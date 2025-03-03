@@ -9,5 +9,5 @@ export const Response: core.serialization.Schema<serializers.entityGroup.user.ge
     core.serialization.string();
 
 export declare namespace Response {
-    type Raw = string;
+    export type Raw = string;
 }

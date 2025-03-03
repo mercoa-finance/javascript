@@ -11,27 +11,37 @@ import * as errors from "../../../../../../errors/index";
 import { VendorCredit } from "../resources/vendorCredit/client/Client";
 
 export declare namespace Counterparty {
-    interface Options {
+    export interface Options {
         environment?: core.Supplier<environments.MercoaEnvironment | string>;
+        /** Specify a custom URL to connect the client to. */
+        baseUrl?: core.Supplier<string>;
         token: core.Supplier<core.BearerToken>;
         /** Override the X-API-Version header */
         xApiVersion?: "2024-08-01";
     }
 
-    interface RequestOptions {
+    export interface RequestOptions {
         /** The maximum time to wait for a response in seconds. */
         timeoutInSeconds?: number;
         /** The number of times to retry the request. Defaults to 2. */
         maxRetries?: number;
         /** A hook to abort the request. */
         abortSignal?: AbortSignal;
+        /** Additional headers to include in the request. */
+        headers?: Record<string, string>;
         /** Override the X-API-Version header */
         xApiVersion?: "2024-08-01";
     }
 }
 
 export class Counterparty {
+    protected _vendorCredit: VendorCredit | undefined;
+
     constructor(protected readonly _options: Counterparty.Options) {}
+
+    public get vendorCredit(): VendorCredit {
+        return (this._vendorCredit ??= new VendorCredit(this._options));
+    }
 
     /**
      * Find payee counterparties. This endpoint lets you find vendors linked to the entity.
@@ -58,7 +68,7 @@ export class Counterparty {
     public async findPayees(
         entityId: Mercoa.EntityId,
         request: Mercoa.entity.counterparty.FindPayeeCounterpartiesRequest = {},
-        requestOptions?: Counterparty.RequestOptions
+        requestOptions?: Counterparty.RequestOptions,
     ): Promise<Mercoa.FindCounterpartiesResponse> {
         const {
             name,
@@ -72,7 +82,7 @@ export class Counterparty {
             limit,
             startingAfter,
         } = request;
-        const _queryParams: Record<string, string | string[] | object | object[]> = {};
+        const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
         if (name != null) {
             _queryParams["name"] = name;
         }
@@ -83,9 +93,13 @@ export class Counterparty {
 
         if (networkType != null) {
             if (Array.isArray(networkType)) {
-                _queryParams["networkType"] = networkType.map((item) => item);
+                _queryParams["networkType"] = networkType.map((item) =>
+                    serializers.CounterpartyNetworkType.jsonOrThrow(item, { unrecognizedObjectKeys: "strip" }),
+                );
             } else {
-                _queryParams["networkType"] = networkType;
+                _queryParams["networkType"] = serializers.CounterpartyNetworkType.jsonOrThrow(networkType, {
+                    unrecognizedObjectKeys: "strip",
+                });
             }
         }
 
@@ -99,7 +113,9 @@ export class Counterparty {
 
         if (counterpartyId != null) {
             if (Array.isArray(counterpartyId)) {
-                _queryParams["counterpartyId"] = counterpartyId.map((item) => item);
+                _queryParams["counterpartyId"] = counterpartyId.map((item) =>
+                    serializers.EntityId.jsonOrThrow(item, { unrecognizedObjectKeys: "strip" }),
+                );
             } else {
                 _queryParams["counterpartyId"] = counterpartyId;
             }
@@ -114,8 +130,8 @@ export class Counterparty {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["request", "metadata"],
-                        })
-                    )
+                        }),
+                    ),
                 );
             } else {
                 _queryParams["metadata"] = serializers.MetadataFilter.jsonOrThrow(metadata, {
@@ -145,19 +161,22 @@ export class Counterparty {
 
         const _response = await core.fetcher({
             url: urlJoin(
-                (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
-                `/entity/${encodeURIComponent(serializers.EntityId.jsonOrThrow(entityId))}/counterparties/payees`
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (await core.Supplier.get(this._options.environment)) ??
+                    environments.MercoaEnvironment.Production,
+                `/entity/${encodeURIComponent(serializers.EntityId.jsonOrThrow(entityId))}/counterparties/payees`,
             ),
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.6.11",
-                "User-Agent": "@mercoa/javascript/0.6.11",
+                "X-Fern-SDK-Version": "0.6.12",
+                "User-Agent": "@mercoa/javascript/0.6.12",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...requestOptions?.headers,
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -184,7 +203,7 @@ export class Counterparty {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "Unauthorized":
                     throw new Mercoa.Unauthorized(
@@ -193,7 +212,7 @@ export class Counterparty {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "Forbidden":
                     throw new Mercoa.Forbidden(
@@ -202,7 +221,7 @@ export class Counterparty {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "NotFound":
                     throw new Mercoa.NotFound(
@@ -211,7 +230,7 @@ export class Counterparty {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "Conflict":
                     throw new Mercoa.Conflict(
@@ -220,7 +239,7 @@ export class Counterparty {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "InternalServerError":
                     throw new Mercoa.InternalServerError(
@@ -229,7 +248,7 @@ export class Counterparty {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "Unimplemented":
                     throw new Mercoa.Unimplemented(
@@ -238,7 +257,7 @@ export class Counterparty {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 default:
                     throw new errors.MercoaError({
@@ -255,7 +274,9 @@ export class Counterparty {
                     body: _response.error.rawBody,
                 });
             case "timeout":
-                throw new errors.MercoaTimeoutError();
+                throw new errors.MercoaTimeoutError(
+                    "Timeout exceeded when calling GET /entity/{entityId}/counterparties/payees.",
+                );
             case "unknown":
                 throw new errors.MercoaError({
                     message: _response.error.errorMessage,
@@ -288,7 +309,7 @@ export class Counterparty {
     public async findPayors(
         entityId: Mercoa.EntityId,
         request: Mercoa.entity.counterparty.FindPayorCounterpartiesRequest = {},
-        requestOptions?: Counterparty.RequestOptions
+        requestOptions?: Counterparty.RequestOptions,
     ): Promise<Mercoa.FindCounterpartiesResponse> {
         const {
             name,
@@ -302,7 +323,7 @@ export class Counterparty {
             limit,
             startingAfter,
         } = request;
-        const _queryParams: Record<string, string | string[] | object | object[]> = {};
+        const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
         if (name != null) {
             _queryParams["name"] = name;
         }
@@ -313,9 +334,13 @@ export class Counterparty {
 
         if (networkType != null) {
             if (Array.isArray(networkType)) {
-                _queryParams["networkType"] = networkType.map((item) => item);
+                _queryParams["networkType"] = networkType.map((item) =>
+                    serializers.CounterpartyNetworkType.jsonOrThrow(item, { unrecognizedObjectKeys: "strip" }),
+                );
             } else {
-                _queryParams["networkType"] = networkType;
+                _queryParams["networkType"] = serializers.CounterpartyNetworkType.jsonOrThrow(networkType, {
+                    unrecognizedObjectKeys: "strip",
+                });
             }
         }
 
@@ -329,7 +354,9 @@ export class Counterparty {
 
         if (counterpartyId != null) {
             if (Array.isArray(counterpartyId)) {
-                _queryParams["counterpartyId"] = counterpartyId.map((item) => item);
+                _queryParams["counterpartyId"] = counterpartyId.map((item) =>
+                    serializers.EntityId.jsonOrThrow(item, { unrecognizedObjectKeys: "strip" }),
+                );
             } else {
                 _queryParams["counterpartyId"] = counterpartyId;
             }
@@ -344,8 +371,8 @@ export class Counterparty {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["request", "metadata"],
-                        })
-                    )
+                        }),
+                    ),
                 );
             } else {
                 _queryParams["metadata"] = serializers.MetadataFilter.jsonOrThrow(metadata, {
@@ -375,19 +402,22 @@ export class Counterparty {
 
         const _response = await core.fetcher({
             url: urlJoin(
-                (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
-                `/entity/${encodeURIComponent(serializers.EntityId.jsonOrThrow(entityId))}/counterparties/payors`
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (await core.Supplier.get(this._options.environment)) ??
+                    environments.MercoaEnvironment.Production,
+                `/entity/${encodeURIComponent(serializers.EntityId.jsonOrThrow(entityId))}/counterparties/payors`,
             ),
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.6.11",
-                "User-Agent": "@mercoa/javascript/0.6.11",
+                "X-Fern-SDK-Version": "0.6.12",
+                "User-Agent": "@mercoa/javascript/0.6.12",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...requestOptions?.headers,
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -414,7 +444,7 @@ export class Counterparty {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "Unauthorized":
                     throw new Mercoa.Unauthorized(
@@ -423,7 +453,7 @@ export class Counterparty {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "Forbidden":
                     throw new Mercoa.Forbidden(
@@ -432,7 +462,7 @@ export class Counterparty {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "NotFound":
                     throw new Mercoa.NotFound(
@@ -441,7 +471,7 @@ export class Counterparty {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "Conflict":
                     throw new Mercoa.Conflict(
@@ -450,7 +480,7 @@ export class Counterparty {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "InternalServerError":
                     throw new Mercoa.InternalServerError(
@@ -459,7 +489,7 @@ export class Counterparty {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "Unimplemented":
                     throw new Mercoa.Unimplemented(
@@ -468,7 +498,7 @@ export class Counterparty {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 default:
                     throw new errors.MercoaError({
@@ -485,7 +515,9 @@ export class Counterparty {
                     body: _response.error.rawBody,
                 });
             case "timeout":
-                throw new errors.MercoaTimeoutError();
+                throw new errors.MercoaTimeoutError(
+                    "Timeout exceeded when calling GET /entity/{entityId}/counterparties/payors.",
+                );
             case "unknown":
                 throw new errors.MercoaError({
                     message: _response.error.errorMessage,
@@ -524,23 +556,26 @@ export class Counterparty {
     public async addPayees(
         entityId: Mercoa.EntityId,
         request: Mercoa.EntityAddPayeesRequest,
-        requestOptions?: Counterparty.RequestOptions
+        requestOptions?: Counterparty.RequestOptions,
     ): Promise<void> {
         const _response = await core.fetcher({
             url: urlJoin(
-                (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
-                `/entity/${encodeURIComponent(serializers.EntityId.jsonOrThrow(entityId))}/addPayees`
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (await core.Supplier.get(this._options.environment)) ??
+                    environments.MercoaEnvironment.Production,
+                `/entity/${encodeURIComponent(serializers.EntityId.jsonOrThrow(entityId))}/addPayees`,
             ),
             method: "POST",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.6.11",
-                "User-Agent": "@mercoa/javascript/0.6.11",
+                "X-Fern-SDK-Version": "0.6.12",
+                "User-Agent": "@mercoa/javascript/0.6.12",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...requestOptions?.headers,
             },
             contentType: "application/json",
             requestType: "json",
@@ -562,7 +597,7 @@ export class Counterparty {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "Unauthorized":
                     throw new Mercoa.Unauthorized(
@@ -571,7 +606,7 @@ export class Counterparty {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "Forbidden":
                     throw new Mercoa.Forbidden(
@@ -580,7 +615,7 @@ export class Counterparty {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "NotFound":
                     throw new Mercoa.NotFound(
@@ -589,7 +624,7 @@ export class Counterparty {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "Conflict":
                     throw new Mercoa.Conflict(
@@ -598,7 +633,7 @@ export class Counterparty {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "InternalServerError":
                     throw new Mercoa.InternalServerError(
@@ -607,7 +642,7 @@ export class Counterparty {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "Unimplemented":
                     throw new Mercoa.Unimplemented(
@@ -616,7 +651,7 @@ export class Counterparty {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 default:
                     throw new errors.MercoaError({
@@ -633,7 +668,7 @@ export class Counterparty {
                     body: _response.error.rawBody,
                 });
             case "timeout":
-                throw new errors.MercoaTimeoutError();
+                throw new errors.MercoaTimeoutError("Timeout exceeded when calling POST /entity/{entityId}/addPayees.");
             case "unknown":
                 throw new errors.MercoaError({
                     message: _response.error.errorMessage,
@@ -664,23 +699,26 @@ export class Counterparty {
     public async hidePayees(
         entityId: Mercoa.EntityId,
         request: Mercoa.EntityHidePayeesRequest,
-        requestOptions?: Counterparty.RequestOptions
+        requestOptions?: Counterparty.RequestOptions,
     ): Promise<void> {
         const _response = await core.fetcher({
             url: urlJoin(
-                (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
-                `/entity/${encodeURIComponent(serializers.EntityId.jsonOrThrow(entityId))}/hidePayees`
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (await core.Supplier.get(this._options.environment)) ??
+                    environments.MercoaEnvironment.Production,
+                `/entity/${encodeURIComponent(serializers.EntityId.jsonOrThrow(entityId))}/hidePayees`,
             ),
             method: "POST",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.6.11",
-                "User-Agent": "@mercoa/javascript/0.6.11",
+                "X-Fern-SDK-Version": "0.6.12",
+                "User-Agent": "@mercoa/javascript/0.6.12",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...requestOptions?.headers,
             },
             contentType: "application/json",
             requestType: "json",
@@ -702,7 +740,7 @@ export class Counterparty {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "Unauthorized":
                     throw new Mercoa.Unauthorized(
@@ -711,7 +749,7 @@ export class Counterparty {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "Forbidden":
                     throw new Mercoa.Forbidden(
@@ -720,7 +758,7 @@ export class Counterparty {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "NotFound":
                     throw new Mercoa.NotFound(
@@ -729,7 +767,7 @@ export class Counterparty {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "Conflict":
                     throw new Mercoa.Conflict(
@@ -738,7 +776,7 @@ export class Counterparty {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "InternalServerError":
                     throw new Mercoa.InternalServerError(
@@ -747,7 +785,7 @@ export class Counterparty {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "Unimplemented":
                     throw new Mercoa.Unimplemented(
@@ -756,7 +794,7 @@ export class Counterparty {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 default:
                     throw new errors.MercoaError({
@@ -773,7 +811,9 @@ export class Counterparty {
                     body: _response.error.rawBody,
                 });
             case "timeout":
-                throw new errors.MercoaTimeoutError();
+                throw new errors.MercoaTimeoutError(
+                    "Timeout exceeded when calling POST /entity/{entityId}/hidePayees.",
+                );
             case "unknown":
                 throw new errors.MercoaError({
                     message: _response.error.errorMessage,
@@ -812,23 +852,26 @@ export class Counterparty {
     public async addPayors(
         entityId: Mercoa.EntityId,
         request: Mercoa.EntityAddPayorsRequest,
-        requestOptions?: Counterparty.RequestOptions
+        requestOptions?: Counterparty.RequestOptions,
     ): Promise<void> {
         const _response = await core.fetcher({
             url: urlJoin(
-                (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
-                `/entity/${encodeURIComponent(serializers.EntityId.jsonOrThrow(entityId))}/addPayors`
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (await core.Supplier.get(this._options.environment)) ??
+                    environments.MercoaEnvironment.Production,
+                `/entity/${encodeURIComponent(serializers.EntityId.jsonOrThrow(entityId))}/addPayors`,
             ),
             method: "POST",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.6.11",
-                "User-Agent": "@mercoa/javascript/0.6.11",
+                "X-Fern-SDK-Version": "0.6.12",
+                "User-Agent": "@mercoa/javascript/0.6.12",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...requestOptions?.headers,
             },
             contentType: "application/json",
             requestType: "json",
@@ -850,7 +893,7 @@ export class Counterparty {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "Unauthorized":
                     throw new Mercoa.Unauthorized(
@@ -859,7 +902,7 @@ export class Counterparty {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "Forbidden":
                     throw new Mercoa.Forbidden(
@@ -868,7 +911,7 @@ export class Counterparty {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "NotFound":
                     throw new Mercoa.NotFound(
@@ -877,7 +920,7 @@ export class Counterparty {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "Conflict":
                     throw new Mercoa.Conflict(
@@ -886,7 +929,7 @@ export class Counterparty {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "InternalServerError":
                     throw new Mercoa.InternalServerError(
@@ -895,7 +938,7 @@ export class Counterparty {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "Unimplemented":
                     throw new Mercoa.Unimplemented(
@@ -904,7 +947,7 @@ export class Counterparty {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 default:
                     throw new errors.MercoaError({
@@ -921,7 +964,7 @@ export class Counterparty {
                     body: _response.error.rawBody,
                 });
             case "timeout":
-                throw new errors.MercoaTimeoutError();
+                throw new errors.MercoaTimeoutError("Timeout exceeded when calling POST /entity/{entityId}/addPayors.");
             case "unknown":
                 throw new errors.MercoaError({
                     message: _response.error.errorMessage,
@@ -952,23 +995,26 @@ export class Counterparty {
     public async hidePayors(
         entityId: Mercoa.EntityId,
         request: Mercoa.EntityHidePayorsRequest,
-        requestOptions?: Counterparty.RequestOptions
+        requestOptions?: Counterparty.RequestOptions,
     ): Promise<void> {
         const _response = await core.fetcher({
             url: urlJoin(
-                (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
-                `/entity/${encodeURIComponent(serializers.EntityId.jsonOrThrow(entityId))}/hidePayors`
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (await core.Supplier.get(this._options.environment)) ??
+                    environments.MercoaEnvironment.Production,
+                `/entity/${encodeURIComponent(serializers.EntityId.jsonOrThrow(entityId))}/hidePayors`,
             ),
             method: "POST",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.6.11",
-                "User-Agent": "@mercoa/javascript/0.6.11",
+                "X-Fern-SDK-Version": "0.6.12",
+                "User-Agent": "@mercoa/javascript/0.6.12",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...requestOptions?.headers,
             },
             contentType: "application/json",
             requestType: "json",
@@ -990,7 +1036,7 @@ export class Counterparty {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "Unauthorized":
                     throw new Mercoa.Unauthorized(
@@ -999,7 +1045,7 @@ export class Counterparty {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "Forbidden":
                     throw new Mercoa.Forbidden(
@@ -1008,7 +1054,7 @@ export class Counterparty {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "NotFound":
                     throw new Mercoa.NotFound(
@@ -1017,7 +1063,7 @@ export class Counterparty {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "Conflict":
                     throw new Mercoa.Conflict(
@@ -1026,7 +1072,7 @@ export class Counterparty {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "InternalServerError":
                     throw new Mercoa.InternalServerError(
@@ -1035,7 +1081,7 @@ export class Counterparty {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "Unimplemented":
                     throw new Mercoa.Unimplemented(
@@ -1044,7 +1090,7 @@ export class Counterparty {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 default:
                     throw new errors.MercoaError({
@@ -1061,18 +1107,14 @@ export class Counterparty {
                     body: _response.error.rawBody,
                 });
             case "timeout":
-                throw new errors.MercoaTimeoutError();
+                throw new errors.MercoaTimeoutError(
+                    "Timeout exceeded when calling POST /entity/{entityId}/hidePayors.",
+                );
             case "unknown":
                 throw new errors.MercoaError({
                     message: _response.error.errorMessage,
                 });
         }
-    }
-
-    protected _vendorCredit: VendorCredit | undefined;
-
-    public get vendorCredit(): VendorCredit {
-        return (this._vendorCredit ??= new VendorCredit(this._options));
     }
 
     protected async _getAuthorizationHeader(): Promise<string> {

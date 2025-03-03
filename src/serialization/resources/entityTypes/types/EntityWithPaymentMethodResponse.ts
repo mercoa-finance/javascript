@@ -18,7 +18,7 @@ export const EntityWithPaymentMethodResponse: core.serialization.ObjectSchema<
     .extend(EntityResponse);
 
 export declare namespace EntityWithPaymentMethodResponse {
-    interface Raw extends EntityResponse.Raw {
+    export interface Raw extends EntityResponse.Raw {
         paymentMethods?: PaymentMethodResponse.Raw[] | null;
     }
 }

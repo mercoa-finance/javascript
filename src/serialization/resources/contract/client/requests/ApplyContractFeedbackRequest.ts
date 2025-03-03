@@ -14,7 +14,7 @@ export const ApplyContractFeedbackRequest: core.serialization.Schema<
 });
 
 export declare namespace ApplyContractFeedbackRequest {
-    interface Raw {
+    export interface Raw {
         feedback: string;
     }
 }

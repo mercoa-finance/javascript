@@ -3,7 +3,6 @@
  */
 
 export type VendorNetwork = "all" | "platform" | "entity";
-
 export const VendorNetwork = {
     All: "all",
     Platform: "platform",

@@ -13,5 +13,5 @@ export const RolePermissionRequest: core.serialization.Schema<
 > = core.serialization.record(core.serialization.string(), core.serialization.list(Permission));
 
 export declare namespace RolePermissionRequest {
-    type Raw = Record<string, Permission.Raw[]>;
+    export type Raw = Record<string, Permission.Raw[]>;
 }

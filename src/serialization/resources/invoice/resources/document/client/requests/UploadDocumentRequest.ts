@@ -16,7 +16,7 @@ export const UploadDocumentRequest: core.serialization.Schema<
 });
 
 export declare namespace UploadDocumentRequest {
-    interface Raw {
+    export interface Raw {
         document: string;
         type?: DocumentType.Raw | null;
     }

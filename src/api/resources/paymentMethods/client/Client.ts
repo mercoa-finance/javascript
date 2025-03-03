@@ -5,25 +5,29 @@
 import * as environments from "../../../../environments";
 import * as core from "../../../../core";
 import * as Mercoa from "../../../index";
-import urlJoin from "url-join";
 import * as serializers from "../../../../serialization/index";
+import urlJoin from "url-join";
 import * as errors from "../../../../errors/index";
 
 export declare namespace PaymentMethods {
-    interface Options {
+    export interface Options {
         environment?: core.Supplier<environments.MercoaEnvironment | string>;
+        /** Specify a custom URL to connect the client to. */
+        baseUrl?: core.Supplier<string>;
         token: core.Supplier<core.BearerToken>;
         /** Override the X-API-Version header */
         xApiVersion?: "2024-08-01";
     }
 
-    interface RequestOptions {
+    export interface RequestOptions {
         /** The maximum time to wait for a response in seconds. */
         timeoutInSeconds?: number;
         /** The number of times to retry the request. Defaults to 2. */
         maxRetries?: number;
         /** A hook to abort the request. */
         abortSignal?: AbortSignal;
+        /** Additional headers to include in the request. */
+        headers?: Record<string, string>;
         /** Override the X-API-Version header */
         xApiVersion?: "2024-08-01";
     }
@@ -59,10 +63,10 @@ export class PaymentMethods {
      */
     public async find(
         request: Mercoa.FindPaymentMethodsRequest = {},
-        requestOptions?: PaymentMethods.RequestOptions
+        requestOptions?: PaymentMethods.RequestOptions,
     ): Promise<Mercoa.PaymentMethodWithEntityFindResponse> {
         const { limit, startingAfter, type: type_, entityId } = request;
-        const _queryParams: Record<string, string | string[] | object | object[]> = {};
+        const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
         if (limit != null) {
             _queryParams["limit"] = limit.toString();
         }
@@ -73,15 +77,21 @@ export class PaymentMethods {
 
         if (type_ != null) {
             if (Array.isArray(type_)) {
-                _queryParams["type"] = type_.map((item) => item);
+                _queryParams["type"] = type_.map((item) =>
+                    serializers.PaymentMethodType.jsonOrThrow(item, { unrecognizedObjectKeys: "strip" }),
+                );
             } else {
-                _queryParams["type"] = type_;
+                _queryParams["type"] = serializers.PaymentMethodType.jsonOrThrow(type_, {
+                    unrecognizedObjectKeys: "strip",
+                });
             }
         }
 
         if (entityId != null) {
             if (Array.isArray(entityId)) {
-                _queryParams["entityId"] = entityId.map((item) => item);
+                _queryParams["entityId"] = entityId.map((item) =>
+                    serializers.EntityId.jsonOrThrow(item, { unrecognizedObjectKeys: "strip" }),
+                );
             } else {
                 _queryParams["entityId"] = entityId;
             }
@@ -89,19 +99,22 @@ export class PaymentMethods {
 
         const _response = await core.fetcher({
             url: urlJoin(
-                (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
-                "paymentMethods"
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (await core.Supplier.get(this._options.environment)) ??
+                    environments.MercoaEnvironment.Production,
+                "paymentMethods",
             ),
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.6.11",
-                "User-Agent": "@mercoa/javascript/0.6.11",
+                "X-Fern-SDK-Version": "0.6.12",
+                "User-Agent": "@mercoa/javascript/0.6.12",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...requestOptions?.headers,
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -128,7 +141,7 @@ export class PaymentMethods {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "Unauthorized":
                     throw new Mercoa.Unauthorized(
@@ -137,7 +150,7 @@ export class PaymentMethods {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "Forbidden":
                     throw new Mercoa.Forbidden(
@@ -146,7 +159,7 @@ export class PaymentMethods {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "NotFound":
                     throw new Mercoa.NotFound(
@@ -155,7 +168,7 @@ export class PaymentMethods {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "Conflict":
                     throw new Mercoa.Conflict(
@@ -164,7 +177,7 @@ export class PaymentMethods {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "InternalServerError":
                     throw new Mercoa.InternalServerError(
@@ -173,7 +186,7 @@ export class PaymentMethods {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "Unimplemented":
                     throw new Mercoa.Unimplemented(
@@ -182,7 +195,7 @@ export class PaymentMethods {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 default:
                     throw new errors.MercoaError({
@@ -199,7 +212,7 @@ export class PaymentMethods {
                     body: _response.error.rawBody,
                 });
             case "timeout":
-                throw new errors.MercoaTimeoutError();
+                throw new errors.MercoaTimeoutError("Timeout exceeded when calling GET /paymentMethods.");
             case "unknown":
                 throw new errors.MercoaError({
                     message: _response.error.errorMessage,

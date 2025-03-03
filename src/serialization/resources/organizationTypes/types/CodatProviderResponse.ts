@@ -14,7 +14,7 @@ export const CodatProviderResponse: core.serialization.ObjectSchema<
 });
 
 export declare namespace CodatProviderResponse {
-    interface Raw {
+    export interface Raw {
         hasApiKey: boolean;
     }
 }

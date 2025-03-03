@@ -18,7 +18,7 @@ export const InvoiceStatusChangedWebhook: core.serialization.ObjectSchema<
     .extend(InvoiceWebhook);
 
 export declare namespace InvoiceStatusChangedWebhook {
-    interface Raw extends InvoiceWebhook.Raw {
+    export interface Raw extends InvoiceWebhook.Raw {
         newStatus: string;
         previousStatus: string;
     }

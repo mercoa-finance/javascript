@@ -12,5 +12,5 @@ export const InvoiceMetricsPerDateFrequency: core.serialization.Schema<
 > = core.serialization.enum_(["DAILY", "WEEKLY", "MONTHLY", "YEARLY"]);
 
 export declare namespace InvoiceMetricsPerDateFrequency {
-    type Raw = "DAILY" | "WEEKLY" | "MONTHLY" | "YEARLY";
+    export type Raw = "DAILY" | "WEEKLY" | "MONTHLY" | "YEARLY";
 }

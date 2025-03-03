@@ -3,7 +3,6 @@
  */
 
 export type BankType = "CHECKING" | "SAVINGS" | "UNKNOWN";
-
 export const BankType = {
     Checking: "CHECKING",
     Savings: "SAVINGS",

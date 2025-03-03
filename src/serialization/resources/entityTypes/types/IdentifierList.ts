@@ -23,14 +23,14 @@ export const IdentifierList: core.serialization.Schema<serializers.IdentifierLis
         });
 
 export declare namespace IdentifierList {
-    type Raw = IdentifierList.RolesList | IdentifierList.UserList;
+    export type Raw = IdentifierList.RolesList | IdentifierList.UserList;
 
-    interface RolesList {
+    export interface RolesList {
         type: "rolesList";
         value: string[];
     }
 
-    interface UserList {
+    export interface UserList {
         type: "userList";
         value: EntityUserId.Raw[];
     }

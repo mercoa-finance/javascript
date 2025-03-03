@@ -29,7 +29,7 @@ export const RepresentativeResponse: core.serialization.ObjectSchema<
 });
 
 export declare namespace RepresentativeResponse {
-    interface Raw {
+    export interface Raw {
         id: RepresentativeId.Raw;
         name: FullName.Raw;
         phone?: PhoneNumber.Raw | null;

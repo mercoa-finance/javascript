@@ -20,7 +20,7 @@ export const ContractCreateRequest: core.serialization.ObjectSchema<
 });
 
 export declare namespace ContractCreateRequest {
-    interface Raw {
+    export interface Raw {
         summary: string;
         recurrences: ContractRecurrenceCreateRequest.Raw[];
         creatorEntityId: EntityId.Raw;

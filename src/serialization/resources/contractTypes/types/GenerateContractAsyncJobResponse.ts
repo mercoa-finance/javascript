@@ -19,7 +19,7 @@ export const GenerateContractAsyncJobResponse: core.serialization.ObjectSchema<
 });
 
 export declare namespace GenerateContractAsyncJobResponse {
-    interface Raw {
+    export interface Raw {
         jobId: ContractJobId.Raw;
         status: ContractJobStatus.Raw;
         contract?: ContractResponse.Raw | null;

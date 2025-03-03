@@ -8,5 +8,5 @@ import * as core from "../../../../core";
 export const BadRequest: core.serialization.Schema<serializers.BadRequest.Raw, string> = core.serialization.string();
 
 export declare namespace BadRequest {
-    type Raw = string;
+    export type Raw = string;
 }

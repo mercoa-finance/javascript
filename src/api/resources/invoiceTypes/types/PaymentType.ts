@@ -3,7 +3,6 @@
  */
 
 export type PaymentType = "oneTime" | "recurring";
-
 export const PaymentType = {
     OneTime: "oneTime",
     Recurring: "recurring",

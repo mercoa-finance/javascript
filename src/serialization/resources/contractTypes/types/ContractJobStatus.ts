@@ -10,5 +10,5 @@ export const ContractJobStatus: core.serialization.Schema<serializers.ContractJo
     core.serialization.enum_(["pending", "success", "failed"]);
 
 export declare namespace ContractJobStatus {
-    type Raw = "pending" | "success" | "failed";
+    export type Raw = "pending" | "success" | "failed";
 }

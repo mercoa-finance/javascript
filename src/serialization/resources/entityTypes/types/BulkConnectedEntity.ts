@@ -17,7 +17,7 @@ export const BulkConnectedEntity: core.serialization.ObjectSchema<
 });
 
 export declare namespace BulkConnectedEntity {
-    interface Raw {
+    export interface Raw {
         id: EntityId.Raw;
         linkCreatedAsPayor: boolean;
         linkCreatedAsPayee: boolean;

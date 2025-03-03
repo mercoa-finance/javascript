@@ -17,7 +17,7 @@ export const CounterpartyCustomizationRequest: core.serialization.ObjectSchema<
 });
 
 export declare namespace CounterpartyCustomizationRequest {
-    interface Raw {
+    export interface Raw {
         counterpartyId: EntityId.Raw;
         accounts?: CounterpartyCustomizationAccount.Raw[] | null;
     }

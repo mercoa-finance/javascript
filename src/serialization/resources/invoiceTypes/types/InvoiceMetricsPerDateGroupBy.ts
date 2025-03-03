@@ -12,5 +12,5 @@ export const InvoiceMetricsPerDateGroupBy: core.serialization.Schema<
 > = core.serialization.enum_(["CREATION_DATE", "DUE_DATE", "INVOICE_DATE", "DEDUCTION_DATE"]);
 
 export declare namespace InvoiceMetricsPerDateGroupBy {
-    type Raw = "CREATION_DATE" | "DUE_DATE" | "INVOICE_DATE" | "DEDUCTION_DATE";
+    export type Raw = "CREATION_DATE" | "DUE_DATE" | "INVOICE_DATE" | "DEDUCTION_DATE";
 }

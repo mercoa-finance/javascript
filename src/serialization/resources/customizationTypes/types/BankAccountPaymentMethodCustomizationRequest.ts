@@ -18,7 +18,7 @@ export const BankAccountPaymentMethodCustomizationRequest: core.serialization.Ob
     .extend(GenericPaymentMethodCustomizationRequest);
 
 export declare namespace BankAccountPaymentMethodCustomizationRequest {
-    interface Raw extends GenericPaymentMethodCustomizationRequest.Raw {
+    export interface Raw extends GenericPaymentMethodCustomizationRequest.Raw {
         defaultDeliveryMethod?: BankDeliveryMethod.Raw | null;
     }
 }

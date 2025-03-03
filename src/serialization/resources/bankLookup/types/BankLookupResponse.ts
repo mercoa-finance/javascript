@@ -16,7 +16,7 @@ export const BankLookupResponse: core.serialization.ObjectSchema<
 });
 
 export declare namespace BankLookupResponse {
-    interface Raw {
+    export interface Raw {
         bankName: string;
         bankAddress: BankAddress.Raw;
     }

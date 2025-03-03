@@ -19,7 +19,7 @@ export const CheckPaymentMethodCustomizationRequest: core.serialization.ObjectSc
     .extend(GenericPaymentMethodCustomizationRequest);
 
 export declare namespace CheckPaymentMethodCustomizationRequest {
-    interface Raw extends GenericPaymentMethodCustomizationRequest.Raw {
+    export interface Raw extends GenericPaymentMethodCustomizationRequest.Raw {
         defaultDeliveryMethod?: CheckDeliveryMethod.Raw | null;
         printDescription?: boolean | null;
     }

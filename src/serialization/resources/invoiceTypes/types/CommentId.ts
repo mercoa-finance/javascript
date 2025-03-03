@@ -10,5 +10,5 @@ export const CommentId: core.serialization.Schema<serializers.CommentId.Raw, Mer
     core.serialization.string();
 
 export declare namespace CommentId {
-    type Raw = string;
+    export type Raw = string;
 }

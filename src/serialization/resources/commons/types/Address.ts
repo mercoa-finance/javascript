@@ -17,7 +17,7 @@ export const Address: core.serialization.ObjectSchema<serializers.Address.Raw, M
     });
 
 export declare namespace Address {
-    interface Raw {
+    export interface Raw {
         addressLine1: string;
         addressLine2?: string | null;
         city: string;

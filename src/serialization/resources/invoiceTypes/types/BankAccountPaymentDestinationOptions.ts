@@ -16,7 +16,7 @@ export const BankAccountPaymentDestinationOptions: core.serialization.ObjectSche
 });
 
 export declare namespace BankAccountPaymentDestinationOptions {
-    interface Raw {
+    export interface Raw {
         delivery?: BankDeliveryMethod.Raw | null;
         description?: string | null;
     }

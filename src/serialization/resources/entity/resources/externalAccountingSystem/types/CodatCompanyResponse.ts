@@ -14,7 +14,7 @@ export const CodatCompanyResponse: core.serialization.ObjectSchema<
 });
 
 export declare namespace CodatCompanyResponse {
-    interface Raw {
+    export interface Raw {
         companyId: string;
     }
 }

@@ -3,7 +3,6 @@
  */
 
 export type ApproverAction = "NONE" | "APPROVE" | "REJECT";
-
 export const ApproverAction = {
     None: "NONE",
     Approve: "APPROVE",

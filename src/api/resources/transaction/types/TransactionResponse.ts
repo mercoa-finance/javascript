@@ -2749,32 +2749,32 @@ export type TransactionResponse =
     | Mercoa.TransactionResponse.Custom
     | Mercoa.TransactionResponse.OffPlatform;
 
-export declare namespace TransactionResponse {
-    interface BankAccountToBankAccount extends Mercoa.TransactionResponseBankToBankWithInvoices {
+export namespace TransactionResponse {
+    export interface BankAccountToBankAccount extends Mercoa.TransactionResponseBankToBankWithInvoices {
         type: "bankAccountToBankAccount";
     }
 
-    interface BankAccountToMailedCheck extends Mercoa.TransactionResponseBankToMailedCheckWithInvoices {
+    export interface BankAccountToMailedCheck extends Mercoa.TransactionResponseBankToMailedCheckWithInvoices {
         type: "bankAccountToMailedCheck";
     }
 
-    interface BankAccountToWallet extends Mercoa.TransactionResponseBankToWalletWithInvoices {
+    export interface BankAccountToWallet extends Mercoa.TransactionResponseBankToWalletWithInvoices {
         type: "bankAccountToWallet";
     }
 
-    interface CardToWallet extends Mercoa.TransactionResponseCardToWalletWithInvoices {
+    export interface CardToWallet extends Mercoa.TransactionResponseCardToWalletWithInvoices {
         type: "cardToWallet";
     }
 
-    interface WalletToBankAccount extends Mercoa.TransactionResponseWalletToBankWithInvoices {
+    export interface WalletToBankAccount extends Mercoa.TransactionResponseWalletToBankWithInvoices {
         type: "walletToBankAccount";
     }
 
-    interface Custom extends Mercoa.TransactionResponseCustomWithInvoices {
+    export interface Custom extends Mercoa.TransactionResponseCustomWithInvoices {
         type: "custom";
     }
 
-    interface OffPlatform extends Mercoa.TransactionResponseCustomWithInvoices {
+    export interface OffPlatform extends Mercoa.TransactionResponseCustomWithInvoices {
         type: "offPlatform";
     }
 }

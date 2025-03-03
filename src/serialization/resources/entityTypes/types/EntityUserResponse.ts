@@ -21,7 +21,7 @@ export const EntityUserResponse: core.serialization.ObjectSchema<
 });
 
 export declare namespace EntityUserResponse {
-    interface Raw {
+    export interface Raw {
         id: EntityUserId.Raw;
         foreignId?: string | null;
         email?: string | null;

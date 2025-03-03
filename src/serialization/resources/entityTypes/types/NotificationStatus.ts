@@ -12,5 +12,5 @@ export const NotificationStatus: core.serialization.Schema<
 > = core.serialization.enum_(["PENDING", "SENT", "READ", "FAILED"]);
 
 export declare namespace NotificationStatus {
-    type Raw = "PENDING" | "SENT" | "READ" | "FAILED";
+    export type Raw = "PENDING" | "SENT" | "READ" | "FAILED";
 }

@@ -15,7 +15,7 @@ export const NotificationUpdateRequest: core.serialization.ObjectSchema<
 });
 
 export declare namespace NotificationUpdateRequest {
-    interface Raw {
+    export interface Raw {
         status?: NotificationStatus.Raw | null;
     }
 }

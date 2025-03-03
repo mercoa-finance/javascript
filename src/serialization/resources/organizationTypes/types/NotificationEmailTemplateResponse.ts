@@ -19,7 +19,7 @@ export const NotificationEmailTemplateResponse: core.serialization.ObjectSchema<
 });
 
 export declare namespace NotificationEmailTemplateResponse {
-    interface Raw {
+    export interface Raw {
         backgroundStyle?: string | null;
         header?: string | null;
         body?: string | null;

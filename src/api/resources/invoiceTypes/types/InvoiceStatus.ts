@@ -14,7 +14,6 @@ export type InvoiceStatus =
     | "REFUSED"
     | "CANCELED"
     | "FAILED";
-
 export const InvoiceStatus = {
     Unassigned: "UNASSIGNED",
     Draft: "DRAFT",

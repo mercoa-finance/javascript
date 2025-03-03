@@ -18,7 +18,7 @@ export const EmailCollectionActionResponse: core.serialization.ObjectSchema<
     .extend(ActionBase);
 
 export declare namespace EmailCollectionActionResponse {
-    interface Raw extends ActionBase.Raw {
+    export interface Raw extends ActionBase.Raw {
         subject: string;
         body: string;
     }

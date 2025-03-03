@@ -3,7 +3,6 @@
  */
 
 export type CardType = "credit" | "debit" | "prepaid" | "unknown";
-
 export const CardType = {
     Credit: "credit",
     Debit: "debit",

@@ -14,5 +14,5 @@ export const InvoiceCreationRequest: core.serialization.Schema<
 > = core.serialization.undiscriminatedUnion([InvoiceCreationWithEntityRequest, InvoiceCreationWithEntityGroupRequest]);
 
 export declare namespace InvoiceCreationRequest {
-    type Raw = InvoiceCreationWithEntityRequest.Raw | InvoiceCreationWithEntityGroupRequest.Raw;
+    export type Raw = InvoiceCreationWithEntityRequest.Raw | InvoiceCreationWithEntityGroupRequest.Raw;
 }

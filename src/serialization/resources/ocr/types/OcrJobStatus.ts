@@ -10,5 +10,5 @@ export const OcrJobStatus: core.serialization.Schema<serializers.OcrJobStatus.Ra
     core.serialization.enum_(["pending", "success", "failed"]);
 
 export declare namespace OcrJobStatus {
-    type Raw = "pending" | "success" | "failed";
+    export type Raw = "pending" | "success" | "failed";
 }

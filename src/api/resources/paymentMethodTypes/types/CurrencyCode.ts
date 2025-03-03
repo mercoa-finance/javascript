@@ -183,7 +183,6 @@ export type CurrencyCode =
     | "ZAR"
     | "ZMW"
     | "ZWL";
-
 export const CurrencyCode = {
     Aed: "AED",
     Afn: "AFN",

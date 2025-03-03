@@ -32,7 +32,7 @@ export const BusinessProfileRequest: core.serialization.ObjectSchema<
 });
 
 export declare namespace BusinessProfileRequest {
-    interface Raw {
+    export interface Raw {
         email?: string | null;
         legalBusinessName: string;
         businessType?: BusinessType.Raw | null;

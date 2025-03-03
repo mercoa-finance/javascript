@@ -10,5 +10,5 @@ export const OcrJobId: core.serialization.Schema<serializers.OcrJobId.Raw, Merco
     core.serialization.string();
 
 export declare namespace OcrJobId {
-    type Raw = string;
+    export type Raw = string;
 }

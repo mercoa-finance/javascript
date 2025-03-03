@@ -14,5 +14,5 @@ export const CardType: core.serialization.Schema<serializers.CardType.Raw, Merco
 ]);
 
 export declare namespace CardType {
-    type Raw = "credit" | "debit" | "prepaid" | "unknown";
+    export type Raw = "credit" | "debit" | "prepaid" | "unknown";
 }

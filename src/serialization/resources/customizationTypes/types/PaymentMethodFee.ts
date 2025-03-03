@@ -22,17 +22,17 @@ export const PaymentMethodFee: core.serialization.Schema<serializers.PaymentMeth
         });
 
 export declare namespace PaymentMethodFee {
-    type Raw = PaymentMethodFee.Percentage | PaymentMethodFee.Flat | PaymentMethodFee.Default;
+    export type Raw = PaymentMethodFee.Percentage | PaymentMethodFee.Flat | PaymentMethodFee.Default;
 
-    interface Percentage extends PercentageFee.Raw {
+    export interface Percentage extends PercentageFee.Raw {
         type: "percentage";
     }
 
-    interface Flat extends FlatFee.Raw {
+    export interface Flat extends FlatFee.Raw {
         type: "flat";
     }
 
-    interface Default extends DefaultFee.Raw {
+    export interface Default extends DefaultFee.Raw {
         type: "default";
     }
 }

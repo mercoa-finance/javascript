@@ -20,7 +20,7 @@ export const InvoiceLineItemIndividualUpdateRequest: core.serialization.ObjectSc
 });
 
 export declare namespace InvoiceLineItemIndividualUpdateRequest {
-    interface Raw {
+    export interface Raw {
         name?: string | null;
         description?: string | null;
         category?: string | null;

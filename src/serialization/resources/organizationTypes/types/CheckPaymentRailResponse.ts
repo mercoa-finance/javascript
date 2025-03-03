@@ -20,7 +20,7 @@ export const CheckPaymentRailResponse: core.serialization.ObjectSchema<
     .extend(GenericPaymentRailResponse);
 
 export declare namespace CheckPaymentRailResponse {
-    interface Raw extends GenericPaymentRailResponse.Raw {
+    export interface Raw extends GenericPaymentRailResponse.Raw {
         availableDeliveryMethods: CheckDeliveryMethod.Raw[];
         defaultDeliveryMethod: CheckDeliveryMethod.Raw;
         printDescription: boolean;

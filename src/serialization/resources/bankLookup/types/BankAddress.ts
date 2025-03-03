@@ -16,7 +16,7 @@ export const BankAddress: core.serialization.ObjectSchema<serializers.BankAddres
     });
 
 export declare namespace BankAddress {
-    interface Raw {
+    export interface Raw {
         address: string;
         city: string;
         state: string;

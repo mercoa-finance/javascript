@@ -30,7 +30,7 @@ export const PaymentMethodResponse: core.serialization.Schema<
     });
 
 export declare namespace PaymentMethodResponse {
-    type Raw =
+    export type Raw =
         | PaymentMethodResponse.BankAccount
         | PaymentMethodResponse.Card
         | PaymentMethodResponse.Check
@@ -38,27 +38,27 @@ export declare namespace PaymentMethodResponse {
         | PaymentMethodResponse.OffPlatform
         | PaymentMethodResponse.Utility;
 
-    interface BankAccount extends BankAccountResponse.Raw {
+    export interface BankAccount extends BankAccountResponse.Raw {
         type: "bankAccount";
     }
 
-    interface Card extends CardResponse.Raw {
+    export interface Card extends CardResponse.Raw {
         type: "card";
     }
 
-    interface Check extends CheckResponse.Raw {
+    export interface Check extends CheckResponse.Raw {
         type: "check";
     }
 
-    interface Custom extends CustomPaymentMethodResponse.Raw {
+    export interface Custom extends CustomPaymentMethodResponse.Raw {
         type: "custom";
     }
 
-    interface OffPlatform extends PaymentMethodBaseResponse.Raw {
+    export interface OffPlatform extends PaymentMethodBaseResponse.Raw {
         type: "offPlatform";
     }
 
-    interface Utility extends UtilityPaymentMethodResponse.Raw {
+    export interface Utility extends UtilityPaymentMethodResponse.Raw {
         type: "utility";
     }
 }

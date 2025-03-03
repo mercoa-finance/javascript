@@ -9,16 +9,16 @@ export type ExternalAccountingSystemProviderRequest =
     | Mercoa.ExternalAccountingSystemProviderRequest.Codat
     | Mercoa.ExternalAccountingSystemProviderRequest.Rutter;
 
-export declare namespace ExternalAccountingSystemProviderRequest {
-    interface None extends Mercoa.CodatProviderRequest {
+export namespace ExternalAccountingSystemProviderRequest {
+    export interface None extends Mercoa.CodatProviderRequest {
         type: "none";
     }
 
-    interface Codat extends Mercoa.CodatProviderRequest {
+    export interface Codat extends Mercoa.CodatProviderRequest {
         type: "codat";
     }
 
-    interface Rutter extends Mercoa.RutterProviderRequest {
+    export interface Rutter extends Mercoa.RutterProviderRequest {
         type: "rutter";
     }
 }

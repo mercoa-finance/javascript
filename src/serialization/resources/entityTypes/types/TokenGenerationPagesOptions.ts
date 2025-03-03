@@ -19,7 +19,7 @@ export const TokenGenerationPagesOptions: core.serialization.ObjectSchema<
 });
 
 export declare namespace TokenGenerationPagesOptions {
-    interface Raw {
+    export interface Raw {
         paymentMethods?: boolean | null;
         representatives?: boolean | null;
         notifications?: boolean | null;

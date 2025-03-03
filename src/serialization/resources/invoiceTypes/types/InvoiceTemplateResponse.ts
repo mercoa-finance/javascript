@@ -18,7 +18,7 @@ export const InvoiceTemplateResponse: core.serialization.ObjectSchema<
     .extend(InvoiceResponseBase);
 
 export declare namespace InvoiceTemplateResponse {
-    interface Raw extends InvoiceResponseBase.Raw {
+    export interface Raw extends InvoiceResponseBase.Raw {
         id: InvoiceTemplateId.Raw;
     }
 }

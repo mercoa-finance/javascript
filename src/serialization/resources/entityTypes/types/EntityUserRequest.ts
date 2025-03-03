@@ -17,7 +17,7 @@ export const EntityUserRequest: core.serialization.ObjectSchema<
 });
 
 export declare namespace EntityUserRequest {
-    interface Raw {
+    export interface Raw {
         foreignId?: string | null;
         email?: string | null;
         name?: string | null;

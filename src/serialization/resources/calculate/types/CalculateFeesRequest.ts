@@ -25,7 +25,7 @@ export const CalculateFeesRequest: core.serialization.ObjectSchema<
 });
 
 export declare namespace CalculateFeesRequest {
-    interface Raw {
+    export interface Raw {
         amount: number;
         currency?: CurrencyCode.Raw | null;
         creatorEntityId?: EntityId.Raw | null;

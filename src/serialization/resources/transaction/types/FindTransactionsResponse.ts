@@ -17,7 +17,7 @@ export const FindTransactionsResponse: core.serialization.ObjectSchema<
 });
 
 export declare namespace FindTransactionsResponse {
-    interface Raw {
+    export interface Raw {
         count: number;
         hasMore: boolean;
         data: TransactionResponse.Raw[];

@@ -21,17 +21,17 @@ export const Trigger: core.serialization.Schema<serializers.Trigger.Raw, Mercoa.
     });
 
 export declare namespace Trigger {
-    type Raw = Trigger.Amount | Trigger.Vendor | Trigger.Metadata;
+    export type Raw = Trigger.Amount | Trigger.Vendor | Trigger.Metadata;
 
-    interface Amount extends AmountTrigger.Raw {
+    export interface Amount extends AmountTrigger.Raw {
         type: "amount";
     }
 
-    interface Vendor extends VendorTrigger.Raw {
+    export interface Vendor extends VendorTrigger.Raw {
         type: "vendor";
     }
 
-    interface Metadata extends MetadataTrigger.Raw {
+    export interface Metadata extends MetadataTrigger.Raw {
         type: "metadata";
     }
 }

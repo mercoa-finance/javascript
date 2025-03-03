@@ -16,7 +16,7 @@ export const EntityGroupUserEntityRequest: core.serialization.ObjectSchema<
 });
 
 export declare namespace EntityGroupUserEntityRequest {
-    interface Raw {
+    export interface Raw {
         roles: string[];
         entityId: EntityId.Raw;
     }

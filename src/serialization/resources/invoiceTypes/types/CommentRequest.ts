@@ -14,7 +14,7 @@ export const CommentRequest: core.serialization.ObjectSchema<serializers.Comment
     });
 
 export declare namespace CommentRequest {
-    interface Raw {
+    export interface Raw {
         text: string;
         userId?: EntityUserId.Raw | null;
     }

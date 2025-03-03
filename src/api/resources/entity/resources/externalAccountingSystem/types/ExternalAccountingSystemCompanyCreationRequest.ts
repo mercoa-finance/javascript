@@ -8,12 +8,12 @@ export type ExternalAccountingSystemCompanyCreationRequest =
     | Mercoa.entity.ExternalAccountingSystemCompanyCreationRequest.Codat
     | Mercoa.entity.ExternalAccountingSystemCompanyCreationRequest.Rutter;
 
-export declare namespace ExternalAccountingSystemCompanyCreationRequest {
-    interface Codat extends Mercoa.entity.CodatCompanyCreationRequest {
+export namespace ExternalAccountingSystemCompanyCreationRequest {
+    export interface Codat extends Mercoa.entity.CodatCompanyCreationRequest {
         type: "codat";
     }
 
-    interface Rutter extends Mercoa.entity.RutterCompanyCreationRequest {
+    export interface Rutter extends Mercoa.entity.RutterCompanyCreationRequest {
         type: "rutter";
     }
 }

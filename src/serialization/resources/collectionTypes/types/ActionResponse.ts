@@ -18,9 +18,9 @@ export const ActionResponse: core.serialization.Schema<serializers.ActionRespons
         });
 
 export declare namespace ActionResponse {
-    type Raw = ActionResponse.Email;
+    export type Raw = ActionResponse.Email;
 
-    interface Email extends EmailCollectionActionResponse.Raw {
+    export interface Email extends EmailCollectionActionResponse.Raw {
         type: "email";
     }
 }

@@ -3,7 +3,6 @@
  */
 
 export type CheckDeliveryMethod = "PRINT" | "MAIL";
-
 export const CheckDeliveryMethod = {
     Print: "PRINT",
     Mail: "MAIL",

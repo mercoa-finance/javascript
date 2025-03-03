@@ -3,7 +3,6 @@
  */
 
 export type EmailSenderProvider = "none" | "sendgrid" | "ses" | "resend" | "cloudmailin";
-
 export const EmailSenderProvider = {
     None: "none",
     Sendgrid: "sendgrid",

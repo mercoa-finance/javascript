@@ -17,7 +17,7 @@ export const Responsibilities: core.serialization.ObjectSchema<
 });
 
 export declare namespace Responsibilities {
-    interface Raw {
+    export interface Raw {
         jobTitle?: string | null;
         isController?: boolean | null;
         isOwner?: boolean | null;

@@ -17,7 +17,7 @@ export const FindCounterpartiesResponse: core.serialization.ObjectSchema<
 });
 
 export declare namespace FindCounterpartiesResponse {
-    interface Raw {
+    export interface Raw {
         count: number;
         hasMore: boolean;
         data: CounterpartyResponse.Raw[];

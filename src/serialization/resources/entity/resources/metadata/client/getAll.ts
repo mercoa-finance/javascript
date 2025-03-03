@@ -13,5 +13,5 @@ export const Response: core.serialization.Schema<
 > = core.serialization.list(EntityMetadataResponse);
 
 export declare namespace Response {
-    type Raw = EntityMetadataResponse.Raw[];
+    export type Raw = EntityMetadataResponse.Raw[];
 }

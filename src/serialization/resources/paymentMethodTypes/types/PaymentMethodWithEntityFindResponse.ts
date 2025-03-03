@@ -17,7 +17,7 @@ export const PaymentMethodWithEntityFindResponse: core.serialization.ObjectSchem
 });
 
 export declare namespace PaymentMethodWithEntityFindResponse {
-    interface Raw {
+    export interface Raw {
         count: number;
         hasMore: boolean;
         data: PaymentMethodWithEntityResponse.Raw[];

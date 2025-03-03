@@ -18,7 +18,7 @@ export const TransactionResponseCustomWithInvoices: core.serialization.ObjectSch
     .extend(TransactionResponseBase);
 
 export declare namespace TransactionResponseCustomWithInvoices {
-    interface Raw extends TransactionResponseBase.Raw {
+    export interface Raw extends TransactionResponseBase.Raw {
         invoices: InvoiceResponse.Raw[];
     }
 }

@@ -15,7 +15,7 @@ export const TransactionFailureReason: core.serialization.ObjectSchema<
 });
 
 export declare namespace TransactionFailureReason {
-    interface Raw {
+    export interface Raw {
         code?: string | null;
         description?: string | null;
     }

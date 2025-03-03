@@ -3,7 +3,6 @@
  */
 
 export type BankDeliveryMethod = "ACH_STANDARD" | "ACH_SAME_DAY" | "ACH_ACCELERATED";
-
 export const BankDeliveryMethod = {
     AchStandard: "ACH_STANDARD",
     AchSameDay: "ACH_SAME_DAY",

@@ -10,5 +10,5 @@ export const EmailTemplateType: core.serialization.Schema<serializers.EmailTempl
     core.serialization.enum_(["PAYMENT", "DISBURSEMENT"]);
 
 export declare namespace EmailTemplateType {
-    type Raw = "PAYMENT" | "DISBURSEMENT";
+    export type Raw = "PAYMENT" | "DISBURSEMENT";
 }

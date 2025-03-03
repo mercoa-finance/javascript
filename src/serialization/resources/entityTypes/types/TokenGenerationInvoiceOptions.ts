@@ -18,7 +18,7 @@ export const TokenGenerationInvoiceOptions: core.serialization.ObjectSchema<
 });
 
 export declare namespace TokenGenerationInvoiceOptions {
-    interface Raw {
+    export interface Raw {
         lineItems?: LineItemAvailabilities.Raw | null;
         status: InvoiceStatus.Raw[];
         recurring?: boolean | null;

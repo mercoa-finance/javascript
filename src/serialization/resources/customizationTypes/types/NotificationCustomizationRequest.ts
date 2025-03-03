@@ -14,7 +14,7 @@ export const NotificationCustomizationRequest: core.serialization.ObjectSchema<
 });
 
 export declare namespace NotificationCustomizationRequest {
-    interface Raw {
+    export interface Raw {
         assumeRole?: string | null;
     }
 }

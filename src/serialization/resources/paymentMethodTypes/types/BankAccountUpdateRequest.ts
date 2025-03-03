@@ -21,7 +21,7 @@ export const BankAccountUpdateRequest: core.serialization.ObjectSchema<
     .extend(PaymentMethodBaseRequest);
 
 export declare namespace BankAccountUpdateRequest {
-    interface Raw extends PaymentMethodBaseRequest.Raw {
+    export interface Raw extends PaymentMethodBaseRequest.Raw {
         accountName?: string | null;
         plaid?: PlaidLinkRequest.Raw | null;
         checkOptions?: BankAccountCheckOptions.Raw | null;

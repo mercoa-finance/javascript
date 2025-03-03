@@ -14,7 +14,7 @@ export const IndividualGovernmentId: core.serialization.ObjectSchema<
 });
 
 export declare namespace IndividualGovernmentId {
-    interface Raw {
+    export interface Raw {
         ssn: string;
     }
 }

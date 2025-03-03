@@ -18,7 +18,7 @@ export const PaymentMethodBaseRequest: core.serialization.ObjectSchema<
 });
 
 export declare namespace PaymentMethodBaseRequest {
-    interface Raw {
+    export interface Raw {
         defaultSource?: boolean | null;
         defaultDestination?: boolean | null;
         externalAccountingSystemId?: string | null;

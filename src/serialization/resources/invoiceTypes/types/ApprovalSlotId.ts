@@ -10,5 +10,5 @@ export const ApprovalSlotId: core.serialization.Schema<serializers.ApprovalSlotI
     core.serialization.string();
 
 export declare namespace ApprovalSlotId {
-    type Raw = string;
+    export type Raw = string;
 }

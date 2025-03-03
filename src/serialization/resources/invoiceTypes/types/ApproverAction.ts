@@ -10,5 +10,5 @@ export const ApproverAction: core.serialization.Schema<serializers.ApproverActio
     core.serialization.enum_(["NONE", "APPROVE", "REJECT"]);
 
 export declare namespace ApproverAction {
-    type Raw = "NONE" | "APPROVE" | "REJECT";
+    export type Raw = "NONE" | "APPROVE" | "REJECT";
 }

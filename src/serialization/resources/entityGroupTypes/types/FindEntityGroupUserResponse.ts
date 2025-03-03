@@ -17,7 +17,7 @@ export const FindEntityGroupUserResponse: core.serialization.ObjectSchema<
 });
 
 export declare namespace FindEntityGroupUserResponse {
-    interface Raw {
+    export interface Raw {
         count: number;
         hasMore: boolean;
         data: EntityGroupUserResponse.Raw[];

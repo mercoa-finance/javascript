@@ -16,7 +16,7 @@ export const BulkInvoiceCreationFromObjectResponse: core.serialization.ObjectSch
 });
 
 export declare namespace BulkInvoiceCreationFromObjectResponse {
-    interface Raw {
+    export interface Raw {
         id?: string | null;
         foreignId?: string | null;
         error?: string | null;

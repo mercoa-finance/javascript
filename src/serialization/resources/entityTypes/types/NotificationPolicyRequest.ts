@@ -19,7 +19,7 @@ export const NotificationPolicyRequest: core.serialization.ObjectSchema<
 });
 
 export declare namespace NotificationPolicyRequest {
-    interface Raw {
+    export interface Raw {
         disabled?: boolean | null;
         additionalRoles?: string[] | null;
         additionalUsers?: EntityUserId.Raw[] | null;

@@ -3,7 +3,6 @@
  */
 
 export type LineItemAvailabilities = "DISABLED" | "OPTIONAL" | "REQUIRED";
-
 export const LineItemAvailabilities = {
     Disabled: "DISABLED",
     Optional: "OPTIONAL",

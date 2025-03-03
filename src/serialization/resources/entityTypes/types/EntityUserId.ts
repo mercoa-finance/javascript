@@ -10,5 +10,5 @@ export const EntityUserId: core.serialization.Schema<serializers.EntityUserId.Ra
     core.serialization.string();
 
 export declare namespace EntityUserId {
-    type Raw = string;
+    export type Raw = string;
 }

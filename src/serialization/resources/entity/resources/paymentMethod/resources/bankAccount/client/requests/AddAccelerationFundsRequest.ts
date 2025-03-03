@@ -16,7 +16,7 @@ export const AddAccelerationFundsRequest: core.serialization.Schema<
 });
 
 export declare namespace AddAccelerationFundsRequest {
-    interface Raw {
+    export interface Raw {
         amount: number;
         currency: CurrencyCode.Raw;
     }

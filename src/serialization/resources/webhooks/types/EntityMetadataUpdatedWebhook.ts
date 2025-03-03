@@ -19,7 +19,7 @@ export const EntityMetadataUpdatedWebhook: core.serialization.ObjectSchema<
 });
 
 export declare namespace EntityMetadataUpdatedWebhook {
-    interface Raw {
+    export interface Raw {
         eventType: string;
         entityId: EntityId.Raw;
         foreignId?: string | null;

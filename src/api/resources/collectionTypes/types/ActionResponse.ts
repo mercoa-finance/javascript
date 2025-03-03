@@ -37,8 +37,8 @@ import * as Mercoa from "../../../index";
  */
 export type ActionResponse = Mercoa.ActionResponse.Email;
 
-export declare namespace ActionResponse {
-    interface Email extends Mercoa.EmailCollectionActionResponse {
+export namespace ActionResponse {
+    export interface Email extends Mercoa.EmailCollectionActionResponse {
         type: "email";
     }
 }

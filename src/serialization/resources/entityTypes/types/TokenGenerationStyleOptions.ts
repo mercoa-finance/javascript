@@ -14,7 +14,7 @@ export const TokenGenerationStyleOptions: core.serialization.ObjectSchema<
 });
 
 export declare namespace TokenGenerationStyleOptions {
-    interface Raw {
+    export interface Raw {
         primaryColor: string;
     }
 }

@@ -23,7 +23,7 @@ export const InvoiceOrderByField: core.serialization.Schema<
 ]);
 
 export declare namespace InvoiceOrderByField {
-    type Raw =
+    export type Raw =
         | "AMOUNT"
         | "DUE_DATE"
         | "CREATED_AT"

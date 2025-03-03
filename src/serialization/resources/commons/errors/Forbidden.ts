@@ -8,5 +8,5 @@ import * as core from "../../../../core";
 export const Forbidden: core.serialization.Schema<serializers.Forbidden.Raw, string> = core.serialization.string();
 
 export declare namespace Forbidden {
-    type Raw = string;
+    export type Raw = string;
 }

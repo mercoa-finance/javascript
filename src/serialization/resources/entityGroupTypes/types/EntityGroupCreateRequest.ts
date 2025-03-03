@@ -18,7 +18,7 @@ export const EntityGroupCreateRequest: core.serialization.ObjectSchema<
     .extend(EntityGroupUpdateRequest);
 
 export declare namespace EntityGroupCreateRequest {
-    interface Raw extends EntityGroupUpdateRequest.Raw {
+    export interface Raw extends EntityGroupUpdateRequest.Raw {
         entityIds?: EntityId.Raw[] | null;
     }
 }

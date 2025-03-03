@@ -12,7 +12,6 @@ export type BusinessType =
     | "partnership"
     | "unincorporatedNonProfit"
     | "incorporatedNonProfit";
-
 export const BusinessType = {
     SoleProprietorship: "soleProprietorship",
     UnincorporatedAssociation: "unincorporatedAssociation",

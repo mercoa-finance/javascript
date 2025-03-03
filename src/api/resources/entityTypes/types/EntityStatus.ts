@@ -3,7 +3,6 @@
  */
 
 export type EntityStatus = "unverified" | "pending" | "resubmit" | "review" | "verified" | "failed";
-
 export const EntityStatus = {
     Unverified: "unverified",
     Pending: "pending",

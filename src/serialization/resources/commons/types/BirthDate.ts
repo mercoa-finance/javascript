@@ -14,7 +14,7 @@ export const BirthDate: core.serialization.ObjectSchema<serializers.BirthDate.Ra
     });
 
 export declare namespace BirthDate {
-    interface Raw {
+    export interface Raw {
         day?: string | null;
         month?: string | null;
         year?: string | null;

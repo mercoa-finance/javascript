@@ -22,7 +22,7 @@ export const MetadataShowConditions: core.serialization.ObjectSchema<
 });
 
 export declare namespace MetadataShowConditions {
-    interface Raw {
+    export interface Raw {
         alwaysHide?: boolean | null;
         hasOptions?: boolean | null;
         hasDocument?: boolean | null;

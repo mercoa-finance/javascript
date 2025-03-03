@@ -13,7 +13,6 @@ export type InvoiceOrderByField =
     | "INVOICE_NUMBER"
     | "VENDOR_NAME"
     | "PAYER_NAME";
-
 export const InvoiceOrderByField = {
     Amount: "AMOUNT",
     DueDate: "DUE_DATE",

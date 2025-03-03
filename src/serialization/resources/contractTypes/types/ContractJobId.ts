@@ -10,5 +10,5 @@ export const ContractJobId: core.serialization.Schema<serializers.ContractJobId.
     core.serialization.string();
 
 export declare namespace ContractJobId {
-    type Raw = string;
+    export type Raw = string;
 }

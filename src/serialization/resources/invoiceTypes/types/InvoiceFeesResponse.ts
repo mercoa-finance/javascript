@@ -17,7 +17,7 @@ export const InvoiceFeesResponse: core.serialization.ObjectSchema<
 });
 
 export declare namespace InvoiceFeesResponse {
-    interface Raw {
+    export interface Raw {
         sourcePaymentMethodFee: number;
         sourcePlatformMarkupFee: number;
         destinationPaymentMethodFee: number;

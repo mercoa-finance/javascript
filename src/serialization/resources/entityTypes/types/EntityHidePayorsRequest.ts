@@ -15,7 +15,7 @@ export const EntityHidePayorsRequest: core.serialization.ObjectSchema<
 });
 
 export declare namespace EntityHidePayorsRequest {
-    interface Raw {
+    export interface Raw {
         payors: EntityId.Raw[];
     }
 }

@@ -20,7 +20,7 @@ export const InvoiceEvent: core.serialization.ObjectSchema<serializers.InvoiceEv
     });
 
 export declare namespace InvoiceEvent {
-    interface Raw {
+    export interface Raw {
         webhookIds: string[];
         data: InvoiceUpdateRequest.Raw;
         userId?: EntityUserId.Raw | null;

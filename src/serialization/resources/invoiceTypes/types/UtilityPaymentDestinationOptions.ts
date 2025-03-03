@@ -14,7 +14,7 @@ export const UtilityPaymentDestinationOptions: core.serialization.ObjectSchema<
 });
 
 export declare namespace UtilityPaymentDestinationOptions {
-    interface Raw {
+    export interface Raw {
         accountId: string;
     }
 }

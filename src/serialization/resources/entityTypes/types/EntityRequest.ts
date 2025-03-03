@@ -12,5 +12,5 @@ export const EntityRequest: core.serialization.Schema<serializers.EntityRequest.
     core.serialization.undiscriminatedUnion([EntityCreationRequest, EntityCloneRequest]);
 
 export declare namespace EntityRequest {
-    type Raw = EntityCreationRequest.Raw | EntityCloneRequest.Raw;
+    export type Raw = EntityCreationRequest.Raw | EntityCloneRequest.Raw;
 }

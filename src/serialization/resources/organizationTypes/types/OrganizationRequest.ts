@@ -36,7 +36,7 @@ export const OrganizationRequest: core.serialization.ObjectSchema<
 });
 
 export declare namespace OrganizationRequest {
-    interface Raw {
+    export interface Raw {
         name?: string | null;
         logo?: string | null;
         websiteUrl?: string | null;

@@ -26,7 +26,7 @@ export const RepresentativeUpdateRequest: core.serialization.ObjectSchema<
 });
 
 export declare namespace RepresentativeUpdateRequest {
-    interface Raw {
+    export interface Raw {
         name?: FullName.Raw | null;
         phone?: PhoneNumber.Raw | null;
         email?: string | null;

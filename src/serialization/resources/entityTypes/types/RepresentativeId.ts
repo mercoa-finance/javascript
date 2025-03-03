@@ -10,5 +10,5 @@ export const RepresentativeId: core.serialization.Schema<serializers.Representat
     core.serialization.string();
 
 export declare namespace RepresentativeId {
-    type Raw = string;
+    export type Raw = string;
 }

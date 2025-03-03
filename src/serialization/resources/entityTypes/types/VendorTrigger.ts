@@ -13,7 +13,7 @@ export const VendorTrigger: core.serialization.ObjectSchema<serializers.VendorTr
     });
 
 export declare namespace VendorTrigger {
-    interface Raw {
+    export interface Raw {
         vendorIds: EntityId.Raw[];
     }
 }

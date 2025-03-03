@@ -14,7 +14,7 @@ export const UpdateNextActionRequest: core.serialization.ObjectSchema<
 });
 
 export declare namespace UpdateNextActionRequest {
-    interface Raw {
+    export interface Raw {
         feedback: string;
     }
 }

@@ -10,5 +10,5 @@ export const ActionStatus: core.serialization.Schema<serializers.ActionStatus.Ra
     core.serialization.enum_(["SUGGESTED", "APPROVED", "COMPLETED"]);
 
 export declare namespace ActionStatus {
-    type Raw = "SUGGESTED" | "APPROVED" | "COMPLETED";
+    export type Raw = "SUGGESTED" | "APPROVED" | "COMPLETED";
 }

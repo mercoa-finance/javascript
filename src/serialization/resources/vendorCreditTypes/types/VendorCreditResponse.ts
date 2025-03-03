@@ -28,7 +28,7 @@ export const VendorCreditResponse: core.serialization.ObjectSchema<
 });
 
 export declare namespace VendorCreditResponse {
-    interface Raw {
+    export interface Raw {
         id: VendorCreditId.Raw;
         totalAmount?: number | null;
         remainingAmount?: number | null;

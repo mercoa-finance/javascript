@@ -31,7 +31,7 @@ export const PaymentRailResponse: core.serialization.Schema<
     });
 
 export declare namespace PaymentRailResponse {
-    type Raw =
+    export type Raw =
         | PaymentRailResponse.BankAccount
         | PaymentRailResponse.Card
         | PaymentRailResponse.VirtualCard
@@ -42,39 +42,39 @@ export declare namespace PaymentRailResponse {
         | PaymentRailResponse.Utility
         | PaymentRailResponse.Na;
 
-    interface BankAccount extends BankPaymentRailResponse.Raw {
+    export interface BankAccount extends BankPaymentRailResponse.Raw {
         type: "bankAccount";
     }
 
-    interface Card extends GenericPaymentRailResponse.Raw {
+    export interface Card extends GenericPaymentRailResponse.Raw {
         type: "card";
     }
 
-    interface VirtualCard extends GenericPaymentRailResponse.Raw {
+    export interface VirtualCard extends GenericPaymentRailResponse.Raw {
         type: "virtualCard";
     }
 
-    interface Check extends CheckPaymentRailResponse.Raw {
+    export interface Check extends CheckPaymentRailResponse.Raw {
         type: "check";
     }
 
-    interface Custom extends CustomPaymentRailResponse.Raw {
+    export interface Custom extends CustomPaymentRailResponse.Raw {
         type: "custom";
     }
 
-    interface Bnpl extends GenericPaymentRailResponse.Raw {
+    export interface Bnpl extends GenericPaymentRailResponse.Raw {
         type: "bnpl";
     }
 
-    interface OffPlatform extends GenericPaymentRailResponse.Raw {
+    export interface OffPlatform extends GenericPaymentRailResponse.Raw {
         type: "offPlatform";
     }
 
-    interface Utility extends GenericPaymentRailResponse.Raw {
+    export interface Utility extends GenericPaymentRailResponse.Raw {
         type: "utility";
     }
 
-    interface Na extends GenericPaymentRailResponse.Raw {
+    export interface Na extends GenericPaymentRailResponse.Raw {
         type: "na";
     }
 }

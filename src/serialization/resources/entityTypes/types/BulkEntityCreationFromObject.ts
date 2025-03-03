@@ -17,7 +17,7 @@ export const BulkEntityCreationFromObject: core.serialization.ObjectSchema<
 });
 
 export declare namespace BulkEntityCreationFromObject {
-    interface Raw {
+    export interface Raw {
         connectedEntity?: BulkConnectedEntity.Raw | null;
         entities: EntityCreationRequest.Raw[];
     }

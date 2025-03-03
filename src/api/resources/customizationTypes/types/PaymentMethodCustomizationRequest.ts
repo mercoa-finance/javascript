@@ -44,40 +44,40 @@ export type PaymentMethodCustomizationRequest =
     | Mercoa.PaymentMethodCustomizationRequest.Utility
     | Mercoa.PaymentMethodCustomizationRequest.Na;
 
-export declare namespace PaymentMethodCustomizationRequest {
-    interface BankAccount extends Mercoa.BankAccountPaymentMethodCustomizationRequest {
+export namespace PaymentMethodCustomizationRequest {
+    export interface BankAccount extends Mercoa.BankAccountPaymentMethodCustomizationRequest {
         type: "bankAccount";
     }
 
-    interface Card extends Mercoa.GenericPaymentMethodCustomizationRequest {
+    export interface Card extends Mercoa.GenericPaymentMethodCustomizationRequest {
         type: "card";
     }
 
-    interface VirtualCard extends Mercoa.GenericPaymentMethodCustomizationRequest {
+    export interface VirtualCard extends Mercoa.GenericPaymentMethodCustomizationRequest {
         type: "virtualCard";
     }
 
-    interface Check extends Mercoa.CheckPaymentMethodCustomizationRequest {
+    export interface Check extends Mercoa.CheckPaymentMethodCustomizationRequest {
         type: "check";
     }
 
-    interface Custom extends Mercoa.CustomPaymentMethodCustomizationRequest {
+    export interface Custom extends Mercoa.CustomPaymentMethodCustomizationRequest {
         type: "custom";
     }
 
-    interface Bnpl extends Mercoa.GenericPaymentMethodCustomizationRequest {
+    export interface Bnpl extends Mercoa.GenericPaymentMethodCustomizationRequest {
         type: "bnpl";
     }
 
-    interface OffPlatform extends Mercoa.GenericPaymentMethodCustomizationRequest {
+    export interface OffPlatform extends Mercoa.GenericPaymentMethodCustomizationRequest {
         type: "offPlatform";
     }
 
-    interface Utility extends Mercoa.GenericPaymentMethodCustomizationRequest {
+    export interface Utility extends Mercoa.GenericPaymentMethodCustomizationRequest {
         type: "utility";
     }
 
-    interface Na extends Mercoa.GenericPaymentMethodCustomizationRequest {
+    export interface Na extends Mercoa.GenericPaymentMethodCustomizationRequest {
         type: "na";
     }
 }

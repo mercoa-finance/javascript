@@ -8,7 +8,6 @@ export type InvoiceFailureType =
     | "REJECTED_HIGH_RISK"
     | "INSUFFICIENT_FUNDS"
     | "PROCESSING_ERROR";
-
 export const InvoiceFailureType = {
     SourcePaymentError: "SOURCE_PAYMENT_ERROR",
     DestinationPaymentError: "DESTINATION_PAYMENT_ERROR",

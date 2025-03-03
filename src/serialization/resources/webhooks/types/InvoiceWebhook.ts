@@ -16,7 +16,7 @@ export const InvoiceWebhook: core.serialization.ObjectSchema<serializers.Invoice
     });
 
 export declare namespace InvoiceWebhook {
-    interface Raw {
+    export interface Raw {
         eventType: string;
         invoice: InvoiceResponse.Raw;
         user?: EntityUserResponse.Raw | null;

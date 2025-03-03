@@ -10,7 +10,6 @@ export type TransactionType =
     | "walletToBankAccount"
     | "custom"
     | "offPlatform";
-
 export const TransactionType = {
     BankAccountToBankAccount: "bankAccountToBankAccount",
     BankAccountToMailedCheck: "bankAccountToMailedCheck",

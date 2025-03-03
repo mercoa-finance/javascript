@@ -12,5 +12,5 @@ export const FeeCalculationType: core.serialization.Schema<
 > = core.serialization.enum_(["PAYABLE", "RECEIVABLE"]);
 
 export declare namespace FeeCalculationType {
-    type Raw = "PAYABLE" | "RECEIVABLE";
+    export type Raw = "PAYABLE" | "RECEIVABLE";
 }

@@ -20,7 +20,7 @@ export const EntityCloneRequest: core.serialization.ObjectSchema<
 });
 
 export declare namespace EntityCloneRequest {
-    interface Raw {
+    export interface Raw {
         createFromId: EntityId.Raw;
         foreignId?: string | null;
         emailTo?: string | null;

@@ -17,7 +17,7 @@ export const ApprovalSlotAssignment: core.serialization.ObjectSchema<
 });
 
 export declare namespace ApprovalSlotAssignment {
-    interface Raw {
+    export interface Raw {
         approvalSlotId: ApprovalSlotId.Raw;
         assignedUserId: EntityUserId.Raw;
     }

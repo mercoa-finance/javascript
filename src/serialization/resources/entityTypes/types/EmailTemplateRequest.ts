@@ -19,7 +19,7 @@ export const EmailTemplateRequest: core.serialization.ObjectSchema<
 });
 
 export declare namespace EmailTemplateRequest {
-    interface Raw {
+    export interface Raw {
         templateType: EmailTemplateType.Raw;
         name: string;
         subject: string;

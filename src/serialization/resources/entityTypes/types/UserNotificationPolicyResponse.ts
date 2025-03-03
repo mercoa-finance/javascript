@@ -18,7 +18,7 @@ export const UserNotificationPolicyResponse: core.serialization.ObjectSchema<
 });
 
 export declare namespace UserNotificationPolicyResponse {
-    interface Raw {
+    export interface Raw {
         disabled: boolean;
         digest: boolean;
         immediate: boolean;

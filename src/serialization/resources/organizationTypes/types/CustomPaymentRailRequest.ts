@@ -17,7 +17,7 @@ export const CustomPaymentRailRequest: core.serialization.ObjectSchema<
     .extend(GenericPaymentRailRequest);
 
 export declare namespace CustomPaymentRailRequest {
-    interface Raw extends GenericPaymentRailRequest.Raw {
+    export interface Raw extends GenericPaymentRailRequest.Raw {
         schemaId: string;
     }
 }

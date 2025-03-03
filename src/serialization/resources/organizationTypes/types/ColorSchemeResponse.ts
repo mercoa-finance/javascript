@@ -19,7 +19,7 @@ export const ColorSchemeResponse: core.serialization.ObjectSchema<
 });
 
 export declare namespace ColorSchemeResponse {
-    interface Raw {
+    export interface Raw {
         primaryColor?: string | null;
         secondaryColor?: string | null;
         logoBackgroundColor?: string | null;

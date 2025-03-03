@@ -23,20 +23,20 @@ export const ExternalAccountingSystemProviderRequest: core.serialization.Schema<
     });
 
 export declare namespace ExternalAccountingSystemProviderRequest {
-    type Raw =
+    export type Raw =
         | ExternalAccountingSystemProviderRequest.None
         | ExternalAccountingSystemProviderRequest.Codat
         | ExternalAccountingSystemProviderRequest.Rutter;
 
-    interface None extends CodatProviderRequest.Raw {
+    export interface None extends CodatProviderRequest.Raw {
         type: "none";
     }
 
-    interface Codat extends CodatProviderRequest.Raw {
+    export interface Codat extends CodatProviderRequest.Raw {
         type: "codat";
     }
 
-    interface Rutter extends RutterProviderRequest.Raw {
+    export interface Rutter extends RutterProviderRequest.Raw {
         type: "rutter";
     }
 }

@@ -14,7 +14,6 @@ export type NotificationType =
     | "INVOICE_EMAILED"
     | "INVOICE_FAILED"
     | "COUNTERPARTY_ONBOARDING_COMPLETED";
-
 export const NotificationType = {
     InvoiceApprovalNeeded: "INVOICE_APPROVAL_NEEDED",
     InvoiceApproved: "INVOICE_APPROVED",

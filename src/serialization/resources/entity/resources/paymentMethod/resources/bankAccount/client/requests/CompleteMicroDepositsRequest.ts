@@ -14,7 +14,7 @@ export const CompleteMicroDepositsRequest: core.serialization.Schema<
 });
 
 export declare namespace CompleteMicroDepositsRequest {
-    interface Raw {
+    export interface Raw {
         amounts: number[];
     }
 }

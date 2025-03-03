@@ -12,5 +12,5 @@ export const CustomPaymentMethodSchemaId: core.serialization.Schema<
 > = core.serialization.string();
 
 export declare namespace CustomPaymentMethodSchemaId {
-    type Raw = string;
+    export type Raw = string;
 }

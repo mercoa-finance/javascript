@@ -3,7 +3,6 @@
  */
 
 export type MetadataType = "STRING" | "NUMBER" | "DATE" | "BOOLEAN" | "KEY_VALUE";
-
 export const MetadataType = {
     String: "STRING",
     Number: "NUMBER",

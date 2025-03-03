@@ -41,7 +41,7 @@ export const OrganizationResponse: core.serialization.ObjectSchema<
 });
 
 export declare namespace OrganizationResponse {
-    interface Raw {
+    export interface Raw {
         id: OrganizationId.Raw;
         sandbox: boolean;
         name: string;

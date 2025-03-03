@@ -16,7 +16,7 @@ export const ApplyInvoiceFeedbackRequest: core.serialization.Schema<
 });
 
 export declare namespace ApplyInvoiceFeedbackRequest {
-    interface Raw {
+    export interface Raw {
         feedback: string;
         invoiceId: InvoiceId.Raw;
     }

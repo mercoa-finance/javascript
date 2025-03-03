@@ -47,7 +47,7 @@ export const Permission: core.serialization.Schema<serializers.Permission.Raw, M
     ]);
 
 export declare namespace Permission {
-    type Raw =
+    export type Raw =
         | "invoice.all"
         | "invoice.view.all"
         | "invoice.view.draft"

@@ -13,5 +13,5 @@ export const Response: core.serialization.Schema<
 > = ActionResponse.optional();
 
 export declare namespace Response {
-    type Raw = ActionResponse.Raw | null | undefined;
+    export type Raw = ActionResponse.Raw | null | undefined;
 }

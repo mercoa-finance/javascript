@@ -31,7 +31,7 @@ export const TransactionResponse: core.serialization.Schema<
     });
 
 export declare namespace TransactionResponse {
-    type Raw =
+    export type Raw =
         | TransactionResponse.BankAccountToBankAccount
         | TransactionResponse.BankAccountToMailedCheck
         | TransactionResponse.BankAccountToWallet
@@ -40,31 +40,31 @@ export declare namespace TransactionResponse {
         | TransactionResponse.Custom
         | TransactionResponse.OffPlatform;
 
-    interface BankAccountToBankAccount extends TransactionResponseBankToBankWithInvoices.Raw {
+    export interface BankAccountToBankAccount extends TransactionResponseBankToBankWithInvoices.Raw {
         type: "bankAccountToBankAccount";
     }
 
-    interface BankAccountToMailedCheck extends TransactionResponseBankToMailedCheckWithInvoices.Raw {
+    export interface BankAccountToMailedCheck extends TransactionResponseBankToMailedCheckWithInvoices.Raw {
         type: "bankAccountToMailedCheck";
     }
 
-    interface BankAccountToWallet extends TransactionResponseBankToWalletWithInvoices.Raw {
+    export interface BankAccountToWallet extends TransactionResponseBankToWalletWithInvoices.Raw {
         type: "bankAccountToWallet";
     }
 
-    interface CardToWallet extends TransactionResponseCardToWalletWithInvoices.Raw {
+    export interface CardToWallet extends TransactionResponseCardToWalletWithInvoices.Raw {
         type: "cardToWallet";
     }
 
-    interface WalletToBankAccount extends TransactionResponseWalletToBankWithInvoices.Raw {
+    export interface WalletToBankAccount extends TransactionResponseWalletToBankWithInvoices.Raw {
         type: "walletToBankAccount";
     }
 
-    interface Custom extends TransactionResponseCustomWithInvoices.Raw {
+    export interface Custom extends TransactionResponseCustomWithInvoices.Raw {
         type: "custom";
     }
 
-    interface OffPlatform extends TransactionResponseCustomWithInvoices.Raw {
+    export interface OffPlatform extends TransactionResponseCustomWithInvoices.Raw {
         type: "offPlatform";
     }
 }

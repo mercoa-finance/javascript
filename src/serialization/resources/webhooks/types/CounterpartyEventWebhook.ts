@@ -17,7 +17,7 @@ export const CounterpartyEventWebhook: core.serialization.ObjectSchema<
 });
 
 export declare namespace CounterpartyEventWebhook {
-    interface Raw {
+    export interface Raw {
         eventType: string;
         entityId: EntityId.Raw;
         counterpartyId: EntityId.Raw;

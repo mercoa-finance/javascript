@@ -18,7 +18,7 @@ export const InvoiceLineItemCreationRequest: core.serialization.ObjectSchema<
     .extend(InvoiceLineItemRequestBase);
 
 export declare namespace InvoiceLineItemCreationRequest {
-    interface Raw extends InvoiceLineItemRequestBase.Raw {
+    export interface Raw extends InvoiceLineItemRequestBase.Raw {
         amount?: number | null;
         description?: string | null;
     }

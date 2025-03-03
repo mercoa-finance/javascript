@@ -8,5 +8,5 @@ import * as core from "../../../../core";
 export const NotFound: core.serialization.Schema<serializers.NotFound.Raw, string> = core.serialization.string();
 
 export declare namespace NotFound {
-    type Raw = string;
+    export type Raw = string;
 }

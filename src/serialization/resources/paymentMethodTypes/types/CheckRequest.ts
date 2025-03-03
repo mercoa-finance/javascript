@@ -21,7 +21,7 @@ export const CheckRequest: core.serialization.ObjectSchema<serializers.CheckRequ
         .extend(PaymentMethodBaseRequest);
 
 export declare namespace CheckRequest {
-    interface Raw extends PaymentMethodBaseRequest.Raw {
+    export interface Raw extends PaymentMethodBaseRequest.Raw {
         payToTheOrderOf: string;
         addressLine1: string;
         addressLine2?: string | null;

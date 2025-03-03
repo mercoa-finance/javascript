@@ -17,7 +17,7 @@ export const VendorCreditRequest: core.serialization.ObjectSchema<
 });
 
 export declare namespace VendorCreditRequest {
-    interface Raw {
+    export interface Raw {
         totalAmount: number;
         currency: CurrencyCode.Raw;
         note?: string | null;

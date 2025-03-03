@@ -17,7 +17,7 @@ export const EntityGroupUpdateRequest: core.serialization.ObjectSchema<
 });
 
 export declare namespace EntityGroupUpdateRequest {
-    interface Raw {
+    export interface Raw {
         foreignId?: string | null;
         name?: string | null;
         emailToName?: string | null;

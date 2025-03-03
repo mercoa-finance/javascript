@@ -15,7 +15,7 @@ export const FullName: core.serialization.ObjectSchema<serializers.FullName.Raw,
     });
 
 export declare namespace FullName {
-    interface Raw {
+    export interface Raw {
         firstName: string;
         middleName?: string | null;
         lastName: string;

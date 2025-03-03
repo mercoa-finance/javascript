@@ -6,8 +6,8 @@ import * as Mercoa from "../../../index";
 
 export type MetadataValidationRule = Mercoa.MetadataValidationRule.Regex;
 
-export declare namespace MetadataValidationRule {
-    interface Regex extends Mercoa.MetadataRegexValidationRule {
+export namespace MetadataValidationRule {
+    export interface Regex extends Mercoa.MetadataRegexValidationRule {
         type: "regex";
     }
 }

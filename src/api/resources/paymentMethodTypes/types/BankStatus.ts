@@ -3,7 +3,6 @@
  */
 
 export type BankStatus = "NEW" | "VERIFIED" | "VERIFICATION_FAILED" | "PENDING" | "ERRORED";
-
 export const BankStatus = {
     New: "NEW",
     Verified: "VERIFIED",

@@ -19,7 +19,7 @@ export const IndividualOnboardingOptionsRequest: core.serialization.ObjectSchema
     .extend(CommonOnboardingOptionsRequest);
 
 export declare namespace IndividualOnboardingOptionsRequest {
-    interface Raw extends CommonOnboardingOptionsRequest.Raw {
+    export interface Raw extends CommonOnboardingOptionsRequest.Raw {
         dateOfBirth?: OnboardingOptionRequest.Raw | null;
         ssn?: OnboardingOptionRequest.Raw | null;
     }

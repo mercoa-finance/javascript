@@ -16,7 +16,7 @@ export const InvoiceEventsResponse: core.serialization.ObjectSchema<
 });
 
 export declare namespace InvoiceEventsResponse {
-    interface Raw {
+    export interface Raw {
         data: InvoiceEvent.Raw[];
         count: number;
     }

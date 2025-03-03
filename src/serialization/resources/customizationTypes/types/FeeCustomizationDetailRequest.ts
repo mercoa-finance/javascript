@@ -16,7 +16,7 @@ export const FeeCustomizationDetailRequest: core.serialization.ObjectSchema<
 });
 
 export declare namespace FeeCustomizationDetailRequest {
-    interface Raw {
+    export interface Raw {
         source?: FeeCustomizationRailRequest.Raw | null;
         destination?: FeeCustomizationRailRequest.Raw | null;
     }

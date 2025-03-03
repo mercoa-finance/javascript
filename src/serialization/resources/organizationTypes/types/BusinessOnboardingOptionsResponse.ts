@@ -29,7 +29,7 @@ export const BusinessOnboardingOptionsResponse: core.serialization.ObjectSchema<
     .extend(CommonOnboardingOptionsResponse);
 
 export declare namespace BusinessOnboardingOptionsResponse {
-    interface Raw extends CommonOnboardingOptionsResponse.Raw {
+    export interface Raw extends CommonOnboardingOptionsResponse.Raw {
         type: OnboardingOptionResponse.Raw;
         doingBusinessAs: OnboardingOptionResponse.Raw;
         ein: OnboardingOptionResponse.Raw;

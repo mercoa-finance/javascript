@@ -15,7 +15,7 @@ export const GenericPaymentRailResponse: core.serialization.ObjectSchema<
 });
 
 export declare namespace GenericPaymentRailResponse {
-    interface Raw {
+    export interface Raw {
         name: string;
         active: boolean;
     }

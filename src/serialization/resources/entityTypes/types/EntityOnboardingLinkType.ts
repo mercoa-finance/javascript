@@ -12,5 +12,5 @@ export const EntityOnboardingLinkType: core.serialization.Schema<
 > = core.serialization.enum_(["PAYEE", "PAYOR"]);
 
 export declare namespace EntityOnboardingLinkType {
-    type Raw = "PAYEE" | "PAYOR";
+    export type Raw = "PAYEE" | "PAYOR";
 }

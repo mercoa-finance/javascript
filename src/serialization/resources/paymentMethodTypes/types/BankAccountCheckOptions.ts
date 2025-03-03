@@ -20,7 +20,7 @@ export const BankAccountCheckOptions: core.serialization.ObjectSchema<
 });
 
 export declare namespace BankAccountCheckOptions {
-    interface Raw {
+    export interface Raw {
         enabled?: boolean | null;
         initialCheckNumber?: number | null;
         routingNumberOverride?: string | null;

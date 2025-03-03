@@ -15,7 +15,7 @@ export const ApproverRule: core.serialization.ObjectSchema<serializers.ApproverR
     });
 
 export declare namespace ApproverRule {
-    interface Raw {
+    export interface Raw {
         numApprovers: number;
         identifierList: IdentifierList.Raw;
         autoAssign?: boolean | null;

@@ -10,5 +10,5 @@ export const AccountType: core.serialization.Schema<serializers.AccountType.Raw,
     core.serialization.enum_(["business", "individual"]);
 
 export declare namespace AccountType {
-    type Raw = "business" | "individual";
+    export type Raw = "business" | "individual";
 }

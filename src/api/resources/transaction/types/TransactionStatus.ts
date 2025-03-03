@@ -11,7 +11,6 @@ export type TransactionStatus =
     | "QUEUED"
     | "CANCELED"
     | "RETURNED";
-
 export const TransactionStatus = {
     Created: "CREATED",
     Pending: "PENDING",

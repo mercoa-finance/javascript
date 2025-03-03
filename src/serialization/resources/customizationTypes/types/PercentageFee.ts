@@ -12,7 +12,7 @@ export const PercentageFee: core.serialization.ObjectSchema<serializers.Percenta
     });
 
 export declare namespace PercentageFee {
-    interface Raw {
+    export interface Raw {
         amount: number;
     }
 }

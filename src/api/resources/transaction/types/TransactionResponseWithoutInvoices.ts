@@ -801,32 +801,32 @@ export type TransactionResponseWithoutInvoices =
     | Mercoa.TransactionResponseWithoutInvoices.Custom
     | Mercoa.TransactionResponseWithoutInvoices.OffPlatform;
 
-export declare namespace TransactionResponseWithoutInvoices {
-    interface BankAccountToBankAccount extends Mercoa.TransactionResponseAchBase {
+export namespace TransactionResponseWithoutInvoices {
+    export interface BankAccountToBankAccount extends Mercoa.TransactionResponseAchBase {
         type: "bankAccountToBankAccount";
     }
 
-    interface BankAccountToMailedCheck extends Mercoa.TransactionResponseMailedCheckBase {
+    export interface BankAccountToMailedCheck extends Mercoa.TransactionResponseMailedCheckBase {
         type: "bankAccountToMailedCheck";
     }
 
-    interface BankAccountToWallet extends Mercoa.TransactionResponseAchBase {
+    export interface BankAccountToWallet extends Mercoa.TransactionResponseAchBase {
         type: "bankAccountToWallet";
     }
 
-    interface CardToWallet extends Mercoa.TransactionResponseBase {
+    export interface CardToWallet extends Mercoa.TransactionResponseBase {
         type: "cardToWallet";
     }
 
-    interface WalletToBankAccount extends Mercoa.TransactionResponseAchBase {
+    export interface WalletToBankAccount extends Mercoa.TransactionResponseAchBase {
         type: "walletToBankAccount";
     }
 
-    interface Custom extends Mercoa.TransactionResponseBase {
+    export interface Custom extends Mercoa.TransactionResponseBase {
         type: "custom";
     }
 
-    interface OffPlatform extends Mercoa.TransactionResponseBase {
+    export interface OffPlatform extends Mercoa.TransactionResponseBase {
         type: "offPlatform";
     }
 }

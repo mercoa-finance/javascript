@@ -10,5 +10,5 @@ export const BankStatus: core.serialization.Schema<serializers.BankStatus.Raw, M
     core.serialization.enum_(["NEW", "VERIFIED", "VERIFICATION_FAILED", "PENDING", "ERRORED"]);
 
 export declare namespace BankStatus {
-    type Raw = "NEW" | "VERIFIED" | "VERIFICATION_FAILED" | "PENDING" | "ERRORED";
+    export type Raw = "NEW" | "VERIFIED" | "VERIFICATION_FAILED" | "PENDING" | "ERRORED";
 }

@@ -23,16 +23,16 @@ export type PaymentDestinationOptions =
     | Mercoa.PaymentDestinationOptions.BankAccount
     | Mercoa.PaymentDestinationOptions.Utility;
 
-export declare namespace PaymentDestinationOptions {
-    interface Check extends Mercoa.CheckPaymentDestinationOptions {
+export namespace PaymentDestinationOptions {
+    export interface Check extends Mercoa.CheckPaymentDestinationOptions {
         type: "check";
     }
 
-    interface BankAccount extends Mercoa.BankAccountPaymentDestinationOptions {
+    export interface BankAccount extends Mercoa.BankAccountPaymentDestinationOptions {
         type: "bankAccount";
     }
 
-    interface Utility extends Mercoa.UtilityPaymentDestinationOptions {
+    export interface Utility extends Mercoa.UtilityPaymentDestinationOptions {
         type: "utility";
     }
 }

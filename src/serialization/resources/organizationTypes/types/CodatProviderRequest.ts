@@ -14,7 +14,7 @@ export const CodatProviderRequest: core.serialization.ObjectSchema<
 });
 
 export declare namespace CodatProviderRequest {
-    interface Raw {
+    export interface Raw {
         apiKey: string;
     }
 }

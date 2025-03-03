@@ -14,7 +14,7 @@ export const ApprovalRequest: core.serialization.ObjectSchema<serializers.Approv
     });
 
 export declare namespace ApprovalRequest {
-    interface Raw {
+    export interface Raw {
         text?: string | null;
         userId: EntityUserId.Raw;
     }

@@ -18,7 +18,7 @@ export const FeeCustomizationRailRequest: core.serialization.ObjectSchema<
 });
 
 export declare namespace FeeCustomizationRailRequest {
-    interface Raw {
+    export interface Raw {
         ACH_STANDARD?: PaymentMethodFee.Raw | null;
         ACH_SAME_DAY?: PaymentMethodFee.Raw | null;
         CHECK_PRINT?: PaymentMethodFee.Raw | null;

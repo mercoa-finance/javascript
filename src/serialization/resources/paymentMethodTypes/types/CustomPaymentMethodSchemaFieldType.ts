@@ -23,7 +23,7 @@ export const CustomPaymentMethodSchemaFieldType: core.serialization.Schema<
 ]);
 
 export declare namespace CustomPaymentMethodSchemaFieldType {
-    type Raw =
+    export type Raw =
         | "text"
         | "number"
         | "select"

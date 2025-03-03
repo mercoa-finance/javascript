@@ -17,7 +17,7 @@ export const OcrRequest: core.serialization.ObjectSchema<serializers.OcrRequest.
     });
 
 export declare namespace OcrRequest {
-    interface Raw {
+    export interface Raw {
         mimeType: string;
         image: string;
         vendorNetwork?: VendorNetwork.Raw | null;

@@ -15,7 +15,7 @@ export const MetadataCustomizationRequest: core.serialization.ObjectSchema<
 });
 
 export declare namespace MetadataCustomizationRequest {
-    interface Raw {
+    export interface Raw {
         key: string;
         disabled: boolean;
     }

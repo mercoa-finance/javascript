@@ -34,7 +34,7 @@ export const EntityResponse: core.serialization.ObjectSchema<serializers.EntityR
     });
 
 export declare namespace EntityResponse {
-    interface Raw {
+    export interface Raw {
         id: EntityId.Raw;
         name: string;
         email: string;

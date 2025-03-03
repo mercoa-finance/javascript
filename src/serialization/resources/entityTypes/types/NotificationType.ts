@@ -22,7 +22,7 @@ export const NotificationType: core.serialization.Schema<serializers.Notificatio
     ]);
 
 export declare namespace NotificationType {
-    type Raw =
+    export type Raw =
         | "INVOICE_APPROVAL_NEEDED"
         | "INVOICE_APPROVED"
         | "INVOICE_REJECTED"

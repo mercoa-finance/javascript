@@ -8,22 +8,27 @@ import * as Mercoa from "../../../../../../../index";
 import * as serializers from "../../../../../../../../serialization/index";
 import urlJoin from "url-join";
 import * as errors from "../../../../../../../../errors/index";
+import { toJson } from "../../../../../../../../core/json";
 
 export declare namespace VendorCredit {
-    interface Options {
+    export interface Options {
         environment?: core.Supplier<environments.MercoaEnvironment | string>;
+        /** Specify a custom URL to connect the client to. */
+        baseUrl?: core.Supplier<string>;
         token: core.Supplier<core.BearerToken>;
         /** Override the X-API-Version header */
         xApiVersion?: "2024-08-01";
     }
 
-    interface RequestOptions {
+    export interface RequestOptions {
         /** The maximum time to wait for a response in seconds. */
         timeoutInSeconds?: number;
         /** The number of times to retry the request. Defaults to 2. */
         maxRetries?: number;
         /** A hook to abort the request. */
         abortSignal?: AbortSignal;
+        /** Additional headers to include in the request. */
+        headers?: Record<string, string>;
         /** Override the X-API-Version header */
         xApiVersion?: "2024-08-01";
     }
@@ -51,25 +56,26 @@ export class VendorCredit {
     public async getAll(
         entityId: Mercoa.EntityId,
         counterpartyId: Mercoa.EntityId,
-        requestOptions?: VendorCredit.RequestOptions
+        requestOptions?: VendorCredit.RequestOptions,
     ): Promise<Mercoa.FindVendorCreditResponse> {
         const _response = await core.fetcher({
             url: urlJoin(
-                (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
-                `/entity/${encodeURIComponent(
-                    serializers.EntityId.jsonOrThrow(entityId)
-                )}/counterparty/${encodeURIComponent(serializers.EntityId.jsonOrThrow(counterpartyId))}/vendor-credits`
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (await core.Supplier.get(this._options.environment)) ??
+                    environments.MercoaEnvironment.Production,
+                `/entity/${encodeURIComponent(serializers.EntityId.jsonOrThrow(entityId))}/counterparty/${encodeURIComponent(serializers.EntityId.jsonOrThrow(counterpartyId))}/vendor-credits`,
             ),
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.6.11",
-                "User-Agent": "@mercoa/javascript/0.6.11",
+                "X-Fern-SDK-Version": "0.6.12",
+                "User-Agent": "@mercoa/javascript/0.6.12",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...requestOptions?.headers,
             },
             contentType: "application/json",
             requestType: "json",
@@ -95,7 +101,7 @@ export class VendorCredit {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "Unauthorized":
                     throw new Mercoa.Unauthorized(
@@ -104,7 +110,7 @@ export class VendorCredit {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "Forbidden":
                     throw new Mercoa.Forbidden(
@@ -113,7 +119,7 @@ export class VendorCredit {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "NotFound":
                     throw new Mercoa.NotFound(
@@ -122,7 +128,7 @@ export class VendorCredit {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "Conflict":
                     throw new Mercoa.Conflict(
@@ -131,7 +137,7 @@ export class VendorCredit {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "InternalServerError":
                     throw new Mercoa.InternalServerError(
@@ -140,7 +146,7 @@ export class VendorCredit {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "Unimplemented":
                     throw new Mercoa.Unimplemented(
@@ -149,7 +155,7 @@ export class VendorCredit {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 default:
                     throw new errors.MercoaError({
@@ -166,7 +172,9 @@ export class VendorCredit {
                     body: _response.error.rawBody,
                 });
             case "timeout":
-                throw new errors.MercoaTimeoutError();
+                throw new errors.MercoaTimeoutError(
+                    "Timeout exceeded when calling GET /entity/{entityId}/counterparty/{counterpartyId}/vendor-credits.",
+                );
             case "unknown":
                 throw new errors.MercoaError({
                     message: _response.error.errorMessage,
@@ -195,27 +203,26 @@ export class VendorCredit {
         entityId: Mercoa.EntityId,
         counterpartyId: Mercoa.EntityId,
         vendorCreditId: Mercoa.VendorCreditId,
-        requestOptions?: VendorCredit.RequestOptions
+        requestOptions?: VendorCredit.RequestOptions,
     ): Promise<Mercoa.VendorCreditResponse> {
         const _response = await core.fetcher({
             url: urlJoin(
-                (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
-                `/entity/${encodeURIComponent(
-                    serializers.EntityId.jsonOrThrow(entityId)
-                )}/counterparty/${encodeURIComponent(
-                    serializers.EntityId.jsonOrThrow(counterpartyId)
-                )}/vendor-credit/${encodeURIComponent(serializers.VendorCreditId.jsonOrThrow(vendorCreditId))}`
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (await core.Supplier.get(this._options.environment)) ??
+                    environments.MercoaEnvironment.Production,
+                `/entity/${encodeURIComponent(serializers.EntityId.jsonOrThrow(entityId))}/counterparty/${encodeURIComponent(serializers.EntityId.jsonOrThrow(counterpartyId))}/vendor-credit/${encodeURIComponent(serializers.VendorCreditId.jsonOrThrow(vendorCreditId))}`,
             ),
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.6.11",
-                "User-Agent": "@mercoa/javascript/0.6.11",
+                "X-Fern-SDK-Version": "0.6.12",
+                "User-Agent": "@mercoa/javascript/0.6.12",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...requestOptions?.headers,
             },
             contentType: "application/json",
             requestType: "json",
@@ -241,7 +248,7 @@ export class VendorCredit {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "Unauthorized":
                     throw new Mercoa.Unauthorized(
@@ -250,7 +257,7 @@ export class VendorCredit {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "Forbidden":
                     throw new Mercoa.Forbidden(
@@ -259,7 +266,7 @@ export class VendorCredit {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "NotFound":
                     throw new Mercoa.NotFound(
@@ -268,7 +275,7 @@ export class VendorCredit {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "Conflict":
                     throw new Mercoa.Conflict(
@@ -277,7 +284,7 @@ export class VendorCredit {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "InternalServerError":
                     throw new Mercoa.InternalServerError(
@@ -286,7 +293,7 @@ export class VendorCredit {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "Unimplemented":
                     throw new Mercoa.Unimplemented(
@@ -295,7 +302,7 @@ export class VendorCredit {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 default:
                     throw new errors.MercoaError({
@@ -312,7 +319,9 @@ export class VendorCredit {
                     body: _response.error.rawBody,
                 });
             case "timeout":
-                throw new errors.MercoaTimeoutError();
+                throw new errors.MercoaTimeoutError(
+                    "Timeout exceeded when calling GET /entity/{entityId}/counterparty/{counterpartyId}/vendor-credit/{vendorCreditId}.",
+                );
             case "unknown":
                 throw new errors.MercoaError({
                     message: _response.error.errorMessage,
@@ -345,25 +354,26 @@ export class VendorCredit {
         entityId: Mercoa.EntityId,
         counterpartyId: Mercoa.EntityId,
         request: Mercoa.VendorCreditRequest,
-        requestOptions?: VendorCredit.RequestOptions
+        requestOptions?: VendorCredit.RequestOptions,
     ): Promise<Mercoa.VendorCreditResponse> {
         const _response = await core.fetcher({
             url: urlJoin(
-                (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
-                `/entity/${encodeURIComponent(
-                    serializers.EntityId.jsonOrThrow(entityId)
-                )}/counterparty/${encodeURIComponent(serializers.EntityId.jsonOrThrow(counterpartyId))}/vendor-credit`
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (await core.Supplier.get(this._options.environment)) ??
+                    environments.MercoaEnvironment.Production,
+                `/entity/${encodeURIComponent(serializers.EntityId.jsonOrThrow(entityId))}/counterparty/${encodeURIComponent(serializers.EntityId.jsonOrThrow(counterpartyId))}/vendor-credit`,
             ),
             method: "POST",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.6.11",
-                "User-Agent": "@mercoa/javascript/0.6.11",
+                "X-Fern-SDK-Version": "0.6.12",
+                "User-Agent": "@mercoa/javascript/0.6.12",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...requestOptions?.headers,
             },
             contentType: "application/json",
             requestType: "json",
@@ -390,7 +400,7 @@ export class VendorCredit {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "Unauthorized":
                     throw new Mercoa.Unauthorized(
@@ -399,7 +409,7 @@ export class VendorCredit {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "Forbidden":
                     throw new Mercoa.Forbidden(
@@ -408,7 +418,7 @@ export class VendorCredit {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "NotFound":
                     throw new Mercoa.NotFound(
@@ -417,7 +427,7 @@ export class VendorCredit {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "Conflict":
                     throw new Mercoa.Conflict(
@@ -426,7 +436,7 @@ export class VendorCredit {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "InternalServerError":
                     throw new Mercoa.InternalServerError(
@@ -435,7 +445,7 @@ export class VendorCredit {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "Unimplemented":
                     throw new Mercoa.Unimplemented(
@@ -444,7 +454,7 @@ export class VendorCredit {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 default:
                     throw new errors.MercoaError({
@@ -461,7 +471,9 @@ export class VendorCredit {
                     body: _response.error.rawBody,
                 });
             case "timeout":
-                throw new errors.MercoaTimeoutError();
+                throw new errors.MercoaTimeoutError(
+                    "Timeout exceeded when calling POST /entity/{entityId}/counterparty/{counterpartyId}/vendor-credit.",
+                );
             case "unknown":
                 throw new errors.MercoaError({
                     message: _response.error.errorMessage,
@@ -490,27 +502,26 @@ export class VendorCredit {
         entityId: Mercoa.EntityId,
         counterpartyId: Mercoa.EntityId,
         vendorCreditId: Mercoa.VendorCreditId,
-        requestOptions?: VendorCredit.RequestOptions
+        requestOptions?: VendorCredit.RequestOptions,
     ): Promise<void> {
         const _response = await core.fetcher({
             url: urlJoin(
-                (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
-                `/entity/${encodeURIComponent(
-                    serializers.EntityId.jsonOrThrow(entityId)
-                )}/counterparty/${encodeURIComponent(
-                    serializers.EntityId.jsonOrThrow(counterpartyId)
-                )}/vendor-credit/${encodeURIComponent(serializers.VendorCreditId.jsonOrThrow(vendorCreditId))}`
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (await core.Supplier.get(this._options.environment)) ??
+                    environments.MercoaEnvironment.Production,
+                `/entity/${encodeURIComponent(serializers.EntityId.jsonOrThrow(entityId))}/counterparty/${encodeURIComponent(serializers.EntityId.jsonOrThrow(counterpartyId))}/vendor-credit/${encodeURIComponent(serializers.VendorCreditId.jsonOrThrow(vendorCreditId))}`,
             ),
             method: "DELETE",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.6.11",
-                "User-Agent": "@mercoa/javascript/0.6.11",
+                "X-Fern-SDK-Version": "0.6.12",
+                "User-Agent": "@mercoa/javascript/0.6.12",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...requestOptions?.headers,
             },
             contentType: "application/json",
             requestType: "json",
@@ -531,7 +542,7 @@ export class VendorCredit {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "Unauthorized":
                     throw new Mercoa.Unauthorized(
@@ -540,7 +551,7 @@ export class VendorCredit {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "Forbidden":
                     throw new Mercoa.Forbidden(
@@ -549,7 +560,7 @@ export class VendorCredit {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "NotFound":
                     throw new Mercoa.NotFound(
@@ -558,7 +569,7 @@ export class VendorCredit {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "Conflict":
                     throw new Mercoa.Conflict(
@@ -567,7 +578,7 @@ export class VendorCredit {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "InternalServerError":
                     throw new Mercoa.InternalServerError(
@@ -576,7 +587,7 @@ export class VendorCredit {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "Unimplemented":
                     throw new Mercoa.Unimplemented(
@@ -585,7 +596,7 @@ export class VendorCredit {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 default:
                     throw new errors.MercoaError({
@@ -602,7 +613,9 @@ export class VendorCredit {
                     body: _response.error.rawBody,
                 });
             case "timeout":
-                throw new errors.MercoaTimeoutError();
+                throw new errors.MercoaTimeoutError(
+                    "Timeout exceeded when calling DELETE /entity/{entityId}/counterparty/{counterpartyId}/vendor-credit/{vendorCreditId}.",
+                );
             case "unknown":
                 throw new errors.MercoaError({
                     message: _response.error.errorMessage,
@@ -636,42 +649,43 @@ export class VendorCredit {
         entityId: Mercoa.EntityId,
         counterpartyId: Mercoa.EntityId,
         request: Mercoa.entity.counterparty.CalculateVendorCreditUsageRequest,
-        requestOptions?: VendorCredit.RequestOptions
+        requestOptions?: VendorCredit.RequestOptions,
     ): Promise<Mercoa.CalculateVendorCreditUsageResponse> {
         const { amount, currency, excludedInvoiceIds, includedVendorCreditIds } = request;
-        const _queryParams: Record<string, string | string[] | object | object[]> = {};
+        const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
         _queryParams["amount"] = amount.toString();
         if (currency != null) {
-            _queryParams["currency"] = currency;
+            _queryParams["currency"] = serializers.CurrencyCode.jsonOrThrow(currency, {
+                unrecognizedObjectKeys: "strip",
+            });
         }
 
         if (excludedInvoiceIds != null) {
-            _queryParams["excludedInvoiceIds"] = JSON.stringify(excludedInvoiceIds);
+            _queryParams["excludedInvoiceIds"] = toJson(excludedInvoiceIds);
         }
 
         if (includedVendorCreditIds != null) {
-            _queryParams["includedVendorCreditIds"] = JSON.stringify(includedVendorCreditIds);
+            _queryParams["includedVendorCreditIds"] = toJson(includedVendorCreditIds);
         }
 
         const _response = await core.fetcher({
             url: urlJoin(
-                (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
-                `/entity/${encodeURIComponent(
-                    serializers.EntityId.jsonOrThrow(entityId)
-                )}/counterparty/${encodeURIComponent(
-                    serializers.EntityId.jsonOrThrow(counterpartyId)
-                )}/vendor-credits/estimate-usage`
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (await core.Supplier.get(this._options.environment)) ??
+                    environments.MercoaEnvironment.Production,
+                `/entity/${encodeURIComponent(serializers.EntityId.jsonOrThrow(entityId))}/counterparty/${encodeURIComponent(serializers.EntityId.jsonOrThrow(counterpartyId))}/vendor-credits/estimate-usage`,
             ),
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.6.11",
-                "User-Agent": "@mercoa/javascript/0.6.11",
+                "X-Fern-SDK-Version": "0.6.12",
+                "User-Agent": "@mercoa/javascript/0.6.12",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...requestOptions?.headers,
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -698,7 +712,7 @@ export class VendorCredit {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "Unauthorized":
                     throw new Mercoa.Unauthorized(
@@ -707,7 +721,7 @@ export class VendorCredit {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "Forbidden":
                     throw new Mercoa.Forbidden(
@@ -716,7 +730,7 @@ export class VendorCredit {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "NotFound":
                     throw new Mercoa.NotFound(
@@ -725,7 +739,7 @@ export class VendorCredit {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "Conflict":
                     throw new Mercoa.Conflict(
@@ -734,7 +748,7 @@ export class VendorCredit {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "InternalServerError":
                     throw new Mercoa.InternalServerError(
@@ -743,7 +757,7 @@ export class VendorCredit {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "Unimplemented":
                     throw new Mercoa.Unimplemented(
@@ -752,7 +766,7 @@ export class VendorCredit {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 default:
                     throw new errors.MercoaError({
@@ -769,7 +783,9 @@ export class VendorCredit {
                     body: _response.error.rawBody,
                 });
             case "timeout":
-                throw new errors.MercoaTimeoutError();
+                throw new errors.MercoaTimeoutError(
+                    "Timeout exceeded when calling GET /entity/{entityId}/counterparty/{counterpartyId}/vendor-credits/estimate-usage.",
+                );
             case "unknown":
                 throw new errors.MercoaError({
                     message: _response.error.errorMessage,

@@ -17,7 +17,7 @@ export const EntityGroupAddEntitiesRequest: core.serialization.ObjectSchema<
 });
 
 export declare namespace EntityGroupAddEntitiesRequest {
-    interface Raw {
+    export interface Raw {
         entityIds: EntityId.Raw[];
         copyUsersFrom?: EntityIdOrBoolean.Raw | null;
     }

@@ -21,7 +21,7 @@ export const CustomPaymentMethodSchemaField: core.serialization.ObjectSchema<
 });
 
 export declare namespace CustomPaymentMethodSchemaField {
-    interface Raw {
+    export interface Raw {
         name: string;
         displayName?: string | null;
         type: CustomPaymentMethodSchemaFieldType.Raw;

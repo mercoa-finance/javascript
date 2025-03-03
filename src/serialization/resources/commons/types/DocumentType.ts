@@ -10,5 +10,5 @@ export const DocumentType: core.serialization.Schema<serializers.DocumentType.Ra
     core.serialization.enum_(["INVOICE", "TEN_NINETY_NINE", "W9", "CHECK", "BANK_STATEMENT", "CONTRACT", "OTHER"]);
 
 export declare namespace DocumentType {
-    type Raw = "INVOICE" | "TEN_NINETY_NINE" | "W9" | "CHECK" | "BANK_STATEMENT" | "CONTRACT" | "OTHER";
+    export type Raw = "INVOICE" | "TEN_NINETY_NINE" | "W9" | "CHECK" | "BANK_STATEMENT" | "CONTRACT" | "OTHER";
 }

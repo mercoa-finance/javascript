@@ -17,7 +17,7 @@ export const FindEntityResponse: core.serialization.ObjectSchema<
 });
 
 export declare namespace FindEntityResponse {
-    interface Raw {
+    export interface Raw {
         count: number;
         hasMore: boolean;
         data: EntityWithPaymentMethodResponse.Raw[];

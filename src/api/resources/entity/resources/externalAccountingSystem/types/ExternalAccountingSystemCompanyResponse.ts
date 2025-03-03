@@ -9,16 +9,16 @@ export type ExternalAccountingSystemCompanyResponse =
     | Mercoa.entity.ExternalAccountingSystemCompanyResponse.Rutter
     | Mercoa.entity.ExternalAccountingSystemCompanyResponse.None;
 
-export declare namespace ExternalAccountingSystemCompanyResponse {
-    interface Codat extends Mercoa.entity.CodatCompanyResponse {
+export namespace ExternalAccountingSystemCompanyResponse {
+    export interface Codat extends Mercoa.entity.CodatCompanyResponse {
         type: "codat";
     }
 
-    interface Rutter extends Mercoa.entity.RutterCompanyResponse {
+    export interface Rutter extends Mercoa.entity.RutterCompanyResponse {
         type: "rutter";
     }
 
-    interface None extends Mercoa.entity.CodatCompanyResponse {
+    export interface None extends Mercoa.entity.CodatCompanyResponse {
         type: "none";
     }
 }

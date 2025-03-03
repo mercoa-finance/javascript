@@ -15,7 +15,7 @@ export const EntityGroupRemoveEntitiesRequest: core.serialization.ObjectSchema<
 });
 
 export declare namespace EntityGroupRemoveEntitiesRequest {
-    interface Raw {
+    export interface Raw {
         entityIds: EntityId.Raw[];
     }
 }

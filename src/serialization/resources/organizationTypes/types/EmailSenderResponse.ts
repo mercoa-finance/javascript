@@ -18,7 +18,7 @@ export const EmailSenderResponse: core.serialization.ObjectSchema<
 });
 
 export declare namespace EmailSenderResponse {
-    interface Raw {
+    export interface Raw {
         provider: EmailSenderProvider.Raw;
         fromEmail: string;
         fromName: string;

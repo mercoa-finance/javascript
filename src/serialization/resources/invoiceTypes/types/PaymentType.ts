@@ -10,5 +10,5 @@ export const PaymentType: core.serialization.Schema<serializers.PaymentType.Raw,
     core.serialization.enum_(["oneTime", "recurring"]);
 
 export declare namespace PaymentType {
-    type Raw = "oneTime" | "recurring";
+    export type Raw = "oneTime" | "recurring";
 }

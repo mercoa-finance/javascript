@@ -10,5 +10,5 @@ export const ApprovalPolicyId: core.serialization.Schema<serializers.ApprovalPol
     core.serialization.string();
 
 export declare namespace ApprovalPolicyId {
-    type Raw = string;
+    export type Raw = string;
 }

@@ -10,5 +10,5 @@ export const MetadataType: core.serialization.Schema<serializers.MetadataType.Ra
     core.serialization.enum_(["STRING", "NUMBER", "DATE", "BOOLEAN", "KEY_VALUE"]);
 
 export declare namespace MetadataType {
-    type Raw = "STRING" | "NUMBER" | "DATE" | "BOOLEAN" | "KEY_VALUE";
+    export type Raw = "STRING" | "NUMBER" | "DATE" | "BOOLEAN" | "KEY_VALUE";
 }

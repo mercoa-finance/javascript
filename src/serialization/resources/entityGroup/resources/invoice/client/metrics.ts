@@ -13,5 +13,5 @@ export const Response: core.serialization.Schema<
 > = core.serialization.list(InvoiceMetricsResponse);
 
 export declare namespace Response {
-    type Raw = InvoiceMetricsResponse.Raw[];
+    export type Raw = InvoiceMetricsResponse.Raw[];
 }

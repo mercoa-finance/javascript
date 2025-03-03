@@ -10,5 +10,5 @@ export const NotificationId: core.serialization.Schema<serializers.NotificationI
     core.serialization.string();
 
 export declare namespace NotificationId {
-    type Raw = string;
+    export type Raw = string;
 }

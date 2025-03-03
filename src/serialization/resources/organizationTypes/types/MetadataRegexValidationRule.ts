@@ -15,7 +15,7 @@ export const MetadataRegexValidationRule: core.serialization.ObjectSchema<
 });
 
 export declare namespace MetadataRegexValidationRule {
-    interface Raw {
+    export interface Raw {
         regex: string;
         errorMessage: string;
     }

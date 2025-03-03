@@ -12,7 +12,7 @@ export const FlatFee: core.serialization.ObjectSchema<serializers.FlatFee.Raw, M
     });
 
 export declare namespace FlatFee {
-    interface Raw {
+    export interface Raw {
         amount: number;
     }
 }

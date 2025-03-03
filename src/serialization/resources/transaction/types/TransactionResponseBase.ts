@@ -37,7 +37,7 @@ export const TransactionResponseBase: core.serialization.ObjectSchema<
 });
 
 export declare namespace TransactionResponseBase {
-    interface Raw {
+    export interface Raw {
         id: TransactionId.Raw;
         status: TransactionStatus.Raw;
         amount: number;

@@ -25,7 +25,7 @@ export const InvoiceResponse: core.serialization.ObjectSchema<serializers.Invoic
         .extend(InvoiceResponseBase);
 
 export declare namespace InvoiceResponse {
-    interface Raw extends InvoiceResponseBase.Raw {
+    export interface Raw extends InvoiceResponseBase.Raw {
         id: InvoiceId.Raw;
         processedAt?: string | null;
         settlementDate?: string | null;

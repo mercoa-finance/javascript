@@ -17,7 +17,7 @@ export const EmailProviderResponse: core.serialization.ObjectSchema<
 });
 
 export declare namespace EmailProviderResponse {
-    interface Raw {
+    export interface Raw {
         sender: EmailSenderResponse.Raw;
         inboxDomain: string;
         alternativeInboxDomains: string[];

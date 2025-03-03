@@ -16,7 +16,7 @@ export const PreviewContractInvoicesRequest: core.serialization.Schema<
 });
 
 export declare namespace PreviewContractInvoicesRequest {
-    interface Raw {
+    export interface Raw {
         contract: ContractCreateRequest.Raw;
         invoiceIndexes: number[];
     }

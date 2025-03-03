@@ -31,7 +31,7 @@ export const PaymentMethodCustomizationRequest: core.serialization.Schema<
     });
 
 export declare namespace PaymentMethodCustomizationRequest {
-    type Raw =
+    export type Raw =
         | PaymentMethodCustomizationRequest.BankAccount
         | PaymentMethodCustomizationRequest.Card
         | PaymentMethodCustomizationRequest.VirtualCard
@@ -42,39 +42,39 @@ export declare namespace PaymentMethodCustomizationRequest {
         | PaymentMethodCustomizationRequest.Utility
         | PaymentMethodCustomizationRequest.Na;
 
-    interface BankAccount extends BankAccountPaymentMethodCustomizationRequest.Raw {
+    export interface BankAccount extends BankAccountPaymentMethodCustomizationRequest.Raw {
         type: "bankAccount";
     }
 
-    interface Card extends GenericPaymentMethodCustomizationRequest.Raw {
+    export interface Card extends GenericPaymentMethodCustomizationRequest.Raw {
         type: "card";
     }
 
-    interface VirtualCard extends GenericPaymentMethodCustomizationRequest.Raw {
+    export interface VirtualCard extends GenericPaymentMethodCustomizationRequest.Raw {
         type: "virtualCard";
     }
 
-    interface Check extends CheckPaymentMethodCustomizationRequest.Raw {
+    export interface Check extends CheckPaymentMethodCustomizationRequest.Raw {
         type: "check";
     }
 
-    interface Custom extends CustomPaymentMethodCustomizationRequest.Raw {
+    export interface Custom extends CustomPaymentMethodCustomizationRequest.Raw {
         type: "custom";
     }
 
-    interface Bnpl extends GenericPaymentMethodCustomizationRequest.Raw {
+    export interface Bnpl extends GenericPaymentMethodCustomizationRequest.Raw {
         type: "bnpl";
     }
 
-    interface OffPlatform extends GenericPaymentMethodCustomizationRequest.Raw {
+    export interface OffPlatform extends GenericPaymentMethodCustomizationRequest.Raw {
         type: "offPlatform";
     }
 
-    interface Utility extends GenericPaymentMethodCustomizationRequest.Raw {
+    export interface Utility extends GenericPaymentMethodCustomizationRequest.Raw {
         type: "utility";
     }
 
-    interface Na extends GenericPaymentMethodCustomizationRequest.Raw {
+    export interface Na extends GenericPaymentMethodCustomizationRequest.Raw {
         type: "na";
     }
 }

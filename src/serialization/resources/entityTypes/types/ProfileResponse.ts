@@ -15,7 +15,7 @@ export const ProfileResponse: core.serialization.ObjectSchema<serializers.Profil
     });
 
 export declare namespace ProfileResponse {
-    interface Raw {
+    export interface Raw {
         business?: BusinessProfileResponse.Raw | null;
         individual?: IndividualProfileResponse.Raw | null;
     }

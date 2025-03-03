@@ -6,24 +6,29 @@ import * as environments from "../../../../../../environments";
 import * as core from "../../../../../../core";
 import * as Mercoa from "../../../../../index";
 import * as serializers from "../../../../../../serialization/index";
+import { toJson } from "../../../../../../core/json";
 import urlJoin from "url-join";
 import * as errors from "../../../../../../errors/index";
 
 export declare namespace Invoice {
-    interface Options {
+    export interface Options {
         environment?: core.Supplier<environments.MercoaEnvironment | string>;
+        /** Specify a custom URL to connect the client to. */
+        baseUrl?: core.Supplier<string>;
         token: core.Supplier<core.BearerToken>;
         /** Override the X-API-Version header */
         xApiVersion?: "2024-08-01";
     }
 
-    interface RequestOptions {
+    export interface RequestOptions {
         /** The maximum time to wait for a response in seconds. */
         timeoutInSeconds?: number;
         /** The number of times to retry the request. Defaults to 2. */
         maxRetries?: number;
         /** A hook to abort the request. */
         abortSignal?: AbortSignal;
+        /** Additional headers to include in the request. */
+        headers?: Record<string, string>;
         /** Override the X-API-Version header */
         xApiVersion?: "2024-08-01";
     }
@@ -58,7 +63,7 @@ export class Invoice {
     public async find(
         entityGroupId: Mercoa.EntityGroupId,
         request: Mercoa.entityGroup.EntityGetInvoicesRequest = {},
-        requestOptions?: Invoice.RequestOptions
+        requestOptions?: Invoice.RequestOptions,
     ): Promise<Mercoa.FindInvoiceResponse> {
         const {
             excludePayables,
@@ -83,7 +88,7 @@ export class Invoice {
             returnPayerMetadata,
             returnVendorMetadata,
         } = request;
-        const _queryParams: Record<string, string | string[] | object | object[]> = {};
+        const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
         if (excludePayables != null) {
             _queryParams["excludePayables"] = excludePayables.toString();
         }
@@ -101,15 +106,21 @@ export class Invoice {
         }
 
         if (dateType != null) {
-            _queryParams["dateType"] = dateType;
+            _queryParams["dateType"] = serializers.InvoiceDateFilter.jsonOrThrow(dateType, {
+                unrecognizedObjectKeys: "strip",
+            });
         }
 
         if (orderBy != null) {
-            _queryParams["orderBy"] = orderBy;
+            _queryParams["orderBy"] = serializers.InvoiceOrderByField.jsonOrThrow(orderBy, {
+                unrecognizedObjectKeys: "strip",
+            });
         }
 
         if (orderDirection != null) {
-            _queryParams["orderDirection"] = orderDirection;
+            _queryParams["orderDirection"] = serializers.OrderDirection.jsonOrThrow(orderDirection, {
+                unrecognizedObjectKeys: "strip",
+            });
         }
 
         if (limit != null) {
@@ -129,8 +140,8 @@ export class Invoice {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["request", "metadata"],
-                        })
-                    )
+                        }),
+                    ),
                 );
             } else {
                 _queryParams["metadata"] = serializers.MetadataFilter.jsonOrThrow(metadata, {
@@ -148,7 +159,9 @@ export class Invoice {
 
         if (payerId != null) {
             if (Array.isArray(payerId)) {
-                _queryParams["payerId"] = payerId.map((item) => item);
+                _queryParams["payerId"] = payerId.map((item) =>
+                    serializers.EntityId.jsonOrThrow(item, { unrecognizedObjectKeys: "strip" }),
+                );
             } else {
                 _queryParams["payerId"] = payerId;
             }
@@ -156,7 +169,9 @@ export class Invoice {
 
         if (vendorId != null) {
             if (Array.isArray(vendorId)) {
-                _queryParams["vendorId"] = vendorId.map((item) => item);
+                _queryParams["vendorId"] = vendorId.map((item) =>
+                    serializers.EntityId.jsonOrThrow(item, { unrecognizedObjectKeys: "strip" }),
+                );
             } else {
                 _queryParams["vendorId"] = vendorId;
             }
@@ -164,7 +179,9 @@ export class Invoice {
 
         if (creatorUserId != null) {
             if (Array.isArray(creatorUserId)) {
-                _queryParams["creatorUserId"] = creatorUserId.map((item) => item);
+                _queryParams["creatorUserId"] = creatorUserId.map((item) =>
+                    serializers.EntityUserId.jsonOrThrow(item, { unrecognizedObjectKeys: "strip" }),
+                );
             } else {
                 _queryParams["creatorUserId"] = creatorUserId;
             }
@@ -172,7 +189,9 @@ export class Invoice {
 
         if (approverId != null) {
             if (Array.isArray(approverId)) {
-                _queryParams["approverId"] = approverId.map((item) => item);
+                _queryParams["approverId"] = approverId.map((item) =>
+                    serializers.EntityUserId.jsonOrThrow(item, { unrecognizedObjectKeys: "strip" }),
+                );
             } else {
                 _queryParams["approverId"] = approverId;
             }
@@ -180,15 +199,21 @@ export class Invoice {
 
         if (approverAction != null) {
             if (Array.isArray(approverAction)) {
-                _queryParams["approverAction"] = approverAction.map((item) => item);
+                _queryParams["approverAction"] = approverAction.map((item) =>
+                    serializers.ApproverAction.jsonOrThrow(item, { unrecognizedObjectKeys: "strip" }),
+                );
             } else {
-                _queryParams["approverAction"] = approverAction;
+                _queryParams["approverAction"] = serializers.ApproverAction.jsonOrThrow(approverAction, {
+                    unrecognizedObjectKeys: "strip",
+                });
             }
         }
 
         if (invoiceId != null) {
             if (Array.isArray(invoiceId)) {
-                _queryParams["invoiceId"] = invoiceId.map((item) => item);
+                _queryParams["invoiceId"] = invoiceId.map((item) =>
+                    serializers.InvoiceId.jsonOrThrow(item, { unrecognizedObjectKeys: "strip" }),
+                );
             } else {
                 _queryParams["invoiceId"] = invoiceId;
             }
@@ -196,14 +221,18 @@ export class Invoice {
 
         if (status != null) {
             if (Array.isArray(status)) {
-                _queryParams["status"] = status.map((item) => item);
+                _queryParams["status"] = status.map((item) =>
+                    serializers.InvoiceStatus.jsonOrThrow(item, { unrecognizedObjectKeys: "strip" }),
+                );
             } else {
-                _queryParams["status"] = status;
+                _queryParams["status"] = serializers.InvoiceStatus.jsonOrThrow(status, {
+                    unrecognizedObjectKeys: "strip",
+                });
             }
         }
 
         if (paymentType != null) {
-            _queryParams["paymentType"] = JSON.stringify(paymentType);
+            _queryParams["paymentType"] = toJson(paymentType);
         }
 
         if (returnPayerMetadata != null) {
@@ -216,19 +245,22 @@ export class Invoice {
 
         const _response = await core.fetcher({
             url: urlJoin(
-                (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
-                `/entityGroup/${encodeURIComponent(serializers.EntityGroupId.jsonOrThrow(entityGroupId))}/invoices`
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (await core.Supplier.get(this._options.environment)) ??
+                    environments.MercoaEnvironment.Production,
+                `/entityGroup/${encodeURIComponent(serializers.EntityGroupId.jsonOrThrow(entityGroupId))}/invoices`,
             ),
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.6.11",
-                "User-Agent": "@mercoa/javascript/0.6.11",
+                "X-Fern-SDK-Version": "0.6.12",
+                "User-Agent": "@mercoa/javascript/0.6.12",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...requestOptions?.headers,
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -255,7 +287,7 @@ export class Invoice {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "Unauthorized":
                     throw new Mercoa.Unauthorized(
@@ -264,7 +296,7 @@ export class Invoice {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "Forbidden":
                     throw new Mercoa.Forbidden(
@@ -273,7 +305,7 @@ export class Invoice {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "NotFound":
                     throw new Mercoa.NotFound(
@@ -282,7 +314,7 @@ export class Invoice {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "Conflict":
                     throw new Mercoa.Conflict(
@@ -291,7 +323,7 @@ export class Invoice {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "InternalServerError":
                     throw new Mercoa.InternalServerError(
@@ -300,7 +332,7 @@ export class Invoice {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "Unimplemented":
                     throw new Mercoa.Unimplemented(
@@ -309,7 +341,7 @@ export class Invoice {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 default:
                     throw new errors.MercoaError({
@@ -326,7 +358,9 @@ export class Invoice {
                     body: _response.error.rawBody,
                 });
             case "timeout":
-                throw new errors.MercoaTimeoutError();
+                throw new errors.MercoaTimeoutError(
+                    "Timeout exceeded when calling GET /entityGroup/{entityGroupId}/invoices.",
+                );
             case "unknown":
                 throw new errors.MercoaError({
                     message: _response.error.errorMessage,
@@ -362,7 +396,7 @@ export class Invoice {
     public async metrics(
         entityGroupId: Mercoa.EntityGroupId,
         request: Mercoa.entityGroup.GroupInvoiceMetricsRequest = {},
-        requestOptions?: Invoice.RequestOptions
+        requestOptions?: Invoice.RequestOptions,
     ): Promise<Mercoa.InvoiceMetricsResponse[]> {
         const {
             search,
@@ -381,7 +415,7 @@ export class Invoice {
             dateType,
             currency,
         } = request;
-        const _queryParams: Record<string, string | string[] | object | object[]> = {};
+        const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
         if (search != null) {
             _queryParams["search"] = search;
         }
@@ -395,24 +429,35 @@ export class Invoice {
         }
 
         if (returnByDate != null) {
-            _queryParams["returnByDate"] = returnByDate;
+            _queryParams["returnByDate"] = serializers.InvoiceMetricsPerDateGroupBy.jsonOrThrow(returnByDate, {
+                unrecognizedObjectKeys: "strip",
+            });
         }
 
         if (returnByDateFrequency != null) {
-            _queryParams["returnByDateFrequency"] = returnByDateFrequency;
+            _queryParams["returnByDateFrequency"] = serializers.InvoiceMetricsPerDateFrequency.jsonOrThrow(
+                returnByDateFrequency,
+                { unrecognizedObjectKeys: "strip" },
+            );
         }
 
         if (groupBy != null) {
             if (Array.isArray(groupBy)) {
-                _queryParams["groupBy"] = groupBy.map((item) => item);
+                _queryParams["groupBy"] = groupBy.map((item) =>
+                    serializers.InvoiceMetricsGroupBy.jsonOrThrow(item, { unrecognizedObjectKeys: "strip" }),
+                );
             } else {
-                _queryParams["groupBy"] = groupBy;
+                _queryParams["groupBy"] = serializers.InvoiceMetricsGroupBy.jsonOrThrow(groupBy, {
+                    unrecognizedObjectKeys: "strip",
+                });
             }
         }
 
         if (payerId != null) {
             if (Array.isArray(payerId)) {
-                _queryParams["payerId"] = payerId.map((item) => item);
+                _queryParams["payerId"] = payerId.map((item) =>
+                    serializers.EntityId.jsonOrThrow(item, { unrecognizedObjectKeys: "strip" }),
+                );
             } else {
                 _queryParams["payerId"] = payerId;
             }
@@ -420,7 +465,9 @@ export class Invoice {
 
         if (vendorId != null) {
             if (Array.isArray(vendorId)) {
-                _queryParams["vendorId"] = vendorId.map((item) => item);
+                _queryParams["vendorId"] = vendorId.map((item) =>
+                    serializers.EntityId.jsonOrThrow(item, { unrecognizedObjectKeys: "strip" }),
+                );
             } else {
                 _queryParams["vendorId"] = vendorId;
             }
@@ -428,7 +475,9 @@ export class Invoice {
 
         if (approverId != null) {
             if (Array.isArray(approverId)) {
-                _queryParams["approverId"] = approverId.map((item) => item);
+                _queryParams["approverId"] = approverId.map((item) =>
+                    serializers.EntityUserId.jsonOrThrow(item, { unrecognizedObjectKeys: "strip" }),
+                );
             } else {
                 _queryParams["approverId"] = approverId;
             }
@@ -436,7 +485,9 @@ export class Invoice {
 
         if (invoiceId != null) {
             if (Array.isArray(invoiceId)) {
-                _queryParams["invoiceId"] = invoiceId.map((item) => item);
+                _queryParams["invoiceId"] = invoiceId.map((item) =>
+                    serializers.InvoiceId.jsonOrThrow(item, { unrecognizedObjectKeys: "strip" }),
+                );
             } else {
                 _queryParams["invoiceId"] = invoiceId;
             }
@@ -444,9 +495,13 @@ export class Invoice {
 
         if (status != null) {
             if (Array.isArray(status)) {
-                _queryParams["status"] = status.map((item) => item);
+                _queryParams["status"] = status.map((item) =>
+                    serializers.InvoiceStatus.jsonOrThrow(item, { unrecognizedObjectKeys: "strip" }),
+                );
             } else {
-                _queryParams["status"] = status;
+                _queryParams["status"] = serializers.InvoiceStatus.jsonOrThrow(status, {
+                    unrecognizedObjectKeys: "strip",
+                });
             }
         }
 
@@ -459,34 +514,41 @@ export class Invoice {
         }
 
         if (dateType != null) {
-            _queryParams["dateType"] = dateType;
+            _queryParams["dateType"] = serializers.InvoiceDateFilter.jsonOrThrow(dateType, {
+                unrecognizedObjectKeys: "strip",
+            });
         }
 
         if (currency != null) {
             if (Array.isArray(currency)) {
-                _queryParams["currency"] = currency.map((item) => item);
+                _queryParams["currency"] = currency.map((item) =>
+                    serializers.CurrencyCode.jsonOrThrow(item, { unrecognizedObjectKeys: "strip" }),
+                );
             } else {
-                _queryParams["currency"] = currency;
+                _queryParams["currency"] = serializers.CurrencyCode.jsonOrThrow(currency, {
+                    unrecognizedObjectKeys: "strip",
+                });
             }
         }
 
         const _response = await core.fetcher({
             url: urlJoin(
-                (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
-                `/entityGroup/${encodeURIComponent(
-                    serializers.EntityGroupId.jsonOrThrow(entityGroupId)
-                )}/invoice-metrics`
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (await core.Supplier.get(this._options.environment)) ??
+                    environments.MercoaEnvironment.Production,
+                `/entityGroup/${encodeURIComponent(serializers.EntityGroupId.jsonOrThrow(entityGroupId))}/invoice-metrics`,
             ),
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.6.11",
-                "User-Agent": "@mercoa/javascript/0.6.11",
+                "X-Fern-SDK-Version": "0.6.12",
+                "User-Agent": "@mercoa/javascript/0.6.12",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...requestOptions?.headers,
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -513,7 +575,7 @@ export class Invoice {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "Unauthorized":
                     throw new Mercoa.Unauthorized(
@@ -522,7 +584,7 @@ export class Invoice {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "Forbidden":
                     throw new Mercoa.Forbidden(
@@ -531,7 +593,7 @@ export class Invoice {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "NotFound":
                     throw new Mercoa.NotFound(
@@ -540,7 +602,7 @@ export class Invoice {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "Conflict":
                     throw new Mercoa.Conflict(
@@ -549,7 +611,7 @@ export class Invoice {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "InternalServerError":
                     throw new Mercoa.InternalServerError(
@@ -558,7 +620,7 @@ export class Invoice {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "Unimplemented":
                     throw new Mercoa.Unimplemented(
@@ -567,7 +629,7 @@ export class Invoice {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 default:
                     throw new errors.MercoaError({
@@ -584,7 +646,9 @@ export class Invoice {
                     body: _response.error.rawBody,
                 });
             case "timeout":
-                throw new errors.MercoaTimeoutError();
+                throw new errors.MercoaTimeoutError(
+                    "Timeout exceeded when calling GET /entityGroup/{entityGroupId}/invoice-metrics.",
+                );
             case "unknown":
                 throw new errors.MercoaError({
                     message: _response.error.errorMessage,

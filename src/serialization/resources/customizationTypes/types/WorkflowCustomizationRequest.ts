@@ -14,7 +14,7 @@ export const WorkflowCustomizationRequest: core.serialization.ObjectSchema<
 });
 
 export declare namespace WorkflowCustomizationRequest {
-    interface Raw {
+    export interface Raw {
         autoAdvanceInvoiceStatus?: boolean | null;
     }
 }

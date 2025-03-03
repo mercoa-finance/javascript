@@ -15,7 +15,7 @@ export const InvoiceFeesRequest: core.serialization.ObjectSchema<
 });
 
 export declare namespace InvoiceFeesRequest {
-    interface Raw {
+    export interface Raw {
         sourcePlatformMarkupFee: number;
         destinationPlatformMarkupFee: number;
     }

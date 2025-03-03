@@ -27,7 +27,7 @@ export const EntityCreationRequest: core.serialization.ObjectSchema<
 });
 
 export declare namespace EntityCreationRequest {
-    interface Raw {
+    export interface Raw {
         foreignId?: string | null;
         emailTo?: string | null;
         emailToAlias?: string[] | null;

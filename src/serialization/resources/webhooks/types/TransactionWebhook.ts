@@ -16,7 +16,7 @@ export const TransactionWebhook: core.serialization.ObjectSchema<
 });
 
 export declare namespace TransactionWebhook {
-    interface Raw {
+    export interface Raw {
         eventType: string;
         transaction: TransactionResponse.Raw;
     }

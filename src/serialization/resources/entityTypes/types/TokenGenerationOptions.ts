@@ -24,7 +24,7 @@ export const TokenGenerationOptions: core.serialization.ObjectSchema<
 });
 
 export declare namespace TokenGenerationOptions {
-    interface Raw {
+    export interface Raw {
         expiresIn?: string | null;
         invoice?: TokenGenerationInvoiceOptions.Raw | null;
         pages?: TokenGenerationPagesOptions.Raw | null;

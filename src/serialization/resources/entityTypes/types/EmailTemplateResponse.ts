@@ -23,7 +23,7 @@ export const EmailTemplateResponse: core.serialization.ObjectSchema<
 });
 
 export declare namespace EmailTemplateResponse {
-    interface Raw {
+    export interface Raw {
         id: EmailTemplateId.Raw;
         entityId: EntityId.Raw;
         templateType: EmailTemplateType.Raw;

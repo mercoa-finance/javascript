@@ -20,9 +20,9 @@ export const NotificationConfigurationResponse: core.serialization.Schema<
     });
 
 export declare namespace NotificationConfigurationResponse {
-    type Raw = NotificationConfigurationResponse.Invoice;
+    export type Raw = NotificationConfigurationResponse.Invoice;
 
-    interface Invoice extends InvoiceNotificationConfigurationResponse.Raw {
+    export interface Invoice extends InvoiceNotificationConfigurationResponse.Raw {
         notificationType: "invoice";
     }
 }

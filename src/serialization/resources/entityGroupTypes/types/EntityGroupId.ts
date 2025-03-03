@@ -10,5 +10,5 @@ export const EntityGroupId: core.serialization.Schema<serializers.EntityGroupId.
     core.serialization.string();
 
 export declare namespace EntityGroupId {
-    type Raw = string;
+    export type Raw = string;
 }

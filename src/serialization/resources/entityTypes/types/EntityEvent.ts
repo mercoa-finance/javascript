@@ -17,7 +17,7 @@ export const EntityEvent: core.serialization.ObjectSchema<serializers.EntityEven
     });
 
 export declare namespace EntityEvent {
-    interface Raw {
+    export interface Raw {
         webhookIds: string[];
         data: EntityResponse.Raw;
         createdAt: string;

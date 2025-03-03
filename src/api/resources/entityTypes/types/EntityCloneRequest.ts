@@ -20,7 +20,7 @@ export interface EntityCloneRequest {
     emailTo?: string;
     /** Email inbox alias addresses. Used when forwarding emails to the emailTo address from an alias. Include the full email address. */
     emailToAlias?: string[];
-    /** Base64 encoded PNG image data for the entity logo. Max size 100KB. */
+    /** Base64 data URL of the entity logo. Must be in the `data:image/*;base64,XXXX` format. We recommend a PNG image under 100KB. Supported file types are `png`, `jpeg`, `gif`, `svg`. */
     logo?: string;
     /** Simple key/value metadata associated with this entity. For more complex metadata, use the Metadata API. */
     metadata?: Record<string, string>;

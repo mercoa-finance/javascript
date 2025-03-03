@@ -12,7 +12,7 @@ export const TaxId: core.serialization.ObjectSchema<serializers.TaxId.Raw, Merco
 });
 
 export declare namespace TaxId {
-    interface Raw {
+    export interface Raw {
         ein: Ein.Raw;
     }
 }

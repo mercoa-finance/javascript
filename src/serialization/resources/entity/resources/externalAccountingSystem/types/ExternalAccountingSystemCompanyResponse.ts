@@ -23,20 +23,20 @@ export const ExternalAccountingSystemCompanyResponse: core.serialization.Schema<
     });
 
 export declare namespace ExternalAccountingSystemCompanyResponse {
-    type Raw =
+    export type Raw =
         | ExternalAccountingSystemCompanyResponse.Codat
         | ExternalAccountingSystemCompanyResponse.Rutter
         | ExternalAccountingSystemCompanyResponse.None;
 
-    interface Codat extends CodatCompanyResponse.Raw {
+    export interface Codat extends CodatCompanyResponse.Raw {
         type: "codat";
     }
 
-    interface Rutter extends RutterCompanyResponse.Raw {
+    export interface Rutter extends RutterCompanyResponse.Raw {
         type: "rutter";
     }
 
-    interface None extends CodatCompanyResponse.Raw {
+    export interface None extends CodatCompanyResponse.Raw {
         type: "none";
     }
 }

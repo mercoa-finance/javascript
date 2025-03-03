@@ -3,7 +3,6 @@
  */
 
 export type InvoiceMetricsGroupBy = "STATUS";
-
 export const InvoiceMetricsGroupBy = {
     Status: "STATUS",
 } as const;

@@ -24,7 +24,7 @@ export const PaymentMethodBaseResponse: core.serialization.ObjectSchema<
 });
 
 export declare namespace PaymentMethodBaseResponse {
-    interface Raw {
+    export interface Raw {
         id: PaymentMethodId.Raw;
         isDefaultSource: boolean;
         isDefaultDestination: boolean;

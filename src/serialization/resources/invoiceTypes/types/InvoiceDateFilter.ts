@@ -17,5 +17,5 @@ export const InvoiceDateFilter: core.serialization.Schema<serializers.InvoiceDat
     ]);
 
 export declare namespace InvoiceDateFilter {
-    type Raw = "INVOICE_DATE" | "DEDUCTION_DATE" | "DUE_DATE" | "SETTLEMENT_DATE" | "CREATED_AT" | "UPDATED_AT";
+    export type Raw = "INVOICE_DATE" | "DEDUCTION_DATE" | "DUE_DATE" | "SETTLEMENT_DATE" | "CREATED_AT" | "UPDATED_AT";
 }

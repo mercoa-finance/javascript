@@ -16,7 +16,7 @@ export const GenerateContractRequest: core.serialization.ObjectSchema<
 });
 
 export declare namespace GenerateContractRequest {
-    interface Raw {
+    export interface Raw {
         document: string;
         creatorEntityId: EntityId.Raw;
     }

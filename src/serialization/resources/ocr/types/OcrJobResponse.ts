@@ -17,7 +17,7 @@ export const OcrJobResponse: core.serialization.ObjectSchema<serializers.OcrJobR
     });
 
 export declare namespace OcrJobResponse {
-    interface Raw {
+    export interface Raw {
         jobId: OcrJobId.Raw;
         status: OcrJobStatus.Raw;
         data?: OcrResponse.Raw | null;

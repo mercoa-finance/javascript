@@ -23,7 +23,7 @@ export const CustomPaymentMethodSchemaRequest: core.serialization.ObjectSchema<
 });
 
 export declare namespace CustomPaymentMethodSchemaRequest {
-    interface Raw {
+    export interface Raw {
         name: string;
         isSource: boolean;
         isDestination: boolean;

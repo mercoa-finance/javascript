@@ -3,7 +3,6 @@
  */
 
 export type AccountType = "business" | "individual";
-
 export const AccountType = {
     Business: "business",
     Individual: "individual",

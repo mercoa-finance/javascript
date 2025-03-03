@@ -24,7 +24,7 @@ export const CounterpartyResponse: core.serialization.ObjectSchema<
     .extend(EntityResponse);
 
 export declare namespace CounterpartyResponse {
-    interface Raw extends EntityResponse.Raw {
+    export interface Raw extends EntityResponse.Raw {
         accounts?: CounterpartyCustomizationAccount.Raw[] | null;
         paymentMethods?: PaymentMethodResponse.Raw[] | null;
         counterpartyType?: CounterpartyNetworkType.Raw[] | null;

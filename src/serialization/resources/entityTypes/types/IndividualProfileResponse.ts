@@ -22,7 +22,7 @@ export const IndividualProfileResponse: core.serialization.ObjectSchema<
 });
 
 export declare namespace IndividualProfileResponse {
-    interface Raw {
+    export interface Raw {
         email?: string | null;
         name: FullName.Raw;
         phone?: PhoneNumber.Raw | null;

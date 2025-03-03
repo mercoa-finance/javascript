@@ -21,7 +21,7 @@ export const EmailLog: core.serialization.ObjectSchema<serializers.EmailLog.Raw,
     });
 
 export declare namespace EmailLog {
-    interface Raw {
+    export interface Raw {
         id: EmailLogId.Raw;
         subject: string;
         from: string;

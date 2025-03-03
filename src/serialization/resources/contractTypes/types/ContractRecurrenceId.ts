@@ -12,5 +12,5 @@ export const ContractRecurrenceId: core.serialization.Schema<
 > = core.serialization.string();
 
 export declare namespace ContractRecurrenceId {
-    type Raw = string;
+    export type Raw = string;
 }

@@ -24,20 +24,20 @@ export const PaymentDestinationOptions: core.serialization.Schema<
     });
 
 export declare namespace PaymentDestinationOptions {
-    type Raw =
+    export type Raw =
         | PaymentDestinationOptions.Check
         | PaymentDestinationOptions.BankAccount
         | PaymentDestinationOptions.Utility;
 
-    interface Check extends CheckPaymentDestinationOptions.Raw {
+    export interface Check extends CheckPaymentDestinationOptions.Raw {
         type: "check";
     }
 
-    interface BankAccount extends BankAccountPaymentDestinationOptions.Raw {
+    export interface BankAccount extends BankAccountPaymentDestinationOptions.Raw {
         type: "bankAccount";
     }
 
-    interface Utility extends UtilityPaymentDestinationOptions.Raw {
+    export interface Utility extends UtilityPaymentDestinationOptions.Raw {
         type: "utility";
     }
 }

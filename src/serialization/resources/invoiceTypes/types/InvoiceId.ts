@@ -10,5 +10,5 @@ export const InvoiceId: core.serialization.Schema<serializers.InvoiceId.Raw, Mer
     core.serialization.string();
 
 export declare namespace InvoiceId {
-    type Raw = string;
+    export type Raw = string;
 }

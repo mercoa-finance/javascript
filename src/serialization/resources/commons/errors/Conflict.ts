@@ -8,5 +8,5 @@ import * as core from "../../../../core";
 export const Conflict: core.serialization.Schema<serializers.Conflict.Raw, string> = core.serialization.string();
 
 export declare namespace Conflict {
-    type Raw = string;
+    export type Raw = string;
 }

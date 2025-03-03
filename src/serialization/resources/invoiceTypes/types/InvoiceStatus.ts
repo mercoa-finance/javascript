@@ -22,7 +22,7 @@ export const InvoiceStatus: core.serialization.Schema<serializers.InvoiceStatus.
     ]);
 
 export declare namespace InvoiceStatus {
-    type Raw =
+    export type Raw =
         | "UNASSIGNED"
         | "DRAFT"
         | "NEW"

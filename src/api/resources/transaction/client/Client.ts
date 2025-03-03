@@ -10,20 +10,24 @@ import urlJoin from "url-join";
 import * as errors from "../../../../errors/index";
 
 export declare namespace Transaction {
-    interface Options {
+    export interface Options {
         environment?: core.Supplier<environments.MercoaEnvironment | string>;
+        /** Specify a custom URL to connect the client to. */
+        baseUrl?: core.Supplier<string>;
         token: core.Supplier<core.BearerToken>;
         /** Override the X-API-Version header */
         xApiVersion?: "2024-08-01";
     }
 
-    interface RequestOptions {
+    export interface RequestOptions {
         /** The maximum time to wait for a response in seconds. */
         timeoutInSeconds?: number;
         /** The number of times to retry the request. Defaults to 2. */
         maxRetries?: number;
         /** A hook to abort the request. */
         abortSignal?: AbortSignal;
+        /** Additional headers to include in the request. */
+        headers?: Record<string, string>;
         /** Override the X-API-Version header */
         xApiVersion?: "2024-08-01";
     }
@@ -55,7 +59,7 @@ export class Transaction {
      */
     public async find(
         request: Mercoa.FindTransactionsRequest = {},
-        requestOptions?: Transaction.RequestOptions
+        requestOptions?: Transaction.RequestOptions,
     ): Promise<Mercoa.FindTransactionsResponse> {
         const {
             entityId,
@@ -75,10 +79,12 @@ export class Transaction {
             status,
             transactionType,
         } = request;
-        const _queryParams: Record<string, string | string[] | object | object[]> = {};
+        const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
         if (entityId != null) {
             if (Array.isArray(entityId)) {
-                _queryParams["entityId"] = entityId.map((item) => item);
+                _queryParams["entityId"] = entityId.map((item) =>
+                    serializers.EntityId.jsonOrThrow(item, { unrecognizedObjectKeys: "strip" }),
+                );
             } else {
                 _queryParams["entityId"] = entityId;
             }
@@ -113,8 +119,8 @@ export class Transaction {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["request", "metadata"],
-                        })
-                    )
+                        }),
+                    ),
                 );
             } else {
                 _queryParams["metadata"] = serializers.MetadataFilter.jsonOrThrow(metadata, {
@@ -135,8 +141,8 @@ export class Transaction {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["request", "lineItemMetadata"],
-                        })
-                    )
+                        }),
+                    ),
                 );
             } else {
                 _queryParams["lineItemMetadata"] = serializers.MetadataFilter.jsonOrThrow(lineItemMetadata, {
@@ -158,7 +164,9 @@ export class Transaction {
 
         if (payerId != null) {
             if (Array.isArray(payerId)) {
-                _queryParams["payerId"] = payerId.map((item) => item);
+                _queryParams["payerId"] = payerId.map((item) =>
+                    serializers.EntityId.jsonOrThrow(item, { unrecognizedObjectKeys: "strip" }),
+                );
             } else {
                 _queryParams["payerId"] = payerId;
             }
@@ -166,7 +174,9 @@ export class Transaction {
 
         if (vendorId != null) {
             if (Array.isArray(vendorId)) {
-                _queryParams["vendorId"] = vendorId.map((item) => item);
+                _queryParams["vendorId"] = vendorId.map((item) =>
+                    serializers.EntityId.jsonOrThrow(item, { unrecognizedObjectKeys: "strip" }),
+                );
             } else {
                 _queryParams["vendorId"] = vendorId;
             }
@@ -174,7 +184,9 @@ export class Transaction {
 
         if (creatorUserId != null) {
             if (Array.isArray(creatorUserId)) {
-                _queryParams["creatorUserId"] = creatorUserId.map((item) => item);
+                _queryParams["creatorUserId"] = creatorUserId.map((item) =>
+                    serializers.EntityUserId.jsonOrThrow(item, { unrecognizedObjectKeys: "strip" }),
+                );
             } else {
                 _queryParams["creatorUserId"] = creatorUserId;
             }
@@ -182,7 +194,9 @@ export class Transaction {
 
         if (invoiceId != null) {
             if (Array.isArray(invoiceId)) {
-                _queryParams["invoiceId"] = invoiceId.map((item) => item);
+                _queryParams["invoiceId"] = invoiceId.map((item) =>
+                    serializers.InvoiceId.jsonOrThrow(item, { unrecognizedObjectKeys: "strip" }),
+                );
             } else {
                 _queryParams["invoiceId"] = invoiceId;
             }
@@ -190,7 +204,9 @@ export class Transaction {
 
         if (transactionId != null) {
             if (Array.isArray(transactionId)) {
-                _queryParams["transactionId"] = transactionId.map((item) => item);
+                _queryParams["transactionId"] = transactionId.map((item) =>
+                    serializers.TransactionId.jsonOrThrow(item, { unrecognizedObjectKeys: "strip" }),
+                );
             } else {
                 _queryParams["transactionId"] = transactionId;
             }
@@ -198,35 +214,46 @@ export class Transaction {
 
         if (status != null) {
             if (Array.isArray(status)) {
-                _queryParams["status"] = status.map((item) => item);
+                _queryParams["status"] = status.map((item) =>
+                    serializers.TransactionStatus.jsonOrThrow(item, { unrecognizedObjectKeys: "strip" }),
+                );
             } else {
-                _queryParams["status"] = status;
+                _queryParams["status"] = serializers.TransactionStatus.jsonOrThrow(status, {
+                    unrecognizedObjectKeys: "strip",
+                });
             }
         }
 
         if (transactionType != null) {
             if (Array.isArray(transactionType)) {
-                _queryParams["transactionType"] = transactionType.map((item) => item);
+                _queryParams["transactionType"] = transactionType.map((item) =>
+                    serializers.TransactionType.jsonOrThrow(item, { unrecognizedObjectKeys: "strip" }),
+                );
             } else {
-                _queryParams["transactionType"] = transactionType;
+                _queryParams["transactionType"] = serializers.TransactionType.jsonOrThrow(transactionType, {
+                    unrecognizedObjectKeys: "strip",
+                });
             }
         }
 
         const _response = await core.fetcher({
             url: urlJoin(
-                (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
-                "transactions"
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (await core.Supplier.get(this._options.environment)) ??
+                    environments.MercoaEnvironment.Production,
+                "transactions",
             ),
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.6.11",
-                "User-Agent": "@mercoa/javascript/0.6.11",
+                "X-Fern-SDK-Version": "0.6.12",
+                "User-Agent": "@mercoa/javascript/0.6.12",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...requestOptions?.headers,
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -253,7 +280,7 @@ export class Transaction {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "Unauthorized":
                     throw new Mercoa.Unauthorized(
@@ -262,7 +289,7 @@ export class Transaction {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "Forbidden":
                     throw new Mercoa.Forbidden(
@@ -271,7 +298,7 @@ export class Transaction {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "NotFound":
                     throw new Mercoa.NotFound(
@@ -280,7 +307,7 @@ export class Transaction {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "Conflict":
                     throw new Mercoa.Conflict(
@@ -289,7 +316,7 @@ export class Transaction {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "InternalServerError":
                     throw new Mercoa.InternalServerError(
@@ -298,7 +325,7 @@ export class Transaction {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "Unimplemented":
                     throw new Mercoa.Unimplemented(
@@ -307,7 +334,7 @@ export class Transaction {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 default:
                     throw new errors.MercoaError({
@@ -324,7 +351,7 @@ export class Transaction {
                     body: _response.error.rawBody,
                 });
             case "timeout":
-                throw new errors.MercoaTimeoutError();
+                throw new errors.MercoaTimeoutError("Timeout exceeded when calling GET /transactions.");
             case "unknown":
                 throw new errors.MercoaError({
                     message: _response.error.errorMessage,
@@ -351,23 +378,26 @@ export class Transaction {
      */
     public async get(
         transactionId: Mercoa.TransactionId,
-        requestOptions?: Transaction.RequestOptions
+        requestOptions?: Transaction.RequestOptions,
     ): Promise<Mercoa.TransactionResponse> {
         const _response = await core.fetcher({
             url: urlJoin(
-                (await core.Supplier.get(this._options.environment)) ?? environments.MercoaEnvironment.Production,
-                `transaction/${encodeURIComponent(serializers.TransactionId.jsonOrThrow(transactionId))}`
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (await core.Supplier.get(this._options.environment)) ??
+                    environments.MercoaEnvironment.Production,
+                `transaction/${encodeURIComponent(serializers.TransactionId.jsonOrThrow(transactionId))}`,
             ),
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.6.11",
-                "User-Agent": "@mercoa/javascript/0.6.11",
+                "X-Fern-SDK-Version": "0.6.12",
+                "User-Agent": "@mercoa/javascript/0.6.12",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...requestOptions?.headers,
             },
             contentType: "application/json",
             requestType: "json",
@@ -393,7 +423,7 @@ export class Transaction {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "Unauthorized":
                     throw new Mercoa.Unauthorized(
@@ -402,7 +432,7 @@ export class Transaction {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "Forbidden":
                     throw new Mercoa.Forbidden(
@@ -411,7 +441,7 @@ export class Transaction {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "NotFound":
                     throw new Mercoa.NotFound(
@@ -420,7 +450,7 @@ export class Transaction {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "Conflict":
                     throw new Mercoa.Conflict(
@@ -429,7 +459,7 @@ export class Transaction {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "InternalServerError":
                     throw new Mercoa.InternalServerError(
@@ -438,7 +468,7 @@ export class Transaction {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 case "Unimplemented":
                     throw new Mercoa.Unimplemented(
@@ -447,7 +477,7 @@ export class Transaction {
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
                             breadcrumbsPrefix: ["response"],
-                        })
+                        }),
                     );
                 default:
                     throw new errors.MercoaError({
@@ -464,7 +494,7 @@ export class Transaction {
                     body: _response.error.rawBody,
                 });
             case "timeout":
-                throw new errors.MercoaTimeoutError();
+                throw new errors.MercoaTimeoutError("Timeout exceeded when calling GET /transaction/{transactionId}.");
             case "unknown":
                 throw new errors.MercoaError({
                     message: _response.error.errorMessage,

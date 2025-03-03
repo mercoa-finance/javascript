@@ -24,16 +24,16 @@ export type PaymentMethodFee =
      * The default fee for the payment method based on your organization's default fee. */
     | Mercoa.PaymentMethodFee.Default;
 
-export declare namespace PaymentMethodFee {
-    interface Percentage extends Mercoa.PercentageFee {
+export namespace PaymentMethodFee {
+    export interface Percentage extends Mercoa.PercentageFee {
         type: "percentage";
     }
 
-    interface Flat extends Mercoa.FlatFee {
+    export interface Flat extends Mercoa.FlatFee {
         type: "flat";
     }
 
-    interface Default extends Mercoa.DefaultFee {
+    export interface Default extends Mercoa.DefaultFee {
         type: "default";
     }
 }

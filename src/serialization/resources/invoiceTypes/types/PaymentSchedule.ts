@@ -25,30 +25,30 @@ export const PaymentSchedule: core.serialization.Schema<serializers.PaymentSched
         });
 
 export declare namespace PaymentSchedule {
-    type Raw =
+    export type Raw =
         | PaymentSchedule.OneTime
         | PaymentSchedule.Daily
         | PaymentSchedule.Weekly
         | PaymentSchedule.Monthly
         | PaymentSchedule.Yearly;
 
-    interface OneTime extends PaymentScheduleBase.Raw {
+    export interface OneTime extends PaymentScheduleBase.Raw {
         type: "oneTime";
     }
 
-    interface Daily extends PaymentScheduleBase.Raw {
+    export interface Daily extends PaymentScheduleBase.Raw {
         type: "daily";
     }
 
-    interface Weekly extends PaymentWeekSchedule.Raw {
+    export interface Weekly extends PaymentWeekSchedule.Raw {
         type: "weekly";
     }
 
-    interface Monthly extends PaymentMonthSchedule.Raw {
+    export interface Monthly extends PaymentMonthSchedule.Raw {
         type: "monthly";
     }
 
-    interface Yearly extends PaymentYearSchedule.Raw {
+    export interface Yearly extends PaymentYearSchedule.Raw {
         type: "yearly";
     }
 }

@@ -3,7 +3,6 @@
  */
 
 export type InvoiceMetricsPerDateGroupBy = "CREATION_DATE" | "DUE_DATE" | "INVOICE_DATE" | "DEDUCTION_DATE";
-
 export const InvoiceMetricsPerDateGroupBy = {
     CreationDate: "CREATION_DATE",
     DueDate: "DUE_DATE",

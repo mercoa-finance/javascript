@@ -13,5 +13,5 @@ export const BulkEntityCreationRequest: core.serialization.Schema<
 > = core.serialization.undiscriminatedUnion([BulkEntityCreationFromObject]);
 
 export declare namespace BulkEntityCreationRequest {
-    type Raw = BulkEntityCreationFromObject.Raw;
+    export type Raw = BulkEntityCreationFromObject.Raw;
 }

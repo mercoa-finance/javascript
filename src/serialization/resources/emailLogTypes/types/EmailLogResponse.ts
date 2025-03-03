@@ -17,7 +17,7 @@ export const EmailLogResponse: core.serialization.ObjectSchema<
 });
 
 export declare namespace EmailLogResponse {
-    interface Raw {
+    export interface Raw {
         count: number;
         hasMore: boolean;
         data: EmailLog.Raw[];

@@ -17,7 +17,7 @@ export const CounterpartyInvoiceMetricsStatusResponse: core.serialization.Object
 });
 
 export declare namespace CounterpartyInvoiceMetricsStatusResponse {
-    interface Raw {
+    export interface Raw {
         status: InvoiceStatus.Raw;
         totalCount: number;
         totalAmount: number;

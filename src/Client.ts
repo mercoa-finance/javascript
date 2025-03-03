@@ -18,95 +18,88 @@ import { PaymentMethods } from "./api/resources/paymentMethods/client/Client";
 import { Transaction } from "./api/resources/transaction/client/Client";
 
 export declare namespace MercoaClient {
-    interface Options {
+    export interface Options {
         environment?: core.Supplier<environments.MercoaEnvironment | string>;
+        /** Specify a custom URL to connect the client to. */
+        baseUrl?: core.Supplier<string>;
         token: core.Supplier<core.BearerToken>;
         /** Override the X-API-Version header */
         xApiVersion?: "2024-08-01";
     }
 
-    interface RequestOptions {
+    export interface RequestOptions {
         /** The maximum time to wait for a response in seconds. */
         timeoutInSeconds?: number;
         /** The number of times to retry the request. Defaults to 2. */
         maxRetries?: number;
         /** A hook to abort the request. */
         abortSignal?: AbortSignal;
+        /** Additional headers to include in the request. */
+        headers?: Record<string, string>;
         /** Override the X-API-Version header */
         xApiVersion?: "2024-08-01";
     }
 }
 
 export class MercoaClient {
-    constructor(protected readonly _options: MercoaClient.Options) {}
-
     protected _contract: Contract | undefined;
+    protected _entityGroup: EntityGroup | undefined;
+    protected _entity: Entity | undefined;
+    protected _invoiceTemplate: InvoiceTemplate | undefined;
+    protected _invoice: Invoice | undefined;
+    protected _organization: Organization | undefined;
+    protected _bankLookup: BankLookup | undefined;
+    protected _calculate: Calculate | undefined;
+    protected _customPaymentMethodSchema: CustomPaymentMethodSchema | undefined;
+    protected _ocr: Ocr | undefined;
+    protected _paymentMethods: PaymentMethods | undefined;
+    protected _transaction: Transaction | undefined;
+
+    constructor(protected readonly _options: MercoaClient.Options) {}
 
     public get contract(): Contract {
         return (this._contract ??= new Contract(this._options));
     }
 
-    protected _entityGroup: EntityGroup | undefined;
-
     public get entityGroup(): EntityGroup {
         return (this._entityGroup ??= new EntityGroup(this._options));
     }
-
-    protected _entity: Entity | undefined;
 
     public get entity(): Entity {
         return (this._entity ??= new Entity(this._options));
     }
 
-    protected _invoiceTemplate: InvoiceTemplate | undefined;
-
     public get invoiceTemplate(): InvoiceTemplate {
         return (this._invoiceTemplate ??= new InvoiceTemplate(this._options));
     }
-
-    protected _invoice: Invoice | undefined;
 
     public get invoice(): Invoice {
         return (this._invoice ??= new Invoice(this._options));
     }
 
-    protected _organization: Organization | undefined;
-
     public get organization(): Organization {
         return (this._organization ??= new Organization(this._options));
     }
-
-    protected _bankLookup: BankLookup | undefined;
 
     public get bankLookup(): BankLookup {
         return (this._bankLookup ??= new BankLookup(this._options));
     }
 
-    protected _calculate: Calculate | undefined;
-
     public get calculate(): Calculate {
         return (this._calculate ??= new Calculate(this._options));
     }
-
-    protected _customPaymentMethodSchema: CustomPaymentMethodSchema | undefined;
 
     public get customPaymentMethodSchema(): CustomPaymentMethodSchema {
         return (this._customPaymentMethodSchema ??= new CustomPaymentMethodSchema(this._options));
     }
 
-    protected _ocr: Ocr | undefined;
-
     public get ocr(): Ocr {
         return (this._ocr ??= new Ocr(this._options));
     }
 
-    protected _paymentMethods: PaymentMethods | undefined;
-
     public get paymentMethods(): PaymentMethods {
         return (this._paymentMethods ??= new PaymentMethods(this._options));
     }
-
-    protected _transaction: Transaction | undefined;
 
     public get transaction(): Transaction {
         return (this._transaction ??= new Transaction(this._options));

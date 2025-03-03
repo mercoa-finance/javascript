@@ -14,7 +14,7 @@ export const RutterCompanyCreationRequest: core.serialization.ObjectSchema<
 });
 
 export declare namespace RutterCompanyCreationRequest {
-    interface Raw {
+    export interface Raw {
         accessToken?: string | null;
     }
 }

@@ -16,7 +16,7 @@ export const EntityWebhook: core.serialization.ObjectSchema<serializers.EntityWe
     });
 
 export declare namespace EntityWebhook {
-    interface Raw {
+    export interface Raw {
         eventType: string;
         entity: EntityResponse.Raw;
         user?: EntityUserResponse.Raw | null;

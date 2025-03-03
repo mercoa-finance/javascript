@@ -3,7 +3,6 @@
  */
 
 export type InvoiceMetricsPerDateFrequency = "DAILY" | "WEEKLY" | "MONTHLY" | "YEARLY";
-
 export const InvoiceMetricsPerDateFrequency = {
     Daily: "DAILY",
     Weekly: "WEEKLY",

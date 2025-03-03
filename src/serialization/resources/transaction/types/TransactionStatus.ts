@@ -19,5 +19,5 @@ export const TransactionStatus: core.serialization.Schema<serializers.Transactio
     ]);
 
 export declare namespace TransactionStatus {
-    type Raw = "CREATED" | "PENDING" | "COMPLETED" | "FAILED" | "REVERSED" | "QUEUED" | "CANCELED" | "RETURNED";
+    export type Raw = "CREATED" | "PENDING" | "COMPLETED" | "FAILED" | "REVERSED" | "QUEUED" | "CANCELED" | "RETURNED";
 }

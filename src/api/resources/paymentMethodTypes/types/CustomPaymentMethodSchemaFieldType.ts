@@ -13,7 +13,6 @@ export type CustomPaymentMethodSchemaFieldType =
     | "address"
     | "usBankRoutingNumber"
     | "usBankAccountNumber";
-
 export const CustomPaymentMethodSchemaFieldType = {
     Text: "text",
     Number: "number",

@@ -15,7 +15,7 @@ export const OcrAsyncResponse: core.serialization.ObjectSchema<
 });
 
 export declare namespace OcrAsyncResponse {
-    interface Raw {
+    export interface Raw {
         jobId: OcrJobId.Raw;
     }
 }

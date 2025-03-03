@@ -22,7 +22,7 @@ export const ApprovalPolicyResponse: core.serialization.ObjectSchema<
 });
 
 export declare namespace ApprovalPolicyResponse {
-    interface Raw {
+    export interface Raw {
         id: ApprovalPolicyId.Raw;
         trigger: Trigger.Raw[];
         rule: Rule.Raw;

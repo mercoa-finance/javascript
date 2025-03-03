@@ -28,7 +28,7 @@ export const ContractResponse: core.serialization.ObjectSchema<
 });
 
 export declare namespace ContractResponse {
-    interface Raw {
+    export interface Raw {
         id: ContractId.Raw;
         summary: string;
         recurrences: ContractRecurrenceResponse.Raw[];

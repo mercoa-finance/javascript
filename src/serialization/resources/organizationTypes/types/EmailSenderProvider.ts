@@ -12,5 +12,5 @@ export const EmailSenderProvider: core.serialization.Schema<
 > = core.serialization.enum_(["none", "sendgrid", "ses", "resend", "cloudmailin"]);
 
 export declare namespace EmailSenderProvider {
-    type Raw = "none" | "sendgrid" | "ses" | "resend" | "cloudmailin";
+    export type Raw = "none" | "sendgrid" | "ses" | "resend" | "cloudmailin";
 }

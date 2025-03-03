@@ -20,7 +20,7 @@ export const BusinessType: core.serialization.Schema<serializers.BusinessType.Ra
     ]);
 
 export declare namespace BusinessType {
-    type Raw =
+    export type Raw =
         | "soleProprietorship"
         | "unincorporatedAssociation"
         | "trust"

@@ -14,7 +14,7 @@ export const MetadataFilter: core.serialization.ObjectSchema<serializers.Metadat
     });
 
 export declare namespace MetadataFilter {
-    interface Raw {
+    export interface Raw {
         key: string;
         value: StringOrStringArray.Raw;
     }

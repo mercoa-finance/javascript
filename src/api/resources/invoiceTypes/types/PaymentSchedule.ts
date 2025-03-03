@@ -45,24 +45,24 @@ export type PaymentSchedule =
     | Mercoa.PaymentSchedule.Monthly
     | Mercoa.PaymentSchedule.Yearly;
 
-export declare namespace PaymentSchedule {
-    interface OneTime extends Mercoa.PaymentScheduleBase {
+export namespace PaymentSchedule {
+    export interface OneTime extends Mercoa.PaymentScheduleBase {
         type: "oneTime";
     }
 
-    interface Daily extends Mercoa.PaymentScheduleBase {
+    export interface Daily extends Mercoa.PaymentScheduleBase {
         type: "daily";
     }
 
-    interface Weekly extends Mercoa.PaymentWeekSchedule {
+    export interface Weekly extends Mercoa.PaymentWeekSchedule {
         type: "weekly";
     }
 
-    interface Monthly extends Mercoa.PaymentMonthSchedule {
+    export interface Monthly extends Mercoa.PaymentMonthSchedule {
         type: "monthly";
     }
 
-    interface Yearly extends Mercoa.PaymentYearSchedule {
+    export interface Yearly extends Mercoa.PaymentYearSchedule {
         type: "yearly";
     }
 }

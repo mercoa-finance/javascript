@@ -17,7 +17,7 @@ export const AssociatedApprovalAction: core.serialization.ObjectSchema<
 });
 
 export declare namespace AssociatedApprovalAction {
-    interface Raw {
+    export interface Raw {
         userId: EntityUserId.Raw;
         action: ApproverAction.Raw;
     }

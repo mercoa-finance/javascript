@@ -20,5 +20,14 @@ export const PaymentMethodType: core.serialization.Schema<serializers.PaymentMet
     ]);
 
 export declare namespace PaymentMethodType {
-    type Raw = "custom" | "check" | "bankAccount" | "na" | "card" | "bnpl" | "virtualCard" | "offPlatform" | "utility";
+    export type Raw =
+        | "custom"
+        | "check"
+        | "bankAccount"
+        | "na"
+        | "card"
+        | "bnpl"
+        | "virtualCard"
+        | "offPlatform"
+        | "utility";
 }

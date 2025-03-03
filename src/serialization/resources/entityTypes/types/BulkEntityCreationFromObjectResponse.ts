@@ -16,7 +16,7 @@ export const BulkEntityCreationFromObjectResponse: core.serialization.ObjectSche
 });
 
 export declare namespace BulkEntityCreationFromObjectResponse {
-    interface Raw {
+    export interface Raw {
         id?: string | null;
         foreignId?: string | null;
         error?: string | null;

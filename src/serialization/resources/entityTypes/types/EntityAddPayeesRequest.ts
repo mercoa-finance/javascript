@@ -17,7 +17,7 @@ export const EntityAddPayeesRequest: core.serialization.ObjectSchema<
 });
 
 export declare namespace EntityAddPayeesRequest {
-    interface Raw {
+    export interface Raw {
         payees: EntityId.Raw[];
         customizations?: CounterpartyCustomizationRequest.Raw[] | null;
     }

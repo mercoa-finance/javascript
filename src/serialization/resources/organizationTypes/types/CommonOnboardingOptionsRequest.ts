@@ -22,7 +22,7 @@ export const CommonOnboardingOptionsRequest: core.serialization.ObjectSchema<
 });
 
 export declare namespace CommonOnboardingOptionsRequest {
-    interface Raw {
+    export interface Raw {
         termsOfService?: OnboardingOptionRequest.Raw | null;
         email?: OnboardingOptionRequest.Raw | null;
         name?: OnboardingOptionRequest.Raw | null;

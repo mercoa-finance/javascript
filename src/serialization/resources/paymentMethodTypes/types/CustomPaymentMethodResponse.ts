@@ -25,7 +25,7 @@ export const CustomPaymentMethodResponse: core.serialization.ObjectSchema<
     .extend(PaymentMethodBaseResponse);
 
 export declare namespace CustomPaymentMethodResponse {
-    interface Raw extends PaymentMethodBaseResponse.Raw {
+    export interface Raw extends PaymentMethodBaseResponse.Raw {
         foreignId?: string | null;
         accountName?: string | null;
         accountNumber?: string | null;

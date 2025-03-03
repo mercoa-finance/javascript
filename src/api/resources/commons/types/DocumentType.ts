@@ -3,7 +3,6 @@
  */
 
 export type DocumentType = "INVOICE" | "TEN_NINETY_NINE" | "W9" | "CHECK" | "BANK_STATEMENT" | "CONTRACT" | "OTHER";
-
 export const DocumentType = {
     Invoice: "INVOICE",
     TenNinetyNine: "TEN_NINETY_NINE",

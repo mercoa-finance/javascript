@@ -14,7 +14,7 @@ export const RutterCompanyResponse: core.serialization.ObjectSchema<
 });
 
 export declare namespace RutterCompanyResponse {
-    interface Raw {
+    export interface Raw {
         accessToken: string;
     }
 }

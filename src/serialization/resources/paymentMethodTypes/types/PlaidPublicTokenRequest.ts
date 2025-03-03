@@ -15,7 +15,7 @@ export const PlaidPublicTokenRequest: core.serialization.ObjectSchema<
 });
 
 export declare namespace PlaidPublicTokenRequest {
-    interface Raw {
+    export interface Raw {
         accountId?: string | null;
         publicToken: string;
     }

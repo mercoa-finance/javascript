@@ -20,7 +20,7 @@ export const InvoiceTemplateUpdateRequest: core.serialization.ObjectSchema<
     .extend(InvoiceTemplateRequestBase);
 
 export declare namespace InvoiceTemplateUpdateRequest {
-    interface Raw extends InvoiceTemplateRequestBase.Raw {
+    export interface Raw extends InvoiceTemplateRequestBase.Raw {
         lineItems?: InvoiceLineItemUpdateRequest.Raw[] | null;
         creatorEntityId?: EntityId.Raw | null;
     }

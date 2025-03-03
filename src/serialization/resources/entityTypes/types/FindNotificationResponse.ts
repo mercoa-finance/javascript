@@ -17,7 +17,7 @@ export const FindNotificationResponse: core.serialization.ObjectSchema<
 });
 
 export declare namespace FindNotificationResponse {
-    interface Raw {
+    export interface Raw {
         count: number;
         hasMore: boolean;
         data: NotificationResponse.Raw[];

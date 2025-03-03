@@ -17,7 +17,7 @@ export const FindVendorCreditResponse: core.serialization.ObjectSchema<
 });
 
 export declare namespace FindVendorCreditResponse {
-    interface Raw {
+    export interface Raw {
         count: number;
         hasMore: boolean;
         data: VendorCreditResponse.Raw[];

@@ -28,7 +28,7 @@ export const TransactionResponseWithoutInvoices: core.serialization.Schema<
     });
 
 export declare namespace TransactionResponseWithoutInvoices {
-    type Raw =
+    export type Raw =
         | TransactionResponseWithoutInvoices.BankAccountToBankAccount
         | TransactionResponseWithoutInvoices.BankAccountToMailedCheck
         | TransactionResponseWithoutInvoices.BankAccountToWallet
@@ -37,31 +37,31 @@ export declare namespace TransactionResponseWithoutInvoices {
         | TransactionResponseWithoutInvoices.Custom
         | TransactionResponseWithoutInvoices.OffPlatform;
 
-    interface BankAccountToBankAccount extends TransactionResponseAchBase.Raw {
+    export interface BankAccountToBankAccount extends TransactionResponseAchBase.Raw {
         type: "bankAccountToBankAccount";
     }
 
-    interface BankAccountToMailedCheck extends TransactionResponseMailedCheckBase.Raw {
+    export interface BankAccountToMailedCheck extends TransactionResponseMailedCheckBase.Raw {
         type: "bankAccountToMailedCheck";
     }
 
-    interface BankAccountToWallet extends TransactionResponseAchBase.Raw {
+    export interface BankAccountToWallet extends TransactionResponseAchBase.Raw {
         type: "bankAccountToWallet";
     }
 
-    interface CardToWallet extends TransactionResponseBase.Raw {
+    export interface CardToWallet extends TransactionResponseBase.Raw {
         type: "cardToWallet";
     }
 
-    interface WalletToBankAccount extends TransactionResponseAchBase.Raw {
+    export interface WalletToBankAccount extends TransactionResponseAchBase.Raw {
         type: "walletToBankAccount";
     }
 
-    interface Custom extends TransactionResponseBase.Raw {
+    export interface Custom extends TransactionResponseBase.Raw {
         type: "custom";
     }
 
-    interface OffPlatform extends TransactionResponseBase.Raw {
+    export interface OffPlatform extends TransactionResponseBase.Raw {
         type: "offPlatform";
     }
 }

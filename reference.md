@@ -3131,7 +3131,7 @@ Get an email log by ID
 ```typescript
 await client.entity.emailLog.get(
     "ent_8545a84e-a45f-41bf-bdf1-33b42a55812c",
-    "log_8545a84e-a45f-41bf-bdf1-33b42a55812c"
+    "log_8545a84e-a45f-41bf-bdf1-33b42a55812c",
 );
 ```
 
@@ -3309,7 +3309,7 @@ await client.entity.paymentMethod.create("ent_8545a84e-a45f-41bf-bdf1-33b42a5581
 ```typescript
 await client.entity.paymentMethod.get(
     "ent_8545a84e-a45f-41bf-bdf1-33b42a55812c",
-    "pm_4794d597-70dc-4fec-b6ec-c5988e759769"
+    "pm_4794d597-70dc-4fec-b6ec-c5988e759769",
 );
 ```
 
@@ -3388,7 +3388,7 @@ await client.entity.paymentMethod.update(
         type: "bankAccount",
         defaultSource: true,
         defaultDestination: true,
-    }
+    },
 );
 ```
 
@@ -3470,7 +3470,7 @@ Mark a payment method as inactive. This will not remove the payment method from 
 ```typescript
 await client.entity.paymentMethod.delete(
     "ent_8545a84e-a45f-41bf-bdf1-33b42a55812c",
-    "pm_4794d597-70dc-4fec-b6ec-c5988e759769"
+    "pm_4794d597-70dc-4fec-b6ec-c5988e759769",
 );
 ```
 
@@ -3893,7 +3893,7 @@ await client.entity.user.update(
         email: "john.doe@acme.com",
         name: "John Doe",
         roles: ["admin", "approver"],
-    }
+    },
 );
 ```
 
@@ -4049,7 +4049,7 @@ await client.entity.user.getToken(
     "user_a0f6ea94-0761-4a5e-a416-3c453cb7eced",
     {
         expiresIn: "1h",
-    }
+    },
 );
 ```
 
@@ -4507,7 +4507,7 @@ await client.invoiceTemplate.lineItem.update(
             key2: "value2",
         },
         glAccountId: "600394",
-    }
+    },
 );
 ```
 
@@ -5030,7 +5030,7 @@ await client.invoice.lineItem.update(
             key2: "value2",
         },
         glAccountId: "600394",
-    }
+    },
 );
 ```
 
@@ -6202,7 +6202,7 @@ Retrieve an invoice approval policy associated with an entity
 ```typescript
 await client.entity.approvalPolicy.get(
     "ent_8545a84e-a45f-41bf-bdf1-33b42a55812c",
-    "apvl_5ce50275-1789-42ea-bc60-bb7e6d03635c"
+    "apvl_5ce50275-1789-42ea-bc60-bb7e6d03635c",
 );
 ```
 
@@ -6294,7 +6294,7 @@ await client.entity.approvalPolicy.update(
             },
         },
         upstreamPolicyId: "root",
-    }
+    },
 );
 ```
 
@@ -6376,7 +6376,7 @@ Delete an invoice approval policy associated with Entity. BEWARE: Any approval p
 ```typescript
 await client.entity.approvalPolicy.delete(
     "ent_8545a84e-a45f-41bf-bdf1-33b42a55812c",
-    "apvl_5ce50275-1789-42ea-bc60-bb7e6d03635c"
+    "apvl_5ce50275-1789-42ea-bc60-bb7e6d03635c",
 );
 ```
 
@@ -6544,7 +6544,7 @@ await client.entity.bulk.create({
 ```typescript
 await client.entity.counterparty.vendorCredit.getAll(
     "ent_8545a84e-a45f-41bf-bdf1-33b42a55812c",
-    "ent_21661ac1-a2a8-4465-a6c0-64474ba8181d"
+    "ent_21661ac1-a2a8-4465-a6c0-64474ba8181d",
 );
 ```
 
@@ -6604,7 +6604,7 @@ await client.entity.counterparty.vendorCredit.getAll(
 await client.entity.counterparty.vendorCredit.get(
     "ent_8545a84e-a45f-41bf-bdf1-33b42a55812c",
     "ent_21661ac1-a2a8-4465-a6c0-64474ba8181d",
-    "vcr_c3f4c87d-794d-4543-9562-575cdddfc0d7"
+    "vcr_c3f4c87d-794d-4543-9562-575cdddfc0d7",
 );
 ```
 
@@ -6676,7 +6676,7 @@ await client.entity.counterparty.vendorCredit.create(
         totalAmount: 100,
         currency: "USD",
         note: "This is a note",
-    }
+    },
 );
 ```
 
@@ -6744,7 +6744,7 @@ await client.entity.counterparty.vendorCredit.create(
 await client.entity.counterparty.vendorCredit.delete(
     "ent_8545a84e-a45f-41bf-bdf1-33b42a55812c",
     "ent_21661ac1-a2a8-4465-a6c0-64474ba8181d",
-    "vcr_c3f4c87d-794d-4543-9562-575cdddfc0d7"
+    "vcr_c3f4c87d-794d-4543-9562-575cdddfc0d7",
 );
 ```
 
@@ -6830,7 +6830,7 @@ await client.entity.counterparty.vendorCredit.estimateUsage(
     {
         amount: 150,
         currency: "USD",
-    }
+    },
 );
 ```
 
@@ -7336,7 +7336,7 @@ Delete a document associated with this entity
 ```typescript
 await client.entity.document.delete(
     "ent_26e7b5d3-a739-4b23-9ad9-6aaa085f47a9",
-    "doc_37e6af0a-e637-48fd-b825-d6947b38c4e2"
+    "doc_37e6af0a-e637-48fd-b825-d6947b38c4e2",
 );
 ```
 
@@ -7537,7 +7537,7 @@ Get entity email template
 ```typescript
 await client.entity.emailTemplate.get(
     "ent_a0f6ea94-0761-4a5e-a416-3c453cb7eced",
-    "emt_8545a84e-a45f-41bf-bdf1-33b42a55812c"
+    "emt_8545a84e-a45f-41bf-bdf1-33b42a55812c",
 );
 ```
 
@@ -7618,7 +7618,7 @@ await client.entity.emailTemplate.update(
         subject: "Action Required - Your payment is due",
         content: "<h1>Your invoice has been sent.</h1>",
         isDefault: true,
-    }
+    },
 );
 ```
 
@@ -8713,7 +8713,7 @@ Initiate micro deposits for a bank account
 ```typescript
 await client.entity.paymentMethod.bankAccount.initiateMicroDeposits(
     "ent_8545a84e-a45f-41bf-bdf1-33b42a55812c",
-    "pm_4794d597-70dc-4fec-b6ec-c5988e759769"
+    "pm_4794d597-70dc-4fec-b6ec-c5988e759769",
 );
 ```
 
@@ -8790,7 +8790,7 @@ await client.entity.paymentMethod.bankAccount.completeMicroDeposits(
     "pm_4794d597-70dc-4fec-b6ec-c5988e759769",
     {
         amounts: [40, 2],
-    }
+    },
 );
 ```
 
@@ -8872,7 +8872,7 @@ Get the available and pending balance of this entity's acceleration funds. The s
 ```typescript
 await client.entity.paymentMethod.bankAccount.getAccelerationFunds(
     "ent_8545a84e-a45f-41bf-bdf1-33b42a55812c",
-    "pm_4794d597-70dc-4fec-b6ec-c5988e759769"
+    "pm_4794d597-70dc-4fec-b6ec-c5988e759769",
 );
 ```
 
@@ -8950,7 +8950,7 @@ await client.entity.paymentMethod.bankAccount.addAccelerationFunds(
     {
         amount: 100,
         currency: "USD",
-    }
+    },
 );
 ```
 
@@ -9036,7 +9036,7 @@ await client.entity.paymentMethod.bankAccount.removeAccelerationFunds(
     {
         amount: 100,
         currency: "USD",
-    }
+    },
 );
 ```
 
@@ -9257,7 +9257,7 @@ await client.entity.representative.create("ent_8545a84e-a45f-41bf-bdf1-33b42a558
 ```typescript
 await client.entity.representative.get(
     "ent_8545a84e-a45f-41bf-bdf1-33b42a55812c",
-    "rep_7df2974a-4069-454c-912f-7e58ebe030fb"
+    "rep_7df2974a-4069-454c-912f-7e58ebe030fb",
 );
 ```
 
@@ -9350,7 +9350,7 @@ await client.entity.representative.update(
             ownershipPercentage: 40,
             isController: true,
         },
-    }
+    },
 );
 ```
 
@@ -9417,7 +9417,7 @@ await client.entity.representative.update(
 ```typescript
 await client.entity.representative.delete(
     "ent_8545a84e-a45f-41bf-bdf1-33b42a55812c",
-    "rep_7df2974a-4069-454c-912f-7e58ebe030fb"
+    "rep_7df2974a-4069-454c-912f-7e58ebe030fb",
 );
 ```
 
@@ -9493,7 +9493,7 @@ Retrieve all notification policies associated with this entity user
 ```typescript
 await client.entity.user.notificationPolicy.getAll(
     "ent_8545a84e-a45f-41bf-bdf1-33b42a55812c",
-    "user_e24fc81c-c5ee-47e8-af42-4fe29d895506"
+    "user_e24fc81c-c5ee-47e8-af42-4fe29d895506",
 );
 ```
 
@@ -9568,7 +9568,7 @@ Retrieve notification policy associated with this entity user
 await client.entity.user.notificationPolicy.get(
     "ent_8545a84e-a45f-41bf-bdf1-33b42a55812c",
     "user_e24fc81c-c5ee-47e8-af42-4fe29d895506",
-    "INVOICE_APPROVED"
+    "INVOICE_APPROVED",
 );
 ```
 
@@ -9654,7 +9654,7 @@ await client.entity.user.notificationPolicy.update(
     "INVOICE_APPROVED",
     {
         disabled: true,
-    }
+    },
 );
 ```
 
@@ -9731,7 +9731,7 @@ await client.entity.user.notificationPolicy.update(
 ```typescript
 await client.entity.user.notifications.find(
     "ent_8545a84e-a45f-41bf-bdf1-33b42a55812c",
-    "user_e24fc81c-c5ee-47e8-af42-4fe29d895506"
+    "user_e24fc81c-c5ee-47e8-af42-4fe29d895506",
 );
 ```
 
@@ -9799,7 +9799,7 @@ await client.entity.user.notifications.find(
 await client.entity.user.notifications.get(
     "ent_8545a84e-a45f-41bf-bdf1-33b42a55812c",
     "user_e24fc81c-c5ee-47e8-af42-4fe29d895506",
-    "notif_7df2974a-4069-454c-912f-7e58ebe030fb"
+    "notif_7df2974a-4069-454c-912f-7e58ebe030fb",
 );
 ```
 
@@ -9885,7 +9885,7 @@ await client.entity.user.notifications.update(
     "notif_7df2974a-4069-454c-912f-7e58ebe030fb",
     {
         status: "READ",
-    }
+    },
 );
 ```
 
@@ -10316,7 +10316,7 @@ Delete an attachment (scanned/uploaded PDFs and images) associated with this inv
 ```typescript
 await client.invoiceTemplate.document.delete(
     "invt_13c07096-5848-4aeb-ae7d-6576289034c4",
-    "doc_37e6af0a-e637-48fd-b825-d6947b38c4e2"
+    "doc_37e6af0a-e637-48fd-b825-d6947b38c4e2",
 );
 ```
 
@@ -11281,7 +11281,7 @@ await client.invoice.comment.update(
     {
         text: "This is a comment",
         userId: "user_e24fc81c-c5ee-47e8-af42-4fe29d895506",
-    }
+    },
 );
 ```
 
@@ -11363,7 +11363,7 @@ Delete a comment on this invoice
 ```typescript
 await client.invoice.comment.delete(
     "in_3d61faa9-1754-4b7b-9fcb-88ff97f368ff",
-    "ic_3d61faa9-1754-4b7b-9fcb-88ff97f368ff"
+    "ic_3d61faa9-1754-4b7b-9fcb-88ff97f368ff",
 );
 ```
 
@@ -11584,7 +11584,7 @@ Delete an attachment (scanned/uploaded PDFs and images) associated with this inv
 ```typescript
 await client.invoice.document.delete(
     "in_26e7b5d3-a739-4b23-9ad9-6aaa085f47a9",
-    "doc_37e6af0a-e637-48fd-b825-d6947b38c4e2"
+    "doc_37e6af0a-e637-48fd-b825-d6947b38c4e2",
 );
 ```
 

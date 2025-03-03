@@ -17,7 +17,7 @@ export const AddApproverRequest: core.serialization.ObjectSchema<
 });
 
 export declare namespace AddApproverRequest {
-    interface Raw {
+    export interface Raw {
         approvalSlotId?: ApprovalSlotId.Raw | null;
         userId: EntityUserId.Raw;
     }

@@ -12,5 +12,5 @@ export const LineItemAvailabilities: core.serialization.Schema<
 > = core.serialization.enum_(["DISABLED", "OPTIONAL", "REQUIRED"]);
 
 export declare namespace LineItemAvailabilities {
-    type Raw = "DISABLED" | "OPTIONAL" | "REQUIRED";
+    export type Raw = "DISABLED" | "OPTIONAL" | "REQUIRED";
 }

@@ -12,7 +12,7 @@ export const IndustryCodes: core.serialization.ObjectSchema<serializers.Industry
     });
 
 export declare namespace IndustryCodes {
-    interface Raw {
+    export interface Raw {
         mcc?: string | null;
     }
 }

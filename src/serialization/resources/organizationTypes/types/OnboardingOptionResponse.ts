@@ -16,7 +16,7 @@ export const OnboardingOptionResponse: core.serialization.ObjectSchema<
 });
 
 export declare namespace OnboardingOptionResponse {
-    interface Raw {
+    export interface Raw {
         show: boolean;
         edit: boolean;
         required: boolean;

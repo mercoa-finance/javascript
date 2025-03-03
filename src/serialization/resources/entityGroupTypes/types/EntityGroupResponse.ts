@@ -21,7 +21,7 @@ export const EntityGroupResponse: core.serialization.ObjectSchema<
 });
 
 export declare namespace EntityGroupResponse {
-    interface Raw {
+    export interface Raw {
         id: EntityGroupId.Raw;
         foreignId?: string | null;
         name?: string | null;

@@ -15,7 +15,7 @@ export const BulkInvoiceCreationRequest: core.serialization.ObjectSchema<
 });
 
 export declare namespace BulkInvoiceCreationRequest {
-    interface Raw {
+    export interface Raw {
         invoices: InvoiceCreationRequest.Raw[];
     }
 }

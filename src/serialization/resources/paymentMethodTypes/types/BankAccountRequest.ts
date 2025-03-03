@@ -26,7 +26,7 @@ export const BankAccountRequest: core.serialization.ObjectSchema<
     .extend(PaymentMethodBaseRequest);
 
 export declare namespace BankAccountRequest {
-    interface Raw extends PaymentMethodBaseRequest.Raw {
+    export interface Raw extends PaymentMethodBaseRequest.Raw {
         accountName?: string | null;
         bankName?: string | null;
         routingNumber: string;

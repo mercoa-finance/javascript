@@ -9,7 +9,6 @@ export type InvoiceDateFilter =
     | "SETTLEMENT_DATE"
     | "CREATED_AT"
     | "UPDATED_AT";
-
 export const InvoiceDateFilter = {
     InvoiceDate: "INVOICE_DATE",
     DeductionDate: "DEDUCTION_DATE",

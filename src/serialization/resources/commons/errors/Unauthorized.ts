@@ -9,5 +9,5 @@ export const Unauthorized: core.serialization.Schema<serializers.Unauthorized.Ra
     core.serialization.string();
 
 export declare namespace Unauthorized {
-    type Raw = string;
+    export type Raw = string;
 }

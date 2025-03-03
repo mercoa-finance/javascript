@@ -13,5 +13,5 @@ export const Response: core.serialization.Schema<
 > = core.serialization.list(CustomPaymentMethodSchemaResponse);
 
 export declare namespace Response {
-    type Raw = CustomPaymentMethodSchemaResponse.Raw[];
+    export type Raw = CustomPaymentMethodSchemaResponse.Raw[];
 }

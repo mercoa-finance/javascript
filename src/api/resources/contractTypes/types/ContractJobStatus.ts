@@ -3,7 +3,6 @@
  */
 
 export type ContractJobStatus = "pending" | "success" | "failed";
-
 export const ContractJobStatus = {
     Pending: "pending",
     Success: "success",

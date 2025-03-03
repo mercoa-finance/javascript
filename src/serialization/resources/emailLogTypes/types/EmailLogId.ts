@@ -10,5 +10,5 @@ export const EmailLogId: core.serialization.Schema<serializers.EmailLogId.Raw, M
     core.serialization.string();
 
 export declare namespace EmailLogId {
-    type Raw = string;
+    export type Raw = string;
 }

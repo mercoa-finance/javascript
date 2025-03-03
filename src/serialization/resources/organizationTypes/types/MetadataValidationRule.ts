@@ -20,9 +20,9 @@ export const MetadataValidationRule: core.serialization.Schema<
     });
 
 export declare namespace MetadataValidationRule {
-    type Raw = MetadataValidationRule.Regex;
+    export type Raw = MetadataValidationRule.Regex;
 
-    interface Regex extends MetadataRegexValidationRule.Raw {
+    export interface Regex extends MetadataRegexValidationRule.Raw {
         type: "regex";
     }
 }

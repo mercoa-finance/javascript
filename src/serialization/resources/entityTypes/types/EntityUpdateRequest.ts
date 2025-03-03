@@ -29,7 +29,7 @@ export const EntityUpdateRequest: core.serialization.ObjectSchema<
 });
 
 export declare namespace EntityUpdateRequest {
-    interface Raw {
+    export interface Raw {
         foreignId?: string | null;
         emailTo?: string | null;
         emailToAlias?: string[] | null;

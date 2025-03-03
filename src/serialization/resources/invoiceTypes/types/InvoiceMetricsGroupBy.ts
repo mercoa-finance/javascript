@@ -12,5 +12,5 @@ export const InvoiceMetricsGroupBy: core.serialization.Schema<
 > = core.serialization.enum_(["STATUS"]);
 
 export declare namespace InvoiceMetricsGroupBy {
-    type Raw = "STATUS";
+    export type Raw = "STATUS";
 }

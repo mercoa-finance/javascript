@@ -20,7 +20,7 @@ export const OnboardingOptionsRequest: core.serialization.ObjectSchema<
 });
 
 export declare namespace OnboardingOptionsRequest {
-    interface Raw {
+    export interface Raw {
         enableBusiness?: boolean | null;
         enableIndividual?: boolean | null;
         paymentMethod?: boolean | null;

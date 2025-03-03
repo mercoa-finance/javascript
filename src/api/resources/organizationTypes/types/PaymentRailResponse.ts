@@ -15,40 +15,40 @@ export type PaymentRailResponse =
     | Mercoa.PaymentRailResponse.Utility
     | Mercoa.PaymentRailResponse.Na;
 
-export declare namespace PaymentRailResponse {
-    interface BankAccount extends Mercoa.BankPaymentRailResponse {
+export namespace PaymentRailResponse {
+    export interface BankAccount extends Mercoa.BankPaymentRailResponse {
         type: "bankAccount";
     }
 
-    interface Card extends Mercoa.GenericPaymentRailResponse {
+    export interface Card extends Mercoa.GenericPaymentRailResponse {
         type: "card";
     }
 
-    interface VirtualCard extends Mercoa.GenericPaymentRailResponse {
+    export interface VirtualCard extends Mercoa.GenericPaymentRailResponse {
         type: "virtualCard";
     }
 
-    interface Check extends Mercoa.CheckPaymentRailResponse {
+    export interface Check extends Mercoa.CheckPaymentRailResponse {
         type: "check";
     }
 
-    interface Custom extends Mercoa.CustomPaymentRailResponse {
+    export interface Custom extends Mercoa.CustomPaymentRailResponse {
         type: "custom";
     }
 
-    interface Bnpl extends Mercoa.GenericPaymentRailResponse {
+    export interface Bnpl extends Mercoa.GenericPaymentRailResponse {
         type: "bnpl";
     }
 
-    interface OffPlatform extends Mercoa.GenericPaymentRailResponse {
+    export interface OffPlatform extends Mercoa.GenericPaymentRailResponse {
         type: "offPlatform";
     }
 
-    interface Utility extends Mercoa.GenericPaymentRailResponse {
+    export interface Utility extends Mercoa.GenericPaymentRailResponse {
         type: "utility";
     }
 
-    interface Na extends Mercoa.GenericPaymentRailResponse {
+    export interface Na extends Mercoa.GenericPaymentRailResponse {
         type: "na";
     }
 }

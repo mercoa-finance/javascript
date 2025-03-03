@@ -10,5 +10,5 @@ export const CardBrand: core.serialization.Schema<serializers.CardBrand.Raw, Mer
     core.serialization.enum_(["AmericanExpress", "Discover", "Mastercard", "Visa"]);
 
 export declare namespace CardBrand {
-    type Raw = "AmericanExpress" | "Discover" | "Mastercard" | "Visa";
+    export type Raw = "AmericanExpress" | "Discover" | "Mastercard" | "Visa";
 }

@@ -9,5 +9,5 @@ export const Unimplemented: core.serialization.Schema<serializers.Unimplemented.
     core.serialization.string();
 
 export declare namespace Unimplemented {
-    type Raw = string;
+    export type Raw = string;
 }

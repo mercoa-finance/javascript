@@ -3,7 +3,6 @@
  */
 
 export type CounterpartyNetworkType = "ENTITY" | "NETWORK";
-
 export const CounterpartyNetworkType = {
     Entity: "ENTITY",
     Network: "NETWORK",

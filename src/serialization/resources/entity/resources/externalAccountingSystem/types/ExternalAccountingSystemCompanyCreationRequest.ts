@@ -22,15 +22,15 @@ export const ExternalAccountingSystemCompanyCreationRequest: core.serialization.
     });
 
 export declare namespace ExternalAccountingSystemCompanyCreationRequest {
-    type Raw =
+    export type Raw =
         | ExternalAccountingSystemCompanyCreationRequest.Codat
         | ExternalAccountingSystemCompanyCreationRequest.Rutter;
 
-    interface Codat extends CodatCompanyCreationRequest.Raw {
+    export interface Codat extends CodatCompanyCreationRequest.Raw {
         type: "codat";
     }
 
-    interface Rutter extends RutterCompanyCreationRequest.Raw {
+    export interface Rutter extends RutterCompanyCreationRequest.Raw {
         type: "rutter";
     }
 }

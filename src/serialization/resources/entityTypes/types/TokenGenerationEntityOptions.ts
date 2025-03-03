@@ -14,7 +14,7 @@ export const TokenGenerationEntityOptions: core.serialization.ObjectSchema<
 });
 
 export declare namespace TokenGenerationEntityOptions {
-    interface Raw {
+    export interface Raw {
         enableMercoaPayments?: boolean | null;
     }
 }

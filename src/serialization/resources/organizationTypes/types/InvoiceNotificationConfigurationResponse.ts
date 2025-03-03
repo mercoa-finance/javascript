@@ -18,7 +18,7 @@ export const InvoiceNotificationConfigurationResponse: core.serialization.Object
     .extend(InvoiceNotificationConfigurationRequest);
 
 export declare namespace InvoiceNotificationConfigurationResponse {
-    interface Raw extends InvoiceNotificationConfigurationRequest.Raw {
+    export interface Raw extends InvoiceNotificationConfigurationRequest.Raw {
         type: NotificationType.Raw;
     }
 }

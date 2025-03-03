@@ -18,7 +18,7 @@ export const TransactionResponseAchBase: core.serialization.ObjectSchema<
     .extend(TransactionResponseBase);
 
 export declare namespace TransactionResponseAchBase {
-    interface Raw extends TransactionResponseBase.Raw {
+    export interface Raw extends TransactionResponseBase.Raw {
         failureReason?: TransactionFailureReason.Raw | null;
     }
 }

@@ -3,7 +3,6 @@
  */
 
 export type OrderDirection = "ASC" | "DESC";
-
 export const OrderDirection = {
     Asc: "ASC",
     Desc: "DESC",

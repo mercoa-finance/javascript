@@ -9,12 +9,12 @@ export const Request: core.serialization.Schema<serializers.entity.metadata.upda
     core.serialization.list(core.serialization.string());
 
 export declare namespace Request {
-    type Raw = string[];
+    export type Raw = string[];
 }
 
 export const Response: core.serialization.Schema<serializers.entity.metadata.update.Response.Raw, string[]> =
     core.serialization.list(core.serialization.string());
 
 export declare namespace Response {
-    type Raw = string[];
+    export type Raw = string[];
 }

@@ -3,7 +3,6 @@
  */
 
 export type EmailTemplateType = "PAYMENT" | "DISBURSEMENT";
-
 export const EmailTemplateType = {
     Payment: "PAYMENT",
     Disbursement: "DISBURSEMENT",

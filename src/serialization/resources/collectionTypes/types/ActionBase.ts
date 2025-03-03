@@ -16,7 +16,7 @@ export const ActionBase: core.serialization.ObjectSchema<serializers.ActionBase.
     });
 
 export declare namespace ActionBase {
-    interface Raw {
+    export interface Raw {
         id: ActionId.Raw;
         scheduledExecutionTime: string;
         status: ActionStatus.Raw;

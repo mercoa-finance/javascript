@@ -17,7 +17,7 @@ export const CalculatePaymentTimingResponse: core.serialization.ObjectSchema<
 });
 
 export declare namespace CalculatePaymentTimingResponse {
-    interface Raw {
+    export interface Raw {
         estimatedProcessingDate: string;
         businessDays: number;
         estimatedProcessingTime: number;

@@ -13,7 +13,7 @@ export const MetadataTrigger: core.serialization.ObjectSchema<serializers.Metada
     });
 
 export declare namespace MetadataTrigger {
-    interface Raw {
+    export interface Raw {
         key: string;
         value: string;
     }

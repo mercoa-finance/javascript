@@ -3,7 +3,6 @@
  */
 
 export type OcrJobStatus = "pending" | "success" | "failed";
-
 export const OcrJobStatus = {
     Pending: "pending",
     Success: "success",

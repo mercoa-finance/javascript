@@ -17,5 +17,5 @@ export const PlaidLinkRequest: core.serialization.Schema<serializers.PlaidLinkRe
     ]);
 
 export declare namespace PlaidLinkRequest {
-    type Raw = PlaidProcessorTokenRequest.Raw | PlaidPublicTokenRequest.Raw | PlaidAccessTokenRequest.Raw;
+    export type Raw = PlaidProcessorTokenRequest.Raw | PlaidPublicTokenRequest.Raw | PlaidAccessTokenRequest.Raw;
 }

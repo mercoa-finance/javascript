@@ -23,7 +23,7 @@ export const OcrResponse: core.serialization.ObjectSchema<serializers.OcrRespons
     });
 
 export declare namespace OcrResponse {
-    interface Raw {
+    export interface Raw {
         jobId: OcrJobId.Raw;
         invoice: InvoiceResponse.Raw;
         vendor: CounterpartyResponse.Raw;

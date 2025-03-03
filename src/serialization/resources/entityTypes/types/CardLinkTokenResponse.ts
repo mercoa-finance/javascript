@@ -15,7 +15,7 @@ export const CardLinkTokenResponse: core.serialization.ObjectSchema<
 });
 
 export declare namespace CardLinkTokenResponse {
-    interface Raw {
+    export interface Raw {
         token: string;
         accountId: string;
     }

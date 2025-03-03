@@ -15,7 +15,7 @@ export const ContractInvoiceSchema: core.serialization.ObjectSchema<
 });
 
 export declare namespace ContractInvoiceSchema {
-    interface Raw {
+    export interface Raw {
         lineItems: ContractInvoiceLineItemSchema.Raw[];
     }
 }
