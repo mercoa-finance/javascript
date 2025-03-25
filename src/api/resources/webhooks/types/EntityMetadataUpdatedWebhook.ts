@@ -15,9 +15,14 @@ import * as Mercoa from "../../../index";
  *     }
  */
 export interface EntityMetadataUpdatedWebhook {
+    /** The type of the event. */
     eventType: string;
+    /** The ID of the entity that was updated. */
     entityId: Mercoa.EntityId;
+    /** Foreign ID associated with the entity. */
     foreignId?: string;
+    /** The key of the metadata that was updated. */
     key: string;
+    /** A list of new values for the metadata. */
     value: string[];
 }

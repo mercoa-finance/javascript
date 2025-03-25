@@ -6,6 +6,7 @@ import * as serializers from "../../../index";
 import * as Mercoa from "../../../../api/index";
 import * as core from "../../../../core";
 import { EmailLogId } from "./EmailLogId";
+import { EmailLogAttachment } from "./EmailLogAttachment";
 import { InvoiceId } from "../../invoiceTypes/types/InvoiceId";
 
 export const EmailLog: core.serialization.ObjectSchema<serializers.EmailLog.Raw, Mercoa.EmailLog> =
@@ -16,6 +17,7 @@ export const EmailLog: core.serialization.ObjectSchema<serializers.EmailLog.Raw,
         to: core.serialization.string(),
         htmlBody: core.serialization.string(),
         textBody: core.serialization.string(),
+        attachment: EmailLogAttachment.optional(),
         createdAt: core.serialization.date(),
         invoiceId: InvoiceId.optional(),
     });
@@ -28,6 +30,7 @@ export declare namespace EmailLog {
         to: string;
         htmlBody: string;
         textBody: string;
+        attachment?: EmailLogAttachment.Raw | null;
         createdAt: string;
         invoiceId?: InvoiceId.Raw | null;
     }

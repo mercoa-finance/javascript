@@ -6,6 +6,11 @@ import * as Mercoa from "../../../index";
 
 export interface OcrJobResponse {
     jobId: Mercoa.OcrJobId;
+    /** The IDs of any OCR jobs that are processing other subdocuments of the same document. */
+    linkedJobIds?: Mercoa.OcrJobId[];
+    /** The status of the OCR job. */
     status: Mercoa.OcrJobStatus;
+    /** The start and end page numbers of the corresponding subdocument (zero-indexed, inclusive). If not provided, the document was not split during OCR. */
+    pageRange?: Mercoa.OcrPageRange;
     data?: Mercoa.OcrResponse;
 }

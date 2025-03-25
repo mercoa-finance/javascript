@@ -9,8 +9,8 @@ import * as core from "../../../../core";
 export const CheckDeliveryMethod: core.serialization.Schema<
     serializers.CheckDeliveryMethod.Raw,
     Mercoa.CheckDeliveryMethod
-> = core.serialization.enum_(["PRINT", "MAIL"]);
+> = core.serialization.enum_(["PRINT", "MAIL", "MAIL_PRIORITY", "MAIL_UPS_NEXT_DAY"]);
 
 export declare namespace CheckDeliveryMethod {
-    export type Raw = "PRINT" | "MAIL";
+    export type Raw = "PRINT" | "MAIL" | "MAIL_PRIORITY" | "MAIL_UPS_NEXT_DAY";
 }

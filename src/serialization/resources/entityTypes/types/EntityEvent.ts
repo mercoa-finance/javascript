@@ -5,22 +5,28 @@
 import * as serializers from "../../../index";
 import * as Mercoa from "../../../../api/index";
 import * as core from "../../../../core";
+import { EntityEventId } from "./EntityEventId";
 import { EntityResponse } from "./EntityResponse";
 import { EntityUserId } from "./EntityUserId";
+import { EntityId } from "./EntityId";
 
 export const EntityEvent: core.serialization.ObjectSchema<serializers.EntityEvent.Raw, Mercoa.EntityEvent> =
     core.serialization.object({
-        webhookIds: core.serialization.list(core.serialization.string()),
+        id: EntityEventId,
         data: EntityResponse,
-        createdAt: core.serialization.date(),
+        webhookIds: core.serialization.list(core.serialization.string()),
         userId: EntityUserId.optional(),
+        updatedByEntityId: EntityId.optional(),
+        createdAt: core.serialization.date(),
     });
 
 export declare namespace EntityEvent {
     export interface Raw {
-        webhookIds: string[];
+        id: EntityEventId.Raw;
         data: EntityResponse.Raw;
-        createdAt: string;
+        webhookIds: string[];
         userId?: EntityUserId.Raw | null;
+        updatedByEntityId?: EntityId.Raw | null;
+        createdAt: string;
     }
 }

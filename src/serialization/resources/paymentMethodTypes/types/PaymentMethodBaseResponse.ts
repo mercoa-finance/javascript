@@ -19,6 +19,7 @@ export const PaymentMethodBaseResponse: core.serialization.ObjectSchema<
     externalAccountingSystemId: core.serialization.string().optional(),
     frozen: core.serialization.boolean(),
     metadata: core.serialization.record(core.serialization.string(), core.serialization.string()),
+    confirmedByEntity: core.serialization.boolean().optional(),
     createdAt: core.serialization.date(),
     updatedAt: core.serialization.date(),
 });
@@ -32,6 +33,7 @@ export declare namespace PaymentMethodBaseResponse {
         externalAccountingSystemId?: string | null;
         frozen: boolean;
         metadata: Record<string, string>;
+        confirmedByEntity?: boolean | null;
         createdAt: string;
         updatedAt: string;
     }

@@ -13,4 +13,6 @@ export interface PaymentMethodBaseRequest {
     frozen?: boolean;
     /** Metadata associated with this payment method. */
     metadata?: Record<string, string>;
+    /** (ALPHA, MAY BE REMOVED) Indicate whether the payment method has been verified by the entity. This is useful if another entity has added this payment method to this entity, and you want the owner of the payment method to verify it is correct. */
+    confirmedByEntity?: boolean;
 }

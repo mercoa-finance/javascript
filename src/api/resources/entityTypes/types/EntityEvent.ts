@@ -7,6 +7,7 @@ import * as Mercoa from "../../../index";
 /**
  * @example
  *     {
+ *         id: "evt_a0f6ea94-0761-4a5e-a416-3c453cb7eced",
  *         webhookIds: ["webhook_12345"],
  *         userId: "user_e24fc81c-c5ee-47e8-af42-4fe29d895506",
  *         data: {
@@ -55,9 +56,16 @@ import * as Mercoa from "../../../index";
  *     }
  */
 export interface EntityEvent {
-    webhookIds: string[];
+    /** The ID of the event */
+    id: Mercoa.EntityEventId;
+    /** The payment method data at the time of the event */
     data: Mercoa.EntityResponse;
-    createdAt: Date;
-    /** The ID of the user who triggered this event */
+    /** The list of webhook IDs associated with this event */
+    webhookIds: string[];
+    /** The ID of the user who triggered the event */
     userId?: Mercoa.EntityUserId;
+    /** The ID of the entity that updated the payment method */
+    updatedByEntityId?: Mercoa.EntityId;
+    /** The timestamp when the event was created */
+    createdAt: Date;
 }

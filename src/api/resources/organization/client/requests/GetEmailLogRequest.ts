@@ -10,6 +10,14 @@ export interface GetEmailLogRequest {
     startDate?: Date;
     endDate?: Date;
     /**
+     * Filter by sender email address
+     */
+    from?: string;
+    /**
+     * Filter by recipient email address
+     */
+    to?: string;
+    /**
      * Number of logs to return. Limit can range between 1 and 100, and the default is 10.
      */
     limit?: number;

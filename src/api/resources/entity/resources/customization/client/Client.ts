@@ -69,8 +69,8 @@ export class Customization {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.6.12",
-                "User-Agent": "@mercoa/javascript/0.6.12",
+                "X-Fern-SDK-Version": "0.6.13",
+                "User-Agent": "@mercoa/javascript/0.6.13",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
@@ -266,6 +266,14 @@ export class Customization {
      *                     checkMail: {
      *                         type: "flat",
      *                         amount: 2.5
+     *                     },
+     *                     checkMailPriority: {
+     *                         type: "flat",
+     *                         amount: 2.5
+     *                     },
+     *                     checkMailUpsNextDay: {
+     *                         type: "flat",
+     *                         amount: 2.5
      *                     }
      *                 },
      *                 destination: {
@@ -282,6 +290,14 @@ export class Customization {
      *                         amount: 2.5
      *                     },
      *                     checkMail: {
+     *                         type: "flat",
+     *                         amount: 2.5
+     *                     },
+     *                     checkMailPriority: {
+     *                         type: "flat",
+     *                         amount: 2.5
+     *                     },
+     *                     checkMailUpsNextDay: {
      *                         type: "flat",
      *                         amount: 2.5
      *                     }
@@ -304,6 +320,14 @@ export class Customization {
      *                     checkMail: {
      *                         type: "flat",
      *                         amount: 2.5
+     *                     },
+     *                     checkMailPriority: {
+     *                         type: "flat",
+     *                         amount: 2.5
+     *                     },
+     *                     checkMailUpsNextDay: {
+     *                         type: "flat",
+     *                         amount: 2.5
      *                     }
      *                 },
      *                 destination: {
@@ -320,6 +344,14 @@ export class Customization {
      *                         amount: 2.5
      *                     },
      *                     checkMail: {
+     *                         type: "flat",
+     *                         amount: 2.5
+     *                     },
+     *                     checkMailPriority: {
+     *                         type: "flat",
+     *                         amount: 2.5
+     *                     },
+     *                     checkMailUpsNextDay: {
      *                         type: "flat",
      *                         amount: 2.5
      *                     }
@@ -345,8 +377,8 @@ export class Customization {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.6.12",
-                "User-Agent": "@mercoa/javascript/0.6.12",
+                "X-Fern-SDK-Version": "0.6.13",
+                "User-Agent": "@mercoa/javascript/0.6.13",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,

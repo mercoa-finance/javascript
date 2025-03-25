@@ -18,6 +18,8 @@ import * as Mercoa from "../../../index";
  *     }
  */
 export interface BulkInvoiceCreationWebhook {
+    /** The type of the event. */
     eventType: string;
+    /** A list of bulk invoice creation responses. */
     data: Mercoa.BulkInvoiceCreationFromObjectResponse[];
 }

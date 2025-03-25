@@ -16,6 +16,7 @@ export const PaymentMethodWebhook: core.serialization.ObjectSchema<
 > = core.serialization.object({
     eventType: core.serialization.string(),
     entityId: EntityId,
+    updatedByEntityId: EntityId,
     paymentMethod: PaymentMethodResponse,
     entity: EntityResponse,
     user: EntityUserResponse.optional(),
@@ -25,6 +26,7 @@ export declare namespace PaymentMethodWebhook {
     export interface Raw {
         eventType: string;
         entityId: EntityId.Raw;
+        updatedByEntityId: EntityId.Raw;
         paymentMethod: PaymentMethodResponse.Raw;
         entity: EntityResponse.Raw;
         user?: EntityUserResponse.Raw | null;

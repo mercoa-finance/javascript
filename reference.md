@@ -3650,6 +3650,73 @@ await client.entity.paymentMethod.cardLinkToken("ent_8545a84e-a45f-41bf-bdf1-33b
 </dl>
 </details>
 
+<details><summary><code>client.entity.paymentMethod.<a href="/src/api/resources/entity/resources/paymentMethod/client/Client.ts">events</a>(entityId, paymentMethodId, { ...params }) -> Mercoa.PaymentMethodEventsResponse</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.entity.paymentMethod.events(
+    "ent_8545a84e-a45f-41bf-bdf1-33b42a55812c",
+    "pm_4794d597-70dc-4fec-b6ec-c5988e759769",
+);
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**entityId:** `Mercoa.EntityId` — Entity ID or Entity ForeignID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**paymentMethodId:** `Mercoa.PaymentMethodId` — Payment Method ID or Payment Method ForeignID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `Mercoa.entity.paymentMethod.PaymentMethodEventsRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `PaymentMethod.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
 ## Entity User
 
 <details><summary><code>client.entity.user.<a href="/src/api/resources/entity/resources/user/client/Client.ts">find</a>(entityId, { ...params }) -> Mercoa.FindEntityUserResponse</code></summary>
@@ -7056,6 +7123,14 @@ await client.entity.customization.update("ent_a0f6ea94-0761-4a5e-a416-3c453cb7ec
                     type: "flat",
                     amount: 2.5,
                 },
+                checkMailPriority: {
+                    type: "flat",
+                    amount: 2.5,
+                },
+                checkMailUpsNextDay: {
+                    type: "flat",
+                    amount: 2.5,
+                },
             },
             destination: {
                 achStandard: {
@@ -7071,6 +7146,14 @@ await client.entity.customization.update("ent_a0f6ea94-0761-4a5e-a416-3c453cb7ec
                     amount: 2.5,
                 },
                 checkMail: {
+                    type: "flat",
+                    amount: 2.5,
+                },
+                checkMailPriority: {
+                    type: "flat",
+                    amount: 2.5,
+                },
+                checkMailUpsNextDay: {
                     type: "flat",
                     amount: 2.5,
                 },
@@ -7094,6 +7177,14 @@ await client.entity.customization.update("ent_a0f6ea94-0761-4a5e-a416-3c453cb7ec
                     type: "flat",
                     amount: 2.5,
                 },
+                checkMailPriority: {
+                    type: "flat",
+                    amount: 2.5,
+                },
+                checkMailUpsNextDay: {
+                    type: "flat",
+                    amount: 2.5,
+                },
             },
             destination: {
                 achStandard: {
@@ -7109,6 +7200,14 @@ await client.entity.customization.update("ent_a0f6ea94-0761-4a5e-a416-3c453cb7ec
                     amount: 2.5,
                 },
                 checkMail: {
+                    type: "flat",
+                    amount: 2.5,
+                },
+                checkMailPriority: {
+                    type: "flat",
+                    amount: 2.5,
+                },
+                checkMailUpsNextDay: {
                     type: "flat",
                     amount: 2.5,
                 },
@@ -12129,7 +12228,7 @@ Run OCR on an Base64 encoded image or PDF. This endpoint will block until the OC
 ```typescript
 await client.ocr.ocr({
     vendorNetwork: "entity",
-    entityId: "entity_8f86116b-3b4d-4ded-99ef-3bc929d8c33c",
+    entityId: "ent_8f86116b-3b4d-4ded-99ef-3bc929d8c33c",
     mimeType: "image/png",
     image: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAIAQMAAAD+wSzIAAAABlBMVEX///+/v7+jQ3Y5AAAADklEQVQI12P4AIX8EAgALgAD/aNpbtEAAAAASUVORK5CYII",
 });
@@ -12197,7 +12296,7 @@ Run OCR on an Base64 encoded image or PDF. This endpoint will return immediately
 ```typescript
 await client.ocr.runAsyncOcr({
     vendorNetwork: "entity",
-    entityId: "entity_8f86116b-3b4d-4ded-99ef-3bc929d8c33c",
+    entityId: "ent_8f86116b-3b4d-4ded-99ef-3bc929d8c33c",
     mimeType: "image/png",
     image: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAIAQMAAAD+wSzIAAAABlBMVEX///+/v7+jQ3Y5AAAADklEQVQI12P4AIX8EAgALgAD/aNpbtEAAAAASUVORK5CYII",
 });

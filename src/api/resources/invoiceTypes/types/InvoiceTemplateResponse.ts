@@ -78,6 +78,7 @@ import * as Mercoa from "../../../index";
  *                     supportedCurrencies: [Mercoa.CurrencyCode.Usd],
  *                     metadata: {},
  *                     frozen: false,
+ *                     confirmedByEntity: true,
  *                     createdAt: "2021-01-01T00:00:00Z",
  *                     updatedAt: "2021-01-01T00:00:00Z"
  *                 }],
@@ -97,6 +98,7 @@ import * as Mercoa from "../../../index";
  *             supportedCurrencies: [Mercoa.CurrencyCode.Usd],
  *             metadata: {},
  *             frozen: false,
+ *             confirmedByEntity: true,
  *             createdAt: "2021-01-01T00:00:00Z",
  *             updatedAt: "2021-01-01T00:00:00Z"
  *         },
@@ -140,6 +142,7 @@ import * as Mercoa from "../../../index";
  *                     supportedCurrencies: [Mercoa.CurrencyCode.Usd],
  *                     metadata: {},
  *                     frozen: false,
+ *                     confirmedByEntity: false,
  *                     createdAt: "2021-01-01T00:00:00Z",
  *                     updatedAt: "2021-01-01T00:00:00Z"
  *                 }],
@@ -160,6 +163,7 @@ import * as Mercoa from "../../../index";
  *             supportedCurrencies: [Mercoa.CurrencyCode.Usd],
  *             metadata: {},
  *             frozen: false,
+ *             confirmedByEntity: true,
  *             createdAt: "2021-01-01T00:00:00Z",
  *             updatedAt: "2021-01-01T00:00:00Z"
  *         },

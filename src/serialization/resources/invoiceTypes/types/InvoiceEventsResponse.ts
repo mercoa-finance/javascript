@@ -13,11 +13,13 @@ export const InvoiceEventsResponse: core.serialization.ObjectSchema<
 > = core.serialization.object({
     data: core.serialization.list(InvoiceEvent),
     count: core.serialization.number(),
+    hasMore: core.serialization.boolean(),
 });
 
 export declare namespace InvoiceEventsResponse {
     export interface Raw {
         data: InvoiceEvent.Raw[];
         count: number;
+        hasMore: boolean;
     }
 }

@@ -24,6 +24,14 @@ import * as Mercoa from "../../../index";
  *                 checkMail: {
  *                     type: "flat",
  *                     amount: 2.5
+ *                 },
+ *                 checkMailPriority: {
+ *                     type: "flat",
+ *                     amount: 2.5
+ *                 },
+ *                 checkMailUpsNextDay: {
+ *                     type: "flat",
+ *                     amount: 2.5
  *                 }
  *             },
  *             destination: {
@@ -40,6 +48,14 @@ import * as Mercoa from "../../../index";
  *                     amount: 2.5
  *                 },
  *                 checkMail: {
+ *                     type: "flat",
+ *                     amount: 2.5
+ *                 },
+ *                 checkMailPriority: {
+ *                     type: "flat",
+ *                     amount: 2.5
+ *                 },
+ *                 checkMailUpsNextDay: {
  *                     type: "flat",
  *                     amount: 2.5
  *                 }
@@ -62,6 +78,14 @@ import * as Mercoa from "../../../index";
  *                 checkMail: {
  *                     type: "flat",
  *                     amount: 2.5
+ *                 },
+ *                 checkMailPriority: {
+ *                     type: "flat",
+ *                     amount: 2.5
+ *                 },
+ *                 checkMailUpsNextDay: {
+ *                     type: "flat",
+ *                     amount: 2.5
  *                 }
  *             },
  *             destination: {
@@ -78,6 +102,14 @@ import * as Mercoa from "../../../index";
  *                     amount: 2.5
  *                 },
  *                 checkMail: {
+ *                     type: "flat",
+ *                     amount: 2.5
+ *                 },
+ *                 checkMailPriority: {
+ *                     type: "flat",
+ *                     amount: 2.5
+ *                 },
+ *                 checkMailUpsNextDay: {
  *                     type: "flat",
  *                     amount: 2.5
  *                 }

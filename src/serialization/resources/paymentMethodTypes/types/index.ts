@@ -34,3 +34,6 @@ export * from "./BankStatus";
 export * from "./CardType";
 export * from "./CardBrand";
 export * from "./CurrencyCode";
+export * from "./PaymentMethodEventId";
+export * from "./PaymentMethodEvent";
+export * from "./PaymentMethodEventsResponse";

@@ -82,6 +82,7 @@ import * as Mercoa from "../../../index";
  *                         supportedCurrencies: [Mercoa.CurrencyCode.Usd],
  *                         metadata: {},
  *                         frozen: false,
+ *                         confirmedByEntity: true,
  *                         createdAt: "2021-01-01T00:00:00Z",
  *                         updatedAt: "2021-01-01T00:00:00Z"
  *                     }],
@@ -101,6 +102,7 @@ import * as Mercoa from "../../../index";
  *                 supportedCurrencies: [Mercoa.CurrencyCode.Usd],
  *                 metadata: {},
  *                 frozen: false,
+ *                 confirmedByEntity: true,
  *                 createdAt: "2021-01-01T00:00:00Z",
  *                 updatedAt: "2021-01-01T00:00:00Z"
  *             },
@@ -144,6 +146,7 @@ import * as Mercoa from "../../../index";
  *                         supportedCurrencies: [Mercoa.CurrencyCode.Usd],
  *                         metadata: {},
  *                         frozen: false,
+ *                         confirmedByEntity: false,
  *                         createdAt: "2021-01-01T00:00:00Z",
  *                         updatedAt: "2021-01-01T00:00:00Z"
  *                     }],
@@ -164,6 +167,7 @@ import * as Mercoa from "../../../index";
  *                 supportedCurrencies: [Mercoa.CurrencyCode.Usd],
  *                 metadata: {},
  *                 frozen: false,
+ *                 confirmedByEntity: true,
  *                 createdAt: "2021-01-01T00:00:00Z",
  *                 updatedAt: "2021-01-01T00:00:00Z"
  *             },
@@ -241,6 +245,7 @@ import * as Mercoa from "../../../index";
  *                                 supportedCurrencies: [Mercoa.CurrencyCode.Usd],
  *                                 metadata: {},
  *                                 frozen: false,
+ *                                 confirmedByEntity: true,
  *                                 createdAt: "2021-01-01T00:00:00Z",
  *                                 updatedAt: "2021-01-01T00:00:00Z"
  *                             }],
@@ -260,6 +265,7 @@ import * as Mercoa from "../../../index";
  *                         supportedCurrencies: [Mercoa.CurrencyCode.Usd],
  *                         metadata: {},
  *                         frozen: false,
+ *                         confirmedByEntity: true,
  *                         createdAt: "2021-01-01T00:00:00Z",
  *                         updatedAt: "2021-01-01T00:00:00Z"
  *                     },
@@ -303,6 +309,7 @@ import * as Mercoa from "../../../index";
  *                                 supportedCurrencies: [Mercoa.CurrencyCode.Usd],
  *                                 metadata: {},
  *                                 frozen: false,
+ *                                 confirmedByEntity: false,
  *                                 createdAt: "2021-01-01T00:00:00Z",
  *                                 updatedAt: "2021-01-01T00:00:00Z"
  *                             }],
@@ -322,6 +329,7 @@ import * as Mercoa from "../../../index";
  *                         supportedCurrencies: [Mercoa.CurrencyCode.Usd],
  *                         metadata: {},
  *                         frozen: false,
+ *                         confirmedByEntity: true,
  *                         createdAt: "2021-01-01T00:00:00Z",
  *                         updatedAt: "2021-01-01T00:00:00Z"
  *                     },
@@ -424,6 +432,7 @@ import * as Mercoa from "../../../index";
  *     }
  */
 export interface InvoiceEmailWebhook {
+    /** The type of the event. */
     eventType: string;
     /** If an invoice was created from the email, this will be present. */
     invoice?: Mercoa.InvoiceResponse;

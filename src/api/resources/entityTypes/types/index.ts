@@ -74,6 +74,7 @@ export * from "./CounterpartyNetworkType";
 export * from "./EntityMetadataResponse";
 export * from "./EntityCustomizationRequest";
 export * from "./EntityCustomizationResponse";
+export * from "./EntityEventId";
 export * from "./EntityEvent";
 export * from "./EntityEventsResponse";
 export * from "./IndustryCodes";

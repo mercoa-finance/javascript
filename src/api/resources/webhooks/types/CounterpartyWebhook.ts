@@ -38,8 +38,11 @@ import * as Mercoa from "../../../index";
  *     }
  */
 export interface CounterpartyWebhook {
+    /** The type of the event. */
     eventType: string;
+    /** A list of IDs for the payees involved. */
     payeeId: Mercoa.EntityId[];
+    /** A list of IDs for the payors involved. */
     payorId: Mercoa.EntityId[];
     /** User who initiated the change. */
     user?: Mercoa.EntityUserResponse;

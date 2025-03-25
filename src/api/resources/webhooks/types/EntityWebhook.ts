@@ -50,6 +50,7 @@ import * as Mercoa from "../../../index";
  *                 }
  *             }
  *         },
+ *         updatedByEntityId: "admin",
  *         user: {
  *             id: "user_ec3aafc8-ea86-408a-a6c1-545497badbbb",
  *             foreignId: "MY-DB-ID-12345",
@@ -106,6 +107,7 @@ import * as Mercoa from "../../../index";
  *                 }
  *             }
  *         },
+ *         updatedByEntityId: "ent_21661ac1-a2a8-4465-a6c0-64474ba8181d",
  *         user: {
  *             id: "user_ec3aafc8-ea86-408a-a6c1-545497badbbb",
  *             foreignId: "MY-DB-ID-12345",
@@ -118,8 +120,15 @@ import * as Mercoa from "../../../index";
  *     }
  */
 export interface EntityWebhook {
+    /** The type of the event. */
     eventType: string;
+    /** The entity involved in the event. */
     entity: Mercoa.EntityResponse;
+    /**
+     * The ID of the entity that updated the entity. This will be different from the entityId if the entity was updated by a different entity (e.g. a C2 updating a C3).
+     * If the entity was created or updated by an admin, this will be 'admin'.
+     */
+    updatedByEntityId: Mercoa.EntityId;
     /** User who initiated the change. */
     user?: Mercoa.EntityUserResponse;
 }

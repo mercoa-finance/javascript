@@ -9,6 +9,7 @@ import * as Mercoa from "../../../index";
  *     {
  *         eventType: "paymentMethod.created",
  *         entityId: "ent_21661ac1-a2a8-4465-a6c0-64474ba8181d",
+ *         updatedByEntityId: "ent_21661ac1-a2a8-4465-a6c0-64474ba8181d",
  *         paymentMethod: {
  *             type: "bankAccount",
  *             id: "pm_4794d597-70dc-4fec-b6ec-c5988e759769",
@@ -23,6 +24,7 @@ import * as Mercoa from "../../../index";
  *             supportedCurrencies: [Mercoa.CurrencyCode.Usd],
  *             metadata: {},
  *             frozen: false,
+ *             confirmedByEntity: true,
  *             createdAt: "2021-01-01T00:00:00Z",
  *             updatedAt: "2021-01-01T00:00:00Z"
  *         },
@@ -83,6 +85,7 @@ import * as Mercoa from "../../../index";
  *     {
  *         eventType: "paymentMethod.updated",
  *         entityId: "ent_21661ac1-a2a8-4465-a6c0-64474ba8181d",
+ *         updatedByEntityId: "ent_21661ac1-a2a8-4465-a6c0-64474ba8181d",
  *         paymentMethod: {
  *             type: "bankAccount",
  *             id: "pm_4794d597-70dc-4fec-b6ec-c5988e759769",
@@ -97,6 +100,7 @@ import * as Mercoa from "../../../index";
  *             supportedCurrencies: [Mercoa.CurrencyCode.Usd],
  *             metadata: {},
  *             frozen: false,
+ *             confirmedByEntity: true,
  *             createdAt: "2021-01-01T00:00:00Z",
  *             updatedAt: "2021-01-01T00:00:00Z"
  *         },
@@ -157,6 +161,7 @@ import * as Mercoa from "../../../index";
  *     {
  *         eventType: "paymentMethod.deleted",
  *         entityId: "ent_21661ac1-a2a8-4465-a6c0-64474ba8181d",
+ *         updatedByEntityId: "ent_21661ac1-a2a8-4465-a6c0-64474ba8181d",
  *         paymentMethod: {
  *             type: "bankAccount",
  *             id: "pm_4794d597-70dc-4fec-b6ec-c5988e759769",
@@ -171,6 +176,7 @@ import * as Mercoa from "../../../index";
  *             supportedCurrencies: [Mercoa.CurrencyCode.Usd],
  *             metadata: {},
  *             frozen: false,
+ *             confirmedByEntity: true,
  *             createdAt: "2021-01-01T00:00:00Z",
  *             updatedAt: "2021-01-01T00:00:00Z"
  *         },
@@ -228,9 +234,19 @@ import * as Mercoa from "../../../index";
  *     }
  */
 export interface PaymentMethodWebhook {
+    /** The type of the event. */
     eventType: string;
+    /** ID of the entity that the payment method belongs to. */
     entityId: Mercoa.EntityId;
+    /**
+     * ID of the entity that created or updated the payment method.
+     * This will be different from the entityId if the payment method was added by a different entity (e.g. a C2 creating a payment method for a C3).
+     * If the payment method was created or updated by an admin, this will be 'admin'.
+     */
+    updatedByEntityId: Mercoa.EntityId;
+    /** The payment method details. */
     paymentMethod: Mercoa.PaymentMethodResponse;
+    /** Entity that the payment method belongs to. */
     entity: Mercoa.EntityResponse;
     /** User who initiated the change. */
     user?: Mercoa.EntityUserResponse;

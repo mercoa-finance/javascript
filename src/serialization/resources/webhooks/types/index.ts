@@ -8,4 +8,5 @@ export * from "./PaymentMethodWebhook";
 export * from "./InvoiceWebhook";
 export * from "./InvoiceStatusChangedWebhook";
 export * from "./InvoiceEmailWebhook";
+export * from "./InvoiceCollectionEventWebhook";
 export * from "./TransactionWebhook";

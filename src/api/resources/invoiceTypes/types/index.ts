@@ -55,6 +55,7 @@ export * from "./PaymentMonthSchedule";
 export * from "./PaymentYearSchedule";
 export * from "./PaymentSchedule";
 export * from "./PaymentType";
+export * from "./InvoiceEventId";
 export * from "./InvoiceEvent";
 export * from "./InvoiceEventsResponse";
 export * from "./BulkInvoiceCreationRequest";

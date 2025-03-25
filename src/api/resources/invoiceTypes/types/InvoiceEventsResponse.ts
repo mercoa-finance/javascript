@@ -8,6 +8,7 @@ import * as Mercoa from "../../../index";
  * @example
  *     {
  *         data: [{
+ *                 id: "evt_a0f6ea94-0761-4a5e-a416-3c453cb7eced",
  *                 webhookIds: ["webhook_12345"],
  *                 userId: "user_e24fc81c-c5ee-47e8-af42-4fe29d895506",
  *                 data: {
@@ -49,10 +50,12 @@ import * as Mercoa from "../../../index";
  *                 },
  *                 createdAt: "2024-01-01T00:00:00.000Z"
  *             }],
- *         count: 1
+ *         count: 1,
+ *         hasMore: false
  *     }
  */
 export interface InvoiceEventsResponse {
     data: Mercoa.InvoiceEvent[];
     count: number;
+    hasMore: boolean;
 }

@@ -8,7 +8,7 @@ import * as Mercoa from "../../../index";
  * @example
  *     {
  *         vendorNetwork: Mercoa.VendorNetwork.Entity,
- *         entityId: "entity_8f86116b-3b4d-4ded-99ef-3bc929d8c33c",
+ *         entityId: "ent_8f86116b-3b4d-4ded-99ef-3bc929d8c33c",
  *         mimeType: "image/png",
  *         image: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAIAQMAAAD+wSzIAAAABlBMVEX///+/v7+jQ3Y5AAAADklEQVQI12P4AIX8EAgALgAD/aNpbtEAAAAASUVORK5CYII"
  *     }

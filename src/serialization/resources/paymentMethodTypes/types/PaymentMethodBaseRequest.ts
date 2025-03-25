@@ -15,6 +15,7 @@ export const PaymentMethodBaseRequest: core.serialization.ObjectSchema<
     externalAccountingSystemId: core.serialization.string().optional(),
     frozen: core.serialization.boolean().optional(),
     metadata: core.serialization.record(core.serialization.string(), core.serialization.string()).optional(),
+    confirmedByEntity: core.serialization.boolean().optional(),
 });
 
 export declare namespace PaymentMethodBaseRequest {
@@ -24,5 +25,6 @@ export declare namespace PaymentMethodBaseRequest {
         externalAccountingSystemId?: string | null;
         frozen?: boolean | null;
         metadata?: Record<string, string> | null;
+        confirmedByEntity?: boolean | null;
     }
 }

@@ -13,6 +13,7 @@ import * as Mercoa from "../../../index";
  *     }
  */
 export interface CounterpartyEventWebhook {
+    /** The type of the event. */
     eventType: string;
     /** The ID of the entity that owns the counterparty relationship */
     entityId: Mercoa.EntityId;

@@ -13,11 +13,13 @@ export const EntityEventsResponse: core.serialization.ObjectSchema<
 > = core.serialization.object({
     data: core.serialization.list(EntityEvent),
     count: core.serialization.number(),
+    hasMore: core.serialization.boolean(),
 });
 
 export declare namespace EntityEventsResponse {
     export interface Raw {
         data: EntityEvent.Raw[];
         count: number;
+        hasMore: boolean;
     }
 }

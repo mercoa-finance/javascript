@@ -22,6 +22,14 @@ import * as Mercoa from "../../../index";
  *         checkMail: {
  *             type: "flat",
  *             amount: 2.5
+ *         },
+ *         checkMailPriority: {
+ *             type: "flat",
+ *             amount: 2.5
+ *         },
+ *         checkMailUpsNextDay: {
+ *             type: "flat",
+ *             amount: 2.5
  *         }
  *     }
  */
@@ -34,4 +42,8 @@ export interface FeeCustomizationRailRequest {
     checkPrint?: Mercoa.PaymentMethodFee;
     /** The fee for the check mail rail. */
     checkMail?: Mercoa.PaymentMethodFee;
+    /** The fee for the check mail priority rail. */
+    checkMailPriority?: Mercoa.PaymentMethodFee;
+    /** The fee for the check mail UPS next day rail. */
+    checkMailUpsNextDay?: Mercoa.PaymentMethodFee;
 }

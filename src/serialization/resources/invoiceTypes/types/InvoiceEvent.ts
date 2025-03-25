@@ -5,27 +5,30 @@
 import * as serializers from "../../../index";
 import * as Mercoa from "../../../../api/index";
 import * as core from "../../../../core";
+import { InvoiceEventId } from "./InvoiceEventId";
 import { InvoiceUpdateRequest } from "./InvoiceUpdateRequest";
-import { EntityUserId } from "../../entityTypes/types/EntityUserId";
 import { InvoiceStatus } from "./InvoiceStatus";
+import { EntityUserId } from "../../entityTypes/types/EntityUserId";
 
 export const InvoiceEvent: core.serialization.ObjectSchema<serializers.InvoiceEvent.Raw, Mercoa.InvoiceEvent> =
     core.serialization.object({
-        webhookIds: core.serialization.list(core.serialization.string()),
+        id: InvoiceEventId,
         data: InvoiceUpdateRequest,
-        userId: EntityUserId.optional(),
-        createdAt: core.serialization.date(),
-        ipAddress: core.serialization.string().optional(),
+        webhookIds: core.serialization.list(core.serialization.string()),
         status: InvoiceStatus.optional(),
+        userId: EntityUserId.optional(),
+        ipAddress: core.serialization.string().optional(),
+        createdAt: core.serialization.date(),
     });
 
 export declare namespace InvoiceEvent {
     export interface Raw {
-        webhookIds: string[];
+        id: InvoiceEventId.Raw;
         data: InvoiceUpdateRequest.Raw;
-        userId?: EntityUserId.Raw | null;
-        createdAt: string;
-        ipAddress?: string | null;
+        webhookIds: string[];
         status?: InvoiceStatus.Raw | null;
+        userId?: EntityUserId.Raw | null;
+        ipAddress?: string | null;
+        createdAt: string;
     }
 }

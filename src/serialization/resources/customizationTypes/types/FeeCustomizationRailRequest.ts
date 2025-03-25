@@ -15,6 +15,8 @@ export const FeeCustomizationRailRequest: core.serialization.ObjectSchema<
     achSameDay: core.serialization.property("ACH_SAME_DAY", PaymentMethodFee.optional()),
     checkPrint: core.serialization.property("CHECK_PRINT", PaymentMethodFee.optional()),
     checkMail: core.serialization.property("CHECK_MAIL", PaymentMethodFee.optional()),
+    checkMailPriority: core.serialization.property("CHECK_MAIL_PRIORITY", PaymentMethodFee.optional()),
+    checkMailUpsNextDay: core.serialization.property("CHECK_MAIL_UPS_NEXT_DAY", PaymentMethodFee.optional()),
 });
 
 export declare namespace FeeCustomizationRailRequest {
@@ -23,5 +25,7 @@ export declare namespace FeeCustomizationRailRequest {
         ACH_SAME_DAY?: PaymentMethodFee.Raw | null;
         CHECK_PRINT?: PaymentMethodFee.Raw | null;
         CHECK_MAIL?: PaymentMethodFee.Raw | null;
+        CHECK_MAIL_PRIORITY?: PaymentMethodFee.Raw | null;
+        CHECK_MAIL_UPS_NEXT_DAY?: PaymentMethodFee.Raw | null;
     }
 }

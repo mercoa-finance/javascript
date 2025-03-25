@@ -129,8 +129,8 @@ export class Organization {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.6.12",
-                "User-Agent": "@mercoa/javascript/0.6.12",
+                "X-Fern-SDK-Version": "0.6.13",
+                "User-Agent": "@mercoa/javascript/0.6.13",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
@@ -273,8 +273,8 @@ export class Organization {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.6.12",
-                "User-Agent": "@mercoa/javascript/0.6.12",
+                "X-Fern-SDK-Version": "0.6.13",
+                "User-Agent": "@mercoa/javascript/0.6.13",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
@@ -405,7 +405,7 @@ export class Organization {
         request: Mercoa.organization.GetEmailLogRequest = {},
         requestOptions?: Organization.RequestOptions,
     ): Promise<Mercoa.EmailLogResponse> {
-        const { startDate, endDate, limit, startingAfter } = request;
+        const { startDate, endDate, from: from_, to, limit, startingAfter } = request;
         const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
         if (startDate != null) {
             _queryParams["startDate"] = startDate.toISOString();
@@ -413,6 +413,14 @@ export class Organization {
 
         if (endDate != null) {
             _queryParams["endDate"] = endDate.toISOString();
+        }
+
+        if (from_ != null) {
+            _queryParams["from"] = from_;
+        }
+
+        if (to != null) {
+            _queryParams["to"] = to;
         }
 
         if (limit != null) {
@@ -435,8 +443,8 @@ export class Organization {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.6.12",
-                "User-Agent": "@mercoa/javascript/0.6.12",
+                "X-Fern-SDK-Version": "0.6.13",
+                "User-Agent": "@mercoa/javascript/0.6.13",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,

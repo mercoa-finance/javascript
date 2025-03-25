@@ -72,6 +72,7 @@ import * as Mercoa from "../../../index";
  *                         supportedCurrencies: [Mercoa.CurrencyCode.Usd],
  *                         metadata: {},
  *                         frozen: false,
+ *                         confirmedByEntity: true,
  *                         createdAt: "2021-01-01T00:00:00Z",
  *                         updatedAt: "2021-01-01T00:00:00Z"
  *                     }],
@@ -116,6 +117,7 @@ import * as Mercoa from "../../../index";
  *                         supportedCurrencies: [Mercoa.CurrencyCode.Usd],
  *                         metadata: {},
  *                         frozen: false,
+ *                         confirmedByEntity: false,
  *                         createdAt: "2021-01-01T00:00:00Z",
  *                         updatedAt: "2021-01-01T00:00:00Z"
  *                     }],
@@ -141,6 +143,7 @@ import * as Mercoa from "../../../index";
  *                 supportedCurrencies: [Mercoa.CurrencyCode.Usd],
  *                 metadata: {},
  *                 frozen: false,
+ *                 confirmedByEntity: true,
  *                 createdAt: "2021-01-01T00:00:00Z",
  *                 updatedAt: "2021-01-01T00:00:00Z"
  *             },
@@ -167,6 +170,8 @@ import * as Mercoa from "../../../index";
  *     }
  */
 export interface InvoiceStatusChangedWebhook extends Mercoa.InvoiceWebhook {
+    /** The new status of the invoice. */
     newStatus: string;
+    /** The previous status of the invoice. */
     previousStatus: string;
 }

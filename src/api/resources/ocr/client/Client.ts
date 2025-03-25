@@ -53,7 +53,7 @@ export class Ocr {
      * @example
      *     await client.ocr.ocr({
      *         vendorNetwork: "entity",
-     *         entityId: "entity_8f86116b-3b4d-4ded-99ef-3bc929d8c33c",
+     *         entityId: "ent_8f86116b-3b4d-4ded-99ef-3bc929d8c33c",
      *         mimeType: "image/png",
      *         image: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAIAQMAAAD+wSzIAAAABlBMVEX///+/v7+jQ3Y5AAAADklEQVQI12P4AIX8EAgALgAD/aNpbtEAAAAASUVORK5CYII"
      *     })
@@ -71,8 +71,8 @@ export class Ocr {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.6.12",
-                "User-Agent": "@mercoa/javascript/0.6.12",
+                "X-Fern-SDK-Version": "0.6.13",
+                "User-Agent": "@mercoa/javascript/0.6.13",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
@@ -199,7 +199,7 @@ export class Ocr {
      * @example
      *     await client.ocr.runAsyncOcr({
      *         vendorNetwork: "entity",
-     *         entityId: "entity_8f86116b-3b4d-4ded-99ef-3bc929d8c33c",
+     *         entityId: "ent_8f86116b-3b4d-4ded-99ef-3bc929d8c33c",
      *         mimeType: "image/png",
      *         image: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAIAQMAAAD+wSzIAAAABlBMVEX///+/v7+jQ3Y5AAAADklEQVQI12P4AIX8EAgALgAD/aNpbtEAAAAASUVORK5CYII"
      *     })
@@ -220,8 +220,8 @@ export class Ocr {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.6.12",
-                "User-Agent": "@mercoa/javascript/0.6.12",
+                "X-Fern-SDK-Version": "0.6.13",
+                "User-Agent": "@mercoa/javascript/0.6.13",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
@@ -361,8 +361,8 @@ export class Ocr {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.6.12",
-                "User-Agent": "@mercoa/javascript/0.6.12",
+                "X-Fern-SDK-Version": "0.6.13",
+                "User-Agent": "@mercoa/javascript/0.6.13",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
