@@ -845,7 +845,7 @@ import * as Mercoa from "../../../index";
  *         },
  *         email: {
  *             subject: "Invoice Past Due - Please Review",
- *             text: "Your invoice is now 3 days overdue. Please arrange payment as soon as possible to avoid further follow-ups."
+ *             body: "Your invoice is now 3 days overdue. Please arrange payment as soon as possible to avoid further follow-ups."
  *         }
  *     }
  *
@@ -1269,7 +1269,7 @@ import * as Mercoa from "../../../index";
  *         },
  *         email: {
  *             subject: "Re: Invoice Past Due - Please Review",
- *             text: "This slipped under my radar; I will make sure to pay this today."
+ *             body: "This slipped under my radar; I will make sure to pay this today."
  *         }
  *     }
  */

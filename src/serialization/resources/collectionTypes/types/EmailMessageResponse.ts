@@ -11,12 +11,12 @@ export const EmailMessageResponse: core.serialization.ObjectSchema<
     Mercoa.EmailMessageResponse
 > = core.serialization.object({
     subject: core.serialization.string(),
-    text: core.serialization.string(),
+    body: core.serialization.string(),
 });
 
 export declare namespace EmailMessageResponse {
     export interface Raw {
         subject: string;
-        text: string;
+        body: string;
     }
 }
