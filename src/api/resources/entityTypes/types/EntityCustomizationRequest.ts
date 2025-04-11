@@ -46,7 +46,8 @@ import * as Mercoa from "../../../index";
  *             lineItemMetadata: true,
  *             lineItemGlAccountId: true,
  *             predictMetadata: true,
- *             taxAndShippingAsLineItems: true
+ *             taxAndShippingAsLineItems: true,
+ *             splitDocuments: true
  *         },
  *         notifications: {
  *             assumeRole: "admin"

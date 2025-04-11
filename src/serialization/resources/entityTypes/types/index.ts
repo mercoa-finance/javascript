@@ -86,3 +86,5 @@ export * from "./BulkEntityCreationFromObject";
 export * from "./BulkEntityCreationFromObjectResponse";
 export * from "./BulkEntityCreationResponse";
 export * from "./CardLinkTokenResponse";
+export * from "./VendorPortalTab";
+export * from "./VendorPortalOptions";

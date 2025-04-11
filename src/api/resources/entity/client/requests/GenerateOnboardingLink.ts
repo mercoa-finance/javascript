@@ -28,4 +28,8 @@ export interface GenerateOnboardingLink {
      * If true, the onboarding link will redirect to the vendor/customer portal if the entity is already onboarded. If false, the onboarding link will not redirect to the portal. The default is false.
      */
     redirectToPortal?: boolean;
+    /**
+     * The options for the vendor portal.
+     */
+    vendorPortalOptions?: Mercoa.VendorPortalOptions;
 }

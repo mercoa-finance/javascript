@@ -6,5 +6,5 @@ export interface MetadataTrigger {
     /** The metadata key to match */
     key: string;
     /** The metadata value the invoice must have to trigger this policy */
-    value: string;
+    value: string[];
 }

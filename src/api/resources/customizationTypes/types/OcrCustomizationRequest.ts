@@ -11,7 +11,8 @@
  *         lineItemMetadata: true,
  *         lineItemGlAccountId: true,
  *         predictMetadata: true,
- *         taxAndShippingAsLineItems: true
+ *         taxAndShippingAsLineItems: true,
+ *         splitDocuments: true
  *     }
  */
 export interface OcrCustomizationRequest {
@@ -29,4 +30,6 @@ export interface OcrCustomizationRequest {
     predictMetadata?: boolean;
     /** Pull tax and shipping information as line items. Defaults to true. If false, tax and shipping will extracted as invoice level fields. */
     taxAndShippingAsLineItems?: boolean;
+    /** Use AI to intelligently split documents into multiple subdocuments. Defaults to false. */
+    splitDocuments?: boolean;
 }

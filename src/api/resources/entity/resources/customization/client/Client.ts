@@ -69,8 +69,8 @@ export class Customization {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.6.14",
-                "User-Agent": "@mercoa/javascript/0.6.14",
+                "X-Fern-SDK-Version": "0.6.15",
+                "User-Agent": "@mercoa/javascript/0.6.15",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
@@ -237,7 +237,8 @@ export class Customization {
      *             lineItemMetadata: true,
      *             lineItemGlAccountId: true,
      *             predictMetadata: true,
-     *             taxAndShippingAsLineItems: true
+     *             taxAndShippingAsLineItems: true,
+     *             splitDocuments: true
      *         },
      *         notifications: {
      *             assumeRole: "admin"
@@ -377,8 +378,8 @@ export class Customization {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.6.14",
-                "User-Agent": "@mercoa/javascript/0.6.14",
+                "X-Fern-SDK-Version": "0.6.15",
+                "User-Agent": "@mercoa/javascript/0.6.15",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
