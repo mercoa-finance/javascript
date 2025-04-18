@@ -22,6 +22,8 @@ export interface InvoiceResponseBase {
     noteToSelf?: string;
     serviceStartDate?: Date;
     serviceEndDate?: Date;
+    /** Net terms in days. Must be a positive number. */
+    netTerms?: number;
     payerId?: Mercoa.EntityId;
     payer?: Mercoa.CounterpartyResponse;
     paymentSource?: Mercoa.PaymentMethodResponse;

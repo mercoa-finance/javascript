@@ -6,7 +6,7 @@ import * as serializers from "../../../index";
 import * as Mercoa from "../../../../api/index";
 import * as core from "../../../../core";
 import { TransactionResponseBankToBankWithInvoices } from "./TransactionResponseBankToBankWithInvoices";
-import { TransactionResponseBankToMailedCheckWithInvoices } from "./TransactionResponseBankToMailedCheckWithInvoices";
+import { TransactionResponseBankToCheckWithInvoices } from "./TransactionResponseBankToCheckWithInvoices";
 import { TransactionResponseBankToWalletWithInvoices } from "./TransactionResponseBankToWalletWithInvoices";
 import { TransactionResponseCardToWalletWithInvoices } from "./TransactionResponseCardToWalletWithInvoices";
 import { TransactionResponseWalletToBankWithInvoices } from "./TransactionResponseWalletToBankWithInvoices";
@@ -18,7 +18,8 @@ export const TransactionResponse: core.serialization.Schema<
 > = core.serialization
     .union("type", {
         bankAccountToBankAccount: TransactionResponseBankToBankWithInvoices,
-        bankAccountToMailedCheck: TransactionResponseBankToMailedCheckWithInvoices,
+        bankAccountToMailedCheck: TransactionResponseBankToCheckWithInvoices,
+        bankAccountToPrintedCheck: TransactionResponseBankToCheckWithInvoices,
         bankAccountToWallet: TransactionResponseBankToWalletWithInvoices,
         cardToWallet: TransactionResponseCardToWalletWithInvoices,
         walletToBankAccount: TransactionResponseWalletToBankWithInvoices,
@@ -34,6 +35,7 @@ export declare namespace TransactionResponse {
     export type Raw =
         | TransactionResponse.BankAccountToBankAccount
         | TransactionResponse.BankAccountToMailedCheck
+        | TransactionResponse.BankAccountToPrintedCheck
         | TransactionResponse.BankAccountToWallet
         | TransactionResponse.CardToWallet
         | TransactionResponse.WalletToBankAccount
@@ -44,8 +46,12 @@ export declare namespace TransactionResponse {
         type: "bankAccountToBankAccount";
     }
 
-    export interface BankAccountToMailedCheck extends TransactionResponseBankToMailedCheckWithInvoices.Raw {
+    export interface BankAccountToMailedCheck extends TransactionResponseBankToCheckWithInvoices.Raw {
         type: "bankAccountToMailedCheck";
+    }
+
+    export interface BankAccountToPrintedCheck extends TransactionResponseBankToCheckWithInvoices.Raw {
+        type: "bankAccountToPrintedCheck";
     }
 
     export interface BankAccountToWallet extends TransactionResponseBankToWalletWithInvoices.Raw {

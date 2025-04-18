@@ -10,6 +10,7 @@ export const TransactionType: core.serialization.Schema<serializers.TransactionT
     core.serialization.enum_([
         "bankAccountToBankAccount",
         "bankAccountToMailedCheck",
+        "bankAccountToPrintedCheck",
         "bankAccountToWallet",
         "cardToWallet",
         "walletToBankAccount",
@@ -21,6 +22,7 @@ export declare namespace TransactionType {
     export type Raw =
         | "bankAccountToBankAccount"
         | "bankAccountToMailedCheck"
+        | "bankAccountToPrintedCheck"
         | "bankAccountToWallet"
         | "cardToWallet"
         | "walletToBankAccount"

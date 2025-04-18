@@ -2803,6 +2803,7 @@ import * as Mercoa from "../../../index";
 export type TransactionResponse =
     | Mercoa.TransactionResponse.BankAccountToBankAccount
     | Mercoa.TransactionResponse.BankAccountToMailedCheck
+    | Mercoa.TransactionResponse.BankAccountToPrintedCheck
     | Mercoa.TransactionResponse.BankAccountToWallet
     | Mercoa.TransactionResponse.CardToWallet
     | Mercoa.TransactionResponse.WalletToBankAccount
@@ -2814,8 +2815,12 @@ export namespace TransactionResponse {
         type: "bankAccountToBankAccount";
     }
 
-    export interface BankAccountToMailedCheck extends Mercoa.TransactionResponseBankToMailedCheckWithInvoices {
+    export interface BankAccountToMailedCheck extends Mercoa.TransactionResponseBankToCheckWithInvoices {
         type: "bankAccountToMailedCheck";
+    }
+
+    export interface BankAccountToPrintedCheck extends Mercoa.TransactionResponseBankToCheckWithInvoices {
+        type: "bankAccountToPrintedCheck";
     }
 
     export interface BankAccountToWallet extends Mercoa.TransactionResponseBankToWalletWithInvoices {

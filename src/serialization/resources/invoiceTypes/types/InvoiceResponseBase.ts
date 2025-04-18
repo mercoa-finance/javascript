@@ -36,6 +36,7 @@ export const InvoiceResponseBase: core.serialization.ObjectSchema<
     noteToSelf: core.serialization.string().optional(),
     serviceStartDate: core.serialization.date().optional(),
     serviceEndDate: core.serialization.date().optional(),
+    netTerms: core.serialization.number().optional(),
     payerId: EntityId.optional(),
     payer: CounterpartyResponse.optional(),
     paymentSource: PaymentMethodResponse.optional(),
@@ -78,6 +79,7 @@ export declare namespace InvoiceResponseBase {
         noteToSelf?: string | null;
         serviceStartDate?: string | null;
         serviceEndDate?: string | null;
+        netTerms?: number | null;
         payerId?: EntityId.Raw | null;
         payer?: CounterpartyResponse.Raw | null;
         paymentSource?: PaymentMethodResponse.Raw | null;

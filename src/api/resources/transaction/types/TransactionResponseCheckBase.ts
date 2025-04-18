@@ -4,7 +4,7 @@
 
 import * as Mercoa from "../../../index";
 
-export interface TransactionResponseMailedCheckBase extends Mercoa.TransactionResponseBase {
+export interface TransactionResponseCheckBase extends Mercoa.TransactionResponseBase {
     /** The number of the check */
     checkNumber: number;
 }

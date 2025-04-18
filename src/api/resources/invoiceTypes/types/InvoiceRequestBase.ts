@@ -23,6 +23,8 @@ export interface InvoiceRequestBase {
     noteToSelf?: string;
     serviceStartDate?: Date;
     serviceEndDate?: Date;
+    /** Net terms in days. Must be a positive number. */
+    netTerms?: number;
     /** ID or foreign ID of the payer of this invoice. */
     payerId?: Mercoa.EntityId;
     /** ID of payment source for this invoice. If not provided, will attempt to use the default payment source for the payer when creating an invoice if a default payment source exists for the payer. */

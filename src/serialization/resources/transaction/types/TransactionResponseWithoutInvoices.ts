@@ -6,7 +6,7 @@ import * as serializers from "../../../index";
 import * as Mercoa from "../../../../api/index";
 import * as core from "../../../../core";
 import { TransactionResponseAchBase } from "./TransactionResponseAchBase";
-import { TransactionResponseMailedCheckBase } from "./TransactionResponseMailedCheckBase";
+import { TransactionResponseCheckBase } from "./TransactionResponseCheckBase";
 import { TransactionResponseBase } from "./TransactionResponseBase";
 
 export const TransactionResponseWithoutInvoices: core.serialization.Schema<
@@ -15,7 +15,8 @@ export const TransactionResponseWithoutInvoices: core.serialization.Schema<
 > = core.serialization
     .union("type", {
         bankAccountToBankAccount: TransactionResponseAchBase,
-        bankAccountToMailedCheck: TransactionResponseMailedCheckBase,
+        bankAccountToMailedCheck: TransactionResponseCheckBase,
+        bankAccountToPrintedCheck: TransactionResponseCheckBase,
         bankAccountToWallet: TransactionResponseAchBase,
         cardToWallet: TransactionResponseBase,
         walletToBankAccount: TransactionResponseAchBase,
@@ -31,6 +32,7 @@ export declare namespace TransactionResponseWithoutInvoices {
     export type Raw =
         | TransactionResponseWithoutInvoices.BankAccountToBankAccount
         | TransactionResponseWithoutInvoices.BankAccountToMailedCheck
+        | TransactionResponseWithoutInvoices.BankAccountToPrintedCheck
         | TransactionResponseWithoutInvoices.BankAccountToWallet
         | TransactionResponseWithoutInvoices.CardToWallet
         | TransactionResponseWithoutInvoices.WalletToBankAccount
@@ -41,8 +43,12 @@ export declare namespace TransactionResponseWithoutInvoices {
         type: "bankAccountToBankAccount";
     }
 
-    export interface BankAccountToMailedCheck extends TransactionResponseMailedCheckBase.Raw {
+    export interface BankAccountToMailedCheck extends TransactionResponseCheckBase.Raw {
         type: "bankAccountToMailedCheck";
+    }
+
+    export interface BankAccountToPrintedCheck extends TransactionResponseCheckBase.Raw {
+        type: "bankAccountToPrintedCheck";
     }
 
     export interface BankAccountToWallet extends TransactionResponseAchBase.Raw {
