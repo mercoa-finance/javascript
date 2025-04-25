@@ -42,7 +42,8 @@ export type PaymentMethodCustomizationRequest =
     | Mercoa.PaymentMethodCustomizationRequest.Bnpl
     | Mercoa.PaymentMethodCustomizationRequest.OffPlatform
     | Mercoa.PaymentMethodCustomizationRequest.Utility
-    | Mercoa.PaymentMethodCustomizationRequest.Na;
+    | Mercoa.PaymentMethodCustomizationRequest.Na
+    | Mercoa.PaymentMethodCustomizationRequest.Wallet;
 
 export namespace PaymentMethodCustomizationRequest {
     export interface BankAccount extends Mercoa.BankAccountPaymentMethodCustomizationRequest {
@@ -79,5 +80,9 @@ export namespace PaymentMethodCustomizationRequest {
 
     export interface Na extends Mercoa.GenericPaymentMethodCustomizationRequest {
         type: "na";
+    }
+
+    export interface Wallet extends Mercoa.GenericPaymentMethodCustomizationRequest {
+        type: "wallet";
     }
 }

@@ -153,7 +153,8 @@ export type PaymentMethodResponse =
     | Mercoa.PaymentMethodResponse.Check
     | Mercoa.PaymentMethodResponse.Custom
     | Mercoa.PaymentMethodResponse.OffPlatform
-    | Mercoa.PaymentMethodResponse.Utility;
+    | Mercoa.PaymentMethodResponse.Utility
+    | Mercoa.PaymentMethodResponse.Wallet;
 
 export namespace PaymentMethodResponse {
     export interface BankAccount extends Mercoa.BankAccountResponse {
@@ -178,5 +179,9 @@ export namespace PaymentMethodResponse {
 
     export interface Utility extends Mercoa.UtilityPaymentMethodResponse {
         type: "utility";
+    }
+
+    export interface Wallet extends Mercoa.WalletResponse {
+        type: "wallet";
     }
 }

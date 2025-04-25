@@ -11,6 +11,7 @@ import * as Mercoa from "../../../index";
  *         hasMore: false,
  *         data: [{
  *                 id: "1234",
+ *                 status: Mercoa.IncomingEmailLogStatus.Processed,
  *                 subject: "Invoice #1234",
  *                 from: "John Doe <john.doe@example.com>",
  *                 to: "Jane Doe <jane.doe@example.com>",

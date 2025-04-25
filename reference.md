@@ -1785,6 +1785,79 @@ await client.entityGroup.user.getToken("entg_a0f6ea94-0761-4a5e-a416-3c453cb7ece
 </dl>
 </details>
 
+<details><summary><code>client.entityGroup.user.<a href="/src/api/resources/entityGroup/resources/user/client/Client.ts">sync</a>(entityGroupId, { ...params }) -> void</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Sync entity group users. This will add users to entities that do not have them and remove users from entities that have them.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.entityGroup.user.sync("entg_8545a84e-a45f-41bf-bdf1-33b42a55812c", {
+    filterRoles: ["approver", "viewer"],
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**entityGroupId:** `Mercoa.EntityGroupId` — Entity Group ID or Entity Group ForeignID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `Mercoa.EntityGroupUserSyncRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `User.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
 ## Entity
 
 <details><summary><code>client.entity.<a href="/src/api/resources/entity/client/Client.ts">find</a>({ ...params }) -> Mercoa.FindEntityResponse</code></summary>
@@ -8942,7 +9015,9 @@ await client.entity.paymentMethod.bankAccount.completeMicroDeposits(
 </dl>
 </details>
 
-<details><summary><code>client.entity.paymentMethod.bankAccount.<a href="/src/api/resources/entity/resources/paymentMethod/resources/bankAccount/client/Client.ts">getAccelerationFunds</a>(entityId, paymentMethodId) -> Mercoa.AccelerationFundsResponse</code></summary>
+## Entity PaymentMethod Wallet
+
+<details><summary><code>client.entity.paymentMethod.wallet.<a href="/src/api/resources/entity/resources/paymentMethod/resources/wallet/client/Client.ts">getWalletBalance</a>(entityId, paymentMethodId) -> Mercoa.WalletBalanceResponse</code></summary>
 <dl>
 <dd>
 
@@ -8954,7 +9029,7 @@ await client.entity.paymentMethod.bankAccount.completeMicroDeposits(
 <dl>
 <dd>
 
-Get the available and pending balance of this entity's acceleration funds. The specified payment method must be a bank account.
+Get the available and pending balance of this entity's wallet. The specified payment method ID must refer to the entity's wallet.
 
 </dd>
 </dl>
@@ -8970,7 +9045,7 @@ Get the available and pending balance of this entity's acceleration funds. The s
 <dd>
 
 ```typescript
-await client.entity.paymentMethod.bankAccount.getAccelerationFunds(
+await client.entity.paymentMethod.wallet.getWalletBalance(
     "ent_8545a84e-a45f-41bf-bdf1-33b42a55812c",
     "pm_4794d597-70dc-4fec-b6ec-c5988e759769",
 );
@@ -9005,7 +9080,7 @@ await client.entity.paymentMethod.bankAccount.getAccelerationFunds(
 <dl>
 <dd>
 
-**requestOptions:** `BankAccount.RequestOptions`
+**requestOptions:** `Wallet.RequestOptions`
 
 </dd>
 </dl>
@@ -9016,7 +9091,7 @@ await client.entity.paymentMethod.bankAccount.getAccelerationFunds(
 </dl>
 </details>
 
-<details><summary><code>client.entity.paymentMethod.bankAccount.<a href="/src/api/resources/entity/resources/paymentMethod/resources/bankAccount/client/Client.ts">addAccelerationFunds</a>(entityId, paymentMethodId, { ...params }) -> void</code></summary>
+<details><summary><code>client.entity.paymentMethod.wallet.<a href="/src/api/resources/entity/resources/paymentMethod/resources/wallet/client/Client.ts">addWalletFunds</a>(entityId, paymentMethodId, { ...params }) -> void</code></summary>
 <dl>
 <dd>
 
@@ -9028,7 +9103,7 @@ await client.entity.paymentMethod.bankAccount.getAccelerationFunds(
 <dl>
 <dd>
 
-Add acceleration funds to this entity from a bank account (this transfer is D+2). The specified payment method must be a bank account.
+Add funds to this wallet from a bank account (this transfer is D+2). The source payment method ID must refer to a bank account.
 
 </dd>
 </dl>
@@ -9044,12 +9119,13 @@ Add acceleration funds to this entity from a bank account (this transfer is D+2)
 <dd>
 
 ```typescript
-await client.entity.paymentMethod.bankAccount.addAccelerationFunds(
+await client.entity.paymentMethod.wallet.addWalletFunds(
     "ent_8545a84e-a45f-41bf-bdf1-33b42a55812c",
     "pm_4794d597-70dc-4fec-b6ec-c5988e759769",
     {
         amount: 100,
         currency: "USD",
+        sourcePaymentMethodId: "pm_f19d27ad-e493-4bf5-a28b-9cb323de495a",
     },
 );
 ```
@@ -9083,7 +9159,7 @@ await client.entity.paymentMethod.bankAccount.addAccelerationFunds(
 <dl>
 <dd>
 
-**request:** `Mercoa.entity.paymentMethod.AddAccelerationFundsRequest`
+**request:** `Mercoa.entity.paymentMethod.AddWalletFundsRequest`
 
 </dd>
 </dl>
@@ -9091,7 +9167,7 @@ await client.entity.paymentMethod.bankAccount.addAccelerationFunds(
 <dl>
 <dd>
 
-**requestOptions:** `BankAccount.RequestOptions`
+**requestOptions:** `Wallet.RequestOptions`
 
 </dd>
 </dl>
@@ -9102,7 +9178,7 @@ await client.entity.paymentMethod.bankAccount.addAccelerationFunds(
 </dl>
 </details>
 
-<details><summary><code>client.entity.paymentMethod.bankAccount.<a href="/src/api/resources/entity/resources/paymentMethod/resources/bankAccount/client/Client.ts">removeAccelerationFunds</a>(entityId, paymentMethodId, { ...params }) -> void</code></summary>
+<details><summary><code>client.entity.paymentMethod.wallet.<a href="/src/api/resources/entity/resources/paymentMethod/resources/wallet/client/Client.ts">withdrawWalletFunds</a>(entityId, paymentMethodId, { ...params }) -> void</code></summary>
 <dl>
 <dd>
 
@@ -9114,7 +9190,7 @@ await client.entity.paymentMethod.bankAccount.addAccelerationFunds(
 <dl>
 <dd>
 
-Remove acceleration funds from this entity to a bank account (this transfer is D+0). The specified payment method must be a bank account.
+Withdraw funds from this wallet to a bank account (this transfer is D+0). The destination payment method ID must refer to a bank account.
 
 </dd>
 </dl>
@@ -9130,12 +9206,13 @@ Remove acceleration funds from this entity to a bank account (this transfer is D
 <dd>
 
 ```typescript
-await client.entity.paymentMethod.bankAccount.removeAccelerationFunds(
+await client.entity.paymentMethod.wallet.withdrawWalletFunds(
     "ent_8545a84e-a45f-41bf-bdf1-33b42a55812c",
     "pm_4794d597-70dc-4fec-b6ec-c5988e759769",
     {
         amount: 100,
         currency: "USD",
+        destinationPaymentMethodId: "pm_f19d27ad-e493-4bf5-a28b-9cb323de495a",
     },
 );
 ```
@@ -9169,7 +9246,7 @@ await client.entity.paymentMethod.bankAccount.removeAccelerationFunds(
 <dl>
 <dd>
 
-**request:** `Mercoa.entity.paymentMethod.RemoveAccelerationFundsRequest`
+**request:** `Mercoa.entity.paymentMethod.WithdrawWalletFundsRequest`
 
 </dd>
 </dl>
@@ -9177,7 +9254,7 @@ await client.entity.paymentMethod.bankAccount.removeAccelerationFunds(
 <dl>
 <dd>
 
-**requestOptions:** `BankAccount.RequestOptions`
+**requestOptions:** `Wallet.RequestOptions`
 
 </dd>
 </dl>

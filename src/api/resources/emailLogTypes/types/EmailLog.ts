@@ -8,6 +8,7 @@ import * as Mercoa from "../../../index";
  * @example
  *     {
  *         id: "1234",
+ *         status: Mercoa.IncomingEmailLogStatus.Processed,
  *         subject: "Invoice #1234",
  *         from: "John Doe <john.doe@example.com>",
  *         to: "Jane Doe <jane.doe@example.com>",
@@ -22,6 +23,8 @@ import * as Mercoa from "../../../index";
  */
 export interface EmailLog {
     id: Mercoa.EmailLogId;
+    /** The status of the email log. If the status is PENDING, the email has not been processed yet. If the status is PROCESSED, the email has been processed and the invoice has been created. If the status is FAILED, the email was not processed due to an error. */
+    status: Mercoa.IncomingEmailLogStatus;
     subject: string;
     from: string;
     to: string;

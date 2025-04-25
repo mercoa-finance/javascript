@@ -78,8 +78,6 @@ export * from "./EntityEventId";
 export * from "./EntityEvent";
 export * from "./EntityEventsResponse";
 export * from "./IndustryCodes";
-export * from "./AccelerationFundsResponse";
-export * from "./AccelerationFundsBalanceResponse";
 export * from "./BulkConnectedEntity";
 export * from "./BulkEntityCreationRequest";
 export * from "./BulkEntityCreationFromObject";

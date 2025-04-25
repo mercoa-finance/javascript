@@ -24,6 +24,11 @@ export interface EntityGroupUserRequest {
     foreignId: string;
     email?: string;
     name?: string;
-    /** List of roles per entity. By default, the user will have no roles. */
+    /**
+     * List of roles to assign to the user. A role can be any string. For example: "payer", "approver", "viewer"
+     * If not provided, the user will have no roles. Per entity roles will override these global roles.
+     */
+    roles?: string[];
+    /** List of roles per entity. Useful for assigning roles to specific entities. */
     entities?: Mercoa.EntityGroupUserEntityRequest[];
 }

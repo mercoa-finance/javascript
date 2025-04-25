@@ -9,6 +9,7 @@ import * as serializers from "../../../../../../serialization/index";
 import urlJoin from "url-join";
 import * as errors from "../../../../../../errors/index";
 import { BankAccount } from "../resources/bankAccount/client/Client";
+import { Wallet } from "../resources/wallet/client/Client";
 
 export declare namespace PaymentMethod {
     export interface Options {
@@ -36,11 +37,16 @@ export declare namespace PaymentMethod {
 
 export class PaymentMethod {
     protected _bankAccount: BankAccount | undefined;
+    protected _wallet: Wallet | undefined;
 
     constructor(protected readonly _options: PaymentMethod.Options) {}
 
     public get bankAccount(): BankAccount {
         return (this._bankAccount ??= new BankAccount(this._options));
+    }
+
+    public get wallet(): Wallet {
+        return (this._wallet ??= new Wallet(this._options));
     }
 
     /**
@@ -95,8 +101,8 @@ export class PaymentMethod {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.6.16",
-                "User-Agent": "@mercoa/javascript/0.6.16",
+                "X-Fern-SDK-Version": "0.6.17",
+                "User-Agent": "@mercoa/javascript/0.6.17",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
@@ -329,8 +335,8 @@ export class PaymentMethod {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.6.16",
-                "User-Agent": "@mercoa/javascript/0.6.16",
+                "X-Fern-SDK-Version": "0.6.17",
+                "User-Agent": "@mercoa/javascript/0.6.17",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
@@ -475,8 +481,8 @@ export class PaymentMethod {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.6.16",
-                "User-Agent": "@mercoa/javascript/0.6.16",
+                "X-Fern-SDK-Version": "0.6.17",
+                "User-Agent": "@mercoa/javascript/0.6.17",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
@@ -628,8 +634,8 @@ export class PaymentMethod {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.6.16",
-                "User-Agent": "@mercoa/javascript/0.6.16",
+                "X-Fern-SDK-Version": "0.6.17",
+                "User-Agent": "@mercoa/javascript/0.6.17",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
@@ -776,8 +782,8 @@ export class PaymentMethod {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.6.16",
-                "User-Agent": "@mercoa/javascript/0.6.16",
+                "X-Fern-SDK-Version": "0.6.17",
+                "User-Agent": "@mercoa/javascript/0.6.17",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
@@ -926,8 +932,8 @@ export class PaymentMethod {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.6.16",
-                "User-Agent": "@mercoa/javascript/0.6.16",
+                "X-Fern-SDK-Version": "0.6.17",
+                "User-Agent": "@mercoa/javascript/0.6.17",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
@@ -1072,8 +1078,8 @@ export class PaymentMethod {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.6.16",
-                "User-Agent": "@mercoa/javascript/0.6.16",
+                "X-Fern-SDK-Version": "0.6.17",
+                "User-Agent": "@mercoa/javascript/0.6.17",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
@@ -1237,8 +1243,8 @@ export class PaymentMethod {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.6.16",
-                "User-Agent": "@mercoa/javascript/0.6.16",
+                "X-Fern-SDK-Version": "0.6.17",
+                "User-Agent": "@mercoa/javascript/0.6.17",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,

@@ -17,6 +17,7 @@ export const PaymentMethodType: core.serialization.Schema<serializers.PaymentMet
         "virtualCard",
         "offPlatform",
         "utility",
+        "wallet",
     ]);
 
 export declare namespace PaymentMethodType {
@@ -29,5 +30,6 @@ export declare namespace PaymentMethodType {
         | "bnpl"
         | "virtualCard"
         | "offPlatform"
-        | "utility";
+        | "utility"
+        | "wallet";
 }

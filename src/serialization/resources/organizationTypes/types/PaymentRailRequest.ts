@@ -24,6 +24,7 @@ export const PaymentRailRequest: core.serialization.Schema<
         offPlatform: GenericPaymentRailRequest,
         utility: GenericPaymentRailRequest,
         na: GenericPaymentRailRequest,
+        wallet: GenericPaymentRailRequest,
     })
     .transform<Mercoa.PaymentRailRequest>({
         transform: (value) => value,
@@ -40,7 +41,8 @@ export declare namespace PaymentRailRequest {
         | PaymentRailRequest.Bnpl
         | PaymentRailRequest.OffPlatform
         | PaymentRailRequest.Utility
-        | PaymentRailRequest.Na;
+        | PaymentRailRequest.Na
+        | PaymentRailRequest.Wallet;
 
     export interface BankAccount extends BankPaymentRailRequest.Raw {
         type: "bankAccount";
@@ -76,5 +78,9 @@ export declare namespace PaymentRailRequest {
 
     export interface Na extends GenericPaymentRailRequest.Raw {
         type: "na";
+    }
+
+    export interface Wallet extends GenericPaymentRailRequest.Raw {
+        type: "wallet";
     }
 }

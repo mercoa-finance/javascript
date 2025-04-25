@@ -14,6 +14,7 @@ export const EntityGroupUserRequest: core.serialization.ObjectSchema<
     foreignId: core.serialization.string(),
     email: core.serialization.string().optional(),
     name: core.serialization.string().optional(),
+    roles: core.serialization.list(core.serialization.string()).optional(),
     entities: core.serialization.list(EntityGroupUserEntityRequest).optional(),
 });
 
@@ -22,6 +23,7 @@ export declare namespace EntityGroupUserRequest {
         foreignId: string;
         email?: string | null;
         name?: string | null;
+        roles?: string[] | null;
         entities?: EntityGroupUserEntityRequest.Raw[] | null;
     }
 }

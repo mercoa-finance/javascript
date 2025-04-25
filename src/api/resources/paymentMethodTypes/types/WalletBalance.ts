@@ -17,7 +17,8 @@ import * as Mercoa from "../../../index";
  *         currency: Mercoa.CurrencyCode.Usd
  *     }
  */
-export interface AccelerationFundsBalanceResponse {
+export interface WalletBalance {
+    /** The amount in major units of the currency. */
     amount: number;
     currency: Mercoa.CurrencyCode;
 }

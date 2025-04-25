@@ -11,7 +11,8 @@ export type PaymentMethodType =
     | "bnpl"
     | "virtualCard"
     | "offPlatform"
-    | "utility";
+    | "utility"
+    | "wallet";
 export const PaymentMethodType = {
     Custom: "custom",
     Check: "check",
@@ -22,4 +23,5 @@ export const PaymentMethodType = {
     VirtualCard: "virtualCard",
     OffPlatform: "offPlatform",
     Utility: "utility",
+    Wallet: "wallet",
 } as const;

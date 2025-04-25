@@ -11,6 +11,7 @@ import { CheckResponse } from "./CheckResponse";
 import { CustomPaymentMethodResponse } from "./CustomPaymentMethodResponse";
 import { PaymentMethodBaseResponse } from "./PaymentMethodBaseResponse";
 import { UtilityPaymentMethodResponse } from "./UtilityPaymentMethodResponse";
+import { WalletResponse } from "./WalletResponse";
 
 export const PaymentMethodResponse: core.serialization.Schema<
     serializers.PaymentMethodResponse.Raw,
@@ -23,6 +24,7 @@ export const PaymentMethodResponse: core.serialization.Schema<
         custom: CustomPaymentMethodResponse,
         offPlatform: PaymentMethodBaseResponse,
         utility: UtilityPaymentMethodResponse,
+        wallet: WalletResponse,
     })
     .transform<Mercoa.PaymentMethodResponse>({
         transform: (value) => value,
@@ -36,7 +38,8 @@ export declare namespace PaymentMethodResponse {
         | PaymentMethodResponse.Check
         | PaymentMethodResponse.Custom
         | PaymentMethodResponse.OffPlatform
-        | PaymentMethodResponse.Utility;
+        | PaymentMethodResponse.Utility
+        | PaymentMethodResponse.Wallet;
 
     export interface BankAccount extends BankAccountResponse.Raw {
         type: "bankAccount";
@@ -60,5 +63,9 @@ export declare namespace PaymentMethodResponse {
 
     export interface Utility extends UtilityPaymentMethodResponse.Raw {
         type: "utility";
+    }
+
+    export interface Wallet extends WalletResponse.Raw {
+        type: "wallet";
     }
 }

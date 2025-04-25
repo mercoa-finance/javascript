@@ -20,6 +20,7 @@ export const PaymentMethodUpdateRequest: core.serialization.Schema<
         check: PaymentMethodBaseRequest,
         offPlatform: PaymentMethodBaseRequest,
         utility: PaymentMethodBaseRequest,
+        wallet: PaymentMethodBaseRequest,
     })
     .transform<Mercoa.PaymentMethodUpdateRequest>({
         transform: (value) => value,
@@ -33,7 +34,8 @@ export declare namespace PaymentMethodUpdateRequest {
         | PaymentMethodUpdateRequest.Card
         | PaymentMethodUpdateRequest.Check
         | PaymentMethodUpdateRequest.OffPlatform
-        | PaymentMethodUpdateRequest.Utility;
+        | PaymentMethodUpdateRequest.Utility
+        | PaymentMethodUpdateRequest.Wallet;
 
     export interface Custom extends CustomPaymentMethodUpdateRequest.Raw {
         type: "custom";
@@ -57,5 +59,9 @@ export declare namespace PaymentMethodUpdateRequest {
 
     export interface Utility extends PaymentMethodBaseRequest.Raw {
         type: "utility";
+    }
+
+    export interface Wallet extends PaymentMethodBaseRequest.Raw {
+        type: "wallet";
     }
 }

@@ -13,7 +13,8 @@ export type PaymentRailResponse =
     | Mercoa.PaymentRailResponse.Bnpl
     | Mercoa.PaymentRailResponse.OffPlatform
     | Mercoa.PaymentRailResponse.Utility
-    | Mercoa.PaymentRailResponse.Na;
+    | Mercoa.PaymentRailResponse.Na
+    | Mercoa.PaymentRailResponse.Wallet;
 
 export namespace PaymentRailResponse {
     export interface BankAccount extends Mercoa.BankPaymentRailResponse {
@@ -50,5 +51,9 @@ export namespace PaymentRailResponse {
 
     export interface Na extends Mercoa.GenericPaymentRailResponse {
         type: "na";
+    }
+
+    export interface Wallet extends Mercoa.GenericPaymentRailResponse {
+        type: "wallet";
     }
 }

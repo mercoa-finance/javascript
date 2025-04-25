@@ -30,7 +30,10 @@ export type PaymentMethodUpdateRequest =
     | Mercoa.PaymentMethodUpdateRequest.OffPlatform
     /**
      * Only defaultSource and defaultDestination can be updated. */
-    | Mercoa.PaymentMethodUpdateRequest.Utility;
+    | Mercoa.PaymentMethodUpdateRequest.Utility
+    /**
+     * Only defaultSource and defaultDestination can be updated. */
+    | Mercoa.PaymentMethodUpdateRequest.Wallet;
 
 export namespace PaymentMethodUpdateRequest {
     export interface Custom extends Mercoa.CustomPaymentMethodUpdateRequest {
@@ -55,5 +58,9 @@ export namespace PaymentMethodUpdateRequest {
 
     export interface Utility extends Mercoa.PaymentMethodBaseRequest {
         type: "utility";
+    }
+
+    export interface Wallet extends Mercoa.PaymentMethodBaseRequest {
+        type: "wallet";
     }
 }

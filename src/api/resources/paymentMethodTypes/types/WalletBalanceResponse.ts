@@ -7,8 +7,8 @@ import * as Mercoa from "../../../index";
 /**
  * @example
  *     {
- *         entityId: "ent_8545a84e-a45f-41bf-bdf1-33b42a55812c",
  *         paymentMethodId: "pm_4794d597-70dc-4fec-b6ec-c5988e759769",
+ *         entityId: "ent_8545a84e-a45f-41bf-bdf1-33b42a55812c",
  *         availableBalance: {
  *             amount: 100,
  *             currency: Mercoa.CurrencyCode.Usd
@@ -19,11 +19,13 @@ import * as Mercoa from "../../../index";
  *         }
  *     }
  */
-export interface AccelerationFundsResponse {
-    /** The ID of the entity that these acceleration funds belong to. */
-    entityId: Mercoa.EntityId;
-    /** The ID of the payment method that the acceleration funds were accessed through. */
+export interface WalletBalanceResponse {
+    /** The ID of the wallet payment method. */
     paymentMethodId: Mercoa.PaymentMethodId;
-    availableBalance: Mercoa.AccelerationFundsBalanceResponse;
-    pendingBalance: Mercoa.AccelerationFundsBalanceResponse;
+    /** The ID of the entity that this wallet belongs to. */
+    entityId: Mercoa.EntityId;
+    /** The available balance in this wallet. */
+    availableBalance: Mercoa.WalletBalance;
+    /** The pending balance in this wallet. */
+    pendingBalance: Mercoa.WalletBalance;
 }

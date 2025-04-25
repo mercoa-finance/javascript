@@ -10,4 +10,5 @@ export * from "./EntityGroupUserEntityRequest";
 export * from "./EntityGroupUserEntityResponse";
 export * from "./EntityGroupUserRequest";
 export * from "./EntityGroupUserResponse";
+export * from "./EntityGroupUserSyncRequest";
 export * from "./FindEntityGroupUserResponse";

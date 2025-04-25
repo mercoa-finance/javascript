@@ -6,12 +6,14 @@ import * as serializers from "../../../index";
 import * as Mercoa from "../../../../api/index";
 import * as core from "../../../../core";
 import { EmailLogId } from "./EmailLogId";
+import { IncomingEmailLogStatus } from "./IncomingEmailLogStatus";
 import { EmailLogAttachment } from "./EmailLogAttachment";
 import { InvoiceId } from "../../invoiceTypes/types/InvoiceId";
 
 export const EmailLog: core.serialization.ObjectSchema<serializers.EmailLog.Raw, Mercoa.EmailLog> =
     core.serialization.object({
         id: EmailLogId,
+        status: IncomingEmailLogStatus,
         subject: core.serialization.string(),
         from: core.serialization.string(),
         to: core.serialization.string(),
@@ -25,6 +27,7 @@ export const EmailLog: core.serialization.ObjectSchema<serializers.EmailLog.Raw,
 export declare namespace EmailLog {
     export interface Raw {
         id: EmailLogId.Raw;
+        status: IncomingEmailLogStatus.Raw;
         subject: string;
         from: string;
         to: string;

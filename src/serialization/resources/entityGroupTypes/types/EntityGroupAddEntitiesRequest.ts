@@ -14,11 +14,13 @@ export const EntityGroupAddEntitiesRequest: core.serialization.ObjectSchema<
 > = core.serialization.object({
     entityIds: core.serialization.list(EntityId),
     copyUsersFrom: EntityIdOrBoolean.optional(),
+    filterRoles: core.serialization.list(core.serialization.string()).optional(),
 });
 
 export declare namespace EntityGroupAddEntitiesRequest {
     export interface Raw {
         entityIds: EntityId.Raw[];
         copyUsersFrom?: EntityIdOrBoolean.Raw | null;
+        filterRoles?: string[] | null;
     }
 }

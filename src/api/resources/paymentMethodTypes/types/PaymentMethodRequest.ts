@@ -102,7 +102,8 @@ export type PaymentMethodRequest =
     | Mercoa.PaymentMethodRequest.Check
     | Mercoa.PaymentMethodRequest.Custom
     | Mercoa.PaymentMethodRequest.OffPlatform
-    | Mercoa.PaymentMethodRequest.Utility;
+    | Mercoa.PaymentMethodRequest.Utility
+    | Mercoa.PaymentMethodRequest.Wallet;
 
 export namespace PaymentMethodRequest {
     export interface BankAccount extends Mercoa.BankAccountRequest {
@@ -127,5 +128,9 @@ export namespace PaymentMethodRequest {
 
     export interface Utility extends Mercoa.UtilityPaymentMethodRequest {
         type: "utility";
+    }
+
+    export interface Wallet extends Mercoa.PaymentMethodBaseRequest {
+        type: "wallet";
     }
 }
