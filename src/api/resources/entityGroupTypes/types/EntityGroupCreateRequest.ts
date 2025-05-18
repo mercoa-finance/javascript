@@ -12,6 +12,14 @@ import * as Mercoa from "../../../index";
  *         emailToName: "acmegroup",
  *         entityIds: ["ent_8545a84e-a45f-41bf-bdf1-33b42a55812c", "ent_21661ac1-a2a8-4465-a6c0-64474ba8181d"]
  *     }
+ *
+ * @example
+ *     {
+ *         foreignId: "your-group-id",
+ *         name: "Coastal Corporation",
+ *         emailToName: "coastalcorp",
+ *         entityIds: ["ent_e8c2af94-61cd-4036-a765-80341209167b", "ent_1176dd0c-12e1-41c7-85a5-ae9b4746e64b", "ent_3dbb4ede-2d1d-49be-a996-a5dfad3641be"]
+ *     }
  */
 export interface EntityGroupCreateRequest extends Mercoa.EntityGroupUpdateRequest {
     /** List of entity IDs or foreign IDs */

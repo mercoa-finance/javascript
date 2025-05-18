@@ -6,6 +6,7 @@ import * as serializers from "../../../index";
 import * as Mercoa from "../../../../api/index";
 import * as core from "../../../../core";
 import { BankDeliveryMethod } from "../../invoiceTypes/types/BankDeliveryMethod";
+import { OriginatingCompanyNameOptions } from "./OriginatingCompanyNameOptions";
 import { GenericPaymentMethodCustomizationRequest } from "./GenericPaymentMethodCustomizationRequest";
 
 export const BankAccountPaymentMethodCustomizationRequest: core.serialization.ObjectSchema<
@@ -14,11 +15,15 @@ export const BankAccountPaymentMethodCustomizationRequest: core.serialization.Ob
 > = core.serialization
     .object({
         defaultDeliveryMethod: BankDeliveryMethod.optional(),
+        availableDeliveryMethods: core.serialization.list(BankDeliveryMethod).optional(),
+        originatingCompanyName: OriginatingCompanyNameOptions.optional(),
     })
     .extend(GenericPaymentMethodCustomizationRequest);
 
 export declare namespace BankAccountPaymentMethodCustomizationRequest {
     export interface Raw extends GenericPaymentMethodCustomizationRequest.Raw {
         defaultDeliveryMethod?: BankDeliveryMethod.Raw | null;
+        availableDeliveryMethods?: BankDeliveryMethod.Raw[] | null;
+        originatingCompanyName?: OriginatingCompanyNameOptions.Raw | null;
     }
 }

@@ -7,8 +7,10 @@ export type TransactionType =
     | "bankAccountToMailedCheck"
     | "bankAccountToPrintedCheck"
     | "bankAccountToWallet"
+    | "cardToBankAccount"
     | "cardToWallet"
     | "walletToBankAccount"
+    | "walletToWallet"
     | "custom"
     | "offPlatform";
 export const TransactionType = {
@@ -16,8 +18,10 @@ export const TransactionType = {
     BankAccountToMailedCheck: "bankAccountToMailedCheck",
     BankAccountToPrintedCheck: "bankAccountToPrintedCheck",
     BankAccountToWallet: "bankAccountToWallet",
+    CardToBankAccount: "cardToBankAccount",
     CardToWallet: "cardToWallet",
     WalletToBankAccount: "walletToBankAccount",
+    WalletToWallet: "walletToWallet",
     Custom: "custom",
     OffPlatform: "offPlatform",
 } as const;

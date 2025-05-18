@@ -817,8 +817,10 @@ export type TransactionResponseWithoutInvoices =
     | Mercoa.TransactionResponseWithoutInvoices.BankAccountToMailedCheck
     | Mercoa.TransactionResponseWithoutInvoices.BankAccountToPrintedCheck
     | Mercoa.TransactionResponseWithoutInvoices.BankAccountToWallet
+    | Mercoa.TransactionResponseWithoutInvoices.CardToBankAccount
     | Mercoa.TransactionResponseWithoutInvoices.CardToWallet
     | Mercoa.TransactionResponseWithoutInvoices.WalletToBankAccount
+    | Mercoa.TransactionResponseWithoutInvoices.WalletToWallet
     | Mercoa.TransactionResponseWithoutInvoices.Custom
     | Mercoa.TransactionResponseWithoutInvoices.OffPlatform;
 
@@ -839,12 +841,20 @@ export namespace TransactionResponseWithoutInvoices {
         type: "bankAccountToWallet";
     }
 
+    export interface CardToBankAccount extends Mercoa.TransactionResponseAchBase {
+        type: "cardToBankAccount";
+    }
+
     export interface CardToWallet extends Mercoa.TransactionResponseBase {
         type: "cardToWallet";
     }
 
     export interface WalletToBankAccount extends Mercoa.TransactionResponseAchBase {
         type: "walletToBankAccount";
+    }
+
+    export interface WalletToWallet extends Mercoa.TransactionResponseBase {
+        type: "walletToWallet";
     }
 
     export interface Custom extends Mercoa.TransactionResponseBase {

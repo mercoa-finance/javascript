@@ -7,4 +7,8 @@ import * as Mercoa from "../../../index";
 export interface BankAccountPaymentMethodCustomizationRequest extends Mercoa.GenericPaymentMethodCustomizationRequest {
     /** The default delivery method for this payment method. */
     defaultDeliveryMethod?: Mercoa.BankDeliveryMethod;
+    /** The delivery methods that are available for this payment method. */
+    availableDeliveryMethods?: Mercoa.BankDeliveryMethod[];
+    /** The originating company name for this payment method. If not set, the entity name will be used. */
+    originatingCompanyName?: Mercoa.OriginatingCompanyNameOptions;
 }

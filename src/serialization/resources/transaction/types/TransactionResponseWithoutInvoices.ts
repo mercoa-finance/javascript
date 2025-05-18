@@ -18,8 +18,10 @@ export const TransactionResponseWithoutInvoices: core.serialization.Schema<
         bankAccountToMailedCheck: TransactionResponseCheckBase,
         bankAccountToPrintedCheck: TransactionResponseCheckBase,
         bankAccountToWallet: TransactionResponseAchBase,
+        cardToBankAccount: TransactionResponseAchBase,
         cardToWallet: TransactionResponseBase,
         walletToBankAccount: TransactionResponseAchBase,
+        walletToWallet: TransactionResponseBase,
         custom: TransactionResponseBase,
         offPlatform: TransactionResponseBase,
     })
@@ -34,8 +36,10 @@ export declare namespace TransactionResponseWithoutInvoices {
         | TransactionResponseWithoutInvoices.BankAccountToMailedCheck
         | TransactionResponseWithoutInvoices.BankAccountToPrintedCheck
         | TransactionResponseWithoutInvoices.BankAccountToWallet
+        | TransactionResponseWithoutInvoices.CardToBankAccount
         | TransactionResponseWithoutInvoices.CardToWallet
         | TransactionResponseWithoutInvoices.WalletToBankAccount
+        | TransactionResponseWithoutInvoices.WalletToWallet
         | TransactionResponseWithoutInvoices.Custom
         | TransactionResponseWithoutInvoices.OffPlatform;
 
@@ -55,12 +59,20 @@ export declare namespace TransactionResponseWithoutInvoices {
         type: "bankAccountToWallet";
     }
 
+    export interface CardToBankAccount extends TransactionResponseAchBase.Raw {
+        type: "cardToBankAccount";
+    }
+
     export interface CardToWallet extends TransactionResponseBase.Raw {
         type: "cardToWallet";
     }
 
     export interface WalletToBankAccount extends TransactionResponseAchBase.Raw {
         type: "walletToBankAccount";
+    }
+
+    export interface WalletToWallet extends TransactionResponseBase.Raw {
+        type: "walletToWallet";
     }
 
     export interface Custom extends TransactionResponseBase.Raw {

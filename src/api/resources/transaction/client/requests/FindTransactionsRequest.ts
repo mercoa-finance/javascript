@@ -14,9 +14,13 @@ import * as Mercoa from "../../../../index";
  */
 export interface FindTransactionsRequest {
     /**
-     * Filter transactions by the ID or foreign ID of the entity that is the payer or the vendor of the invoice that created the transaction.
+     * Filter transactions by the ID or foreign ID of the entity that created the transaction.
      */
     entityId?: Mercoa.EntityId | Mercoa.EntityId[];
+    /**
+     * Filter transactions by the ID or foreign ID of the entity group that the entity belongs to.
+     */
+    entityGroupId?: Mercoa.EntityGroupId;
     /**
      * CREATED_AT Start date filter.
      */

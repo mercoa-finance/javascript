@@ -2805,8 +2805,10 @@ export type TransactionResponse =
     | Mercoa.TransactionResponse.BankAccountToMailedCheck
     | Mercoa.TransactionResponse.BankAccountToPrintedCheck
     | Mercoa.TransactionResponse.BankAccountToWallet
+    | Mercoa.TransactionResponse.CardToBankAccount
     | Mercoa.TransactionResponse.CardToWallet
     | Mercoa.TransactionResponse.WalletToBankAccount
+    | Mercoa.TransactionResponse.WalletToWallet
     | Mercoa.TransactionResponse.Custom
     | Mercoa.TransactionResponse.OffPlatform;
 
@@ -2827,12 +2829,20 @@ export namespace TransactionResponse {
         type: "bankAccountToWallet";
     }
 
+    export interface CardToBankAccount extends Mercoa.TransactionResponseCardToBankAccountWithInvoices {
+        type: "cardToBankAccount";
+    }
+
     export interface CardToWallet extends Mercoa.TransactionResponseCardToWalletWithInvoices {
         type: "cardToWallet";
     }
 
     export interface WalletToBankAccount extends Mercoa.TransactionResponseWalletToBankWithInvoices {
         type: "walletToBankAccount";
+    }
+
+    export interface WalletToWallet extends Mercoa.TransactionResponseWalletToWalletWithInvoices {
+        type: "walletToWallet";
     }
 
     export interface Custom extends Mercoa.TransactionResponseCustomWithInvoices {

@@ -14,6 +14,7 @@ export const CheckPaymentMethodCustomizationRequest: core.serialization.ObjectSc
 > = core.serialization
     .object({
         defaultDeliveryMethod: CheckDeliveryMethod.optional(),
+        availableDeliveryMethods: core.serialization.list(CheckDeliveryMethod).optional(),
         printDescription: core.serialization.boolean().optional(),
     })
     .extend(GenericPaymentMethodCustomizationRequest);
@@ -21,6 +22,7 @@ export const CheckPaymentMethodCustomizationRequest: core.serialization.ObjectSc
 export declare namespace CheckPaymentMethodCustomizationRequest {
     export interface Raw extends GenericPaymentMethodCustomizationRequest.Raw {
         defaultDeliveryMethod?: CheckDeliveryMethod.Raw | null;
+        availableDeliveryMethods?: CheckDeliveryMethod.Raw[] | null;
         printDescription?: boolean | null;
     }
 }

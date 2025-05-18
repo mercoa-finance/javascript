@@ -18,6 +18,14 @@ import * as Mercoa from "../../../index";
  *                 entityId: "ent_9e02a20e-7749-47de-8d8a-f8ff2859fa90"
  *             }]
  *     }
+ *
+ * @example
+ *     {
+ *         foreignId: "MY-DB-ID-12345",
+ *         email: "bob.smith@acme.com",
+ *         name: "Bob Smith",
+ *         roles: ["admin"]
+ *     }
  */
 export interface EntityGroupUserRequest {
     /** The ID used to identify this user in your system. This is a required field and needs to be unique for all users in the group. */

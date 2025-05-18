@@ -8,8 +8,10 @@ import * as core from "../../../../core";
 import { TransactionResponseBankToBankWithInvoices } from "./TransactionResponseBankToBankWithInvoices";
 import { TransactionResponseBankToCheckWithInvoices } from "./TransactionResponseBankToCheckWithInvoices";
 import { TransactionResponseBankToWalletWithInvoices } from "./TransactionResponseBankToWalletWithInvoices";
+import { TransactionResponseCardToBankAccountWithInvoices } from "./TransactionResponseCardToBankAccountWithInvoices";
 import { TransactionResponseCardToWalletWithInvoices } from "./TransactionResponseCardToWalletWithInvoices";
 import { TransactionResponseWalletToBankWithInvoices } from "./TransactionResponseWalletToBankWithInvoices";
+import { TransactionResponseWalletToWalletWithInvoices } from "./TransactionResponseWalletToWalletWithInvoices";
 import { TransactionResponseCustomWithInvoices } from "./TransactionResponseCustomWithInvoices";
 
 export const TransactionResponse: core.serialization.Schema<
@@ -21,8 +23,10 @@ export const TransactionResponse: core.serialization.Schema<
         bankAccountToMailedCheck: TransactionResponseBankToCheckWithInvoices,
         bankAccountToPrintedCheck: TransactionResponseBankToCheckWithInvoices,
         bankAccountToWallet: TransactionResponseBankToWalletWithInvoices,
+        cardToBankAccount: TransactionResponseCardToBankAccountWithInvoices,
         cardToWallet: TransactionResponseCardToWalletWithInvoices,
         walletToBankAccount: TransactionResponseWalletToBankWithInvoices,
+        walletToWallet: TransactionResponseWalletToWalletWithInvoices,
         custom: TransactionResponseCustomWithInvoices,
         offPlatform: TransactionResponseCustomWithInvoices,
     })
@@ -37,8 +41,10 @@ export declare namespace TransactionResponse {
         | TransactionResponse.BankAccountToMailedCheck
         | TransactionResponse.BankAccountToPrintedCheck
         | TransactionResponse.BankAccountToWallet
+        | TransactionResponse.CardToBankAccount
         | TransactionResponse.CardToWallet
         | TransactionResponse.WalletToBankAccount
+        | TransactionResponse.WalletToWallet
         | TransactionResponse.Custom
         | TransactionResponse.OffPlatform;
 
@@ -58,12 +64,20 @@ export declare namespace TransactionResponse {
         type: "bankAccountToWallet";
     }
 
+    export interface CardToBankAccount extends TransactionResponseCardToBankAccountWithInvoices.Raw {
+        type: "cardToBankAccount";
+    }
+
     export interface CardToWallet extends TransactionResponseCardToWalletWithInvoices.Raw {
         type: "cardToWallet";
     }
 
     export interface WalletToBankAccount extends TransactionResponseWalletToBankWithInvoices.Raw {
         type: "walletToBankAccount";
+    }
+
+    export interface WalletToWallet extends TransactionResponseWalletToWalletWithInvoices.Raw {
+        type: "walletToWallet";
     }
 
     export interface Custom extends TransactionResponseCustomWithInvoices.Raw {

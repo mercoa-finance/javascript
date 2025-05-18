@@ -2,6 +2,7 @@ export * from "./PaymentMethodFee";
 export * from "./PercentageFee";
 export * from "./FlatFee";
 export * from "./DefaultFee";
+export * from "./OriginatingCompanyNameOptions";
 export * from "./MetadataCustomizationRequest";
 export * from "./FeeCustomizationRequest";
 export * from "./FeeCustomizationDetailRequest";

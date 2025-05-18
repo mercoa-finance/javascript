@@ -5413,6 +5413,61 @@ await client.organization.emailLog();
 </dl>
 </details>
 
+<details><summary><code>client.organization.<a href="/src/api/resources/organization/client/Client.ts">invalidateTokens</a>() -> void</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Invalidate all JWT tokens for the current organization. This is considered a break-glass action and should be used only if tokens have been compromised. All tokens will be invalidated, including tokens on links, emails, and currently logged in sessions. API keys are not affected by this action. This action may take 60 seconds to propagate.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.organization.invalidateTokens();
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**requestOptions:** `Organization.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
 ## BankLookup
 
 <details><summary><code>client.bankLookup.<a href="/src/api/resources/bankLookup/client/Client.ts">find</a>({ ...params }) -> Mercoa.BankLookupResponse</code></summary>

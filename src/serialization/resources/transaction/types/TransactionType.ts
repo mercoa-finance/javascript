@@ -12,8 +12,10 @@ export const TransactionType: core.serialization.Schema<serializers.TransactionT
         "bankAccountToMailedCheck",
         "bankAccountToPrintedCheck",
         "bankAccountToWallet",
+        "cardToBankAccount",
         "cardToWallet",
         "walletToBankAccount",
+        "walletToWallet",
         "custom",
         "offPlatform",
     ]);
@@ -24,8 +26,10 @@ export declare namespace TransactionType {
         | "bankAccountToMailedCheck"
         | "bankAccountToPrintedCheck"
         | "bankAccountToWallet"
+        | "cardToBankAccount"
         | "cardToWallet"
         | "walletToBankAccount"
+        | "walletToWallet"
         | "custom"
         | "offPlatform";
 }

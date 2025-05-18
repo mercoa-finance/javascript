@@ -7,6 +7,8 @@ import * as Mercoa from "../../../index";
 export interface CheckPaymentMethodCustomizationRequest extends Mercoa.GenericPaymentMethodCustomizationRequest {
     /** The default delivery method for this payment method. */
     defaultDeliveryMethod?: Mercoa.CheckDeliveryMethod;
+    /** The delivery methods that are available for this payment method. */
+    availableDeliveryMethods?: Mercoa.CheckDeliveryMethod[];
     /** If true, the check will be printed with the description. */
     printDescription?: boolean;
 }
