@@ -33,6 +33,7 @@ export interface InvoiceResponseBase {
     paymentDestination?: Mercoa.PaymentMethodResponse;
     paymentDestinationId?: Mercoa.PaymentMethodId;
     paymentDestinationOptions?: Mercoa.PaymentDestinationOptions;
+    paymentTiming?: Mercoa.CalculatePaymentTimingResponse;
     /** True if the payment destination has been confirmed by the vendor. False if the payment destination has been set (for example, a check to an address) but has not been confirmed by the vendor. */
     paymentDestinationConfirmed: boolean;
     /** If true, this invoice will be paid as a batch payment. Batches are automatically determined by Mercoa based on the payment source, destination, and scheduled payment date. */

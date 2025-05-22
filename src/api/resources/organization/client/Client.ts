@@ -129,8 +129,8 @@ export class Organization {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.6.18",
-                "User-Agent": "@mercoa/javascript/0.6.18",
+                "X-Fern-SDK-Version": "0.6.19",
+                "User-Agent": "@mercoa/javascript/0.6.19",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
@@ -273,8 +273,8 @@ export class Organization {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.6.18",
-                "User-Agent": "@mercoa/javascript/0.6.18",
+                "X-Fern-SDK-Version": "0.6.19",
+                "User-Agent": "@mercoa/javascript/0.6.19",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
@@ -443,8 +443,8 @@ export class Organization {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.6.18",
-                "User-Agent": "@mercoa/javascript/0.6.18",
+                "X-Fern-SDK-Version": "0.6.19",
+                "User-Agent": "@mercoa/javascript/0.6.19",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
@@ -557,6 +557,7 @@ export class Organization {
     /**
      * Invalidate all JWT tokens for the current organization. This is considered a break-glass action and should be used only if tokens have been compromised. All tokens will be invalidated, including tokens on links, emails, and currently logged in sessions. API keys are not affected by this action. This action may take 60 seconds to propagate.
      *
+     * @param {Mercoa.organization.InvalidateTokensRequest} request
      * @param {Organization.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Mercoa.BadRequest}
@@ -570,7 +571,10 @@ export class Organization {
      * @example
      *     await client.organization.invalidateTokens()
      */
-    public async invalidateTokens(requestOptions?: Organization.RequestOptions): Promise<void> {
+    public async invalidateTokens(
+        request: Mercoa.organization.InvalidateTokensRequest = {},
+        requestOptions?: Organization.RequestOptions,
+    ): Promise<void> {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.baseUrl)) ??
@@ -583,8 +587,8 @@ export class Organization {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.6.18",
-                "User-Agent": "@mercoa/javascript/0.6.18",
+                "X-Fern-SDK-Version": "0.6.19",
+                "User-Agent": "@mercoa/javascript/0.6.19",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
@@ -592,6 +596,9 @@ export class Organization {
             },
             contentType: "application/json",
             requestType: "json",
+            body: serializers.organization.InvalidateTokensRequest.jsonOrThrow(request, {
+                unrecognizedObjectKeys: "strip",
+            }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,

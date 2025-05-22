@@ -146,6 +146,28 @@ import * as Mercoa from "../../../index";
  *         createdAt: "2021-01-01T00:00:00Z",
  *         updatedAt: "2021-01-01T00:00:00Z"
  *     }
+ *
+ * @example
+ *     {
+ *         type: "wallet",
+ *         id: "pm_5fde2f4a-facc-48ef-8f0d-6b7d087c7b18",
+ *         availableBalance: {
+ *             amount: 100,
+ *             currency: Mercoa.CurrencyCode.Usd
+ *         },
+ *         pendingBalance: {
+ *             amount: 5,
+ *             currency: Mercoa.CurrencyCode.Usd
+ *         },
+ *         isDefaultSource: false,
+ *         isDefaultDestination: false,
+ *         supportedCurrencies: [Mercoa.CurrencyCode.Usd],
+ *         metadata: {},
+ *         frozen: false,
+ *         confirmedByEntity: true,
+ *         createdAt: "2021-01-01T00:00:00Z",
+ *         updatedAt: "2021-01-01T00:00:00Z"
+ *     }
  */
 export type PaymentMethodResponse =
     | Mercoa.PaymentMethodResponse.BankAccount

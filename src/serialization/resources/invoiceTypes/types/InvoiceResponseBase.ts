@@ -12,6 +12,7 @@ import { CounterpartyResponse } from "../../entityTypes/types/CounterpartyRespon
 import { PaymentMethodResponse } from "../../paymentMethodTypes/types/PaymentMethodResponse";
 import { PaymentMethodId } from "../../paymentMethodTypes/types/PaymentMethodId";
 import { PaymentDestinationOptions } from "./PaymentDestinationOptions";
+import { CalculatePaymentTimingResponse } from "../../calculate/types/CalculatePaymentTimingResponse";
 import { InvoiceLineItemResponse } from "./InvoiceLineItemResponse";
 import { ApprovalSlot } from "./ApprovalSlot";
 import { ApprovalPolicyResponse } from "../../entityTypes/types/ApprovalPolicyResponse";
@@ -46,6 +47,7 @@ export const InvoiceResponseBase: core.serialization.ObjectSchema<
     paymentDestination: PaymentMethodResponse.optional(),
     paymentDestinationId: PaymentMethodId.optional(),
     paymentDestinationOptions: PaymentDestinationOptions.optional(),
+    paymentTiming: CalculatePaymentTimingResponse.optional(),
     paymentDestinationConfirmed: core.serialization.boolean(),
     batchPayment: core.serialization.boolean().optional(),
     hasDocuments: core.serialization.boolean(),
@@ -89,6 +91,7 @@ export declare namespace InvoiceResponseBase {
         paymentDestination?: PaymentMethodResponse.Raw | null;
         paymentDestinationId?: PaymentMethodId.Raw | null;
         paymentDestinationOptions?: PaymentDestinationOptions.Raw | null;
+        paymentTiming?: CalculatePaymentTimingResponse.Raw | null;
         paymentDestinationConfirmed: boolean;
         batchPayment?: boolean | null;
         hasDocuments: boolean;

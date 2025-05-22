@@ -21,6 +21,7 @@ export const TokenGenerationOptions: core.serialization.ObjectSchema<
     style: TokenGenerationStyleOptions.optional(),
     vendors: TokenGenerationVendorOptions.optional(),
     entity: TokenGenerationEntityOptions.optional(),
+    sessionId: core.serialization.string().optional(),
 });
 
 export declare namespace TokenGenerationOptions {
@@ -31,5 +32,6 @@ export declare namespace TokenGenerationOptions {
         style?: TokenGenerationStyleOptions.Raw | null;
         vendors?: TokenGenerationVendorOptions.Raw | null;
         entity?: TokenGenerationEntityOptions.Raw | null;
+        sessionId?: string | null;
     }
 }

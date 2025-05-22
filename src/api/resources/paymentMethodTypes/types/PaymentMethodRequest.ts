@@ -95,6 +95,11 @@ import * as Mercoa from "../../../index";
  *             "accountNumber": "99988767623"
  *         }
  *     }
+ *
+ * @example
+ *     {
+ *         type: "wallet"
+ *     }
  */
 export type PaymentMethodRequest =
     | Mercoa.PaymentMethodRequest.BankAccount

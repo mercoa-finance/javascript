@@ -12,4 +12,6 @@ export interface TokenGenerationOptions {
     style?: Mercoa.TokenGenerationStyleOptions;
     vendors?: Mercoa.TokenGenerationVendorOptions;
     entity?: Mercoa.TokenGenerationEntityOptions;
+    /** Optional session ID to use for the token. If not provided, this token will not be associated with a session. */
+    sessionId?: string;
 }
