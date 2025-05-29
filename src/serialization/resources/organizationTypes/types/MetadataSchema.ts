@@ -8,6 +8,7 @@ import * as core from "../../../../core";
 import { MetadataType } from "./MetadataType";
 import { MetadataValidationRule } from "./MetadataValidationRule";
 import { MetadataShowConditions } from "./MetadataShowConditions";
+import { MetadataOcrRules } from "./MetadataOcrRules";
 
 export const MetadataSchema: core.serialization.ObjectSchema<serializers.MetadataSchema.Raw, Mercoa.MetadataSchema> =
     core.serialization.object({
@@ -19,6 +20,7 @@ export const MetadataSchema: core.serialization.ObjectSchema<serializers.Metadat
         allowMultiple: core.serialization.boolean().optional(),
         validationRules: MetadataValidationRule.optional(),
         showConditions: MetadataShowConditions.optional(),
+        ocrRules: MetadataOcrRules.optional(),
     });
 
 export declare namespace MetadataSchema {
@@ -31,5 +33,6 @@ export declare namespace MetadataSchema {
         allowMultiple?: boolean | null;
         validationRules?: MetadataValidationRule.Raw | null;
         showConditions?: MetadataShowConditions.Raw | null;
+        ocrRules?: MetadataOcrRules.Raw | null;
     }
 }

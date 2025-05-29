@@ -17,4 +17,6 @@ export interface MetadataSchema {
     validationRules?: Mercoa.MetadataValidationRule;
     /** A list of conditional rules that determine whether or not this field should be shown. The field will only be shown if all of the conditions are met. If no conditions are specified, the field will always be shown. */
     showConditions?: Mercoa.MetadataShowConditions;
+    /** A collection of rules that determine how this field is populated during OCR. */
+    ocrRules?: Mercoa.MetadataOcrRules;
 }

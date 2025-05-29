@@ -114,8 +114,8 @@ export class Bulk {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.6.19",
-                "User-Agent": "@mercoa/javascript/0.6.19",
+                "X-Fern-SDK-Version": "0.6.20",
+                "User-Agent": "@mercoa/javascript/0.6.20",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
@@ -219,6 +219,337 @@ export class Bulk {
                 });
             case "timeout":
                 throw new errors.MercoaTimeoutError("Timeout exceeded when calling POST /invoices.");
+            case "unknown":
+                throw new errors.MercoaError({
+                    message: _response.error.errorMessage,
+                });
+        }
+    }
+
+    /**
+     * Update multiple invoices in bulk. This endpoint will process synchronously and return a list of invoices that were updated or failed to update.
+     *
+     * @param {Mercoa.invoice.BulkInvoiceUpdateRequest} request
+     * @param {Bulk.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @throws {@link Mercoa.BadRequest}
+     * @throws {@link Mercoa.Unauthorized}
+     * @throws {@link Mercoa.Forbidden}
+     * @throws {@link Mercoa.NotFound}
+     * @throws {@link Mercoa.Conflict}
+     * @throws {@link Mercoa.InternalServerError}
+     * @throws {@link Mercoa.Unimplemented}
+     *
+     * @example
+     *     await client.invoice.bulk.update({
+     *         body: {
+     *             invoices: [{
+     *                     invoiceId: "inv_21661ac1-a2a8-4465-a6c0-64474ba8181d",
+     *                     status: "NEW",
+     *                     amount: 100,
+     *                     currency: "USD",
+     *                     dueDate: "2024-01-31T00:00:00Z",
+     *                     invoiceDate: "2024-01-01T00:00:00Z",
+     *                     invoiceNumber: "INV-001",
+     *                     lineItems: [{
+     *                             description: "Item 1",
+     *                             amount: 50,
+     *                             quantity: 1
+     *                         }, {
+     *                             description: "Item 2",
+     *                             amount: 50,
+     *                             quantity: 1
+     *                         }]
+     *                 }]
+     *         }
+     *     })
+     */
+    public async update(
+        request: Mercoa.invoice.BulkInvoiceUpdateRequest,
+        requestOptions?: Bulk.RequestOptions,
+    ): Promise<Mercoa.BulkInvoiceUpdateResponse> {
+        const { emitWebhooks, body: _body } = request;
+        const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
+        if (emitWebhooks != null) {
+            _queryParams["emitWebhooks"] = emitWebhooks.toString();
+        }
+
+        const _response = await core.fetcher({
+            url: urlJoin(
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (await core.Supplier.get(this._options.environment)) ??
+                    environments.MercoaEnvironment.Production,
+                "invoices",
+            ),
+            method: "PUT",
+            headers: {
+                Authorization: await this._getAuthorizationHeader(),
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "@mercoa/javascript",
+                "X-Fern-SDK-Version": "0.6.20",
+                "User-Agent": "@mercoa/javascript/0.6.20",
+                "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...requestOptions?.headers,
+            },
+            contentType: "application/json",
+            queryParameters: _queryParams,
+            requestType: "json",
+            body: serializers.BulkInvoiceUpdateRequest.jsonOrThrow(_body, { unrecognizedObjectKeys: "strip" }),
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+        });
+        if (_response.ok) {
+            return serializers.BulkInvoiceUpdateResponse.parseOrThrow(_response.body, {
+                unrecognizedObjectKeys: "passthrough",
+                allowUnrecognizedUnionMembers: true,
+                allowUnrecognizedEnumValues: true,
+                breadcrumbsPrefix: ["response"],
+            });
+        }
+
+        if (_response.error.reason === "status-code") {
+            switch ((_response.error.body as any)?.["errorName"]) {
+                case "BadRequest":
+                    throw new Mercoa.BadRequest(
+                        serializers.BadRequest.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        }),
+                    );
+                case "Unauthorized":
+                    throw new Mercoa.Unauthorized(
+                        serializers.Unauthorized.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        }),
+                    );
+                case "Forbidden":
+                    throw new Mercoa.Forbidden(
+                        serializers.Forbidden.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        }),
+                    );
+                case "NotFound":
+                    throw new Mercoa.NotFound(
+                        serializers.NotFound.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        }),
+                    );
+                case "Conflict":
+                    throw new Mercoa.Conflict(
+                        serializers.Conflict.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        }),
+                    );
+                case "InternalServerError":
+                    throw new Mercoa.InternalServerError(
+                        serializers.InternalServerError.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        }),
+                    );
+                case "Unimplemented":
+                    throw new Mercoa.Unimplemented(
+                        serializers.Unimplemented.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        }),
+                    );
+                default:
+                    throw new errors.MercoaError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                    });
+            }
+        }
+
+        switch (_response.error.reason) {
+            case "non-json":
+                throw new errors.MercoaError({
+                    statusCode: _response.error.statusCode,
+                    body: _response.error.rawBody,
+                });
+            case "timeout":
+                throw new errors.MercoaTimeoutError("Timeout exceeded when calling PUT /invoices.");
+            case "unknown":
+                throw new errors.MercoaError({
+                    message: _response.error.errorMessage,
+                });
+        }
+    }
+
+    /**
+     * Approve multiple invoices in bulk. This endpoint will process synchronously and return a list of invoices that were approved or failed to approve.
+     *
+     * @param {Mercoa.invoice.BulkInvoiceApprovalRequest} request
+     * @param {Bulk.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @throws {@link Mercoa.BadRequest}
+     * @throws {@link Mercoa.Unauthorized}
+     * @throws {@link Mercoa.Forbidden}
+     * @throws {@link Mercoa.NotFound}
+     * @throws {@link Mercoa.Conflict}
+     * @throws {@link Mercoa.InternalServerError}
+     * @throws {@link Mercoa.Unimplemented}
+     *
+     * @example
+     *     await client.invoice.bulk.approve({
+     *         body: {
+     *             invoices: [{
+     *                     invoiceId: "in_26e7b5d3-a739-4b23-9ad9-6aaa085f47a9",
+     *                     text: "This is a reason for my action",
+     *                     userId: "user_e24fc81c-c5ee-47e8-af42-4fe29d895506"
+     *                 }]
+     *         }
+     *     })
+     */
+    public async approve(
+        request: Mercoa.invoice.BulkInvoiceApprovalRequest,
+        requestOptions?: Bulk.RequestOptions,
+    ): Promise<Mercoa.BulkInvoiceApprovalResponse> {
+        const { emitWebhooks, body: _body } = request;
+        const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
+        if (emitWebhooks != null) {
+            _queryParams["emitWebhooks"] = emitWebhooks.toString();
+        }
+
+        const _response = await core.fetcher({
+            url: urlJoin(
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (await core.Supplier.get(this._options.environment)) ??
+                    environments.MercoaEnvironment.Production,
+                "invoices/approve",
+            ),
+            method: "POST",
+            headers: {
+                Authorization: await this._getAuthorizationHeader(),
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "@mercoa/javascript",
+                "X-Fern-SDK-Version": "0.6.20",
+                "User-Agent": "@mercoa/javascript/0.6.20",
+                "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...requestOptions?.headers,
+            },
+            contentType: "application/json",
+            queryParameters: _queryParams,
+            requestType: "json",
+            body: serializers.BulkInvoiceApprovalRequest.jsonOrThrow(_body, { unrecognizedObjectKeys: "strip" }),
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+        });
+        if (_response.ok) {
+            return serializers.BulkInvoiceApprovalResponse.parseOrThrow(_response.body, {
+                unrecognizedObjectKeys: "passthrough",
+                allowUnrecognizedUnionMembers: true,
+                allowUnrecognizedEnumValues: true,
+                breadcrumbsPrefix: ["response"],
+            });
+        }
+
+        if (_response.error.reason === "status-code") {
+            switch ((_response.error.body as any)?.["errorName"]) {
+                case "BadRequest":
+                    throw new Mercoa.BadRequest(
+                        serializers.BadRequest.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        }),
+                    );
+                case "Unauthorized":
+                    throw new Mercoa.Unauthorized(
+                        serializers.Unauthorized.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        }),
+                    );
+                case "Forbidden":
+                    throw new Mercoa.Forbidden(
+                        serializers.Forbidden.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        }),
+                    );
+                case "NotFound":
+                    throw new Mercoa.NotFound(
+                        serializers.NotFound.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        }),
+                    );
+                case "Conflict":
+                    throw new Mercoa.Conflict(
+                        serializers.Conflict.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        }),
+                    );
+                case "InternalServerError":
+                    throw new Mercoa.InternalServerError(
+                        serializers.InternalServerError.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        }),
+                    );
+                case "Unimplemented":
+                    throw new Mercoa.Unimplemented(
+                        serializers.Unimplemented.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        }),
+                    );
+                default:
+                    throw new errors.MercoaError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                    });
+            }
+        }
+
+        switch (_response.error.reason) {
+            case "non-json":
+                throw new errors.MercoaError({
+                    statusCode: _response.error.statusCode,
+                    body: _response.error.rawBody,
+                });
+            case "timeout":
+                throw new errors.MercoaTimeoutError("Timeout exceeded when calling POST /invoices/approve.");
             case "unknown":
                 throw new errors.MercoaError({
                     message: _response.error.errorMessage,

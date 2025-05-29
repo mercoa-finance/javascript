@@ -49,4 +49,5 @@ export * from "./MetadataType";
 export * from "./MetadataRegexValidationRule";
 export * from "./MetadataValidationRule";
 export * from "./MetadataShowConditions";
+export * from "./MetadataOcrRules";
 export * from "./MetadataSchema";

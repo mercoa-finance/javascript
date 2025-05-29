@@ -129,8 +129,8 @@ export class Organization {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.6.19",
-                "User-Agent": "@mercoa/javascript/0.6.19",
+                "X-Fern-SDK-Version": "0.6.20",
+                "User-Agent": "@mercoa/javascript/0.6.20",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
@@ -273,8 +273,8 @@ export class Organization {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.6.19",
-                "User-Agent": "@mercoa/javascript/0.6.19",
+                "X-Fern-SDK-Version": "0.6.20",
+                "User-Agent": "@mercoa/javascript/0.6.20",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
@@ -443,8 +443,8 @@ export class Organization {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.6.19",
-                "User-Agent": "@mercoa/javascript/0.6.19",
+                "X-Fern-SDK-Version": "0.6.20",
+                "User-Agent": "@mercoa/javascript/0.6.20",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
@@ -569,6 +569,11 @@ export class Organization {
      * @throws {@link Mercoa.Unimplemented}
      *
      * @example
+     *     await client.organization.invalidateTokens({
+     *         sessionId: ["session_123", "session_456"]
+     *     })
+     *
+     * @example
      *     await client.organization.invalidateTokens()
      */
     public async invalidateTokens(
@@ -587,8 +592,8 @@ export class Organization {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.6.19",
-                "User-Agent": "@mercoa/javascript/0.6.19",
+                "X-Fern-SDK-Version": "0.6.20",
+                "User-Agent": "@mercoa/javascript/0.6.20",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,

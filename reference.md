@@ -5441,7 +5441,9 @@ Invalidate all JWT tokens for the current organization. This is considered a bre
 <dd>
 
 ```typescript
-await client.organization.invalidateTokens();
+await client.organization.invalidateTokens({
+    sessionId: ["session_123", "session_456"],
+});
 ```
 
 </dd>
@@ -8106,6 +8108,5029 @@ await client.entity.externalAccountingSystem.create("ent_8545a84e-a45f-41bf-bdf1
 <dd>
 
 **requestOptions:** `ExternalAccountingSystem.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.entity.externalAccountingSystem.<a href="/src/api/resources/entity/resources/externalAccountingSystem/client/Client.ts">connect</a>(entityId) -> string</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Get a link to connect an entity to an external accounting system like Quickbooks or Xero
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.entity.externalAccountingSystem.connect("ent_8545a84e-a45f-41bf-bdf1-33b42a55812c");
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**entityId:** `Mercoa.EntityId` — Entity ID or Entity ForeignID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `ExternalAccountingSystem.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.entity.externalAccountingSystem.<a href="/src/api/resources/entity/resources/externalAccountingSystem/client/Client.ts">sync</a>(entityId, { ...params }) -> void</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Sync an entity with an external accounting system. Will sync customers/vendors and invoices.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.entity.externalAccountingSystem.sync("ent_8545a84e-a45f-41bf-bdf1-33b42a55812c", {
+    vendors: "pull",
+    bills: "push",
+    glAccounts: "pull",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**entityId:** `Mercoa.EntityId` — Entity ID or Entity ForeignID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `Mercoa.entity.SyncExternalSystemRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `ExternalAccountingSystem.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+## Entity Invoice
+
+<details><summary><code>client.entity.invoice.<a href="/src/api/resources/entity/resources/invoice/client/Client.ts">find</a>(entityId, { ...params }) -> Mercoa.FindInvoiceResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Get invoices for an entity with the given filters.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.entity.invoice.find("ent_8545a84e-a45f-41bf-bdf1-33b42a55812c", {
+    excludeReceivables: true,
+    orderBy: "CREATED_AT",
+    orderDirection: "ASC",
+    limit: 10,
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**entityId:** `Mercoa.EntityId` — Entity ID or Entity ForeignID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `Mercoa.entity.EntityGetInvoicesRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Invoice.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.entity.invoice.<a href="/src/api/resources/entity/resources/invoice/client/Client.ts">metrics</a>(entityId, { ...params }) -> Mercoa.InvoiceMetricsResponse[]</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Get invoice metrics for an entity with the given filters. Invoices will always be grouped by currency. If none of excludePayables, excludeReceivables, payerId, vendorId, or invoiceId status filters are provided, excludeReceivables will be set to true.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.entity.invoice.metrics("ent_8545a84e-a45f-41bf-bdf1-33b42a55812c", {
+    returnByDate: "CREATION_DATE",
+    excludeReceivables: true,
+    startDate: "2021-01-01T00:00:00.000Z",
+    endDate: "2021-01-31T23:59:59.999Z",
+    currency: "USD",
+    status: "NEW",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**entityId:** `Mercoa.EntityId` — Entity ID or Entity ForeignID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `Mercoa.entity.InvoiceMetricsRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Invoice.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+## Entity Metadata
+
+<details><summary><code>client.entity.metadata.<a href="/src/api/resources/entity/resources/metadata/client/Client.ts">getAll</a>(entityId) -> Mercoa.EntityMetadataResponse[]</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieve all metadata options associated with this entity
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.entity.metadata.getAll("ent_a0f6ea94-0761-4a5e-a416-3c453cb7eced");
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**entityId:** `Mercoa.EntityId` — Entity ID or Entity ForeignID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Metadata.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.entity.metadata.<a href="/src/api/resources/entity/resources/metadata/client/Client.ts">get</a>(entityId, key) -> string[]</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieve metadata associated with a specific key
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.entity.metadata.get("ent_a0f6ea94-0761-4a5e-a416-3c453cb7eced", "propertyId");
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**entityId:** `Mercoa.EntityId` — Entity ID or Entity ForeignID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**key:** `string`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Metadata.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.entity.metadata.<a href="/src/api/resources/entity/resources/metadata/client/Client.ts">update</a>(entityId, key, { ...params }) -> string[]</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Update metadata associated with a specific key
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.entity.metadata.update("ent_a0f6ea94-0761-4a5e-a416-3c453cb7eced", "propertyId", [
+    "{key: 'prop_123', value: 'Beach Rental'}",
+    "{key: 'prop_456', value: 'City Rental'}",
+]);
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**entityId:** `Mercoa.EntityId` — Entity ID or Entity ForeignID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**key:** `string`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `string[]`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Metadata.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.entity.metadata.<a href="/src/api/resources/entity/resources/metadata/client/Client.ts">delete</a>(entityId, key) -> void</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Delete all metadata associated with a specific key
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.entity.metadata.delete("ent_a0f6ea94-0761-4a5e-a416-3c453cb7eced", "propertyId");
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**entityId:** `Mercoa.EntityId` — Entity ID or Entity ForeignID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**key:** `string`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Metadata.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+## Entity NotificationPolicy
+
+<details><summary><code>client.entity.notificationPolicy.<a href="/src/api/resources/entity/resources/notificationPolicy/client/Client.ts">getAll</a>(entityId) -> Mercoa.NotificationPolicyResponse[]</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieve all notification policies associated with this entity
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.entity.notificationPolicy.getAll("ent_8545a84e-a45f-41bf-bdf1-33b42a55812c");
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**entityId:** `Mercoa.EntityId` — Entity ID or Entity ForeignID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `NotificationPolicy.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.entity.notificationPolicy.<a href="/src/api/resources/entity/resources/notificationPolicy/client/Client.ts">get</a>(entityId, notificationType) -> Mercoa.NotificationPolicyResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieve notification policy associated with this entity
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.entity.notificationPolicy.get("ent_8545a84e-a45f-41bf-bdf1-33b42a55812c", "INVOICE_APPROVAL_NEEDED");
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**entityId:** `Mercoa.EntityId` — Entity ID or Entity ForeignID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**notificationType:** `Mercoa.NotificationType`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `NotificationPolicy.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.entity.notificationPolicy.<a href="/src/api/resources/entity/resources/notificationPolicy/client/Client.ts">update</a>(entityId, notificationType, { ...params }) -> Mercoa.NotificationPolicyResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Update notification policy associated with this entity
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.entity.notificationPolicy.update("ent_8545a84e-a45f-41bf-bdf1-33b42a55812c", "INVOICE_APPROVAL_NEEDED", {
+    disabled: false,
+    additionalRoles: ["admin", "approver"],
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**entityId:** `Mercoa.EntityId` — Entity ID or Entity ForeignID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**notificationType:** `Mercoa.NotificationType`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `Mercoa.NotificationPolicyRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `NotificationPolicy.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+## Entity PaymentMethod BankAccount
+
+<details><summary><code>client.entity.paymentMethod.bankAccount.<a href="/src/api/resources/entity/resources/paymentMethod/resources/bankAccount/client/Client.ts">initiateMicroDeposits</a>(entityId, paymentMethodId) -> Mercoa.PaymentMethodResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Initiate micro deposits for a bank account
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.entity.paymentMethod.bankAccount.initiateMicroDeposits(
+    "ent_8545a84e-a45f-41bf-bdf1-33b42a55812c",
+    "pm_4794d597-70dc-4fec-b6ec-c5988e759769",
+);
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**entityId:** `Mercoa.EntityId` — Entity ID or Entity ForeignID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**paymentMethodId:** `Mercoa.PaymentMethodId` — Payment Method ID or Payment Method ForeignID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `BankAccount.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.entity.paymentMethod.bankAccount.<a href="/src/api/resources/entity/resources/paymentMethod/resources/bankAccount/client/Client.ts">completeMicroDeposits</a>(entityId, paymentMethodId, { ...params }) -> Mercoa.PaymentMethodResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Complete micro deposit verification
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.entity.paymentMethod.bankAccount.completeMicroDeposits(
+    "ent_8545a84e-a45f-41bf-bdf1-33b42a55812c",
+    "pm_4794d597-70dc-4fec-b6ec-c5988e759769",
+    {
+        amounts: [40, 2],
+    },
+);
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**entityId:** `Mercoa.EntityId` — Entity ID or Entity ForeignID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**paymentMethodId:** `Mercoa.PaymentMethodId` — Payment Method ID or Payment Method ForeignID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `Mercoa.entity.paymentMethod.CompleteMicroDepositsRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `BankAccount.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+## Entity PaymentMethod Wallet
+
+<details><summary><code>client.entity.paymentMethod.wallet.<a href="/src/api/resources/entity/resources/paymentMethod/resources/wallet/client/Client.ts">getWalletBalance</a>(entityId, paymentMethodId) -> Mercoa.WalletBalanceResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Get the available and pending balance of this entity's wallet. The specified payment method ID must refer to the entity's wallet.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.entity.paymentMethod.wallet.getWalletBalance(
+    "ent_8545a84e-a45f-41bf-bdf1-33b42a55812c",
+    "pm_4794d597-70dc-4fec-b6ec-c5988e759769",
+);
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**entityId:** `Mercoa.EntityId` — Entity ID or Entity ForeignID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**paymentMethodId:** `Mercoa.PaymentMethodId` — Payment Method ID or Payment Method ForeignID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Wallet.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.entity.paymentMethod.wallet.<a href="/src/api/resources/entity/resources/paymentMethod/resources/wallet/client/Client.ts">addWalletFunds</a>(entityId, paymentMethodId, { ...params }) -> void</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Add funds to this wallet from a bank account (this transfer is D+2). The source payment method ID must refer to a bank account.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.entity.paymentMethod.wallet.addWalletFunds(
+    "ent_8545a84e-a45f-41bf-bdf1-33b42a55812c",
+    "pm_4794d597-70dc-4fec-b6ec-c5988e759769",
+    {
+        amount: 100,
+        currency: "USD",
+        sourcePaymentMethodId: "pm_f19d27ad-e493-4bf5-a28b-9cb323de495a",
+    },
+);
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**entityId:** `Mercoa.EntityId` — Entity ID or Entity ForeignID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**paymentMethodId:** `Mercoa.PaymentMethodId` — Payment Method ID or Payment Method ForeignID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `Mercoa.entity.paymentMethod.AddWalletFundsRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Wallet.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.entity.paymentMethod.wallet.<a href="/src/api/resources/entity/resources/paymentMethod/resources/wallet/client/Client.ts">withdrawWalletFunds</a>(entityId, paymentMethodId, { ...params }) -> void</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Withdraw funds from this wallet to a bank account (this transfer is D+0). The destination payment method ID must refer to a bank account.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.entity.paymentMethod.wallet.withdrawWalletFunds(
+    "ent_8545a84e-a45f-41bf-bdf1-33b42a55812c",
+    "pm_4794d597-70dc-4fec-b6ec-c5988e759769",
+    {
+        amount: 100,
+        currency: "USD",
+        destinationPaymentMethodId: "pm_f19d27ad-e493-4bf5-a28b-9cb323de495a",
+    },
+);
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**entityId:** `Mercoa.EntityId` — Entity ID or Entity ForeignID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**paymentMethodId:** `Mercoa.PaymentMethodId` — Payment Method ID or Payment Method ForeignID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `Mercoa.entity.paymentMethod.WithdrawWalletFundsRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Wallet.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+## Entity Representative
+
+<details><summary><code>client.entity.representative.<a href="/src/api/resources/entity/resources/representative/client/Client.ts">getAll</a>(entityId) -> Mercoa.RepresentativeResponse[]</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Get representatives for an entity
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.entity.representative.getAll("ent_8545a84e-a45f-41bf-bdf1-33b42a55812c");
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**entityId:** `Mercoa.EntityId` — Entity ID or Entity ForeignID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Representative.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.entity.representative.<a href="/src/api/resources/entity/resources/representative/client/Client.ts">create</a>(entityId, { ...params }) -> Mercoa.RepresentativeResponse</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.entity.representative.create("ent_8545a84e-a45f-41bf-bdf1-33b42a55812c", {
+    name: {
+        firstName: "John",
+        middleName: "Quincy",
+        lastName: "Adams",
+        suffix: "Jr.",
+    },
+    phone: {
+        countryCode: "1",
+        number: "4155551234",
+    },
+    email: "john.doe@acme.com",
+    address: {
+        addressLine1: "123 Main St",
+        addressLine2: "Unit 1",
+        city: "San Francisco",
+        stateOrProvince: "CA",
+        postalCode: "94105",
+        country: "US",
+    },
+    birthDate: {
+        day: "1",
+        month: "1",
+        year: "1980",
+    },
+    governmentId: {
+        ssn: "123-45-6789",
+    },
+    responsibilities: {
+        isOwner: true,
+        ownershipPercentage: 40,
+        isController: true,
+    },
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**entityId:** `Mercoa.EntityId` — Entity ID or Entity ForeignID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `Mercoa.RepresentativeRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Representative.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.entity.representative.<a href="/src/api/resources/entity/resources/representative/client/Client.ts">get</a>(entityId, representativeId) -> Mercoa.RepresentativeResponse</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.entity.representative.get(
+    "ent_8545a84e-a45f-41bf-bdf1-33b42a55812c",
+    "rep_7df2974a-4069-454c-912f-7e58ebe030fb",
+);
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**entityId:** `Mercoa.EntityId` — Entity ID or Entity ForeignID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**representativeId:** `Mercoa.RepresentativeId`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Representative.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.entity.representative.<a href="/src/api/resources/entity/resources/representative/client/Client.ts">update</a>(entityId, representativeId, { ...params }) -> Mercoa.RepresentativeResponse</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.entity.representative.update(
+    "ent_8545a84e-a45f-41bf-bdf1-33b42a55812c",
+    "rep_7df2974a-4069-454c-912f-7e58ebe030fb",
+    {
+        name: {
+            firstName: "John",
+            middleName: "Quincy",
+            lastName: "Adams",
+            suffix: "Jr.",
+        },
+        phone: {
+            countryCode: "1",
+            number: "4155551234",
+        },
+        email: "john.doe@acme.com",
+        address: {
+            addressLine1: "123 Main St",
+            addressLine2: "Unit 1",
+            city: "San Francisco",
+            stateOrProvince: "CA",
+            postalCode: "94105",
+            country: "US",
+        },
+        birthDate: {
+            day: "1",
+            month: "1",
+            year: "1980",
+        },
+        governmentId: {
+            ssn: "123-45-6789",
+        },
+        responsibilities: {
+            isOwner: true,
+            ownershipPercentage: 40,
+            isController: true,
+        },
+    },
+);
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**entityId:** `Mercoa.EntityId` — Entity ID or Entity ForeignID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**representativeId:** `Mercoa.RepresentativeId`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `Mercoa.RepresentativeUpdateRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Representative.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.entity.representative.<a href="/src/api/resources/entity/resources/representative/client/Client.ts">delete</a>(entityId, representativeId) -> void</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.entity.representative.delete(
+    "ent_8545a84e-a45f-41bf-bdf1-33b42a55812c",
+    "rep_7df2974a-4069-454c-912f-7e58ebe030fb",
+);
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**entityId:** `Mercoa.EntityId` — Entity ID or Entity ForeignID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**representativeId:** `Mercoa.RepresentativeId`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Representative.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+## Entity User NotificationPolicy
+
+<details><summary><code>client.entity.user.notificationPolicy.<a href="/src/api/resources/entity/resources/user/resources/notificationPolicy/client/Client.ts">getAll</a>(entityId, userId) -> Mercoa.UserNotificationPolicyResponse[]</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieve all notification policies associated with this entity user
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.entity.user.notificationPolicy.getAll(
+    "ent_8545a84e-a45f-41bf-bdf1-33b42a55812c",
+    "user_e24fc81c-c5ee-47e8-af42-4fe29d895506",
+);
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**entityId:** `Mercoa.EntityId` — Entity ID or Entity ForeignID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**userId:** `Mercoa.EntityUserId` — User ID or User ForeignID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `NotificationPolicy.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.entity.user.notificationPolicy.<a href="/src/api/resources/entity/resources/user/resources/notificationPolicy/client/Client.ts">get</a>(entityId, userId, notificationType) -> Mercoa.UserNotificationPolicyResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieve notification policy associated with this entity user
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.entity.user.notificationPolicy.get(
+    "ent_8545a84e-a45f-41bf-bdf1-33b42a55812c",
+    "user_e24fc81c-c5ee-47e8-af42-4fe29d895506",
+    "INVOICE_APPROVED",
+);
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**entityId:** `Mercoa.EntityId` — Entity ID or Entity ForeignID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**userId:** `Mercoa.EntityUserId` — User ID or User ForeignID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**notificationType:** `Mercoa.NotificationType`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `NotificationPolicy.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.entity.user.notificationPolicy.<a href="/src/api/resources/entity/resources/user/resources/notificationPolicy/client/Client.ts">update</a>(entityId, userId, notificationType, { ...params }) -> Mercoa.UserNotificationPolicyResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Update notification policy associated with this entity user
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.entity.user.notificationPolicy.update(
+    "ent_8545a84e-a45f-41bf-bdf1-33b42a55812c",
+    "user_e24fc81c-c5ee-47e8-af42-4fe29d895506",
+    "INVOICE_APPROVED",
+    {
+        disabled: true,
+    },
+);
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**entityId:** `Mercoa.EntityId` — Entity ID or Entity ForeignID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**userId:** `Mercoa.EntityUserId` — User ID or User ForeignID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**notificationType:** `Mercoa.NotificationType`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `Mercoa.UserNotificationPolicyRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `NotificationPolicy.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+## Entity User Notifications
+
+<details><summary><code>client.entity.user.notifications.<a href="/src/api/resources/entity/resources/user/resources/notifications/client/Client.ts">find</a>(entityId, userId, { ...params }) -> Mercoa.FindNotificationResponse</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.entity.user.notifications.find(
+    "ent_8545a84e-a45f-41bf-bdf1-33b42a55812c",
+    "user_e24fc81c-c5ee-47e8-af42-4fe29d895506",
+);
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**entityId:** `Mercoa.EntityId` — Entity ID or Entity ForeignID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**userId:** `Mercoa.EntityUserId` — User ID or User ForeignID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `Mercoa.entity.user.EntityGetNotificationsRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Notifications.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.entity.user.notifications.<a href="/src/api/resources/entity/resources/user/resources/notifications/client/Client.ts">get</a>(entityId, userId, notificationId) -> Mercoa.NotificationResponse</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.entity.user.notifications.get(
+    "ent_8545a84e-a45f-41bf-bdf1-33b42a55812c",
+    "user_e24fc81c-c5ee-47e8-af42-4fe29d895506",
+    "notif_7df2974a-4069-454c-912f-7e58ebe030fb",
+);
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**entityId:** `Mercoa.EntityId` — Entity ID or Entity ForeignID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**userId:** `Mercoa.EntityUserId` — User ID or User ForeignID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**notificationId:** `Mercoa.NotificationId`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Notifications.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.entity.user.notifications.<a href="/src/api/resources/entity/resources/user/resources/notifications/client/Client.ts">update</a>(entityId, userId, notificationId, { ...params }) -> Mercoa.NotificationResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Update the status of a notification.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.entity.user.notifications.update(
+    "ent_8545a84e-a45f-41bf-bdf1-33b42a55812c",
+    "user_e24fc81c-c5ee-47e8-af42-4fe29d895506",
+    "notif_7df2974a-4069-454c-912f-7e58ebe030fb",
+    {
+        status: "READ",
+    },
+);
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**entityId:** `Mercoa.EntityId` — Entity ID or Entity ForeignID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**userId:** `Mercoa.EntityUserId` — User ID or User ForeignID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**notificationId:** `Mercoa.NotificationId`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `Mercoa.NotificationUpdateRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Notifications.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+## InvoiceTemplate Approval
+
+<details><summary><code>client.invoiceTemplate.approval.<a href="/src/api/resources/invoiceTemplate/resources/approval/client/Client.ts">addApprover</a>(invoiceTemplateId, { ...params }) -> void</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Adds an approver to the invoice template. Will select the first available approver slot that is not already filled and assign the approver to it. If no approver slots are available, an error will be returned. An explicit approver slot can be specified by setting the `approverSlot` field.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.invoiceTemplate.approval.addApprover("invt_13c07096-5848-4aeb-ae7d-6576289034c4", {
+    approvalSlotId: "inap_9bb311c9-7c15-4c9e-8148-63814e0abec6",
+    userId: "user_e24fc81c-c5ee-47e8-af42-4fe29d895506",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**invoiceTemplateId:** `Mercoa.InvoiceTemplateId` — Invoice Template ID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `Mercoa.AddApproverRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Approval.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.invoiceTemplate.approval.<a href="/src/api/resources/invoiceTemplate/resources/approval/client/Client.ts">approve</a>(invoiceTemplateId, { ...params }) -> void</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.invoiceTemplate.approval.approve("invt_13c07096-5848-4aeb-ae7d-6576289034c4", {
+    text: "This is a reason for my action",
+    userId: "user_e24fc81c-c5ee-47e8-af42-4fe29d895506",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**invoiceTemplateId:** `Mercoa.InvoiceTemplateId` — Invoice Template ID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `Mercoa.ApprovalRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Approval.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.invoiceTemplate.approval.<a href="/src/api/resources/invoiceTemplate/resources/approval/client/Client.ts">reject</a>(invoiceTemplateId, { ...params }) -> void</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.invoiceTemplate.approval.reject("invt_13c07096-5848-4aeb-ae7d-6576289034c4", {
+    text: "This is a reason for my action",
+    userId: "user_e24fc81c-c5ee-47e8-af42-4fe29d895506",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**invoiceTemplateId:** `Mercoa.InvoiceTemplateId` — Invoice Template ID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `Mercoa.ApprovalRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Approval.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+## InvoiceTemplate Document
+
+<details><summary><code>client.invoiceTemplate.document.<a href="/src/api/resources/invoiceTemplate/resources/document/client/Client.ts">getAll</a>(invoiceTemplateId, { ...params }) -> Mercoa.DocumentResponse[]</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Get attachments (scanned/uploaded PDFs and images) associated with this invoice template
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.invoiceTemplate.document.getAll("invt_13c07096-5848-4aeb-ae7d-6576289034c4");
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**invoiceTemplateId:** `Mercoa.InvoiceTemplateId` — Invoice Template ID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `Mercoa.invoiceTemplate.GetDocumentsRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Document.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.invoiceTemplate.document.<a href="/src/api/resources/invoiceTemplate/resources/document/client/Client.ts">upload</a>(invoiceTemplateId, { ...params }) -> void</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Upload documents (scanned/uploaded PDFs and images) associated with this invoice template
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.invoiceTemplate.document.upload("invt_13c07096-5848-4aeb-ae7d-6576289034c4", {
+    document:
+        "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAIAQMAAAD+wSzIAAAABlBMVEX///+/v7+jQ3Y5AAAADklEQVQI12P4AIX8EAgALgAD/aNpbtEAAAAASUVORK5CYII",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**invoiceTemplateId:** `Mercoa.InvoiceTemplateId` — Invoice Template ID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `Mercoa.invoiceTemplate.UploadDocumentRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Document.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.invoiceTemplate.document.<a href="/src/api/resources/invoiceTemplate/resources/document/client/Client.ts">delete</a>(invoiceTemplateId, documentId) -> void</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Delete an attachment (scanned/uploaded PDFs and images) associated with this invoice template
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.invoiceTemplate.document.delete(
+    "invt_13c07096-5848-4aeb-ae7d-6576289034c4",
+    "doc_37e6af0a-e637-48fd-b825-d6947b38c4e2",
+);
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**invoiceTemplateId:** `Mercoa.InvoiceTemplateId` — Invoice Template ID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**documentId:** `string`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Document.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.invoiceTemplate.document.<a href="/src/api/resources/invoiceTemplate/resources/document/client/Client.ts">generateInvoicePdf</a>(invoiceTemplateId) -> Mercoa.DocumentResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Generate a PDF of the invoice. This PDF is generated from the data in the invoice, not from the uploaded documents.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.invoiceTemplate.document.generateInvoicePdf("invt_13c07096-5848-4aeb-ae7d-6576289034c4");
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**invoiceTemplateId:** `Mercoa.InvoiceTemplateId` — Invoice Template ID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Document.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.invoiceTemplate.document.<a href="/src/api/resources/invoiceTemplate/resources/document/client/Client.ts">generateCheckPdf</a>(invoiceTemplateId) -> Mercoa.DocumentResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Get a PDF of the check for the invoice. If the invoice does not have check as the disbursement method, an error will be returned. If the disbursement option for the check is set to 'MAIL', a void copy of the check will be returned. If the disbursement option for the check is set to 'PRINT', a printable check will be returned. If the invoice is NOT marked as PAID, the check will be a void copy.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.invoiceTemplate.document.generateCheckPdf("invt_13c07096-5848-4aeb-ae7d-6576289034c4");
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**invoiceTemplateId:** `Mercoa.InvoiceTemplateId` — Invoice Template ID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Document.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.invoiceTemplate.document.<a href="/src/api/resources/invoiceTemplate/resources/document/client/Client.ts">getSourceEmail</a>(invoiceTemplateId) -> Mercoa.EmailLogResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Get the email subject and body that was used to create this invoice.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.invoiceTemplate.document.getSourceEmail("invt_13c07096-5848-4aeb-ae7d-6576289034c4");
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**invoiceTemplateId:** `Mercoa.InvoiceTemplateId` — Invoice Template ID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Document.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+## Invoice Approval
+
+<details><summary><code>client.invoice.approval.<a href="/src/api/resources/invoice/resources/approval/client/Client.ts">addApprover</a>(invoiceId, { ...params }) -> void</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Adds an approver to the invoice. Will select the first available approver slot that is not already filled and assign the approver to it. If no approver slots are available, an error will be returned. An explicit approver slot can be specified by setting the `approverSlot` field.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.invoice.approval.addApprover("in_3d61faa9-1754-4b7b-9fcb-88ff97f368ff", {
+    approvalSlotId: "inap_9bb311c9-7c15-4c9e-8148-63814e0abec6",
+    userId: "user_e24fc81c-c5ee-47e8-af42-4fe29d895506",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**invoiceId:** `Mercoa.InvoiceId` — Invoice ID or Invoice ForeignID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `Mercoa.AddApproverRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Approval.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.invoice.approval.<a href="/src/api/resources/invoice/resources/approval/client/Client.ts">approve</a>(invoiceId, { ...params }) -> void</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.invoice.approval.approve("in_3d61faa9-1754-4b7b-9fcb-88ff97f368ff", {
+    text: "This is a reason for my action",
+    userId: "user_e24fc81c-c5ee-47e8-af42-4fe29d895506",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**invoiceId:** `Mercoa.InvoiceId` — Invoice ID or Invoice ForeignID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `Mercoa.ApprovalRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Approval.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.invoice.approval.<a href="/src/api/resources/invoice/resources/approval/client/Client.ts">reject</a>(invoiceId, { ...params }) -> void</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.invoice.approval.reject("in_3d61faa9-1754-4b7b-9fcb-88ff97f368ff", {
+    text: "This is a reason for my action",
+    userId: "user_e24fc81c-c5ee-47e8-af42-4fe29d895506",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**invoiceId:** `Mercoa.InvoiceId` — Invoice ID or Invoice ForeignID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `Mercoa.ApprovalRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Approval.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+## Invoice Bulk
+
+<details><summary><code>client.invoice.bulk.<a href="/src/api/resources/invoice/resources/bulk/client/Client.ts">create</a>({ ...params }) -> Mercoa.BulkInvoiceCreationResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Create multiple invoices in bulk. This endpoint will process synchronously and return a list of invoices that were created or failed to create.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.invoice.bulk.create({
+    body: {
+        invoices: [
+            {
+                status: "NEW",
+                amount: 100,
+                currency: "USD",
+                invoiceDate: "2021-01-01T00:00:00Z",
+                dueDate: "2021-01-31T00:00:00Z",
+                invoiceNumber: "INV-123",
+                noteToSelf: "For the month of January",
+                payerId: "ent_8545a84e-a45f-41bf-bdf1-33b42a55812c",
+                paymentSourceId: "pm_4794d597-70dc-4fec-b6ec-c5988e759769",
+                vendorId: "ent_21661ac1-a2a8-4465-a6c0-64474ba8181d",
+                paymentDestinationId: "pm_5fde2f4a-facc-48ef-8f0d-6b7d087c7b18",
+                paymentDestinationOptions: {
+                    type: "check",
+                    delivery: "MAIL",
+                    printDescription: true,
+                },
+                lineItems: [
+                    {
+                        amount: 100,
+                        currency: "USD",
+                        description: "Product A",
+                        name: "Product A",
+                        quantity: 1,
+                        unitPrice: 100,
+                        category: "EXPENSE",
+                        serviceStartDate: "2021-01-01T00:00:00Z",
+                        serviceEndDate: "2021-01-31T00:00:00Z",
+                        metadata: {
+                            key1: "value1",
+                            key2: "value2",
+                        },
+                        glAccountId: "600394",
+                    },
+                ],
+                creatorEntityId: "ent_8545a84e-a45f-41bf-bdf1-33b42a55812c",
+                creatorUserId: "user_e24fc81c-c5ee-47e8-af42-4fe29d895506",
+            },
+        ],
+    },
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Mercoa.invoice.BulkInvoiceCreationRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Bulk.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.invoice.bulk.<a href="/src/api/resources/invoice/resources/bulk/client/Client.ts">update</a>({ ...params }) -> Mercoa.BulkInvoiceUpdateResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Update multiple invoices in bulk. This endpoint will process synchronously and return a list of invoices that were updated or failed to update.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.invoice.bulk.update({
+    body: {
+        invoices: [
+            {
+                invoiceId: "inv_21661ac1-a2a8-4465-a6c0-64474ba8181d",
+                status: "NEW",
+                amount: 100,
+                currency: "USD",
+                dueDate: "2024-01-31T00:00:00Z",
+                invoiceDate: "2024-01-01T00:00:00Z",
+                invoiceNumber: "INV-001",
+                lineItems: [
+                    {
+                        description: "Item 1",
+                        amount: 50,
+                        quantity: 1,
+                    },
+                    {
+                        description: "Item 2",
+                        amount: 50,
+                        quantity: 1,
+                    },
+                ],
+            },
+        ],
+    },
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Mercoa.invoice.BulkInvoiceUpdateRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Bulk.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.invoice.bulk.<a href="/src/api/resources/invoice/resources/bulk/client/Client.ts">approve</a>({ ...params }) -> Mercoa.BulkInvoiceApprovalResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Approve multiple invoices in bulk. This endpoint will process synchronously and return a list of invoices that were approved or failed to approve.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.invoice.bulk.approve({
+    body: {
+        invoices: [
+            {
+                invoiceId: "in_26e7b5d3-a739-4b23-9ad9-6aaa085f47a9",
+                text: "This is a reason for my action",
+                userId: "user_e24fc81c-c5ee-47e8-af42-4fe29d895506",
+            },
+        ],
+    },
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Mercoa.invoice.BulkInvoiceApprovalRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Bulk.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+## Invoice Collection
+
+<details><summary><code>client.invoice.collection.<a href="/src/api/resources/invoice/resources/collection/client/Client.ts">getNextAction</a>(invoiceId) -> Mercoa.ActionResponse | undefined</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Get the collection agent's next action on this invoice. This endpoint will return an empty object if there is no action to return.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.invoice.collection.getNextAction("in_3d61faa9-1754-4b7b-9fcb-88ff97f368ff");
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**invoiceId:** `Mercoa.InvoiceId` — Invoice ID or Invoice ForeignID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Collection.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.invoice.collection.<a href="/src/api/resources/invoice/resources/collection/client/Client.ts">updateNextAction</a>(invoiceId, { ...params }) -> Mercoa.ActionResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Update the collection agent's next action on this invoice with natural language. Note that updating any APPROVED action will reset the action to SUGGESTED. This endpoint will throw an error if there is no action to update.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.invoice.collection.updateNextAction("in_3d61faa9-1754-4b7b-9fcb-88ff97f368ff", {
+    feedback: "Use a more stern tone",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**invoiceId:** `Mercoa.InvoiceId` — Invoice ID or Invoice ForeignID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `Mercoa.UpdateNextActionRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Collection.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.invoice.collection.<a href="/src/api/resources/invoice/resources/collection/client/Client.ts">approveNextAction</a>(invoiceId) -> Mercoa.ActionResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Approve the collection agent's next action on this invoice. This endpoint will throw an error if there is no action to approve.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.invoice.collection.approveNextAction("in_3d61faa9-1754-4b7b-9fcb-88ff97f368ff");
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**invoiceId:** `Mercoa.InvoiceId` — Invoice ID or Invoice ForeignID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Collection.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+## Invoice Comment
+
+<details><summary><code>client.invoice.comment.<a href="/src/api/resources/invoice/resources/comment/client/Client.ts">getAll</a>(invoiceId) -> Mercoa.CommentResponse[]</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Get all comments associated with this invoice
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.invoice.comment.getAll("in_3d61faa9-1754-4b7b-9fcb-88ff97f368ff");
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**invoiceId:** `Mercoa.InvoiceId` — Invoice ID or Invoice ForeignID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Comment.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.invoice.comment.<a href="/src/api/resources/invoice/resources/comment/client/Client.ts">create</a>(invoiceId, { ...params }) -> Mercoa.CommentResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Add a comment to this invoice
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.invoice.comment.create("in_3d61faa9-1754-4b7b-9fcb-88ff97f368ff", {
+    text: "This is a comment",
+    userId: "user_e24fc81c-c5ee-47e8-af42-4fe29d895506",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**invoiceId:** `Mercoa.InvoiceId` — Invoice ID or Invoice ForeignID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `Mercoa.CommentRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Comment.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.invoice.comment.<a href="/src/api/resources/invoice/resources/comment/client/Client.ts">get</a>(invoiceId, commentId) -> Mercoa.CommentResponse</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.invoice.comment.get("in_3d61faa9-1754-4b7b-9fcb-88ff97f368ff", "ic_3d61faa9-1754-4b7b-9fcb-88ff97f368ff");
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**invoiceId:** `Mercoa.InvoiceId` — Invoice ID or Invoice ForeignID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**commentId:** `Mercoa.CommentId`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Comment.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.invoice.comment.<a href="/src/api/resources/invoice/resources/comment/client/Client.ts">update</a>(invoiceId, commentId, { ...params }) -> Mercoa.CommentResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Edit a comment on this invoice
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.invoice.comment.update(
+    "in_3d61faa9-1754-4b7b-9fcb-88ff97f368ff",
+    "ic_3d61faa9-1754-4b7b-9fcb-88ff97f368ff",
+    {
+        text: "This is a comment",
+        userId: "user_e24fc81c-c5ee-47e8-af42-4fe29d895506",
+    },
+);
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**invoiceId:** `Mercoa.InvoiceId` — Invoice ID or Invoice ForeignID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**commentId:** `Mercoa.CommentId`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `Mercoa.CommentRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Comment.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.invoice.comment.<a href="/src/api/resources/invoice/resources/comment/client/Client.ts">delete</a>(invoiceId, commentId) -> void</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Delete a comment on this invoice
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.invoice.comment.delete(
+    "in_3d61faa9-1754-4b7b-9fcb-88ff97f368ff",
+    "ic_3d61faa9-1754-4b7b-9fcb-88ff97f368ff",
+);
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**invoiceId:** `Mercoa.InvoiceId` — Invoice ID or Invoice ForeignID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**commentId:** `Mercoa.CommentId`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Comment.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+## Invoice Document
+
+<details><summary><code>client.invoice.document.<a href="/src/api/resources/invoice/resources/document/client/Client.ts">getAll</a>(invoiceId, { ...params }) -> Mercoa.DocumentResponse[]</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Get attachments (scanned/uploaded PDFs and images) associated with this invoice
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.invoice.document.getAll("in_26e7b5d3-a739-4b23-9ad9-6aaa085f47a9");
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**invoiceId:** `Mercoa.InvoiceId` — Invoice ID or Invoice ForeignID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `Mercoa.invoice.GetDocumentsRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Document.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.invoice.document.<a href="/src/api/resources/invoice/resources/document/client/Client.ts">upload</a>(invoiceId, { ...params }) -> void</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Upload documents (scanned/uploaded PDFs and images) associated with this Invoice
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.invoice.document.upload("in_26e7b5d3-a739-4b23-9ad9-6aaa085f47a9", {
+    document:
+        "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAIAQMAAAD+wSzIAAAABlBMVEX///+/v7+jQ3Y5AAAADklEQVQI12P4AIX8EAgALgAD/aNpbtEAAAAASUVORK5CYII",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**invoiceId:** `Mercoa.InvoiceId` — Invoice ID or Invoice ForeignID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `Mercoa.invoice.UploadDocumentRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Document.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.invoice.document.<a href="/src/api/resources/invoice/resources/document/client/Client.ts">delete</a>(invoiceId, documentId) -> void</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Delete an attachment (scanned/uploaded PDFs and images) associated with this invoice
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.invoice.document.delete(
+    "in_26e7b5d3-a739-4b23-9ad9-6aaa085f47a9",
+    "doc_37e6af0a-e637-48fd-b825-d6947b38c4e2",
+);
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**invoiceId:** `Mercoa.InvoiceId` — Invoice ID or Invoice ForeignID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**documentId:** `string`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Document.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.invoice.document.<a href="/src/api/resources/invoice/resources/document/client/Client.ts">generateInvoicePdf</a>(invoiceId) -> Mercoa.DocumentResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Generate a PDF of the invoice. This PDF is generated from the data in the invoice, not from the uploaded documents.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.invoice.document.generateInvoicePdf("in_26e7b5d3-a739-4b23-9ad9-6aaa085f47a9");
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**invoiceId:** `Mercoa.InvoiceId` — Invoice ID or Invoice ForeignID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Document.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.invoice.document.<a href="/src/api/resources/invoice/resources/document/client/Client.ts">generateCheckPdf</a>(invoiceId) -> Mercoa.DocumentResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Get a PDF of the check for the invoice. If the invoice does not have check as the disbursement method, an error will be returned. If the disbursement option for the check is set to 'MAIL', a void copy of the check will be returned. If the disbursement option for the check is set to 'PRINT', a printable check will be returned. If the invoice is NOT marked as PAID, the check will be a void copy.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.invoice.document.generateCheckPdf("in_26e7b5d3-a739-4b23-9ad9-6aaa085f47a9");
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**invoiceId:** `Mercoa.InvoiceId` — Invoice ID or Invoice ForeignID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Document.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.invoice.document.<a href="/src/api/resources/invoice/resources/document/client/Client.ts">getSourceEmail</a>(invoiceId) -> Mercoa.EmailLogResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Get the email subject and body that was used to create this invoice.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.invoice.document.getSourceEmail("in_26e7b5d3-a739-4b23-9ad9-6aaa085f47a9");
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**invoiceId:** `Mercoa.InvoiceId` — Invoice ID or Invoice ForeignID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Document.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+## Invoice PaymentLinks
+
+<details><summary><code>client.invoice.paymentLinks.<a href="/src/api/resources/invoice/resources/paymentLinks/client/Client.ts">getPayerLink</a>(invoiceId, { ...params }) -> string</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Get temporary link for payer to send payment
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.invoice.paymentLinks.getPayerLink("in_a0f6ea94-0761-4a5e-a416-3c453cb7eced");
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**invoiceId:** `Mercoa.InvoiceId` — Invoice ID or Invoice ForeignID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `Mercoa.invoice.PayerLinkRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `PaymentLinks.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.invoice.paymentLinks.<a href="/src/api/resources/invoice/resources/paymentLinks/client/Client.ts">sendPayerEmail</a>(invoiceId, { ...params }) -> void</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Trigger email to payer inviting them to make payment
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.invoice.paymentLinks.sendPayerEmail("in_a0f6ea94-0761-4a5e-a416-3c453cb7eced", {
+    attachInvoice: true,
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**invoiceId:** `Mercoa.InvoiceId` — Invoice ID or Invoice ForeignID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `Mercoa.invoice.SendPayerEmail`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `PaymentLinks.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.invoice.paymentLinks.<a href="/src/api/resources/invoice/resources/paymentLinks/client/Client.ts">getVendorLink</a>(invoiceId, { ...params }) -> string</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Get temporary link for vendor to accept payment
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.invoice.paymentLinks.getVendorLink("in_a0f6ea94-0761-4a5e-a416-3c453cb7eced");
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**invoiceId:** `Mercoa.InvoiceId` — Invoice ID or Invoice ForeignID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `Mercoa.invoice.VendorLinkRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `PaymentLinks.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.invoice.paymentLinks.<a href="/src/api/resources/invoice/resources/paymentLinks/client/Client.ts">sendVendorEmail</a>(invoiceId) -> void</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Trigger email to vendor inviting them into the vendor portal
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.invoice.paymentLinks.sendVendorEmail("in_a0f6ea94-0761-4a5e-a416-3c453cb7eced");
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**invoiceId:** `Mercoa.InvoiceId` — Invoice ID or Invoice ForeignID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `PaymentLinks.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+## Ocr
+
+<details><summary><code>client.ocr.<a href="/src/api/resources/ocr/client/Client.ts">ocr</a>({ ...params }) -> Mercoa.OcrResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Run OCR on an Base64 encoded image or PDF. This endpoint will block until the OCR is complete.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.ocr.ocr({
+    vendorNetwork: "entity",
+    entityId: "ent_8f86116b-3b4d-4ded-99ef-3bc929d8c33c",
+    mimeType: "image/png",
+    image: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAIAQMAAAD+wSzIAAAABlBMVEX///+/v7+jQ3Y5AAAADklEQVQI12P4AIX8EAgALgAD/aNpbtEAAAAASUVORK5CYII",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Mercoa.OcrRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Ocr.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.ocr.<a href="/src/api/resources/ocr/client/Client.ts">runAsyncOcr</a>({ ...params }) -> Mercoa.OcrAsyncResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Run OCR on an Base64 encoded image or PDF. This endpoint will return immediately and the OCR will be processed asynchronously.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.ocr.runAsyncOcr({
+    vendorNetwork: "entity",
+    entityId: "ent_8f86116b-3b4d-4ded-99ef-3bc929d8c33c",
+    mimeType: "image/png",
+    image: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAIAQMAAAD+wSzIAAAABlBMVEX///+/v7+jQ3Y5AAAADklEQVQI12P4AIX8EAgALgAD/aNpbtEAAAAASUVORK5CYII",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Mercoa.OcrRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Ocr.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.ocr.<a href="/src/api/resources/ocr/client/Client.ts">getAsyncOcr</a>(jobId) -> Mercoa.OcrJobResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Get the status and results of an asynchronous OCR job.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.ocr.getAsyncOcr("ocr_8f86116b-3b4d-4ded-99ef-3bc929d8c33c");
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**jobId:** `string`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Ocr.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+## Organization NotificationConfiguration
+
+<details><summary><code>client.organization.notificationConfiguration.<a href="/src/api/resources/organization/resources/notificationConfiguration/client/Client.ts">getAll</a>() -> Mercoa.NotificationConfigurationResponse[]</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieve all notification configurations
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.organization.notificationConfiguration.getAll();
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**requestOptions:** `NotificationConfiguration.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.organization.notificationConfiguration.<a href="/src/api/resources/organization/resources/notificationConfiguration/client/Client.ts">get</a>(notificationType) -> Mercoa.NotificationConfigurationResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieve notification configuration for this notification type
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.organization.notificationConfiguration.get("INVOICE_APPROVAL_NEEDED");
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**notificationType:** `Mercoa.NotificationType`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `NotificationConfiguration.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.organization.notificationConfiguration.<a href="/src/api/resources/organization/resources/notificationConfiguration/client/Client.ts">update</a>(notificationType, { ...params }) -> Mercoa.NotificationConfigurationResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Update notification configuration for this notification type
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.organization.notificationConfiguration.update("INVOICE_APPROVAL_NEEDED", {
+    notificationType: "invoice",
+    url: "url",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**notificationType:** `Mercoa.NotificationType`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `Mercoa.NotificationConfigurationRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `NotificationConfiguration.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.organization.notificationConfiguration.<a href="/src/api/resources/organization/resources/notificationConfiguration/client/Client.ts">reset</a>(notificationType) -> void</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Reset notification configuration for this notification type
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.organization.notificationConfiguration.reset("INVOICE_APPROVAL_NEEDED");
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**notificationType:** `Mercoa.NotificationType`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `NotificationConfiguration.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+## PaymentMethods
+
+<details><summary><code>client.paymentMethods.<a href="/src/api/resources/paymentMethods/client/Client.ts">find</a>({ ...params }) -> Mercoa.PaymentMethodWithEntityFindResponse</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.paymentMethods.find();
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Mercoa.FindPaymentMethodsRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `PaymentMethods.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+## Transaction
+
+<details><summary><code>client.transaction.<a href="/src/api/resources/transaction/client/Client.ts">find</a>({ ...params }) -> Mercoa.FindTransactionsResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Search transactions
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.transaction.find({
+    startDate: "2024-01-15T09:30:00Z",
+    endDate: "2024-01-15T09:30:00Z",
+    limit: 10,
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Mercoa.FindTransactionsRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Transaction.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.transaction.<a href="/src/api/resources/transaction/client/Client.ts">get</a>(transactionId) -> Mercoa.TransactionResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Get Transaction
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.transaction.get("trx_bb08e72f-19f8-45f3-bcf9-46fdc46cb2f4");
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**transactionId:** `Mercoa.TransactionId`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Transaction.RequestOptions`
 
 </dd>
 </dl>

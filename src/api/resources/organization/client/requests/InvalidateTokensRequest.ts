@@ -4,6 +4,11 @@
 
 /**
  * @example
+ *     {
+ *         sessionId: ["session_123", "session_456"]
+ *     }
+ *
+ * @example
  *     {}
  */
 export interface InvalidateTokensRequest {

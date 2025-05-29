@@ -11,3 +11,5 @@ export * from "./InvoiceEmailWebhook";
 export * from "./InvoiceCollectionEventWebhook";
 export * from "./TransactionWebhook";
 export * from "./EntityStatusChangedWebhook";
+export * from "./BulkInvoiceUpdateWebhook";
+export * from "./BulkInvoiceApprovalWebhook";
