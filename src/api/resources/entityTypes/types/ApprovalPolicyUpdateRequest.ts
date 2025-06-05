@@ -7,6 +7,20 @@ import * as Mercoa from "../../../index";
 /**
  * @example
  *     {
+ *         trigger: [],
+ *         rule: {
+ *             type: "approver",
+ *             numApprovers: 2,
+ *             identifierList: {
+ *                 type: "userList",
+ *                 value: ["usr_8545a84e-a45f-41bf-bdf1-33b42a55812c", "usr_21661ac1-a2a8-4465-a6c0-64474ba8181d"]
+ *             }
+ *         },
+ *         upstreamPolicyId: "root"
+ *     }
+ *
+ * @example
+ *     {
  *         trigger: [{
  *                 type: "amount",
  *                 amount: 100,
@@ -25,13 +39,26 @@ import * as Mercoa from "../../../index";
  *
  * @example
  *     {
- *         trigger: [],
+ *         trigger: [{
+ *                 type: "amount",
+ *                 amount: 100,
+ *                 currency: Mercoa.CurrencyCode.Usd
+ *             }, {
+ *                 type: "vendor",
+ *                 vendorIds: ["ent_21661ac1-a2a8-4465-a6c0-64474ba8181d"]
+ *             }, {
+ *                 type: "metadata",
+ *                 key: "property_id",
+ *                 value: ["123456", "789012"]
+ *             }, {
+ *                 type: "catchall"
+ *             }],
  *         rule: {
  *             type: "approver",
  *             numApprovers: 2,
  *             identifierList: {
- *                 type: "userList",
- *                 value: ["usr_8545a84e-a45f-41bf-bdf1-33b42a55812c", "usr_21661ac1-a2a8-4465-a6c0-64474ba8181d"]
+ *                 type: "rolesList",
+ *                 value: ["Admin", "Controller"]
  *             }
  *         },
  *         upstreamPolicyId: "root"

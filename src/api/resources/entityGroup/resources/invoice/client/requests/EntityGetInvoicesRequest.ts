@@ -98,4 +98,8 @@ export interface EntityGetInvoicesRequest {
      * Whether to return vendor metadata in the response
      */
     returnVendorMetadata?: boolean;
+    /**
+     * Whether to return payment timing in the response
+     */
+    returnPaymentTiming?: boolean;
 }

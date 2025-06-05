@@ -6318,19 +6318,13 @@ Create an invoice approval policy associated with an entity
 
 ```typescript
 await client.entity.approvalPolicy.create("ent_8545a84e-a45f-41bf-bdf1-33b42a55812c", {
-    trigger: [
-        {
-            type: "amount",
-            amount: 100,
-            currency: "USD",
-        },
-    ],
+    trigger: [],
     rule: {
         type: "approver",
         numApprovers: 2,
         identifierList: {
-            type: "rolesList",
-            value: ["Admin", "Controller"],
+            type: "userList",
+            value: ["usr_8545a84e-a45f-41bf-bdf1-33b42a55812c", "usr_21661ac1-a2a8-4465-a6c0-64474ba8181d"],
         },
     },
     upstreamPolicyId: "root",
@@ -6483,19 +6477,13 @@ await client.entity.approvalPolicy.update(
     "ent_8545a84e-a45f-41bf-bdf1-33b42a55812c",
     "apvl_5ce50275-1789-42ea-bc60-bb7e6d03635c",
     {
-        trigger: [
-            {
-                type: "amount",
-                amount: 100,
-                currency: "USD",
-            },
-        ],
+        trigger: [],
         rule: {
             type: "approver",
             numApprovers: 2,
             identifierList: {
-                type: "rolesList",
-                value: ["Admin", "Controller"],
+                type: "userList",
+                value: ["usr_8545a84e-a45f-41bf-bdf1-33b42a55812c", "usr_21661ac1-a2a8-4465-a6c0-64474ba8181d"],
             },
         },
         upstreamPolicyId: "root",

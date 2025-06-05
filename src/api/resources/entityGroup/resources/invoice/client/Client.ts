@@ -87,6 +87,7 @@ export class Invoice {
             paymentType,
             returnPayerMetadata,
             returnVendorMetadata,
+            returnPaymentTiming,
         } = request;
         const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
         if (excludePayables != null) {
@@ -243,6 +244,10 @@ export class Invoice {
             _queryParams["returnVendorMetadata"] = returnVendorMetadata.toString();
         }
 
+        if (returnPaymentTiming != null) {
+            _queryParams["returnPaymentTiming"] = returnPaymentTiming.toString();
+        }
+
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.baseUrl)) ??
@@ -255,8 +260,8 @@ export class Invoice {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.6.20",
-                "User-Agent": "@mercoa/javascript/0.6.20",
+                "X-Fern-SDK-Version": "0.6.21",
+                "User-Agent": "@mercoa/javascript/0.6.21",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
@@ -543,8 +548,8 @@ export class Invoice {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.6.20",
-                "User-Agent": "@mercoa/javascript/0.6.20",
+                "X-Fern-SDK-Version": "0.6.21",
+                "User-Agent": "@mercoa/javascript/0.6.21",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,

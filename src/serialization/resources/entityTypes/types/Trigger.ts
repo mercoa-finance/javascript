@@ -8,12 +8,14 @@ import * as core from "../../../../core";
 import { AmountTrigger } from "./AmountTrigger";
 import { VendorTrigger } from "./VendorTrigger";
 import { MetadataTrigger } from "./MetadataTrigger";
+import { CatchallTrigger } from "./CatchallTrigger";
 
 export const Trigger: core.serialization.Schema<serializers.Trigger.Raw, Mercoa.Trigger> = core.serialization
     .union("type", {
         amount: AmountTrigger,
         vendor: VendorTrigger,
         metadata: MetadataTrigger,
+        catchall: CatchallTrigger,
     })
     .transform<Mercoa.Trigger>({
         transform: (value) => value,
@@ -21,7 +23,7 @@ export const Trigger: core.serialization.Schema<serializers.Trigger.Raw, Mercoa.
     });
 
 export declare namespace Trigger {
-    export type Raw = Trigger.Amount | Trigger.Vendor | Trigger.Metadata;
+    export type Raw = Trigger.Amount | Trigger.Vendor | Trigger.Metadata | Trigger.Catchall;
 
     export interface Amount extends AmountTrigger.Raw {
         type: "amount";
@@ -33,5 +35,9 @@ export declare namespace Trigger {
 
     export interface Metadata extends MetadataTrigger.Raw {
         type: "metadata";
+    }
+
+    export interface Catchall extends CatchallTrigger.Raw {
+        type: "catchall";
     }
 }

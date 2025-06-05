@@ -13,7 +13,7 @@ npm i -s @mercoa/javascript
 
 ## Reference
 
-A full reference for this library is available [here](./reference.md).
+A full reference for this library is available [here](https://github.com/mercoa-finance/javascript/blob/HEAD/./reference.md).
 
 ## Usage
 

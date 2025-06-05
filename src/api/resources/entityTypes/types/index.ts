@@ -31,6 +31,7 @@ export * from "./ApprovalPolicyRequest";
 export * from "./ApprovalPolicyUpdateRequest";
 export * from "./ApprovalPolicyResponse";
 export * from "./Trigger";
+export * from "./CatchallTrigger";
 export * from "./AmountTrigger";
 export * from "./VendorTrigger";
 export * from "./MetadataTrigger";

@@ -11,8 +11,32 @@ import * as Mercoa from "../../../index";
  *         amount: 100,
  *         currency: Mercoa.CurrencyCode.Usd
  *     }
+ *
+ * @example
+ *     {
+ *         type: "vendor",
+ *         vendorIds: ["ent_21661ac1-a2a8-4465-a6c0-64474ba8181d"]
+ *     }
+ *
+ * @example
+ *     {
+ *         type: "metadata",
+ *         key: "property_id",
+ *         value: ["123456", "789012"]
+ *     }
+ *
+ * @example
+ *     {
+ *         type: "catchall"
+ *     }
  */
-export type Trigger = Mercoa.Trigger.Amount | Mercoa.Trigger.Vendor | Mercoa.Trigger.Metadata;
+export type Trigger =
+    | Mercoa.Trigger.Amount
+    | Mercoa.Trigger.Vendor
+    | Mercoa.Trigger.Metadata
+    /**
+     * A catchall trigger will trigger if no other triggers match. */
+    | Mercoa.Trigger.Catchall;
 
 export namespace Trigger {
     export interface Amount extends Mercoa.AmountTrigger {
@@ -25,5 +49,9 @@ export namespace Trigger {
 
     export interface Metadata extends Mercoa.MetadataTrigger {
         type: "metadata";
+    }
+
+    export interface Catchall extends Mercoa.CatchallTrigger {
+        type: "catchall";
     }
 }
