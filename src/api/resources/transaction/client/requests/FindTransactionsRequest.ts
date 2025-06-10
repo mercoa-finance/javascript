@@ -62,11 +62,7 @@ export interface FindTransactionsRequest {
      */
     vendorId?: Mercoa.EntityId | Mercoa.EntityId[];
     /**
-     * Filter transactions by the ID or foreign ID of the user that created the invoice that created the transaction.
-     */
-    creatorUserId?: Mercoa.EntityUserId | Mercoa.EntityUserId[];
-    /**
-     * Filter transactions by invoice ID. Does not support foreign ID.
+     * Filter transactions by invoice ID or invoice foreign ID.
      */
     invoiceId?: Mercoa.InvoiceId | Mercoa.InvoiceId[];
     /**
@@ -81,4 +77,8 @@ export interface FindTransactionsRequest {
      * Filter transactions by transaction type
      */
     transactionType?: Mercoa.TransactionType | Mercoa.TransactionType[];
+    /**
+     * Filter transactions by creator user ID. Does not work, do not use.
+     */
+    creatorUserId?: string | string[];
 }

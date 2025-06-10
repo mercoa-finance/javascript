@@ -30,6 +30,7 @@ export * from "./EntityStatus";
 export * from "./ApprovalPolicyRequest";
 export * from "./ApprovalPolicyUpdateRequest";
 export * from "./ApprovalPolicyResponse";
+export * from "./ApprovalPolicyHistoryResponse";
 export * from "./Trigger";
 export * from "./CatchallTrigger";
 export * from "./AmountTrigger";

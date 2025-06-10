@@ -16,6 +16,10 @@ export interface GetAllInvoicesRequest {
      */
     entityId?: Mercoa.EntityId | Mercoa.EntityId[];
     /**
+     * Filter invoices by the ID or foreign ID of the entity group that the entity belongs to.
+     */
+    entityGroupId?: Mercoa.EntityGroupId;
+    /**
      * Start date filter. Defaults to CREATED_AT unless specified the dateType is specified
      */
     startDate?: Date;

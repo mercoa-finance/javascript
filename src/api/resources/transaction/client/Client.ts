@@ -74,11 +74,11 @@ export class Transaction {
             lineItemGlAccountId,
             payerId,
             vendorId,
-            creatorUserId,
             invoiceId,
             transactionId,
             status,
             transactionType,
+            creatorUserId,
         } = request;
         const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
         if (entityId != null) {
@@ -187,16 +187,6 @@ export class Transaction {
             }
         }
 
-        if (creatorUserId != null) {
-            if (Array.isArray(creatorUserId)) {
-                _queryParams["creatorUserId"] = creatorUserId.map((item) =>
-                    serializers.EntityUserId.jsonOrThrow(item, { unrecognizedObjectKeys: "strip" }),
-                );
-            } else {
-                _queryParams["creatorUserId"] = creatorUserId;
-            }
-        }
-
         if (invoiceId != null) {
             if (Array.isArray(invoiceId)) {
                 _queryParams["invoiceId"] = invoiceId.map((item) =>
@@ -241,6 +231,14 @@ export class Transaction {
             }
         }
 
+        if (creatorUserId != null) {
+            if (Array.isArray(creatorUserId)) {
+                _queryParams["creatorUserId"] = creatorUserId.map((item) => item);
+            } else {
+                _queryParams["creatorUserId"] = creatorUserId;
+            }
+        }
+
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.baseUrl)) ??
@@ -253,8 +251,8 @@ export class Transaction {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.6.21",
-                "User-Agent": "@mercoa/javascript/0.6.21",
+                "X-Fern-SDK-Version": "0.6.22",
+                "User-Agent": "@mercoa/javascript/0.6.22",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
@@ -397,8 +395,8 @@ export class Transaction {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.6.21",
-                "User-Agent": "@mercoa/javascript/0.6.21",
+                "X-Fern-SDK-Version": "0.6.22",
+                "User-Agent": "@mercoa/javascript/0.6.22",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
