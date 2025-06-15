@@ -11,10 +11,12 @@ export const InvoiceNotificationConfigurationRequest: core.serialization.ObjectS
     Mercoa.InvoiceNotificationConfigurationRequest
 > = core.serialization.object({
     url: core.serialization.string(),
+    subject: core.serialization.string().optional(),
 });
 
 export declare namespace InvoiceNotificationConfigurationRequest {
     export interface Raw {
         url: string;
+        subject?: string | null;
     }
 }

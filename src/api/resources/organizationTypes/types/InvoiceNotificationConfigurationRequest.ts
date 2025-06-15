@@ -3,5 +3,8 @@
  */
 
 export interface InvoiceNotificationConfigurationRequest {
+    /** The URL that the email will link to. */
     url: string;
+    /** The subject of the email. If not provided, the default subject will be used. */
+    subject?: string;
 }

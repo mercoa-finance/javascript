@@ -6,10 +6,12 @@ import * as serializers from "../../../index";
 import * as Mercoa from "../../../../api/index";
 import * as core from "../../../../core";
 import { ApproverRule } from "./ApproverRule";
+import { AutomaticRule } from "./AutomaticRule";
 
 export const Rule: core.serialization.Schema<serializers.Rule.Raw, Mercoa.Rule> = core.serialization
     .union("type", {
         approver: ApproverRule,
+        automatic: AutomaticRule,
     })
     .transform<Mercoa.Rule>({
         transform: (value) => value,
@@ -17,9 +19,13 @@ export const Rule: core.serialization.Schema<serializers.Rule.Raw, Mercoa.Rule> 
     });
 
 export declare namespace Rule {
-    export type Raw = Rule.Approver;
+    export type Raw = Rule.Approver | Rule.Automatic;
 
     export interface Approver extends ApproverRule.Raw {
         type: "approver";
+    }
+
+    export interface Automatic extends AutomaticRule.Raw {
+        type: "automatic";
     }
 }

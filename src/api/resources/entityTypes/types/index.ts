@@ -38,6 +38,7 @@ export * from "./VendorTrigger";
 export * from "./MetadataTrigger";
 export * from "./Rule";
 export * from "./IdentifierList";
+export * from "./AutomaticRule";
 export * from "./ApproverRule";
 export * from "./FindCounterpartiesResponse";
 export * from "./CounterpartyResponse";

@@ -24,11 +24,26 @@ import * as Mercoa from "../../../index";
  *             value: ["usr_8545a84e-a45f-41bf-bdf1-33b42a55812c", "usr_21661ac1-a2a8-4465-a6c0-64474ba8181d"]
  *         }
  *     }
+ *
+ * @example
+ *     {
+ *         type: "automatic"
+ *     }
  */
-export type Rule = Mercoa.Rule.Approver;
+export type Rule =
+    /**
+     * A rule that will assign approvers to an invoice. */
+    | Mercoa.Rule.Approver
+    /**
+     * A rule that will automatically approve an invoice, regardless of any other rules that were triggered. */
+    | Mercoa.Rule.Automatic;
 
 export namespace Rule {
     export interface Approver extends Mercoa.ApproverRule {
         type: "approver";
+    }
+
+    export interface Automatic extends Mercoa.AutomaticRule {
+        type: "automatic";
     }
 }
