@@ -6,7 +6,10 @@ import * as Mercoa from "../../../index";
 
 export interface OrganizationRequest {
     name?: string;
+    /** Base64 encoded logo image. */
     logo?: string;
+    /** Base64 encoded favicon image. */
+    favicon?: string;
     websiteUrl?: string;
     supportEmail?: string;
     paymentMethods?: Mercoa.PaymentMethodsRequest;

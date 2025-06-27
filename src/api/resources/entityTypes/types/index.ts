@@ -33,6 +33,7 @@ export * from "./ApprovalPolicyResponse";
 export * from "./ApprovalPolicyHistoryResponse";
 export * from "./Trigger";
 export * from "./CatchallTrigger";
+export * from "./Comparison";
 export * from "./AmountTrigger";
 export * from "./VendorTrigger";
 export * from "./MetadataTrigger";

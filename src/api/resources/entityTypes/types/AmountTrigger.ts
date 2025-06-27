@@ -7,4 +7,6 @@ import * as Mercoa from "../../../index";
 export interface AmountTrigger {
     amount: number;
     currency: Mercoa.CurrencyCode;
+    /** The comparison operator to use when comparing the amount to the trigger amount. Defaults to gte. */
+    comparison?: Mercoa.Comparison;
 }

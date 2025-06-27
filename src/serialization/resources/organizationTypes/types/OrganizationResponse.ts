@@ -25,6 +25,7 @@ export const OrganizationResponse: core.serialization.ObjectSchema<
     sandbox: core.serialization.boolean(),
     name: core.serialization.string(),
     logoUrl: core.serialization.string().optional(),
+    faviconUrl: core.serialization.string().optional(),
     websiteUrl: core.serialization.string().optional(),
     supportEmail: core.serialization.string().optional(),
     paymentMethods: PaymentMethodsResponse.optional(),
@@ -46,6 +47,7 @@ export declare namespace OrganizationResponse {
         sandbox: boolean;
         name: string;
         logoUrl?: string | null;
+        faviconUrl?: string | null;
         websiteUrl?: string | null;
         supportEmail?: string | null;
         paymentMethods?: PaymentMethodsResponse.Raw | null;

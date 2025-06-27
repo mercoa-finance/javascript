@@ -20,6 +20,8 @@ export interface OcrRequest {
     image: string;
     /** Limit OCR vendor search to a specific network */
     vendorNetwork?: Mercoa.VendorNetwork;
-    /** When using the Entity vendor network, specify the entity to use if. EntityId on an auth token will take precedence over this parameter. */
+    /** When using the Entity vendor network, specify the entity to use. EntityId on an auth token will take precedence over this parameter. */
     entityId?: Mercoa.EntityId;
+    /** If true, attempt to split the document into subdocuments before processing. Default is false. If a document is split into subdocuments, the linked OCR jobs will be accessible via the linkedJobIds field on each OCR job response. */
+    splitDocument?: boolean;
 }

@@ -23,10 +23,15 @@ Instantiate and use the client with the following:
 import { MercoaClient } from "@mercoa/javascript";
 
 const client = new MercoaClient({ token: "YOUR_TOKEN" });
-await client.contract.generateContract({
-    document:
-        "data:application/pdf;base64,JVBERi0xLjEKJcKlwrHDqwoKMSAwIG9iagogIDw8IC9UeXBlIC9DYXRhbG9nCiAgICAgL1BhZ2VzIDIgMCBSCiAgPj4KZW5kb2JqCgoyIDAgb2JqCiAgPDwgL1R5cGUgL1BhZ2VzCiAgICAgL0tpZHMgWzMgMCBSXQogICAgIC9Db3VudCAxCiAgICAgL01lZGlhQm94IFswIDAgMzAwIDE0NF0KICA+PgplbmRvYmoKCjMgMCBvYmoKICA8PCAgL1R5cGUgL1BhZ2UKICAgICAgL1BhcmVudCAyIDAgUgogICAgICAvUmVzb3VyY2VzCiAgICAgICA8PCAvRm9udAogICAgICAgICAgIDw8IC9GMQogICAgICAgICAgICAgICA8PCAvVHlwZSAvRm9udAogICAgICAgICAgICAgICAgICAvU3VidHlwZSAvVHlwZTEKICAgICAgICAgICAgICAgICAgL0Jhc2VGb250IC9UaW1lcy1Sb21hbgogICAgICAgICAgICAgICA+PgogICAgICAgICAgID4+CiAgICAgICA+PgogICAgICAvQ29udGVudHMgNCAwIFIKICA+PgplbmRvYmoKCjQgMCBvYmoKICA8PCAvTGVuZ3RoIDU1ID4+CnN0cmVhbQogIEJUCiAgICAvRjEgMTggVGYKICAgIDAgMCBUZAogICAgKEhlbGxvIFdvcmxkKSBUagogIEVUCmVuZHN0cmVhbQplbmRvYmoKCnhyZWYKMCA1CjAwMDAwMDAwMDAgNjU1MzUgZiAKMDAwMDAwMDAxOCAwMDAwMCBuIAowMDAwMDAwMDc3IDAwMDAwIG4gCjAwMDAwMDAxNzggMDAwMDAgbiAKMDAwMDAwMDQ1NyAwMDAwMCBuIAp0cmFpbGVyCiAgPDwgIC9Sb290IDEgMCBSCiAgICAgIC9TaXplIDUKICA+PgpzdGFydHhyZWYKNTY1CiUlRU9GCg==",
-    creatorEntityId: "ent_8545a84e-a45f-41bf-bdf1-33b42a55812c",
+await client.entityGroup.create({
+    foreignId: "your-group-id",
+    name: "Coastal Corporation",
+    emailToName: "coastalcorp",
+    entityIds: [
+        "ent_e8c2af94-61cd-4036-a765-80341209167b",
+        "ent_1176dd0c-12e1-41c7-85a5-ae9b4746e64b",
+        "ent_3dbb4ede-2d1d-49be-a996-a5dfad3641be",
+    ],
 });
 ```
 
@@ -38,7 +43,7 @@ following namespace:
 ```typescript
 import { Mercoa } from "@mercoa/javascript";
 
-const request: Mercoa.PreviewContractInvoicesRequest = {
+const request: Mercoa.EntityGroupFindRequest = {
     ...
 };
 ```
@@ -52,7 +57,7 @@ will be thrown.
 import { MercoaError } from "@mercoa/javascript";
 
 try {
-    await client.contract.generateContract(...);
+    await client.entityGroup.create(...);
 } catch (err) {
     if (err instanceof MercoaError) {
         console.log(err.statusCode);
@@ -69,7 +74,7 @@ try {
 If you would like to send additional headers as part of the request, use the `headers` request option.
 
 ```typescript
-const response = await client.contract.generateContract(..., {
+const response = await client.entityGroup.create(..., {
     headers: {
         'X-Custom-Header': 'custom value'
     }
@@ -91,7 +96,7 @@ A request is deemed retryable when any of the following HTTP status codes is ret
 Use the `maxRetries` request option to configure this behavior.
 
 ```typescript
-const response = await client.contract.generateContract(..., {
+const response = await client.entityGroup.create(..., {
     maxRetries: 0 // override maxRetries at the request level
 });
 ```
@@ -101,7 +106,7 @@ const response = await client.contract.generateContract(..., {
 The SDK defaults to a 60 second timeout. Use the `timeoutInSeconds` option to configure this behavior.
 
 ```typescript
-const response = await client.contract.generateContract(..., {
+const response = await client.entityGroup.create(..., {
     timeoutInSeconds: 30 // override timeout to 30s
 });
 ```
@@ -112,7 +117,7 @@ The SDK allows users to abort requests at any point by passing in an abort signa
 
 ```typescript
 const controller = new AbortController();
-const response = await client.contract.generateContract(..., {
+const response = await client.entityGroup.create(..., {
     abortSignal: controller.signal
 });
 controller.abort(); // aborts the request

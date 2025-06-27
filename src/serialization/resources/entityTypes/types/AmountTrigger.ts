@@ -6,16 +6,19 @@ import * as serializers from "../../../index";
 import * as Mercoa from "../../../../api/index";
 import * as core from "../../../../core";
 import { CurrencyCode } from "../../paymentMethodTypes/types/CurrencyCode";
+import { Comparison } from "./Comparison";
 
 export const AmountTrigger: core.serialization.ObjectSchema<serializers.AmountTrigger.Raw, Mercoa.AmountTrigger> =
     core.serialization.object({
         amount: core.serialization.number(),
         currency: CurrencyCode,
+        comparison: Comparison.optional(),
     });
 
 export declare namespace AmountTrigger {
     export interface Raw {
         amount: number;
         currency: CurrencyCode.Raw;
+        comparison?: Comparison.Raw | null;
     }
 }

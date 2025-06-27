@@ -7,3 +7,4 @@ export * from "./OrderDirection";
 export * from "./DocumentType";
 export * from "./DocumentResponse";
 export * from "./StringOrStringArray";
+export * from "./CountryCode";

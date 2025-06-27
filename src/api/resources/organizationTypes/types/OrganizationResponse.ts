@@ -9,6 +9,7 @@ export interface OrganizationResponse {
     sandbox: boolean;
     name: string;
     logoUrl?: string;
+    faviconUrl?: string;
     websiteUrl?: string;
     supportEmail?: string;
     paymentMethods?: Mercoa.PaymentMethodsResponse;

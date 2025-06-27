@@ -21,6 +21,7 @@ export const OrganizationRequest: core.serialization.ObjectSchema<
 > = core.serialization.object({
     name: core.serialization.string().optional(),
     logo: core.serialization.string().optional(),
+    favicon: core.serialization.string().optional(),
     websiteUrl: core.serialization.string().optional(),
     supportEmail: core.serialization.string().optional(),
     paymentMethods: PaymentMethodsRequest.optional(),
@@ -39,6 +40,7 @@ export declare namespace OrganizationRequest {
     export interface Raw {
         name?: string | null;
         logo?: string | null;
+        favicon?: string | null;
         websiteUrl?: string | null;
         supportEmail?: string | null;
         paymentMethods?: PaymentMethodsRequest.Raw | null;

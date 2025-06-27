@@ -14,6 +14,7 @@ export const OcrRequest: core.serialization.ObjectSchema<serializers.OcrRequest.
         image: core.serialization.string(),
         vendorNetwork: VendorNetwork.optional(),
         entityId: EntityId.optional(),
+        splitDocument: core.serialization.boolean().optional(),
     });
 
 export declare namespace OcrRequest {
@@ -22,5 +23,6 @@ export declare namespace OcrRequest {
         image: string;
         vendorNetwork?: VendorNetwork.Raw | null;
         entityId?: EntityId.Raw | null;
+        splitDocument?: boolean | null;
     }
 }
