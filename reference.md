@@ -6587,6 +6587,158 @@ await client.entity.bulk.download({
 </dl>
 </details>
 
+## Entity Counterparty Bulk
+
+<details><summary><code>client.entity.counterparty.bulk.<a href="/src/api/resources/entity/resources/counterparty/resources/bulk/client/Client.ts">downloadPayees</a>(entityId, { ...params }) -> Mercoa.BulkDownloadResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Get a URL to download payee counterparties as a CSV/JSON file. This endpoint lets you download vendors linked to the entity.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.entity.counterparty.bulk.downloadPayees("ent_8545a84e-a45f-41bf-bdf1-33b42a55812c", {
+    format: "CSV",
+    paymentMethods: true,
+    invoiceMetrics: true,
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**entityId:** `Mercoa.EntityId` — Entity ID or Entity ForeignID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `Mercoa.entity.counterparty.DownloadBulkPayeesRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Bulk.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.entity.counterparty.bulk.<a href="/src/api/resources/entity/resources/counterparty/resources/bulk/client/Client.ts">downloadPayors</a>(entityId, { ...params }) -> Mercoa.BulkDownloadResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Get a URL to download payor counterparties as a CSV/JSON file. This endpoint lets you download customers linked to the entity.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.entity.counterparty.bulk.downloadPayors("ent_8545a84e-a45f-41bf-bdf1-33b42a55812c", {
+    format: "CSV",
+    paymentMethods: true,
+    invoiceMetrics: true,
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**entityId:** `Mercoa.EntityId` — Entity ID or Entity ForeignID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `Mercoa.entity.counterparty.DownloadBulkPayorsRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Bulk.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
 ## Entity Counterparty VendorCredit
 
 <details><summary><code>client.entity.counterparty.vendorCredit.<a href="/src/api/resources/entity/resources/counterparty/resources/vendorCredit/client/Client.ts">getAll</a>(entityId, counterpartyId) -> Mercoa.FindVendorCreditResponse</code></summary>

@@ -13,6 +13,8 @@ import * as Mercoa from "../../../index";
  *     }
  */
 export interface VendorCreditRequest {
+    /** Memo number for the vendor credit */
+    memoNumber?: string;
     /** Total amount of the vendor credit in major units */
     totalAmount: number;
     /** Currency code for the amount. Defaults to USD. */

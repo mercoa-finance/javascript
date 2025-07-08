@@ -11,6 +11,7 @@ export const VendorCreditRequest: core.serialization.ObjectSchema<
     serializers.VendorCreditRequest.Raw,
     Mercoa.VendorCreditRequest
 > = core.serialization.object({
+    memoNumber: core.serialization.string().optional(),
     totalAmount: core.serialization.number(),
     currency: CurrencyCode,
     note: core.serialization.string().optional(),
@@ -18,6 +19,7 @@ export const VendorCreditRequest: core.serialization.ObjectSchema<
 
 export declare namespace VendorCreditRequest {
     export interface Raw {
+        memoNumber?: string | null;
         totalAmount: number;
         currency: CurrencyCode.Raw;
         note?: string | null;

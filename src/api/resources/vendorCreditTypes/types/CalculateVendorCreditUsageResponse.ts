@@ -11,6 +11,7 @@ import * as Mercoa from "../../../index";
  *         currency: Mercoa.CurrencyCode.Usd,
  *         vendorCredits: [{
  *                 id: "vcr_c3f4c87d-794d-4543-9562-575cdddfc0d7",
+ *                 memoNumber: "123456",
  *                 totalAmount: 100,
  *                 remainingAmount: 0,
  *                 currency: Mercoa.CurrencyCode.Usd,

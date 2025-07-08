@@ -8,6 +8,7 @@ import * as Mercoa from "../../../index";
  * @example
  *     {
  *         id: "vcr_c3f4c87d-794d-4543-9562-575cdddfc0d7",
+ *         memoNumber: "123456",
  *         totalAmount: 100,
  *         remainingAmount: 100,
  *         currency: Mercoa.CurrencyCode.Usd,
@@ -23,6 +24,7 @@ import * as Mercoa from "../../../index";
  * @example
  *     {
  *         id: "vcr_c3f4c87d-794d-4543-9562-575cdddfc0d7",
+ *         memoNumber: "123456",
  *         totalAmount: 100,
  *         remainingAmount: 0,
  *         currency: Mercoa.CurrencyCode.Usd,
@@ -37,6 +39,8 @@ import * as Mercoa from "../../../index";
  */
 export interface VendorCreditResponse {
     id: Mercoa.VendorCreditId;
+    /** Memo number for the vendor credit */
+    memoNumber?: string;
     /** Total issued amount of the vendor credit in major units */
     totalAmount?: number;
     /** Remaining usable amount in the vendor credit in major units */
