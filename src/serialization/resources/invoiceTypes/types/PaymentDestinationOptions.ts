@@ -8,6 +8,7 @@ import * as core from "../../../../core";
 import { CheckPaymentDestinationOptions } from "./CheckPaymentDestinationOptions";
 import { BankAccountPaymentDestinationOptions } from "./BankAccountPaymentDestinationOptions";
 import { UtilityPaymentDestinationOptions } from "./UtilityPaymentDestinationOptions";
+import { CustomPaymentDestinationOptions } from "./CustomPaymentDestinationOptions";
 
 export const PaymentDestinationOptions: core.serialization.Schema<
     serializers.PaymentDestinationOptions.Raw,
@@ -17,6 +18,7 @@ export const PaymentDestinationOptions: core.serialization.Schema<
         check: CheckPaymentDestinationOptions,
         bankAccount: BankAccountPaymentDestinationOptions,
         utility: UtilityPaymentDestinationOptions,
+        custom: CustomPaymentDestinationOptions,
     })
     .transform<Mercoa.PaymentDestinationOptions>({
         transform: (value) => value,
@@ -27,7 +29,8 @@ export declare namespace PaymentDestinationOptions {
     export type Raw =
         | PaymentDestinationOptions.Check
         | PaymentDestinationOptions.BankAccount
-        | PaymentDestinationOptions.Utility;
+        | PaymentDestinationOptions.Utility
+        | PaymentDestinationOptions.Custom;
 
     export interface Check extends CheckPaymentDestinationOptions.Raw {
         type: "check";
@@ -39,5 +42,9 @@ export declare namespace PaymentDestinationOptions {
 
     export interface Utility extends UtilityPaymentDestinationOptions.Raw {
         type: "utility";
+    }
+
+    export interface Custom extends CustomPaymentDestinationOptions.Raw {
+        type: "custom";
     }
 }

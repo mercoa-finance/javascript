@@ -39,6 +39,7 @@ export const OrganizationResponse: core.serialization.ObjectSchema<
     customDomains: core.serialization.list(core.serialization.string()).optional(),
     organizationEntityId: EntityId.optional(),
     rolePermissions: RolePermissionResponse.optional(),
+    notificationsDisabled: core.serialization.boolean().optional(),
 });
 
 export declare namespace OrganizationResponse {
@@ -61,5 +62,6 @@ export declare namespace OrganizationResponse {
         customDomains?: string[] | null;
         organizationEntityId?: EntityId.Raw | null;
         rolePermissions?: RolePermissionResponse.Raw | null;
+        notificationsDisabled?: boolean | null;
     }
 }

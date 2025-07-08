@@ -23,6 +23,10 @@ export const EntityResponse: core.serialization.ObjectSchema<serializers.EntityR
         profile: ProfileResponse,
         logo: core.serialization.string().optional(),
         status: EntityStatus,
+        oatfiStatus: core.serialization.string().optional(),
+        oatfiUnderwritingResponse: core.serialization
+            .record(core.serialization.string(), core.serialization.string())
+            .optional(),
         acceptedTos: core.serialization.boolean(),
         isPayor: core.serialization.boolean(),
         isPayee: core.serialization.boolean(),
@@ -46,6 +50,8 @@ export declare namespace EntityResponse {
         profile: ProfileResponse.Raw;
         logo?: string | null;
         status: EntityStatus.Raw;
+        oatfiStatus?: string | null;
+        oatfiUnderwritingResponse?: Record<string, string> | null;
         acceptedTos: boolean;
         isPayor: boolean;
         isPayee: boolean;

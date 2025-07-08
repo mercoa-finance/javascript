@@ -29,6 +29,8 @@ export interface InvoiceRequestBase {
     payerId?: Mercoa.EntityId;
     /** ID of payment source for this invoice. If not provided, will attempt to use the default payment source for the payer when creating an invoice if a default payment source exists for the payer. */
     paymentSourceId?: Mercoa.PaymentMethodId;
+    /** Options for the payment source. Depending on the payment source, this may include things such as BNPL configuration. */
+    paymentSourceOptions?: Mercoa.PaymentSourceOptions;
     /** ID or foreign ID of the vendor of this invoice. */
     vendorId?: Mercoa.EntityId;
     /** ID of payment destination for this invoice. If not provided, will attempt to use the default payment destination for the vendor when creating an invoice if a default payment destination exists for the vendor. */
@@ -63,4 +65,6 @@ export interface InvoiceRequestBase {
     shippingAmount?: number;
     /** ID of the OCR job that processed this invoice. */
     ocrJobId?: Mercoa.OcrJobId;
+    /** Set to true if the payment destination has been confirmed by the vendor or if the payment destination should default to the selected payment destination on the vendor portal. */
+    paymentDestinationConfirmed?: boolean;
 }

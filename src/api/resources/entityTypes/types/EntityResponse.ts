@@ -93,6 +93,10 @@ export interface EntityResponse {
     /** URL for the entity logo */
     logo?: string;
     status: Mercoa.EntityStatus;
+    /** The OatFi status of this entity */
+    oatfiStatus?: string;
+    /** The OatFi underwriting response of this entity */
+    oatfiUnderwritingResponse?: Record<string, string>;
     /** True if this entity has accepted the terms of service. */
     acceptedTos: boolean;
     /** True if this entity can pay invoices. */

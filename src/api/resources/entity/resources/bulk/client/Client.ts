@@ -115,8 +115,8 @@ export class Bulk {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.6.24",
-                "User-Agent": "@mercoa/javascript/0.6.24",
+                "X-Fern-SDK-Version": "0.6.25",
+                "User-Agent": "@mercoa/javascript/0.6.25",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
@@ -220,6 +220,243 @@ export class Bulk {
                 });
             case "timeout":
                 throw new errors.MercoaTimeoutError("Timeout exceeded when calling POST /entities.");
+            case "unknown":
+                throw new errors.MercoaError({
+                    message: _response.error.errorMessage,
+                });
+        }
+    }
+
+    /**
+     * Get a URL to download a bulk entity as a CSV/JSON file.
+     *
+     * @param {Mercoa.entity.DownloadBulkEntitiesRequest} request
+     * @param {Bulk.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @throws {@link Mercoa.BadRequest}
+     * @throws {@link Mercoa.Unauthorized}
+     * @throws {@link Mercoa.Forbidden}
+     * @throws {@link Mercoa.NotFound}
+     * @throws {@link Mercoa.Conflict}
+     * @throws {@link Mercoa.InternalServerError}
+     * @throws {@link Mercoa.Unimplemented}
+     *
+     * @example
+     *     await client.entity.bulk.download({
+     *         format: "CSV"
+     *     })
+     */
+    public async download(
+        request: Mercoa.entity.DownloadBulkEntitiesRequest = {},
+        requestOptions?: Bulk.RequestOptions,
+    ): Promise<Mercoa.BulkDownloadResponse> {
+        const {
+            format,
+            paymentMethods,
+            isCustomer,
+            foreignId,
+            status,
+            isPayee,
+            isPayor,
+            name,
+            search,
+            metadata,
+            returnMetadata,
+            limit,
+            startingAfter,
+        } = request;
+        const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
+        if (format != null) {
+            _queryParams["format"] = serializers.BulkDownloadFormat.jsonOrThrow(format, {
+                unrecognizedObjectKeys: "strip",
+            });
+        }
+
+        if (paymentMethods != null) {
+            _queryParams["paymentMethods"] = paymentMethods.toString();
+        }
+
+        if (isCustomer != null) {
+            _queryParams["isCustomer"] = isCustomer.toString();
+        }
+
+        if (foreignId != null) {
+            if (Array.isArray(foreignId)) {
+                _queryParams["foreignId"] = foreignId.map((item) => item);
+            } else {
+                _queryParams["foreignId"] = foreignId;
+            }
+        }
+
+        if (status != null) {
+            if (Array.isArray(status)) {
+                _queryParams["status"] = status.map((item) =>
+                    serializers.EntityStatus.jsonOrThrow(item, { unrecognizedObjectKeys: "strip" }),
+                );
+            } else {
+                _queryParams["status"] = serializers.EntityStatus.jsonOrThrow(status, {
+                    unrecognizedObjectKeys: "strip",
+                });
+            }
+        }
+
+        if (isPayee != null) {
+            _queryParams["isPayee"] = isPayee.toString();
+        }
+
+        if (isPayor != null) {
+            _queryParams["isPayor"] = isPayor.toString();
+        }
+
+        if (name != null) {
+            _queryParams["name"] = name;
+        }
+
+        if (search != null) {
+            _queryParams["search"] = search;
+        }
+
+        if (metadata != null) {
+            _queryParams["metadata"] = serializers.MetadataFilter.jsonOrThrow(metadata, {
+                unrecognizedObjectKeys: "passthrough",
+                allowUnrecognizedUnionMembers: true,
+                allowUnrecognizedEnumValues: true,
+                breadcrumbsPrefix: ["request", "metadata"],
+            });
+        }
+
+        if (returnMetadata != null) {
+            if (Array.isArray(returnMetadata)) {
+                _queryParams["returnMetadata"] = returnMetadata.map((item) => item);
+            } else {
+                _queryParams["returnMetadata"] = returnMetadata;
+            }
+        }
+
+        if (limit != null) {
+            _queryParams["limit"] = limit.toString();
+        }
+
+        if (startingAfter != null) {
+            _queryParams["startingAfter"] = startingAfter;
+        }
+
+        const _response = await core.fetcher({
+            url: urlJoin(
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (await core.Supplier.get(this._options.environment)) ??
+                    environments.MercoaEnvironment.Production,
+                "entities/download",
+            ),
+            method: "GET",
+            headers: {
+                Authorization: await this._getAuthorizationHeader(),
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "@mercoa/javascript",
+                "X-Fern-SDK-Version": "0.6.25",
+                "User-Agent": "@mercoa/javascript/0.6.25",
+                "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...requestOptions?.headers,
+            },
+            contentType: "application/json",
+            queryParameters: _queryParams,
+            requestType: "json",
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+        });
+        if (_response.ok) {
+            return serializers.BulkDownloadResponse.parseOrThrow(_response.body, {
+                unrecognizedObjectKeys: "passthrough",
+                allowUnrecognizedUnionMembers: true,
+                allowUnrecognizedEnumValues: true,
+                breadcrumbsPrefix: ["response"],
+            });
+        }
+
+        if (_response.error.reason === "status-code") {
+            switch ((_response.error.body as any)?.["errorName"]) {
+                case "BadRequest":
+                    throw new Mercoa.BadRequest(
+                        serializers.BadRequest.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        }),
+                    );
+                case "Unauthorized":
+                    throw new Mercoa.Unauthorized(
+                        serializers.Unauthorized.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        }),
+                    );
+                case "Forbidden":
+                    throw new Mercoa.Forbidden(
+                        serializers.Forbidden.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        }),
+                    );
+                case "NotFound":
+                    throw new Mercoa.NotFound(
+                        serializers.NotFound.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        }),
+                    );
+                case "Conflict":
+                    throw new Mercoa.Conflict(
+                        serializers.Conflict.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        }),
+                    );
+                case "InternalServerError":
+                    throw new Mercoa.InternalServerError(
+                        serializers.InternalServerError.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        }),
+                    );
+                case "Unimplemented":
+                    throw new Mercoa.Unimplemented(
+                        serializers.Unimplemented.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        }),
+                    );
+                default:
+                    throw new errors.MercoaError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                    });
+            }
+        }
+
+        switch (_response.error.reason) {
+            case "non-json":
+                throw new errors.MercoaError({
+                    statusCode: _response.error.statusCode,
+                    body: _response.error.rawBody,
+                });
+            case "timeout":
+                throw new errors.MercoaTimeoutError("Timeout exceeded when calling GET /entities/download.");
             case "unknown":
                 throw new errors.MercoaError({
                     message: _response.error.errorMessage,

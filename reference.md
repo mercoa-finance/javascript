@@ -4764,7 +4764,8 @@ Create a job to validate a payment gateway
 ```typescript
 await client.paymentGateway.createValidationJob({
     type: "document",
-    document: "ValidatePaymentGatewayRequestDocument.Default",
+    document:
+        "data:application/pdf;base64,JVBERi0xLjEKJcKlwrHDqwoKMSAwIG9iagogIDw8IC9UeXBlIC9DYXRhbG9nCiAgICAgL1BhZ2VzIDIgMCBSCiAgPj4KZW5kb2JqCgoyIDAgb2JqCiAgPDwgL1R5cGUgL1BhZ2VzCiAgICAgL0tpZHMgWzMgMCBSXQogICAgIC9Db3VudCAxCiAgICAgL01lZGlhQm94IFswIDAgMzAwIDE0NF0KICA+PgplbmRvYmoKCjMgMCBvYmoKICA8PCAgL1R5cGUgL1BhZ2UKICAgICAgL1BhcmVudCAyIDAgUgogICAgICAvUmVzb3VyY2VzCiAgICAgICA8PCAvRm9udAogICAgICAgICAgIDw8IC9GMQogICAgICAgICAgICAgICA8PCAvVHlwZSAvRm9udAogICAgICAgICAgICAgICAgICAvU3VidHlwZSAvVHlwZTEKICAgICAgICAgICAgICAgICAgL0Jhc2VGb250IC9UaW1lcy1Sb21hbgogICAgICAgICAgICAgICA+PgogICAgICAgICAgID4+CiAgICAgICA+PgogICAgICAvQ29udGVudHMgNCAwIFIKICA+PgplbmRvYmoKCjQgMCBvYmoKICA8PCAvTGVuZ3RoIDU1ID4+CnN0cmVhbQogIEJUCiAgICAvRjEgMTggVGYKICAgIDAgMCBUZAogICAgKEhlbGxvIFdvcmxkKSBUagogIEVUCmVuZHN0cmVhbQplbmRvYmoKCnhyZWYKMCA1CjAwMDAwMDAwMDAgNjU1MzUgZiAKMDAwMDAwMDAxOCAwMDAwMCBuIAowMDAwMDAwMDc3IDAwMDAwIG4gCjAwMDAwMDAxNzggMDAwMDAgbiAKMDAwMDAwMDQ1NyAwMDAwMCBuIAp0cmFpbGVyCiAgPDwgIC9Sb290IDEgMCBSCiAgICAgIC9TaXplIDUKICA+PgpzdGFydHhyZWYKNTY1CiUlRU9GCg==",
 });
 ```
 
@@ -5671,6 +5672,80 @@ await client.entityGroup.invoice.find("entg_8545a84e-a45f-41bf-bdf1-33b42a55812c
 </dl>
 </details>
 
+<details><summary><code>client.entityGroup.invoice.<a href="/src/api/resources/entityGroup/resources/invoice/client/Client.ts">download</a>(entityGroupId, { ...params }) -> Mercoa.BulkDownloadResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Get a URL to download invoices for an entity group as a CSV/JSON file.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.entityGroup.invoice.download("entg_8545a84e-a45f-41bf-bdf1-33b42a55812c", {
+    format: "CSV",
+    excludeReceivables: true,
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**entityGroupId:** `Mercoa.EntityGroupId` — Entity Group ID or Entity Group ForeignID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `Mercoa.entityGroup.GroupInvoiceDownloadRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Invoice.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
 <details><summary><code>client.entityGroup.invoice.<a href="/src/api/resources/entityGroup/resources/invoice/client/Client.ts">metrics</a>(entityGroupId, { ...params }) -> Mercoa.InvoiceMetricsResponse[]</code></summary>
 <dl>
 <dd>
@@ -6275,6 +6350,71 @@ await client.entity.approvalPolicy.restore(
 </dl>
 </details>
 
+## Entity Bnpl
+
+<details><summary><code>client.entity.bnpl.<a href="/src/api/resources/entity/resources/bnpl/client/Client.ts">getLoans</a>(entityId) -> Mercoa.BnplLoanResponse[]</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Get all BNPL loans associated with an entity
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.entity.bnpl.getLoans("ent_123");
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**entityId:** `string` — The ID of the entity to get loans for
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Bnpl.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
 ## Entity Bulk
 
 <details><summary><code>client.entity.bulk.<a href="/src/api/resources/entity/resources/bulk/client/Client.ts">create</a>({ ...params }) -> Mercoa.BulkEntityCreationResponse</code></summary>
@@ -6364,6 +6504,71 @@ await client.entity.bulk.create({
 <dd>
 
 **request:** `Mercoa.entity.BulkEntityCreationRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Bulk.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.entity.bulk.<a href="/src/api/resources/entity/resources/bulk/client/Client.ts">download</a>({ ...params }) -> Mercoa.BulkDownloadResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Get a URL to download a bulk entity as a CSV/JSON file.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.entity.bulk.download({
+    format: "CSV",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Mercoa.entity.DownloadBulkEntitiesRequest`
 
 </dd>
 </dl>
@@ -8044,6 +8249,79 @@ await client.entity.invoice.metrics("ent_8545a84e-a45f-41bf-bdf1-33b42a55812c", 
 <dd>
 
 **request:** `Mercoa.entity.InvoiceMetricsRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Invoice.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.entity.invoice.<a href="/src/api/resources/entity/resources/invoice/client/Client.ts">download</a>(entityId, { ...params }) -> Mercoa.BulkDownloadResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Get a URL to download invoices for an entity as a CSV/JSON file.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.entity.invoice.download("ent_8545a84e-a45f-41bf-bdf1-33b42a55812c", {
+    format: "CSV",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**entityId:** `Mercoa.EntityId` — Entity ID or Entity ForeignID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `Mercoa.entity.DownloadEntityInvoicesRequest`
 
 </dd>
 </dl>
@@ -10635,6 +10913,148 @@ await client.invoice.approval.reject("in_3d61faa9-1754-4b7b-9fcb-88ff97f368ff", 
 </dl>
 </details>
 
+## Invoice Bnpl
+
+<details><summary><code>client.invoice.bnpl.<a href="/src/api/resources/invoice/resources/bnpl/client/Client.ts">offer</a>(invoiceId, { ...params }) -> Mercoa.BnplOfferResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Get a BNPL offer for an invoice
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.invoice.bnpl.offer("in_286a1849-2e3c-48a4-ab5a-8b7940cc3a5b", {
+    cadence: "WEEKLY",
+    installmentsStartDate: "2025-06-18",
+    numberOfInstallments: 4,
+    paymentDayOfWeek: "WEDNESDAY",
+    downPaymentDueDate: "2025-06-11",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**invoiceId:** `Mercoa.InvoiceId` — Invoice ID or Invoice ForeignID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `Mercoa.BnplOfferRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Bnpl.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.invoice.bnpl.<a href="/src/api/resources/invoice/resources/bnpl/client/Client.ts">loan</a>(loanId) -> Mercoa.BnplLoanResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Get information about a specific BNPL loan by loan ID
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.invoice.bnpl.loan("684adb5d70a01b00596a3106");
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**loanId:** `string` — The ID of the loan to retrieve
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Bnpl.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
 ## Invoice Bulk
 
 <details><summary><code>client.invoice.bulk.<a href="/src/api/resources/invoice/resources/bulk/client/Client.ts">create</a>({ ...params }) -> Mercoa.BulkInvoiceCreationResponse</code></summary>
@@ -10887,6 +11307,71 @@ await client.invoice.bulk.approve({
 <dd>
 
 **request:** `Mercoa.invoice.BulkInvoiceApprovalRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Bulk.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.invoice.bulk.<a href="/src/api/resources/invoice/resources/bulk/client/Client.ts">download</a>({ ...params }) -> Mercoa.BulkDownloadResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Get a URL to download a bulk invoice as a CSV/JSON file.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.invoice.bulk.download({
+    format: "CSV",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Mercoa.invoice.DownloadBulkInvoicesRequest`
 
 </dd>
 </dl>
@@ -12773,6 +13258,71 @@ await client.transaction.get("trx_bb08e72f-19f8-45f3-bcf9-46fdc46cb2f4");
 <dd>
 
 **transactionId:** `Mercoa.TransactionId`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Transaction.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.transaction.<a href="/src/api/resources/transaction/client/Client.ts">download</a>({ ...params }) -> Mercoa.BulkDownloadResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Get a URL to download transactions as a CSV/JSON file.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.transaction.download({
+    format: "CSV",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Mercoa.DownloadTransactionsRequest`
 
 </dd>
 </dl>

@@ -5,6 +5,7 @@ export * as emailLog from "./emailLog";
 export * as paymentMethod from "./paymentMethod";
 export * as user from "./user";
 export * as approvalPolicy from "./approvalPolicy";
+export * as bnpl from "./bnpl";
 export * as bulk from "./bulk";
 export * as customization from "./customization";
 export * as document from "./document";

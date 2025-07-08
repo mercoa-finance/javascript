@@ -17,11 +17,21 @@ import * as Mercoa from "../../../index";
  *         type: "bankAccount",
  *         delivery: Mercoa.BankDeliveryMethod.AchSameDay
  *     }
+ *
+ * @example
+ *     {
+ *         type: "custom",
+ *         dynamicUrls: {
+ *             "paymentLink": "https://example.com/payment-link",
+ *             "confirmationUrl": "https://example.com/confirm"
+ *         }
+ *     }
  */
 export type PaymentDestinationOptions =
     | Mercoa.PaymentDestinationOptions.Check
     | Mercoa.PaymentDestinationOptions.BankAccount
-    | Mercoa.PaymentDestinationOptions.Utility;
+    | Mercoa.PaymentDestinationOptions.Utility
+    | Mercoa.PaymentDestinationOptions.Custom;
 
 export namespace PaymentDestinationOptions {
     export interface Check extends Mercoa.CheckPaymentDestinationOptions {
@@ -34,5 +44,9 @@ export namespace PaymentDestinationOptions {
 
     export interface Utility extends Mercoa.UtilityPaymentDestinationOptions {
         type: "utility";
+    }
+
+    export interface Custom extends Mercoa.CustomPaymentDestinationOptions {
+        type: "custom";
     }
 }

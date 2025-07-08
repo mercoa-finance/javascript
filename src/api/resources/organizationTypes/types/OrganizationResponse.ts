@@ -23,4 +23,5 @@ export interface OrganizationResponse {
     customDomains?: string[];
     organizationEntityId?: Mercoa.EntityId;
     rolePermissions?: Mercoa.RolePermissionResponse;
+    notificationsDisabled?: boolean;
 }

@@ -22,4 +22,6 @@ export interface OrganizationRequest {
     notificationEmailTemplate?: Mercoa.NotificationEmailTemplateRequest;
     customDomains?: string[];
     rolePermissions?: Mercoa.RolePermissionRequest;
+    /** If true, all notifications for this organization will be disabled. */
+    notificationsDisabled?: boolean;
 }

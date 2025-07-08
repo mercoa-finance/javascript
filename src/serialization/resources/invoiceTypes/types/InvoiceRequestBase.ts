@@ -9,6 +9,7 @@ import { InvoiceStatus } from "./InvoiceStatus";
 import { CurrencyCode } from "../../paymentMethodTypes/types/CurrencyCode";
 import { EntityId } from "../../entityTypes/types/EntityId";
 import { PaymentMethodId } from "../../paymentMethodTypes/types/PaymentMethodId";
+import { PaymentSourceOptions } from "./PaymentSourceOptions";
 import { PaymentDestinationOptions } from "./PaymentDestinationOptions";
 import { ApprovalSlotAssignment } from "./ApprovalSlotAssignment";
 import { EntityUserId } from "../../entityTypes/types/EntityUserId";
@@ -36,6 +37,7 @@ export const InvoiceRequestBase: core.serialization.ObjectSchema<
     netTerms: core.serialization.number().optional(),
     payerId: EntityId.optional(),
     paymentSourceId: PaymentMethodId.optional(),
+    paymentSourceOptions: PaymentSourceOptions.optional(),
     vendorId: EntityId.optional(),
     paymentDestinationId: PaymentMethodId.optional(),
     paymentDestinationOptions: PaymentDestinationOptions.optional(),
@@ -53,6 +55,7 @@ export const InvoiceRequestBase: core.serialization.ObjectSchema<
     taxAmount: core.serialization.number().optional(),
     shippingAmount: core.serialization.number().optional(),
     ocrJobId: OcrJobId.optional(),
+    paymentDestinationConfirmed: core.serialization.boolean().optional(),
 });
 
 export declare namespace InvoiceRequestBase {
@@ -71,6 +74,7 @@ export declare namespace InvoiceRequestBase {
         netTerms?: number | null;
         payerId?: EntityId.Raw | null;
         paymentSourceId?: PaymentMethodId.Raw | null;
+        paymentSourceOptions?: PaymentSourceOptions.Raw | null;
         vendorId?: EntityId.Raw | null;
         paymentDestinationId?: PaymentMethodId.Raw | null;
         paymentDestinationOptions?: PaymentDestinationOptions.Raw | null;
@@ -88,5 +92,6 @@ export declare namespace InvoiceRequestBase {
         taxAmount?: number | null;
         shippingAmount?: number | null;
         ocrJobId?: OcrJobId.Raw | null;
+        paymentDestinationConfirmed?: boolean | null;
     }
 }

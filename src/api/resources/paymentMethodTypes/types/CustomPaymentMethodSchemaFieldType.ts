@@ -10,6 +10,8 @@ export type CustomPaymentMethodSchemaFieldType =
     | "phone"
     | "email"
     | "url"
+    | "dynamicUrl"
+    | "embeddedUrl"
     | "address"
     | "usBankRoutingNumber"
     | "usBankAccountNumber";
@@ -21,6 +23,8 @@ export const CustomPaymentMethodSchemaFieldType = {
     Phone: "phone",
     Email: "email",
     Url: "url",
+    DynamicUrl: "dynamicUrl",
+    EmbeddedUrl: "embeddedUrl",
     Address: "address",
     UsBankRoutingNumber: "usBankRoutingNumber",
     UsBankAccountNumber: "usBankAccountNumber",

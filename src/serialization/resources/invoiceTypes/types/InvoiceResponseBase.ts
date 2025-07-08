@@ -11,6 +11,7 @@ import { EntityId } from "../../entityTypes/types/EntityId";
 import { CounterpartyResponse } from "../../entityTypes/types/CounterpartyResponse";
 import { PaymentMethodResponse } from "../../paymentMethodTypes/types/PaymentMethodResponse";
 import { PaymentMethodId } from "../../paymentMethodTypes/types/PaymentMethodId";
+import { PaymentSourceOptions } from "./PaymentSourceOptions";
 import { PaymentDestinationOptions } from "./PaymentDestinationOptions";
 import { CalculatePaymentTimingResponse } from "../../calculate/types/CalculatePaymentTimingResponse";
 import { InvoiceLineItemResponse } from "./InvoiceLineItemResponse";
@@ -42,6 +43,7 @@ export const InvoiceResponseBase: core.serialization.ObjectSchema<
     payer: CounterpartyResponse.optional(),
     paymentSource: PaymentMethodResponse.optional(),
     paymentSourceId: PaymentMethodId.optional(),
+    paymentSourceOptions: PaymentSourceOptions.optional(),
     vendorId: EntityId.optional(),
     vendor: CounterpartyResponse.optional(),
     paymentDestination: PaymentMethodResponse.optional(),
@@ -86,6 +88,7 @@ export declare namespace InvoiceResponseBase {
         payer?: CounterpartyResponse.Raw | null;
         paymentSource?: PaymentMethodResponse.Raw | null;
         paymentSourceId?: PaymentMethodId.Raw | null;
+        paymentSourceOptions?: PaymentSourceOptions.Raw | null;
         vendorId?: EntityId.Raw | null;
         vendor?: CounterpartyResponse.Raw | null;
         paymentDestination?: PaymentMethodResponse.Raw | null;

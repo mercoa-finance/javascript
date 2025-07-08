@@ -28,6 +28,7 @@ export interface InvoiceResponseBase {
     payer?: Mercoa.CounterpartyResponse;
     paymentSource?: Mercoa.PaymentMethodResponse;
     paymentSourceId?: Mercoa.PaymentMethodId;
+    paymentSourceOptions?: Mercoa.PaymentSourceOptions;
     vendorId?: Mercoa.EntityId;
     vendor?: Mercoa.CounterpartyResponse;
     paymentDestination?: Mercoa.PaymentMethodResponse;

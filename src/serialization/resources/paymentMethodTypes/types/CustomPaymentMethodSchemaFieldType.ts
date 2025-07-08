@@ -17,6 +17,8 @@ export const CustomPaymentMethodSchemaFieldType: core.serialization.Schema<
     "phone",
     "email",
     "url",
+    "dynamicUrl",
+    "embeddedUrl",
     "address",
     "usBankRoutingNumber",
     "usBankAccountNumber",
@@ -31,6 +33,8 @@ export declare namespace CustomPaymentMethodSchemaFieldType {
         | "phone"
         | "email"
         | "url"
+        | "dynamicUrl"
+        | "embeddedUrl"
         | "address"
         | "usBankRoutingNumber"
         | "usBankAccountNumber";

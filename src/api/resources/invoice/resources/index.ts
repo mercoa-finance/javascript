@@ -1,5 +1,6 @@
 export * as lineItem from "./lineItem";
 export * as approval from "./approval";
+export * as bnpl from "./bnpl";
 export * as bulk from "./bulk";
 export * as collection from "./collection";
 export * as comment from "./comment";

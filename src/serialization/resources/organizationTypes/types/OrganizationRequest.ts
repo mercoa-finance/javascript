@@ -34,6 +34,7 @@ export const OrganizationRequest: core.serialization.ObjectSchema<
     notificationEmailTemplate: NotificationEmailTemplateRequest.optional(),
     customDomains: core.serialization.list(core.serialization.string()).optional(),
     rolePermissions: RolePermissionRequest.optional(),
+    notificationsDisabled: core.serialization.boolean().optional(),
 });
 
 export declare namespace OrganizationRequest {
@@ -53,5 +54,6 @@ export declare namespace OrganizationRequest {
         notificationEmailTemplate?: NotificationEmailTemplateRequest.Raw | null;
         customDomains?: string[] | null;
         rolePermissions?: RolePermissionRequest.Raw | null;
+        notificationsDisabled?: boolean | null;
     }
 }

@@ -261,6 +261,12 @@ import * as Mercoa from "../../../index";
  *                     updatedAt: "2021-01-01T00:00:00Z"
  *                 },
  *                 paymentSourceId: "pm_4794d597-70dc-4fec-b6ec-c5988e759769",
+ *                 paymentSourceOptions: {
+ *                     type: "bnpl",
+ *                     installmentsStartDate: "2025-06-18",
+ *                     defermentWeeks: 8,
+ *                     acceptedTerms: true
+ *                 },
  *                 vendorId: "ent_21661ac1-a2a8-4465-a6c0-64474ba8181d",
  *                 vendor: {
  *                     id: "ent_21661ac1-a2a8-4465-a6c0-64474ba8181d",
@@ -837,6 +843,12 @@ import * as Mercoa from "../../../index";
  *                     updatedAt: "2021-01-01T00:00:00Z"
  *                 },
  *                 paymentSourceId: "pm_4794d597-70dc-4fec-b6ec-c5988e759769",
+ *                 paymentSourceOptions: {
+ *                     type: "bnpl",
+ *                     installmentsStartDate: "2025-06-18",
+ *                     defermentWeeks: 8,
+ *                     acceptedTerms: true
+ *                 },
  *                 vendorId: "ent_21661ac1-a2a8-4465-a6c0-64474ba8181d",
  *                 vendor: {
  *                     id: "ent_21661ac1-a2a8-4465-a6c0-64474ba8181d",
@@ -1902,6 +1914,12 @@ import * as Mercoa from "../../../index";
  *                     updatedAt: "2021-01-01T00:00:00Z"
  *                 },
  *                 paymentSourceId: "pm_4794d597-70dc-4fec-b6ec-c5988e759769",
+ *                 paymentSourceOptions: {
+ *                     type: "bnpl",
+ *                     installmentsStartDate: "2025-06-18",
+ *                     defermentWeeks: 8,
+ *                     acceptedTerms: true
+ *                 },
  *                 vendorId: "ent_21661ac1-a2a8-4465-a6c0-64474ba8181d",
  *                 vendor: {
  *                     id: "ent_21661ac1-a2a8-4465-a6c0-64474ba8181d",
@@ -2480,6 +2498,12 @@ import * as Mercoa from "../../../index";
  *                     updatedAt: "2021-01-01T00:00:00Z"
  *                 },
  *                 paymentSourceId: "pm_4794d597-70dc-4fec-b6ec-c5988e759769",
+ *                 paymentSourceOptions: {
+ *                     type: "bnpl",
+ *                     installmentsStartDate: "2025-06-18",
+ *                     defermentWeeks: 8,
+ *                     acceptedTerms: true
+ *                 },
  *                 vendorId: "ent_21661ac1-a2a8-4465-a6c0-64474ba8181d",
  *                 vendor: {
  *                     id: "ent_21661ac1-a2a8-4465-a6c0-64474ba8181d",

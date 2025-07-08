@@ -3,6 +3,7 @@ export * from "./externalAccountingSystem/types";
 export * as paymentMethod from "./paymentMethod";
 export * as user from "./user";
 export * as approvalPolicy from "./approvalPolicy";
+export * as bnpl from "./bnpl";
 export * as document from "./document";
 export * as emailTemplate from "./emailTemplate";
 export * as invoice from "./invoice";

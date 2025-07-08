@@ -8,6 +8,7 @@ import * as Mercoa from "../../../../../index";
 import * as serializers from "../../../../../../serialization/index";
 import urlJoin from "url-join";
 import * as errors from "../../../../../../errors/index";
+import { toJson } from "../../../../../../core/json";
 
 export declare namespace Bulk {
     export interface Options {
@@ -114,8 +115,8 @@ export class Bulk {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.6.24",
-                "User-Agent": "@mercoa/javascript/0.6.24",
+                "X-Fern-SDK-Version": "0.6.25",
+                "User-Agent": "@mercoa/javascript/0.6.25",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
@@ -286,8 +287,8 @@ export class Bulk {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.6.24",
-                "User-Agent": "@mercoa/javascript/0.6.24",
+                "X-Fern-SDK-Version": "0.6.25",
+                "User-Agent": "@mercoa/javascript/0.6.25",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
@@ -445,8 +446,8 @@ export class Bulk {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.6.24",
-                "User-Agent": "@mercoa/javascript/0.6.24",
+                "X-Fern-SDK-Version": "0.6.25",
+                "User-Agent": "@mercoa/javascript/0.6.25",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
@@ -550,6 +551,381 @@ export class Bulk {
                 });
             case "timeout":
                 throw new errors.MercoaTimeoutError("Timeout exceeded when calling POST /invoices/approve.");
+            case "unknown":
+                throw new errors.MercoaError({
+                    message: _response.error.errorMessage,
+                });
+        }
+    }
+
+    /**
+     * Get a URL to download a bulk invoice as a CSV/JSON file.
+     *
+     * @param {Mercoa.invoice.DownloadBulkInvoicesRequest} request
+     * @param {Bulk.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @throws {@link Mercoa.BadRequest}
+     * @throws {@link Mercoa.Unauthorized}
+     * @throws {@link Mercoa.Forbidden}
+     * @throws {@link Mercoa.NotFound}
+     * @throws {@link Mercoa.Conflict}
+     * @throws {@link Mercoa.InternalServerError}
+     * @throws {@link Mercoa.Unimplemented}
+     *
+     * @example
+     *     await client.invoice.bulk.download({
+     *         format: "CSV"
+     *     })
+     */
+    public async download(
+        request: Mercoa.invoice.DownloadBulkInvoicesRequest = {},
+        requestOptions?: Bulk.RequestOptions,
+    ): Promise<Mercoa.BulkDownloadResponse> {
+        const {
+            format,
+            entityId,
+            entityGroupId,
+            startDate,
+            endDate,
+            dateType,
+            orderBy,
+            orderDirection,
+            startingAfter,
+            search,
+            metadata,
+            lineItemMetadata,
+            lineItemGlAccountId,
+            payerId,
+            vendorId,
+            creatorUserId,
+            approverId,
+            approverAction,
+            invoiceId,
+            status,
+            paymentType,
+            invoiceTemplateId,
+            returnPayerMetadata,
+            returnVendorMetadata,
+        } = request;
+        const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
+        if (format != null) {
+            _queryParams["format"] = serializers.BulkDownloadFormat.jsonOrThrow(format, {
+                unrecognizedObjectKeys: "strip",
+            });
+        }
+
+        if (entityId != null) {
+            if (Array.isArray(entityId)) {
+                _queryParams["entityId"] = entityId.map((item) =>
+                    serializers.EntityId.jsonOrThrow(item, { unrecognizedObjectKeys: "strip" }),
+                );
+            } else {
+                _queryParams["entityId"] = entityId;
+            }
+        }
+
+        if (entityGroupId != null) {
+            _queryParams["entityGroupId"] = entityGroupId;
+        }
+
+        if (startDate != null) {
+            _queryParams["startDate"] = startDate.toISOString();
+        }
+
+        if (endDate != null) {
+            _queryParams["endDate"] = endDate.toISOString();
+        }
+
+        if (dateType != null) {
+            _queryParams["dateType"] = serializers.InvoiceDateFilter.jsonOrThrow(dateType, {
+                unrecognizedObjectKeys: "strip",
+            });
+        }
+
+        if (orderBy != null) {
+            _queryParams["orderBy"] = serializers.InvoiceOrderByField.jsonOrThrow(orderBy, {
+                unrecognizedObjectKeys: "strip",
+            });
+        }
+
+        if (orderDirection != null) {
+            _queryParams["orderDirection"] = serializers.OrderDirection.jsonOrThrow(orderDirection, {
+                unrecognizedObjectKeys: "strip",
+            });
+        }
+
+        if (startingAfter != null) {
+            _queryParams["startingAfter"] = startingAfter;
+        }
+
+        if (search != null) {
+            _queryParams["search"] = search;
+        }
+
+        if (metadata != null) {
+            if (Array.isArray(metadata)) {
+                _queryParams["metadata"] = await Promise.all(
+                    metadata.map(async (item) =>
+                        serializers.MetadataFilter.jsonOrThrow(item, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["request", "metadata"],
+                        }),
+                    ),
+                );
+            } else {
+                _queryParams["metadata"] = serializers.MetadataFilter.jsonOrThrow(metadata, {
+                    unrecognizedObjectKeys: "passthrough",
+                    allowUnrecognizedUnionMembers: true,
+                    allowUnrecognizedEnumValues: true,
+                    breadcrumbsPrefix: ["request", "metadata"],
+                });
+            }
+        }
+
+        if (lineItemMetadata != null) {
+            if (Array.isArray(lineItemMetadata)) {
+                _queryParams["lineItemMetadata"] = await Promise.all(
+                    lineItemMetadata.map(async (item) =>
+                        serializers.MetadataFilter.jsonOrThrow(item, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["request", "lineItemMetadata"],
+                        }),
+                    ),
+                );
+            } else {
+                _queryParams["lineItemMetadata"] = serializers.MetadataFilter.jsonOrThrow(lineItemMetadata, {
+                    unrecognizedObjectKeys: "passthrough",
+                    allowUnrecognizedUnionMembers: true,
+                    allowUnrecognizedEnumValues: true,
+                    breadcrumbsPrefix: ["request", "lineItemMetadata"],
+                });
+            }
+        }
+
+        if (lineItemGlAccountId != null) {
+            if (Array.isArray(lineItemGlAccountId)) {
+                _queryParams["lineItemGlAccountId"] = lineItemGlAccountId.map((item) => item);
+            } else {
+                _queryParams["lineItemGlAccountId"] = lineItemGlAccountId;
+            }
+        }
+
+        if (payerId != null) {
+            if (Array.isArray(payerId)) {
+                _queryParams["payerId"] = payerId.map((item) =>
+                    serializers.EntityId.jsonOrThrow(item, { unrecognizedObjectKeys: "strip" }),
+                );
+            } else {
+                _queryParams["payerId"] = payerId;
+            }
+        }
+
+        if (vendorId != null) {
+            if (Array.isArray(vendorId)) {
+                _queryParams["vendorId"] = vendorId.map((item) =>
+                    serializers.EntityId.jsonOrThrow(item, { unrecognizedObjectKeys: "strip" }),
+                );
+            } else {
+                _queryParams["vendorId"] = vendorId;
+            }
+        }
+
+        if (creatorUserId != null) {
+            if (Array.isArray(creatorUserId)) {
+                _queryParams["creatorUserId"] = creatorUserId.map((item) =>
+                    serializers.EntityUserId.jsonOrThrow(item, { unrecognizedObjectKeys: "strip" }),
+                );
+            } else {
+                _queryParams["creatorUserId"] = creatorUserId;
+            }
+        }
+
+        if (approverId != null) {
+            if (Array.isArray(approverId)) {
+                _queryParams["approverId"] = approverId.map((item) =>
+                    serializers.EntityUserId.jsonOrThrow(item, { unrecognizedObjectKeys: "strip" }),
+                );
+            } else {
+                _queryParams["approverId"] = approverId;
+            }
+        }
+
+        if (approverAction != null) {
+            if (Array.isArray(approverAction)) {
+                _queryParams["approverAction"] = approverAction.map((item) =>
+                    serializers.ApproverAction.jsonOrThrow(item, { unrecognizedObjectKeys: "strip" }),
+                );
+            } else {
+                _queryParams["approverAction"] = serializers.ApproverAction.jsonOrThrow(approverAction, {
+                    unrecognizedObjectKeys: "strip",
+                });
+            }
+        }
+
+        if (invoiceId != null) {
+            if (Array.isArray(invoiceId)) {
+                _queryParams["invoiceId"] = invoiceId.map((item) =>
+                    serializers.InvoiceId.jsonOrThrow(item, { unrecognizedObjectKeys: "strip" }),
+                );
+            } else {
+                _queryParams["invoiceId"] = invoiceId;
+            }
+        }
+
+        if (status != null) {
+            if (Array.isArray(status)) {
+                _queryParams["status"] = status.map((item) =>
+                    serializers.InvoiceStatus.jsonOrThrow(item, { unrecognizedObjectKeys: "strip" }),
+                );
+            } else {
+                _queryParams["status"] = serializers.InvoiceStatus.jsonOrThrow(status, {
+                    unrecognizedObjectKeys: "strip",
+                });
+            }
+        }
+
+        if (paymentType != null) {
+            _queryParams["paymentType"] = toJson(paymentType);
+        }
+
+        if (invoiceTemplateId != null) {
+            if (Array.isArray(invoiceTemplateId)) {
+                _queryParams["invoiceTemplateId"] = invoiceTemplateId.map((item) =>
+                    serializers.InvoiceTemplateId.jsonOrThrow(item, { unrecognizedObjectKeys: "strip" }),
+                );
+            } else {
+                _queryParams["invoiceTemplateId"] = invoiceTemplateId;
+            }
+        }
+
+        if (returnPayerMetadata != null) {
+            _queryParams["returnPayerMetadata"] = returnPayerMetadata.toString();
+        }
+
+        if (returnVendorMetadata != null) {
+            _queryParams["returnVendorMetadata"] = returnVendorMetadata.toString();
+        }
+
+        const _response = await core.fetcher({
+            url: urlJoin(
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (await core.Supplier.get(this._options.environment)) ??
+                    environments.MercoaEnvironment.Production,
+                "invoices/download",
+            ),
+            method: "GET",
+            headers: {
+                Authorization: await this._getAuthorizationHeader(),
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "@mercoa/javascript",
+                "X-Fern-SDK-Version": "0.6.25",
+                "User-Agent": "@mercoa/javascript/0.6.25",
+                "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...requestOptions?.headers,
+            },
+            contentType: "application/json",
+            queryParameters: _queryParams,
+            requestType: "json",
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+        });
+        if (_response.ok) {
+            return serializers.BulkDownloadResponse.parseOrThrow(_response.body, {
+                unrecognizedObjectKeys: "passthrough",
+                allowUnrecognizedUnionMembers: true,
+                allowUnrecognizedEnumValues: true,
+                breadcrumbsPrefix: ["response"],
+            });
+        }
+
+        if (_response.error.reason === "status-code") {
+            switch ((_response.error.body as any)?.["errorName"]) {
+                case "BadRequest":
+                    throw new Mercoa.BadRequest(
+                        serializers.BadRequest.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        }),
+                    );
+                case "Unauthorized":
+                    throw new Mercoa.Unauthorized(
+                        serializers.Unauthorized.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        }),
+                    );
+                case "Forbidden":
+                    throw new Mercoa.Forbidden(
+                        serializers.Forbidden.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        }),
+                    );
+                case "NotFound":
+                    throw new Mercoa.NotFound(
+                        serializers.NotFound.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        }),
+                    );
+                case "Conflict":
+                    throw new Mercoa.Conflict(
+                        serializers.Conflict.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        }),
+                    );
+                case "InternalServerError":
+                    throw new Mercoa.InternalServerError(
+                        serializers.InternalServerError.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        }),
+                    );
+                case "Unimplemented":
+                    throw new Mercoa.Unimplemented(
+                        serializers.Unimplemented.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        }),
+                    );
+                default:
+                    throw new errors.MercoaError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                    });
+            }
+        }
+
+        switch (_response.error.reason) {
+            case "non-json":
+                throw new errors.MercoaError({
+                    statusCode: _response.error.statusCode,
+                    body: _response.error.rawBody,
+                });
+            case "timeout":
+                throw new errors.MercoaTimeoutError("Timeout exceeded when calling GET /invoices/download.");
             case "unknown":
                 throw new errors.MercoaError({
                     message: _response.error.errorMessage,

@@ -13,3 +13,4 @@ export * from "./TransactionWebhook";
 export * from "./EntityStatusChangedWebhook";
 export * from "./BulkInvoiceUpdateWebhook";
 export * from "./BulkInvoiceApprovalWebhook";
+export * from "./OcrJobCompletedWebhook";
