@@ -10,7 +10,8 @@ import * as Mercoa from "../../../index";
  *         html: "<html><body><h1>Invoice Details</h1><a href=\"https://www.payment-gateway.com/invoice/123123\">Pay Invoice</a></body></html>",
  *         cardDetails: {
  *             type: "direct",
- *             nameOnCard: "John Doe",
+ *             firstName: "John",
+ *             lastName: "Doe",
  *             cardNumber: "4242424242424242",
  *             expirationMonth: 10,
  *             expirationYear: 2025,

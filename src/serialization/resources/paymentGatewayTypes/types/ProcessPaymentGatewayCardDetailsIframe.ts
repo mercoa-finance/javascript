@@ -5,16 +5,19 @@
 import * as serializers from "../../../index";
 import * as Mercoa from "../../../../api/index";
 import * as core from "../../../../core";
+import { ProcessPaymentGatewayCardDetailsBase } from "./ProcessPaymentGatewayCardDetailsBase";
 
 export const ProcessPaymentGatewayCardDetailsIframe: core.serialization.ObjectSchema<
     serializers.ProcessPaymentGatewayCardDetailsIframe.Raw,
     Mercoa.ProcessPaymentGatewayCardDetailsIframe
-> = core.serialization.object({
-    iframeUrl: core.serialization.string(),
-});
+> = core.serialization
+    .object({
+        iframeUrl: core.serialization.string(),
+    })
+    .extend(ProcessPaymentGatewayCardDetailsBase);
 
 export declare namespace ProcessPaymentGatewayCardDetailsIframe {
-    export interface Raw {
+    export interface Raw extends ProcessPaymentGatewayCardDetailsBase.Raw {
         iframeUrl: string;
     }
 }

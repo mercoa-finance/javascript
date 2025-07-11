@@ -6,7 +6,7 @@ import * as serializers from "../../../index";
 import * as Mercoa from "../../../../api/index";
 import * as core from "../../../../core";
 import { ProcessPaymentGatewayPendingResponse } from "./ProcessPaymentGatewayPendingResponse";
-import { ProcessPaymentGatewayCompletedResponse } from "./ProcessPaymentGatewayCompletedResponse";
+import { ProcessPaymentGatewaySuccessResponse } from "./ProcessPaymentGatewaySuccessResponse";
 import { ProcessPaymentGatewayFailedResponse } from "./ProcessPaymentGatewayFailedResponse";
 
 export const ProcessPaymentGatewayResponse: core.serialization.Schema<
@@ -15,7 +15,7 @@ export const ProcessPaymentGatewayResponse: core.serialization.Schema<
 > = core.serialization
     .union("jobStatus", {
         pending: ProcessPaymentGatewayPendingResponse,
-        completed: ProcessPaymentGatewayCompletedResponse,
+        success: ProcessPaymentGatewaySuccessResponse,
         failed: ProcessPaymentGatewayFailedResponse,
     })
     .transform<Mercoa.ProcessPaymentGatewayResponse>({
@@ -26,15 +26,15 @@ export const ProcessPaymentGatewayResponse: core.serialization.Schema<
 export declare namespace ProcessPaymentGatewayResponse {
     export type Raw =
         | ProcessPaymentGatewayResponse.Pending
-        | ProcessPaymentGatewayResponse.Completed
+        | ProcessPaymentGatewayResponse.Success
         | ProcessPaymentGatewayResponse.Failed;
 
     export interface Pending extends ProcessPaymentGatewayPendingResponse.Raw {
         jobStatus: "pending";
     }
 
-    export interface Completed extends ProcessPaymentGatewayCompletedResponse.Raw {
-        jobStatus: "completed";
+    export interface Success extends ProcessPaymentGatewaySuccessResponse.Raw {
+        jobStatus: "success";
     }
 
     export interface Failed extends ProcessPaymentGatewayFailedResponse.Raw {

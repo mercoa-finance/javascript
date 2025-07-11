@@ -7,9 +7,9 @@ import * as Mercoa from "../../../../api/index";
 import * as core from "../../../../core";
 import { ValidatePaymentGatewayCardResponse } from "./ValidatePaymentGatewayCardResponse";
 
-export const ValidatePaymentGatewayCompletedResponse: core.serialization.ObjectSchema<
-    serializers.ValidatePaymentGatewayCompletedResponse.Raw,
-    Mercoa.ValidatePaymentGatewayCompletedResponse
+export const ValidatePaymentGatewaySuccessResponse: core.serialization.ObjectSchema<
+    serializers.ValidatePaymentGatewaySuccessResponse.Raw,
+    Mercoa.ValidatePaymentGatewaySuccessResponse
 > = core.serialization.object({
     jobId: core.serialization.string(),
     paymentGatewayUrl: core.serialization.string().optional(),
@@ -17,7 +17,7 @@ export const ValidatePaymentGatewayCompletedResponse: core.serialization.ObjectS
     card: ValidatePaymentGatewayCardResponse.optional(),
 });
 
-export declare namespace ValidatePaymentGatewayCompletedResponse {
+export declare namespace ValidatePaymentGatewaySuccessResponse {
     export interface Raw {
         jobId: string;
         paymentGatewayUrl?: string | null;

@@ -7,18 +7,17 @@ import * as Mercoa from "../../../index";
 /**
  * @example
  *     {
- *         nameOnCard: "John Doe",
+ *         firstName: "John",
+ *         lastName: "Doe",
+ *         postalCode: "12345",
+ *         country: Mercoa.CountryCode.Us,
  *         cardNumber: "4242424242424242",
  *         expirationMonth: 10,
  *         expirationYear: 2025,
- *         cvv: "123",
- *         postalCode: "12345",
- *         country: Mercoa.CountryCode.Us
+ *         cvv: "123"
  *     }
  */
-export interface ProcessPaymentGatewayCardDetailsDirect {
-    /** The name on the card to use for the payment */
-    nameOnCard: string;
+export interface ProcessPaymentGatewayCardDetailsDirect extends Mercoa.ProcessPaymentGatewayCardDetailsBase {
     /** The number of the card to use for the payment */
     cardNumber: string;
     /** The month of the expiration date of the card to use for the payment. This must be a number between 1 and 12. */
@@ -27,8 +26,4 @@ export interface ProcessPaymentGatewayCardDetailsDirect {
     expirationYear: number;
     /** The CVV of the card to use for the payment */
     cvv: string;
-    /** The postal code of the address of the card to use for the payment */
-    postalCode: string;
-    /** The country of the address of the card to use for the payment */
-    country: Mercoa.CountryCode;
 }

@@ -1,3 +1,5 @@
+export * from "./PaymentGatewayValidationJobCompletedWebhook";
+export * from "./PaymentGatewayProcessJobCompletedWebhook";
 export * from "./BulkInvoiceCreationWebhook";
 export * from "./BulkEntityCreationWebhook";
 export * from "./CounterpartyWebhook";

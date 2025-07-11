@@ -5,29 +5,25 @@
 import * as serializers from "../../../index";
 import * as Mercoa from "../../../../api/index";
 import * as core from "../../../../core";
-import { CountryCode } from "../../commons/types/CountryCode";
+import { ProcessPaymentGatewayCardDetailsBase } from "./ProcessPaymentGatewayCardDetailsBase";
 
 export const ProcessPaymentGatewayCardDetailsDirect: core.serialization.ObjectSchema<
     serializers.ProcessPaymentGatewayCardDetailsDirect.Raw,
     Mercoa.ProcessPaymentGatewayCardDetailsDirect
-> = core.serialization.object({
-    nameOnCard: core.serialization.string(),
-    cardNumber: core.serialization.string(),
-    expirationMonth: core.serialization.number(),
-    expirationYear: core.serialization.number(),
-    cvv: core.serialization.string(),
-    postalCode: core.serialization.string(),
-    country: CountryCode,
-});
+> = core.serialization
+    .object({
+        cardNumber: core.serialization.string(),
+        expirationMonth: core.serialization.number(),
+        expirationYear: core.serialization.number(),
+        cvv: core.serialization.string(),
+    })
+    .extend(ProcessPaymentGatewayCardDetailsBase);
 
 export declare namespace ProcessPaymentGatewayCardDetailsDirect {
-    export interface Raw {
-        nameOnCard: string;
+    export interface Raw extends ProcessPaymentGatewayCardDetailsBase.Raw {
         cardNumber: string;
         expirationMonth: number;
         expirationYear: number;
         cvv: string;
-        postalCode: string;
-        country: CountryCode.Raw;
     }
 }

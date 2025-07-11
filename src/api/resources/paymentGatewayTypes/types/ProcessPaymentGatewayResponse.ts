@@ -13,7 +13,7 @@ import * as Mercoa from "../../../index";
  *
  * @example
  *     {
- *         jobStatus: "completed",
+ *         jobStatus: "success",
  *         jobId: "job_1a92b5f7-f522-435e-a953-fd649363730a",
  *         receiptUrl: "https://www.payment-gateway.com/receipt/123123"
  *     }
@@ -28,7 +28,7 @@ import * as Mercoa from "../../../index";
  */
 export type ProcessPaymentGatewayResponse =
     | Mercoa.ProcessPaymentGatewayResponse.Pending
-    | Mercoa.ProcessPaymentGatewayResponse.Completed
+    | Mercoa.ProcessPaymentGatewayResponse.Success
     | Mercoa.ProcessPaymentGatewayResponse.Failed;
 
 export namespace ProcessPaymentGatewayResponse {
@@ -36,8 +36,8 @@ export namespace ProcessPaymentGatewayResponse {
         jobStatus: "pending";
     }
 
-    export interface Completed extends Mercoa.ProcessPaymentGatewayCompletedResponse {
-        jobStatus: "completed";
+    export interface Success extends Mercoa.ProcessPaymentGatewaySuccessResponse {
+        jobStatus: "success";
     }
 
     export interface Failed extends Mercoa.ProcessPaymentGatewayFailedResponse {

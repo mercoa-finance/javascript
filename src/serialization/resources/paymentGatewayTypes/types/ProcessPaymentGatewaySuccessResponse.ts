@@ -6,16 +6,16 @@ import * as serializers from "../../../index";
 import * as Mercoa from "../../../../api/index";
 import * as core from "../../../../core";
 
-export const ProcessPaymentGatewayCompletedResponse: core.serialization.ObjectSchema<
-    serializers.ProcessPaymentGatewayCompletedResponse.Raw,
-    Mercoa.ProcessPaymentGatewayCompletedResponse
+export const ProcessPaymentGatewaySuccessResponse: core.serialization.ObjectSchema<
+    serializers.ProcessPaymentGatewaySuccessResponse.Raw,
+    Mercoa.ProcessPaymentGatewaySuccessResponse
 > = core.serialization.object({
     jobId: core.serialization.string(),
     receiptUrl: core.serialization.string().optional(),
     sessionUrl: core.serialization.string().optional(),
 });
 
-export declare namespace ProcessPaymentGatewayCompletedResponse {
+export declare namespace ProcessPaymentGatewaySuccessResponse {
     export interface Raw {
         jobId: string;
         receiptUrl?: string | null;

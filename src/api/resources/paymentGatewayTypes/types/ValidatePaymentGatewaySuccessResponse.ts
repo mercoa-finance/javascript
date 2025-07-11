@@ -4,7 +4,7 @@
 
 import * as Mercoa from "../../../index";
 
-export interface ValidatePaymentGatewayCompletedResponse {
+export interface ValidatePaymentGatewaySuccessResponse {
     /** The job ID of the payment gateway validation job */
     jobId: string;
     /** The payment gateway URL that was found in the document */
