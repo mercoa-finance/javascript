@@ -6,7 +6,8 @@ import * as Mercoa from "../../../index";
 
 export type ProcessPaymentGatewayCardDetails =
     | Mercoa.ProcessPaymentGatewayCardDetails.Direct
-    | Mercoa.ProcessPaymentGatewayCardDetails.Iframe;
+    | Mercoa.ProcessPaymentGatewayCardDetails.Iframe
+    | Mercoa.ProcessPaymentGatewayCardDetails.StripeIssuing;
 
 export namespace ProcessPaymentGatewayCardDetails {
     export interface Direct extends Mercoa.ProcessPaymentGatewayCardDetailsDirect {
@@ -15,5 +16,9 @@ export namespace ProcessPaymentGatewayCardDetails {
 
     export interface Iframe extends Mercoa.ProcessPaymentGatewayCardDetailsIframe {
         type: "iframe";
+    }
+
+    export interface StripeIssuing extends Mercoa.ProcessPaymentGatewayCardDetailsStripeIssuing {
+        type: "stripeIssuing";
     }
 }

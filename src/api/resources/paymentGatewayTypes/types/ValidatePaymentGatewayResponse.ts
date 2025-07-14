@@ -8,15 +8,15 @@ import * as Mercoa from "../../../index";
  * @example
  *     {
  *         jobStatus: "pending",
- *         jobId: "job_1a92b5f7-f522-435e-a953-fd649363730a"
+ *         jobId: "pgv_8f86116b-3b4d-4ded-99ef-3bc929d8c33c"
  *     }
  *
  * @example
  *     {
  *         jobStatus: "success",
- *         jobId: "job_1a92b5f7-f522-435e-a953-fd649363730a",
- *         paymentGatewayUrl: "https://www.payment-gateway.com/invoice/job_1a92b5f7-f522-435e-a953-fd649363730a",
- *         sessionUrl: "https://www.payment-gateway.com/session/job_1a92b5f7-f522-435e-a953-fd649363730a",
+ *         jobId: "pgv_8f86116b-3b4d-4ded-99ef-3bc929d8c33c",
+ *         paymentGatewayUrl: "https://www.payment-gateway.com/invoice/pgv_8f86116b-3b4d-4ded-99ef-3bc929d8c33c",
+ *         sessionUrl: "https://www.payment-gateway.com/session/pgv_8f86116b-3b4d-4ded-99ef-3bc929d8c33c",
  *         card: {
  *             eligibility: Mercoa.ValidatePaymentGatewayCardAcceptance.Accepted,
  *             fee: {
@@ -29,7 +29,7 @@ import * as Mercoa from "../../../index";
  * @example
  *     {
  *         jobStatus: "failed",
- *         jobId: "job_1a92b5f7-f522-435e-a953-fd649363730a",
+ *         jobId: "pgv_8f86116b-3b4d-4ded-99ef-3bc929d8c33c",
  *         errorType: Mercoa.PaymentGatewayError.NoValidPaymentGatewayFound,
  *         errorMessage: "No valid payment gateway was found in the document or HTML"
  *     }

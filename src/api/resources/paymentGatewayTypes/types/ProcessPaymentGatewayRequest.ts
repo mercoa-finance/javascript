@@ -35,6 +35,31 @@ import * as Mercoa from "../../../index";
  *             iframeUrl: "https://www.myvirtualcard.com/iframe/543543"
  *         }
  *     }
+ *
+ * @example
+ *     {
+ *         type: "html",
+ *         html: "<html><body><h1>Invoice Details</h1><a href=\"https://www.payment-gateway.com/invoice/123123\">Pay Invoice</a></body></html>",
+ *         cardDetails: {
+ *             type: "stripeIssuing",
+ *             firstName: "John",
+ *             lastName: "Doe",
+ *             postalCode: "12345",
+ *             country: Mercoa.CountryCode.Us,
+ *             stripeCardId: "ic_1234567890abcdef",
+ *             stripePublishableKey: "pk_test_1234567890abcdef",
+ *             stripeAccountId: "acct_1234567890abcdef",
+ *             ephemeralKeyEndpoint: {
+ *                 url: "https://api.example.com/ephemeral-keys",
+ *                 method: "POST",
+ *                 headers: {
+ *                     "Authorization": "Bearer sk_test_...",
+ *                     "Content-Type": "application/json"
+ *                 },
+ *                 postBody: "{\"card_id\": \"{{cardId}}\", \"nonce\": \"{{nonce}}\", \"account_id\": \"{{accountId}}\"}"
+ *             }
+ *         }
+ *     }
  */
 export type ProcessPaymentGatewayRequest =
     | Mercoa.ProcessPaymentGatewayRequest.Document

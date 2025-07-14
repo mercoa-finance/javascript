@@ -7,6 +7,7 @@ import * as Mercoa from "../../../../api/index";
 import * as core from "../../../../core";
 import { ProcessPaymentGatewayCardDetailsDirect } from "./ProcessPaymentGatewayCardDetailsDirect";
 import { ProcessPaymentGatewayCardDetailsIframe } from "./ProcessPaymentGatewayCardDetailsIframe";
+import { ProcessPaymentGatewayCardDetailsStripeIssuing } from "./ProcessPaymentGatewayCardDetailsStripeIssuing";
 
 export const ProcessPaymentGatewayCardDetails: core.serialization.Schema<
     serializers.ProcessPaymentGatewayCardDetails.Raw,
@@ -15,6 +16,7 @@ export const ProcessPaymentGatewayCardDetails: core.serialization.Schema<
     .union("type", {
         direct: ProcessPaymentGatewayCardDetailsDirect,
         iframe: ProcessPaymentGatewayCardDetailsIframe,
+        stripeIssuing: ProcessPaymentGatewayCardDetailsStripeIssuing,
     })
     .transform<Mercoa.ProcessPaymentGatewayCardDetails>({
         transform: (value) => value,
@@ -22,7 +24,10 @@ export const ProcessPaymentGatewayCardDetails: core.serialization.Schema<
     });
 
 export declare namespace ProcessPaymentGatewayCardDetails {
-    export type Raw = ProcessPaymentGatewayCardDetails.Direct | ProcessPaymentGatewayCardDetails.Iframe;
+    export type Raw =
+        | ProcessPaymentGatewayCardDetails.Direct
+        | ProcessPaymentGatewayCardDetails.Iframe
+        | ProcessPaymentGatewayCardDetails.StripeIssuing;
 
     export interface Direct extends ProcessPaymentGatewayCardDetailsDirect.Raw {
         type: "direct";
@@ -30,5 +35,9 @@ export declare namespace ProcessPaymentGatewayCardDetails {
 
     export interface Iframe extends ProcessPaymentGatewayCardDetailsIframe.Raw {
         type: "iframe";
+    }
+
+    export interface StripeIssuing extends ProcessPaymentGatewayCardDetailsStripeIssuing.Raw {
+        type: "stripeIssuing";
     }
 }
