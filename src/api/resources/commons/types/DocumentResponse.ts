@@ -40,6 +40,13 @@ import * as Mercoa from "../../../index";
  *     {
  *         mimeType: "application/pdf",
  *         uri: "https://mercoa.com/pdf/not-real.pdf",
+ *         type: Mercoa.DocumentType.PaymentConfirmation
+ *     }
+ *
+ * @example
+ *     {
+ *         mimeType: "application/pdf",
+ *         uri: "https://mercoa.com/pdf/not-real.pdf",
  *         type: Mercoa.DocumentType.Other
  *     }
  */

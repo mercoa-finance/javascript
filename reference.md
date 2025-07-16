@@ -12446,6 +12446,69 @@ await client.invoice.document.generateCheckPdf("in_26e7b5d3-a739-4b23-9ad9-6aaa0
 </dl>
 </details>
 
+<details><summary><code>client.invoice.document.<a href="/src/api/resources/invoice/resources/document/client/Client.ts">generatePaymentConfirmationPdf</a>(invoiceId) -> Mercoa.DocumentResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Generate a PDF of the payment confirmation for the invoice. This PDF is generated from the data in the invoice, not from the uploaded documents.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.invoice.document.generatePaymentConfirmationPdf("in_26e7b5d3-a739-4b23-9ad9-6aaa085f47a9");
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**invoiceId:** `Mercoa.InvoiceId` — Invoice ID or Invoice ForeignID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Document.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
 <details><summary><code>client.invoice.document.<a href="/src/api/resources/invoice/resources/document/client/Client.ts">getSourceEmail</a>(invoiceId) -> Mercoa.EmailLogResponse</code></summary>
 <dl>
 <dd>
