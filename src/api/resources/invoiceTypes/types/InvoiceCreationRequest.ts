@@ -60,7 +60,9 @@ import * as Mercoa from "../../../index";
  *         amount: 100,
  *         invoiceDate: "2021-01-01T00:00:00Z",
  *         dueDate: "2021-01-31T00:00:00Z",
- *         paymentSourceId: "pm_4794d597-70dc-4fec-b6ec-c5988e759769"
+ *         paymentSourceId: "pm_4794d597-70dc-4fec-b6ec-c5988e759769",
+ *         paymentDestinationId: "pm_5fde2f4a-facc-48ef-8f0d-6b7d087c7b18",
+ *         deductionDate: "2021-01-29T00:00:00Z"
  *     }
  *
  * @example

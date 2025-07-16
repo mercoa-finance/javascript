@@ -8,7 +8,7 @@
  *         url: "https://api.example.com/ephemeral-keys",
  *         method: "POST",
  *         headers: {
- *             "Authorization": "Bearer sk_test_...",
+ *             "Authorization": "Bearer YOUR_AUTH_SCHEME",
  *             "Content-Type": "application/json"
  *         },
  *         postBody: "{\"card_id\": \"{{cardId}}\", \"nonce\": \"{{nonce}}\", \"account_id\": \"{{accountId}}\"}"
@@ -19,7 +19,7 @@
  *         url: "https://api.example.com/ephemeral-keys",
  *         method: "POST",
  *         headers: {
- *             "Authorization": "Bearer sk_test_...",
+ *             "Authorization": "Bearer YOUR_AUTH_SCHEME",
  *             "Content-Type": "application/json"
  *         },
  *         postBody: "{\"card_id\": \"{{cardId}}\", \"nonce\": \"{{nonce}}\"}"

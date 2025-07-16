@@ -22,6 +22,7 @@ import { CommentResponse } from "./CommentResponse";
 import { InvoiceFeesResponse } from "./InvoiceFeesResponse";
 import { PaymentSchedule } from "./PaymentSchedule";
 import { OcrJobId } from "../../ocr/types/OcrJobId";
+import { InvoiceTemplateId } from "./InvoiceTemplateId";
 
 export const InvoiceResponseBase: core.serialization.ObjectSchema<
     serializers.InvoiceResponseBase.Raw,
@@ -68,6 +69,7 @@ export const InvoiceResponseBase: core.serialization.ObjectSchema<
     fees: InvoiceFeesResponse.optional(),
     paymentSchedule: PaymentSchedule.optional(),
     ocrJobId: OcrJobId.optional(),
+    recurringTemplateId: InvoiceTemplateId.optional(),
 });
 
 export declare namespace InvoiceResponseBase {
@@ -113,5 +115,6 @@ export declare namespace InvoiceResponseBase {
         fees?: InvoiceFeesResponse.Raw | null;
         paymentSchedule?: PaymentSchedule.Raw | null;
         ocrJobId?: OcrJobId.Raw | null;
+        recurringTemplateId?: InvoiceTemplateId.Raw | null;
     }
 }

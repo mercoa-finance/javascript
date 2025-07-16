@@ -65,4 +65,6 @@ export interface InvoiceResponseBase {
     paymentSchedule?: Mercoa.PaymentSchedule;
     /** ID of the OCR job that processed this invoice. */
     ocrJobId?: Mercoa.OcrJobId;
+    /** ID of the invoice template that created this recurring invoice. Only present if the invoice was created from a recurring template. */
+    recurringTemplateId?: Mercoa.InvoiceTemplateId;
 }
