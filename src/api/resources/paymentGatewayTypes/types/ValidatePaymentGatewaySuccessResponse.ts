@@ -13,4 +13,8 @@ export interface ValidatePaymentGatewaySuccessResponse {
     sessionUrl?: string;
     /** Data on the card payments that were extracted from the gateway */
     card?: Mercoa.ValidatePaymentGatewayCardResponse;
+    /** The timestamp when the job was created */
+    createdAt: Date;
+    /** The timestamp when the job was last updated */
+    updatedAt: Date;
 }

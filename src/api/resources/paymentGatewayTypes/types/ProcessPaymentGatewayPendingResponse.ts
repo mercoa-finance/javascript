@@ -5,4 +5,8 @@
 export interface ProcessPaymentGatewayPendingResponse {
     /** The job ID of the payment gateway processing job */
     jobId: string;
+    /** The timestamp when the job was created */
+    createdAt: Date;
+    /** The timestamp when the job was last updated */
+    updatedAt: Date;
 }

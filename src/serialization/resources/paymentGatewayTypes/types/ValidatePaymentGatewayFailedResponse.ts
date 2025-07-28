@@ -14,6 +14,8 @@ export const ValidatePaymentGatewayFailedResponse: core.serialization.ObjectSche
     jobId: core.serialization.string(),
     errorType: PaymentGatewayError,
     errorMessage: core.serialization.string().optional(),
+    createdAt: core.serialization.date(),
+    updatedAt: core.serialization.date(),
 });
 
 export declare namespace ValidatePaymentGatewayFailedResponse {
@@ -21,5 +23,7 @@ export declare namespace ValidatePaymentGatewayFailedResponse {
         jobId: string;
         errorType: PaymentGatewayError.Raw;
         errorMessage?: string | null;
+        createdAt: string;
+        updatedAt: string;
     }
 }

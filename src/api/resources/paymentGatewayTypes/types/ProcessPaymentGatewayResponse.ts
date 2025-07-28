@@ -8,14 +8,18 @@ import * as Mercoa from "../../../index";
  * @example
  *     {
  *         jobStatus: "pending",
- *         jobId: "pgp_8f86116b-3b4d-4ded-99ef-3bc929d8c33c"
+ *         jobId: "pgp_8f86116b-3b4d-4ded-99ef-3bc929d8c33c",
+ *         createdAt: "2024-01-01T00:00:00Z",
+ *         updatedAt: "2024-01-01T00:00:00Z"
  *     }
  *
  * @example
  *     {
  *         jobStatus: "success",
  *         jobId: "pgp_8f86116b-3b4d-4ded-99ef-3bc929d8c33c",
- *         receiptUrl: "https://www.payment-gateway.com/receipt/123123"
+ *         receiptUrl: "https://www.payment-gateway.com/receipt/123123",
+ *         createdAt: "2024-01-01T00:00:00Z",
+ *         updatedAt: "2024-01-01T00:00:00Z"
  *     }
  *
  * @example
@@ -23,7 +27,9 @@ import * as Mercoa from "../../../index";
  *         jobStatus: "failed",
  *         jobId: "pgp_8f86116b-3b4d-4ded-99ef-3bc929d8c33c",
  *         errorType: Mercoa.PaymentGatewayError.NoValidPaymentGatewayFound,
- *         errorMessage: "No valid payment gateway was found in the document or HTML"
+ *         errorMessage: "No valid payment gateway was found in the document or HTML",
+ *         createdAt: "2024-01-01T00:00:00Z",
+ *         updatedAt: "2024-01-01T00:00:00Z"
  *     }
  */
 export type ProcessPaymentGatewayResponse =

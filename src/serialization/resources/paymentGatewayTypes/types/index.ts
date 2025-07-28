@@ -25,3 +25,7 @@ export * from "./ProcessPaymentGatewayFailedResponse";
 export * from "./ProcessPaymentGatewaySuccessResponse";
 export * from "./ProcessPaymentGatewayResponse";
 export * from "./PaymentGatewayError";
+export * from "./PaymentGatewayJobOrderByField";
+export * from "./SearchPaymentGatewayValidationJobsResponse";
+export * from "./SearchPaymentGatewayProcessJobsResponse";
+export * from "./PaymentGatewayJobStatus";

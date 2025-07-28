@@ -20,7 +20,9 @@ import * as Mercoa from "../../../index";
  *                     type: "percentage",
  *                     value: 2.5
  *                 }
- *             }
+ *             },
+ *             createdAt: "2024-01-01T00:00:00Z",
+ *             updatedAt: "2024-01-01T00:00:00Z"
  *         }
  *     }
  *
@@ -32,7 +34,9 @@ import * as Mercoa from "../../../index";
  *             jobStatus: "failed",
  *             jobId: "pgv_8f86116b-3b4d-4ded-99ef-3bc929d8c33c",
  *             errorType: Mercoa.PaymentGatewayError.NoValidPaymentGatewayFound,
- *             errorMessage: "No valid payment gateway was found in the document or HTML"
+ *             errorMessage: "No valid payment gateway was found in the document or HTML",
+ *             createdAt: "2024-01-01T00:00:00Z",
+ *             updatedAt: "2024-01-01T00:00:00Z"
  *         }
  *     }
  */

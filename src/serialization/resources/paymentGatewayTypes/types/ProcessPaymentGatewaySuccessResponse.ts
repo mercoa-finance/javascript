@@ -13,6 +13,8 @@ export const ProcessPaymentGatewaySuccessResponse: core.serialization.ObjectSche
     jobId: core.serialization.string(),
     receiptUrl: core.serialization.string().optional(),
     sessionUrl: core.serialization.string().optional(),
+    createdAt: core.serialization.date(),
+    updatedAt: core.serialization.date(),
 });
 
 export declare namespace ProcessPaymentGatewaySuccessResponse {
@@ -20,5 +22,7 @@ export declare namespace ProcessPaymentGatewaySuccessResponse {
         jobId: string;
         receiptUrl?: string | null;
         sessionUrl?: string | null;
+        createdAt: string;
+        updatedAt: string;
     }
 }

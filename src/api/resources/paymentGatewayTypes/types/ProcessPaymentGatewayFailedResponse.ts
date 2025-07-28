@@ -11,4 +11,8 @@ export interface ProcessPaymentGatewayFailedResponse {
     errorType: Mercoa.PaymentGatewayError;
     /** The error message that occurred during the payment gateway processing job */
     errorMessage?: string;
+    /** The timestamp when the job was created */
+    createdAt: Date;
+    /** The timestamp when the job was last updated */
+    updatedAt: Date;
 }

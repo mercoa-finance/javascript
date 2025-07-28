@@ -9,4 +9,8 @@ export interface ProcessPaymentGatewaySuccessResponse {
     receiptUrl?: string;
     /** The URL of the playback session for the agent that processed the payment */
     sessionUrl?: string;
+    /** The timestamp when the job was created */
+    createdAt: Date;
+    /** The timestamp when the job was last updated */
+    updatedAt: Date;
 }

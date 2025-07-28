@@ -563,6 +563,324 @@ await client.entityGroup.removeEntities("entg_a0f6ea94-0761-4a5e-a416-3c453cb7ec
 </dl>
 </details>
 
+## EntityGroup Counterparty
+
+<details><summary><code>client.entityGroup.counterparty.<a href="/src/api/resources/entityGroup/resources/counterparty/client/Client.ts">addPayees</a>(entityGroupId, { ...params }) -> void</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Create association between all entities in the group and a given list of Payees. If a Payee has previously been archived, unarchive the Payee.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.entityGroup.counterparty.addPayees("entg_8545a84e-a45f-41bf-bdf1-33b42a55812c", {
+    payees: ["ent_21661ac1-a2a8-4465-a6c0-64474ba8181d"],
+    customizations: [
+        {
+            counterpartyId: "ent_21661ac1-a2a8-4465-a6c0-64474ba8181d",
+            accounts: [
+                {
+                    accountId: "85866843",
+                    postalCode: "94105",
+                    nameOnAccount: "John Doe",
+                },
+            ],
+        },
+    ],
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**entityGroupId:** `Mercoa.EntityGroupId` — Entity Group ID or Entity Group ForeignID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `Mercoa.EntityAddPayeesRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Counterparty.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.entityGroup.counterparty.<a href="/src/api/resources/entityGroup/resources/counterparty/client/Client.ts">hidePayees</a>(entityGroupId, { ...params }) -> void</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Marks Payees as unsearchable by all entities in the group via Counterparty search. Invoices associated with these Payees will still be searchable via Invoice search.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.entityGroup.counterparty.hidePayees("entg_8545a84e-a45f-41bf-bdf1-33b42a55812c", {
+    payees: ["ent_21661ac1-a2a8-4465-a6c0-64474ba8181d"],
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**entityGroupId:** `Mercoa.EntityGroupId` — Entity Group ID or Entity Group ForeignID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `Mercoa.EntityHidePayeesRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Counterparty.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.entityGroup.counterparty.<a href="/src/api/resources/entityGroup/resources/counterparty/client/Client.ts">addPayors</a>(entityGroupId, { ...params }) -> void</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Create association between all entities in the group and a given list of Payors. If a Payor has previously been archived, unarchive the Payor.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.entityGroup.counterparty.addPayors("entg_8545a84e-a45f-41bf-bdf1-33b42a55812c", {
+    payors: ["ent_21661ac1-a2a8-4465-a6c0-64474ba8181d"],
+    customizations: [
+        {
+            counterpartyId: "ent_21661ac1-a2a8-4465-a6c0-64474ba8181d",
+            accounts: [
+                {
+                    accountId: "85866843",
+                    postalCode: "94105",
+                    nameOnAccount: "John Doe",
+                },
+            ],
+        },
+    ],
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**entityGroupId:** `Mercoa.EntityGroupId` — Entity Group ID or Entity Group ForeignID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `Mercoa.EntityAddPayorsRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Counterparty.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.entityGroup.counterparty.<a href="/src/api/resources/entityGroup/resources/counterparty/client/Client.ts">hidePayors</a>(entityGroupId, { ...params }) -> void</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Marks Payors as unsearchable by all entities in the group via Counterparty search. Invoices associated with these Payors will still be searchable via Invoice search.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.entityGroup.counterparty.hidePayors("entg_8545a84e-a45f-41bf-bdf1-33b42a55812c", {
+    payors: ["ent_21661ac1-a2a8-4465-a6c0-64474ba8181d"],
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**entityGroupId:** `Mercoa.EntityGroupId` — Entity Group ID or Entity Group ForeignID
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `Mercoa.EntityHidePayorsRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Counterparty.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
 ## EntityGroup User
 
 <details><summary><code>client.entityGroup.user.<a href="/src/api/resources/entityGroup/resources/user/client/Client.ts">find</a>(entityGroupId, { ...params }) -> Mercoa.FindEntityGroupUserResponse</code></summary>
@@ -4733,6 +5051,140 @@ await client.organization.invalidateTokens({
 </details>
 
 ## PaymentGateway
+
+<details><summary><code>client.paymentGateway.<a href="/src/api/resources/paymentGateway/client/Client.ts">findValidationJobs</a>({ ...params }) -> Mercoa.SearchPaymentGatewayValidationJobsResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Search payment gateway validation jobs for the organization
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.paymentGateway.findValidationJobs({
+    status: "FAILED",
+    startDate: "2024-01-01T00:00:00Z",
+    endDate: "2024-12-31T23:59:59Z",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Mercoa.paymentGateway.SearchPaymentGatewayValidationJobsRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `PaymentGateway.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.paymentGateway.<a href="/src/api/resources/paymentGateway/client/Client.ts">findProcessJobs</a>({ ...params }) -> Mercoa.SearchPaymentGatewayProcessJobsResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Search payment gateway process jobs for the organization
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.paymentGateway.findProcessJobs({
+    status: "FAILED",
+    startDate: "2024-01-01T00:00:00Z",
+    endDate: "2024-12-31T23:59:59Z",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Mercoa.paymentGateway.SearchPaymentGatewayProcessJobsRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `PaymentGateway.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
 
 <details><summary><code>client.paymentGateway.<a href="/src/api/resources/paymentGateway/client/Client.ts">createValidationJob</a>({ ...params }) -> Mercoa.ValidatePaymentGatewayResponse</code></summary>
 <dl>

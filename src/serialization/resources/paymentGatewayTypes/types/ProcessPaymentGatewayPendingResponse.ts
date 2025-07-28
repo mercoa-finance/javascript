@@ -11,10 +11,14 @@ export const ProcessPaymentGatewayPendingResponse: core.serialization.ObjectSche
     Mercoa.ProcessPaymentGatewayPendingResponse
 > = core.serialization.object({
     jobId: core.serialization.string(),
+    createdAt: core.serialization.date(),
+    updatedAt: core.serialization.date(),
 });
 
 export declare namespace ProcessPaymentGatewayPendingResponse {
     export interface Raw {
         jobId: string;
+        createdAt: string;
+        updatedAt: string;
     }
 }

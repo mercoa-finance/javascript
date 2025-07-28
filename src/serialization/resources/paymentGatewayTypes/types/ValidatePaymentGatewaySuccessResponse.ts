@@ -15,6 +15,8 @@ export const ValidatePaymentGatewaySuccessResponse: core.serialization.ObjectSch
     paymentGatewayUrl: core.serialization.string().optional(),
     sessionUrl: core.serialization.string().optional(),
     card: ValidatePaymentGatewayCardResponse.optional(),
+    createdAt: core.serialization.date(),
+    updatedAt: core.serialization.date(),
 });
 
 export declare namespace ValidatePaymentGatewaySuccessResponse {
@@ -23,5 +25,7 @@ export declare namespace ValidatePaymentGatewaySuccessResponse {
         paymentGatewayUrl?: string | null;
         sessionUrl?: string | null;
         card?: ValidatePaymentGatewayCardResponse.Raw | null;
+        createdAt: string;
+        updatedAt: string;
     }
 }
