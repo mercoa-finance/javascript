@@ -5,9 +5,13 @@
 export type PaymentGatewayError =
     | "NO_VALID_PAYMENT_GATEWAY_FOUND"
     | "PAYMENT_GATEWAY_UNSUPPORTED"
-    | "CARD_DETAILS_INVALID";
+    | "CARD_DETAILS_INVALID"
+    | "CARD_DECLINED"
+    | "INVOICE_AMOUNT_MISMATCH";
 export const PaymentGatewayError = {
     NoValidPaymentGatewayFound: "NO_VALID_PAYMENT_GATEWAY_FOUND",
     PaymentGatewayUnsupported: "PAYMENT_GATEWAY_UNSUPPORTED",
     CardDetailsInvalid: "CARD_DETAILS_INVALID",
+    CardDeclined: "CARD_DECLINED",
+    InvoiceAmountMismatch: "INVOICE_AMOUNT_MISMATCH",
 } as const;

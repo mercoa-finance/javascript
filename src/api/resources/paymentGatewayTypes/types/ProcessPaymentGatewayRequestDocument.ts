@@ -17,7 +17,8 @@ import * as Mercoa from "../../../index";
  *             expirationYear: 2025,
  *             cvv: "123",
  *             postalCode: "12345",
- *             country: Mercoa.CountryCode.Us
+ *             country: Mercoa.CountryCode.Us,
+ *             cardType: Mercoa.ProcessPaymentGatewayCardType.Credit
  *         }
  *     }
  */

@@ -9,10 +9,14 @@ export interface ValidatePaymentGatewaySuccessResponse {
     jobId: string;
     /** The payment gateway URL that was found in the document */
     paymentGatewayUrl?: string;
-    /** The URL of the playback session for the agent that validated the payment gateway */
-    sessionUrl?: string;
     /** Data on the card payments that were extracted from the gateway */
     card?: Mercoa.ValidatePaymentGatewayCardResponse;
+    /** The invoice amount detected from the payment gateway */
+    invoiceAmount?: number;
+    /** The amount displayed on the payment gateway (may include fees) */
+    gatewayAmount?: number;
+    /** The vendor name detected from the payment gateway */
+    vendorName?: string;
     /** The timestamp when the job was created */
     createdAt: Date;
     /** The timestamp when the job was last updated */

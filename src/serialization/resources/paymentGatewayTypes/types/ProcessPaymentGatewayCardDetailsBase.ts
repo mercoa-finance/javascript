@@ -6,6 +6,7 @@ import * as serializers from "../../../index";
 import * as Mercoa from "../../../../api/index";
 import * as core from "../../../../core";
 import { CountryCode } from "../../commons/types/CountryCode";
+import { ProcessPaymentGatewayCardType } from "./ProcessPaymentGatewayCardType";
 
 export const ProcessPaymentGatewayCardDetailsBase: core.serialization.ObjectSchema<
     serializers.ProcessPaymentGatewayCardDetailsBase.Raw,
@@ -15,6 +16,7 @@ export const ProcessPaymentGatewayCardDetailsBase: core.serialization.ObjectSche
     lastName: core.serialization.string(),
     postalCode: core.serialization.string(),
     country: CountryCode,
+    cardType: ProcessPaymentGatewayCardType.optional(),
     phoneNumber: core.serialization.string().optional(),
     email: core.serialization.string().optional(),
     fullAddress: core.serialization.string().optional(),
@@ -26,6 +28,7 @@ export declare namespace ProcessPaymentGatewayCardDetailsBase {
         lastName: string;
         postalCode: string;
         country: CountryCode.Raw;
+        cardType?: ProcessPaymentGatewayCardType.Raw | null;
         phoneNumber?: string | null;
         email?: string | null;
         fullAddress?: string | null;

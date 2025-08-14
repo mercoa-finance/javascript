@@ -71,6 +71,11 @@ import * as Mercoa from "../../../index";
  *     {
  *         vendorCreditIds: ["vcr_c3f4c87d-794d-4543-9562-575cdddfc0d7"]
  *     }
+ *
+ * @example
+ *     {
+ *         status: Mercoa.InvoiceStatus.Failed
+ *     }
  */
 export interface InvoiceUpdateRequest extends Mercoa.InvoiceRequestBase {
     lineItems?: Mercoa.InvoiceLineItemUpdateRequest[];

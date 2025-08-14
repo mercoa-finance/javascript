@@ -13,8 +13,10 @@ export const ValidatePaymentGatewaySuccessResponse: core.serialization.ObjectSch
 > = core.serialization.object({
     jobId: core.serialization.string(),
     paymentGatewayUrl: core.serialization.string().optional(),
-    sessionUrl: core.serialization.string().optional(),
     card: ValidatePaymentGatewayCardResponse.optional(),
+    invoiceAmount: core.serialization.number().optional(),
+    gatewayAmount: core.serialization.number().optional(),
+    vendorName: core.serialization.string().optional(),
     createdAt: core.serialization.date(),
     updatedAt: core.serialization.date(),
 });
@@ -23,8 +25,10 @@ export declare namespace ValidatePaymentGatewaySuccessResponse {
     export interface Raw {
         jobId: string;
         paymentGatewayUrl?: string | null;
-        sessionUrl?: string | null;
         card?: ValidatePaymentGatewayCardResponse.Raw | null;
+        invoiceAmount?: number | null;
+        gatewayAmount?: number | null;
+        vendorName?: string | null;
         createdAt: string;
         updatedAt: string;
     }

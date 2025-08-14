@@ -9,11 +9,11 @@ import { Entity } from "./api/resources/entity/client/Client";
 import { InvoiceTemplate } from "./api/resources/invoiceTemplate/client/Client";
 import { Invoice } from "./api/resources/invoice/client/Client";
 import { Organization } from "./api/resources/organization/client/Client";
-import { PaymentGateway } from "./api/resources/paymentGateway/client/Client";
 import { BankLookup } from "./api/resources/bankLookup/client/Client";
 import { Calculate } from "./api/resources/calculate/client/Client";
 import { CustomPaymentMethodSchema } from "./api/resources/customPaymentMethodSchema/client/Client";
 import { Ocr } from "./api/resources/ocr/client/Client";
+import { PaymentGateway } from "./api/resources/paymentGateway/client/Client";
 import { PaymentMethods } from "./api/resources/paymentMethods/client/Client";
 import { Transaction } from "./api/resources/transaction/client/Client";
 
@@ -47,11 +47,11 @@ export class MercoaClient {
     protected _invoiceTemplate: InvoiceTemplate | undefined;
     protected _invoice: Invoice | undefined;
     protected _organization: Organization | undefined;
-    protected _paymentGateway: PaymentGateway | undefined;
     protected _bankLookup: BankLookup | undefined;
     protected _calculate: Calculate | undefined;
     protected _customPaymentMethodSchema: CustomPaymentMethodSchema | undefined;
     protected _ocr: Ocr | undefined;
+    protected _paymentGateway: PaymentGateway | undefined;
     protected _paymentMethods: PaymentMethods | undefined;
     protected _transaction: Transaction | undefined;
 
@@ -77,10 +77,6 @@ export class MercoaClient {
         return (this._organization ??= new Organization(this._options));
     }
 
-    public get paymentGateway(): PaymentGateway {
-        return (this._paymentGateway ??= new PaymentGateway(this._options));
-    }
-
     public get bankLookup(): BankLookup {
         return (this._bankLookup ??= new BankLookup(this._options));
     }
@@ -95,6 +91,10 @@ export class MercoaClient {
 
     public get ocr(): Ocr {
         return (this._ocr ??= new Ocr(this._options));
+    }
+
+    public get paymentGateway(): PaymentGateway {
+        return (this._paymentGateway ??= new PaymentGateway(this._options));
     }
 
     public get paymentMethods(): PaymentMethods {

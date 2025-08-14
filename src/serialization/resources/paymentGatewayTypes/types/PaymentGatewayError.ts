@@ -9,8 +9,19 @@ import * as core from "../../../../core";
 export const PaymentGatewayError: core.serialization.Schema<
     serializers.PaymentGatewayError.Raw,
     Mercoa.PaymentGatewayError
-> = core.serialization.enum_(["NO_VALID_PAYMENT_GATEWAY_FOUND", "PAYMENT_GATEWAY_UNSUPPORTED", "CARD_DETAILS_INVALID"]);
+> = core.serialization.enum_([
+    "NO_VALID_PAYMENT_GATEWAY_FOUND",
+    "PAYMENT_GATEWAY_UNSUPPORTED",
+    "CARD_DETAILS_INVALID",
+    "CARD_DECLINED",
+    "INVOICE_AMOUNT_MISMATCH",
+]);
 
 export declare namespace PaymentGatewayError {
-    export type Raw = "NO_VALID_PAYMENT_GATEWAY_FOUND" | "PAYMENT_GATEWAY_UNSUPPORTED" | "CARD_DETAILS_INVALID";
+    export type Raw =
+        | "NO_VALID_PAYMENT_GATEWAY_FOUND"
+        | "PAYMENT_GATEWAY_UNSUPPORTED"
+        | "CARD_DETAILS_INVALID"
+        | "CARD_DECLINED"
+        | "INVOICE_AMOUNT_MISMATCH";
 }

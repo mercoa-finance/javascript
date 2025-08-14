@@ -8,6 +8,7 @@ import * as core from "../../../../core";
 import { ProcessPaymentGatewayCardDetailsDirect } from "./ProcessPaymentGatewayCardDetailsDirect";
 import { ProcessPaymentGatewayCardDetailsIframe } from "./ProcessPaymentGatewayCardDetailsIframe";
 import { ProcessPaymentGatewayCardDetailsStripeIssuing } from "./ProcessPaymentGatewayCardDetailsStripeIssuing";
+import { ProcessPaymentGatewayCardDetailsLithic } from "./ProcessPaymentGatewayCardDetailsLithic";
 
 export const ProcessPaymentGatewayCardDetails: core.serialization.Schema<
     serializers.ProcessPaymentGatewayCardDetails.Raw,
@@ -17,6 +18,7 @@ export const ProcessPaymentGatewayCardDetails: core.serialization.Schema<
         direct: ProcessPaymentGatewayCardDetailsDirect,
         iframe: ProcessPaymentGatewayCardDetailsIframe,
         stripeIssuing: ProcessPaymentGatewayCardDetailsStripeIssuing,
+        lithic: ProcessPaymentGatewayCardDetailsLithic,
     })
     .transform<Mercoa.ProcessPaymentGatewayCardDetails>({
         transform: (value) => value,
@@ -27,7 +29,8 @@ export declare namespace ProcessPaymentGatewayCardDetails {
     export type Raw =
         | ProcessPaymentGatewayCardDetails.Direct
         | ProcessPaymentGatewayCardDetails.Iframe
-        | ProcessPaymentGatewayCardDetails.StripeIssuing;
+        | ProcessPaymentGatewayCardDetails.StripeIssuing
+        | ProcessPaymentGatewayCardDetails.Lithic;
 
     export interface Direct extends ProcessPaymentGatewayCardDetailsDirect.Raw {
         type: "direct";
@@ -39,5 +42,9 @@ export declare namespace ProcessPaymentGatewayCardDetails {
 
     export interface StripeIssuing extends ProcessPaymentGatewayCardDetailsStripeIssuing.Raw {
         type: "stripeIssuing";
+    }
+
+    export interface Lithic extends ProcessPaymentGatewayCardDetailsLithic.Raw {
+        type: "lithic";
     }
 }

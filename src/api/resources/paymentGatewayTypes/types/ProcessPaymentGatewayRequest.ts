@@ -32,6 +32,7 @@ import * as Mercoa from "../../../index";
  *             lastName: "Doe",
  *             postalCode: "12345",
  *             country: Mercoa.CountryCode.Us,
+ *             cardType: Mercoa.ProcessPaymentGatewayCardType.Debit,
  *             iframeUrl: "https://www.myvirtualcard.com/iframe/543543"
  *         }
  *     }
@@ -46,6 +47,7 @@ import * as Mercoa from "../../../index";
  *             lastName: "Doe",
  *             postalCode: "12345",
  *             country: Mercoa.CountryCode.Us,
+ *             cardType: Mercoa.ProcessPaymentGatewayCardType.Credit,
  *             stripeCardId: "ic_1234567890abcdef",
  *             stripePublishableKey: "pk_test_1234567890abcdef",
  *             stripeAccountId: "acct_1234567890abcdef",
@@ -58,6 +60,22 @@ import * as Mercoa from "../../../index";
  *                 },
  *                 postBody: "{\"card_id\": \"{{cardId}}\", \"nonce\": \"{{nonce}}\", \"account_id\": \"{{accountId}}\"}"
  *             }
+ *         }
+ *     }
+ *
+ * @example
+ *     {
+ *         type: "html",
+ *         html: "<html><body><h1>Invoice Details</h1><a href=\"https://www.payment-gateway.com/invoice/123123\">Pay Invoice</a></body></html>",
+ *         cardDetails: {
+ *             type: "lithic",
+ *             firstName: "John",
+ *             lastName: "Doe",
+ *             postalCode: "12345",
+ *             country: Mercoa.CountryCode.Us,
+ *             cardType: Mercoa.ProcessPaymentGatewayCardType.Credit,
+ *             embedRequest: "eyJ0b2tlbiI6InNhbXBsZV90b2tlbiIsImNzcyI6Imh0dHBzOi8vc3RvcmFnZS5nb29nbGVhcGlzLmNvbS9tZXJjb2EtcGFydG5lci1sb2dvcy9saXRoaWMuY3NzIn0=",
+ *             hmac: "abc123def456ghi789"
  *         }
  *     }
  */

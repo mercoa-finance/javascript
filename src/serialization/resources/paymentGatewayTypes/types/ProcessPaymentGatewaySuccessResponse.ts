@@ -12,7 +12,9 @@ export const ProcessPaymentGatewaySuccessResponse: core.serialization.ObjectSche
 > = core.serialization.object({
     jobId: core.serialization.string(),
     receiptUrl: core.serialization.string().optional(),
-    sessionUrl: core.serialization.string().optional(),
+    invoiceAmount: core.serialization.number().optional(),
+    gatewayAmount: core.serialization.number().optional(),
+    vendorName: core.serialization.string().optional(),
     createdAt: core.serialization.date(),
     updatedAt: core.serialization.date(),
 });
@@ -21,7 +23,9 @@ export declare namespace ProcessPaymentGatewaySuccessResponse {
     export interface Raw {
         jobId: string;
         receiptUrl?: string | null;
-        sessionUrl?: string | null;
+        invoiceAmount?: number | null;
+        gatewayAmount?: number | null;
+        vendorName?: string | null;
         createdAt: string;
         updatedAt: string;
     }

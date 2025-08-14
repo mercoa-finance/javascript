@@ -18,7 +18,6 @@ import * as Mercoa from "../../../index";
  *         jobStatus: "success",
  *         jobId: "pgv_8f86116b-3b4d-4ded-99ef-3bc929d8c33c",
  *         paymentGatewayUrl: "https://www.payment-gateway.com/invoice/pgv_8f86116b-3b4d-4ded-99ef-3bc929d8c33c",
- *         sessionUrl: "https://www.payment-gateway.com/session/pgv_8f86116b-3b4d-4ded-99ef-3bc929d8c33c",
  *         card: {
  *             eligibility: Mercoa.ValidatePaymentGatewayCardAcceptance.Accepted,
  *             fee: {
@@ -26,6 +25,9 @@ import * as Mercoa from "../../../index";
  *                 value: 2.5
  *             }
  *         },
+ *         invoiceAmount: 150.75,
+ *         gatewayAmount: 155.5,
+ *         vendorName: "Acme Corporation",
  *         createdAt: "2024-01-01T00:00:00Z",
  *         updatedAt: "2024-01-01T00:00:00Z"
  *     }

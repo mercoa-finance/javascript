@@ -2248,6 +2248,7 @@ import * as Mercoa from "../../../index";
  *         status: Mercoa.TransactionStatus.Completed,
  *         amount: 10000,
  *         currency: "USD",
+ *         mailedOnDate: "2024-01-01T00:00:00Z",
  *         payerId: "ent_bb08e72f-19f8-45f3-bcf9-46fdc46cb2f4",
  *         payer: {
  *             id: "ent_8545a84e-a45f-41bf-bdf1-33b42a55812c",
@@ -2841,11 +2842,11 @@ export namespace TransactionResponse {
         type: "bankAccountToBankAccount";
     }
 
-    export interface BankAccountToMailedCheck extends Mercoa.TransactionResponseBankToCheckWithInvoices {
+    export interface BankAccountToMailedCheck extends Mercoa.TransactionResponseBankToMailedCheckWithInvoices {
         type: "bankAccountToMailedCheck";
     }
 
-    export interface BankAccountToPrintedCheck extends Mercoa.TransactionResponseBankToCheckWithInvoices {
+    export interface BankAccountToPrintedCheck extends Mercoa.TransactionResponseBankToPrintedCheckWithInvoices {
         type: "bankAccountToPrintedCheck";
     }
 

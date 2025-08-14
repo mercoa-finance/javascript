@@ -13,6 +13,8 @@ export interface ProcessPaymentGatewayCardDetailsBase {
     postalCode: string;
     /** The country of the address of the card */
     country: Mercoa.CountryCode;
+    /** The type of card (credit or debit). Defaults to debit. */
+    cardType?: Mercoa.ProcessPaymentGatewayCardType;
     /** The phone number of the card user */
     phoneNumber?: string;
     /** The email of the card user */

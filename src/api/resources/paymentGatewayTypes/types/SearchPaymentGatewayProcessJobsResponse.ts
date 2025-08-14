@@ -16,6 +16,9 @@ import * as Mercoa from "../../../index";
  *                 jobStatus: "success",
  *                 jobId: "pgp_8f86116b-3b4d-4ded-99ef-3bc929d8c33c",
  *                 receiptUrl: "https://www.payment-gateway.com/receipt/123123",
+ *                 invoiceAmount: 150.75,
+ *                 gatewayAmount: 155.5,
+ *                 vendorName: "Acme Corporation",
  *                 createdAt: "2024-01-01T00:00:00Z",
  *                 updatedAt: "2024-01-01T00:00:00Z"
  *             }, {
@@ -40,6 +43,9 @@ import * as Mercoa from "../../../index";
  *                 jobStatus: "success",
  *                 jobId: "pgp_8f86116b-3b4d-4ded-99ef-3bc929d8c33c",
  *                 receiptUrl: "https://www.payment-gateway.com/receipt/123123",
+ *                 invoiceAmount: 150.75,
+ *                 gatewayAmount: 155.5,
+ *                 vendorName: "Acme Corporation",
  *                 createdAt: "2024-01-01T00:00:00Z",
  *                 updatedAt: "2024-01-01T00:00:00Z"
  *             }, {

@@ -11,6 +11,7 @@ import * as Mercoa from "../../../index";
  *         lastName: "Doe",
  *         postalCode: "12345",
  *         country: Mercoa.CountryCode.Us,
+ *         cardType: Mercoa.ProcessPaymentGatewayCardType.Credit,
  *         cardNumber: "4242424242424242",
  *         expirationMonth: 10,
  *         expirationYear: 2025,

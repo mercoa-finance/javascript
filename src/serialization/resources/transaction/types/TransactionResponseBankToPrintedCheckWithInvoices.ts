@@ -8,16 +8,16 @@ import * as core from "../../../../core";
 import { InvoiceResponse } from "../../invoiceTypes/types/InvoiceResponse";
 import { TransactionResponseCheckBase } from "./TransactionResponseCheckBase";
 
-export const TransactionResponseBankToCheckWithInvoices: core.serialization.ObjectSchema<
-    serializers.TransactionResponseBankToCheckWithInvoices.Raw,
-    Mercoa.TransactionResponseBankToCheckWithInvoices
+export const TransactionResponseBankToPrintedCheckWithInvoices: core.serialization.ObjectSchema<
+    serializers.TransactionResponseBankToPrintedCheckWithInvoices.Raw,
+    Mercoa.TransactionResponseBankToPrintedCheckWithInvoices
 > = core.serialization
     .object({
         invoices: core.serialization.list(InvoiceResponse),
     })
     .extend(TransactionResponseCheckBase);
 
-export declare namespace TransactionResponseBankToCheckWithInvoices {
+export declare namespace TransactionResponseBankToPrintedCheckWithInvoices {
     export interface Raw extends TransactionResponseCheckBase.Raw {
         invoices: InvoiceResponse.Raw[];
     }

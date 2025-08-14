@@ -11,6 +11,7 @@ import * as Mercoa from "../../../index";
  *         lastName: "Doe",
  *         postalCode: "12345",
  *         country: Mercoa.CountryCode.Us,
+ *         cardType: Mercoa.ProcessPaymentGatewayCardType.Debit,
  *         iframeUrl: "https://www.myvirtualcard.com/iframe/345345"
  *     }
  */

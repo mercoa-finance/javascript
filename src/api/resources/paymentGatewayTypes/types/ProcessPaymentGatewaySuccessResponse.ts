@@ -7,8 +7,12 @@ export interface ProcessPaymentGatewaySuccessResponse {
     jobId: string;
     /** The URL of the receipt that was downloaded from the payment gateway */
     receiptUrl?: string;
-    /** The URL of the playback session for the agent that processed the payment */
-    sessionUrl?: string;
+    /** The invoice amount detected from the payment gateway */
+    invoiceAmount?: number;
+    /** The amount displayed on the payment gateway (may include fees) */
+    gatewayAmount?: number;
+    /** The vendor name detected from the payment gateway */
+    vendorName?: string;
     /** The timestamp when the job was created */
     createdAt: Date;
     /** The timestamp when the job was last updated */

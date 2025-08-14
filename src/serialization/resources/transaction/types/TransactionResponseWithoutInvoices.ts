@@ -6,6 +6,7 @@ import * as serializers from "../../../index";
 import * as Mercoa from "../../../../api/index";
 import * as core from "../../../../core";
 import { TransactionResponseAchBase } from "./TransactionResponseAchBase";
+import { TransactionResponseCheckBaseMailed } from "./TransactionResponseCheckBaseMailed";
 import { TransactionResponseCheckBase } from "./TransactionResponseCheckBase";
 import { TransactionResponseBase } from "./TransactionResponseBase";
 
@@ -15,7 +16,7 @@ export const TransactionResponseWithoutInvoices: core.serialization.Schema<
 > = core.serialization
     .union("type", {
         bankAccountToBankAccount: TransactionResponseAchBase,
-        bankAccountToMailedCheck: TransactionResponseCheckBase,
+        bankAccountToMailedCheck: TransactionResponseCheckBaseMailed,
         bankAccountToPrintedCheck: TransactionResponseCheckBase,
         bankAccountToWallet: TransactionResponseAchBase,
         cardToBankAccount: TransactionResponseAchBase,
@@ -47,7 +48,7 @@ export declare namespace TransactionResponseWithoutInvoices {
         type: "bankAccountToBankAccount";
     }
 
-    export interface BankAccountToMailedCheck extends TransactionResponseCheckBase.Raw {
+    export interface BankAccountToMailedCheck extends TransactionResponseCheckBaseMailed.Raw {
         type: "bankAccountToMailedCheck";
     }
 
