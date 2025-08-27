@@ -16,3 +16,5 @@ export * from "./OcrCustomizationRequest";
 export * from "./OcrCustomizationResponse";
 export * from "./NotificationCustomizationRequest";
 export * from "./WorkflowCustomizationRequest";
+export * from "./InvoiceCustomizationRequest";
+export * from "./InvoiceCustomizationResponse";

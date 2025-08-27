@@ -18,7 +18,12 @@ import * as Mercoa from "../../../index";
  *             expirationYear: 2025,
  *             cvv: "123",
  *             postalCode: "12345",
- *             country: Mercoa.CountryCode.Us
+ *             country: Mercoa.CountryCode.Us,
+ *             achDetails: {
+ *                 routingNumber: "123456789",
+ *                 accountNumber: "987654321",
+ *                 accountName: "John Doe"
+ *             }
  *         }
  *     }
  *
@@ -33,7 +38,12 @@ import * as Mercoa from "../../../index";
  *             postalCode: "12345",
  *             country: Mercoa.CountryCode.Us,
  *             cardType: Mercoa.ProcessPaymentGatewayCardType.Debit,
- *             iframeUrl: "https://www.myvirtualcard.com/iframe/543543"
+ *             iframeUrl: "https://www.myvirtualcard.com/iframe/543543",
+ *             achDetails: {
+ *                 routingNumber: "123456789",
+ *                 accountNumber: "987654321",
+ *                 accountName: "John Doe"
+ *             }
  *         }
  *     }
  *
@@ -59,6 +69,11 @@ import * as Mercoa from "../../../index";
  *                     "Content-Type": "application/json"
  *                 },
  *                 postBody: "{\"card_id\": \"{{cardId}}\", \"nonce\": \"{{nonce}}\", \"account_id\": \"{{accountId}}\"}"
+ *             },
+ *             achDetails: {
+ *                 routingNumber: "123456789",
+ *                 accountNumber: "987654321",
+ *                 accountName: "John Doe"
  *             }
  *         }
  *     }
@@ -74,8 +89,13 @@ import * as Mercoa from "../../../index";
  *             postalCode: "12345",
  *             country: Mercoa.CountryCode.Us,
  *             cardType: Mercoa.ProcessPaymentGatewayCardType.Credit,
- *             embedRequest: "eyJ0b2tlbiI6InNhbXBsZV90b2tlbiIsImNzcyI6Imh0dHBzOi8vc3RvcmFnZS5nb29nbGVhcGlzLmNvbS9tZXJjb2EtcGFydG5lci1sb2dvcy9saXRoaWMuY3NzIn0=",
- *             hmac: "abc123def456ghi789"
+ *             embedRequest: "eyJ0b2tlbiI6InNhbXBsZV90b2tlbiIsImNzcyI6Imh0dHBzOi8vc3RvcmFnZS5nb29nbGVhcGlzLmNvbS9tZXJjb2EtcGFydG5lcy9saXRoaWMuY3NzIn0=",
+ *             hmac: "abc123def456ghi789",
+ *             achDetails: {
+ *                 routingNumber: "123456789",
+ *                 accountNumber: "987654321",
+ *                 accountName: "John Doe"
+ *             }
  *         }
  *     }
  */

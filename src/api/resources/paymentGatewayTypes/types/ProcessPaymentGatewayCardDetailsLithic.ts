@@ -13,7 +13,12 @@ import * as Mercoa from "../../../index";
  *         country: Mercoa.CountryCode.Us,
  *         cardType: Mercoa.ProcessPaymentGatewayCardType.Credit,
  *         embedRequest: "eyJ0b2tlbiI6InNhbXBsZV90b2tlbiIsImNzcyI6Imh0dHBzOi8vc3RvcmFnZS5nb29nbGVhcGlzLmNvbS9tZXJjb2EtcGFydG5lci1sb2dvcy9saXRoaWMuY3NzIn0=",
- *         hmac: "abc123def456ghi789"
+ *         hmac: "abc123def456ghi789",
+ *         achDetails: {
+ *             routingNumber: "123456789",
+ *             accountNumber: "987654321",
+ *             accountName: "John Doe"
+ *         }
  *     }
  */
 export interface ProcessPaymentGatewayCardDetailsLithic extends Mercoa.ProcessPaymentGatewayCardDetailsBase {

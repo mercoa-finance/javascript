@@ -18,7 +18,12 @@ import * as Mercoa from "../../../index";
  *             cvv: "123",
  *             postalCode: "12345",
  *             country: Mercoa.CountryCode.Us,
- *             cardType: Mercoa.ProcessPaymentGatewayCardType.Debit
+ *             cardType: Mercoa.ProcessPaymentGatewayCardType.Debit,
+ *             achDetails: {
+ *                 routingNumber: "123456789",
+ *                 accountNumber: "987654321",
+ *                 accountName: "John Doe"
+ *             }
  *         }
  *     }
  */

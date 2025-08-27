@@ -55,6 +55,12 @@ import * as Mercoa from "../../../index";
  *         workflow: {
  *             autoAdvanceInvoiceStatus: true
  *         },
+ *         invoice: {
+ *             hideAddress: false,
+ *             hideQrCode: false,
+ *             hideBankDetails: false,
+ *             hidePaymentLink: false
+ *         },
  *         rolePermissions: {
  *             "admin": [Mercoa.Permission.InvoiceAll, Mercoa.Permission.PaymentMethodAll]
  *         },
@@ -178,6 +184,7 @@ export interface EntityCustomizationResponse {
     ocr: Mercoa.OcrCustomizationResponse;
     notifications: Mercoa.NotificationCustomizationRequest;
     workflow: Mercoa.WorkflowCustomizationRequest;
+    invoice: Mercoa.InvoiceCustomizationResponse;
     fees: Mercoa.FeeCustomizationRequest;
     rolePermissions: Mercoa.RolePermissionRequest;
 }

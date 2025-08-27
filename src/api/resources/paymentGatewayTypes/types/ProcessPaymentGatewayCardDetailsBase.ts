@@ -21,4 +21,6 @@ export interface ProcessPaymentGatewayCardDetailsBase {
     email?: string;
     /** The full address of the card user */
     fullAddress?: string;
+    /** The details of the fallback ACH account to use for the payment. This will be used if a fee is charged for card processing. */
+    achDetails?: Mercoa.ProcessPaymentGatewayAchDetails;
 }

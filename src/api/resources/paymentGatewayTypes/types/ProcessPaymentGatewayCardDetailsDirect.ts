@@ -15,7 +15,12 @@ import * as Mercoa from "../../../index";
  *         cardNumber: "4242424242424242",
  *         expirationMonth: 10,
  *         expirationYear: 2025,
- *         cvv: "123"
+ *         cvv: "123",
+ *         achDetails: {
+ *             routingNumber: "123456789",
+ *             accountNumber: "987654321",
+ *             accountName: "John Doe"
+ *         }
  *     }
  */
 export interface ProcessPaymentGatewayCardDetailsDirect extends Mercoa.ProcessPaymentGatewayCardDetailsBase {

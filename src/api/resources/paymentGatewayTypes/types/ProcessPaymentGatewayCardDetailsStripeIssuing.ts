@@ -23,6 +23,11 @@ import * as Mercoa from "../../../index";
  *                 "Content-Type": "application/json"
  *             },
  *             postBody: "{\"card_id\": \"{{cardId}}\", \"nonce\": \"{{nonce}}\", \"account_id\": \"{{accountId}}\"}"
+ *         },
+ *         achDetails: {
+ *             routingNumber: "123456789",
+ *             accountNumber: "987654321",
+ *             accountName: "John Doe"
  *         }
  *     }
  */

@@ -109,8 +109,8 @@ export class Process {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.6.31",
-                "User-Agent": "@mercoa/javascript/0.6.31",
+                "X-Fern-SDK-Version": "0.6.32",
+                "User-Agent": "@mercoa/javascript/0.6.32",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
@@ -247,7 +247,12 @@ export class Process {
      *             expirationYear: 2025,
      *             cvv: "123",
      *             postalCode: "12345",
-     *             country: "US"
+     *             country: "US",
+     *             achDetails: {
+     *                 routingNumber: "123456789",
+     *                 accountNumber: "987654321",
+     *                 accountName: "John Doe"
+     *             }
      *         }
      *     })
      *
@@ -262,7 +267,12 @@ export class Process {
      *             postalCode: "12345",
      *             country: "US",
      *             cardType: "debit",
-     *             iframeUrl: "https://www.myvirtualcard.com/iframe/543543"
+     *             iframeUrl: "https://www.myvirtualcard.com/iframe/543543",
+     *             achDetails: {
+     *                 routingNumber: "123456789",
+     *                 accountNumber: "987654321",
+     *                 accountName: "John Doe"
+     *             }
      *         }
      *     })
      */
@@ -282,8 +292,8 @@ export class Process {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.6.31",
-                "User-Agent": "@mercoa/javascript/0.6.31",
+                "X-Fern-SDK-Version": "0.6.32",
+                "User-Agent": "@mercoa/javascript/0.6.32",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
@@ -426,8 +436,8 @@ export class Process {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.6.31",
-                "User-Agent": "@mercoa/javascript/0.6.31",
+                "X-Fern-SDK-Version": "0.6.32",
+                "User-Agent": "@mercoa/javascript/0.6.32",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,

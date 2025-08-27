@@ -21,6 +21,13 @@ import * as Mercoa from "../../../index";
  *         invoiceAmount: 150.75,
  *         gatewayAmount: 155.5,
  *         vendorName: "Acme Corporation",
+ *         attempts: [{
+ *                 id: "pgpa_8f86116b-3b4d-4ded-99ef-3bc929d8c33c",
+ *                 status: Mercoa.PaymentGatewayJobStatus.Completed,
+ *                 amount: 150.75,
+ *                 receiptUrl: "https://www.payment-gateway.com/receipt/123123",
+ *                 createdAt: "2024-01-01T00:00:00Z"
+ *             }],
  *         createdAt: "2024-01-01T00:00:00Z",
  *         updatedAt: "2024-01-01T00:00:00Z"
  *     }

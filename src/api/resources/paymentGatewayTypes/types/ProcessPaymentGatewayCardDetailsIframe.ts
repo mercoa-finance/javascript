@@ -12,7 +12,12 @@ import * as Mercoa from "../../../index";
  *         postalCode: "12345",
  *         country: Mercoa.CountryCode.Us,
  *         cardType: Mercoa.ProcessPaymentGatewayCardType.Debit,
- *         iframeUrl: "https://www.myvirtualcard.com/iframe/345345"
+ *         iframeUrl: "https://www.myvirtualcard.com/iframe/345345",
+ *         achDetails: {
+ *             routingNumber: "123456789",
+ *             accountNumber: "987654321",
+ *             accountName: "John Doe"
+ *         }
  *     }
  */
 export interface ProcessPaymentGatewayCardDetailsIframe extends Mercoa.ProcessPaymentGatewayCardDetailsBase {

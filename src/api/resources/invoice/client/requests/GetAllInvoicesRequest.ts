@@ -84,6 +84,10 @@ export interface GetAllInvoicesRequest {
      */
     approverAction?: Mercoa.ApproverAction | Mercoa.ApproverAction[];
     /**
+     * Filter invoices by the number of approvers. Use exact number (e.g., 3) or range (e.g., ">3", "<5", ">=2", "<=4").
+     */
+    approverCount?: string;
+    /**
      * Filter invoices by invoice ID or invoice foreign ID.
      */
     invoiceId?: Mercoa.InvoiceId | Mercoa.InvoiceId[];

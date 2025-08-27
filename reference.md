@@ -7293,6 +7293,12 @@ await client.entity.customization.update("ent_a0f6ea94-0761-4a5e-a416-3c453cb7ec
     workflow: {
         autoAdvanceInvoiceStatus: true,
     },
+    invoice: {
+        hideAddress: false,
+        hideQrCode: false,
+        hideBankDetails: false,
+        hidePaymentLink: false,
+    },
     rolePermissions: {
         admin: ["invoice.all", "paymentMethod.all"],
     },
@@ -13466,6 +13472,11 @@ await client.paymentGateway.process.create({
         cvv: "123",
         postalCode: "12345",
         country: "US",
+        achDetails: {
+            routingNumber: "123456789",
+            accountNumber: "987654321",
+            accountName: "John Doe",
+        },
     },
 });
 ```

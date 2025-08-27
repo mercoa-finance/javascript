@@ -7,6 +7,7 @@ import * as Mercoa from "../../../../api/index";
 import * as core from "../../../../core";
 import { CountryCode } from "../../commons/types/CountryCode";
 import { ProcessPaymentGatewayCardType } from "./ProcessPaymentGatewayCardType";
+import { ProcessPaymentGatewayAchDetails } from "./ProcessPaymentGatewayAchDetails";
 
 export const ProcessPaymentGatewayCardDetailsBase: core.serialization.ObjectSchema<
     serializers.ProcessPaymentGatewayCardDetailsBase.Raw,
@@ -20,6 +21,7 @@ export const ProcessPaymentGatewayCardDetailsBase: core.serialization.ObjectSche
     phoneNumber: core.serialization.string().optional(),
     email: core.serialization.string().optional(),
     fullAddress: core.serialization.string().optional(),
+    achDetails: ProcessPaymentGatewayAchDetails.optional(),
 });
 
 export declare namespace ProcessPaymentGatewayCardDetailsBase {
@@ -32,5 +34,6 @@ export declare namespace ProcessPaymentGatewayCardDetailsBase {
         phoneNumber?: string | null;
         email?: string | null;
         fullAddress?: string | null;
+        achDetails?: ProcessPaymentGatewayAchDetails.Raw | null;
     }
 }

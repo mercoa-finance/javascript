@@ -69,8 +69,8 @@ export class Customization {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.6.31",
-                "User-Agent": "@mercoa/javascript/0.6.31",
+                "X-Fern-SDK-Version": "0.6.32",
+                "User-Agent": "@mercoa/javascript/0.6.32",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
@@ -246,6 +246,12 @@ export class Customization {
      *         workflow: {
      *             autoAdvanceInvoiceStatus: true
      *         },
+     *         invoice: {
+     *             hideAddress: false,
+     *             hideQrCode: false,
+     *             hideBankDetails: false,
+     *             hidePaymentLink: false
+     *         },
      *         rolePermissions: {
      *             "admin": ["invoice.all", "paymentMethod.all"]
      *         },
@@ -378,8 +384,8 @@ export class Customization {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@mercoa/javascript",
-                "X-Fern-SDK-Version": "0.6.31",
-                "User-Agent": "@mercoa/javascript/0.6.31",
+                "X-Fern-SDK-Version": "0.6.32",
+                "User-Agent": "@mercoa/javascript/0.6.32",
                 "X-API-Version": requestOptions?.xApiVersion ?? this._options?.xApiVersion ?? "2024-08-01",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
