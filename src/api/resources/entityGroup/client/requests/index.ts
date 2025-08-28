@@ -1,2 +1,2 @@
-export { type EntityGroupFindRequest } from "./EntityGroupFindRequest";
-export { type EntityGroupGetRequest } from "./EntityGroupGetRequest";
+export { type EntityGroupFindRequest } from "./EntityGroupFindRequest.js";
+export { type EntityGroupGetRequest } from "./EntityGroupGetRequest.js";

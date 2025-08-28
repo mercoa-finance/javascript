@@ -3897,13 +3897,13 @@ await client.invoiceTemplate.create({
     status: "NEW",
     amount: 100,
     currency: "USD",
-    invoiceDate: "2021-01-01T00:00:00Z",
-    dueDate: "2021-01-13T00:00:00Z",
-    deductionDate: "2021-01-10T00:00:00Z",
+    invoiceDate: new Date("2021-01-01T00:00:00.000Z"),
+    dueDate: new Date("2021-01-13T00:00:00.000Z"),
+    deductionDate: new Date("2021-01-10T00:00:00.000Z"),
     paymentSchedule: {
         type: "monthly",
         repeatOnDay: 10,
-        ends: "2021-01-01T00:00:00Z",
+        ends: new Date("2021-01-01T00:00:00.000Z"),
     },
     invoiceNumber: "INV-123",
     noteToSelf: "Monthly recurring payment",
@@ -3925,8 +3925,8 @@ await client.invoiceTemplate.create({
             quantity: 1,
             unitPrice: 100,
             category: "EXPENSE",
-            serviceStartDate: "2021-01-01T00:00:00Z",
-            serviceEndDate: "2021-01-31T00:00:00Z",
+            serviceStartDate: new Date("2021-01-01T00:00:00.000Z"),
+            serviceEndDate: new Date("2021-01-31T00:00:00.000Z"),
             metadata: {
                 key1: "value1",
                 key2: "value2",
@@ -4036,8 +4036,8 @@ await client.invoiceTemplate.update("invt_13c07096-5848-4aeb-ae7d-6576289034c4",
     status: "NEW",
     amount: 100,
     currency: "USD",
-    invoiceDate: "2021-01-01T00:00:00Z",
-    dueDate: "2021-01-31T00:00:00Z",
+    invoiceDate: new Date("2021-01-01T00:00:00.000Z"),
+    dueDate: new Date("2021-01-31T00:00:00.000Z"),
     invoiceNumber: "INV-123",
     noteToSelf: "For the month of January",
     payerId: "ent_8545a84e-a45f-41bf-bdf1-33b42a55812c",
@@ -4059,8 +4059,8 @@ await client.invoiceTemplate.update("invt_13c07096-5848-4aeb-ae7d-6576289034c4",
             quantity: 1,
             unitPrice: 100,
             category: "EXPENSE",
-            serviceStartDate: "2021-01-01T00:00:00Z",
-            serviceEndDate: "2021-01-31T00:00:00Z",
+            serviceStartDate: new Date("2021-01-01T00:00:00.000Z"),
+            serviceEndDate: new Date("2021-01-31T00:00:00.000Z"),
             metadata: {
                 key1: "value1",
                 key2: "value2",
@@ -4212,8 +4212,8 @@ await client.invoiceTemplate.lineItem.update(
     {
         name: "Product A",
         description: "Product A",
-        serviceStartDate: "2021-01-01T00:00:00Z",
-        serviceEndDate: "2021-01-31T00:00:00Z",
+        serviceStartDate: new Date("2021-01-01T00:00:00.000Z"),
+        serviceEndDate: new Date("2021-01-31T00:00:00.000Z"),
         metadata: {
             key1: "value1",
             key2: "value2",
@@ -4355,8 +4355,8 @@ await client.invoice.create({
     status: "NEW",
     amount: 100,
     currency: "USD",
-    invoiceDate: "2021-01-01T00:00:00Z",
-    dueDate: "2021-01-31T00:00:00Z",
+    invoiceDate: new Date("2021-01-01T00:00:00.000Z"),
+    dueDate: new Date("2021-01-31T00:00:00.000Z"),
     invoiceNumber: "INV-123",
     noteToSelf: "For the month of January",
     payerId: "ent_8545a84e-a45f-41bf-bdf1-33b42a55812c",
@@ -4377,8 +4377,8 @@ await client.invoice.create({
             quantity: 1,
             unitPrice: 100,
             category: "EXPENSE",
-            serviceStartDate: "2021-01-01T00:00:00Z",
-            serviceEndDate: "2021-01-31T00:00:00Z",
+            serviceStartDate: new Date("2021-01-01T00:00:00.000Z"),
+            serviceEndDate: new Date("2021-01-31T00:00:00.000Z"),
             metadata: {
                 key1: "value1",
                 key2: "value2",
@@ -4488,8 +4488,8 @@ await client.invoice.update("in_26e7b5d3-a739-4b23-9ad9-6aaa085f47a9", {
     status: "NEW",
     amount: 100,
     currency: "USD",
-    invoiceDate: "2021-01-01T00:00:00Z",
-    dueDate: "2021-01-31T00:00:00Z",
+    invoiceDate: new Date("2021-01-01T00:00:00.000Z"),
+    dueDate: new Date("2021-01-31T00:00:00.000Z"),
     invoiceNumber: "INV-123",
     noteToSelf: "For the month of January",
     payerId: "ent_8545a84e-a45f-41bf-bdf1-33b42a55812c",
@@ -4511,8 +4511,8 @@ await client.invoice.update("in_26e7b5d3-a739-4b23-9ad9-6aaa085f47a9", {
             quantity: 1,
             unitPrice: 100,
             category: "EXPENSE",
-            serviceStartDate: "2021-01-01T00:00:00Z",
-            serviceEndDate: "2021-01-31T00:00:00Z",
+            serviceStartDate: new Date("2021-01-01T00:00:00.000Z"),
+            serviceEndDate: new Date("2021-01-31T00:00:00.000Z"),
             metadata: {
                 key1: "value1",
                 key2: "value2",
@@ -4735,8 +4735,8 @@ await client.invoice.lineItem.update(
     {
         name: "Product A",
         description: "Product A",
-        serviceStartDate: "2021-01-01T00:00:00Z",
-        serviceEndDate: "2021-01-31T00:00:00Z",
+        serviceStartDate: new Date("2021-01-01T00:00:00.000Z"),
+        serviceEndDate: new Date("2021-01-31T00:00:00.000Z"),
         metadata: {
             key1: "value1",
             key2: "value2",
@@ -5215,7 +5215,7 @@ Calculate the estimated payment timing given the deduction date, payment source,
 
 ```typescript
 await client.calculate.paymentTiming({
-    estimatedDeductionDate: "2024-01-02T00:00:00Z",
+    estimatedDeductionDate: new Date("2024-01-02T00:00:00.000Z"),
     paymentSourceId: "pm_4794d597-70dc-4fec-b6ec-c5988e759769",
     paymentDestinationId: "pm_4794d597-70dc-4fec-b6ec-c5988e759769",
 });
@@ -5823,8 +5823,8 @@ Get invoice metrics for an entity group with the given filters. Invoices will be
 await client.entityGroup.invoice.metrics("entg_8545a84e-a45f-41bf-bdf1-33b42a55812c", {
     returnByDate: "CREATION_DATE",
     excludeReceivables: true,
-    startDate: "2021-01-01T00:00:00.000Z",
-    endDate: "2021-01-31T23:59:59.999Z",
+    startDate: new Date("2021-01-01T00:00:00.000Z"),
+    endDate: new Date("2021-01-31T23:59:59.999Z"),
     currency: "USD",
     status: "NEW",
 });
@@ -8424,8 +8424,8 @@ Get invoice metrics for an entity with the given filters. Invoices will always b
 await client.entity.invoice.metrics("ent_8545a84e-a45f-41bf-bdf1-33b42a55812c", {
     returnByDate: "CREATION_DATE",
     excludeReceivables: true,
-    startDate: "2021-01-01T00:00:00.000Z",
-    endDate: "2021-01-31T23:59:59.999Z",
+    startDate: new Date("2021-01-01T00:00:00.000Z"),
+    endDate: new Date("2021-01-31T23:59:59.999Z"),
     currency: "USD",
     status: "NEW",
 });
@@ -11296,8 +11296,8 @@ await client.invoice.bulk.create({
                 status: "NEW",
                 amount: 100,
                 currency: "USD",
-                invoiceDate: "2021-01-01T00:00:00Z",
-                dueDate: "2021-01-31T00:00:00Z",
+                invoiceDate: new Date("2021-01-01T00:00:00.000Z"),
+                dueDate: new Date("2021-01-31T00:00:00.000Z"),
                 invoiceNumber: "INV-123",
                 noteToSelf: "For the month of January",
                 payerId: "ent_8545a84e-a45f-41bf-bdf1-33b42a55812c",
@@ -11318,8 +11318,8 @@ await client.invoice.bulk.create({
                         quantity: 1,
                         unitPrice: 100,
                         category: "EXPENSE",
-                        serviceStartDate: "2021-01-01T00:00:00Z",
-                        serviceEndDate: "2021-01-31T00:00:00Z",
+                        serviceStartDate: new Date("2021-01-01T00:00:00.000Z"),
+                        serviceEndDate: new Date("2021-01-31T00:00:00.000Z"),
                         metadata: {
                             key1: "value1",
                             key2: "value2",
@@ -11403,8 +11403,8 @@ await client.invoice.bulk.update({
                 status: "NEW",
                 amount: 100,
                 currency: "USD",
-                dueDate: "2024-01-31T00:00:00Z",
-                invoiceDate: "2024-01-01T00:00:00Z",
+                dueDate: new Date("2024-01-31T00:00:00.000Z"),
+                invoiceDate: new Date("2024-01-01T00:00:00.000Z"),
                 invoiceNumber: "INV-001",
                 lineItems: [
                     {
@@ -13393,8 +13393,8 @@ Search payment gateway process jobs
 ```typescript
 await client.paymentGateway.process.find({
     status: "FAILED",
-    startDate: "2024-01-01T00:00:00Z",
-    endDate: "2024-12-31T23:59:59Z",
+    startDate: new Date("2024-01-01T00:00:00.000Z"),
+    endDate: new Date("2024-12-31T23:59:59.000Z"),
 });
 ```
 
@@ -13608,8 +13608,8 @@ Search payment gateway validation jobs
 ```typescript
 await client.paymentGateway.validate.find({
     status: "FAILED",
-    startDate: "2024-01-01T00:00:00Z",
-    endDate: "2024-12-31T23:59:59Z",
+    startDate: new Date("2024-01-01T00:00:00.000Z"),
+    endDate: new Date("2024-12-31T23:59:59.000Z"),
 });
 ```
 
@@ -13856,8 +13856,8 @@ Search transactions
 
 ```typescript
 await client.transaction.find({
-    startDate: "2024-01-15T09:30:00Z",
-    endDate: "2024-01-15T09:30:00Z",
+    startDate: new Date("2024-01-15T09:30:00.000Z"),
+    endDate: new Date("2024-01-15T09:30:00.000Z"),
     limit: 10,
 });
 ```

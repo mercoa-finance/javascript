@@ -1,1 +1,1 @@
-export * as getNextAction from "./getNextAction";
+export * as getNextAction from "./getNextAction.js";

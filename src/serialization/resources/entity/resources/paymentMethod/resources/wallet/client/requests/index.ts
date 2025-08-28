@@ -1,2 +1,2 @@
-export { AddWalletFundsRequest } from "./AddWalletFundsRequest";
-export { WithdrawWalletFundsRequest } from "./WithdrawWalletFundsRequest";
+export { AddWalletFundsRequest } from "./AddWalletFundsRequest.js";
+export { WithdrawWalletFundsRequest } from "./WithdrawWalletFundsRequest.js";

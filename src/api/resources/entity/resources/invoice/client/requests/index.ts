@@ -1,3 +1,3 @@
-export { type EntityGetInvoicesRequest } from "./EntityGetInvoicesRequest";
-export { type InvoiceMetricsRequest } from "./InvoiceMetricsRequest";
-export { type DownloadEntityInvoicesRequest } from "./DownloadEntityInvoicesRequest";
+export { type EntityGetInvoicesRequest } from "./EntityGetInvoicesRequest.js";
+export { type InvoiceMetricsRequest } from "./InvoiceMetricsRequest.js";
+export { type DownloadEntityInvoicesRequest } from "./DownloadEntityInvoicesRequest.js";

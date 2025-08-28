@@ -1,4 +1,4 @@
-export * as bankAccount from "./bankAccount";
-export * from "./bankAccount/client/requests";
-export * as wallet from "./wallet";
-export * from "./wallet/client/requests";
+export * as bankAccount from "./bankAccount/index.js";
+export * from "./bankAccount/client/requests/index.js";
+export * as wallet from "./wallet/index.js";
+export * from "./wallet/client/requests/index.js";

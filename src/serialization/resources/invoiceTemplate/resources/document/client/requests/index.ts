@@ -1,1 +1,1 @@
-export { UploadDocumentRequest } from "./UploadDocumentRequest";
+export { UploadDocumentRequest } from "./UploadDocumentRequest.js";

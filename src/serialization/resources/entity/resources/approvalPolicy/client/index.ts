@@ -1,3 +1,3 @@
-export * as getAll from "./getAll";
-export * as history from "./history";
-export * as restore from "./restore";
+export * as getAll from "./getAll.js";
+export * as history from "./history.js";
+export * as restore from "./restore.js";

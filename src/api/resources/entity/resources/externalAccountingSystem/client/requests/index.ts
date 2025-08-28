@@ -1,1 +1,1 @@
-export { type SyncExternalSystemRequest } from "./SyncExternalSystemRequest";
+export { type SyncExternalSystemRequest } from "./SyncExternalSystemRequest.js";

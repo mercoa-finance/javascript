@@ -9,8 +9,6 @@
  *     }
  */
 export interface BankLookupRequest {
-    /**
-     * Routing number to validate
-     */
+    /** Routing number to validate */
     routingNumber: string;
 }

@@ -1,2 +1,2 @@
-export * as getPayerLink from "./getPayerLink";
-export * as getVendorLink from "./getVendorLink";
+export * as getPayerLink from "./getPayerLink.js";
+export * as getVendorLink from "./getVendorLink.js";

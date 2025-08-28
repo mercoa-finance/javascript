@@ -1,1 +1,1 @@
-export { type GetAllInvoiceTemplatesRequest } from "./GetAllInvoiceTemplatesRequest";
+export { type GetAllInvoiceTemplatesRequest } from "./GetAllInvoiceTemplatesRequest.js";

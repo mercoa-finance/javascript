@@ -1,1 +1,1 @@
-export { InvalidateTokensRequest } from "./InvalidateTokensRequest";
+export { InvalidateTokensRequest } from "./InvalidateTokensRequest.js";

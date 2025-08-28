@@ -1,2 +1,2 @@
-export { type DownloadBulkPayeesRequest } from "./DownloadBulkPayeesRequest";
-export { type DownloadBulkPayorsRequest } from "./DownloadBulkPayorsRequest";
+export { type DownloadBulkPayeesRequest } from "./DownloadBulkPayeesRequest.js";
+export { type DownloadBulkPayorsRequest } from "./DownloadBulkPayorsRequest.js";

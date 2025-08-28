@@ -1,1 +1,1 @@
-export * as getToken from "./getToken";
+export * as getToken from "./getToken.js";

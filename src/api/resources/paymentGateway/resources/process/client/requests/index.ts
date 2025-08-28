@@ -1,1 +1,1 @@
-export { type SearchPaymentGatewayProcessJobsRequest } from "./SearchPaymentGatewayProcessJobsRequest";
+export { type SearchPaymentGatewayProcessJobsRequest } from "./SearchPaymentGatewayProcessJobsRequest.js";

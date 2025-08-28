@@ -1,2 +1,2 @@
-export * as user from "./user";
-export * as invoice from "./invoice";
+export * as user from "./user/index.js";
+export * as invoice from "./invoice/index.js";

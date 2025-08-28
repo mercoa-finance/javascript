@@ -1,2 +1,2 @@
-export * from "./BankAddress";
-export * from "./BankLookupResponse";
+export * from "./BankAddress.js";
+export * from "./BankLookupResponse.js";

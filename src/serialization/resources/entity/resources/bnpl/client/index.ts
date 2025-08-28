@@ -1,1 +1,1 @@
-export * as getLoans from "./getLoans";
+export * as getLoans from "./getLoans.js";

@@ -9,8 +9,6 @@
  *     }
  */
 export interface SendPayerEmail {
-    /**
-     * Whether to attach the invoice to the email
-     */
+    /** Whether to attach the invoice to the email */
     attachInvoice?: boolean;
 }

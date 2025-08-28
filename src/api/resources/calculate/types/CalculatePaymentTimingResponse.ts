@@ -5,10 +5,10 @@
 /**
  * @example
  *     {
- *         estimatedProcessingDate: "2024-01-02T00:00:00Z",
+ *         estimatedProcessingDate: new Date("2024-01-02T00:00:00.000Z"),
  *         businessDays: 3,
  *         estimatedProcessingTime: 3,
- *         estimatedSettlementDate: "2024-01-05T00:00:00Z"
+ *         estimatedSettlementDate: new Date("2024-01-05T00:00:00.000Z")
  *     }
  */
 export interface CalculatePaymentTimingResponse {

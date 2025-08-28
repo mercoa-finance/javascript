@@ -1,1 +1,1 @@
-export { type EntityFindEntityRequest } from "./EntityFindEntityRequest";
+export { type EntityFindEntityRequest } from "./EntityFindEntityRequest.js";

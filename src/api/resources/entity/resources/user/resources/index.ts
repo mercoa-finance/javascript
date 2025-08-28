@@ -1,3 +1,3 @@
-export * as notificationPolicy from "./notificationPolicy";
-export * as notifications from "./notifications";
-export * from "./notifications/client/requests";
+export * as notificationPolicy from "./notificationPolicy/index.js";
+export * as notifications from "./notifications/index.js";
+export * from "./notifications/client/requests/index.js";

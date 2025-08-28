@@ -1,2 +1,2 @@
-export { type AddWalletFundsRequest } from "./AddWalletFundsRequest";
-export { type WithdrawWalletFundsRequest } from "./WithdrawWalletFundsRequest";
+export { type AddWalletFundsRequest } from "./AddWalletFundsRequest.js";
+export { type WithdrawWalletFundsRequest } from "./WithdrawWalletFundsRequest.js";

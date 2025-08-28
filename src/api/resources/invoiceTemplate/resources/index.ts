@@ -1,4 +1,4 @@
-export * as lineItem from "./lineItem";
-export * as approval from "./approval";
-export * as document from "./document";
-export * from "./document/client/requests";
+export * as lineItem from "./lineItem/index.js";
+export * as approval from "./approval/index.js";
+export * as document from "./document/index.js";
+export * from "./document/client/requests/index.js";

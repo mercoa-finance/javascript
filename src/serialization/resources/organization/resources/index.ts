@@ -1,1 +1,1 @@
-export * as notificationConfiguration from "./notificationConfiguration";
+export * as notificationConfiguration from "./notificationConfiguration/index.js";

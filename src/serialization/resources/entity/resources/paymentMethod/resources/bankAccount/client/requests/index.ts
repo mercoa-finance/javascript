@@ -1,1 +1,1 @@
-export { CompleteMicroDepositsRequest } from "./CompleteMicroDepositsRequest";
+export { CompleteMicroDepositsRequest } from "./CompleteMicroDepositsRequest.js";

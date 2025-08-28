@@ -1,5 +1,5 @@
-export { type FindEntities } from "./FindEntities";
-export { type EntityGetRequest } from "./EntityGetRequest";
-export { type GenerateOnboardingLink } from "./GenerateOnboardingLink";
-export { type SendOnboardingLink } from "./SendOnboardingLink";
-export { type EntityEntityGetEventsRequest } from "./EntityEntityGetEventsRequest";
+export { type FindEntities } from "./FindEntities.js";
+export { type EntityGetRequest } from "./EntityGetRequest.js";
+export { type GenerateOnboardingLink } from "./GenerateOnboardingLink.js";
+export { type SendOnboardingLink } from "./SendOnboardingLink.js";
+export { type EntityEntityGetEventsRequest } from "./EntityEntityGetEventsRequest.js";

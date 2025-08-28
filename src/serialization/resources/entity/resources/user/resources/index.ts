@@ -1,1 +1,1 @@
-export * as notificationPolicy from "./notificationPolicy";
+export * as notificationPolicy from "./notificationPolicy/index.js";

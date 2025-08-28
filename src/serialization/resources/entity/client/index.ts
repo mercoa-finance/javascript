@@ -1,2 +1,2 @@
-export * as getToken from "./getToken";
-export * as getOnboardingLink from "./getOnboardingLink";
+export * as getToken from "./getToken.js";
+export * as getOnboardingLink from "./getOnboardingLink.js";

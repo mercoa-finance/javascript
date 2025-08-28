@@ -7,8 +7,6 @@
  *     {}
  */
 export interface VendorLinkRequest {
-    /**
-     * Expressed in seconds or a string describing a time span. The default is 30d.
-     */
+    /** Expressed in seconds or a string describing a time span. The default is 30d. */
     expiresIn?: string;
 }

@@ -1,1 +1,1 @@
-export { type FindPaymentMethodsRequest } from "./FindPaymentMethodsRequest";
+export { type FindPaymentMethodsRequest } from "./FindPaymentMethodsRequest.js";

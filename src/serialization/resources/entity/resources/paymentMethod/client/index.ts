@@ -1,2 +1,2 @@
-export * as getAll from "./getAll";
-export * as plaidLinkToken from "./plaidLinkToken";
+export * as getAll from "./getAll.js";
+export * as plaidLinkToken from "./plaidLinkToken.js";

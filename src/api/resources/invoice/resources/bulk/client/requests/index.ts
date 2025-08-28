@@ -1,4 +1,4 @@
-export { type BulkInvoiceCreationRequest } from "./BulkInvoiceCreationRequest";
-export { type BulkInvoiceUpdateRequest } from "./BulkInvoiceUpdateRequest";
-export { type BulkInvoiceApprovalRequest } from "./BulkInvoiceApprovalRequest";
-export { type DownloadBulkInvoicesRequest } from "./DownloadBulkInvoicesRequest";
+export { type BulkInvoiceCreationRequest } from "./BulkInvoiceCreationRequest.js";
+export { type BulkInvoiceUpdateRequest } from "./BulkInvoiceUpdateRequest.js";
+export { type BulkInvoiceApprovalRequest } from "./BulkInvoiceApprovalRequest.js";
+export { type DownloadBulkInvoicesRequest } from "./DownloadBulkInvoicesRequest.js";

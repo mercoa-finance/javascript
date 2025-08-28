@@ -9,20 +9,12 @@
 export interface GetEmailLogRequest {
     startDate?: Date;
     endDate?: Date;
-    /**
-     * Filter by sender email address
-     */
+    /** Filter by sender email address */
     from?: string;
-    /**
-     * Filter by recipient email address
-     */
+    /** Filter by recipient email address */
     to?: string;
-    /**
-     * Number of logs to return. Limit can range between 1 and 100, and the default is 10.
-     */
+    /** Number of logs to return. Limit can range between 1 and 100, and the default is 10. */
     limit?: number;
-    /**
-     * The ID of the log to start after. If not provided, the first page of logs will be returned.
-     */
+    /** The ID of the log to start after. If not provided, the first page of logs will be returned. */
     startingAfter?: string;
 }

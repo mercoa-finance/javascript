@@ -1,1 +1,1 @@
-export { type CalculateVendorCreditUsageRequest } from "./CalculateVendorCreditUsageRequest";
+export { type CalculateVendorCreditUsageRequest } from "./CalculateVendorCreditUsageRequest.js";

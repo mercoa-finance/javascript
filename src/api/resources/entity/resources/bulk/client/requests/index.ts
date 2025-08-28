@@ -1,2 +1,2 @@
-export { type BulkEntityCreationRequest } from "./BulkEntityCreationRequest";
-export { type DownloadBulkEntitiesRequest } from "./DownloadBulkEntitiesRequest";
+export { type BulkEntityCreationRequest } from "./BulkEntityCreationRequest.js";
+export { type DownloadBulkEntitiesRequest } from "./DownloadBulkEntitiesRequest.js";

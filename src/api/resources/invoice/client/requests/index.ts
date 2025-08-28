@@ -1,2 +1,2 @@
-export { type GetAllInvoicesRequest } from "./GetAllInvoicesRequest";
-export { type InvoiceInvoiceGetEventsRequest } from "./InvoiceInvoiceGetEventsRequest";
+export { type GetAllInvoicesRequest } from "./GetAllInvoicesRequest.js";
+export { type InvoiceInvoiceGetEventsRequest } from "./InvoiceInvoiceGetEventsRequest.js";

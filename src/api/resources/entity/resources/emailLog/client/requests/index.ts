@@ -1,1 +1,1 @@
-export { type EntityEmailLogRequest } from "./EntityEmailLogRequest";
+export { type EntityEmailLogRequest } from "./EntityEmailLogRequest.js";

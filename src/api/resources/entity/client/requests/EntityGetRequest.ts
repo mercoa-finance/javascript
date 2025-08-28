@@ -7,8 +7,6 @@
  *     {}
  */
 export interface EntityGetRequest {
-    /**
-     * Return simple key/value metadata for the specified keys for the entities. For more complex metadata, use the Metadata API.
-     */
+    /** Return simple key/value metadata for the specified keys for the entities. For more complex metadata, use the Metadata API. */
     returnMetadata?: string | string[];
 }
