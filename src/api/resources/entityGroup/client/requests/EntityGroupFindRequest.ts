@@ -9,7 +9,9 @@ import * as Mercoa from "../../../../index.js";
  *     {}
  */
 export interface EntityGroupFindRequest {
-    /** The maximum number of results to return. Defaults to 1. Max is 10. */
+    /** The maximum number of results to return. Defaults to 1. Max is 20. */
     limit?: number;
     startingAfter?: Mercoa.EntityGroupId;
+    /** Search entity groups by name. This will perform a case-insensitive search on the group name. */
+    search?: string;
 }

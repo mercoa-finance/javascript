@@ -5,6 +5,7 @@
 import * as serializers from "../../../index.js";
 import * as Mercoa from "../../../../api/index.js";
 import * as core from "../../../../core/index.js";
+import { Address } from "../../commons/types/Address.js";
 
 export const BankAccountCheckOptions: core.serialization.ObjectSchema<
     serializers.BankAccountCheckOptions.Raw,
@@ -14,6 +15,8 @@ export const BankAccountCheckOptions: core.serialization.ObjectSchema<
     initialCheckNumber: core.serialization.number().optional(),
     routingNumberOverride: core.serialization.string().optional(),
     accountNumberOverride: core.serialization.string().optional(),
+    accountHolderNameOverride: core.serialization.string().optional(),
+    accountHolderAddressOverride: Address.optional(),
     signatoryName: core.serialization.string(),
     signatureImage: core.serialization.string().optional(),
     useSignatureImage: core.serialization.boolean().optional(),
@@ -25,6 +28,8 @@ export declare namespace BankAccountCheckOptions {
         initialCheckNumber?: number | null;
         routingNumberOverride?: string | null;
         accountNumberOverride?: string | null;
+        accountHolderNameOverride?: string | null;
+        accountHolderAddressOverride?: Address.Raw | null;
         signatoryName: string;
         signatureImage?: string | null;
         useSignatureImage?: boolean | null;

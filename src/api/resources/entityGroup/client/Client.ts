@@ -90,7 +90,7 @@ export class EntityGroup {
         request: Mercoa.entityGroup.EntityGroupFindRequest = {},
         requestOptions?: EntityGroup.RequestOptions,
     ): Promise<core.WithRawResponse<Mercoa.EntityGroupFindResponse>> {
-        const { limit, startingAfter } = request;
+        const { limit, startingAfter, search } = request;
         const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
         if (limit != null) {
             _queryParams["limit"] = limit.toString();
@@ -98,6 +98,10 @@ export class EntityGroup {
 
         if (startingAfter != null) {
             _queryParams["startingAfter"] = startingAfter;
+        }
+
+        if (search != null) {
+            _queryParams["search"] = search;
         }
 
         let _headers: core.Fetcher.Args["headers"] = mergeHeaders(
