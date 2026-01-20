@@ -68,8 +68,8 @@ export class MercoaClient {
                 {
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "@mercoa/javascript",
-                    "X-Fern-SDK-Version": "0.7.1",
-                    "User-Agent": "@mercoa/javascript/0.7.1",
+                    "X-Fern-SDK-Version": "0.7.2",
+                    "User-Agent": "@mercoa/javascript/0.7.2",
                     "X-API-Version": _options?.xApiVersion ?? "2024-08-01",
                     "X-Fern-Runtime": core.RUNTIME.type,
                     "X-Fern-Runtime-Version": core.RUNTIME.version,

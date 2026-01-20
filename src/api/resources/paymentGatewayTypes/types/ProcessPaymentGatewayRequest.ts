@@ -98,6 +98,27 @@ import * as Mercoa from "../../../index.js";
  *             }
  *         }
  *     }
+ *
+ * @example
+ *     {
+ *         type: "html",
+ *         html: "<html><body><h1>Invoice Details</h1><a href=\"https://www.payment-gateway.com/invoice/123123\">Pay Invoice</a></body></html>",
+ *         cardDetails: {
+ *             type: "marqetaJs",
+ *             firstName: "John",
+ *             lastName: "Doe",
+ *             postalCode: "12345",
+ *             country: Mercoa.CountryCode.Us,
+ *             cardType: Mercoa.ProcessPaymentGatewayCardType.Credit,
+ *             cardToken: "12345678-1234-1234-1234-123456789012",
+ *             clientAccessToken: "your_client_access_token_here",
+ *             achDetails: {
+ *                 routingNumber: "123456789",
+ *                 accountNumber: "987654321",
+ *                 accountName: "John Doe"
+ *             }
+ *         }
+ *     }
  */
 export type ProcessPaymentGatewayRequest =
     | Mercoa.ProcessPaymentGatewayRequest.Document

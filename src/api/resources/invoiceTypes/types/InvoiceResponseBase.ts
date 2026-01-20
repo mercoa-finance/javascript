@@ -54,6 +54,10 @@ export interface InvoiceResponseBase {
     metadata: Record<string, string>;
     /** The ID of the entity who created this invoice. */
     creatorEntityId?: Mercoa.EntityId;
+    /** The ID of the entity group that created this invoice. */
+    entityGroupId?: Mercoa.EntityGroupId;
+    /** The foreign ID of the entity group that created this invoice. */
+    entityGroupForeignId?: string;
     /** Entity user who created this invoice. */
     creatorUser?: Mercoa.EntityUserResponse;
     createdAt: Date;

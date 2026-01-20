@@ -6,6 +6,7 @@ import * as serializers from "../../../index.js";
 import * as Mercoa from "../../../../api/index.js";
 import * as core from "../../../../core/index.js";
 import { ValidatePaymentGatewayCardResponse } from "./ValidatePaymentGatewayCardResponse.js";
+import { ValidatePaymentGatewayRequiredData } from "./ValidatePaymentGatewayRequiredData.js";
 
 export const ValidatePaymentGatewaySuccessResponse: core.serialization.ObjectSchema<
     serializers.ValidatePaymentGatewaySuccessResponse.Raw,
@@ -17,6 +18,7 @@ export const ValidatePaymentGatewaySuccessResponse: core.serialization.ObjectSch
     invoiceAmount: core.serialization.number().optional(),
     gatewayAmount: core.serialization.number().optional(),
     vendorName: core.serialization.string().optional(),
+    requiredData: ValidatePaymentGatewayRequiredData.optional(),
     createdAt: core.serialization.date(),
     updatedAt: core.serialization.date(),
 });
@@ -29,6 +31,7 @@ export declare namespace ValidatePaymentGatewaySuccessResponse {
         invoiceAmount?: number | null;
         gatewayAmount?: number | null;
         vendorName?: string | null;
+        requiredData?: ValidatePaymentGatewayRequiredData.Raw | null;
         createdAt: string;
         updatedAt: string;
     }

@@ -11,12 +11,14 @@ export interface ValidatePaymentGatewaySuccessResponse {
     paymentGatewayUrl?: string;
     /** Data on the card payments that were extracted from the gateway */
     card?: Mercoa.ValidatePaymentGatewayCardResponse;
-    /** The invoice amount detected from the payment gateway */
+    /** The invoice amount detected from the invoice */
     invoiceAmount?: number;
     /** The amount displayed on the payment gateway (may include fees) */
     gatewayAmount?: number;
-    /** The vendor name detected from the payment gateway */
+    /** The vendor name */
     vendorName?: string;
+    /** Information about what data is required to proceed with payment */
+    requiredData?: Mercoa.ValidatePaymentGatewayRequiredData;
     /** The timestamp when the job was created */
     createdAt: Date;
     /** The timestamp when the job was last updated */

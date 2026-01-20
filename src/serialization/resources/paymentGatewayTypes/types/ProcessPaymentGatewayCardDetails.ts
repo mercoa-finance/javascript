@@ -9,6 +9,7 @@ import { ProcessPaymentGatewayCardDetailsDirect } from "./ProcessPaymentGatewayC
 import { ProcessPaymentGatewayCardDetailsIframe } from "./ProcessPaymentGatewayCardDetailsIframe.js";
 import { ProcessPaymentGatewayCardDetailsStripeIssuing } from "./ProcessPaymentGatewayCardDetailsStripeIssuing.js";
 import { ProcessPaymentGatewayCardDetailsLithic } from "./ProcessPaymentGatewayCardDetailsLithic.js";
+import { ProcessPaymentGatewayCardDetailsMarqetaJs } from "./ProcessPaymentGatewayCardDetailsMarqetaJs.js";
 
 export const ProcessPaymentGatewayCardDetails: core.serialization.Schema<
     serializers.ProcessPaymentGatewayCardDetails.Raw,
@@ -19,6 +20,7 @@ export const ProcessPaymentGatewayCardDetails: core.serialization.Schema<
         iframe: ProcessPaymentGatewayCardDetailsIframe,
         stripeIssuing: ProcessPaymentGatewayCardDetailsStripeIssuing,
         lithic: ProcessPaymentGatewayCardDetailsLithic,
+        marqetaJs: ProcessPaymentGatewayCardDetailsMarqetaJs,
     })
     .transform<Mercoa.ProcessPaymentGatewayCardDetails>({
         transform: (value) => value,
@@ -30,7 +32,8 @@ export declare namespace ProcessPaymentGatewayCardDetails {
         | ProcessPaymentGatewayCardDetails.Direct
         | ProcessPaymentGatewayCardDetails.Iframe
         | ProcessPaymentGatewayCardDetails.StripeIssuing
-        | ProcessPaymentGatewayCardDetails.Lithic;
+        | ProcessPaymentGatewayCardDetails.Lithic
+        | ProcessPaymentGatewayCardDetails.MarqetaJs;
 
     export interface Direct extends ProcessPaymentGatewayCardDetailsDirect.Raw {
         type: "direct";
@@ -46,5 +49,9 @@ export declare namespace ProcessPaymentGatewayCardDetails {
 
     export interface Lithic extends ProcessPaymentGatewayCardDetailsLithic.Raw {
         type: "lithic";
+    }
+
+    export interface MarqetaJs extends ProcessPaymentGatewayCardDetailsMarqetaJs.Raw {
+        type: "marqetaJs";
     }
 }

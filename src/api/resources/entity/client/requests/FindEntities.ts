@@ -32,7 +32,7 @@ export interface FindEntities {
     isPayor?: boolean;
     /** Use search instead. Deprecated. Filter entities by name. Partial matches are supported. */
     name?: string;
-    /** Find entities by name, email, or emailTo. Partial matches are supported. */
+    /** Find entities by name, email, emailTo, entity ID, or foreign ID. Partial matches are supported for name, email, and emailTo. Exact matches are used for entity ID and foreign ID. */
     search?: string;
     /** Filter entities by simple key/value metadata. Each filter will be applied as an AND condition. Duplicate keys will be ignored. */
     metadata?: Mercoa.MetadataFilter;

@@ -17,6 +17,7 @@ import { CalculatePaymentTimingResponse } from "../../calculate/types/CalculateP
 import { InvoiceLineItemResponse } from "./InvoiceLineItemResponse.js";
 import { ApprovalSlot } from "./ApprovalSlot.js";
 import { ApprovalPolicyResponse } from "../../entityTypes/types/ApprovalPolicyResponse.js";
+import { EntityGroupId } from "../../entityGroupTypes/types/EntityGroupId.js";
 import { EntityUserResponse } from "../../entityTypes/types/EntityUserResponse.js";
 import { CommentResponse } from "./CommentResponse.js";
 import { InvoiceFeesResponse } from "./InvoiceFeesResponse.js";
@@ -62,6 +63,8 @@ export const InvoiceResponseBase: core.serialization.ObjectSchema<
     approvalPolicy: core.serialization.list(ApprovalPolicyResponse),
     metadata: core.serialization.record(core.serialization.string(), core.serialization.string()),
     creatorEntityId: EntityId.optional(),
+    entityGroupId: EntityGroupId.optional(),
+    entityGroupForeignId: core.serialization.string().optional(),
     creatorUser: EntityUserResponse.optional(),
     createdAt: core.serialization.date(),
     updatedAt: core.serialization.date(),
@@ -108,6 +111,8 @@ export declare namespace InvoiceResponseBase {
         approvalPolicy: ApprovalPolicyResponse.Raw[];
         metadata: Record<string, string>;
         creatorEntityId?: EntityId.Raw | null;
+        entityGroupId?: EntityGroupId.Raw | null;
+        entityGroupForeignId?: string | null;
         creatorUser?: EntityUserResponse.Raw | null;
         createdAt: string;
         updatedAt: string;

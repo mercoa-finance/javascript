@@ -8,7 +8,8 @@ export type ProcessPaymentGatewayCardDetails =
     | Mercoa.ProcessPaymentGatewayCardDetails.Direct
     | Mercoa.ProcessPaymentGatewayCardDetails.Iframe
     | Mercoa.ProcessPaymentGatewayCardDetails.StripeIssuing
-    | Mercoa.ProcessPaymentGatewayCardDetails.Lithic;
+    | Mercoa.ProcessPaymentGatewayCardDetails.Lithic
+    | Mercoa.ProcessPaymentGatewayCardDetails.MarqetaJs;
 
 export namespace ProcessPaymentGatewayCardDetails {
     export interface Direct extends Mercoa.ProcessPaymentGatewayCardDetailsDirect {
@@ -25,5 +26,9 @@ export namespace ProcessPaymentGatewayCardDetails {
 
     export interface Lithic extends Mercoa.ProcessPaymentGatewayCardDetailsLithic {
         type: "lithic";
+    }
+
+    export interface MarqetaJs extends Mercoa.ProcessPaymentGatewayCardDetailsMarqetaJs {
+        type: "marqetaJs";
     }
 }

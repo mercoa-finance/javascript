@@ -15,6 +15,8 @@ export interface ProcessPaymentGatewaySuccessResponse {
     gatewayAmount?: number;
     /** The vendor name detected from the payment gateway */
     vendorName?: string;
+    /** Information about what data is required to proceed with payment */
+    requiredData?: Mercoa.ValidatePaymentGatewayRequiredData;
     /** List of payment gateway attempts for this job */
     attempts: Mercoa.PaymentGatewayAttempt[];
     /** The timestamp when the job was created */
