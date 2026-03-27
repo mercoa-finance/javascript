@@ -9,4 +9,5 @@ export interface EmailSenderRequest {
     fromEmail: string;
     fromName: string;
     apiKey?: string;
+    useSmartReplyTo?: boolean;
 }

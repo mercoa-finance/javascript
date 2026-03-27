@@ -15,6 +15,7 @@ export const EmailSenderResponse: core.serialization.ObjectSchema<
     fromEmail: core.serialization.string(),
     fromName: core.serialization.string(),
     hasApiKey: core.serialization.boolean(),
+    useSmartReplyTo: core.serialization.boolean().optional(),
 });
 
 export declare namespace EmailSenderResponse {
@@ -23,5 +24,6 @@ export declare namespace EmailSenderResponse {
         fromEmail: string;
         fromName: string;
         hasApiKey: boolean;
+        useSmartReplyTo?: boolean | null;
     }
 }

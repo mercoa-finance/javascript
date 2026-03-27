@@ -8,6 +8,7 @@ export type InvoiceStatus =
     | "NEW"
     | "APPROVED"
     | "SCHEDULED"
+    | "PROCESSING"
     | "PENDING"
     | "PAID"
     | "ARCHIVED"
@@ -20,6 +21,7 @@ export const InvoiceStatus = {
     New: "NEW",
     Approved: "APPROVED",
     Scheduled: "SCHEDULED",
+    Processing: "PROCESSING",
     Pending: "PENDING",
     Paid: "PAID",
     Archived: "ARCHIVED",

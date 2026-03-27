@@ -13,6 +13,7 @@ export const InvoiceStatus: core.serialization.Schema<serializers.InvoiceStatus.
         "NEW",
         "APPROVED",
         "SCHEDULED",
+        "PROCESSING",
         "PENDING",
         "PAID",
         "ARCHIVED",
@@ -28,6 +29,7 @@ export declare namespace InvoiceStatus {
         | "NEW"
         | "APPROVED"
         | "SCHEDULED"
+        | "PROCESSING"
         | "PENDING"
         | "PAID"
         | "ARCHIVED"
